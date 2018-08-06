@@ -1,0 +1,17 @@
+- name: Документация
+  href: /
+  homepage: /
+  items:
+    - name: Служба Bot Service
+      tocHref: /Bot-Framework/
+      topicHref: /Bot-Framework/index
+      items:
+        - name: Пакет SDK для построителя ботов для .NET
+          tocHref: /Bot-Framework/dotnet
+          topicHref: /Bot-Framework/dotnet/
+        - name: Пакет SDK для построителя ботов для Node.js
+          tocHref: /Bot-Framework/nodejs
+          topicHref: /Bot-Framework/nodejs/
+        - name: REST API для Bot Framework
+          tocHref: /Bot-Framework/rest-api
+          topicHref: /Bot-Framework/rest-api/
