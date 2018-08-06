@@ -1,0 +1,11 @@
+# [Часто задаваемые вопросы](../bot-service-resources-bot-framework-faq.md)
+# [Получение поддержки](../bot-service-resources-links-help.md)
+# [Руководство по идентификаторам](../bot-service-resources-identifiers-guide.md)
+# [Ключи для App Insights](../bot-service-resources-app-insights-keys.md)
+# [Запросы между агентом и пользователем](../bot-service-resources-user-agent.md)
+# [Рекомендации по проверке бота](../bot-service-review-guidelines.md)
+# [Спецификация действий Bot Framework](../bot-service-activity-spec.md)
+# [Соответствие службы Bot требованиям](../v4sdk/bot-service-compliance.md)
+# Устранение неполадок
+## [Устранение общих неполадок](../bot-service-troubleshoot-general-problems.md)
+## [Устранение неполадок с аутентификацией](../bot-service-troubleshoot-authentication-problems.md)

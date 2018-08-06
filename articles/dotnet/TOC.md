@@ -1,0 +1,43 @@
+# [Пакет SDK для построителя ботов для .NET](bot-builder-dotnet-overview.md)
+# [Основные понятия](bot-builder-dotnet-concepts.md)
+# Сообщения и действия
+## [Общие сведения о действиях](bot-builder-dotnet-activities.md)
+## [Создание сообщений](bot-builder-dotnet-create-messages.md)
+## [Добавление мультимедийных вложений в сообщения](bot-builder-dotnet-add-media-attachments.md)
+## [Добавление расширенных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
+<!-- ## [Send carousel of cards](bot-builder-dotnet-add-carousel-card.md) -->
+## [Добавление преобразования речи в сообщения](bot-builder-dotnet-text-to-speech.md)
+## [Добавление подсказок для ввода в сообщения](bot-builder-dotnet-add-input-hints.md)
+## [Добавление предлагаемых действий в сообщения](bot-builder-dotnet-add-suggested-actions.md)
+## [Действия отправки и получения](bot-builder-dotnet-connector.md)
+## [Внедрение глобальных обработчиков сообщений](bot-builder-dotnet-global-handlers.md)
+## [Перехват сообщений](bot-builder-dotnet-middleware.md)
+## [Отправка упреждающих сообщений](bot-builder-dotnet-proactive-messages.md)
+# Диалоги
+## [Общие сведения о диалогах](bot-builder-dotnet-dialogs.md)
+## [Управление последовательностью диалога](bot-builder-dotnet-manage-conversation-flow.md)
+## [Диалоги с возможностью оценки](bot-builder-dotnet-scorable-dialogs.md)
+# FormFlow
+## [Основные функции FormFlow](bot-builder-dotnet-formflow.md)
+## [Дополнительные функции FormFlow](bot-builder-dotnet-formflow-advanced.md)
+## [FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
+## [Язык общих схем решений](bot-builder-dotnet-formflow-pattern-language.md)
+## [Локализация](bot-builder-dotnet-formflow-localize.md)
+## [Схема JSON](bot-builder-dotnet-formflow-json-schema.md)
+# Каналы
+## [Реализация возможностей для определенных каналов](bot-builder-dotnet-channeldata.md)
+## [Создание навыка для Cortana](bot-builder-dotnet-cortana-skill.md)
+## [Осуществление голосовых звонков с помощью Skype](bot-builder-dotnet-audio-calls.md)
+## Осуществление мультимедийных вызовов с помощью Skype в реальном времени
+### [Основные понятия о мультимедийных вызовах в реальном времени](bot-builder-dotnet-real-time-media-concepts.md)
+### [Требования к ботам для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-media-requirements.md)
+### [Создание бота для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-audio-video-call-overview.md)
+### [Развертывание бота для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+# Данные о состоянии
+## [Управление данными о состоянии](bot-builder-dotnet-state.md)
+## [Управление данными о состоянии с использованием Cosmos DB](bot-builder-dotnet-state-azure-cosmosdb.md)
+## [Управление данными о состоянии с использованием Хранилища таблиц](bot-builder-dotnet-state-azure-table-storage.md)
+# [Распознавание намерений с помощью LUIS](bot-builder-dotnet-luis-dialogs.md)
+# [Запрос платежей](bot-builder-dotnet-request-payment.md)
+# [Добавление службы "Поиск Azure"](bot-builder-dotnet-search-azure.md)
+# [Защита бота](bot-builder-dotnet-security.md)
