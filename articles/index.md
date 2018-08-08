@@ -8,14 +8,17 @@ ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 2264f714b28b52691da2ee0d421506b408a43ef3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6759a870538265fa9f8ae089486946b8fe648649
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116424"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514994"
 ---
 ::: moniker range="azure-bot-service-3.0"
+
+> [!NOTE]
+> Эта статья относится к выпуску пакета SDK версии 3 (стабильная версия). С документацией по предварительной версии 4 пакета SDK можно ознакомиться [здесь](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
 
 <div class="content">
     <h1>Документация по службе Azure Bot</h1>
@@ -90,10 +93,12 @@ ms.locfileid: "39116424"
 
 ::: moniker range="azure-bot-service-4.0"
 
+> [!NOTE] 
+> Это предварительный выпуск документации по содержимому пакета SDK версии 4, которая может измениться. Документацию по содержимому пакета SDK версии 3 (стабильная версия) см. [здесь](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0).
+
 <div class="content">
     <h1>Документация по службе Azure Bot</h1>
     <div class="intro" style="min-width: 200px">
-        <p><b> [Это предварительный выпуск документации, которая может измениться.] </b></p>
         <p>Служба Azure Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для построителя ботов с поддержкой C#, JavaScript, Python и Java. Узнайте, как использовать службу Bot, изучив краткие инструкции, примеры и руководства.
 </p>
 </div>
