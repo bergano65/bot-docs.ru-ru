@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 286d7057afb28983964ef992de2c11cebd74e0da
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: ab1f0b938703f404417e48520467dc75b9f0717d
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305570"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574840"
 ---
 # <a name="bot-service-templates"></a>Шаблоны службы ботов
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Служба включает пять шаблонов, с помощью которых вы сможете приступить к работе с ботами. С помощью этих шаблонов вы сможете получить готового бота, с которым быстро начнете работу. При [создании бота](bot-service-quickstart.md) выберите шаблон и язык пакета SDK для этого бота.
 
 Каждый шаблон служит отправной точкой и реализует основную возможность бота. 

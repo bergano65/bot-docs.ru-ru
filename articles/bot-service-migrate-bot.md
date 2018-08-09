@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 6/22/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e8c927ce49a2d8aecf0113a09cbedcf1135a8380
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6154ac5c77f818192503e5586986b37062b105bf
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305551"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574530"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Миграция ботов в Azure
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
 Все боты **службы Azure Bot (предварительная версия)**, созданные на [портале Bot Framework](http://dev.botframework.com), необходимо перенести в новую службу Azure Bot. Служба стала общедоступной (GA) в декабре 2017 г. 
 
