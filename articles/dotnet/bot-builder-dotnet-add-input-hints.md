@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2f56a855990675ccae4845c13541150ab205379a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 87fc068c831dba752fa52a6430327232719a74a9
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306090"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574830"
 ---
 # <a name="add-input-hints-to-messages"></a>Добавление подсказок для ввода в сообщения
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
@@ -27,23 +30,38 @@ ms.locfileid: "39306090"
 
 Чтобы указать, что ваш бот пассивно готов к вводу, но не ожидает ответа от пользователя, присвойте подсказке для ввода значение `InputHints.AcceptingInput`. В результате во многих каналах поле ввода будет включено, а микрофон закрыт, но доступен пользователю. Например, Кортана откроет микрофон, чтобы принять входные данные пользователя, если пользователь будет удерживать кнопку микрофона. Следующий пример кода создает сообщение, которое указывает, что бот принимает ввод данных пользователем.
 
-[!code-csharp[Accepting input](../includes/code/dotnet-input-hints.cs#InputHintAcceptingInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.AcceptingInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="expecting-input"></a>Ожидание ввода данных
 
 Чтобы указать, что ваш бот ожидает ответа от пользователя, присвойте подсказке для ввода в сообщение значение `InputHints.ExpectingInput`. В результате во многих каналах поле ввода будет включено, а микрофон открыт. Следующий пример кода создает сообщение, которое указывает, что бот ожидает ввод данных пользователем.
 
-[!code-csharp[Expecting input](../includes/code/dotnet-input-hints.cs#InputHintExpectingInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.ExpectingInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="ignoring-input"></a>Пропуск ввода данных
- 
+
 Чтобы указать, что ваш бот не готов к получению входных данных от пользователя, присвойте подсказке для ввода значение `InputHints.IgnorningInput`. В результате во многих каналах поле ввода будет отключено, а микрофон закрыт. Следующий пример кода создает сообщение, которое указывает, что бот игнорирует ввод данных пользователем.
 
-[!code-csharp[Ignoring input](../includes/code/dotnet-input-hints.cs#InputHintIgnoringInput)]
+```cs
+Activity reply = activity.CreateReply("This is the text that will be displayed.");
+reply.Speak = "This is the text that will be spoken.";
+reply.InputHint = InputHints.IgnoringInput;
+await connector.Conversations.ReplyToActivityAsync(reply);
+```
 
 ## <a name="default-values-for-input-hint"></a>Значения по умолчанию для подсказки для ввода
 
-Если подсказка для ввода в сообщение не задана, пакет SDK построителя ботов автоматически настроит ее по следующей логике. 
+Если подсказка для ввода в сообщении не задана, пакет SDK для Bot Builder автоматически настроит ее соответственно следующей логике.
 
 - Если бот отправляет запрос, подсказка для ввода в сообщение укажет, что бот **ожидает ввода данных**.</li>
 - Если бот отправляет одно сообщение, подсказка для ввода в сообщение укажет, что бот **принимает ввод данных**.</li>

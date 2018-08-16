@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a97d21e64ce12f6158f276889762a73ac2aff49b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306354"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574550"
 ---
 # <a name="create-messages"></a>Создание сообщений
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Бот будет отправлять [действия](bot-builder-dotnet-activities.md) **Message** для передачи информации пользователям, а также будет получать действия **Message** от пользователей. Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](bot-builder-dotnet-text-to-speech.md), [предлагаемые действия](bot-builder-dotnet-add-suggested-actions.md), [мультимедийные вложения](bot-builder-dotnet-add-media-attachments.md), [форматированные карточки](bot-builder-dotnet-add-rich-card-attachments.md) и [данные по каналу](bot-builder-dotnet-channeldata.md). 
 
@@ -122,7 +124,7 @@ ms.locfileid: "39306354"
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Действия отправки и получения](bot-builder-dotnet-connector.md)
 - [Добавление мультимедийных вложений в сообщения](bot-builder-dotnet-add-media-attachments.md)
-- [Добавление расширенных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
+- [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
 - [Добавление речи в сообщения](bot-builder-dotnet-text-to-speech.md)
 - [Добавление предлагаемых действий в сообщения](bot-builder-dotnet-add-suggested-actions.md)
 - [Реализация возможностей для определенных каналов](bot-builder-dotnet-channeldata.md)

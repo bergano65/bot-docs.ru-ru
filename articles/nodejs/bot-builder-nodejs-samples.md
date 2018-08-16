@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0eb14f4bf52a293d3405762c786259f771aecad6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43c178c4bbdf0bb04384bb8ada397066e6f7dd12
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305719"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574620"
 ---
 # <a name="bot-builder-sdk-for-nodejs-samples"></a>Примеры для пакета SDK Bot Builder для Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK Bot Builder для Node.js. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями.
 
@@ -45,7 +47,7 @@ cd BotBuilder-Samples
 [Разные диалоги](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-MultiDialogs) | Пример бота, отображающего различные виды диалогов.
 [API состояния](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-State) | Пример бота без отслеживания состояния, который отслеживает контекст общения.
 [API пользовательского состояния](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-CustomState) | Пример бота без отслеживания состояния, который отслеживает контекст общения с использованием настраиваемого поставщика хранилища.
-[ChannelData](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-ChannelData) | Пример бота, который отправляет собственные метаданные в Facebook с помощью ChannelData.
+[channelData](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-ChannelData) | Пример бота, который отправляет собственные метаданные в Facebook с помощью ChannelData.
 [AppInsights](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-AppInsights) | Пример бота, который записывает данные телеметрии в экземпляр Application Insights.
 
 ## <a name="search"></a>поиска

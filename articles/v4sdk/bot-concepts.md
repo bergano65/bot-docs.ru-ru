@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 99c9267fe41734a41243461fafa98c7116162984
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: abb2b18d45fb722d7de98c5cd02bd88350aad803
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306251"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515094"
 ---
 # <a name="channels-and-the-bot-connector-service"></a>Каналы и служба Bot Connector
+
+[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
 Каналы — это конечная точка, с помощью которой пользователь подключается к боту, например, Facebook, Skype, Email, Slack и т. д. Служба Bot Connector, настроенная с помощью [портала Azure](https://portal.azure.com), соединяет бот с этими каналами и облегчает обмен информацией между ботом и пользователем. 
 

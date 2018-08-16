@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f338a405ccc74e66606c0eba5604776edb1fc1ff
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f5cc520704c4bebef6250195fd3e6cbdc3b0be3f
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305739"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574960"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-proactive-messages.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-proactive-messages.md)
@@ -177,7 +180,7 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Проектирование потока беседы и управление им](../bot-service-design-conversation-flow.md)
+- [Проектирование потока диалога и управление им](../bot-service-design-conversation-flow.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Пример proactiveMessages (GitHub)</a>
 

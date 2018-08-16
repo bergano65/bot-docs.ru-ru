@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7c85227d062f32f9f1e8096f1dad83c09ed85a9f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43eb8e25e2a17e1d6b1d30e767dd15569fcad78b
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305890"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574870"
 ---
 # <a name="information-bot-scenario"></a>Сценарий информационного бота
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Этот информационный бот может отвечать на вопросы, заданные в базе знаний или в списке часто задаваемых вопросов, используя Cognitive Services QnA Maker, и отвечать на более открытые вопросы с помощью Поиска Azure.
 
 Часто информация хранится в структурированных хранилищах данных, таких как SQL Server, которые можно легко найти через поиск. Представьте, что вы просматриваете статус заказа клиента с помощью простых команд общения. С помощью Cognitive Services QnA Maker пользователю предоставляется набор допустимых параметров поиска, таких как поиск клиента, просмотр последнего заказа клиента и т. д. Определив формат QnA, пользователь может легко задать вопросы, которые поддерживает служба Поиск Azure, и по которым она может искать хранимые данные в базе данных SQL.

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 90e53ed5001ce1c91646644bf815bb51b6a843c1
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306070"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574640"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [!INCLUDE [Activity concept overview](../includes/snippet-dotnet-concept-activity.md)]
 
@@ -34,7 +36,7 @@ ms.locfileid: "39306070"
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity | Указывает на конец общения. |
 | [event](#event) | IEventActivity | Представляет сообщение, отправляемое боту, который не отображается для пользователя. |
 | [invoke](#invoke) | IInvokeActivity | Представляет сообщение, отправляемое боту для запроса определенной операции. Этот тип действия зарезервирован для внутреннего использования в Microsoft Bot Framework. |
-| [messageReaction](#messagereaction) | IMessageReactionActivity | Указывает, что пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Мне нравится". |
+| [messageReaction](#messagereaction) | IMessageReactionActivity | Указывает, что пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Like". |
 
 ## <a name="message"></a>Message
 
@@ -55,7 +57,7 @@ ms.locfileid: "39306070"
 
 ## <a name="contactrelationupdate"></a>contactRelationUpdate
 
-Бот получает действие **contactRelationUpdate** при каждом добавлении или удалении из списка контактов пользователя. Значение свойства `Action` действия (add | remove) указывает, был ли бот добавлен в список контактов пользователя или удален из него.
+Бот получает действие **contactRelationUpdate** при каждом добавлении или удалении из списка контактов пользователя. Значение свойства `Action` действия (add | remove) указывает, был ли бот добавлен или удален из списка контактов пользователя.
 
 ## <a name="typing"></a>typing
 
@@ -63,7 +65,7 @@ ms.locfileid: "39306070"
 
 ## <a name="ping"></a>ping
 
-Бот получает действие **ping**, чтобы определить, доступна ли конечная точка. Для ответа он должен использовать такой код состояния HTTP, как 200 (OК), 403 (запрещено) или 401 (не авторизован).
+Бот получает действие **ping**, чтобы определить, доступна ли конечная точка. Для ответа он должен использовать такой код состояния HTTP, как 200 (OK), 403 (запрещено) или 401 (не авторизован).
 
 ## <a name="deleteuserdata"></a>deleteUserData
 

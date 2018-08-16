@@ -8,16 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 142d4cbe0c252e88bab800bb3823b70434a65bd6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b6326ac152112ff1df01470db1f525d4bf241af4
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306214"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574610"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 # <a name="azure-bot-service"></a>Служба Azure Bot
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
 Служба Azure Bot предоставляет средства для сборки, тестирования, развертывания и управления интеллектуальными ботами в одной среде. В модульной и расширяемой платформе, предоставленной пакетом SDK, разработчики могут использовать шаблоны для создания ботов, которые обеспечивают речь, понимание языка, вопросы, ответы и многое другое.  
 
