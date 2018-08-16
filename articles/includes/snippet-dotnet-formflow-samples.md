@@ -1,0 +1,2 @@
+Полные примеры реализации FormFlow с помощью пакета SDK Bot Builder для .NET см. в разделе с <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-MultiDialogs" target="_blank">примером бота с несколькими диалоговыми окнами</a> и <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-ContosoFlowers" target="_blank">примером бота Contoso Flowers</a> в GitHub.
+
