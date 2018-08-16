@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec16b89a6c25c4113048a40f6b9b3edb6ce2af5e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6a32bc5712937c615962e4f6edfc7ea691d3ec39
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305087"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574980"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Регистрация бота с помощью службы Bot
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Если у вас имеется бот, размещенный в другом расположении, и вы хотите подключить его к другим каналам с помощью службы Bot, понадобится зарегистрировать его в службе Bot. В этом разделе вы узнаете, как зарегистрировать бот в службе Bot, создав службу бота **Регистрация каналов бота**.
 
 > [!IMPORTANT] 

@@ -8,14 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/13/2018
-ms.openlocfilehash: 86776853b7928bc12588a8211d21ace58d57838d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c0432bf7c1691422db71798daf3b1aab5bf5b5dd
+ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300950"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39567523"
 ---
 ::: moniker range="azure-bot-service-3.0"
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
 # <a name="create-a-bot-with-bot-service"></a>Создание бота с помощью службы Bot
 Служба Bot предоставляет основные компоненты для создания ботов, включая пакет SDK для Bot Builder для разработки ботов и Bot Framework для подключения ботов к каналам. Служба Bot предоставляет пять шаблонов, которые можно выбрать при создании ботов с поддержкой .NET и Node.js. В этом разделе вы узнаете, как создать бот, использующий пакет SDK для Bot Builder, с помощью службы Bot.

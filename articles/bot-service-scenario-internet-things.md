@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3583c4382a9262b959b31d5a9a1b7b1b97fc8a04
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b65f323427760fa43586f471aefb6811ef3e675
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305075"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574529"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>Сценарий бота для Интернета вещей
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Этот бот для Интернета вещей упрощает процесс управления домашними устройствами, такими как лампочки Philips Hue, с помощью голоса или интерактивных команд чата.
 
 Людям нравится взаимодействовать с устройствами путем общения. С момента создания первого пульта удаленного управления люди предпочитают изменять свою среду, совершая при этом минимальное количество движений. Этот бот для Интернета вещей позволяет управлять Philips Hue с помощью простых команд чата или голоса. Кроме того, при использовании чата пользователю предлагается визуальное представление вариантов, связанные с цветами.
