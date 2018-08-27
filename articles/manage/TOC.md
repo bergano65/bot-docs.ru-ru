@@ -1,18 +1,18 @@
 # [Управление ботом](../bot-service-manage-overview.md)
 # Создание
-## [Использование сетевого редактора кода](../bot-service-build-online-code-editor.md)
-## [Скачивание исходного кода бота](../bot-service-build-download-source-code.md)
-## [Настройка непрерывного развертывания](../bot-service-build-continuous-deployment.md)
+## [Изменение бота в онлайн-редакторе кода](../bot-service-build-online-code-editor.md)
+## [Скачивание и повторное развертывание исходного кода бота](../bot-service-build-download-source-code.md)
+## [Set up continuous deployment](../bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
 # [Тестирование в веб-чате](../bot-service-manage-test-webchat.md)
-# [Просмотр аналитики](../bot-service-manage-analytics.md)
+# [Аналитика бота](../bot-service-manage-analytics.md)
 # Каналы
-## [Настройка каналов](../bot-service-manage-channels.md)
+## [Подключение бота к каналам](../bot-service-manage-channels.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
 ## [Skype](../bot-service-channel-connect-skype.md)
 ## [Skype для бизнеса](../bot-service-channel-connect-skypeforbusiness.md)
 ## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Веб-чат
+## Веб-чат.
 ### [Подключение бота к веб-чату](../bot-service-channel-connect-webchat.md)
 ### [Включение распознавания речи в веб-чате](../bot-service-channel-connect-webchat-speech.md)
 ## [Электронная почта](../bot-service-channel-connect-email.md)

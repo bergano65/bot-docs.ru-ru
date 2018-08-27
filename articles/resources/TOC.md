@@ -4,7 +4,9 @@
 # [Ключи для App Insights](../bot-service-resources-app-insights-keys.md)
 # [Запросы между агентом и пользователем](../bot-service-resources-user-agent.md)
 # [Рекомендации по проверке бота](../bot-service-review-guidelines.md)
-# [Спецификация действий Bot Framework](../bot-service-activity-spec.md)
+# [Принципы использования действий в Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-activity.md)
+# [Принципы использования карточек в Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-cards.md)
+# [Принципы использования расшифровок в Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/transcript/transcript.md)
 # [Соответствие службы Bot требованиям](../v4sdk/bot-service-compliance.md)
 # Устранение неполадок
 ## [Устранение общих неполадок](../bot-service-troubleshoot-general-problems.md)
