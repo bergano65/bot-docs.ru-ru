@@ -2,8 +2,8 @@
 # Обзор
 ## [Общие сведения о службе Azure Bot](bot-service-overview-introduction.md)
 # Быстрый запуск
-## [Create a bot with Bot Service](~/bot-service-quickstart.md) (Создание бота с помощью службы Azure Bot)
-## Создание бота с помощью пакета SDK для построителя ботов
+## [Создание бота с помощью службы Azure Bot](~/bot-service-quickstart.md)
+## Создание бота в локальной среде
 ### [.NET](dotnet/bot-builder-dotnet-quickstart.md)
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [Node.js](nodejs/bot-builder-nodejs-quickstart.md)
