@@ -48,7 +48,7 @@
 ## [Управление](manage/TOC.md)
 ## Разработка
 ### [Отправка сообщений](v4sdk/bot-builder-howto-send-messages.md)
-### [Добавление мультимедийных вложений](v4sdk/bot-builder-howto-add-media-attachments.md)
+### [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [Добавление подсказок для ввода в сообщения](v4sdk/bot-builder-howto-add-input-hints.md)
 ### [Добавление предлагаемых действий в сообщения](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [Создание собственных запросов на сбор данных, вводимых пользователем](v4sdk/bot-builder-primitive-prompts.md)
