@@ -8,22 +8,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b98eea6bdae097beec85e93301e5380a1de991c3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fc260f34f28e406dc88dd5b688d84cd79c7e9449
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305782"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905956"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В этой статье используется пример бота для ведения заметок. Этот пример показывает, как реализовать естественную реакцию бота на входные данные на естественном языке с помощью распознавания речи ([LUIS][LUIS]). Бот понимает, что хочет сделать пользователь, определяя **намерение** пользователя. Это намерение определяется на основе голосовых или текстовых входных данных, или **высказываний**. Намерение сопоставляет высказывания с действиями, которые выполняет бот. Например, бот для заметок распознает намерение `Notes.Create` для вызова функции создания заметки. Боту также может потребоваться извлекать **сущности** — важные слова в высказываниях. Для бота, который ведет заметки, сущность `Notes.Title` определяет заголовок каждой заметки.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Создание бота для распознавания речи с помощью службы Azure Bot
 
-1. На [портале Azure ](https://portal.azure.com) в колонке меню выберите **Создать ресурс**, а затем — **Показать все**.<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+1. На [портале Azure](https://portal.azure.com) в колонке меню выберите **Создать ресурс**, а затем **Показать все**.
 
-    ![Создание ресурса](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
+<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+
+    ![Create new resource](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
 
 2. В поле поиска введите **Бот веб-приложения**. 
 

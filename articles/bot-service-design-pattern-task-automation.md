@@ -7,14 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 2/13/2018
-ms.openlocfilehash: 1f14329958711cc7f9ef8832b267587e1232da2a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 60a3796e255611ff09d5418cdeaa6f363ad8da15
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301283"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904970"
 ---
 # <a name="create-task-automation-bots"></a>Создание ботов с автоматизацией задач
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 Бот с автоматизацией задач позволяет пользователю выполнять определенную задачу или набор задач без какой-либо помощи со стороны человека. Этот тип бота напоминает стандартное приложение или веб-сайт, взаимодействуя с пользователем в первую очередь с помощью функциональных пользовательских элементов управления и текста. Он может иметь возможности распознавания естественного языка для обогащения беседы с пользователями. 
 

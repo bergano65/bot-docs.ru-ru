@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/9/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9e7507f7ece6f0e36e357a615ae6ca7d327c4fc6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: be9047b27d7899ba398e5c737bed8ef03abf8dbc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305971"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905898"
 ---
 # <a name="bot-service-compliance"></a>Соответствие требованиям в службе Azure Bot
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
 Служба Azure Bot соответствует стандартам ISO 27001:2013, ISO 27019:2014, SOC 1 и SOC 2, Стандарту безопасности данных в сфере платежных карт (PCI DSS) и условиям соглашения с бизнес-партнерами HIPAA
 
 ## <a name="azure-bot-service-is-compliant-with-iso-270012013-and-iso-270182014"></a>Служба Azure Bot соответствует стандартам ISO 27001:2013 и ISO 27018:2014 

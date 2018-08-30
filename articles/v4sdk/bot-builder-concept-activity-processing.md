@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8e08ac4721ee78bbd5d13dac09d9e505d3a1b134
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 278005c25e98c7c5b7d523030846909aed830224
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306491"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905357"
 ---
 # <a name="activity-processing"></a>Обработка действий
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Боты и пользователи обмениваются данными с помощью действий. Каждое действие, получаемое приложением бота, передается адаптеру бота, который передает сведения о действиях в логику бота и в конечном счете отправляет ответы пользователю.
 

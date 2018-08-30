@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e555de909275a991294cf093c4a76b7035b4a13
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: dd40123ef641d3cef80525d466fd85ecab80654a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305558"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904942"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Осуществление голосовых вызовов через Skype
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 
@@ -170,5 +172,5 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK построителя ботов для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Пример бота Skype для вызовов (GitHub)</a>

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 109353d6dc26b957d23ae29e77b1c36811d2c2a2
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a192b69b2ffbac428d80b2fe7c3fd9180caacd4f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306071"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905586"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Настройка взаимодействия с пользователем с помощью языка шаблонов
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 При настройке запроса или переопределении шаблона по умолчанию можно использовать язык шаблонов, чтобы задать содержимое и (или) отформатировать запрос. 
 

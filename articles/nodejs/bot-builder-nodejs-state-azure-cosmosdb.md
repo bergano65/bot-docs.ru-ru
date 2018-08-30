@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9d3e1c315399ce3cadc6371ceb93055c836590a6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e326147f32161c2e99dacdfa24ff41080a9b33e9
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306215"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906238"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Управление данными о состоянии пользователя с помощью Azure Cosmos DB для Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В этой статье вы реализуете хранилище Cosmos DB для хранения данных о состоянии бота и управления ими. Служба Connector State Service, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://www.npmjs.com/package/botbuilder-azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище состояния пользователя:
 
@@ -29,7 +31,7 @@ ms.locfileid: "39306215"
 ## <a name="prerequisites"></a>Предварительные требования
 
 - [Node.js](https://nodejs.org/en/).
-- [Отладка ботов с помощью Bot Framework Emulator](~/bot-service-debug-emulator.md)
+- [Bot Framework Emulator](~/bot-service-debug-emulator.md).
 - Необходимо иметь бот на Node.js. Если у вас его нет, см. раздел [Create a bot with the Bot Builder SDK for Node.js](bot-builder-nodejs-quickstart.md) (Создание бота с помощью пакета SDK Bot Builder для Node.js). 
 
 ## <a name="create-azure-account"></a>Создание учетной записи Azure

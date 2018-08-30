@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6c8ad06b9fb198e684deae26e9cbad05a86a611
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306175"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905668"
 ---
-# <a name="manage-conversation-flow-with-dialogs"></a>Управление последовательностью общения с помощью диалогов
+# <a name="manage-conversation-flow-with-dialogs"></a>Управление ходом общения с помощью диалогов
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)

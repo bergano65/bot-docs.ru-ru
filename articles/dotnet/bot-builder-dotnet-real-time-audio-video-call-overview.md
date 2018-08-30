@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3e990da2abcb63c695cc79d5d8d9af40d8966cfa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305467"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905616"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Создание бота мультимедиа в реальном времени для Skype
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Платформа обработки мультимедиа в реальном времени для ботов представляет собой дополнительную функцию, которая позволяет ботам отправлять и получать аудио- и видеоконтент по кадрам. Бот получает доступ к необработанным данным модальностей общего доступа к экрану, видео и голоса в режиме реального времени. Эта статья содержит общие сведения о создании бота, выполняющего аудио- и видеозвонки, а также о доступе к модальностям реального времени.
 

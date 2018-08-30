@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8860c6b3fa0eaaf9f9bfc92984a501c066f2fe5c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6637876b016b8680fe722602f530a0c6b0ddfc5a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300703"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905408"
 ---
 # <a name="advanced-features-of-formflow"></a>Дополнительные функции FormFlow
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В статье [Основные функции FormFlow](bot-builder-dotnet-formflow.md) описывается базовая реализация FormFlow, которая предоставляет довольно общее взаимодействие с пользователем. Чтобы предоставить более настроенное взаимодействие с пользователем с помощью FormFlow, вы можете указать начальное состояние формы, добавить бизнес-логику для управления взаимозависимостью между полями и обработкой входных данных и с помощью атрибутов настроить запросы, переопределить шаблоны, назначить необязательные поля, сопоставить и проверить входные данные пользователя. 
 
@@ -272,7 +274,7 @@ For sandwich I understood Rotisserie Style Chicken. "checkin" is not an option.
 - [Основные функции FormFlow](bot-builder-dotnet-formflow.md)
 - [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Настройка формы с помощью FormBuilder)
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
-- [Define a form using JSON schema](bot-builder-dotnet-formflow-json-schema.md) (Определение формы с помощью схемы JSON)
+- [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
 

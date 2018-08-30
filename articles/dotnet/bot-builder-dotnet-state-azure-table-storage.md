@@ -7,15 +7,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e2d8e6a5a390a27b61b11ad22f07ce0ab95f1686
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e5ff23caa1bdb1158ab19fa7c66e1fe4f6899f49
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306119"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905117"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Управление данными пользовательских состояний с помощью Хранилища таблиц Azure для .NET
-В этой статье вы реализуете Хранилище таблиц Azure для хранения данных о состоянии вашего бота и управления ими. Служба состояния соединителя, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с сайта GitHub или реализовать пользовательское состояние клиента с помощью любой платформы хранения данных. Ниже приведены причины, по которым следует использовать хранилище пользовательских состояний:
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+В этой статье вы реализуете Хранилище таблиц Azure для хранения данных о состоянии вашего бота и управления ими. Служба состояния соединителя, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище пользовательских состояний:
  - более высокая пропускная способность API состояния (больше контроля над производительностью);
  - меньше задержка для географического распределения;
  - управление местом хранения данных;
@@ -97,7 +100,7 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 
 ## <a name="connect-your-bot-to-the-emulator"></a>Подключение бота к эмулятору
 На этом этапе бот выполняется локально. После этого запустите эмулятор и подключитесь к боту в эмуляторе.
-1. Введите http://localhost:port-number/api/messages в адресной строке, где значение port-number должно соответствовать номеру порта, указанному в браузере, где выполняется приложение. Поля <strong>Идентификатор приложения Microsoft</strong> и <strong>Пароль приложения Microsoft</strong> пока можно не заполнять. Вы получите эти сведения позднее, когда [зарегистрируете бот](~/bot-service-quickstart-registration.md).
+1. Введите http://localhost:port-number/api/messages в адресной строке, где значение port-number должно соответствовать номеру порта, указанному в браузере, где выполняется приложение. Поля <strong>Идентификатор приложения Microsoft</strong> и <strong>Пароль приложения Microsoft</strong> пока можно не заполнять. Вы получите эти сведения позже, когда выполните [регистрацию бота](~/bot-service-quickstart-registration.md).
 2. Щелкните **Подключить**. 
 3. Протестируйте бот, введя несколько сообщений в эмуляторе. 
 
@@ -108,7 +111,7 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 В этой статье было реализовано Хранилище таблиц Azure для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать ход общения с помощью диалогов.
 
 > [!div class="nextstepaction"]
-> [Управление потоком беседы](bot-builder-dotnet-manage-conversation-flow.md)
+> [Manage conversation flow with dialogs](bot-builder-dotnet-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

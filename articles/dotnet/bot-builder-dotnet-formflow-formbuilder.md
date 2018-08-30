@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d24e43a3f48db024ab55c2089acbc42edebab929
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3ad843530b70b75a6db728a399a315534d2234ac
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306107"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904197"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Настройка формы с помощью FormBuilder
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В разделе [Основные функции FormFlow](bot-builder-dotnet-formflow.md) описывается базовая реализация FormFlow, которая обеспечивает относительно общие возможности взаимодействия с пользователем. В разделе [Дополнительные функции FormFlow](bot-builder-dotnet-formflow-advanced.md) описывается, как можно настроить взаимодействие с пользователем с помощью бизнес-логики и атрибутов. В этой статье описывается, как можно использовать [FormBuilder][formBuilder] для дополнительной настройки взаимодействия с пользователем, указав последовательность, в которой форма выполняет действия, и динамически определяя значения полей, подтверждения и сообщения. 
 
@@ -82,7 +84,7 @@ ms.locfileid: "39306107"
 - [Дополнительные функции FormFlow](bot-builder-dotnet-formflow-advanced.md)
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
 - [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
-- [Настройка взаимодействия с пользователем с помощью языка шаблонов](bot-builder-dotnet-formflow-pattern-language.md)
+- [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
 
 [formBuilder]: /dotnet/api/microsoft.bot.builder.formflow.formbuilder-1

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6df7923caa708ac2b10af37d860dfac317e113a0
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 431367cf4afe702fd83feff60b0ee4e260d50f17
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305098"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905766"
 ---
 # <a name="authenticating-activities-using-net-core"></a>Проверка подлинности действий с помощью .NET Core
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Если вы выбрали вариант разработки бота с помощью [.NET Core](/dotnet/core/index), можно использовать [соединитель Bot Framework](bot-builder-dotnet-connector.md) для отправки и получения сообщений о [действиях](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) от вашего бота. Чтобы использовать службу соединителя, необходимо настроить соответствующую модель проверки подлинности для целевой версии платформы.
 
@@ -47,7 +49,7 @@ Bot Framework Connector.AspNetCore поддерживает следующие �
   > Если ваша целевая платформа — **ASP.NET Core 2.0**, убедитесь, что на компьютере установлена по крайней мере версия 2.x или выше.
 
 6. Выберите тип проекта **Веб-API**.
-7. Нажмите кнопку **ОК**, чтобы создать проект.
+7. Нажмите кнопку **ОК** , чтобы создать проект.
 
 ## <a name="download-the-nuget-package"></a>Скачивание пакета NuGet
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ac8e01a81e3f8acca3aa6976eec47017876c3042
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fcda5bb35712f3a1ec27fba64a492ced911c41db
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305295"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905966"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Определение шагов диалога с помощью каскадов
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Диалог — это последовательность сообщений, передаваемых между пользователем и ботом. Когда цель бота — провести пользователя через последовательность действий, вы можете использовать каскад, чтобы определить шаги диалога.
 

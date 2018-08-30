@@ -8,14 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 05/14/2018
-ms.openlocfilehash: 70a3b7f093bb80dd16c854c65331c141fbba3725
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306074"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905596"
 ---
 # <a name="deploy-your-bot-to-azure"></a>Развертывание бота в Azure
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 После создания и локальной проверки бот можно передать в Azure, чтобы сделать его доступным из любого места. Для этого сначала разверните бот в Службе приложений Azure, а затем настройте бот с помощью службы Azure Bot, используя элемент Службы регистрации каналов ботов.
 

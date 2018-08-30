@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 571851001e565dd54d4254b692c9209729bc5432
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: aa20dc396b68ede3271d12a8deab2e673a79d1d1
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305947"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904486"
 ---
 # <a name="prompt-for-user-input"></a>Запрос пользователю на ввод данных
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Пакет SDK Bot Builder для Node.js предоставляет набор встроенных запросов для упрощения сбора данных, вводимых от пользователя. 
 

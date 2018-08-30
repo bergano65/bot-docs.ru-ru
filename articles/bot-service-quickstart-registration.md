@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6a32bc5712937c615962e4f6edfc7ea691d3ec39
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: dc8b2723119a03e533f19dbf36446b7dbe0957df
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574980"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906138"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Регистрация бота с помощью службы Bot
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 
 Если у вас имеется бот, размещенный в другом расположении, и вы хотите подключить его к другим каналам с помощью службы Bot, понадобится зарегистрировать его в службе Bot. В этом разделе вы узнаете, как зарегистрировать бот в службе Bot, создав службу бота **Регистрация каналов бота**.
 
@@ -78,7 +78,7 @@ ms.locfileid: "39574980"
 * MICROSOFT_APP_ID;
 * MICROSOFT_APP_PASSWORD.
 
-Если вы используете пакет SDK Bot Builder для .NET, установите следующие значения ключа в файле web.config:
+Если вы используете пакет SDK Bot Builder для .NET, установите следующие важные значения в файле web.config:
 
 * MicrosoftAppId;
 * MicrosoftAppPassword.

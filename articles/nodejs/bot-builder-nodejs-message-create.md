@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e7dfb72f69202011c4fda06c3d55e0afa8d3d045
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 804081e52a03a27da418f549f0fadb6dc8bca52b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352913"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905678"
 ---
 # <a name="create-messages"></a>Создание сообщений
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 Обмен данными между ботом и пользователем осуществляется посредством сообщений. Бот будет отправлять действия Message для передачи информации пользователям, а также будет получать действия Message от пользователей. Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как произносимый текст, предлагаемые действия, мультимедийные вложения, форматированные карточки и данные по каналу.
 
 В этой статье описаны некоторые распространенные методы обмена сообщениями, которые можно использовать, чтобы улучшить взаимодействие с пользователями.

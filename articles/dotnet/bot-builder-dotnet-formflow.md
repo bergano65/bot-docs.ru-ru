@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f38424c2fa86fd4456ab6f8dee81bde71bfd6753
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cf3d69f7941d8c3177788bd00e4b58416a71cf5e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305043"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904628"
 ---
 # <a name="basic-features-of-formflow"></a>Основные функции FormFlow
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [Диалоговые окна](bot-builder-dotnet-dialogs.md) являются очень мощной и гибкой формой интерактивного общения (например, заказ сандвича), хоть и требующей некоторых усилий при обработке. В каждой точке беседы существует множество возможностей того, что произойдет дальше. Например, может потребоваться уточнение неоднозначности, предоставление справки, возврат и отображение хода выполнения задания. С помощью **FormFlow** в пакете SDK Bot Builder для .NET можно значительно упростить процесс управления интерактивной беседой следующим образом. 
 
@@ -316,9 +318,9 @@ FormFlow упрощает разработку диалогового окна. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Настройка формы с помощью FormBuilder)
+- [Настройка формы с помощью FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
-- [Define a form using JSON schema](bot-builder-dotnet-formflow-json-schema.md) (Определение формы с помощью схемы JSON)
+- [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
 

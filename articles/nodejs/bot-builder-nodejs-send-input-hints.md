@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b5efb024c01437867b6ab1cf99b2f544077eee0c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2bbf75f166a90d2e0a905bd269f51cef4398a2ef
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305555"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904496"
 ---
 # <a name="add-input-hints-to-messages"></a>Добавление подсказок для ввода в сообщения
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
@@ -43,7 +46,7 @@ ms.locfileid: "39305555"
 
 ## <a name="default-values-for-input-hint"></a>Значения по умолчанию для подсказки для ввода
 
-Если подсказка для ввода в сообщение не задана, пакет SDK построителя ботов автоматически настроит ее по следующей логике. 
+Если подсказка для ввода в сообщении не задана, пакет SDK для Bot Builder автоматически настроит ее соответственно следующей логике. 
 
 - Если бот отправляет запрос, подсказка для ввода в сообщение укажет, что бот **ожидает ввода данных**.</li>
 - Если бот отправляет одно сообщение, подсказка для ввода в сообщение укажет, что бот **принимает ввод данных**.</li>

@@ -7,14 +7,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5936f3a622bdc91084ba9a636d8be3b782f9a11
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c213c1155b1eef5f5c776ba42a221d95b74f99a5
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306099"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906085"
 ---
-# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речевых функций с навыками Кортаны
+# <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
@@ -24,14 +27,14 @@ ms.locfileid: "39306099"
 > [!TIP]
 > Дополнительные сведения о том, что такое навык и каковы их возможности, см. в разделе [The Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны).
 
-Создание навыка Кортаны с использованием Bot Framework требует очень мало знаний о Кортане и прежде всего состоит из создания бота. Одним из ключевых отличий от других ботов, которые можно создать, является то, что Кортана имеет как визуальные, так и звуковые компоненты. Визуальный компонент Кортана предоставляет область холста для отрисовки содержимого, например карты. Для звукового компонента необходимо предоставить текст или SSML в сообщениях бота, которые Кортана читает пользователю, предоставляя боту голос. 
+Создание навыка Кортаны с использованием Bot Framework требует очень мало знаний о Кортане и прежде всего состоит из создания бота. Одним из ключевых отличий от других ботов, которые можно создать, является то, что Кортана имеет как визуальные, так и звуковые компоненты. Визуальный компонент Кортана предоставляет область холста для отрисовки содержимого, например карты. Для звукового компонента необходимо предоставить текст или SSML в сообщениях бота, которые Кортана зачитывает пользователю, предоставляя боту голос. 
 
 > [!NOTE]
-> Кортана доступна на различных устройствах. У некоторых есть экран, в то время как другие, например автономный динамик, могут и не иметь его. Следует убедиться, что бот может обрабатывать оба сценария. Чтобы узнать, как проверить сведения об устройстве, см. раздел [Get Cortana's channel data][CortanaSpecificEntities] (Получение данных канала Кортаны).
+> Помощник Кортана доступен на различных устройствах. У одних есть экран, в то время как другие, например автономный динамик, могут и не иметь его. Следует убедиться, что бот способен работать в обоих сценариях. Чтобы узнать, как проверить сведения об устройстве, см. статью [Get Cortana's Channel Data][CortanaSpecificEntities] (Получение данных о канале Кортаны).
 
-## <a name="adding-speech-to-your-bot"></a>Добавление боту речи
+## <a name="adding-speech-to-your-bot"></a>Добавление речевых функций для бота
 
-Голосовые сообщения от бота представлены в виде Speech Synthesis Markup Language (SSML). Пакет SDK для Bot Builder позволяет включать SSML в ответы бота, чтобы контролировать то, что он говорит, в дополнение к тому, что он показывает.
+Речевые сообщения бота представлены в виде SSML (Speech Synthesis Markup Language — язык разметки синтеза речи). Пакет SDK для Bot Builder позволяет включать SSML в ответы бота, чтобы контролировать то, что он говорит, в дополнение к тому, что он показывает.
 
 ### <a name="sessionsay"></a>Метод session.say
 
@@ -144,7 +147,7 @@ module.exports.speak = function (template, params, options) {
 
 ## <a name="display-cards-in-cortana"></a>Отображение карт в Кортане
 
-Помимо произношения ответов, Кортана также может отображать вложения карт. Кортана поддерживает следующие форматированные карточки:
+Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие форматированные карточки:
 * [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html);
 * [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html);
 * [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html).
@@ -183,9 +186,9 @@ module.exports.speak = function (template, params, options) {
 
 ```
 ## <a name="sample-rollerskill"></a>Пример RollerSkill
-Код в следующих разделах относится к примеру навыка Кортаны для бросания игральных костей. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
+Код в следующих разделах относится к примеру навыка Кортаны, который предназначен для того, чтобы бросать кости. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-Можно вызвать умение, произнося [Имя вызова][InvocationNameGuidelines] в Кортане. После [подключения бота к Кортане][CortanaChannel] и регистрации навыка броска как навыка Кортаны его можно вызвать, сообщив Кортане "Ask Roller" или "Ask Roller to roll dice".
+Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] помощнику Кортане. После [подключения бота к каналу Кортаны][CortanaChannel] и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
 
 ### <a name="explore-the-code"></a>Обзор кода
 
@@ -405,12 +408,12 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-* [The Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны)
+* [Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны)
 * [Добавление речи в сообщения](bot-builder-nodejs-text-to-speech.md)
 * [Speech Synthesis Markup Language (SSML) reference][SSMLRef] (Справочник по SSML)
-* [Principles of Cortana Skills design][VoiceDesign] (Принципы проектирования навыков Кортаны)
-* [Principles of Cortana Skills design][CardDesign] (Принципы проектирования навыков Кортаны)
-* [Центр разработки для Кортаны][CortanaDevCenter]
+* [Voice design best practices for Cortana][VoiceDesign] (Рекомендации по проектированию речевых функций для Кортаны)
+* [Card design best practices for Cortana][CardDesign] (Рекомендации по проектированию карточек для Кортаны)
+* [Cortana Dev Center][CortanaDevCenter] (Центр разработки Кортаны)
 * [Testing and debugging Cortana Skills][Cortana-TestBestPractice] (Тестирование и отладка навыков Кортаны)
 
 

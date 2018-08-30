@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1001f1aa2fe76127073551e98548fc20ef9e1bd7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cdd35bc5b487b5bf0d49006cf168f2541e17a057
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305563"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904376"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-state.md)
@@ -42,9 +45,9 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 ## <a name="manage-custom-data-storage"></a>Управление пользовательским хранилищем данных
 
-По соображениям производительности и безопасности в рабочей среде можно реализовать собственное хранилище данных или рассмотреть возможность реализации одного из следующих вариантов хранения данных:
+Для повышения производительности и (или) безопасности в рабочей среде можно реализовать собственное хранилище данных или выбрать любой из следующих вариантов для хранения данных:
 
-1. [Управление данными о состоянии с помощью Cosmos DB](bot-builder-nodejs-state-azure-cosmosdb.md)
+1. [управление данными о состоянии с помощью Cosmos DB](bot-builder-nodejs-state-azure-cosmosdb.md);
 
 2. [Управление данными о состоянии с помощью хранилища таблиц](bot-builder-nodejs-state-azure-table-storage.md)
 
@@ -194,10 +197,10 @@ session.dialogData = {};
 Теперь, когда вы ознакомились с механизмами управления данными о состоянии, давайте разберемся, как можно их использовать для более эффективного управления потоком беседы.
 
 > [!div class="nextstepaction"]
-> [Управление потоком беседы](bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> [Manage conversation flow with dialogs](bot-builder-nodejs-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-- [Запрос на ввод данных пользователем](bot-builder-nodejs-dialog-prompt.md)
+- [Запрос пользователю на ввод данных](bot-builder-nodejs-dialog-prompt.md)
 
 [userDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 [conversationDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#conversationdata

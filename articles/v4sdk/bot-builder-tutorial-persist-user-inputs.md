@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 539e9e1cd772495d849ce106ee7d6a157fc1a9c0
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 28377a1e611464012df28d3edf78d1cf01351345
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515084"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928372"
 ---
 # <a name="persist-user-data"></a>Хранение данных пользователя
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Когда бот попросит пользователя ввести данные, может возникнуть необходимость сохранить часть информации в некой форме в хранилище. С помощью *хранилища в памяти*, *хранилища файлов* или таких баз данных, как *CosmosDB* или *SQL*, пакет SDK для Bot Builder позволяет хранить данные, вводимые пользователем, а локальные типы хранилищ в основном используются для тестирования или создания прототипов, а более поздние типы хранилищ лучше всего подходят для ботов производства.
 

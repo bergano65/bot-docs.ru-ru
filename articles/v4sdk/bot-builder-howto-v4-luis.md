@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/30/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a04a73e8ac8716ec528586e069aa2d16d90e28f
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 88651a2c86698d55e3a429d7ea62662976d2115f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306490"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906168"
 ---
 # <a name="using-luis-for-language-understanding"></a>Использование LUIS для распознавания речи
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Возможность понимать, что пользователь имеет ввиду, в общении и в зависимости от контекста может быть сложной задачей, но может дать боту более естественно воспринимать общение. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять последовательность общения. Дополнительные сведения об интеграции LUIS с ботом см. в разделе [Language Understanding for bots](./bot-builder-concept-LUIS.md) (API распознавания речи для ботов). 
 
@@ -1018,7 +1020,7 @@ await dc.begin("Weather_GetForecast", luisResults);
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения о LUIS см. в разделе [Language Understanding for bots](./bot-builder-concept-luis.md) (API распознавания речи для ботов).
+См. дополнительные сведения об [Интеллектуальной службе распознавания речи](./bot-builder-concept-luis.md).
 
 Сведения о том, как создавать приложение LUIS, которое используется в этих примерах, см. в разделе [Example LUIS apps for simple bots](https://aka.ms/luis-bot-examples) (Примеры приложений LUIS для простых ботов).
 

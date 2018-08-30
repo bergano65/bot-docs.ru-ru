@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e6bfd890944cfea052e07ee99451ab90db75415b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a3d049e349a86437f8c342df1702281600aeddd4
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300695"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904396"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
@@ -81,7 +84,7 @@ reply.InputHint = InputHints.ExpectingInput;
 |----|----|
 | [HeroCard][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
 | [ThumbnailCard][thumbnailCard] | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст. |
-| [ReceiptCard][receiptCard] | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог, а также общую информацию и другой текст. |
+| [ReceiptCard][receiptCard] | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог и общую сумму, а также другую информацию. |
 | [SignInCard][signinCard] | Карточка, в которой бот запрашивает вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
 
 
@@ -325,8 +328,8 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны)
-* [Add speech to messages](bot-builder-dotnet-text-to-speech.md) (Добавление речи в сообщения)
-* [Speech Synthesis Markup Language (SSML) Reference][SSMLRef] (Справочные материалы по SSML)
+* [Добавление речи в сообщения](bot-builder-dotnet-text-to-speech.md)
+* [Speech Synthesis Markup Language (SSML) reference][SSMLRef] (Справочник по SSML)
 * [Voice design best practices for Cortana][VoiceDesign] (Рекомендации по проектированию речевых функций для Кортаны)
 * [Card design best practices for Cortana][CardDesign] (Рекомендации по проектированию карточек для Кортаны)
 * [Cortana Dev Center][CortanaDevCenter] (Центр разработки Кортаны)

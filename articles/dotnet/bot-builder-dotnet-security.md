@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 331effc0bf604388995288e5d7c3ca9d54537f94
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 376982396ac11cbcf54f26255235b3779e0e1c26
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301453"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905716"
 ---
 # <a name="secure-your-bot"></a>Защита для бота
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Бот может подключаться к различным каналам связи (Skype, SMS, электронная почта и др.) через службу соединителя Bot Framework. В этой статье представлены сведения о том, как обеспечить защиту бота с помощью HTTPS и проверки подлинности Bot Framework.
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8f58c8d0b884e929c575e01aa5e0fee5c21ea4e6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f9af8cbbc5f457d5e8684ad57bb147f9d42a62c7
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305954"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905148"
 ---
 # <a name="support-localization"></a>Поддержка локализации
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В Bot Builder входит система с широкими возможностями локализации для построения ботов, которая может взаимодействовать с пользователем на нескольких языках. Все запросы к боту можно локализовать с помощью файлов JSON, хранящихся в структуре каталогов бота. Если для обработки естественного языка используется такая система как LUIS, в [LuisRecognizer][LUISRecognizer] можно настроить отдельную модель для каждого языка, поддерживаемого ботом, и пакет SDK будет автоматически выбирать модель, которая совпадает с предпочитаемым языковым стандартом пользователя.
 

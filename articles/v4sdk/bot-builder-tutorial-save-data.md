@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 10c1cb240a22c1c16dd0d946ee55531d514f332e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 86f70fd66f1bc2261339cbe0590061913b51ddbc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305755"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904442"
 ---
 # <a name="save-user-state-data"></a>Сохранение данных состояния пользователя
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Когда бот просит пользователя ввести данные, может возникнуть необходимость сохранить часть информации в некой форме хранилища. Пакет SDK для Bot Builder позволяет хранить данные, вводимые пользователем, с помощью *размещенного в памяти хранилища*, *хранилища файлов* и таких хранилищ баз данных как *CosmosDB* или *SQL*. 
 

@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 48c32a1dd1c43bbb84c0f771be7dff691f0996ec
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 34564b411f911ae82197d5a34cb954a103abe70b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306478"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905418"
 ---
 # <a name="basic-bot-structure"></a>Базовая структура бота
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Служба Azure Bot и пакет SDK для Bot Builder предоставляют библиотеки, примеры, средства для сборки и отладки ботов. Однако, прежде чем подробно рассматривать любой из этих компонентов, важно понять основную структуру бота и то, как все это работает вместе. Эти принципы не зависят от выбранного языка программирования и являются универсальными. В статье приведены ссылки на более глубокое содержание, а также платформу когнитивного запуска для работы бота.
 
