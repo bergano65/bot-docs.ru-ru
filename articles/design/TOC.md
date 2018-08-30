@@ -1,8 +1,8 @@
 # [Принципы разработки ботов](../bot-service-design-principles.md)
 # [Первое взаимодействие](../bot-service-design-first-interaction.md)
-# [Разработка и администрирование последовательности](../bot-service-design-conversation-flow.md)
-# [Навигация](../bot-service-design-navigation.md)
-# [Компоненты пользовательского интерфейса](../bot-service-design-user-experience.md)
+# [Проектирование потока диалога и управление им](../bot-service-design-conversation-flow.md)
+# [Разработка навигации для бота](../bot-service-design-navigation.md)
+# [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md)
 # Шаблоны
 ## [Автоматизация задач](../bot-service-design-pattern-task-automation.md)
 ## [База знаний](../bot-service-design-pattern-knowledge-base.md)
