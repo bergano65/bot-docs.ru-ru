@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a7f6e3f186e0c4b9f6096cad72a91ef6f3fdffd4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 03478431822c8be0e696577a18a2e693d441509b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306095"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904555"
 ---
 # <a name="define-a-form-using-json-schema"></a>Определение формы с помощью схемы JSON
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Если при создании бота с помощью FormFlow вы используете [класс C#](bot-builder-dotnet-formflow.md#create-class) для определения формы, то эта форма является производной от статического определения типа в C#. Кроме того, вы можете определить форму с помощью <a href="http://json-schema.org/documentation.html" target="_blank">схемы JSON</a>. Формой, которая определена с помощью схемы JSON, полностью управляют данные. Ее (и, следовательно, поведение бота) можно изменить, просто изменив схему. 
 
