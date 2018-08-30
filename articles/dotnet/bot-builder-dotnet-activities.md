@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 834702024c99873ca9f0bbedb53a24a16ba55878
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574640"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756616"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
@@ -31,7 +31,6 @@ ms.locfileid: "39574640"
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity | Указывает, что бот был добавлен в общение, другие участники были добавлены или удалены из него или метаданные общения изменились. |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity | Указывает, что бот был добавлен или удален из списка контактов пользователя. |
 | [typing](#typing) | ITypingActivity | Указывает, что пользователь или бот на другом конце общения составляет ответ. | 
-| [ping](#ping) | Недоступно | Представляет попытку, с помощью которой определяется, доступна ли конечная точка бота. | 
 | [deleteUserData](#deleteuserdata) | Недоступно | Указывает боту, что пользователь выполнил запрос на удаление любых пользовательских данных, которые бот мог сохранить. |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity | Указывает на конец общения. |
 | [event](#event) | IEventActivity | Представляет сообщение, отправляемое боту, который не отображается для пользователя. |
@@ -62,10 +61,6 @@ ms.locfileid: "39574640"
 ## <a name="typing"></a>typing
 
 Бот получает действие **typing**, чтобы указать, что пользователь вводит ответ. Бот может отправлять действие **typing**, чтобы указать пользователю, что выполняется запрос или составление ответа. 
-
-## <a name="ping"></a>ping
-
-Бот получает действие **ping**, чтобы определить, доступна ли конечная точка. Для ответа он должен использовать такой код состояния HTTP, как 200 (OK), 403 (запрещено) или 401 (не авторизован).
 
 ## <a name="deleteuserdata"></a>deleteUserData
 

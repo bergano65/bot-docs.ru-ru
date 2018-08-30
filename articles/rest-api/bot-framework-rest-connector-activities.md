@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: cf8da2240df7edbb6ea8c858829e71089b7e72cb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 565f71dee4269ecd67dabe18af57e36defcfb3fc
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306238"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756692"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
@@ -28,7 +28,6 @@ ms.locfileid: "39306238"
 | conversationUpdate | Указывает, что бот был добавлен в общение, другие участники были добавлены или удалены из него или метаданные общения изменились. |
 | contactRelationUpdate | Указывает, что бот был добавлен или удален из списка контактов пользователя. |
 | typing | Указывает, что пользователь или бот на другом конце общения составляет ответ. | 
-| ping | Представляет попытку, с помощью которой определяется, доступна ли конечная точка бота. | 
 | deleteUserData | Указывает боту, что пользователь выполнил запрос на удаление любых пользовательских данных, которые бот мог сохранить. |
 | endOfConversation | Указывает на конец общения. |
 
@@ -52,10 +51,6 @@ ms.locfileid: "39306238"
 ## <a name="typing"></a>typing
 
 Бот получает действие **typing**, чтобы указать, что пользователь вводит ответ. Бот может отправлять действие **typing**, чтобы указать пользователю, что выполняется запрос или составление ответа. 
-
-## <a name="ping"></a>ping
-
-Бот получает действие **ping**, чтобы определить, доступна ли конечная точка. Для ответа он должен использовать такой код состояния HTTP, как 200 (OK), 403 (запрещено) или 401 (не авторизован).
 
 ## <a name="deleteuserdata"></a>deleteUserData
 
