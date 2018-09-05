@@ -7,12 +7,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: 01f52a6aa6e2c9fc3d2613ff03386a7d87e64a3a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2dec87fbdce1cc556c15f7220200da98a4496513
+ms.sourcegitcommit: a2f3d87c0f252e876b3e63d75047ad1e7e110b47
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306067"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42928219"
 ---
 # <a name="configure-adaptive-cards"></a>Настройка адаптивных карточек
 > [!IMPORTANT]
@@ -24,18 +24,16 @@ Conversation Designer предоставляет тесно интегриров
 
 Адаптивные карточки можно определить в нескольких основных местах.
 
-- Простой ответ на [действие](conversation-designer-tasks.md) для задачи.
+- Простой ответ на действие для задачи.
 - В состоянии отзыва в диалоге.
 - В состояниях запросов в диалоге. Обратите внимание на то, что у запросов могут быть отдельные карточки: одна для ответа, а другая для повторного запроса.
 
 Чтобы определить адаптивную карточку, перейдите в соответствующий редактор. Выберите один из имеющихся шаблонов адаптивных карточек или создайте собственный шаблон в редакторе кода JSON. 
 
-<!--TODO: Insert screenshot -->
-
 При создании карточки на портале разработчика отображается ее изображение для предварительного просмотра.
 
 > [!NOTE]
-> Разработка функций адаптивных карточек продолжается. В данный момент не все каналы поддерживают все функции адаптивных карточек. Чтобы узнать, какие функции поддерживает каждый канал, ознакомьтесь с разделом [Channel status](/adaptive-cards/get-started/bots#channel-status) (Состояние канала).
+> Разработка функций адаптивных карточек продолжается. В данный момент не все каналы поддерживают все функции адаптивных карточек. Чтобы узнать, какие функции поддерживает каждый канал, ознакомьтесь с разделом о состоянии канала.
 
 ## <a name="input-form"></a>Форма ввода
 
@@ -74,13 +72,7 @@ Conversation Designer предоставляет тесно интегриров
 * `entityName` использует сущности внутри карточки.
 * `responseTemplateName` использует шаблоны простых или условных ответов в карточке.
 
-<!--
-# Binding form flow input fields to bot entities
-TODO: fill this out based on design/ implementation -->
-
-<!-- ## Adaptive Card schema
-
-You can learn more about adaptive cards here  TODO: Insert link to adaptive cards schema documentation -->
+Дополнительные сведения об адаптивных карточках см. здесь TODO: вставьте ссылку на документации по схеме адаптивных карточек-->
 
 ## <a name="sample-adaptive-card-payload"></a>Прием полезных данных адаптивной карточки
 
@@ -149,6 +141,3 @@ You can learn more about adaptive cards here  TODO: Insert link to adaptive card
 }
 ```
 
-## <a name="next-step"></a>Дальнейшие действия
-> [!div class="nextstepaction"]
-> [Подключение к каналам](conversation-designer-deploy.md)

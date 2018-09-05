@@ -1,5 +1,5 @@
 ---
-title: Использование QnA Maker | Документация Майкрософт
+title: Использование QnA Maker для ответов на вопросы | Документация Майкрософт
 description: Узнайте, как использовать QnA Maker в боте.
 keywords: вопрос и ответ, QnA, часто задаваемые вопросы, ПО промежуточного слоя
 author: ivorb
@@ -9,16 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78bc2c849a2c1900da33c7419693a7ff84c43cb0
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 7dd973e2b5a151e754925e6f19c6e4f82507f745
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352953"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906178"
 ---
-# <a name="how-to-use-qna-maker"></a>Использование QnA Maker
+# <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
-Чтобы добавить в бот поддержку простого вопроса и ответа, можно использовать службу [QnA Maker](https://qnamaker.ai/).
+
+Чтобы добавить в бот поддержку простого вопроса и ответа, можно использовать службу [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/home).
+
 
 Одно из основных требований к написанию собственной службы QnA Maker — это задание начального значения с вопросами и ответами. Во многих случаях вопросы и ответы уже существуют в таком содержимом как часто задаваемые вопросы или в другой документации. В других случаях следует настроить ответы на вопросы в более естественной манере общения. 
 

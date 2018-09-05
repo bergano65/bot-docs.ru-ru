@@ -1,75 +1,97 @@
 ---
-title: Управление ходом разговора с помощью диалогов | Документы Майкрософт
-description: Сведения об управлении ходом разговора с помощью диалогов в пакете SDK Bot Builder для Node.js.
-keywords: ход разговора, диалоги, запросы, каскады, набор диалогов
+title: Управление простым процессом общения с помощью диалогов | Документация Майкрософт
+description: Сведения о том, как управлять простым процессом общения с помощью диалогов в пакете SDK Bot Builder для Node.js.
+keywords: simple conversation flow, dialogs, prompts, waterfalls, dialog set
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 5/8/2018
+ms.date: 8/2/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 99184ba71072c159c598c7f68289c42a51926795
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 77162601f542e6faa8908bc71abc971eb99fcc93
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305263"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756471"
 ---
-# <a name="manage-conversation-flow-with-dialogs"></a>Управление ходом разговора с помощью диалогов
+# <a name="manage-simple-conversation-flow-with-dialogs"></a>Управление простым процессом общения с помощью диалогов
+
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
+С помощью библиотеки диалогов вы можете управлять простыми и сложными процессами общения. В рамках простого процесса общения пользователь выполняет все действия в *каскадной последовательности*, после чего обмен сообщениями прекращается. Диалоги также могут представлять собой [сложный процесс общения](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md), части которого могут разветвляться и образовывать цикл.
 
-Управление ходом разговора является важнейшей задачей при разработке ботов. При использовании пакета SDK Bot Builder вы можете управлять ходом разговора с помощью **диалогов**.
+<!-- TODO: We need a dialogs conceptual topic to link to, so we can reference that here, in place of describing what they are and what their features are in a how-to topic. -->
 
-Диалог напоминает функцию в программе. Обычно он предназначен для выполнения определенной операции и может вызываться так часто, как это необходимо. Вы можете объединить несколько диалогов в цепочку, чтобы поддержать практически любой разговор. Библиотека **диалогов** в пакете SDK Bot Builder включает встроенные компоненты, такие как **запросы** и **каскады**, которые помогают вам управлять ходом разговора с помощью диалогов. Библиотека запросов предоставляет различные запросы, с помощью которых можно запрашивать у пользователей различную информацию. Каскады позволяют объединить несколько шагов в последовательности.
+<!-- TODO: This paragraph belongs in a conceptual topic. -->Диалог напоминает функцию в программе. Обычно он предназначен для выполнения определенной операции в определенном порядке и может вызываться так часто, как это необходимо. Используя диалоги, разработчик бота может управлять процессом общения. Чтобы поддержать практически любое общение можно объединить несколько диалогов в цепочку. Библиотека **диалогов** в пакете SDK Bot Builder включает встроенные компоненты, такие как _запросы_ и _диалоги с каскадной последовательностью действий_, которые помогают управлять процессом общения. С помощью запросов можно запрашивать у пользователей различные типы данных. Вы можете использовать каскад, чтобы объединить несколько шагов в последовательность.
 
-В этой статье показано, как создать объект диалога и как добавить шаги для запросов и каскада в набор диалогов, чтобы управлять как простыми, так и сложными разговорами. 
+В рамках этой статьи мы используем _наборы диалогов_ для создания процесса общения, содержащего запросы и каскадную последовательность действий. У нас есть два примера диалогов. Первый — это диалог с одним действием, в котором выполняется операция, не требующая ввода данных пользователем. Второй — диалог с несколькими действиями, в котором пользователю предлагается ввести некоторые сведения.
 
 ## <a name="install-the-dialogs-library"></a>Установка библиотеки диалогов
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Мы начнем с базового шаблона EchoBot. Инструкции см. в [кратком руководстве по .NET](~/dotnet/bot-builder-dotnet-quickstart.md).
+
 Для использования диалогов установите пакет NuGet `Microsoft.Bot.Builder.Dialogs` для своего проекта или решения.
-Затем добавьте ссылку на библиотеку диалогов в файлы кода с помощью инструкций using. Например: 
+Затем при необходимости добавьте ссылку на библиотеку диалогов в файлы кода с помощью инструкций using.
 
 ```csharp
 using Microsoft.Bot.Builder.Dialogs;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 Библиотеку `botbuilder-dialogs` можно скачать из NPM. Чтобы установить библиотеку `botbuilder-dialogs` выполните следующую команду NPM:
 
 ```cmd
-npm install --save botbuilder-dialogs
+npm install --save botbuilder-dialogs@preview
 ```
 
-Чтобы использовать **диалоги** в своем боте, включите эту библиотеку в код бота. Например: 
-
-**app.js**
+Чтобы использовать этот **диалог** в боте, вставьте следующий код в файл **app.js**.
 
 ```javascript
 const botbuilder_dialogs = require('botbuilder-dialogs');
 ```
+
 ---
 
 ## <a name="create-a-dialog-stack"></a>Создание стека диалога
+
+В первом примере мы создадим диалог с одним действием, в котором можно сложить два числа и вывести результат.
 
 Чтобы использовать диалоги, необходимо создать *набор диалогов*.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Библиотека `Microsoft.Bot.Builder.Dialogs` предоставляет класс `DialogSet`.
+Создайте класс **AdditionDialog** и добавьте инструкции using, которые нам потребуются.
 В набор диалогов можно добавить именованные диалоги и наборы диалогов и затем обращаться к ним по имени.
 
 ```csharp
-IDialog dialog = null;
-// Initialize dialog.
-
-DialogSet dialogs = new DialogSet();
-dialogs.Add("dialog name", dialog);
+using Microsoft.Bot.Builder.Dialogs;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+Создайте производный от **DialogSet** класс и определите идентификаторы и ключи, которые потребуются нам для идентификации диалогов и входных данных для этого набора диалогов.
+
+```csharp
+/// <summary>Defines a simple dialog for adding two numbers together.</summary>
+public class AdditionDialog : DialogSet
+{
+    /// <summary>The ID of the main dialog in the set.</summary>
+    public const string Main = "additionDialog";
+
+    /// <summary>Defines the IDs of the input arguments.</summary>
+    public struct Inputs
+    {
+        public const string First = "first";
+        public const string Second = "second";
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Библиотека `botbuilder-dialogs` предоставляет класс `DialogSet`.
 Класс **DialogSet** определяет **стек диалогов** и предоставляет простой интерфейс для управления стеком.
@@ -87,21 +109,21 @@ const dialogs = new botbuilder_dialogs.DialogSet();
 ```javascript
 const dialogs = new botbuilder_dialogs.DialogSet("myStack");
 ```
+
 ---
 
-При создании диалога происходит только добавление определения диалога в набор диалогов. Диалог не запускается, пока вы не отправите его в стек диалога, вызвав метод _begin_ или _replace_. 
+При создании диалога происходит только добавление определения диалога в набор диалогов. Диалог не запускается, пока вы не отправите его в стек диалога, вызвав метод _begin_ или _replace_.
 
-Имя диалога (например, `addTwoNumbers`) должно быть уникальным в пределах каждого набора диалогов. В каждом наборе диалогов можно определить любое количество диалогов.
+Имя диалога (например, `addTwoNumbers`) должно быть уникальным в пределах каждого набора диалогов. В каждом наборе диалогов можно определить любое количество диалогов. Сведения о том, как создать несколько наборов диалогов и обеспечить их эффективную совместную работу, см. в руководстве по [созданию логики модульного бота](bot-builder-compositcontrol.md).
 
 В библиотеке диалогов определены следующие диалоги:
--   Диалог **запроса**, в котором используются по крайней мере две функции: одна функция запрашивает входные данные у пользователя и вторая обрабатывает входные данные.
-    Эти две функции можно объединить, воспользовавшись моделью **каскада**.
--   Диалог **каскада** определяет последовательность _действий каскада_, которые выполняются по порядку.
-    Диалог каскада может содержать одно действие, в этом случае его можно считать простым диалогом с одним действием.
+
+* Диалог **запроса**, в котором используются по крайней мере две функции: одна функция запрашивает входные данные у пользователя и вторая обрабатывает входные данные. Эти две функции можно объединить, воспользовавшись моделью **каскада**.
+* Диалог **каскада** определяет последовательность _действий каскада_, которые выполняются по порядку. Диалог каскада может содержать одно действие, в этом случае его можно считать простым диалогом с одним действием.
 
 ## <a name="create-a-single-step-dialog"></a>Создание диалога с одним действием
 
-Диалоги с одним действием могут использоваться для разговоров с одним оборотом. В этом примере создается бот, который может обнаружить, что пользователь ввел строку вида "1 + 2", и запустить диалог `addTwoNumbers` для ответа "1 + 2 = 3". 
+Диалоги с одним действием могут использоваться для разговоров с одним оборотом. В этом примере создается бот, который может обнаружить, что пользователь ввел строку вида "1 + 2", и запустить диалог `addTwoNumbers` для ответа "1 + 2 = 3".
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -111,135 +133,140 @@ const dialogs = new botbuilder_dialogs.DialogSet("myStack");
 
 Это действие предполагает, что передаваемые аргументы диалога содержат свойства `first` и `second`, которые представляют числа, которые нужно сложить.
 
-Начните с шаблона EchoBot. Затем добавьте соответствующий код в класс бота, чтобы добавить диалог в конструктор.
+Добавьте следующий конструктор в класс **AdditionDialog**.
+
 ```csharp
-public class EchoBot : IBot
+/// <summary>Defines the steps of the dialog.</summary>
+public AdditionDialog()
 {
-    private DialogSet _dialogs;
-
-    public EchoBot()
+    Add(Main, new WaterfallStep[]
     {
-        _dialogs = new DialogSet();
-        _dialogs.Add("addTwoNumbers", new WaterfallStep[]
-        {              
-            async (dc, args, next) =>
-            {
-                double sum = (double)args["first"] + (double)args["second"];
-                await dc.Context.SendActivity($"{args["first"]} + {args["second"]} = {sum}");
-                await dc.End();
-            }
-        });
-    }
+        async (dc, args, next) =>
+        {
+            // Get the input from the arguments to the dialog and add them.
+            var x =(double)args[Inputs.First];
+            var y =(double)args[Inputs.Second];
+            var sum = x + y;
 
-    // The rest of the class definition is omitted here but would include OnTurn()
+            // Display the result to the user.
+            await dc.Context.SendActivity($"{x} + {y} = {sum}");
+
+            // End the dialog.
+            await dc.End();
+        }
+    });
 }
-
 ```
 
 ### <a name="pass-arguments-to-the-dialog"></a>Передача аргументов для диалога
 
+В коде бота обновите инструкции using.
+
+```cs
+using Microsoft.Bot;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Schema;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+```
+
+Добавьте статическое свойство в класс для дополнительного диалога.
+
+```cs
+private static AdditionDialog AddTwoNumbers { get; } = new AdditionDialog();
+```
+
 Для вызова диалога из метода `OnTurn` бота, измените метод `OnTurn` следующим образом:
+
 ```cs
 public async Task OnTurn(ITurnContext context)
 {
-    // This bot is only handling Messages
-    if (context.Activity.Type == ActivityTypes.Message)
+    // Handle any message activity from the user.
+    if (context.Activity.Type is ActivityTypes.Message)
     {
-        // Get the conversation state from the turn context
-        var state = context.GetConversationState<EchoState>();
+        // Get the conversation state from the turn context.
+        var conversationState = context.GetConversationState<ConversationData>();
 
-        // create a dialog context
-        var dialogCtx = _dialogs.CreateContext(context, state);
+        // Generate a dialog context for the addition dialog.
+        var dc = AddTwoNumbers.CreateContext(context, conversationState.DialogState);
 
-        // Bump the turn count. 
-        state.TurnCount++;
-
-        await dialogCtx.Continue();
-        if (!context.Responded)
+        // Call a helper function that identifies if the user says something
+        // like "2 + 3" or "1.25 + 3.28" and extract the numbers to add.
+        if (TryParseAddingTwoNumbers(context.Activity.Text, out double first, out double second))
         {
-            // Call a helper function that identifies if the user says something 
-            // like "2 + 3" or "1.25 + 3.28" and extract the numbers to add            
-            if (TryParseAddingTwoNumbers(context.Activity.Text, out double first, out double second))
-            { 
-                var dialogArgs = new Dictionary<string, object>
-                {
-                    ["first"] = first,
-                    ["second"] = second
-                };                        
-                await dialogCtx.Begin("addTwoNumbers", dialogArgs);
-            }
-            else
+            // Start the dialog, passing in the numbers to add.
+            var args = new Dictionary<string, object>
             {
-                // Echo back to the user whatever they typed.
-                await context.SendActivity($"Turn: {state.TurnCount}. You said '{context.Activity.Text}'");
-            }
+                [AdditionDialog.Inputs.First] = first,
+                [AdditionDialog.Inputs.Second] = second
+            };
+            await dc.Begin(AdditionDialog.Main, args);
+        }
+        else
+        {
+            // Echo back to the user whatever they typed.
+            await context.SendActivity($"You said '{context.Activity.Text}'");
         }
     }
 }
 ```
 
-Добавьте вспомогательную функцию в класс бота. Вспомогательная функция использует простое регулярное выражение, чтобы определить, является ли сообщение пользователя запросом на сложение двух чисел.
+Добавьте вспомогательную функцию **TryParseAddingTwoNumbers** в класс бота. Вспомогательная функция использует простое регулярное выражение, чтобы определить, является ли сообщение пользователя запросом на сложение двух чисел.
 
 ```cs
-// Recognizes if the message is a request to add 2 numbers, in the form: number + number, 
-// where number may have optionally have a decimal point.: 1 + 1, 123.99 + 45, 0.4+7. 
+// Recognizes if the message is a request to add 2 numbers, in the form: number + number,
+// where number may have optionally have a decimal point.: 1 + 1, 123.99 + 45, 0.4+7.
 // For the sake of simplicity it doesn't handle negative numbers or numbers like 1,000 that contain a comma.
 // If you need more robust number recognition, try System.Recognizers.Text
-public bool TryParseAddingTwoNumbers(string message, out double first, out double second)
+public static bool TryParseAddingTwoNumbers(string message, out double first, out double second)
 {
     // captures a number with optional -/+ and optional decimal portion
     const string NUMBER_REGEXP = "([-+]?(?:[0-9]+(?:\\.[0-9]+)?|\\.[0-9]+))";
+
     // matches the plus sign with optional spaces before and after it
     const string PLUSSIGN_REGEXP = "(?:\\s*)\\+(?:\\s*)";
+
     const string ADD_TWO_NUMBERS_REGEXP = NUMBER_REGEXP + PLUSSIGN_REGEXP + NUMBER_REGEXP;
+
     var regex = new Regex(ADD_TWO_NUMBERS_REGEXP);
     var matches = regex.Matches(message);
-    var succeeded = false;
+
     first = 0;
     second = 0;
-    if (matches.Count == 0)
-    {
-        succeeded = false;
-    }
-    else
+    if (matches.Count > 0)
     {
         var matched = matches[0];
-        if ( System.Double.TryParse(matched.Groups[1].Value, out first) 
-            && System.Double.TryParse(matched.Groups[2].Value, out second))
+        if (double.TryParse(matched.Groups[1].Value, out first)
+            && double.TryParse(matched.Groups[2].Value, out second))
         {
-            succeeded = true;
-        } 
+            return true;
+        }
     }
-    return succeeded;
+    return false;
 }
 ```
 
-Если вы используете шаблон EchoBot, измените класс `EchoState` в файле **EchoState.cs** следующим образом:
+Если вы используете шаблон EchoBot, измените имя класса **EchoState** на **ConversationData** и его содержимое, чтобы включить следующее:
 
 ```cs
+using System.Collections.Generic;
+
 /// <summary>
 /// Class for storing conversation state.
-/// This bot only stores the turn count in order to echo it to the user
 /// </summary>
-public class EchoState: Dictionary<string, object>
+public class ConversationData
 {
-    private const string TurnCountKey = "TurnCount";
-    public EchoState()
-    {
-        this[TurnCountKey] = 0;            
-    }
-
-    public int TurnCount
-    {
-        get { return (int)this[TurnCountKey]; }
-        set { this[TurnCountKey] = value; }
-    }
+    /// <summary>Property for storing dialog state.</summary>
+    public Dictionary<string, object> DialogState { get; set; } = new Dictionary<string, object>();
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Начните с шаблона JS, описанного в разделе [Создание бота с помощью пакета SDK Bot Builder версии 4](../javascript/bot-builder-javascript-quickstart.md). В **app.js** добавьте инструкцию для включения `botbuilder-dialogs`.
+
 ```js
 const {DialogSet} = require('botbuilder-dialogs');
 ```
@@ -266,42 +293,44 @@ server.post('/api/messages', (req, res) => {
     // Route received activity to adapter for processing
     adapter.processActivity(req, res, async (context) => {
         const isMessage = context.activity.type === 'message';
+        // State will store all of your information
+        const convoState = conversationState.get(context);
+        const dc = dialogs.createContext(context, convoState);
+
         if (isMessage) {
-            const state = conversationState.get(context);
-            const count = state.count === undefined ? state.count = 0 : ++state.count;
-
-            // create a dialog context
-            const dc = dialogs.createContext(context, state);
-
-            // MatchesAdd2Numbers checks if the message matches a regular expression
+            // TryParseAddingTwoNumbers checks if the message matches a regular expression
             // and if it does, returns an array of the numbers to add
-            var numbers = await MatchesAdd2Numbers(context.activity.text); 
+            var numbers = await TryParseAddingTwoNumbers(context.activity.text); 
             if (numbers != null && numbers.length >=2 )
-            {    
+            {
                 await dc.begin('addTwoNumbers', numbers);
             }
             else {
                 // Just echo back the user's message if they're not adding numbers
-                return context.sendActivity(`Turn ${count}: You said "${context.activity.text}"`); 
-            }           
-        } else {
+                const count = (convoState.count === undefined ? convoState.count = 0 : ++convoState.count);
+                return context.sendActivity(`Turn ${count}: You said "${context.activity.text}"`);
+            }
+        }
+        else {
             return context.sendActivity(`[${context.activity.type} event detected]`);
         }
+
         if (!context.responded) {
             await dc.continue();
             // if the dialog didn't send a response
             if (!context.responded && isMessage) {
-                await dc.context.sendActivity(`Hi! I'm the add 2 numbers bot. Say something like "what's 1+2?"`);
+                await dc.context.sendActivity(`Hi! I'm the add 2 numbers bot. Say something like "What's 2+3?"`);
             }
         }
     });
 });
+
 ```
 
 Добавьте вспомогательную функцию в файл **app.js**. Вспомогательная функция использует регулярное выражение, чтобы определить, является ли сообщение пользователя запросом на сложение двух чисел. Если сообщение соответствует регулярному выражению, возвращается массив, содержащий числа, которые нужно сложить.
 
 ```javascript
-async function MatchesAdd2Numbers(message) {
+async function TryParseAddingTwoNumbers(message) {
     const ADD_NUMBERS_REGEXP = /([-+]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))(?:\s*)\+(?:\s*)([-+]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))/i;
     let matched = ADD_NUMBERS_REGEXP.exec(message);
     if (!matched) {
@@ -323,149 +352,61 @@ async function MatchesAdd2Numbers(message) {
 
 ![Запуск бота](./media/how-to-dialogs/bot-output-add-numbers.png)
 
-
-
 ## <a name="using-dialogs-to-guide-the-user-through-steps"></a>Использование диалогов для продвижения пользователя по действиям
+
+В этом примере мы создадим диалог с несколькими действиями, чтобы запрашивать сведения у пользователя.
+
+### <a name="create-a-dialog-with-waterfall-steps"></a>Создание диалога с действиями каскада
+
+**Каскад** является конкретной реализацией диалога, которая обычно используется для сбора информации от пользователя или для предоставления пользователю инструкций по выполнению ряда задач. Задачи реализуются как массив функций, в котором результаты первой функции передаются в качестве входных данных в следующую функцию и так далее. Каждая функция обычно представляет один шаг в общем процессе. На каждом шаге бот [запрашивает у пользователя входные данные](bot-builder-prompts.md), ожидает ответа, а затем передает результат в следующий шаг.
+
+Например, в следующем примере кода определяются три функции в массиве, которые соответствуют трем действиям **каскада**. После каждого запроса бот подтверждает введенные пользователем данные, но не сохраняет их. Если нужно сохранить введенные пользователем данные, ознакомьтесь со статьей [Хранение данных пользователя](bot-builder-tutorial-persist-user-inputs.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="create-a-composite-dialog"></a>Создание составного диалога
-
-Следующие фрагменты кода взяты из примера кода [Microsoft.Bot.Samples.Dialog.Prompts](https://github.com/Microsoft/botbuilder-dotnet/tree/master/samples/MIcrosoft.Bot.Samples.Dialog.Prompts) в репозитории botbuilder-dotnet.
-
-В файле Startup.cs:
-1.  Переименуйте бот в `DialogContainerBot`.
-1.  Используйте простой словарь как контейнер свойств для состояния разговора с ботом.
+В примере ниже показан конструктор для диалога приветствия, где **GreetingDialog** является производным от **DialogSet**, **Inputs.Text** содержит идентификатор, используемый для объекта **TextPrompt**, а **Main** содержит идентификатор для самого диалога приветствия.
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
+public GreetingDialog()
 {
-    services.AddBot<DialogContainerBot>(options =>
+    // Include a text prompt.
+    Add(Inputs.Text, new TextPrompt());
+
+    // Define the dialog logic for greeting the user.
+    Add(Main, new WaterfallStep[]
     {
-        options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
-        options.Middleware.Add(new ConversationState<Dictionary<string, object>>(new MemoryStorage()));
+        async (dc, args, next) =>
+        {
+            // Ask for their name.
+            await dc.Prompt(Inputs.Text, "What is your name?");
+        },
+        async (dc, args, next) =>
+        {
+            // Get the prompt result.
+            var name = args["Text"] as string;
+
+            // Acknowledge their input.
+            await dc.Context.SendActivity($"Hi, {name}!");
+
+            // Ask where they work.
+            await dc.Prompt(Inputs.Text, "Where do you work?");
+        },
+        async (dc, args, next) =>
+        {
+            // Get the prompt result.
+            var work = args["Text"] as string;
+
+            // Acknowledge their input.
+            await dc.Context.SendActivity($"{work} is a fun place.");
+
+            // End the dialog.
+            await dc.End();
+        }
     });
 }
 ```
 
-Переименуйте `EchoBot` в `DialogContainerBot`.
-
-В `DialogContainerBot.cs` определите класс для диалога профиля.
-
-```csharp
-public class ProfileControl : DialogContainer
-{
-    public ProfileControl()
-        : base("fillProfile")
-    {
-        Dialogs.Add("fillProfile", 
-            new WaterfallStep[]
-            {
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State = new Dictionary<string, object>();
-                    await dc.Prompt("textPrompt", "What's your name?");
-                },
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State["name"] = args["Value"];
-                    await dc.Prompt("textPrompt", "What's your phone number?");
-                },
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State["phone"] = args["Value"];
-                    await dc.End(dc.ActiveDialog.State);
-                }
-            }
-        );
-        Dialogs.Add("textPrompt", new Builder.Dialogs.TextPrompt());
-    }
-}
-```
-
-Затем в определении бота объявите поле для главного диалога бота и инициализируйте это поле в конструкторе бота.
-Главный диалог бота включает диалог профиля.
-
-```csharp
-private DialogSet _dialogs;
-
-public DialogContainerBot()
-{
-    _dialogs = new DialogSet();
-
-    _dialogs.Add("getProfile", new ProfileControl());
-    _dialogs.Add("firstRun",
-        new WaterfallStep[]
-        {
-            async (dc, args, next) =>
-            {
-                    await dc.Context.SendActivity("Welcome! We need to ask a few questions to get started.");
-                    await dc.Begin("getProfile");
-            },
-            async (dc, args, next) =>
-            {
-                await dc.Context.SendActivity($"Thanks {args["name"]} I have your phone number as {args["phone"]}!");
-                await dc.End();
-            }
-        }
-    );
-}
-```
-
-В методе `OnTurn` бота:
--   Поприветствуйте пользователя в начале разговора.
--   Инициализируйте и _продолжайте_ главный диалог каждый раз при получении сообщения от пользователя.
-
-    Если диалог не привел к получению ответа, предположите, что он завершился раньше или еще не начался, и _начните_ его, указав имя диалога в наборе, с которого должен начаться разговор.
-
-```csharp
-public async Task OnTurn(ITurnContext turnContext)
-{
-    try
-    {
-        switch (turnContext.Activity.Type)
-        {
-            case ActivityTypes.ConversationUpdate:
-                foreach (var newMember in turnContext.Activity.MembersAdded)
-                {
-                    if (newMember.Id != turnContext.Activity.Recipient.Id)
-                    {
-                        await turnContext.SendActivity("Hello and welcome to the Composite Control bot.");
-                    }
-                }
-                break;
-
-            case ActivityTypes.Message:
-                var state = ConversationState<Dictionary<string, object>>.Get(turnContext);
-                var dc = _dialogs.CreateContext(turnContext, state);
-
-                await dc.Continue();
-
-                if (!turnContext.Responded)
-                {
-                    await dc.Begin("firstRun");
-                }
-
-                break;
-        }
-    }
-    catch (Exception e)
-    {
-        await turnContext.SendActivity($"Exception: {e.Message}");
-    }
-}
-
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-### <a name="create-a-dialog-with-waterfall-steps"></a>Создание диалога с действиями каскада
-
-Диалог — это последовательность сообщений, передаваемых между пользователем и ботом. Если цель бота состоит в том, чтобы провести пользователя через последовательность действий, вы можете использовать **каскад**, чтобы определить шаги разговора.
-
-**Каскад** является конкретной реализацией диалога, которая обычно используется для сбора информации от пользователя или для предоставления пользователю инструкций по выполнению ряда задач. Задачи реализуются как массив функций, в котором результаты первой функции передаются в качестве входных данных в следующую функцию и так далее. Каждая функция обычно представляет один шаг в общем процессе. На каждом шаге бот [запрашивает у пользователя входные данные](bot-builder-prompts.md), ожидает ответа, а затем передает результат в следующий шаг.
-
-Например, в следующем коде определяются три функции в массиве, которые соответствуют трем действиям **каскада**:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Greet user:
@@ -490,269 +431,174 @@ dialogs.add('greetings',[
 dialogs.add('textPrompt', new botbuilder_dialogs.TextPrompt());
 ```
 
+---
+
 Сигнатура для действия **каскада** выглядит следующим образом:
 
 | Параметр | ОПИСАНИЕ |
-| ---- | ----- |
-| `context` | Контекст диалога. |
-| `args` | Необязателен. Содержит аргументы, передаваемые в действие. |
-| `next` | Необязателен. Метод, который позволяет перейти к следующему действию каскада. При вызове этого метода можно указать аргумент *args*, что позволяет передать аргументы в следующее действие каскада. |
+| :---- | :----- |
+| `dc` | Контекст диалога. |
+| `args` | Необязательный. Содержит аргументы, передаваемые в действие. |
+| `next` | Необязательный. Метод, который позволяет перейти к следующему действию каскада без запроса. При вызове этого метода можно указать аргумент параметра *args*. Таквы можете передавать аргументы в следующее действие каскада. |
 
-В каждом из действий перед возвратом необходимо вызывать один из следующих методов: *next()*, *dialogs.prompt()*, *dialogs.end()*, *dialogs.begin()* или *Promise.resolve()*, в противном случае бот остановится на этом шаге. То есть если функция не возвращает один из этих методов, то при любых данных, введенных пользователем, действие будет выполняться повторно каждый раз, когда пользователь отправляет сообщение боту.
+В каждом действии перед возвратом необходимо вызывать делегат *next()* или один из методов контекста диалога: *begin*, *end*, *prompt* либо *replace*. В противном случае бот остановится на этом шаге. То есть, если в конце функции не указан ни один из этих методов, при любых данных, введенных пользователем, действие будет выполняться повторно каждый раз, когда пользователь отправляет сообщение боту.
 
-При достижении конца каскада рекомендуется выполнить возврат с помощью метода `end()`, чтобы можно было извлечь диалог из стека. Дополнительные сведения см. в разделе [Завершение диалога](#end-a-dialog). Аналогично, чтобы перейти от одного действия к другому, в конце действия каскада необходимо использовать запрос или явный вызов функции `next()`. 
+При достижении конца каскада рекомендуется выполнить возврат с помощью метода _end_, чтобы можно было извлечь диалог из стека. Дополнительные сведения см. в разделе [Завершение диалога](#end-a-dialog) ниже. Аналогично, чтобы перейти от одного действия к другому, в конце действия каскада необходимо использовать запрос или явный вызов делегата _next_.
 
-### <a name="start-a-dialog"></a>Начало диалога
+## <a name="start-a-dialog"></a>Начало диалога
 
-Чтобы начать диалог, передайте идентификатор диалога *dialogId*, который вы хотите запустить, в метод `begin()`, `prompt()` или `replace()`. Метод **begin** отправит диалог на вершину стека, а метод **replace** извлечет текущий диалог из стека и поместит новый диалог в стек.
+Чтобы начать диалог, передайте *идентификатор нужного диалога* в метод контекста диалога _begin_, _prompt_ или _replace_. Метод _begin_ отправит диалог на вершину стека, а метод _replace_ извлечет текущий диалог из стека и поместит новый диалог в стек.
 
 Чтобы запустить диалог без аргументов, сделайте следующее:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Start the greetings dialog.
+await dc.Begin("greetings");
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Start the 'greetings' dialog.
 await dc.begin('greetings');
 ```
 
+---
+
 Чтобы запустить диалог с аргументами, сделайте следующее:
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Start the greetings dialog, passing in a property bag.
+await dc.Begin("greetings", args);
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
-// Start the 'greetings' dialog with the 'userName' passed in. 
+// Start the 'greetings' dialog with the 'userName' passed in.
 await dc.begin('greetings', userName);
 ```
 
+---
+
 Чтобы запустить диалог **запроса**, сделайте следующее:
 
-```javascript
-// Start a 'choicePrompt' dialog with choices passed in as an array of colors to choose from.
-await dc.prompt('choicePrompt', `choice: select a color`, ['red', 'green', 'blue']);
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+В этом примере **Inputs.Text** содержит идентификатор **TextPrompt** из того же набора диалогов.
+
+```csharp
+// Ask a user for their name.
+await dc.Prompt(Inputs.Text, "What is your name?");
 ```
 
-В зависимости от типа запроса, который вы запускаете, сигнатура аргумента запроса может различаться. Метод **DialogSet.prompt** является вспомогательным. Этот метод принимает аргументы и создает соответствующие параметры запроса; затем он вызывает метод **begin**, чтобы запустить диалог запроса.
-
-Чтобы заменить диалог в стеке, сделайте следующее:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-// End the current dialog and start the 'mainMenu' dialog.
-await dc.replace('mainMenu'); // Can optionally passed in an 'args' as the second argument.
+// Ask a user for their name.
+await dc.prompt('textPrompt', "What is your name?");
 ```
 
-Дополнительные сведения об использовании метода **replace()** см. в разделах [Повтор диалога](#repeat-a-dialog) и [Циклы диалогов](#dialog-loops) ниже.
+---
+
+В зависимости от типа запроса, который вы запускаете, сигнатура аргумента запроса может различаться. Метод **DialogSet.prompt** является вспомогательным. Этот метод принимает аргументы и создает соответствующие параметры запроса; затем он вызывает метод **begin**, чтобы запустить диалог запроса. Дополнительные сведения о запросах см. в статье [Запрос пользователям на ввод данных](bot-builder-prompts.md).
 
 ## <a name="end-a-dialog"></a>Завершение диалога
 
-Для завершения диалога необходимо извлечь его из стека и при желании возвратить результат в родительский диалог. Для каждого возвращенного результата будет вызван метод **Dialog.resume()** родительского диалога.
+Метод _end_ завершает диалог, извлекая его из стека и возвращает результат в родительский диалог, если необходимо.
 
-Лучше всего явно вызывать метод `end()` в конце диалога; однако это необязательно, так как диалог будет автоматически извлечен из стека при достижении конца каскада.
+Лучше всего явно вызвать метод _end_ в конце диалога. Но это необязательно, так как диалог будет автоматически извлечен из стека при достижении конца каскада.
 
 Чтобы завершить диалог, сделайте следующее:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog by popping it off the stack.
+await dc.End();
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog by popping it off the stack
 await dc.end();
 ```
 
-Чтобы завершить диалог с передачей необязательных аргументов в родительский диалог, сделайте следующее:
+---
+
+Чтобы завершить диалог и возвратить сведения о родительском диалоге, добавьте аргумент контейнера свойств.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog and return information to the parent dialog.
+await dc.end(new Dictionary<string, object>
+    {
+        ["property1"] = value1,
+        ["property2"] = value2
+    });
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog and pass a result to the parent dialog
-await dc.end(result);
+await dc.end({
+    "property1": value1,
+    "property2": value2
+});
 ```
 
-Вы также можете завершить диалог, возвратив разрешенное обещание:
+---
 
-```javascript
-await Promise.resolve();
+## <a name="clear-the-dialog-stack"></a>Очистка стека диалогов
+
+Чтобы извлечь все диалоги из стека, можно очистить стек диалогов, вызвав метод _end all_.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Pop all dialogs from the current stack.
+await dc.EndAll();
 ```
 
-Вызов метода `Promise.resolve()` приведет к тому, что диалог завершится и будет извлечен из стека. Однако этот метод не вызывает родительское диалоговое окно, чтобы возобновить выполнение. После вызова метода `Promise.resolve()` выполнение останавливается, и бот возобновляет работу с той точки, где остановил работу родительский диалог, когда пользователь отправил сообщение боту. Эта схема может быть не самой удобной для завершения диалога с точки зрения пользователя. Старайтесь завершать диалог с помощью вызова метода `end()` или `replace()`, чтобы бот мог продолжить взаимодействие с пользователем.
-
-### <a name="clear-the-dialog-stack"></a>Очистка стека диалогов
-
-Если вы хотите извлечь все диалоги из стека, можно очистить стек диалогов, вызвав метод `dc.endAll()`.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Pop all dialogs from the current stack.
 await dc.endAll();
 ```
 
-### <a name="repeat-a-dialog"></a>Повтор диалога
+---
 
-Чтобы повторить диалог, используйте метод `dialogs.replace()`.
+## <a name="repeat-a-dialog"></a>Повтор диалога
+
+Чтобы повторить диалог, используйте метод _replace_. Метод контекста диалога *replace* извлечет текущий диалог из стека, поместит новый диалог на вершину стека и начнет его. Это отличный способ для обработки [сложных диалогов](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) и хороший метод для управления меню.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog and start the main menu dialog.
+await dc.Replace("mainMenu");
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog and start the 'mainMenu' dialog.
-await dc.replace('mainMenu'); 
+await dc.replace('mainMenu');
 ```
-
-Если вы хотите отображать главное меню по умолчанию, вы можете создать диалог `mainMenu`, выполнив следующие действия:
-
-```javascript
-// Display a menu and ask user to choose a menu item. Direct user to the item selected.
-dialogs.add('mainMenu', [
-    async function(dc){
-        await dc.context.sendActivity("Welcome to Contoso Hotel and Resort.");
-        await dc.prompt('choicePrompt', "How may we serve you today?", ['Order Dinner', 'Reserve a table']);
-    },
-    async function(dc, result){
-        if(result.value.match(/order dinner/ig)){
-            await dc.begin('orderDinner');
-        }
-        else if(result.value.match(/reserve a table/ig)){
-            await dc.begin('reserveTable');
-        }
-        else {
-            // Repeat the menu
-            await dc.replace('mainMenu');
-        }
-    },
-    async function(dc, result){
-        // Start over
-        await dc.endAll().begin('mainMenu');
-    }
-]);
-
-dialogs.add('choicePrompt', new botbuilder_dialogs.ChoicePrompt());
-```
-
-В этом диалоге используется метод `ChoicePrompt` для отображения меню, затем пользователь должен выбрать пункт меню. Когда пользователь выбирает `Order Dinner` или `Reserve a table`, запускается диалог для соответствующего варианта, и после завершения задачи диалог не завершается на последнем шаге, а запускается повторно.
-
-### <a name="dialog-loops"></a>Циклы диалогов
-
-Еще один способ использования метода `replace()` — имитация цикла. Рассмотрим следующий сценарий в качестве примера. Если вы хотите разрешить пользователю добавить несколько элементов меню в корзину, можно использовать цикл для элементов меню, который будет действовать до тех пор, пока пользователь не завершит заказ.
-
-```javascript
-// Order dinner:
-// Help user order dinner from a menu
-
-var dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50", 
-        "More info", "Process order", "Cancel", "Help"],
-    "Potato Salad - $5.99": {
-        Description: "Potato Salad",
-        Price: 5.99
-    },
-    "Tuna Sandwich - $6.89": {
-        Description: "Tuna Sandwich",
-        Price: 6.89
-    },
-    "Clam Chowder - $4.50": {
-        Description: "Clam Chowder",
-        Price: 4.50
-    }
-
-}
-
-// The order cart
-var orderCart = {
-    orders: [],
-    total: 0,
-    clear: function(dc) {
-        this.orders = [];
-        this.total = 0;
-        dc.context.activity.conversation.orderCart = null;
-    }
-};
-
-dialogs.add('orderDinner', [
-    async function (dc){
-        await dc.context.sendActivity("Welcome to our Dinner order service.");
-        orderCart.clear(dc); // Clears the cart.
-
-        await dc.begin('orderPrompt'); // Prompt for orders
-    },
-    async function (dc, result) {
-        if(result == "Cancel"){
-            await dc.end();
-        }
-        else { 
-            await dc.prompt('numberPrompt', "What is your room number?");
-        }
-    },
-    async function(dc, result){
-        await dc.context.sendActivity(`Thank you. Your order will be delivered to room ${result} within 45 minutes.`);
-        await dc.end();
-    }
-]);
-
-// Helper dialog to repeatedly prompt user for orders
-dialogs.add('orderPrompt', [
-    async function(dc){
-        await dc.prompt('choicePrompt', "What would you like?", dinnerMenu.choices);
-    },
-    async function(dc, choice){
-        if(choice.value.match(/process order/ig)){
-            if(orderCart.orders.length > 0) {
-                // Process the order
-                // ...
-                await dc.end();
-            }
-            else {
-                await dc.context.sendActivity("Your cart was empty. Please add at least one item to the cart.");
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-        }
-        else if(choice.value.match(/cancel/ig)){
-            orderCart.clear(context);
-            await dc.context.sendActivity("Your order has been canceled.");
-            await dc.end(choice.value);
-        }
-        else if(choice.value.match(/more info/ig)){
-            var msg = "More info: <br/>Potato Salad: contains 330 calaries per serving. <br/>"
-                + "Tuna Sandwich: contains 700 calaries per serving. <br/>" 
-                + "Clam Chowder: contains 650 calaries per serving."
-            await dc.context.sendActivity(msg);
-            
-            // Ask again
-            await dc.replace('orderPrompt');
-        }
-        else if(choice.value.match(/help/ig)){
-            var msg = `Help: <br/>To make an order, add as many items to your cart as you like then choose the "Process order" option to check out.`
-            await dc.context.sendActivity(msg);
-            
-            // Ask again
-            await dc.replace('orderPrompt');
-        }
-        else {
-            var choice = dinnerMenu[choice.value];
-
-            // Only proceed if user chooses an item from the menu
-            if(!choice){
-                await dc.context.sendActivity("Sorry, that is not a valid item. Please pick one from the menu.");
-                
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-            else {
-                // Add the item to cart
-                orderCart.orders.push(choice);
-                orderCart.total += dinnerMenu[choice.value].Price;
-
-                await dc.context.sendActivity(`Added to cart: ${choice.value}. <br/>Current total: $${orderCart.total}`);
-
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-        }
-    }
-]);
-
-// Define prompts
-// Generic prompts
-dialogs.add('textPrompt', new botbuilder_dialogs.TextPrompt());
-dialogs.add('numberPrompt', new botbuilder_dialogs.NumberPrompt());
-dialogs.add('dateTimePrompt', new botbuilder_dialogs.DatetimePrompt());
-dialogs.add('choicePrompt', new botbuilder_dialogs.ChoicePrompt());
-
-```
-
-В приведенном выше примере кода основной диалог `orderDinner` использует вспомогательный диалог с именем `orderPrompt` для обработки выбираемых пользователем вариантов. Диалог `orderPrompt` отображает меню, просит пользователя выбрать элемент, добавляет элемент в корзину и просит выбрать элемент еще раз. Это позволяет пользователю добавить несколько элементов в заказ. Цикл в диалоге продолжает работать, пока пользователь не выберет `Process order` или `Cancel`. В этот момент выполнение возвращается в родительский диалог (например: `orderDinner`). Диалог `orderDinner` выполняет последние необходимые действия в случае, если пользователь хочет обработать заказ; в противном случае он завершается и возвращает выполнение в родительский диалог (например: `mainMenu`). Диалог `mainMenu`, в свою очередь, выполняет последнее действие, которое представляет собой повторное отображение элементов главного меню.
 
 ---
 
 ## <a name="next-steps"></a>Дополнительная информация
 
-Теперь, когда вы знаете, как использовать **диалоги**, **запросы** и **каскады** для управления ходом разговора, посмотрим, как разбить диалоги на модульные задачи вместо того, чтобы собирать их вместе в объекте `dialogs` в логике главного бота.
+Теперь, когда вы узнали, как управлять простым процессом общения, давайте рассмотрим, как использовать метод _replace_ для сложных процессов общения.
 
 > [!div class="nextstepaction"]
-> [Создание модульной логики бота с помощью составных элементов управления](bot-builder-compositcontrol.md)
+> [Управление сложным процессом общения](bot-builder-dialog-manage-complex-conversation-flow.md)

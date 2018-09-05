@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/30/2018
-ms.openlocfilehash: bc1da99c7d0f7a6431ad0c2746b8583ef7bfbd5f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a92281e9bbee09d8dfb00fbbc67fe6ac6b6c69b
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305458"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756766"
 ---
-# <a name="debug-bots-with-the-bot-framework-emulator"></a>Отладка ботов с помощью эмулятора Bot Framework
+# <a name="debug-with-the-bot-framework-emulator"></a>Отладка ботов с помощью Bot Framework Emulator
 
 Эмулятор Bot Framework — это классическое приложение, которое позволяет разработчикам локально или удаленно тестировать и отлаживать боты. С помощью эмулятора вы можете общаться с ботом и проверять сообщения, которые он посылает и получает. Эмулятор отображает сообщения так, как они будут выглядеть в интерфейсе веб-чата, и регистрирует запросы и ответы JSON при обмене сообщениями с ботом. 
 

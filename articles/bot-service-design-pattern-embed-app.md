@@ -6,13 +6,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 3264388cf253bb949eabe3be04fdaebabdc36b99
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/15/2018
+ms.openlocfilehash: 68d2d4f7a19aecfcb2c630e5e9e55ca5b8a21d89
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305083"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756639"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Внедрение бота в приложение
 
@@ -42,9 +42,7 @@ ms.locfileid: "39305083"
 
 В этом примере создания мобильного приложения для выполнения бота используется <a href="https://www.xamarin.com/" target="_blank">Xamarin</a>, популярное средство для создания кроссплатформенных мобильных приложений. 
 
-Сначала создайте простой веб-компонент для просмотра и используйте его для размещения <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">элемента управления веб-чатом</a>. Затем с помощью портала Bot Framework [подключитесь](~/bot-service-manage-channels.md) к каналу "Веб-чат". 
-
-![Параметры конфигурации бота](~/media/bot-service-design-pattern-embed-app/webchat-channel.png)
+Сначала создайте простой веб-компонент для просмотра и используйте его для размещения <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">элемента управления веб-чатом</a>. Затем с помощью портала Azure добавьте канал веб-чата. 
 
 Затем укажите зарегистрированный URL-адрес веб-чата в качестве источника для элемента управления для просмотра в приложении Xamarin:
 

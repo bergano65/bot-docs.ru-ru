@@ -7,21 +7,19 @@ ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 0a9ad7d51234b417d5d0f27dbcffe4ce839ba94a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/16/2018
+ms.openlocfilehash: 7fbff06966ac64260244e8af375aaa6f8f945fcd
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301204"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756592"
 ---
 # <a name="connect-a-bot-to-facebook-messenger"></a>Подключение бота к Facebook Messenger
 
 Дополнительные сведения о разработке приложений для Facebook Messenger см. в [документации по платформе Messenger](https://developers.facebook.com/docs/messenger-platform). Вы можете просмотреть [инструкции перед запуском](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), [краткое руководство](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) и [руководство по настройке](https://developers.facebook.com/docs/messenger-platform/guides/setup) Facebook.
 
 Чтобы настроить бот для связи с использованием Facebook Messenger, включите Facebook Messenger на странице Facebook и подключите бот к приложению.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 > [!NOTE]
 > Пользовательский интерфейс Facebook может выглядеть несколько иначе, в зависимости от используемой версии.
@@ -72,7 +70,7 @@ ms.locfileid: "39301204"
 
 ## <a name="provide-webhook-callback-url-and-verify-token"></a>Указание URL-адреса обратного вызова веб-перехватчика и проверка токена
 
-Вернитесь на [портал Bot Framework](https://dev.botframework.com/). Откройте бот, щелкните **Каналы**, а затем щелкните **Facebook Messenger**.
+На [портале Azure](https://portal.azure.com/) откройте бот, щелкните вкладку **Каналы**, а затем выберите **Facebook Messenger**.
 
 * Скопируйте значения **URL-адреса обратного вызова** и **проверки токена** с портала.
 
@@ -93,7 +91,7 @@ ms.locfileid: "39301204"
 
 ## <a name="provide-facebook-credentials"></a>Указание учетных данных Facebook
 
-На портале Bot Framework вставьте значения **идентификатора страницы**, **идентификатора приложения**, **секрета приложения** и **маркера доступа к странице**, ранее скопированные из Facebook Messenger.
+На портале Azure вставьте значения **идентификатора приложения Facebook**, **секрета приложения Facebook**, **идентификатора страницы** и **маркера доступа к ней**, ранее скопированные из Facebook Messenger. Можно использовать один и тот же бот на нескольких страницах Facebook, добавив идентификаторы и маркеры доступа этих страниц.
 
 ![Ввод учетных данных](~/media/channels/fb-credentials2.png)
 
@@ -110,3 +108,6 @@ ms.locfileid: "39301204"
 
 После успешной проверки на панели мониторинга приложения в разделе рассмотрения приложения выберите значение Public (общедоступное).
 Убедитесь, что страница Facebook, связанная с этим ботом, опубликована. Состояние появляется в параметрах страницы.
+
+> [!NOTE]
+> Можно также использовать Facebook Workplace. Чтобы включить эту службу, создайте [пользовательскую интеграцию](https://developers.facebook.com/docs/workplace/custom-integrations-new) для вашей рабочей области и используйте идентификатор приложения, секрет приложения и маркер доступа. Вместо традиционного идентификатора страницы используйте числа, указанные после имени интегрируемого приложения на соответствующей странице со сведениями. Веб-перехватчики можно подключить, используя учетные данные, которые отображаются в Azure.

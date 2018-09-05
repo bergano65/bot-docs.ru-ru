@@ -1,6 +1,6 @@
 ---
-title: Запрос пользователям на ввод данных | Документация Майкрософт
-description: Подробнее о запросе пользователям на ввод данных в пакете SDK Bot Builder для Node.js.
+title: Создание запросов на ввод данных пользователем с помощью библиотеки диалогов | Документация Майкрософт
+description: Узнайте, как запросить у пользователя входные данные, используя библиотеку диалогов из пакета SDK Bot Builder для Node.js.
 keywords: запросы, диалоговые окна, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, повторный запрос, проверка
 author: v-ducvo
 ms.author: v-ducvo
@@ -9,20 +9,20 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b08c087bcce4a3dcee5de20311e2f7b890ea2f6b
-ms.sourcegitcommit: b45e16cac2febb7034da4ccd3af3bd7e6f430c31
+ms.openlocfilehash: 0b238ed510fd1d6fda82734af373f344b0dc28e3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39469281"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905368"
 ---
-# <a name="prompt-users-for-input"></a>Запрос пользователям на ввод данных
+# <a name="prompt-users-for-input-using-the-dialogs-library"></a>Создание запросов на ввод данных пользователем с помощью библиотеки диалогов
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Часто боты собирают информацию с помощью заданных пользователю вопросов. Можно просто отправить пользователю стандартное сообщение, используя метод _send activity_ для объекта контекста, чтобы запросить ввод строки. Однако пакет SDK для Bot Builder предоставляет библиотеку **диалоговых окон**, которую можно использовать для запроса различных типов информации. В этом разделе описывается использование **запросов** на ввод данных пользователем.
+Часто боты собирают информацию с помощью заданных пользователю вопросов. Можно просто отправить пользователю стандартное сообщение, используя метод **send activity** для [контекста реплик](bot-builder-concept-activity-processing.md#turn-context), чтобы запросить ввод строки. Но пакет SDK для Bot Builder предоставляет библиотеку _диалогов_, которую можно использовать для запроса различных типов информации. В этом разделе описывается использование **запросов** на ввод данных пользователем.
 
-В этой статье описывается использование запросов в диалоговом окне. Сведения об использовании диалоговых окон в целом см. в разделе [Управление последовательностью общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
+В этой статье описывается использование запросов в диалоговом окне. Общие сведения об использовании диалогов см. в разделе [Управление ходом разговора с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="prompt-types"></a>Типы запросов
 
@@ -33,13 +33,13 @@ ms.locfileid: "39469281"
 | **AttachmentPrompt** | Запрос на добавление вложения пользователем, например документа или изображения. |
 | **ChoicePrompt** | Запрос пользователю на выбор одного из нескольких вариантов. |
 | **ConfirmPrompt** | Запрос на подтверждение действий пользователем. |
-| **DatetimePrompt** | Запрос на ввод даты и времени пользователем. Пользователи могут отвечать, используя естественный язык, например "Tomorrow at 8pm" или "Friday at 10am". Пакет SDK для Bot Framework использует предварительно созданную сущность LUIS `builtin.datetimeV2`. Дополнительные сведения см. в [builtin.datetimev2](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
+| **DatetimePrompt** | Запрос на ввод даты и времени пользователем. Пользователи могут отвечать, используя естественный язык, например "Tomorrow at 8pm" или "Friday at 10am". Пакет SDK для Bot Framework использует предварительно созданную сущность LUIS `builtin.datetimeV2`. Дополнительные сведения см. в [builtin.datetimev2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-entities#builtindatetimev2). |
 | **NumberPrompt** | Запрос на ввод номера пользователем. Пользователь может ответить либо "10", либо "ten". Например, если ответ "ten", то запрос преобразует ответ в число и возвращает `10` в результате. |
 | **TextPrompt** | Запрос на ввод текстовой строки пользователем. |
 
 ## <a name="add-references-to-prompt-library"></a>Добавление ссылок в библиотеку запросов
 
-Получить библиотеку **диалоговых окон** можно, добавив пакет **диалоговых окон** к боту. Диалоговые окна рассматриваются в статье [Управление последовательностью общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md), но для запросов они также будут использоваться.
+Получить библиотеку **диалоговых окон** можно, добавив пакет **диалоговых окон** к боту. Диалоги рассматриваются в статье об [использовании диалогов для управления простым процессом общения](bot-builder-dialog-manage-conversation-flow.md). Мы же будем использовать их для создания запросов.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -75,7 +75,7 @@ public class MyDialog : DialogSet
 Установите пакет диалогов из NPM.
 
 ```cmd
-npm install --save botbuilder-dialogs
+npm install --save botbuilder-dialogs@preview
 ```
 
 Чтобы использовать **диалоги** в боте, включите эту библиотеку в код бота.
@@ -93,7 +93,7 @@ const dialogs = new DialogSet();
 
 Чтобы запросить пользователя ввести данные, можно добавить запрос в диалоговое окно. Например, можно определить запрос типа **TextPrompt** и присвоить ему идентификатор диалога **textPrompt**.
 
-После добавления диалогового окна запроса можно использовать его в простом двухэтапном каскадном диалоге или использовать несколько запросов вместе в многоэтапном каскаде. *Каскадный* диалог — это просто способ определения последовательности шагов. Дополнительные сведения см. в статье [Управление последовательностью общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md) в разделе [использования диалоговых окон](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps).
+После добавления диалогового окна запроса можно использовать его в простом двухэтапном каскадном диалоге или использовать несколько запросов вместе в многоэтапном каскаде. *Каскадный* диалог — это просто способ определения последовательности шагов. Дополнительные сведения см. в разделе об [использовании диалогов](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) статьи [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 На первом этапе диалоговое окно запрашивает у пользователя имя, а на втором обрабатывает введенные пользователем данные как ответ на запрос.
 
@@ -129,13 +129,13 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
-                await dc.Context.SendActivity($"Hi {user}!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Hi {user}!");
+                await dc.End();
             }
         });
     }
@@ -166,7 +166,7 @@ dialogs.add('greetings', [
 ---
 
 > [!NOTE]
-> Чтобы запустить диалоговое окно, получите контекст диалога и используйте метод _begin_. Дополнительные сведения см. в статье [Управление последовательностью общения с помощью диалогов](./bot-builder-dialog-manage-conversation-flow.md).
+> Чтобы запустить диалоговое окно, получите контекст диалога и используйте метод _begin_. Дополнительные сведения см. в статье об [использовании диалогов для управления простым процессом общения](./bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="reusable-prompts"></a>Многоразовые запросы
 
@@ -197,21 +197,21 @@ public class MyDialog : DialogSet
             async (dc, args, next) =>
             {
                 // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, "What is your name?");
             },
             async(dc, args, next) =>
             {
                 var user = (string)args["Text"];
 
                 // Ask them where they work.
-                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?");
             },
             async(dc, args, next) =>
             {
                 var workplace = (string)args["Text"];
 
-                await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"{workplace} is a cool place!");
+                await dc.End();
             }
         });
     }
@@ -273,21 +273,21 @@ public MyDialog()
         async (dc, args, next) =>
         {
             // Prompt for the user's name.
-            await dc.Prompt(Inputs.Name, "What is your name?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Name, "What is your name?");
         },
         async(dc, args, next) =>
         {
             var user = (string)args["Text"];
 
             // Ask them where they work.
-            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?").ConfigureAwait(false);
+            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?");
         },
         async(dc, args, next) =>
         {
             var workplace = (string)args["Text"];
 
-            await dc.Context.SendActivity($"{workplace} is a cool place!").ConfigureAwait(false);
-            await dc.End().ConfigureAwait(false);
+            await dc.Context.SendActivity($"{workplace} is a cool place!");
+            await dc.End();
         }
     });
 }
@@ -334,7 +334,7 @@ dialogs.Add("numberPrompt", new NumberPrompt<int>(Culture.English));
 await dc.Prompt("numberPrompt", "How many people are in your party?", new PromptOptions()
 {
     RetryPromptString = "Sorry, please specify the number of people in your party."
-}).ConfigureAwait(false);
+});
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -405,14 +405,14 @@ public class MyDialog : DialogSet
                     Choices = ChoiceFactory.ToChoices(Colors),
                     RetryPromptActivity =
                         MessageFactory.SuggestedActions(Colors, "Please choose a color.") as Activity
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var color = (FoundChoice)args["Value"];
 
-                await dc.Context.SendActivity($"You chose {color.Value}.").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"You chose {color.Value}.");
+                await dc.End();
             }
         });
     }
@@ -482,14 +482,14 @@ public class MyDialog : DialogSet
                 await dc.Prompt(Inputs.Size, "How many people are in your party?", new PromptOptions()
                 {
                     RetryPromptString = "Please specify party size between 6 and 20."
-                }).ConfigureAwait(false);
+                });
             },
             async(dc, args, next) =>
             {
                 var size = (int)args["Value"];
 
-                await dc.Context.SendActivity($"Okay, {size} people!").ConfigureAwait(false);
-                await dc.End().ConfigureAwait(false);
+                await dc.Context.SendActivity($"Okay, {size} people!");
+                await dc.End();
             }
         });
     }
@@ -569,7 +569,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
 {
     if (result.Resolution.Count == 0)
     {
-        await context.SendActivity("Sorry, I did not recognize the time that you entered.").ConfigureAwait(false);
+        await context.SendActivity("Sorry, I did not recognize the time that you entered.");
         result.Status = PromptStatus.NotRecognized;
     }
 
@@ -588,7 +588,7 @@ private static async Task TimeValidator(ITurnContext context, DateTimeResult res
     else
     {
         // Otherwise, flag the input as out of range.
-        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"").ConfigureAwait(false);
+        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"");
         result.Status = PromptStatus.OutOfRange;
     }
 }
@@ -635,5 +635,4 @@ dialogs.add('dateTimePrompt', new botbuilder_dialogs.DatetimePrompt( async (cont
 
 Теперь, когда вы знаете, как запрашивать у пользователя входные данные, улучшите код бота и пользовательский интерфейс, управляя разнообразными последовательностями общения с помощью диалоговых окон.
 
-> [!div class="nextstepaction"]
-> [Управление последовательностью общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md)
+

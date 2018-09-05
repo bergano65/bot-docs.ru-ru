@@ -1,5 +1,5 @@
 ---
-title: Создание модульной логики бота с помощью контейнера диалогового окна | Документация Майкрософт
+title: Создание встроенного набора диалогов | Документация Майкрософт
 description: Узнайте, как модулировать логику бота с помощью контейнера диалогового окна в пакете SDK Bot Builder для Node.js и C#.
 keywords: составной элемент управления, модульная логика бота
 author: v-ducvo
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2441a32167618ebb08e6a43d68d74076c3351d8f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 93037d70a33d66269f3a79ce7e2a55900d25a6a9
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306122"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795203"
 ---
-# <a name="create-modular-bot-logic-with-a-dialog-container"></a>Создание модульной логики бота с помощью контейнера диалогового окна
+# <a name="create-an-integrated-set-of-dialogs"></a>Создание встроенного набора диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -74,7 +74,7 @@ public class UserInfo
 ```
 
 В рамках включения бота метод `CreateContext` диалогового набора устанавливает состояние диалогового окна.
-Этот метод принимает контекст включения и объект состояния в качестве параметров.
+Этот метод принимает [контекст реплик](bot-builder-concept-activity-processing.md#turn-context) и объект состояния в качестве параметров.
 
 Для диалоговых окон этот объект состояния должен реализовывать интерфейс `IDictionary<string, object>`. Поскольку этот бот использует только состояние общения для размещения состояния диалогового окна, в качестве класса состояний общения можно использовать простой словарь.
 
@@ -104,7 +104,7 @@ public class ConversationInfo : Dictionary<string, object> { }
 1. Спросить номер комнаты, в которой они хотели бы остановиться.
 1. Отправить сообщение с подтверждением и закончить диалог.
 
-Дополнительные сведения о диалогах и каскадах см. в разделе [Manage conversation flow with dialogs](bot-builder-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалогов).
+Дополнительные сведения о диалогах и каскадах см. в статье [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

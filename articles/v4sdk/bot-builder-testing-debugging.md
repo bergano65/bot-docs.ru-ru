@@ -1,5 +1,5 @@
 ---
-title: Тестирование и отладка бота | Документация Майкрософт
+title: Рекомендации по тестированию и отладке бота | Документация Майкрософт
 description: Сведения о тестировании и отладке бота.
 keywords: testing principles, mock elements, faq, testing levels
 author: ivorb
@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea1c458e98f67f76c56fdd70595307a0e0252c1d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300926"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905263"
 ---
-# <a name="testing-and-debugging-your-bot"></a>Тестирование и отладка бота
+# <a name="testing-and-debugging-guidelines"></a>Рекомендации по тестированию и отладке бота
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Боты — это сложные приложения, где работают вместе много различных частей. Как и в любом другом сложном приложении, это может привести к некоторым нестандартным ошибкам или бот может вести себя иначе, чем ожидалось.
 

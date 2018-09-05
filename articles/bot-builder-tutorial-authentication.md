@@ -8,17 +8,13 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d2e22bdfaa9fc4e3ce55bc1dd969921e90c87cc
-ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
+ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39567513"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905915"
 ---
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
-
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
-
 В этом руководстве используются функции бота проверки подлинности службы Azure Bot. Они упрощают разработку бота, который выполняет проверку подлинности пользователей в различных поставщиках удостоверений, например Azure AD (Azure Active Directory), GitHub, Uber и т. д. Также эти обновления помогают улучшить взаимодействие с пользователем путем устранения _проверки шифра_ для некоторых клиентов.
 
 До этого бот должен включать контроллеры OAuth и ссылки для входа, хранить целевые идентификаторы и секреты клиента и выполнять управление токенами пользователей.
@@ -48,7 +44,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 > [!NOTE]
 > Функции проверки подлинности также работают с Node.js в Bot Builder версии 3. Однако в этой статье рассматривается только пример кода, написанный на C#.
 
-Дополнительные сведения и поддержку можно найти в статье [Bot Framework additional resources](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help) (Дополнительные ресурсы Bot Framework).
+Дополнительные сведения и поддержку можно найти в статье [Bot Framework additional resources](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help) (Дополнительные ресурсы Bot Framework).
 
 ## <a name="overview"></a>Обзор
 
@@ -90,7 +86,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
    1. В качестве **типа приложения** установите **Веб-приложение или API**.
    1. В качестве значения **URL-адрес входа** установите `https://token.botframework.com/.auth/web/redirect`.
    1. Нажмите кнопку **Создать**.
-      - После создания он отображается в колонке **Зарегистрированное приложение**.
+      - Когда приложение будет создано, оно появится в области **Зарегистрированное приложение**.
       - Запишите значение **идентификатора приложения**. Это значение понадобится позже в качестве _идентификатора клиента_.
 1. Чтобы настроить приложение, щелкните **Параметры**.
 1. Чтобы открыть панель **Ключи**, щелкните **Ключи**.
@@ -178,7 +174,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 #### <a name="to-register-an-azure-ad-v2-application"></a>Регистрация приложения Azure AD версии 2
 
-1. Перейдите к колонке бота регистрации каналов на [портале Azure](http://portal.azure.com/).
+1. Перейдите к странице регистрации каналов бота на [портале Azure](http://portal.azure.com/).
 1. Щелкните **Параметры**.
 1. В разделе **OAuth Connection Settings** (Параметры подключения OAuth), который находится в нижней части страницы, щелкните **Добавить настройку**.
 1. Заполните форму следующим образом.
@@ -205,7 +201,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 #### <a name="to-test-your-connection"></a>Тестирование подключения
 
 1. Откройте созданное подключение.
-1. Щелкните **Проверка подключения** в верхней части колонки **Service Provider Connection Setting** (Параметры подключения поставщика службы).
+1. Щелкните **Проверка подключения** в верхней части области **Service Provider Connection Setting** (Параметры подключения поставщика службы).
 1. При выполнении данного действия в первый раз должна открыться новая вкладка браузера с перечисленными разрешениями, которые запрашивает приложение, и предложение их принять.
 1. Нажмите кнопку **Принимаю**.
 1. Данное действие перенаправляет пользователя на страницу **Проверка подключения к <your-connection-name> успешно выполнена** .

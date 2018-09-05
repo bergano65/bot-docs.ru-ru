@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fbfe65526335b7a8797ab229871472d540735e20
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 35af3a339a20fe0e7e70d001db035aec2647aa35
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301194"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905323"
 ---
 # <a name="support-audio-calls-with-skype"></a>Поддержка голосовых вызовов через Skype
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Skype поддерживает функцию Calling Bots.  Когда эта функция включена, пользователи могут выполнять голосовые вызовы бота и взаимодействовать с ним с помощью функции интерактивного речевого ответа.  Пакет SDK Bot Builder для Node.js содержит специальный [пакет SDK для вызовов][calling_sdk], с помощью которого разработчики могут добавлять в свои боты функции голосовых вызовов.   
 

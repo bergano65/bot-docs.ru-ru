@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e276b7f3f4cc46e0978b3ee182b8251e39b86ead
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fd81b9dfe5d3e16096ffd6ab25c1ee23ff77f79f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305455"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904932"
 ---
 # <a name="key-concepts-in-the-bot-builder-sdk-for-nodejs"></a>Основные понятия в пакете SDK построителя ботов для Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
@@ -43,7 +46,8 @@ ms.locfileid: "39305455"
 Диалоги помогают организовать естественную логику в боте и играют решающую роль в [конструировании потока беседы](../bot-service-design-conversation-flow.md). Общие сведения о диалогах см. в разделе [Управление беседой с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation.md).
 
 ## <a name="actions"></a>Действия
-Вам наверняка пригодится возможность обработки ботом прерываний, таких как запросы отмены или справки, в любой момент в потоке беседы. Пакет SDK построителя ботов для Node.js предоставляет глобальные обработчики сообщений, которые инициируют действия отмены или вызова других диалогов. Примеры использования обработчиков [triggerAction][triggerAction] см. в разделе <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->[Обработка действий пользователя](bot-builder-nodejs-dialog-actions.md).
+Вам наверняка пригодится возможность обработки ботом прерываний, таких как запросы отмены или справки, в любой момент в потоке беседы. Пакет SDK построителя ботов для Node.js предоставляет глобальные обработчики сообщений, которые инициируют действия отмены или вызова других диалогов. Примеры использования обработчиков [triggerAction][triggerAction] см. в статье [Обработка действий пользователя](bot-builder-nodejs-dialog-actions.md).
+<!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
 
 ## <a name="recognizers"></a>Распознаватели
@@ -71,7 +75,7 @@ ms.locfileid: "39305455"
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
-> [Общие сведения о диалогах](bot-builder-nodejs-dialog-overview.md)
+> [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-nodejs-dialog-overview.md)
 
 
 

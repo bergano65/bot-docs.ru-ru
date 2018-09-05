@@ -1,5 +1,5 @@
 ---
-title: Включение распознавания речи в канале "Веб-чат" | Документация Майкрософт
+title: Включение распознавания речи в веб-чате | Документация Майкрософт
 description: Узнайте, как включить распознавание речи в элементе управления "Веб-чат" для бота, подключенного к каналу "Веб-чат".
 keywords: speech, web chat, voice, microphone, audio
 author: DeniseMak
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 37e18f49eb55fcb7d0bf94e96051479753eec8aa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2499197d82b618d7a535efca78f98ce260dd15a7
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304954"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756416"
 ---
-# <a name="how-to-enable-speech-in-web-chat"></a>Как включить распознавание речи в веб-чате
+# <a name="enable-speech-in-web-chat"></a>Включение распознавания речи в веб-чате
 Вы можете включить голосовой интерфейс в элементе управления "Веб-чат". Пользователи взаимодействуют с голосовым интерфейсом, используя микрофон в элементе управления "Веб-чат".
 
 ![Пример распознавания речи в веб-чате](~/media/bot-service-channel-webchat/webchat-sample-speech.png)

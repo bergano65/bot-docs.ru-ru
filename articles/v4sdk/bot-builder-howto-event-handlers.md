@@ -1,5 +1,5 @@
 ---
-title: Обработчики событий | Документация Майкрософт
+title: Использование обработчиков событий | Документация Майкрософт
 description: Узнайте, как использовать обработчики событий.
 author: ivorb
 ms.author: v-ivorb
@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 06/14/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c054b8f4209004806e4564be45e83bdf3a8ec25
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 36bd2638c599de1662a37dd85790b6126184d51b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305982"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905693"
 ---
-# <a name="event-handlers"></a>Обработчики событий
+# <a name="using-event-handlers"></a>Использование обработчиков событий
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Обработчики событий — это функции, которые можно добавить к событиям будущего действия в [Defining a turn](bot-builder-basics.md#defining-a-turn) (Определение активности). Эти действия являются `SendActivity`, `UpdateActivity` и `DeleteActivity`, и каждое из них имеет собственный обработчик. Эти обработчики полезны, когда нужно что-то делать для каждого будущего действия этого типа для текущего объекта контекста.
 

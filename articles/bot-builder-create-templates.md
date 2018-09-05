@@ -8,14 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/25/2018
-ms.openlocfilehash: 7cf05b3396099f1c65fce7abbceb143a3ad43e9a
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 8004389aba58b5cf79f1559b3ce65d1d66c5358c
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574590"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928342"
 ---
 # <a name="create-bots-with-botbuilder-templates"></a>Создание ботов с помощью шаблонов Bot Builder
+
+> [!NOTE]
+> Приведенные здесь сведения относятся к пакету SDK версий 3 и 4. См. примечания ниже.
 
 Теперь доступны шаблоны для создания ботов на каждой платформе SDK Bot Builder: 
 
@@ -96,7 +99,7 @@ npm install generator-botbuilder-java
 
 ## <a name="store-your-bot-information-with-msbot"></a>Хранение информации бота с помощью MSBot
 
-Новый инструмент [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) позволяет создавать **BOT**-файл, в котором хранятся метаданные о службах, используемых ботом. C помощью этого файла бот может использовать интерфейс командной строки для подключения данных служб. Средство доступно в качестве модуля npm. Чтобы его установить, необходимо выполнить следующую команду:
+Новое средство [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) позволяет создавать файл с расширением **.bot**, в котором хранятся метаданные о службах, используемых ботом. C помощью этого файла бот может использовать интерфейс командной строки для подключения данных служб. Средство доступно в качестве модуля npm. Чтобы его установить, необходимо выполнить следующую команду.
 
 ```shell
 npm install -g msbot 
@@ -140,7 +143,7 @@ az bot show -n <botname> -g <resourcegroup> --msbot | msbot connect azure --stdi
 > Каждое средство Bot Builder содержит команду глобальной справки, доступную в командной строке после ввода **-h** или **--help**. Эта команда доступна в любое время из любого действия, которое обеспечивает отображение полезных вариантов, доступных вместе с их описанием. 
 
 ### <a name="ludown"></a>LUDown
-[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) позволяет описывать и создавать мощные компоненты языка для ботов, использующих файлы с расширением **LU**. Новые файлы с форматом LU, который является типом формата разметки, используются средством LUDown для вывода файлов JSON, указанных в целевой службе. В настоящее время файлы с форматом LU можно использовать для создания приложения [LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-get-started-create-app) или базы знаний [QnA](https://qnamaker.ai/Documentation/CreateKb) с использованием разных форматов. LUDown доступно в качестве модуля npm и может быть использовано при глобальной установке на компьютер:
+[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) позволяет описывать и создавать мощные компоненты языка для ботов с помощью файлов с расширением **LU**. Файл нового формата LU является типом формата разметки Markdown, который используется средством LUDown для вывода файлов JSON, адаптированных для целевой службы. В настоящее время файлы с форматом LU можно использовать для создания приложения [LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-get-started-create-app) или базы знаний [QnA](https://qnamaker.ai/Documentation/CreateKb) с использованием разных форматов. LUDown доступен в виде модуля npm и может быть использован при глобальной установке на компьютер.
 
 ```shell
 npm install -g ludown
@@ -148,7 +151,7 @@ npm install -g ludown
 Средство LUDown можно использовать для создания моделей JSON как для LUIS, так и для QnA.  
 
 
-### <a name="creating-a-luis-application-with-ludown"></a>Создание приложения LUIS в LUDown
+### <a name="creating-a-luis-application-with-ludown"></a>Создание приложения LUIS с помощью LUDown
 
 [Намерения](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) и [сущности](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-entities) определяются для приложения LUIS точно так же, как и для портала LUIS. 
 
@@ -220,7 +223,7 @@ ludown parse ToLuis --in <luFile>
 ludown parse ToQna --in <luFile> 
 ```
 
-Полученные файлы JSON могут быть использованы LUIS и QnA либо через соответствующие порталы, либо через новые инструменты интерфейса командной строки. 
+Полученные файлы JSON могут быть использованы LUIS и QnA либо через соответствующие порталы, либо через новые средства CLI. 
 
 ## <a name="connect-to-luis-an-qna-maker-services-from-the-cli"></a>Подключение к службам QnA Maker и LUIS из интерфейса командной строки
 
@@ -231,12 +234,12 @@ ludown parse ToQna --in <luFile>
 ```shell
 npm install -g luis-apis
 ```
-Основные команды, используемые средством LUIS из интерфейса командной строки, приведены далее:
+Основные команды, используемые средством LUIS из интерфейса командной строки, приведены далее.
 
 ```shell
 luis <action> <resource> <args...>
 ```
-Чтобы подключить бот к LUIS, необходимо создать файл в формате **LUISRC**. Когда приложение выполняет исходящие вызовы, этот файл конфигурации подготавливает к работе идентификатор приложения LUIS и пароль для конечной точки службы. При выполнении команды **luis init** этот файл будет создан:
+Чтобы подключить бот к LUIS, необходимо создать файл в формате **LUISRC**. Когда приложение выполняет исходящие вызовы, этот файл конфигурации устанавливает идентификатор приложения LUIS и пароль конечной точки службы. Выполнение команды **luis init** позволит создать этот файл, как показано в примере.
 
 ```shell
 luis init

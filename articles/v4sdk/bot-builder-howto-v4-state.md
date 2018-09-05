@@ -1,5 +1,5 @@
 ---
-title: Сохранение состояния с помощью свойств общения и пользователя | Документация Майкрософт
+title: Управление состоянием диалога и пользователя | Документация Майкрософт
 description: Узнайте, как сохранять и извлекать данные с помощью пакета SDK Bot Builder версии 4 для .NET.
 keywords: состояние общения, состояние пользователя, ПО промежуточного слоя, последовательность общения, хранилище файлов, хранилище таблиц Azure
 author: ivorb
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 16df371b1cabb4b3eb47d1f491a5d45e26627d38
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: a74c52af0ca56b62491ca3aa39d09885c2540c18
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352853"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795213"
 ---
-# <a name="save-state-using-conversation-and-user-properties"></a>Сохранение состояния с помощью свойств общения и пользователя
+# <a name="manage-conversation-and-user-state"></a>Управление состоянием диалога и пользователя
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -30,6 +30,16 @@ ms.locfileid: "39352853"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Дополнительные сведения об инициализации `ConversationState` см. в коде `Startup.cs` примера Microsoft.Bot.Samples.EchoBot-AspNetCore.
+
+Библиотеки, необходимые для этого кода:
+
+```csharp
+using Microsoft.Bot.Builder.BotFramework;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+```
+
+Инициализация `ConversationState`:
 
 ```csharp
 services.AddBot<EchoBot>(options =>
@@ -304,7 +314,7 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-Альтернативой является использование _каскадной_ модели диалога. Диалоговое окно отслеживает состояние общения, поэтому нет необходимости создавать флаги для отслеживания состояния. Дополнительные сведения см. в разделе [Управление общением с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
+Альтернативой является использование _каскадной_ модели диалога. Диалоговое окно отслеживает состояние общения, поэтому нет необходимости создавать флаги для отслеживания состояния. Дополнительные сведения см. в разделе [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="file-storage"></a>Хранилище файлов
 
@@ -465,5 +475,5 @@ adapter.use(conversationState);
 Дополнительные сведения о хранилище см. в разделе [Save state and access data](bot-builder-storage-concept.md) (Сохранение состояния и доступ к данным)
 
 <!-- Links -->
-[AzureStorageEmulator]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator
-[AzureStorageExplorer]: https://azure.microsoft.com/en-us/features/storage-explorer/
+[AzureStorageEmulator]: https://docs.microsoft.com/azure/storage/common/storage-use-emulator
+[AzureStorageExplorer]: https://azure.microsoft.com/features/storage-explorer/

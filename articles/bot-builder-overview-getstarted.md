@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 21186c5d3b0769311e4703ca1dab2f48a0a0081a
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 3ee7843e64dfa95427ebcb132740eab3db281ffc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574890"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904017"
 ---
 # <a name="develop-bots-with-bot-builder"></a>Разработка ботов с помощью Bot Builder
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 
 Bot Builder предоставляет пакет SDK, библиотеки, примеры, а также инструменты для создания и отладки ботов. Пакет SDK Bot Builder используется при создании бота с помощью службы Bot. Кроме того, этот пакет SDK позволяет с нуля создать бот на C# или Node.js. Bot Builder содержит Bot Framework Emulator для тестирования ботов и инспектор каналов для предварительного просмотра интерфейса вашего бота на различных каналах.
 

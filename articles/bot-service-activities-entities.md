@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 984c0d59c0c80bb53c8cef42db79d444d85941f3
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352943"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115069"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -33,7 +33,7 @@ ms.locfileid: "39352943"
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-| type | Тип сущности (mention) |
+| type | Тип сущности (Mention). |
 | Mentioned | Объект учетной записи канала, который показывает, какой пользователь был упомянут. | 
 | текст | Текст внутри свойства *activity.text* представляет собой само упоминание (может быть пустым или иметь значение NULL). |
 
@@ -71,20 +71,20 @@ entity = [mention];
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-| type | Тип сущности (Place) |
+| type | Тип сущности (Place). |
 | Адрес | Описание или почтовый адрес объекта (будущее) |
 | Географические | GeoCoordinates |
 | HasMap | URL-адрес карты или объект map (будущее) |
-| ИМЯ | Название места |
+| ИМЯ | Название расположения. |
 
 Объект geoCoordinates содержит следующие свойства.
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-| type | Тип сущности (GeoCoordinates) |
-| ИМЯ | Название места |
-| Долгота | Долгота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
-| Долгота | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
+| type | Тип сущности (GeoCoordinates). |
+| ИМЯ | Название расположения. |
+| Долгота | Долгота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
+| Долгота | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
 | Elevation | Высота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 
 Данный пример кода показывает, как добавить упоминание сущности в коллекцию.
@@ -120,7 +120,7 @@ entity = [place];
 
 [!code-csharp[examine entity using dynamic keyword](includes/code/dotnet-create-messages.cs#examineEntity1)]
 
-В этом примере кода показано, как использовать строго типизированный класс для обработки объекта в свойстве `Entities` сообщения:
+В этом примере кода показано, как использовать строго типизированный класс для обработки объекта в свойстве `Entities` сообщения.
 
 [!code-csharp[examine entity using typed class](includes/code/dotnet-create-messages.cs#examineEntity2)]
 
@@ -226,7 +226,7 @@ if(context.activity.type === 'message'){
 
 ## <a name="messagereaction"></a>messageReaction
 
-Некоторые каналы отправляют действия реакции на сообщение боту, когда пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Like". Свойство reply toId будет указывать на которое действие отреагировал пользователь.
+Некоторые каналы отправляют действия реакции на сообщение боту, когда пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Like". Свойство replyToId будет указывать, на которое действие отреагировал пользователь.
 
 Действию message reaction может соответствовать любое количество типов реакции сообщений, которые определены в канале. Например, канал может отправлять тип реакции "Like" или "PlusOne".
 

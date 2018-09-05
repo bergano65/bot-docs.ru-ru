@@ -7,18 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 129c3a2b92297980e6b5e209f6e7f400a854d3a1
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515074"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928382"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="bot-builder-sdk-for-net-samples"></a>Примеры для пакета SDK Bot Builder для .NET
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label-v3.md)]
+::: moniker range="azure-bot-service-3.0"
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK Bot Builder для .NET. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями.
 
@@ -89,10 +89,10 @@ cd BotBuilder-Samples
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-# <a name="bot-builder-sdk-v4-net-samples"></a>Примеры для пакета SDK Bot Builder версии 4 для .NET
+
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK Bot Builder для .NET. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. 
+В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK версии 4 для Bot Builder для .NET. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. 
 
 Примечание. Пакет SDK версии 4 находится в активной разработке, поэтому его следует использовать только для экспериментов. 
 

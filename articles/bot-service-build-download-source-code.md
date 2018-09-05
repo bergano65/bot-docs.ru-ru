@@ -1,5 +1,5 @@
 ---
-title: Скачивание и повторное развертывание исходного кода для службы Azure Bot | Документация Майкрософт
+title: Скачивание и повторное развертывание исходного кода бота | Документация Майкрософт
 description: Узнайте, как скачать и опубликовать службу Azure Bot.
 keywords: скачать исходный код, повторно развернуть, развернуть, ZIP-файл, опубликовать
 author: v-ducvo
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/08/2018
-ms.openlocfilehash: 6d76388712ffeff94c56ba89b4bf4f4831caf45c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b77e096d28f51f605db9c49d36e796553f9293ef
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305822"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756412"
 ---
-# <a name="download-and-redeploy-bot-service-source-code"></a>Скачивание и повторное развертывание исходного кода службы Azure Bot
+# <a name="download-and-redeploy-bot-source-code"></a>Скачивание и повторное развертывание исходного кода бота
 
 Служба Azure Bot позволяет скачивать весь исходный проект для бота. Это позволяет работать с ботом локально, используя интерфейс IDE по своему усмотрению. Закончив внесение изменений, можно опубликовать изменения в Azure. 
 

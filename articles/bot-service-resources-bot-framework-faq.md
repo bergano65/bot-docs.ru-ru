@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: e59f9b10686b10ae821b8c4bf259a1fc301ac702
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/28/2018
+ms.openlocfilehash: 63aa65e2591d9f98d763863d8d4d56cd0df185ea
+ms.sourcegitcommit: f667ce3f1635ebb2cb19827016210a88c8e45d58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301224"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43142430"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
@@ -50,13 +50,15 @@ Bot Framework предназначен для создания, подключе
 
 Для предоставления службы ввода-вывода Bot Framework передает сообщения и содержимое сообщения (включая идентификатор) из используемой службы чатов боту.
 
+### <a name="can-i-host-my-bot-on-my-own-servers"></a>Могу ли я разместить бот на своих серверах?
+Да. Вы можете разместить свой бот в любом расположении в Интернете. Это можно сделать на своих серверах, а также в Azure или любом другом центре обработки данных. Нужно только, чтобы бот предоставлял общедоступную конечную точку HTTPS.
+
 ### <a name="how-do-you-ban-or-remove-bots-from-the-service"></a>Как вы блокируете или удаляете боты из службы?
 
 Пользователи могут сообщить о некорректно работающем боте с помощью карточки контакта бота в каталоге. Разработчики должны соблюдать условия предоставления услуг Майкрософт, чтобы участвовать в предоставлении службы.
 
-### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-services"></a>Какие конкретные URL-адреса нужно добавить в список разрешений в моем корпоративном брандмауэре для доступа к службам ботов?
-
-Необходимо добавить в список разрешений следующие URL-адреса в корпоративном брандмауэре:
+### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-framework-services"></a>Какие именно URL-адреса нужно добавить в список разрешений в моем корпоративном брандмауэре для доступа к службам Bot Framework?
+При наличии брандмауэра, который блокирует исходящий трафик, перенаправляемый от бота в Интернет, нужно добавить в список разрешений этого брандмауэра следующие URL-адреса:
 - login.botframework.com (проверка подлинности бота);
 - login.microsoftonline.com (проверка подлинности бота);
 - westus.api.cognitive.microsoft.com (для интеграции Luis.ai NLP);
@@ -64,6 +66,18 @@ Bot Framework предназначен для создания, подключе
 - cortanabfchanneleastus.azurewebsites.net (канал Кортаны);
 - cortanabfchannelwestus.azurewebsites.net (канал Кортаны);
 - *.botFramework.com (каналы).
+
+### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Можно ли заблокировать весь трафик, перенаправляемый в бот, кроме трафика от службы Bot Connector?
+Нет. Такое добавление IP-адресов или DNS в список разрешений непрактично. Служба Bot Framework Connector размещена в центрах обработки данных Azure по всему миру, и список IP-адресов Azure постоянно меняется. Добавление в список разрешений определенных IP-адресов будет эффективно только на один день, так как IP-адреса Azure меняются.
+ 
+### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>Какие есть способы защиты от клиентов, олицетворяющих службы Bot Framework Connector?
+1. Маркер безопасности, который указан в каждом запросе к боту содержит закодированный URL-адрес службы (ServiceUrl). Это означает, что даже если злоумышленник получит доступ к маркеру, он не сможет перенаправить диалог на новый URL-адрес службы. Это реализовано во всех пакетах SDK и описано в наших [справочных материалах по аутентификации](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector).
+
+2. Если входящий маркер отсутствует или имеет неправильный формат, пакет SDK для Bot Framework не создаст маркер в ответ. Это позволяет ограничить ущерб, если бот настроен неправильно.
+3. В боте вы можете вручную проверить, указан ли параметр ServiceUrl в маркере. В результате бот станет более уязвимым, если топология службы изменится. То есть это возможно, но не рекомендуется.
+
+
+Обратите внимание, что это касается исходящих подключений к Интернету из бота. Списка IP-адресов или DNS-имен, которые служба Bot Framework Connector будет использовать для обращения к боту, нет. Добавление IP-адресов в список разрешений не поддерживается.
 
 ## <a name="rate-limiting"></a>Ограничение частоты
 ### <a name="what-is-rate-limiting"></a>Что являет собой ограничения частоты?

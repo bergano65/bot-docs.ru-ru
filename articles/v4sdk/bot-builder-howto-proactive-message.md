@@ -1,5 +1,5 @@
 ---
-title: Использование упреждающего обмена сообщениями | Документация Майкрософт
+title: Отправка упреждающих сообщений | Документация Майкрософт
 description: Узнайте, как обмениваться упреждающими сообщениями с ботом.
 keywords: упреждающее сообщение
 author: jonathanfingold
@@ -9,14 +9,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd53a897d9847432fd337402d40edfcd6f4ff061
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c22ce6a35d4d49506360a78a439f15137c429d9d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305726"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905138"
 ---
-# <a name="how-to-use-proactive-messaging"></a>Как использовать упреждающий обмен сообщениями
+# <a name="send-proactive-messages"></a>Отправка упреждающих сообщений 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
 
 Часто боты отправляют _реактивные сообщения_, но бывают случаи, когда необходимо иметь возможность отправлять [упреждающие сообщения](bot-builder-proactive-messages.md). 
 
@@ -120,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Задание, которое запускается — это простой таймер на 5 секунд, который затем отправляет упреждающее сообщение.
 - Вызов метода продолжения общения адаптера создает новое включение, инициированное ботом.
-- Это включение имеет собственный контекст, из которого извлекаются сведения о состоянии.
+- Эта реплика содержит собственный [контекст](bot-builder-concept-activity-processing.md#turn-context), из которого извлекаются сведения о состоянии.
 - Этот контекст используется для отправки упреждающего сообщения пользователю.
 
 

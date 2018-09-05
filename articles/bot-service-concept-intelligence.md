@@ -1,5 +1,5 @@
 ---
-title: Добавление интеллекта ботам с помощью Cognitive Services | Документация Майкрософт
+title: Microsoft Cognitive Services | Документация Майкрософт
 description: Узнайте, как добавить ботам искусственный интеллект с помощью Microsoft Cognitive Services, чтобы сделать их более полезными и привлекательными.
 keywords: распознавание языка, извлечение знаний, распознавание речи, поиск в Интернете
 author: RobStand
@@ -8,14 +8,14 @@ manager: rstand
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/17/2017
-ms.openlocfilehash: 168e538720423721a21b720b811d559d8c811adb
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 85b3c86582ce1d653159e0d36516b4a90f5a3220
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574580"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756380"
 ---
-# <a name="add-intelligence-to-bots-with-cognitive-services"></a>Добавление интеллекта ботам с помощью Cognitive Services
+# <a name="cognitive-services"></a>Cognitive Services
 
 Microsoft Cognitive Services позволяет использовать коллекцию мощных алгоритмов ИИ, разработанных экспертами в области компьютерного зрения, речи, обработки естественного языка, извлечения знаний и поиска в Интернете. Эти службы упрощают множество задач на основе ИИ, что способствует быстрому добавлению новейших интеллектуальных технологий для ботов с помощью всего лишь нескольких строк кода. API интегрируются в большинство современных языков и платформ. API также постоянно совершенствуются, учатся и становятся умнее, поэтому опыт всегда обновляется. 
 

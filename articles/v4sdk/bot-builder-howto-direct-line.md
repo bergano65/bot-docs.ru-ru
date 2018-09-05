@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ac96e35763d690c91e6584ff9a840b490e0a32cd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 23380231c15c40875f78921f72bcf9d57effb3bf
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300910"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905234"
 ---
-# <a name="how-to-create-a-direct-line-bot-and-client"></a>Создание бота и клиента Direct Line
+# <a name="create-a-direct-line-bot-and-client"></a>Создание бота и клиента Direct Line
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Боты Microsoft Bot Framework для Direct Line могут работать с пользовательским клиентом вашей собственной разработки. Боты Direct Line очень похожи на обычные. Им просто не нужно использовать предоставленные каналы.
 
@@ -189,9 +191,6 @@ namespace DirectLineBotSample
                     break;
 
                 case ActivityTypes.Typing:
-                    break;
-
-                case ActivityTypes.Ping:
                     break;
 
                 case ActivityTypes.DeleteUserData:
