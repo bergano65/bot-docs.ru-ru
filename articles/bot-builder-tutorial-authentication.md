@@ -8,13 +8,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 37189bb9efbee5a2ad5f40f58106d4d85eda4473
+ms.sourcegitcommit: bff936a6a3dd5b1bd3ddfeed8bd1023e52929f08
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905915"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312478"
 ---
+# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 В этом руководстве используются функции бота проверки подлинности службы Azure Bot. Они упрощают разработку бота, который выполняет проверку подлинности пользователей в различных поставщиках удостоверений, например Azure AD (Azure Active Directory), GitHub, Uber и т. д. Также эти обновления помогают улучшить взаимодействие с пользователем путем устранения _проверки шифра_ для некоторых клиентов.
 
 До этого бот должен включать контроллеры OAuth и ссылки для входа, хранить целевые идентификаторы и секреты клиента и выполнять управление токенами пользователей.
