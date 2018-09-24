@@ -1,9 +1,4 @@
 # [Управление ботом](../bot-service-manage-overview.md)
-# Создание
-## [Изменение бота в онлайн-редакторе кода](../bot-service-build-online-code-editor.md)
-## [Скачивание и повторное развертывание исходного кода бота](../bot-service-build-download-source-code.md)
-## [Set up continuous deployment](../bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
-# [Тестирование в веб-чате](../bot-service-manage-test-webchat.md)
 # [Аналитика бота](../bot-service-manage-analytics.md)
 # Каналы
 ## [Подключение бота к каналам](../bot-service-manage-channels.md)
@@ -12,9 +7,8 @@
 ## [Skype для бизнеса](../bot-service-channel-connect-skypeforbusiness.md)
 ## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Веб-чат.
-### [Подключение бота к веб-чату](../bot-service-channel-connect-webchat.md)
-### [Включение распознавания речи в веб-чате](../bot-service-channel-connect-webchat-speech.md)
+## [Подключение бота к веб-чату](../bot-service-channel-connect-webchat.md)
+## [Включение распознавания речи в веб-чате](../bot-service-channel-connect-webchat-speech.md)
 ## [Электронная почта](../bot-service-channel-connect-email.md)
 ## [GroupMe](../bot-service-channel-connect-groupme.md) 
 ## [Facebook](../bot-service-channel-connect-facebook.md) 
@@ -22,10 +16,7 @@
 ## [Slack](../bot-service-channel-connect-slack.md) 
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
-## [Предварительный просмотр функций бота](../bot-service-channel-inspector.md)
 # [Настройка параметров](../bot-service-manage-settings.md)
 # [Настройка подготовки речи](../bot-service-manage-speech-priming.md)
 # [Регистрация бота с помощью службы Azure Bot](../bot-service-quickstart-registration.md)
 # [Перенос бота](../bot-service-migrate-bot.md)
-# [Развертывание бота в Azure](../bot-builder-howto-deploy-azure.md)
-
