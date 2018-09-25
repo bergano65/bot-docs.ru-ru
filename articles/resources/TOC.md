@@ -1,3 +1,12 @@
+# Корпоративный шаблон
+## [Введение](../v4sdk/bot-builder-enterprise-template-overview.md)
+## [Обзор](../v4sdk/bot-builder-enterprise-template-overview-detail.md)
+## [Создание проекта](../v4sdk/bot-builder-enterprise-template-create-project.md)
+## [Настройка шаблона](../v4sdk/bot-builder-enterprise-template-customize.md)
+## [Развертывание шаблона](../v4sdk/bot-builder-enterprise-template-deployment.md)
+## [Аналитика в Application Insights](../v4sdk/bot-builder-enterprise-template-powerbi.md)
+# Пользовательский помощник
+## [Обзор](../v4sdk/bot-builder-custom-assistant-introduction.md)
 # [Часто задаваемые вопросы](../bot-service-resources-bot-framework-faq.md)
 # [Получение поддержки](../bot-service-resources-links-help.md)
 # [Руководство по идентификаторам](../bot-service-resources-identifiers-guide.md)
