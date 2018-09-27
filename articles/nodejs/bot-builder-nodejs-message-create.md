@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 804081e52a03a27da418f549f0fadb6dc8bca52b
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: ebe95791d795b0117da34cc0352847c5f27f837c
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905678"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707300"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -68,8 +68,6 @@ session.send(customMessage);
 В случаях, когда объект `session` не используется, можно применить метод `bot.send`, чтобы отправить форматированное сообщение пользователю.
 
 Свойство `textFormat` сообщения может использоваться для указания формата текста. Свойству `textFormat` может быть присвоено значение **plain**, **markdown** или **xml**. Значение `textFormat` по умолчанию — **markdown**. 
-
-Список широко поддерживаемого форматирования текста приведен в разделе [Форматирование текста](../bot-service-channel-inspector.md#text-formatting). Чтобы убедиться, что функции, которые вы хотите использовать, поддерживаются конечным каналом, используйте предварительный просмотр этих функций с помощью [Channel Inspector](../bot-service-channel-inspector.md).
 
 ## <a name="message-property"></a>Свойство Message
 

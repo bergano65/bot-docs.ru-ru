@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02c6cf56a0c1161fa0393880810c1481c5eb2461
-ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
+ms.openlocfilehash: acf119a05d4c9f37b74c4fcaf2ad944978504560
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914634"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707250"
 ---
 # <a name="add-input-hints-to-messages"></a>Добавление подсказок ввода к сообщениям
 
@@ -122,3 +122,4 @@ await context.sendActivity(basicMessage);
 - Если бот отправляет запрос, подсказка для ввода в сообщении укажет, что бот **ожидает ввода данных**.</li>
 - Если бот отправляет одно сообщение, подсказка для ввода в сообщении укажет, что бот **принимает ввод данных**.</li>
 - Если бот отправляет ряд последовательных сообщений, подсказка для ввода во всех сообщениях, кроме последнего в серии, укажет, что бот **игнорирует ввод данных**, а подсказка для ввода в последнем сообщении в серии укажет, что бот **принимает ввод данных**.
+

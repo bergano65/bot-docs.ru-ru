@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2fbff9c6d7fe1e06fa87e5b2695056dbc1414570
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 62088ecdf2f8402ec5456eea758f5db994de0cf9
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306358"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707320"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -23,8 +23,6 @@ ms.locfileid: "39306358"
 Текст сообщения можно форматировать с помощью **plain**, **markdown** или **xml**. Формат по умолчанию для свойства `textFormat` — **markdown**, который интерпретирует текст с использованием стандартов форматирования Markdown. Уровень поддержки формата текста меняется в зависимости от каналов. Чтобы узнать, поддерживается ли функция, которую вы хотите использовать, на целевом канале, просмотрите функцию с помощью [Channel Inspector][ChannelInspector]. 
 
 Свойство `textFormat` объекта [Действие][Activity] может использоваться для указания формата текста. Например, чтобы создать простое сообщение, которое содержит только обычный текст, установите свойству `textFormat` объекта [Действие][Activity] значение **plain**, свойству `text` — значение содержимого сообщения, а свойству `locale` — языковой стандарт отправителя. 
-
-Список широко поддерживаемого форматирования текста приведен в разделе [Форматирование текста](../bot-service-channel-inspector.md#text-formatting).
 
 ## <a name="attachments"></a>Вложения
 
@@ -56,7 +54,7 @@ ms.locfileid: "39306358"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Preview bot features with the Channel Inspector][ChannelInspector] (Предпросмотр функций бота с помощью Channel Inspector)
+- [Предварительный просмотр компонентов с помощью Channel Inspector][ChannelInspector]
 - [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md)

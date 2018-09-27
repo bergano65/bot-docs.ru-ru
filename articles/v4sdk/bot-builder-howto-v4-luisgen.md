@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07f4ad7d53c456de53be196977458a3d8b03c6f0
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 87ab8d3ceb872cdb0342458b24a9756ccb710fb6
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906198"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706990"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>Извлечение намерений и сущностей с помощью LUISGen
 
@@ -23,7 +23,7 @@ ms.locfileid: "42906198"
 Кроме распознавания намерений, приложение LUIS умеет извлекать сущности, то есть наиболее важные слова для выполнения запроса пользователя. Например, в сценарии предварительного заказа столика в ресторане приложение LUIS может извлечь из сообщения пользователя такие данные, как размер группы, дата резервирования или расположение ресторана. 
 
 
-Вы можете заранее создать классы с помощью [средства LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/LUISGen), чтобы упростить извлечение сущностей из LUIS в коде бота.
+Вы можете заранее создать классы с помощью [средства LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen), чтобы упростить извлечение сущностей из LUIS в коде бота.
 
 В командной строке Node.js установите `luisgen` в каталог, доступный через переменную глобального пути.
 ```

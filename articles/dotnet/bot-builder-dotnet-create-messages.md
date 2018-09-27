@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c35e651f674d65728ac93a815cc7116515790f53
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574550"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707880"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -32,8 +32,6 @@ ms.locfileid: "39574550"
 [!code-csharp[Set message properties](../includes/code/dotnet-create-messages.cs#setBasicProperties)]
 
 Свойство `TextFormat` сообщения может использоваться для указания формата текста. Свойству `TextFormat` может быть присвоено значение **plain**, **markdown** или **xml**. Значение `TextFormat` по умолчанию — **markdown**. 
-
-Список широко поддерживаемого форматирования текста приведен в разделе [Форматирование текста](../bot-service-channel-inspector.md#text-formatting). Чтобы убедиться, что функции, которые вы хотите использовать, поддерживаются конечным каналом, используйте предварительный просмотр этих функций с помощью [Channel Inspector](../bot-service-channel-inspector.md).
 
 ## <a name="attachments"></a>Вложения
 

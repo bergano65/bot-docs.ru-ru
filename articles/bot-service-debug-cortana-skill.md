@@ -7,14 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/18
-ms.openlocfilehash: 25474f821d64ea50442d9777d8f891124eb27573
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: ceeb854ace1388b6e0435aacc3acf9027763ee73
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305071"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707970"
 ---
 # <a name="test-a-cortana-skill"></a>Тестирование навыка Кортаны
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
 Если вы создали навык Кортаны с помощью пакета SDK для Bot Builder, вы можете его протестировать путем вызова его из Кортаны. Приведенные ниже инструкции помогут выполнить шаги, необходимые для проверки навыка Кортаны.
 
@@ -83,7 +86,6 @@ ms.locfileid: "39305071"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны)
-* [Предварительный просмотр компонентов с помощью Channel Inspector](bot-service-channel-inspector.md)
 
 [CortanaGetStarted]: /cortana/getstarted
 
