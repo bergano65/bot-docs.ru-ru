@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 5b510187f85a5384e976f239bc72c7aabf47f1cb
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39306495"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404080"
 ---
 # <a name="design-knowledge-bots"></a>Проектирование ботов базы знаний
 
@@ -52,7 +52,7 @@ ms.locfileid: "39306495"
 
 Обработав входные данные пользователя на каждом шаге и представив соответствующие параметры, бот направляет пользователям информацию, которую они ищут. Когда бот предоставит эту информацию, он может даже дать рекомендации относительно более эффективных способов поиска подобной информации в будущем. 
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/Training.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/Training.png)
 
 ### <a name="azure-search"></a>Поиск Azure
 
@@ -136,7 +136,9 @@ ms.locfileid: "39306495"
 
 ## <a name="sample-code"></a>Пример кода
 
-- Пример, в котором показано, как создать базовый бот базы знаний с помощью пакета SDK Bot Builder для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-KnowledgeBot" target="_blank">примере бота базы знаний</a> в репозитории GitHub. 
-- Пример, который показывает, как создавать более сложные боты базы знаний, используя пакет SDK Bot Builder для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">примере бота с поддержкой поиска</a> в репозитории GitHub.
+- Пример, в котором показано, как создать базовый бот базы знаний с помощью пакета SDK Bot Builder для .NET, см. в <a href="https://aka.ms/qna-with-appinsights" target="_blank">примере бота базы знаний</a> в репозитории GitHub. 
+<!-- TODO: Do not have a current bot sample to work with this
+- For a sample that shows how to create more complex knowledge bots using the Bot Builder SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
+-->
 
 [qnamakerTemplate]: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle

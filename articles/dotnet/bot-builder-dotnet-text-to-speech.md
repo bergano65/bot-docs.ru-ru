@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a8bc0b68b3dfa63ba4e91103c57d4fac60ddca79
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 55663bb493808d5efce2f25699f9df5aca4db968
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39575000"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447339"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -58,7 +58,7 @@ ms.locfileid: "39575000"
 
 ## <a name="sample-code"></a>Пример кода 
 
-Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Builder для .NET, представлен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-RollerSkill" target="_blank">примере Roller Skill</a> на сайте GitHub.
+Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Builder для .NET, представлен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">примере Roller Skill</a> на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

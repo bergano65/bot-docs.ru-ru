@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 2/13/2018
-ms.openlocfilehash: 60a3796e255611ff09d5418cdeaa6f363ad8da15
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 3bf6bef805e4a86b6e070693660eb5cb20468ffd
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42904970"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404010"
 ---
 # <a name="create-task-automation-bots"></a>Создание ботов с автоматизацией задач
 
@@ -92,18 +92,20 @@ ms.locfileid: "42904970"
 
 ## <a name="bot-app-or-website"></a>Бот, приложение или веб-сайт?
 
-У вас может возникнуть вопрос: если бот с автоматизацией задач напоминает приложение или веб-сайт, тогда почему бы просто не создать приложение или веб-сайт? В зависимости от конкретного сценария, создание приложения или веб-сайта вместо бота может быть вполне разумным выбором. Вы даже можете внедрить бот в приложение с помощью [API Direct Line для Bot Framework][directLineAPI] или <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">элемента управления "Веб-чат"</a>. Реализация бота в контексте приложения обеспечивает преимущества обоих компонентов: полнофункциональное приложение и возможность общения, "все в одном". 
+У вас может возникнуть вопрос: если бот с автоматизацией задач напоминает приложение или веб-сайт, тогда почему бы просто не создать приложение или веб-сайт? В зависимости от конкретного сценария, создание приложения или веб-сайта вместо бота может быть вполне разумным выбором. Вы даже можете внедрить бот в приложение с помощью [API Direct Line для Bot Framework][directLineAPI] или <a href="https://aka.ms/BotFramework-WebChat" target="_blank">элемента управления "Веб-чат"</a>. Реализация бота в контексте приложения обеспечивает преимущества обоих компонентов: полнофункциональное приложение и возможность общения, "все в одном". 
 
 Однако во многих случаях создание приложения или веб-сайта может быть сложнее и дороже, чем создание бота. Приложение или веб-сайт часто должны поддерживать несколько клиентов и платформ, их упаковка и развертывание может быть рутинным и длительным процессом, а возможность пользователя загрузить и установить приложение не обязательно является идеальным решением. По этим причинам бот может часто предоставлять гораздо более простой способ решения проблемы. 
 
 Кроме того, боты легко развертываются и расширяются. Например, разработчик может добавить естественный язык и возможности для работы с речью в бот сброса паролей, чтобы его можно было получить посредством голосового звонка, или он может добавить поддержку текстовых сообщений. Компания может настраивать киоски по всему зданию и внедрять бот сброса пароля в это взаимодействие.
 
 ::: moniker range="azure-bot-service-3.0"
-## <a name="sample-code"></a>Пример кода
+<!-- TODO: SimpleTaskAutomation no longer exists
+## Sample code
 
-Полный пример, в котором показано, как реализовывать автоматизацию простой задачи с помощью пакета SDK Bot Builder для .NET, см. в статье <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation Bot Sample</a> (Пример бота для автоматизации простой задачи) в GitHub.
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for .NET, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
 
-Полный пример, в котором показано, как реализовывать автоматизацию простой задачи с помощью пакета SDK Bot Builder для Node.js, см. в статье <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation Sample</a> (Пример автоматизации простой задачи) в GitHub.
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for Node.js, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
+-->
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

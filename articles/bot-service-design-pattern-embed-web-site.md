@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 6aae4e9f6cb6a4e892b8036eafb9489dfaedbb36
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: a19145c446c74468cef3ae5d9abf6e90e91196ff
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795100"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47403981"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Внедрение бота на веб-сайт
 
@@ -30,7 +30,7 @@ ms.locfileid: "42795100"
 
 ## <a name="open-source-web-control"></a>Веб-элемент управления с открытым кодом
 
-<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> создан на базе ReactJS и использует [API для Direct Line][directLineAPI] для взаимодействия с Bot Framework. Элемент управления веб-чатом предоставляет пустой холст для реализации веб-чата, его возможности, а также дает полный контроль над его поведением. 
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> создан на базе ReactJS и использует [API для Direct Line][directLineAPI] для взаимодействия с Bot Framework. Элемент управления веб-чатом предоставляет пустой холст для реализации веб-чата, его возможности, а также дает полный контроль над его поведением. 
 
 Механизм *обратного канала* обеспечивает прямое взаимодействие веб-страницы, на которой размещается элемент управления, с ботом способом, полностью невидимым для пользователя. Эта возможность позволяет использовать ряд полезных сценариев: 
 
@@ -46,7 +46,7 @@ ms.locfileid: "42795100"
 
 ## <a name="sample-code"></a>Пример кода
 
-<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> доступен на сайте GitHub. Дополнительные сведения о том, как можно реализовать механизм обратного канала с помощью элемента управления веб-чатом с открытым кодом и пакета SDK Bot Builder для Node.js, см. в статье [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Использование механизма обратного канала).
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> доступен на сайте GitHub. Дополнительные сведения о том, как можно реализовать механизм обратного канала с помощью элемента управления веб-чатом с открытым кодом и пакета SDK Bot Builder для Node.js, см. в статье [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Использование механизма обратного канала).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

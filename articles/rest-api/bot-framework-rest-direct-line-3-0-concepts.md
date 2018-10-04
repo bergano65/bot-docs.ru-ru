@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: ba5939faf95546b854703978bf7f512e7665eb3b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 09/28/2018
+ms.openlocfilehash: 3e9756f08690820950d0f6d0b8128521cb94f60b
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306211"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447379"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Основные понятия Direct Line API 3.0
 
@@ -28,7 +28,7 @@ C помощью API для Direct Line вы можете реализовать
 
 ## <a name="sending-messages"></a>Отправка сообщений
 
-С помощью Direct Line API 3.0 клиент может отправлять боту сообщения, выполняя запросы `HTTP POST`. В каждом запросе клиент может отправить одно сообщение. Дополнительные сведения см. в статье [Отправка действия боту](bot-framework-rest-direct-line-3-0-send-activity.md).
+С помощью Direct Line API 3.0 клиент может отправлять боту сообщения, выполняя запросы `HTTP POST`. В каждом запросе клиент может отправить одно сообщение. Дополнительные сведения см. в руководстве по [отправке действия боту](bot-framework-rest-direct-line-3-0-send-activity.md).
 
 ## <a name="receiving-messages"></a>Получение сообщений
 
@@ -46,16 +46,20 @@ Bot Framework предоставляет клиентские библиотек
 
 Вместо использования клиентской библиотеки C# или Node.js вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://docs.botframework.com/en-us/restapi/directline3/swagger.json" target="_blank">файл Swagger для Direct Line API 3.0</a>.
 
+::: moniker range="azure-bot-service-3.0"
+
 ### <a name="sample-code"></a>Пример кода
 
-Репозиторий GitHub <a href="https://github.com/Microsoft/BotBuilder-Samples" target="_blank">BotBuilder-Samples</a> содержит несколько примеров, в которых показано, как с помощью C# и Node.js. использовать Direct Line API 3.0.
+Репозиторий GitHub <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> содержит несколько примеров, в которых показано, как с помощью C# и Node.js. использовать Direct Line API 3.0.
 
 | Образец | Язык | ОПИСАНИЕ |
 |----|----|----|
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine" target="_blank">Пример бота Direct Line</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLineWebSockets" target="_blank">Образец бота Direct Line (использующего клиент WebSockets)</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-DirectLine" target="_blank">Пример бота Direct Line</a> | JavaScript | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-DirectLineWebSockets" target="_blank">Пример бота Direct Line (использующего клиент WebSockets)</a> | JavaScript | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Пример бота Direct Line</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Пример бота Direct Line (использующего клиент WebSockets)</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLine" target="_blank">Пример бота Direct Line</a> | JavaScript | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLineWebSockets" target="_blank">Пример бота Direct Line (использующего клиент WebSockets)</a> | JavaScript | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |
+
+::: moniker-end
 
 ### <a name="web-chat-control"></a>Элемент управления веб-чата 
 

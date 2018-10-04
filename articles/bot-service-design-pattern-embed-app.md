@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/15/2018
-ms.openlocfilehash: 68d2d4f7a19aecfcb2c630e5e9e55ca5b8a21d89
-ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
+ms.openlocfilehash: 53148b178b937fdee5bde9a47ef016eedbb92da4
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42756639"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47403900"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Внедрение бота в приложение
 
@@ -62,9 +62,11 @@ public class WebPage : ContentPage
 
 ![Обратный канал](~/media/bot-service-design-pattern-embed-app/xamarin-apps.png)
 
-## <a name="sample-code"></a>Пример кода
+<!-- TODO: No sample bot available
+## Sample code
 
-Полный пример, в котором показано, как создать кроссплатформенное мобильное приложение, выполняющее бот (как описано в этой статье), см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-BotInApps" target="_blank">примере бота в приложениях</a> на сайте GitHub.
+For a complete sample that shows how to create a cross-platform mobile app that runs a bot (as described in this article), see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-BotInApps" target="_blank">Bot in Apps sample</a> in GitHub.
+-->
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
