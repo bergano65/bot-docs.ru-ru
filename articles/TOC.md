@@ -19,7 +19,6 @@
 ## [Приветствие для пользователя](v4sdk/bot-builder-welcome-user.md)
 ## [Распознавание речи](v4sdk/bot-builder-concept-luis.md)
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
-## [Разработка с использованием построителя ботов](bot-builder-overview-getstarted.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [Основные сценарии для ботов](bot-service-scenario-overview.md)
 ### [Бот для коммерческих операций](bot-service-scenario-commerce.md)
