@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 07/13/2018
-ms.openlocfilehash: 5e7fc6fa4fbce9b13d74d5dc7877de44840c51e6
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 73cf6cedecd9acaef828bd41f4fccdaad2ae5731
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352883"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707170"
 ---
 # <a name="debug-a-bot-service-bot"></a>Отладка бота службы Azure Bot
 
@@ -27,7 +27,7 @@ ms.locfileid: "39352883"
 
 Перед отладкой бота JavaScript, необходимо выполнить следующие задачи.
 
-- Загрузите исходный код для бота (из Azure), как описано в разделе [Download bot source code](bot-service-build-download-source-code.md?#download-bot-source-code) (Загрузка исходного кода бота).
+- Скачайте исходный код для бота (из Azure), как описано в статье [Скачивание и повторное развертывание исходного кода бота](bot-service-build-download-source-code.md).
 - Скачайте и установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
 - Скачайте и установите редактор кодов <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>.
 
@@ -72,7 +72,7 @@ ms.locfileid: "39352883"
 
 Перед отладкой бота C# для веб-приложения необходимо выполнить следующие задачи.
 
-- Загрузите исходный код для бота (из Azure), как описано в разделе [Download bot source code](bot-service-build-download-source-code.md?#download-bot-source-code) (Загрузка исходного кода бота).
+- Скачайте исходный код для бота (из Azure), как описано в статье [Скачивание и повторное развертывание исходного кода бота](bot-service-build-download-source-code.md).
 - Скачайте и установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
 - Загрузите и установите <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> (Community Edition или более поздней версии).
 
@@ -146,13 +146,6 @@ ms.locfileid: "39352883"
 Кроме того, можно просмотреть подробные сведения журнала в окне консоли.
 
 ![Окно консоли](~/media/bot-service-debug-bot/csharp-azureservice-debug-debughostlogging.png)
-
-::: moniker-end
-::: moniker range="azure-bot-service-4.0" 
-
-## <a id="debug-csharp-serverless"></a> Отладка ботов Плана потребления функций C\#
-
-Функциональный бот для пакета SDK Bot Builder версии 4 появится в ближайшее время.
 
 ::: moniker-end
 

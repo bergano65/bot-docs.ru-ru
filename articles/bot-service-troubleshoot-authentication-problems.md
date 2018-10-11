@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: a64edda73832f4d3fff49b08b5eaf6792c021ece
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305830"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389663"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
@@ -25,10 +25,10 @@ ms.locfileid: "39305830"
 
 Безопасность бота настраивается с помощью **идентификатора приложения Microsoft** и  **пароля приложения Microsoft**, которые вы получаете при регистрации бота с помощью Bot Framework. Эти значения обычно указаны в файле конфигурации бота и используются для получения маркеров доступа из службы учетной записи Microsoft. 
 
-Если это не сделано, [зарегистрируйте бот](~/bot-service-quickstart-registration.md) для получения **идентификатора приложения Microsoft** и **пароля приложения Microsoft**, его можно использовать для проверки подлинности. 
+Если это не сделано, [разверните бот в Azure](~/bot-builder-howto-deploy-azure.md), чтобы получить **идентификатор** и **пароль приложения Майкрософт**, которые можно использовать для проверки подлинности. 
 
 > [!NOTE]
-> Сведения о том, как найти значения **AppID** и **AppPassword** бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
+> Сведения о том, как найти значения **AppID** и **AppPassword** для развернутого бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
 ## <a name="step-1-disable-security-and-test-on-localhost"></a>Шаг 1. Отключение системы безопасности и тестирование на локальном компьютере
 

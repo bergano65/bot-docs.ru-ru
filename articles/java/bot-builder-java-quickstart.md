@@ -7,30 +7,26 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
-ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
+ms.openlocfilehash: bcfc1c76199d8bc729376bbbfe229b0781eb82ab
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928433"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707240"
 ---
-# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Создание бота с помощью пакета SDK Bot Builder для Java
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
-
-Пакет SDK Bot Builder для Java позволяет разработчикам Java создавать боты привычным способом. Пакет SDK версии 4 предоставляется в режиме предварительной версии. Дополнительные сведения см. в [репозитории GitHub](https://github.com/Microsoft/botbuilder-java) для Java.
-
-> [!NOTE]
-> Сейчас наши примеры кода и документация предназначены для Java версии 1.8.
+# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Создание бота с помощью пакета SDK Bot Builder для Java 
+> [!NOTE] 
+> Пакет SDK версии 4 для Java предоставляется в режиме **предварительной версии**. Дополнительные сведения см. в [репозитории GitHub](https://github.com/Microsoft/botbuilder-java) для Java. Сейчас наши примеры кода и документация предназначены для Java версии 1.8.
 
 ## <a name="getting-started"></a>Приступая к работе
 
-Пакет SDK версии 4 содержит набор [библиотек](https://github.com/Microsoft/botbuilder-java/tree/master/libraries). Чтобы создать библиотеки локально, ознакомьтесь со статьей [Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk) (Создание пакета SDK).
+Пакет SDK версии 4 для Java содержит набор [библиотек](https://github.com/Microsoft/botbuilder-java/tree/master/libraries). Чтобы создать библиотеки локально, ознакомьтесь со статьей [Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk) (Создание пакета SDK).
 
 - Установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
 
-### <a name="create-echobot"></a>Создание бота EchoBot
+## <a name="create-echobot"></a>Создание бота EchoBot
 
 В файл App.java добавьте следующее:
 
@@ -146,23 +142,19 @@ public class App {
 }
 ```
 
-Если вы используете Maven, можете скопировать файл pom.xml из папки примеров в этом репозитории. Запустив исполняемый файл, запустите Bot Framework Emulator.
+Если вы используете Maven, можете скопировать файл pom.xml из папки примеров в этом репозитории. Запустите исполняемый файл. На этом этапе бот выполняется локально.
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
+## <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
 
-На этом этапе бот запускается локально.
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
-1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
+2. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
 
-2. Введите **имя бота** и укажите путь к каталогу, в котором расположен код бота. Файл конфигурации бота будет сохранен по этому пути.
+## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 
-3. Введите `http://localhost:port-number/api/messages` в поле **Endpoint URL** (URL-адрес конечной точки), где *номер порта* соответствует номеру порта в браузере, в котором запущено приложение.
-
-4. Щелкните **Connect** (Подключиться) для подключения к боту. **Идентификатор приложения Microsoft** и **пароль приложения Microsoft** указывать не нужно. Эти поля пока можно оставить пустыми. Вы получите эти сведения позднее при регистрации бота.
-
-### <a name="interact-with-your-bot"></a>Взаимодействие с ботом
-Отправьте боту сообщение "Hi" (Привет). Бот выведет такое же сообщение.
+Отправьте сообщение боту и получите от него сообщение в ответ.
+![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
 
 ## <a name="next-steps"></a>Дополнительная информация
 

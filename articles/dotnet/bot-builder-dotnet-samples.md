@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
-ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
+ms.date: 09/13/2018
+ms.openlocfilehash: 9f80fc551cac2f1994b0d398cd640d2ad3d78e61
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928382"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707380"
 ---
 # <a name="bot-builder-sdk-for-net-samples"></a>Примеры для пакета SDK Bot Builder для .NET
 
@@ -92,17 +92,12 @@ cd BotBuilder-Samples
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK версии 4 для Bot Builder для .NET. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. 
+В примерах для Bot Builder из репозитория демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK для .NET. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. Список примеров и дополнительную информацию см. в файле [сведений](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md).
 
-Примечание. Пакет SDK версии 4 находится в активной разработке, поэтому его следует использовать только для экспериментов. 
-
-Чтобы получить примеры, клонируйте репозиторий GitHub [botbuilder-dotnet](https://github.com/Microsoft/botbuilder-dotnet) с помощью Git.
+Чтобы получить примеры, клонируйте репозиторий GitHub [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) с помощью Git.
 ```cmd
 git clone https://github.com/Microsoft/botbuilder-dotnet.git
-cd botbuilder-dotnet\samples-final
 ```
-Примеры ботов, созданных с помощью пакета SDK Bot Builder для .NET, находятся в каталоге **samples-final**.
-
 
 ::: moniker-end
 

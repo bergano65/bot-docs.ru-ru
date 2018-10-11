@@ -2,62 +2,64 @@
 title: Настройка непрерывного развертывания для службы Bot | Документация Майкрософт
 description: Узнайте, как настроить непрерывное развертывание из системы управления версиями для службы Bot.
 keywords: continuous deployment, publish, deploy, azure portal
-author: v-ducvo
-ms.author: v-ducvo
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 03/08/2018
-ms.openlocfilehash: 596d264c4df72959c71ab353e5038175fc2bed31
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 09/18/2018
+ms.openlocfilehash: 45c89c911106d5b6a1e250f6e6ab3d472c90ab92
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305095"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707990"
 ---
 # <a name="set-up-continuous-deployment"></a>Непрерывное развертывание с использованием GIT в службе приложений Azure
-
-Непрерывное развертывание позволяет разрабатывать бот локально. Непрерывное развертывание удобно, если ваш бот записывается после изменения в систему управления версиями, например **GitHub** или **Visual Studio Team Services**. После записи изменений в исходном репозитории они будут автоматически развернуты в Azure.
+Если ваш код записывается после изменений в **GitHub** или **Azure DevOps (ранее Visual Studio Team Services)**, используйте непрерывное развертывание, чтобы автоматически развертывать изменения в коде из исходного репозитория в Azure. В этом разделе рассматривается настройка непрерывного развертывания с помощью **GitHub** и **Azure DevOps**.
 
 > [!NOTE]
-> После настройки непрерывного развертывания [интерактивный редактор кода](bot-service-build-online-code-editor.md) становится *доступным только для чтения*.
-
-В этом разделе показано, как настроить непрерывное развертывание для **GitHub** и **Visual Studio Team Services**.
+> После настройки непрерывного развертывания интерактивный редактор кода становится *доступным только для чтения*.
 
 ## <a name="continuous-deployment-using-github"></a>Непрерывное развертывание с помощью GitHub
 
 Чтобы настроить непрерывное развертывание с помощью GitHub, сделайте следующее:
 
-1. [Создайте вилку](https://help.github.com/articles/fork-a-repo/) в репозитории GitHub, содержащем код, который вы хотите развернуть в Azure.
-2. На портале Azure перейдите в колонку **Build** (Сборка) своего бота и щелкните **Configure continuous deployment** (Настройка непрерывного развертывания). 
+1. Используйте репозиторий GitHub, содержащий код, который вы хотите развернуть в Azure. Вы можете создать [вилку](https://help.github.com/articles/fork-a-repo/) существующего репозитория или свой собственный репозиторий GitHub и загружать в него соответствующий исходный код.
+2. На [портале Azure](https://portal.azure.com) перейдите к колонке **Сборка** своего бота и щелкните **Configure continuous deployment** (Настройка непрерывного развертывания). 
 3. Щелкните **Настройка**.
    
    ![Настройка непрерывного развертывания](~/media/azure-bot-build/continuous-deployment-setup.png)
 
-4. Нажмите кнопку **Выбор источника** и выберите **GitHub**.
+4. Щелкните **Выбор источника** и выберите **GitHub**.
 
    ![Выбор GitHub](~/media/azure-bot-build/continuous-deployment-setup-github.png)
 
 5. Щелкните **Авторизация**, нажмите кнопку **Авторизовать** и следуйте инструкциям, чтобы предоставить Azure право доступа к своей учетной записи GitHub.
 
-Настройка непрерывного развертывания с помощью GitHub завершена. При фиксации изменений они будут автоматически развернуты в Azure.
+6. Щелкните **Выбор проекта** и выберите проект.
 
-## <a name="continuous-deployment-using-visual-studio"></a>Непрерывное развертывание с помощью Visual Studio
+7. Щелкните **Выбор ветви** и выберите ветвь.
 
-1. В колонке **Build** (Сборка) своего бота щелкните **Configure continuous deployment** (Настройки непрерывного развертывания). 
+8. Нажмите кнопку **ОК**, чтобы завершить настройку.
+
+Настройка непрерывного развертывания с помощью GitHub завершена. При фиксации в репозиторий исходного кода изменения будут автоматически развернуты в службе Azure Bot.
+
+## <a name="continuous-deployment-using-azure-devops"></a>Непрерывное развертывание с помощью Azure DevOps
+
+1. На [портале Azure](https://portal.azure.com) перейдите к колонке **Сборка** своего бота и щелкните **Configure continuous deployment** (Настройка непрерывного развертывания). 
 2. Щелкните **Настройка**.
    
    ![Настройка непрерывного развертывания](~/media/azure-bot-build/continuous-deployment-setup.png)
 
-3. Щелкните **Выбор источника** и выберите **Visual Studio Team Services**.
+3. Щелкните **Выбор источника** и выберите **Visual Studio Team Services**. Обратите внимание, что Visual Studio Team Services теперь называется Azure DevOps Services.
 
    ![Выбор Visual Studio Team Services](~/media/azure-bot-build/continuous-deployment-setup-vs.png)
 
 4. Щелкните **Выбор учетной записи** и выберите учетную запись.
 
 > [!NOTE]
-> Если вы не видите свою учетную запись, убедитесь, что она связана с вашей подпиской Azure.
-> Дополнительные сведения см. в разделе [Связывание учетной записи VSTS с подпиской Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App#linking-your-vsts-account-to-your-azure-subscription).
+> Если вы не видите свою учетную запись, убедитесь, что она связана с вашей подпиской Azure. Чтобы связать свою учетную запись с подпиской Azure, перейдите на портал Azure и откройте **Azure DevOps Services organizations** (Организации Azure DevOps Services). Ранее этот элемент назывался Team Services. Вы увидите список организаций, которые у вас есть в Azure DevOps. Щелкните организацию, где находится исходный код бота, который требуется развернуть. Отобразится кнопка **Подключение к AAD**. Если выбранная вами организация не связана с вашей подпиской Azure, эта кнопка будет активна. Нажмите кнопку, чтобы установить соединение. Установка может занять некоторое время.
 
 5. Щелкните **Выбор проекта** и выберите проект.
 
@@ -69,7 +71,7 @@ ms.locfileid: "39305095"
 
    ![Настройка Visual Studio](~/media/azure-bot-build/continuous-deployment-setup-vs-configuration.png)
 
-Настройка непрерывного развертывания с помощью Visual Studio Team Services завершена. При фиксации изменений они будут автоматически развернуты в Azure.
+Настройка непрерывного развертывания с помощью Azure DevOps завершена. При фиксации изменений они будут автоматически развернуты в Azure.
 
 ## <a name="disable-continuous-deployment"></a>Отключение непрерывного развертывания
 
@@ -80,8 +82,5 @@ ms.locfileid: "39305095"
 1. В колонке **Build** (Сборка) своего бота щелкните **Configure continuous deployment** (Настройки непрерывного развертывания). 
 2. Нажмите кнопку **Отключить** для отключения непрерывного развертывания. Чтобы снова включить непрерывное развертывание, повторите действия, описанные в соответствующем разделе выше.
 
-## <a name="next-steps"></a>Дополнительная информация
-Теперь, когда ваш бот настроен для непрерывного развертывания, протестируйте свой код, используя интерактивный веб-чат.
-
-> [!div class="nextstepaction"]
-> [Тестирование в веб-чате](bot-service-manage-test-webchat.md)
+## <a name="additional-information"></a>Дополнительная информация
+- [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/?view=vsts)

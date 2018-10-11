@@ -7,25 +7,27 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/21/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6458bac5140fae14e8925e7af37aa8ac4ef1f1f5
-ms.sourcegitcommit: 7b5675bbf7f1c2432bfc831ee5d627f6e5659e01
+ms.openlocfilehash: 6b63fe2780c51e57ee16c5e3dba5a83f46566157
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381000"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707286"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Создание бота с помощью пакета SDK Bot Builder для Python
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Пакет SDK Bot Builder для Python — это простая в использовании платформа для разработки ботов. В этом кратком руководстве описывается процесс создания бота и его тестирование с помощью эмулятора Bot Framework. Пакет SDK версии 4 доступен в предварительной версии. Чтобы получить дополнительные сведения, перейдите на страницу Python в [репозитории GitHub](https://github.com/Microsoft/botbuilder-python). 
+>[!NOTE] 
+> Пакет SDK для Python доступен в режиме **предварительной версии**. Чтобы получить дополнительные сведения, перейдите в [репозиторий для Python](https://github.com/Microsoft/botbuilder-python) на сайте GitHub. 
+
+В этом кратком руководстве описывается процесс создания бота и его тестирование с помощью эмулятора Bot Framework. 
 
 ## <a name="pre-requisite"></a>Предварительные требования
 - [Python 3.6.4](https://www.python.org/downloads/); 
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
 
-# <a name="create-a-bot"></a>Создание бота
+## <a name="create-a-bot"></a>Создание бота
 В файле main.py импортируйте следующие стандартные модули:
 
 ```python
@@ -127,20 +129,18 @@ python main.py
 ```
 В окне терминала на локальном компьютере должно отобразиться сообщение "Started http server on localhost:9000".
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
+## <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
 
-После этого запустите эмулятор и подключитесь к боту в эмуляторе:
+После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
+1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
+2. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
 
-1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 
-2. Введите **имя бота** и укажите путь к каталогу, в котором расположен код бота. Файл конфигурации бота будет сохранен по этому пути.
+Отправьте сообщение боту и получите от него сообщение в ответ.
+![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
 
-3. Введите `http://localhost:port-number/api/messages` в поле **Endpoint URL** (URL-адрес конечной точки), где *номер порта* соответствует номеру порта в браузере, в котором запущено приложение.
-
-4. Щелкните **Connect** (Подключиться) для подключения к боту. **Идентификатор приложения Microsoft** и **пароль приложения Microsoft** указывать не нужно. Эти поля пока можно оставить пустыми. Вы получите эти сведения позднее при регистрации бота.
-
-Введите текст **Hello** (Привет) в эмуляторе, и бот вернет текст **You said "Hello"** (Вы сказали: "Привет").
 
 ## <a name="next-steps"></a>Дополнительная информация
 

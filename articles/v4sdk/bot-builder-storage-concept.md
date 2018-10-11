@@ -1,21 +1,18 @@
 ---
-title: Состояние и хранение | Документация Майкрософт
-description: Описывает диспетчер состояния, состояние общения и состояние пользователя в пакете SDK для Bot Builder.
-keywords: Служба LUIS, состояние общения, состояние пользователя, хранилище, диспетчер состояния
-author: DeniseMak
-ms.author: v-demak
-manager: kamrani
-ms.topic: article
-ms.prod: bot-framework
-ms.date: 02/15/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e25ecec3aec1cdebe3b9eae4bff0d3c434cb610b
-ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
+redirect_url: /bot-framework/bot-builder-howto-v4-state
+ms.openlocfilehash: e5da105e32ae748383d376f90afd9aebbf4c7aa5
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42756643"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46708120"
 ---
+<a name="--"></a><!--
+---
+title: Состояние и хранение | Документация Майкрософт description: В этом руководстве описывается диспетчер состояния, состояние общения и состояние пользователя в пакете SDK для Bot Builder.
+keywords: LUIS, conversation state, user state, storage, manage state author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.prod: bot-framework ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="state-and-storage"></a>Состояние и хранение
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -37,30 +34,32 @@ You can also store *user state* that persists after a conversation ends. For exa
 <!-- You should generally avoid saving state using a global variable or function closures.
 Doing so will create issues when you want to scale out your bot. Instead, use the conversation state and user state middleware that the BotBuilder SDK provides --> 
 
+<!--
+## Types of underlying storage
 
-## <a name="types-of-underlying-storage"></a>Типы базового хранилища
+The SDK provides bot state manager middleware to persist conversation and user state. State can be accessed using the bot's context. This state manager can use Azure Table Storage, file storage, or memory storage as the underlying data storage. You can also create your own storage components for your bot.
 
-Пакет SDK предоставляет ПО промежуточного слоя для диспетчера состояния бота, чтобы сохранить общение и состояние пользователя. Доступ к состоянию может осуществляться с помощью контекста бота. Диспетчер состояний может использовать хранилище таблиц Azure, хранилище файлов или хранилище памяти в качестве базового хранилища данных. Можно также создать собственные компоненты хранилища для бота.
-
-Боты, созданные с помощью хранилища таблиц Azure, могут создаваться без учета состояния и масштабируемыми между несколькими вычислительными узлами.
+Bots built using Azure Table Storage can be designed to be stateless and scalable across multiple compute nodes.
 
 > [!NOTE] 
-> Хранилище файлов и памяти не выполняет масштабирование между узлами.
+> File and memory storage won't scale across nodes.
 
-## <a name="writing-directly-to-storage"></a>Запись данных напрямую в хранилище
+## Writing directly to storage
 
-Пакет SDK для Bot Builder также может использоваться для чтения и записи данных напрямую в хранилище, не используя ПО промежуточного слоя или контекст ботов. Это может быть необходимо для данных бота, которые поступают из источника за пределами потока общения бота.
+You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
-Например, предположим, что пользователь запрашивает у бота прогноз погоды. Тогда бот извлекает прогноз для указанной даты, считывая его из внешней базы данных. Содержимое базы данных о погоде не зависит от сведений о пользователе или от контекста общения, поэтому вы можете только читать его напрямую из хранилища, вместо использования диспетчера состояния.  Для дополнительных сведений см. статью [Сохранение данных напрямую в хранилище](bot-builder-howto-v4-storage.md).
+For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 
-## <a name="next-steps"></a>Дополнительная информация
+## Next steps
 
-В следующем разделе мы подробно расскажем о том, как обрабатываются действия и как мы на них отвечаем.
+Next, lets get into how activities are processed, in depth, and how we respond to them.
 
 > [!div class="nextstepaction"]
-> [Обработка действий](bot-builder-concept-activity-processing.md)
+> [Activity Processing](bot-builder-concept-activity-processing.md)
 
-## <a name="additional-resources"></a>Дополнительные ресурсы
+## Additional resources
 
-- [Сохранение состояния с помощью общения и свойств пользователя](bot-builder-howto-v4-state.md)
-- [Save data directly to storage](bot-builder-howto-v4-storage.md) (Сохранение данных напрямую в хранилище)
+- [How to save state](bot-builder-howto-v4-state.md)
+- [How to write directly to storage](bot-builder-howto-v4-storage.md)
+
+-->

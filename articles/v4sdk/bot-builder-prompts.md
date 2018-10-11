@@ -7,26 +7,26 @@ ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 4/10/2018
+ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b238ed510fd1d6fda82734af373f344b0dc28e3
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 27066f76db29a82b4ab9dd75bf5eee01dcce3116
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905368"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389713"
 ---
 # <a name="prompt-users-for-input-using-the-dialogs-library"></a>Создание запросов на ввод данных пользователем с помощью библиотеки диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Часто боты собирают информацию с помощью заданных пользователю вопросов. Можно просто отправить пользователю стандартное сообщение, используя метод **send activity** для [контекста реплик](bot-builder-concept-activity-processing.md#turn-context), чтобы запросить ввод строки. Но пакет SDK для Bot Builder предоставляет библиотеку _диалогов_, которую можно использовать для запроса различных типов информации. В этом разделе описывается использование **запросов** на ввод данных пользователем.
+Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Для его непосредственного выполнения можно использовать метод _отправки действия_ объекта в [контексте реплики](bot-builder-concept-activity-processing.md#turn-context), а затем обработать следующее входящее сообщение как ответ. Однако пакет SDK Bot Builder предоставляет библиотеку **диалогов**, в которой содержатся методы, предназначенные для облегчения постановки вопросов и призванные гарантировать, что ответы соответствуют определенному типу данных или правилам настраиваемой проверки. В этом разделе описано, как достигнуть этого с помощью **запроса** входных данных у пользователя.
 
 В этой статье описывается использование запросов в диалоговом окне. Общие сведения об использовании диалогов см. в разделе [Управление ходом разговора с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="prompt-types"></a>Типы запросов
 
-Библиотека диалоговых окон предлагает несколько различных типов запросов, каждый из которых запрашивает другой тип ответа.
+Библиотека диалогов предлагает много различных типов запросов, каждый из которых возвращает разные типы ответов.
 
 | prompt | ОПИСАНИЕ |
 |:----|:----|
@@ -39,7 +39,7 @@ ms.locfileid: "42905368"
 
 ## <a name="add-references-to-prompt-library"></a>Добавление ссылок в библиотеку запросов
 
-Получить библиотеку **диалоговых окон** можно, добавив пакет **диалоговых окон** к боту. Диалоги рассматриваются в статье об [использовании диалогов для управления простым процессом общения](bot-builder-dialog-manage-conversation-flow.md). Мы же будем использовать их для создания запросов.
+Получить библиотеку **диалогов** можно, добавив пакет **botbuilder-dialogs** в бот. Диалоги рассматриваются в статье об [использовании диалогов для управления простым процессом общения](bot-builder-dialog-manage-conversation-flow.md). Мы же будем использовать их для создания запросов.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -51,23 +51,82 @@ ms.locfileid: "42905368"
 using Microsoft.Bot.Builder.Dialogs;
 ```
 
-Диалоговое окно можно определить как класс или строку в качестве свойства в файле кода бота.
+Нужно настроить состояние диалогов беседы с помощью методов доступа. Здесь мы не будем углубляться в этот код. Подробные сведения о нем можно найти в статье о [состоянии](bot-builder-howto-v4-state.md).
 
-Код в этой статье написан для диалогового окна, определенного как класс.
-В следующих примерах предполагается, что код добавляется в конструктор диалогового окна.
-
-Основной последовательностью диалогового окна является коллекция шагов и необходимость получения идентификатора. Бот использует этот идентификатор для извлечения диалогового окна, поэтому рекомендуется задать его как константу.
+В параметрах бота в файле **Startup.cs** сначала определите объекты состояния, затем добавьте одноэлементный шаблон, чтобы указать класс метода доступа в конструкторе ботов. В классе, указанном для `BotAccessor`, просто хранится состояние беседы и пользователя, а также методы доступа для каждого из этих элементов. Полное определение класса содержится в примере, ссылка на который доступна в конце этой статьи. 
 
 ```cs
-public class MyDialog : DialogSet
-{
-    public const string Name = "mainDialog";
-
-    public MyDialog()
+    services.AddBot<MultiTurnPromptsBot>(options =>
     {
-        // Define your dialog's prompts and steps here.
+        InitCredentialProvider(options);
+
+        // Create and add conversation state.
+        var convoState = new ConversationState(dataStore);
+        options.State.Add(convoState);
+
+        // Create and add user state.
+        var userState = new UserState(dataStore);
+        options.State.Add(userState);
+    });
+
+    services.AddSingleton(sp =>
+    {
+        // We need to grab the conversationState we added on the options in the previous step
+        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
+        if (options == null)
+        {
+            throw new InvalidOperationException("BotFrameworkOptions must be configured prior to setting up the State Accessors");
+        }
+
+        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
+        if (conversationState == null)
+        {
+            throw new InvalidOperationException("ConversationState must be defined and added before adding conversation-scoped state accessors.");
+        }
+
+        var userState = options.State.OfType<UserState>().FirstOrDefault();
+        if (userState == null)
+        {
+            throw new InvalidOperationException("UserState must be defined and added before adding user-scoped state accessors.");
+        }
+
+        // The dialogs will need a state store accessor. Creating it here once (on-demand) allows the dependency injection
+        // to hand it to our IBot class that is create per-request.
+        var accessors = new BotAccessors(conversationState, userState)
+        {
+            ConversationDialogState = conversationState.CreateProperty<DialogState>("DialogState"),
+            UserProfile = userState.CreateProperty<UserProfile>("UserProfile"),
+        };
+
+        return accessors;
+    });
+```
+
+Затем в коде бота определите следующие объекты для набора диалогов.
+
+```cs
+    private readonly BotAccessors _accessors;
+
+    /// <summary>
+    /// The <see cref="DialogSet"/> that contains all the Dialogs that can be used at runtime.
+    /// </summary>
+    private DialogSet _dialogs;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MultiTurnPromptsBot"/> class.
+    /// </summary>
+    /// <param name="accessors">A class containing <see cref="IStatePropertyAccessor{T}"/> used to manage state.</param>
+    public MultiTurnPromptsBot(BotAccessors accessors)
+    {
+        _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
+
+        // The DialogSet needs a DialogState accessor, it will call it when it has a turn context.
+        _dialogs = new DialogSet(accessors.ConversationDialogState);
+
+        // ...
+        // other constructor items
+        // ...
     }
-}
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -75,7 +134,7 @@ public class MyDialog : DialogSet
 Установите пакет диалогов из NPM.
 
 ```cmd
-npm install --save botbuilder-dialogs@preview
+npm install --save botbuilder-dialogs
 ```
 
 Чтобы использовать **диалоги** в боте, включите эту библиотеку в код бота.
@@ -83,82 +142,100 @@ npm install --save botbuilder-dialogs@preview
 В файле app.js добавьте следующее.
 
 ```javascript
-const {DialogSet} = require("botbuilder-dialogs");
-const dialogs = new DialogSet();
+// Import components from the dialogs library.
+const { DialogSet } = require("botbuilder-dialogs");
+// Import components from the main Bot Builder library.
+const { ConversationState, MemoryStorage } = require('botbuilder');
+
+// Set up a memory storage system to store information.
+const storage = new MemoryStorage();
+// We'll use ConversationState to track the state of the dialogs.
+const conversationState = new ConversationState(storage);
+// Create a property used to track state.
+const dialogState = conversationState.createProperty('dialogState');
+
+// Create a dialog set to control our prompts, store the state in dialogState
+const dialogs = new DialogSet(dialogState);
 ```
 
 ---
 
 ## <a name="prompt-the-user"></a>Запрос пользователю
 
-Чтобы запросить пользователя ввести данные, можно добавить запрос в диалоговое окно. Например, можно определить запрос типа **TextPrompt** и присвоить ему идентификатор диалога **textPrompt**.
+Чтобы запросить ввод данных пользователем, определите запрос с помощью одного из встроенных классов, таких как **TextPrompt**, а затем добавьте его в набор диалогов и присвойте ему идентификатор диалога.
 
-После добавления диалогового окна запроса можно использовать его в простом двухэтапном каскадном диалоге или использовать несколько запросов вместе в многоэтапном каскаде. *Каскадный* диалог — это просто способ определения последовательности шагов. Дополнительные сведения см. в разделе об [использовании диалогов](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) статьи [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
+Добавив запрос, используйте его в двухшаговом диалоге *каскадного* типа, который является способом определения последовательности действий. Несколько запросов можно соединить друг с другом для создания многошаговых бесед. Дополнительные сведения см. в разделе об [использовании диалогов](bot-builder-dialog-manage-conversation-flow.md#using-dialogs-to-guide-the-user-through-steps) статьи [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
-На первом этапе диалоговое окно запрашивает у пользователя имя, а на втором обрабатывает введенные пользователем данные как ответ на запрос.
-
-Например, в следующем диалоговом окне запрашивается имя пользователя, а затем пользователь приветствуется по имени.
+Например, в следующем диалоге запрашивается имя пользователя, а полученный ответ затем используется в приветствии. В первой реплике диалога запрашивается имя пользователя. Ответ пользователя передается в качестве параметра в функцию второго шага, которая обрабатывает входные данные и отправляет индивидуальное приветствие.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Каждому запросу, используемому в диалоговом окне, также присваивается имя, которое используется диалогом или ботом для доступа к запросу. Во всех этих примерах мы предоставляем идентификаторы запросов в качестве констант.
 
-Вызов метода **Prompt** или **End** контекста диалога сигнализирует о завершении шага в диалоговом окне. Без этих инструкций диалоговое окно не будет работать должным образом.
+В своем конструкторе ботов добавьте определения для двухшагового каскадного диалога и запрос, который необходимо использовать в нем. Здесь мы добавляем их как независимые функции, но при желании их можно определить как встроенные лямбда-выражения.
 
 ```csharp
-/// <summary>Defines a simple greeting dialog that asks for the user's name.</summary>
-public class MyDialog : DialogSet
+ public MultiTurnPromptsBot(BotAccessors accessors)
 {
-    /// <summary>The ID of the main dialog in the set.</summary>
-    public const string Name = "mainDialog";
+    _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
 
-    /// <summary>Defines the IDs of the prompts in the set.</summary>
-    public struct Inputs
-    {
-        /// <summary>The ID of the text prompt.</summary>
-        public const string Text = "textPrompt";
-    }
+    // The DialogSet needs a DialogState accessor, it will call it when it has a turn context.
+    _dialogs = new DialogSet(accessors.ConversationDialogState);
 
-    /// <summary>Defines the prompts and steps of the dialog.</summary>
-    public MyDialog()
+    // This array defines how the Waterfall will execute.
+    var waterfallSteps = new WaterfallStep[]
     {
-        Add(Inputs.Text, new TextPrompt());
-        Add(Name, new WaterfallStep[]
-        {
-            // Each step takes in a dialog context, arguments, and the next delegate.
-            async (dc, args, next) =>
-            {
-                // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?");
-            },
-            async(dc, args, next) =>
-            {
-                var user = (string)args["Text"];
-                await dc.Context.SendActivity($"Hi {user}!");
-                await dc.End();
-            }
-        });
-    }
+        NameStepAsync,
+        SayHiAsync,
+    };
+
+    _dialogs.Add(new WaterfallDialog("details", waterfallSteps));
+    _dialogs.Add(new TextPrompt("name"));
 }
+```
+
+Затем определите два шага каскадного диалога в рамках бота. Для текстового запроса указывается идентификатор *имени* класса `TextPrompt`, определенного выше. Обратите внимание, что имена методов совпадают с атрибутом `WaterfallStep[]` выше. Будущие примеры в этой статье не будут включать этот код, но вы должны знать, что для выполнения дополнительных шагов необходимо добавить имя метода в правильном порядке в этом атрибуте `WaterfallStep[]`.
+
+```cs
+    private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
+        // WaterfallStep always finishes with the end of the Waterfall or with another dialog; here it is a Prompt Dialog.
+        // Running a prompt here means the next WaterfallStep will be run when the users response is received.
+        return await stepContext.PromptAsync("name", new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") }, cancellationToken);
+    }
+
+    private static async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
+        await stepContext.Context.SendActivityAsync($"Hi {stepContext.Result}");
+
+        return await stepContext.EndDialogAsync(cancellationToken);
+    }
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+Импортируйте класс TextPrompt в свое приложение.
+
 ```javascript
-const {TextPrompt} = require("botbuilder-dialogs");
+const { TextPrompt } = require("botbuilder-dialogs");
 ```
+
+Создайте новый запрос и добавьте его в набор диалогов.
 
 ```javascript
 // Greet user:
 // Ask for the user name and then greet them by name.
-dialogs.add('textPrompt', new TextPrompt());
+dialogs.add(new TextPrompt('textPrompt'));
 dialogs.add('greetings', [
-    async function (dc){
-        await dc.prompt('textPrompt', 'What is your name?');
+    async function (step){
+        // the results of this prompt will be passed to the next step
+        return await step.prompt('textPrompt', 'What is your name?');
     },
-    async function(dc, userName){
-        await dc.context.sendActivity(`Hi ${userName}!`);
-        await dc.end();
+    async function(step) {
+        // step.result is the result of the prompt defined above
+        const userName = step.result;
+        await step.context.sendActivity(`Hi ${userName}!`);
+        return await step.endDialog();
     }
 ]);
 ```
@@ -170,52 +247,35 @@ dialogs.add('greetings', [
 
 ## <a name="reusable-prompts"></a>Многоразовые запросы
 
-Запрос можно повторно использовать для получения различной информации, используя запрос того же типа. Например, приведенный выше пример кода определяет текстовый запрос и использует его для запроса имени пользователя. Если требуется, можно также использовать этот же запрос, чтобы запросить у пользователя другую текстовую строку, например "Where do you work?".
+Запрос может использоваться повторно для постановки различных вопросов до тех пор, пока ответы относятся к одному типу. Например, приведенный выше пример кода определяет текстовый запрос и использует его для запроса имени пользователя. Можно также использовать этот же запрос, чтобы запросить у пользователя еще одну текстовую строку, например "Where do you work?" (Где вы работаете?).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
+В примере идентификатор нашего текстового запроса, *name*, не придает коду ясности. Однако это хороший пример того, что идентификатор запроса может быть любым.
+
+Теперь наши методы включают третий шаг, позволяющий спросить пользователя о том, где он работает.
+
 ```cs
-/// <summary>Defines a simple greeting dialog that asks for the user's name and place of work.</summary>
-public class MyDialog : DialogSet
-{
-    /// <summary>The ID of the main dialog in the set.</summary>
-    public const string Name = "mainDialog";
-
-    /// <summary>Defines the IDs of the prompts in the set.</summary>
-    public struct Inputs
+    private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
     {
-        /// <summary>The ID of the text prompt.</summary>
-        public const string Text = "textPrompt";
+        // WaterfallStep always finishes with the end of the Waterfall or with another dialog; here it is a Prompt Dialog.
+        // Running a prompt here means the next WaterfallStep will be run when the users response is received.
+        return await stepContext.PromptAsync("name", new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") }, cancellationToken);
     }
 
-    /// <summary>Defines the prompts and steps of the dialog.</summary>
-    public MyDialog()
+    private static async Task<DialogTurnResult> WorkAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
     {
-        Add(Inputs.Text, new TextPrompt());
-        Add(Name, new WaterfallStep[]
-        {
-            async (dc, args, next) =>
-            {
-                // Prompt for the user's name.
-                await dc.Prompt(Inputs.Text, "What is your name?");
-            },
-            async(dc, args, next) =>
-            {
-                var user = (string)args["Text"];
+        await stepContext.Context.SendActivityAsync($"Hi {stepContext.Result}!");
 
-                // Ask them where they work.
-                await dc.Prompt(Inputs.Text, $"Hi {user}! Where do you work?");
-            },
-            async(dc, args, next) =>
-            {
-                var workplace = (string)args["Text"];
-
-                await dc.Context.SendActivity($"{workplace} is a cool place!");
-                await dc.End();
-            }
-        });
+        return await stepContext.PromptAsync("name", new PromptOptions { Prompt = MessageFactory.Text("Where do you work?") }, cancellationToken);
     }
-}
+
+    private static async Task<DialogTurnResult> SayHiAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
+        await stepContext.Context.SendActivityAsync($"{stepContext.Result} is a cool place!");
+
+        return await stepContext.EndDialogAsync(cancellationToken);
+    }
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -224,299 +284,161 @@ public class MyDialog : DialogSet
 // Greet user:
 // Ask for the user name and then greet them by name.
 // Ask them where they work.
-dialogs.add('textPrompt', new botbuilder_dialogs.TextPrompt());
+dialogs.add(new TextPrompt('textPrompt'));
 dialogs.add('greetings',[
-    async function (dc){
-        await dc.prompt('textPrompt', 'What is your name?');
+    async function (step){
+        // Use the textPrompt to ask for a name.
+        return await step.prompt('textPrompt', 'What is your name?');
     },
-    async function(dc, userName){
-        await dc.context.sendActivity(`Hi ${userName}!`);
+    async function (step){
+        const userName = step.result;
+        await step.context.sendActivity(`Hi ${ userName }!`);
 
-        // Ask them where they work.
-        await dc.prompt('textPrompt', 'Where do you work?');
+        // Now, reuse the same prompt to ask them where they work.
+        return await step.prompt('textPrompt', 'Where do you work?');
     },
-    async function(dc, workPlace){
-        await dc.context.sendActivity(`${workPlace} is a cool place!`);
+    async function(step) {
+        const workPlace = step.result;
+        await step.context.sendActivity(`${ workPlace } is a cool place!`);
 
-        await dc.end();
+        return await step.endDialog();
     }
 ]);
 ```
 
 ---
 
-Однако если вы хотите связать запрос с ожидаемым значением, которое он запрашивает, можно присвоить каждому запросу уникальный *dialogId*. Диалоговое окно добавляется с уникальным идентификатором. Используя разные идентификаторы, можно также создать несколько диалоговых окон **запроса** того же типа. Например, можно создать два диалоговых окна **TextPrompt** для приведенного выше примера.
+Если необходимо использовать несколько разных запросов, присвойте каждому запросу уникальный идентификатор *dialogId*. Каждому диалогу и запросу, которые добавляются в набор диалогов, требуется уникальный идентификатор. Кроме того, можно создать несколько диалогов с **запросами** одного типа. Например, можно создать два диалоговых окна **TextPrompt** для приведенного выше примера.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
-/// <summary>The ID of the main dialog in the set.</summary>
-public const string Name = "mainDialog";
-
-/// <summary>Defines the IDs of the prompts in the set.</summary>
-public struct Inputs
-{
-    /// <summary>The ID of the name prompt.</summary>
-    public const string Name = "namePrompt";
-
-    /// <summary>The ID of the work prompt.</summary>
-    public const string Work = "workPrompt";
-}
-
-/// <summary>Defines the prompts and steps of the dialog.</summary>
-public MyDialog()
-{
-    Add(Inputs.Name, new TextPrompt());
-    Add(Inputs.Work, new TextPrompt());
-    Add(Name, new WaterfallStep[]
-    {
-        async (dc, args, next) =>
-        {
-            // Prompt for the user's name.
-            await dc.Prompt(Inputs.Name, "What is your name?");
-        },
-        async(dc, args, next) =>
-        {
-            var user = (string)args["Text"];
-
-            // Ask them where they work.
-            await dc.Prompt(Inputs.Work, $"Hi {user}! Where do you work?");
-        },
-        async(dc, args, next) =>
-        {
-            var workplace = (string)args["Text"];
-
-            await dc.Context.SendActivity($"{workplace} is a cool place!");
-            await dc.End();
-        }
-    });
-}
+_dialogs.Add(new WaterfallDialog("details", waterfallSteps));
+_dialogs.Add(new TextPrompt("name"));
+_dialogs.Add(new TextPrompt("workplace"));
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-dialogs.add('namePrompt', new TextPrompt());
-dialogs.add('workPlacePrompt', new TextPrompt());
+dialogs.add(new TextPrompt('namePrompt'));
+dialogs.add(new TextPrompt('workPlacePrompt'));
 ```
 
 ---
 
-Для повторного использования кода определение одного `textPrompt` будет работать для всех этих запросов, поскольку они запрашивают текстовую строку в качестве ответа. Однако при необходимости проверить входные данные запроса удобнее указывать диалоговые окна. В этом случае запросы могут использовать **TextPrompt**, но каждый ищет разный набор значений. Давайте рассмотрим, как можно проверять ответы на запрос с помощью `NumberPrompt`.
+Для обеспечения повторного использования кода определение одного атрибута `TextPrompt` будет работать для всех этих запросов, так как они ожидают ответ в виде текста. Возможность присваивать диалогам названия удобно использовать, когда для данных, которые вводятся в ответ на запрос, необходимо применять разные правила проверки. Давайте рассмотрим способ проверки ответа на запрос с помощью `NumberPrompt`.
 
 ## <a name="specify-prompt-options"></a>Указание параметров запроса
 
 При использовании запроса в шаге диалогового окна можно также предоставить параметры запросов, такие как строка повторного запроса.
 
-Указание строки повторного запроса рекомендуется, когда есть вероятность, что входные данные пользователя не соответствуют запросу либо потому, что находятся в формате, который запрос не может проанализировать, например "tomorrow" для числового запроса, либо потому, что входные данные не соответствуют критериям проверки.
+Указание строки повторного запроса рекомендуется, когда есть вероятность, что входные данные пользователя не соответствуют запросу либо потому, что находятся в формате, который запрос не может проанализировать, например "tomorrow" для числового запроса, либо потому, что входные данные не соответствуют критериям проверки. Числовой запрос может интерпретировать широкий диапазон входных данных, таких как "twelve" или "one quarter", а также "12" и "0,25".
 
-> [!TIP]
-> При создании числового запроса необходимо указать используемые языки и региональные параметры ввода. Числовой запрос может интерпретировать широкий диапазон входных данных, таких как "twelve" или "one quarter", а также "12" и "0,25". Язык и региональные параметры ввода помогают запросу корректно интерпретировать данные, которые вводит пользователь.
+Local является необязательным параметром определенных запросов, таких как **NumberPrompt**. Он может помочь более точно проанализировать входные данные по запросу, но не является обязательным.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Язык и региональные параметры ввода определяются в дополнительной библиотеке.
+Следующий код добавит числовой запрос к существующему набору диалогов **_dialogs**.
 
 ```csharp
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Recognizers.Text;
-```
-
-Следующий код добавит числовой запрос к существующему набору диалоговых окон **dialogs**.
-
-```csharp
-dialogs.Add("numberPrompt", new NumberPrompt<int>(Culture.English));
+_dialogs.Add(new NumberPrompt<int>("age"));
 ```
 
 В шаге диалогового окна следующий код запросит у пользователя входные данные и предоставит строку повторного запроса на случай, если входные данные не могут быть интерпретированы как число.
 
 ```csharp
-await dc.Prompt("numberPrompt", "How many people are in your party?", new PromptOptions()
-{
-    RetryPromptString = "Sorry, please specify the number of people in your party."
-});
+return await stepContext.PromptAsync(
+    "age",
+    new PromptOptions {
+        Prompt = MessageFactory.Text("Please enter your age."),
+        RetryPrompt = MessageFactory.Text("I didn't get that. Please enter a valid age."),
+    },
+    cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const {NumberPrompt} = require("botbuilder-dialogs");
-```
+// Import the NumberPrompt class from the dialog library.
+const { NumberPrompt } = require("botbuilder-dialogs");
 
-```javascript
+// Add a NumberPrompt to our dialog set and give it the ID numberPrompt.
+dialogs.add(new NumberPrompt('numberPrompt'));
+
+// Call the numberPrompt dialog with the (optional) retryPrompt parameter.
 await dc.prompt('numberPrompt', 'How many people in your party?', { retryPrompt: `Sorry, please specify the number of people in your party.` })
-```
-
-```javascript
-dialogs.add('numberPrompt', new NumberPrompt());
 ```
 
 ---
 
-В частности, запрос на выбор требует некоторую дополнительную информацию, список доступных пользователю вариантов.
+Запрос выбора имеет дополнительный обязательный параметр — список доступных пользователю вариантов.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В этом примере используются типы из следующих пространств имен.
+Когда используется **ChoicePrompt**, чтобы попросить пользователя выбрать один из нескольких вариантов, нужно предоставить запрос с набором вариантов, предусмотренных внутри объекта **ChoicePromptOptions**. Здесь используется **ChoiceFactory** для преобразования списка вариантов в соответствующий формат.
 
 ```csharp
-using Microsoft.Bot.Builder.Core.Extensions;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Prompts.Choices;
-using Microsoft.Bot.Schema;
-using Microsoft.Recognizers.Text;
-using System.Collections.Generic;
-```
-
-
-Когда мы используем **ChoicePrompt**, чтобы запросить пользователя выбрать один из нескольких вариантов, нужно предоставить запрос с набором опций, которые предоставляются внутри объекта **ChoicePromptOptions**. Здесь используется **ChoiceFactory** для преобразования списка вариантов в соответствующий формат.
-
-Мы также используем действие **SuggestedActions** в качестве повторного запроса как способ повторного предоставления пользователю вариантов ввода.
-
-
-```csharp
-/// <summary>Defines a dialog that asks for a choice of color.</summary>
-public class MyDialog : DialogSet
+private static async Task<DialogTurnResult> FavoriteColorAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
-    /// <summary>The ID of the main dialog in the set.</summary>
-    public const string Name = "mainDialog";
+    await stepContext.Context.SendActivityAsync($"Hi {stepContext.Result}!");
 
-    /// <summary>Defines the IDs of the prompts in the set.</summary>
-    public struct Inputs
-    {
-        /// <summary>The ID of the color prompt.</summary>
-        public const string Color = "colorPrompt";
-    }
-
-    /// <summary>The available colors to choose from.</summary>
-    public List<string> Colors = new List<string> { "Green", "Blue" };
-
-    /// <summary>Defines the prompts and steps of the dialog.</summary>
-    public MyDialog()
-    {
-        Add(Inputs.Color, new ChoicePrompt(Culture.English));
-        Add(Name, new WaterfallStep[]
-        {
-            async (dc, args, next) =>
-            {
-                // Prompt for a color. A choice prompt requires that you specify choice options.
-                await dc.Prompt(Inputs.Color, "Please make a choice.", new ChoicePromptOptions()
-                {
-                    Choices = ChoiceFactory.ToChoices(Colors),
-                    RetryPromptActivity =
-                        MessageFactory.SuggestedActions(Colors, "Please choose a color.") as Activity
-                });
-            },
-            async(dc, args, next) =>
-            {
-                var color = (FoundChoice)args["Value"];
-
-                await dc.Context.SendActivity($"You chose {color.Value}.");
-                await dc.End();
-            }
-        });
-    }
+    return await stepContext.PromptAsync(
+        "color",
+        new PromptOptions {
+            Prompt = MessageFactory.Text("What's your favorite color?"),
+            Choices = ChoiceFactory.ToChoices(new List<string> { "blue", "green", "red" }),
+        },
+        cancellationToken);
 }
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const {ChoicePrompt} = require("botbuilder-dialogs");
+// Import the ChoicePrompt class into your app from the dialogs library.
+const { ChoicePrompt } = require("botbuilder-dialogs");
 ```
 
 ```javascript
-dialogs.add('choicePrompt', new ChoicePrompt());
+// Add a ChoicePrompt to the dialog set and give it an ID of choicePrompt.
+dialogs.add(new ChoicePrompt('choicePrompt'));
 ```
 
 ```javascript
-// A choice prompt requires that you specify choice options.
-const list = ['green', 'blue'];
-await dc.prompt('choicePrompt', 'Please make a choice', list, {retryPrompt: 'Please choose a color.'});
+// Call the choicePrompt into action, passing in an array of options.
+const list = ['green', 'blue', 'red', 'yellow'];
+await dc.prompt('choicePrompt', 'Please make a choice', list, { retryPrompt: 'Please choose a color.' });
 ```
 
 ---
 
 ## <a name="validate-a-prompt-response"></a>Подтверждение ответа на запрос
 
-Можно проверить ответ на запрос перед возвратом допустимого значения на следующий шаг **каскада**. Например, чтобы проверить **NumberPrompt** в диапазоне чисел между **6** и **20**, нужно иметь логику проверки, подобную этой.
+Можно проверить ответ на запрос, прежде чем значение будет возвращено на следующем этапе **каскада**. Например, чтобы проверить ответ на запрос **NumberPrompt** в диапазоне чисел между **6** и **20**, нужно включить функцию проверки, подобную этой:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-```cs
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Recognizers.Text;
-using PromptStatus = Microsoft.Bot.Builder.Prompts.PromptStatus;
-```
+Изменение при добавлении запроса в набор диалогов для включения функции проверки
 
 ```cs
-/// <summary>Defines a dialog that asks for the number of people in a party.</summary>
-public class MyDialog : DialogSet
+_dialogs.Add(new NumberPrompt<int>("partySize", PartySizeValidatorAsync));
+```
+
+После этого проверка определяется как свой собственный метод, и в зависимости от результата проверки указывается значение true или false. Если возвращается значение false, пользователь получит повторный запрос.
+
+```cs
+private Task<bool> PartySizeValidatorAsync(PromptValidatorContext<int> promptContext, CancellationToken cancellationToken)
 {
-    /// <summary>The ID of the main dialog in the set.</summary>
-    public const string Name = "mainDialog";
+    var result = promptContext.Recognized.Value;
 
-    /// <summary>Defines the IDs of the prompts in the set.</summary>
-    public struct Inputs
+    if (result < 6 || result > 20)
     {
-        /// <summary>The ID of the party size prompt.</summary>
-        public const string Size = "parytySize";
+        return Task.FromResult(false);
     }
 
-    /// <summary>Defines the prompts and steps of the dialog.</summary>
-    public MyDialog()
-    {
-        // Include a validation function for the party size prompt.
-        Add(Inputs.Size, new NumberPrompt<int>(Culture.English, async (context, result) =>
-        {
-            if (result.Value < 6 || result.Value > 20)
-            {
-                result.Status = PromptStatus.OutOfRange;
-            }
-        }));
-        Add(Name, new WaterfallStep[]
-        {
-            async (dc, args, next) =>
-            {
-                // Prompt for the party size.
-                await dc.Prompt(Inputs.Size, "How many people are in your party?", new PromptOptions()
-                {
-                    RetryPromptString = "Please specify party size between 6 and 20."
-                });
-            },
-            async(dc, args, next) =>
-            {
-                var size = (int)args["Value"];
-
-                await dc.Context.SendActivity($"Okay, {size} people!");
-                await dc.End();
-            }
-        });
-    }
+    return Task.FromResult(true);
 }
-```
-
-Проверка также может быть инкапсулирована внутри собственного частного метода и добавлена ​​таким образом.
-
-```cs
-/// <summary>Validates input for the partySize prompt.</summary>
-/// <param name="context">The context object for the current turn of the bot.</param>
-/// <param name="result">The recognition result from the prompt.</param>
-/// <returns>An updated recognition result.</returns>
-private static async Task PartySizeValidator(ITurnContext context, Int32Result result)
-{
-    if (result.Value < 6 || result.Value > 20)
-    {
-        result.Status = PromptStatus.OutOfRange;
-    }
-}
-```
-
-В диалоговом окне укажите метод, используемый для проверки ввода.
-
-```cs
-// Include a validation function for the party size prompt.
-Add(Inputs.Size, new NumberPrompt<int>(Culture.English, PartySizeValidator));
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -524,20 +446,24 @@ Add(Inputs.Size, new NumberPrompt<int>(Culture.English, PartySizeValidator));
 ```javascript
 // Customized prompts with validations
 // A number prompt with validation for valid party size within a range.
-dialogs.add('partySizePrompt', new botbuilder_dialogs.NumberPrompt( async (context, value) => {
-    try {
-        if(value < 6 ){
-            throw new Error('Party size too small.');
+dialogs.add(new NumberPrompt('partySizePrompt', async (promptContext) => {
+    // Check to make sure a value was recognized.
+    if (promptContext.recognized.succeeded) {
+        const value = promptContext.recognized.value;
+        try {
+            if (value < 6 ) {
+                throw new Error('Party size too small.');
+            } else if (value > 20) {
+                throw new Error('Party size too big.')
+            } else {
+                return true; // Indicate that this is a valid value.
+            }
+        } catch (err) {
+            await promptContext.context.sendActivity(`${ err.message } <br/>Please provide a valid number between 6 and 20.`);
+            return false; // Indicate that this is invalid.
         }
-        else if(value > 20){
-            throw new Error('Party size too big.')
-        }
-        else {
-            return value; // Return the valid value
-        }
-    } catch (err) {
-        await context.sendActivity(`${err.message} <br/>Please provide a valid number between 6 and 20.`);
-        return undefined;
+    } else {
+        return false;
     }
 }));
 ```
@@ -549,76 +475,61 @@ dialogs.add('partySizePrompt', new botbuilder_dialogs.NumberPrompt( async (conte
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Recognizers.Text;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DateTimeResult = Microsoft.Bot.Builder.Prompts.DateTimeResult;
-using PromptStatus = Microsoft.Bot.Builder.Prompts.PromptStatus;
-```
-
-```cs
-/// <summary>Validates input for the reservationTime prompt.</summary>
-/// <param name="context">The context object for the current turn of the bot.</param>
-/// <param name="result">The recognition result from the prompt.</param>
-/// <returns>An updated recognition result.</returns>
-private static async Task TimeValidator(ITurnContext context, DateTimeResult result)
-{
-    if (result.Resolution.Count == 0)
+    private Task<bool> DateTimeValidatorAsync(PromptValidatorContext<IList<DateTimeResolution>> prompt, CancellationToken cancellationToken)
     {
-        await context.SendActivity("Sorry, I did not recognize the time that you entered.");
-        result.Status = PromptStatus.NotRecognized;
-    }
+        if (prompt.Recognized.Succeeded)
+        {
+            var resolution = prompt.Recognized.Value.First();
 
-    // Find any recognized time that is not in the past.
-    var now = DateTime.Now;
-    DateTime time = default(DateTime);
-    var resolution = result.Resolution.FirstOrDefault(
-        res => DateTime.TryParse(res.Value, out time) && time > now);
+            // Verify that the Timex received is within the desired bounds, compared to today.
+            var now = DateTime.Now;
+            DateTime.TryParse(resolution.Value, out var time);
 
-    if (resolution != null)
-    {
-        // If found, keep only that result.
-        result.Resolution.Clear();
-        result.Resolution.Add(resolution);
+            if (time < now)
+            {
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult(true);
+        }
+
+        return Task.FromResult(false);
     }
-    else
-    {
-        // Otherwise, flag the input as out of range.
-        await context.SendActivity("Please enter a time in the future, such as \"tomorrow at 9am\"");
-        result.Status = PromptStatus.OutOfRange;
-    }
-}
 ```
 
 ```csharp
-Add(Inputs.Time, new DateTimePrompt(Culture.English, TimeValidator));
+_dialogs.Add(new DateTimePrompt("date", DateTimeValidatorAsync));
 ```
 
-Дополнительные примеры можно найти в [примерах репозитория](https://github.com/Microsoft/botbuilder-dotnet).
+Дополнительные примеры можно найти в [примерах репозитория](https://aka.ms/bot-samples-readme).
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```JavaScript
 // A date and time prompt with validation for date/time in the future.
-dialogs.add('dateTimePrompt', new botbuilder_dialogs.DatetimePrompt( async (context, values) => {
-    try {
-        if (values.length < 0) { throw new Error('missing time') }
-        if (values[0].type !== 'datetime') { throw new Error('unsupported type') }
-        const value = new Date(values[0].value);
-        if (value.getTime() < new Date().getTime()) { throw new Error('in the past') }
-        return value;
-    } catch (err) {
-        await context.sendActivity(`Please enter a valid time in the future like "tomorrow at 9am".`);
-        return undefined;
+dialogs.add(new atetimePrompt('dateTimePrompt', async (promptContext) => {
+    if (promptContext.recognized.succeeded) {
+        const values = promptContext.recognized.value;
+        try {
+            if (values.length < 0) { throw new Error('missing time') }
+            if (values[0].type !== 'date') { throw new Error('unsupported type') }
+            const value = new Date(values[0].value);
+            if (value.getTime() < new Date().getTime()) { throw new Error('in the past') }
+
+            // update the return value of the prompt to be a real date object
+            promptContext.recognized.value = value;
+            return true; // indicate valid 
+        } catch (err) {
+            await promptContext.context.sendActivity(`Please enter a valid time in the future like "tomorrow at 9am".`);
+            return false; // indicate invalid
+        }
+    } else {
+        return false;
     }
 }));
 ```
 
-Дополнительные примеры можно найти в [примерах репозитория](https://github.com/Microsoft/botbuilder-js).
+Дополнительные примеры можно найти в [примерах репозитория](https://aka.ms/bot-samples-readme).
 
 ---
 
@@ -631,8 +542,10 @@ dialogs.add('dateTimePrompt', new botbuilder_dialogs.DatetimePrompt( async (cont
 
 Если запрашиваются входные данные пользователя, есть несколько вариантов управления ими. Например, можно использовать или отклонить входные данные, сохранить их в глобальной переменной, в энергозависимом контейнере или в памяти хранилища, в файле или во внешней базе данных. Дополнительные сведения о сохранении данных пользователя см. в разделе [Управление данными пользователя](bot-builder-howto-v4-state.md).
 
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+Полный пример использования некоторых из этих запросов см. в разделе Multi Turn Prompt Bot для [C#](https://aka.ms/cs-multi-prompts-sample) или [JavaScript](https://aka.ms/js-multi-prompts-sample).
+
 ## <a name="next-steps"></a>Дополнительная информация
 
 Теперь, когда вы знаете, как запрашивать у пользователя входные данные, улучшите код бота и пользовательский интерфейс, управляя разнообразными последовательностями общения с помощью диалоговых окон.
-
-

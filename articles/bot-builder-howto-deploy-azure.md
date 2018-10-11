@@ -7,23 +7,22 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
-ms.date: 05/14/2018
-ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.date: 09/19/2018
+ms.openlocfilehash: 1503d5e349839de6f3403ad9b769c7eb0ae41e78
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905596"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706970"
 ---
 # <a name="deploy-your-bot-to-azure"></a>Развертывание бота в Azure
 
-[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
+[!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-После создания и локальной проверки бот можно передать в Azure, чтобы сделать его доступным из любого места. Для этого сначала разверните бот в Службе приложений Azure, а затем настройте бот с помощью службы Azure Bot, используя элемент Службы регистрации каналов ботов.
+После создания и локальной проверки бот можно передать в Azure, чтобы сделать его доступным из любого места. Опубликовать бот C# в Azure можно с помощью Visual Studio или Azure CLI. 
 
 ## <a name="publish-from-visual-studio"></a>Публикация из Visual Studio
-
-Используйте Visual Studio для создания ресурсов в Azure и публикации кода.
+Сначала нужно развернуть бот в Службе приложений Azure из Visual Studio. Затем настройте бот, используя функцию регистрации каналов бота в службе Azure Bot.
 
 В окне обозревателя решений щелкните правой кнопкой мыши узел проекта и выберите "Опубликовать".
 
@@ -127,13 +126,16 @@ ms.locfileid: "42905596"
 ## <a name="test-your-bot-in-production"></a>Тестирование бота в рабочей среде
 На этом этапе можно протестировать бот из Azure с помощью встроенного клиента "Веб-чат".
 
-1. Вернитесь в группу ресурсов на портале.
+1. Вернитесь в группу ресурсов на портале Azure.
 
-2. Откройте регистрацию бота.
+2. Откройте бот.
 
-3. В разделе управление ботом выберите "Тестировать в веб-чате".
+3. В разделе **управления ботом** выберите **Test in Web Chat** (Тестировать в веб-чате).
 
 ![Тестирование в веб-чате](media/azure-bot-quickstarts/getting-started-test-webchat.png)
 
 4. Введите сообщение, например, `Hi`, и нажмите клавишу ВВОД. Бот передаст обратно `Turn 1: You sent Hi`.
 
+## <a name="next-steps"></a>Дополнительная информация
+> [!div class="nextstepaction"]
+> [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)

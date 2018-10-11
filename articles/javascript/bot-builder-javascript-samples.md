@@ -6,26 +6,21 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/04/2018
+ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8dc8ed9c57bf09b9f8f0809102d12de888917305
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: da8a38e3959359ad683544f0fe605c8300cdffb2
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305762"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707700"
 ---
 # <a name="javascript-samples-for-bot-builder-sdk"></a>Примеры JavaScript для пакета SDK для Bot Builder
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-В этих примерах демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK Bot Builder для JavaScript. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. 
+В примерах для Bot Builder из репозитория демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK для JavaScript. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями. Список примеров и дополнительную информацию см. в файле [сведений](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md).
 
-Примечание. Пакет SDK версии 4 находится в активной разработке, поэтому его следует использовать только для экспериментов.
-
-Чтобы получить примеры, клонируйте репозиторий GitHub [botbuilder-js](https://github.com/Microsoft/botbuilder-js) с помощью Git.
-
+Чтобы получить примеры, клонируйте репозиторий GitHub [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) с помощью Git.
 ```cmd
-git clone https://github.com/Microsoft/botbuilder-js.git
-cd samples
+git clone https://github.com/Microsoft/botbuilder-dotnet.git
 ```
-Примеры ботов, созданных с помощью пакета SDK Bot Builder для JavaScript, находятся в каталоге **samples**.

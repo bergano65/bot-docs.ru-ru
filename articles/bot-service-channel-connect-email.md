@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: a8c3d4fb469ce7c52dfffbcfc3a17e08c167ea66
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 53ad7069f8ec8e7757c7ee4ea1a517d44436b8e9
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305907"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389673"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Подключение бота к электронной почте Office 365
 
@@ -67,14 +67,14 @@ ms.locfileid: "39305907"
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-Дополнительные сведения об использовании `channelData` см. в примере документации [ Node.js](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-ChannelData) или [.NET](~/v4sdk/bot-builder-channeldata.md).
+Дополнительные сведения об использовании `channelData` см. в статье [Реализация возможностей для определенных каналов](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 <!-- Put whole list in monikers, even though it's just the second item that needs to be different. -->
 ::: moniker range="azure-bot-service-3.0"
-* [Подключение бота к каналам](~/bot-service-manage-channels.md)
+* Подключение бота к [каналам](~/bot-service-manage-channels.md).
 * [Реализация функциональных возможностей канала](dotnet/bot-builder-dotnet-channeldata.md) с помощью пакета SDK Bot Builder для .NET.
 * Использование [Channel Inspector](bot-service-channel-inspector.md) для просмотра того, как канал отображает определенную функцию вашего приложения бота.
 ::: moniker-end

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
-ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
+ms.openlocfilehash: f6bf1d99922351a66a4e5401e744fad190746747
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115069"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389813"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -23,7 +23,7 @@ ms.locfileid: "43115069"
 
 ## <a name="entities"></a>Сущности
 
-Свойство *сущностей* сообщения представляет собой массив открытых объектов <a href="http://schema.org/" target="_blank">schema.org</a>, что позволяет осуществлять обмен контекстно-зависимых метаданных между каналом и ботом.
+Свойство *entities* сообщения представляет собой массив открытых объектов <a href="http://schema.org/" target="_blank">schema.org</a>, что позволяет осуществлять обмен контекстно-зависимых метаданных между каналом и ботом.
 
 ### <a name="mention-entities"></a>Сущности Mention
 

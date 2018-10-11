@@ -1,7 +1,22 @@
-**Динамическое упреждающее сообщение** — это самый простой тип упреждающих сообщений. Бот просто вставляет сообщение в диалог каждый раз, когда он активируется (вне зависимости от участия пользователя в отдельном разделе диалога с ботом в данный момент), и не пытается изменить диалог каким-либо способом. 
+**Динамическое упреждающее сообщение** — это самый простой тип упреждающих сообщений.
+Бот просто вставляет сообщение в диалог каждый раз, когда он активируется (вне зависимости от участия пользователя в отдельном разделе диалога с ботом в данный момент), и не пытается изменить диалог каким-либо способом.
 
-**Упреждающее сообщение на основе диалога** сложнее, чем динамическое упреждающее сообщение. Прежде чем вставить в диалог упреждающее сообщение этого типа, бот должен определить контекст существующего диалога и решить, как возобновить диалог, прерванный сообщением (и нужно ли это делать). 
+Чтобы улучшить обработку уведомлений, рассмотрите другие варианты их интеграции в процесс общения, например указав флаг в состоянии диалога или добавив уведомление в очередь.
 
-Например, рассмотрим бот, которому нужно инициировать опрос в определенный момент времени. Когда приходит время, бот прекращает существующий диалог с пользователем и перенаправляет его в `SurveyDialog`. `SurveyDialog` добавляется в верхнюю часть стека диалога и берет на себя управление диалогом. Когда пользователь завершает все необходимые задачи в `SurveyDialog`, окно `SurveyDialog` закрывается, возвращая управление в предыдущее диалоговое окно, где пользователь может продолжить работу с предыдущей темы диалога.
+<!--Snip
+A **dialog-based proactive message** is more complex than an ad hoc proactive message. 
+Before it can inject this type of proactive message into the conversation, 
+the bot must identify the context of the existing conversation and decide how (or if)
+it will resume that conversation after the message interrupts. 
 
-Упреждающее сообщение на основе диалога — это больше, чем просто уведомление. При отправке уведомления бот изменяет тему существующего диалога. Затем он должен решить, следует ли возобновить этот диалог позже или вообще прервать его, сбросив стек диалога. 
+For example, consider a bot that needs to initiate a survey at a given point in time. 
+When that time arrives, the bot stops the existing conversation with the user and 
+redirects the user to a `SurveyDialog`. 
+The `SurveyDialog` is added to the top of the dialog stack and takes control of the conversation. 
+When the user finishes all required tasks at the `SurveyDialog`, the `SurveyDialog` closes,
+ returning control to the previous dialog, where the user can continue with the prior topic of conversation.
+
+A dialog-based proactive message is more than just simple notification. 
+In sending the notification, the bot changes the topic of the existing conversation. 
+It then must decide whether to resume that conversation later, or to abandon that conversation altogether by resetting the dialog stack. 
+/Snip-->

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 3d098afd70bef9cf1a3b3fab87455e96ffd9c292
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 07fb6e9630996a61932da99b0575d43f4604141e
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300886"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389433"
 ---
 # <a name="application-insights-keys"></a>Ключи Application Insights
 
@@ -30,7 +30,7 @@ ms.locfileid: "39300886"
 ## <a name="instrumentation-key"></a>Ключ инструментирования
 
 Чтобы получить ключ инструментирования, сделайте следующее:
-1. На сайте [portal.azure.com](http://portal.azure.com) в разделе "Монитор" создайте ресурс **Application Insights** (или используйте имеющийся).
+1. На [портале Azure](http://portal.azure.com) в разделе "Монитор" создайте ресурс **Application Insights** (или используйте существующий).
 ![Снимок экрана портала со списком Application Insights](~/media/portal-app-insights-add-new.png)
 
 2. В списке ресурсов Application Insights щелкните только что созданный ресурс Application Insight.
