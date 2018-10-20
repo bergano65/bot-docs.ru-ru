@@ -44,6 +44,7 @@
 ### [Использование диалогов для управления сложным процессом общения](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 ### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [Хранение данных в диалогах](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+### [Создание встроенного набора диалогов](v4sdk/bot-builder-compositcontrol.md)
 ### [Использование LUIS для распознавания речи](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы](v4sdk/bot-builder-howto-qna.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
