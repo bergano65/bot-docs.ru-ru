@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 9e86ea0fb677105be920e031979980baf479e42f
+ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389663"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48875731"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
@@ -41,7 +41,9 @@ ms.locfileid: "47389663"
 
 Чтобы отключить систему защиты бота, измените его параметры конфигурации и удалите значения идентификатора и пароля приложения. 
 
-Если используется пакет SDK Bot Builder для .NET, измените эти параметры в файле Web.config.
+::: moniker range="azure-bot-service-3.0"
+
+Если вы используете пакет SDK Bot Builder для .NET, измените эти параметры в файле Web.config. 
 
 ```xml
 <appSettings>
@@ -58,6 +60,32 @@ var connector = new builder.ChatConnector({
   appPassword: null
 });
 ```
+
+::: moniker-end
+
+::: moniker range="azure-bot-service-4.0"
+
+Если вы используете пакет SDK Bot Builder для .NET, измените эти параметры в файле `appsettings.config`.
+
+```xml
+<appSettings>
+  <add key="MicrosoftAppId" value="" />
+  <add key="MicrosoftAppPassword" value="" />
+</appSettings>
+```
+
+Если используется пакет SDK Bot Builder для Node.js, измените эти значения (или обновите соответствующие переменные среды).
+
+```javascript
+const adapter = new BotFrameworkAdapter({
+    appId: null,
+    appPassword: null
+});
+```
+
+Если вы используете файл конфигурации `.bot`, можно обновить `appId` и `appPassword` до `""`.
+
+::: moniker-end
 
 ### <a name="test-your-bot-on-localhost"></a>Тестирование бота на локальном компьютере 
 
@@ -115,7 +143,7 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 Безопасность бота зависит от служб Microsoft, даже если бот работает только на локальном компьютере. Чтобы включить систему защиты для бота, отредактируйте его параметры конфигурации, чтобы заполнить идентификатор и пароль приложения с помощью значений, которые были подтверждены на [Шаге 2](#step-2).
 
-Если используется пакет SDK Bot Builder для .NET, заполните эти параметры в файле Web.config.
+Если вы используете пакет SDK Bot Builder для .NET, заполните эти параметры для `.bot` в файле `appsettings.config`:
 
 ```xml
 <appSettings>

@@ -6,15 +6,16 @@ author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
-ms.date: 09/23/2018
+ms.service: bot-service
+ms.subservice: sdk
+ms.date: 10/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e721c9142ffb1511ef926f5b1caca782e0919ed
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: aa13889cea2a26bf094a919f5d05905d65f7661f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315090"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998863"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-javascript"></a>Создание бота с помощью пакета SDK Bot Builder для JavaScript
 
@@ -27,6 +28,7 @@ ms.locfileid: "49315090"
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
 - [Node.js](https://nodejs.org/)
 - Компонент [Yeoman](http://yeoman.io/), который позволяет использовать генератор для автоматического создания бота.
+- [git](https://git-scm.com/)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator).
 - навыки разработки для [Restify](http://restify.com/) и асинхронного программирования в JavaScript.
 

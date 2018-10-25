@@ -6,21 +6,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f67c7ba658923873470e9653b38cd63fd1068491
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 7af27340f92e3768bc00125205d5040fe3ea4d32
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315120"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998231"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>Подключение бота к Skype для бизнеса
 
 Skype для бизнеса Online обеспечивает связь со своими сотрудниками и партнерами по бизнесу посредством мгновенных сообщений, телефонных звонков и видеосвязи. Расширьте эту функцию, создав боты, которых пользователи могут открывать и взаимодействовать через интерфейс Skype для бизнеса.
 
 > [!NOTE]
-> Skype для бизнеса канала Bot Framework в настоящее время поддерживается для Skype для бизнеса Online. Skype для бизнеса Server 2015 не поддерживается. 
+> Skype для бизнеса канала Bot Framework в настоящее время поддерживается для Skype для бизнеса Online. Skype для бизнеса Server 2015 не поддерживается. 
 
 ## <a name="enable-the-channel"></a>Включение канала
 

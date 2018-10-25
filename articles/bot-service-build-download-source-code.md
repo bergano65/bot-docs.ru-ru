@@ -6,14 +6,15 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: ee7a7a9f1b4c06f8ad762f750099383e218d98f2
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326431"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997281"
 ---
 # <a name="download-and-redeploy-bot-code"></a>Скачивание и повторное развертывание кода бота
 Служба Azure Bot дает возможность скачать весь исходный проект бота, с которым можно работать локально через любой IDE на ваш выбор. Завершив доработку кода, измененный проект можно снова опубликовать на портале Azure. Здесь мы продемонстрируем, как скачать код с помощью портала Azure и средства CLI `az`. Мы также обсудим повторное развертывание обновленного кода бота с помощью Visual Studio и средства CLI `az`. Вы можете выбрать для себя наиболее удобный метод.

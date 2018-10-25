@@ -2,28 +2,26 @@
 title: Настройка бота для работы в одном или нескольких каналах | Документация Майкрософт
 description: Сведения о настройке бота для работы в одном или нескольких каналах с помощью портала Bot Framework.
 keywords: каналы бота, настройка, Кортана, Facebook Messenger, Kik, Slack, Skype, портал Azure
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: cb682bf77f801c98d00deffa0fc63249962248cd
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.date: 09/22/2018
+ms.openlocfilehash: 8c7f10f5f7ce507c367f12b01b4b28ff1cc01c0f
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352923"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "47418826"
 ---
 # <a name="connect-a-bot-to-channels"></a>Подключение бота к каналам
 
-Канал представляет собой подключение между Bot Framework и коммуникационными приложениями. Подключение бота настраивается для каналов, на которых он будет доступен. Например, бот, подключенный к каналу Skype, можно добавить в список контактов и пользователи Skype смогут с ним взаимодействовать. 
+Каналом называется соединение между ботом и коммуникационными приложениями. Подключение бота настраивается для каналов, на которых он будет доступен. Служба Bot Framework, настраиваемая через портал Azure, соединяет бот с этими каналами и упрощает взаимодействие между ботом и пользователем. Вы сможете подключить разные популярные службы, такие как [Cortana](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md), [Slack](bot-service-channel-connect-slack.md) и многие другие. [Skype](https://dev.skype.com/bots) и Веб-чат предварительно настроены. Помимо стандартных каналов, предоставляемых службой Bot Connector, вы можете подключить бот к собственному клиентскому приложению, указав в качестве канала Direct Line.
 
-В каналы включено много популярных служб, например, [Кортана](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md) и [Slack](bot-service-channel-connect-slack.md), а также много других. [Skype](https://dev.skype.com/bots) и Веб-чат предварительно настроены. 
+Служба Bot Framework позволяет боту ничего не знать об используемом канале, и берет на себя нормализацию всех отправляемых ботом сообщений. Это включает его преобразование из схемы Bot Builder в схему канала. Однако, если канал не поддерживает все аспекты схемы Bot Builder, служба попытается преобразовать сообщение в формат, поддерживаемый каналом. Например, если бот отправляет сообщение, содержащее карточку с кнопками действий в канал SMS, соединитель может отправить карточку как изображение и включать действия как ссылки в тексте сообщения.
 
-Используя [портал Azure](https://portal.azure.com), можно легко и быстро подключиться к каналам.
 
-## <a name="get-started"></a>Начало работы
 
 Чтобы запустить бот на большинстве каналов, ему необходимо указать сведения об их конфигурации. Большинство каналов требуют, чтобы бот имел учетную запись на канале, а другие, например, Facebook Messenger, требуют, чтобы бот также имел приложение, зарегистрированное на канале.
 
@@ -34,7 +32,7 @@ ms.locfileid: "39352923"
 3. В колонке "Служба ботов" в разделе **Bot Management** (Управление ботом) щелкните **Каналы**.
 4. Щелкните значок канала, который требуется добавить боту.
 
-![Подключение к каналам](~/media/channels/connect-to-channels.png)
+![Подключение к каналам](./media/channels/connect-to-channels.png)
 
 После настройки канала пользователи смогут использовать ваш бот.
 
@@ -42,5 +40,7 @@ ms.locfileid: "39352923"
 
 Процесс публикации на каждом канале разный.
 
-[!INCLUDE [publishing](~/includes/snippet-publish-to-channel.md)]
+[!INCLUDE [publishing](./includes/snippet-publish-to-channel.md)]
 
+## <a name="additional-resources"></a>Дополнительные ресурсы
+Этот пакет SDK содержит примеры, которые можно использовать для создания ботов. Перейдите в репозиторий [GitHub](https://github.com/Microsoft/BotBuilder-samples), чтобы просмотреть список примеров.
