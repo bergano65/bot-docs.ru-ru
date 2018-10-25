@@ -6,582 +6,472 @@ author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
-ms.date: 08/27/2018
+ms.service: bot-service
+ms.subservice: sdk
+ms.date: 10/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02dffcdd8cb4fd27f59fa8a763d7f2027aa0bcf2
-ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
+ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115039"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997401"
 ---
 # <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>Интеграция нескольких служб LUIS и служб QnA Maker с помощью средства подготовки к отправке
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Руководство по использованию модели LUIS, созданной с помощью средства подготовки к отправке, для интеграции бота с несколькими приложениями распознавания речи (LUIS) и службами QnA Maker. 
+<!--TODO: Add the JS sections back in and update them once the JS sample is working.-->
 
-Представьте, что вы разработали следующие службы, а теперь хотите создать бот, который интегрируется с ними.
+Руководство по использованию модели LUIS, созданной с помощью средства подготовки к отправке, для интеграции бота с несколькими приложениями распознавания речи (LUIS) и службами QnA Maker. Этот пример объединяет следующие службы.
 
 | Service type (Тип службы) | ИМЯ | ОПИСАНИЕ |
 |------|------|------|
-| Приложение LUIS | HomeAutomation | Распознает намерения HomeAutomation.TurnOn, HomeAutomation.TurnOff, и HomeAutomation.None.|
-| Приложение LUIS | Weather | Распознает намерения Weather.GetForecast и Weather.GetCondition.|
-| Служба QnA Maker | Часто задаваемые вопросы  | Содержит ответы на вопросы о системе автоматизации освещения дома. |
+| Приложение LUIS | HomeAutomation | Распознает намерение для службы автоматизации с данными связанной сущности.|
+| Приложение LUIS | Weather | Распознает намерения Weather.GetForecast и Weather.GetCondition с данными о расположении.|
+| Служба QnA Maker | Часто задаваемые вопросы  | Предоставляет ответы на несколько простых вопросов о боте. |
 
-Давайте сначала создадим приложения и службы, а затем интегрируем их вместе с помощью средства подготовки к отправке.
+Код для этой статьи взят из примера **NLP с диспетчеризацией** [[C#](https://aka.ms/dispatch-sample-cs)<!-- | [JS](https://aka.ms/dispatch-sample-js)-->].
 
-## <a name="create-the-luis-apps"></a>Создание приложений LUIS
+Общие сведения о языковых службах см. в статье о [распознавании речи](bot-builder-concept-luis.md). Изучите статьи с инструкциями для [LUIS](bot-builder-howto-v4-luis.md) и [QnA Maker](bot-builder-howto-qna.md) по реализации языковых служб в ботах.
 
-Самым быстрым способом создания приложений LUIS *HomeAutomation* и *Weather* считается скачивание файлов [homeautomation.json][HomeAutomationJSON] и [weather.json][WeatherJSON]. Затем выполните следующие действия, чтобы импортировать эти два приложения LUIS:
+Выполнив инструкции в файле README, вы можете настроить и проверить пример бота. Также можно сразу перейти к [примечаниям к коду](#notes-about-the-code).
 
-1. Перейдите на [веб-сайт LUIS](https://www.luis.ai/home) и войдите в систему. 
-2. В разделе **My Apps** (Мои приложения) щелкните **Import new app** (Импорт нового приложения).
-   1. Для приложения *homeautomation* выберите файл **homeautomation.json** и укажите имя homeautomation. Щелкните **Done** (Готово), чтобы импортировать приложение. Когда приложение импортируется, нажмите кнопку **Publish** (Опубликовать) для публикации приложения.
-   1. Для приложения *weather* выберите файл **weather.json** и укажите имя weather. Щелкните **Done** (Готово), чтобы импортировать приложение. Когда приложение импортируется, нажмите кнопку **Publish** (Опубликовать) для публикации приложения.
+## <a name="create-the-services-and-test-the-bot"></a>Создание служб и тестирование бота
 
-## <a name="create-the-qna-cognitive-service-in-azure"></a>Создание Cognitive Service для службы QnA Maker в Azure
+Выполните инструкции из файла README для этого примера. Вы примените средства интерфейса командной строки для создания и публикации этих служб и обновления сведений о них в файле конфигурации (**.bot**).
 
-Служба QnA Maker состоит из двух частей: службы Cognitive Service в Azure и базы знаний для пар вопросов и ответов, которые публикуются с помощью Cognitive Service. Когда вы создаете свою базу знаний, ее можно связать с созданной на этом шаге службой Azure, выбрав ее **имя**.
+1. Клонируйте репозиторий примеров или извлеките из него данные.
+1. Установите средства CLI для Bot Builder.
+1. Вручную настройте необходимые службы.
 
-Чтобы создать службу Cognitive Services в Azure, войдите на [портал Azure](https://portal.azure.com) и сделайте следующее:
+### <a name="test-your-bot"></a>Тестирование бота
 
-1. Щелкните **Все службы**.
-1. Выполните поиск по `Cognitive` и выберите **Cognitive Services**.
-1. Щелкните **Добавить**.
-1. Выполните поиск по `QnA` и выберите **QnA Maker**.
-1. В колонке QnA Maker щелкните **Создать**.
-1. Заполните информацию и создайте службу QnA Maker.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-    <!-- TODO: Add screenshot.-->
+Запустите бот с помощью Visual Studio или Visual Studio Code.
 
-    * Введите имя службы. В этом руководстве используется `SmartLightQnA`.
-    * Выберите подписку, которую необходимо использовать.
-    * Выберите ценовую категорию. В этом руководстве используется уровень F0 ("Бесплатный").
-    * Создайте или выберите группу ресурсов. В этом руководстве создается новая группа ресурсов `SmartLightQnA`.
-    * Выберите поиск ценовой категории. В этом руководстве используется уровень B ("Базовый").
-    * Выберите поиск расположения. В этом руководстве используется `West US`.
-    * Введите имя приложения для использования. В этом руководстве используется `SmartLightQnA`.
-    * Выберите расположение веб-сайта. В этом руководстве используется `West US`.
-    * Включите по умолчанию App Insights.
-    * Выберите расположение App Insights. В этом руководстве используется `West US`.
-    * Щелкните **Создать** для создания службы QnA Maker.
-    * Azure создает и начинает развертывать службу.
-
-1. После развертывания службы просмотрите уведомление и щелкните **Перейти к ресурсу**, чтобы перейти к колонке для службы.
-1. Щелкните **Ключи** и получите свои ключи.
-
-    * Скопируйте имя службы и первый ключ. Это имя вам понадобится при создании своей базы знаний, чтобы связать службу с этой базой знаний. А ключ вы будете использовать вместо YOUR-AZURE-QNA-SUBSCRIPTION-KEY в приведенных ниже действиях с диспетчером.
-    * Поскольку имеется два ключа, можно повторно создать один из них без необходимости прерывания работы службы.
-
-## <a name="create-and-publish-the-qna-maker-knowledge-base"></a>Создание и публикация базы знаний QnA Maker
-
-Чтобы создать базу знаний, сделайте следующее:
-
-1. Перейдите на [веб-сайт QnA Maker](https://qnamaker.ai) и войдите в систему. 
-1. Щелкните **Create a knowledge base** (Создать базу знаний). Так как вы создали службу Cognitive Services в Azure, можете пропустить **шаг 1**.
-1. На **шаге 2** в поле **Azure QnA service** (служба Azure QnA) выберите имя службы Cognitive Services, которую вы создали в Azure. Таким образом вы свяжете эту базу знаний с созданной вами службой в Azure.
-1. На **шаге 3** присвойте этой базе знаний имя FAQ. 
-1. На **шаге 4** заполните базу знаний, используя этот [пример TSV-файла][FAQ_TSV]. Также можно использовать содержимое с веб-страниц. В этом случае вставьте ссылку в поле **URL-адреса**.
-1. На **шаге 5** нажмите кнопку **Create your KB** (Создать базу знаний), чтобы создать базу знаний.
-
-Когда база знаний будет создана, ее нужно будет **опубликовать**, чтобы получить идентификатор и конечную точку этой базы знаний. Они понадобятся вам на последующем этапе.
-
-
-## <a name="use-the-dispatch-tool-to-create-the-dispatcher-luis-app"></a>Использование средства подготовки к отправке для создания приложения диспетчера LUIS
-Теперь, когда у вас есть два приложения LUIS и база знаний, воспользуйтесь средством подготовки к отправке, чтобы объединить эти приложения в одно приложение LUIS. 
-
-### <a name="step-1-install-the-dispatch-tool"></a>Шаг 1. Установка средства подготовки к отправке
-
-Откройте окно **командной строки** и перейдите в проект средства подготовки к отправке. Чтобы установить [средство подготовки к отправке][DispatchTool], выполните следующую команду NPM.
-
-```cmd
-npm install -g botdispatch
-```
-
-### <a name="step-2-initialize-the-dispatch-tool"></a>Шаг 2. Инициализация средства подготовки к отправке
-
-Выполните следующую команду, чтобы инициализировать средство подготовки к отправке с именем `CombineWeatherAndLights`. Замените `"YOUR-LUIS-AUTHORING-KEY"` в командной строке ниже своим [ключом разработки LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys).
-
-```cmd
-dispatch init -name CombineWeatherAndLights -luisAuthoringKey "YOUR-LUIS-AUTHORING-KEY" -luisAuthoringRegion westus
-```
-
-### <a name="step-3-add-apps-to-dispatcher"></a>Шаг 3. Добавление приложений в диспетчер
-
-Получите идентификатор для каждого созданного приложения LUIS. Идентификаторы находятся в разделе **My Apps** (Мои приложения) на [сайте LUIS](https://www.luis.ai/home). Чтобы просмотреть **идентификатор приложения**, щелкните имя приложения и выберите **Settings** (Параметры). Используйте тот же *ключ разработки LUIS*, который вы получили на **шаге 2**.
-
-Выполните приведенную ниже команду для каждого созданного вами приложения LUIS (например, **homeautomation** и **weather**). Не забудьте заменить идентификатор на соответствующий для следующих команд.
-
-```
-dispatch add -type luis -id "HOMEAUTOMATION-APP-ID" -name homeautomation -version 0.1 -key "YOUR-LUIS-AUTHORING-KEY"
-dispatch add -type luis -id "WEATHER-APP-ID" -name weather -version 0.1 -key "YOUR-LUIS-AUTHORING-KEY"
-
-```
-
-Затем добавьте базу знаний QnAMaker, выполнив следующую команду. В этой команде `QNA-KB-ID` обозначает идентификатор базы знаний, полученный после ее публикации, а `YOUR-AZURE-QNA-SUBSCRIPTION-KEY` — ключ, полученный из службы Cognitive Services, созданной в Azure.
-
-```
-dispatch add -type qna -id "QNA-KB-ID" -name faq -key "YOUR-AZURE-QNA-SUBSCRIPTION-KEY"
-```
-
-### <a name="step-4-create-the-dispatcher-luis-app"></a>Шаг 4. Создание приложения диспетчера LUIS
-
-Когда все приложения будут добавлены в средство для подготовки к отправке, выполните следующую команду, чтобы создать приложение диспетчера. Чтобы проверить файл диспетчеризации, просмотре сведения в файле с расширением **.dispatch**.
-
-```
-dispatch create
-```
-
-Эта команда создаст приложение диспетчера LUIS с именем **CombineWeatherAndLights**. Новое приложение можно увидеть на сайте [https://www.luis.ai/home](https://www.luis.ai/home). 
-
-![Приложение диспетчера в LUIS.ai](media/tutorial-dispatch/dispatch-app-in-luis.png)
-
-Щелкните новое приложение. В разделе **Намерения** можно увидеть, что приложение имеет намерения `l_homeautomation`, `l_weather`, и `q_faq`.
-
-![Намерения диспетчера в LUIS.ai](media/tutorial-dispatch/dispatch-intents-in-luis.png)
-
-Для обучения приложения LUIS нажмите кнопку **Обучение** и используйте вкладку **Опубликовать**, чтобы [опубликовать](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) приложение. Чтобы скопировать идентификатор нового приложения, щелкните **Settings** (Параметры). Этот идентификатор вам понадобится, чтобы подключить бот к приложению.
-
-## <a name="create-the-bot"></a>Создание бота
-
-Теперь можно подключить намерения приложения диспетчера к логике бота, которое направляет сообщения в исходные приложения LUIS и службу QnA Maker.
-
-Можно использовать пример, включенный в состав пакета SDK для Bot Builder, в качестве отправной точки.
-
-# <a name="ctabcsaddref"></a>[C#](#tab/csaddref)
-
-Начните с кода в [LUIS Dispatch sample][DispatchBotCS] (Пример LUIS Dispatch). В Visual Studio [обновите пакеты Nuget](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui#updating-a-package) до последней предварительной версии из следующих:
-
-* `Microsoft.Bot.Builder.Integration.AspNet.Core`
-* `Microsoft.Bot.Builder.Ai.QnA` (требуется для QnA Maker)
-* `Microsoft.Bot.Builder.Ai.Luis` (требуется для LUIS)
-
-# <a name="javascripttabjsaddref"></a>[JavaScript](#tab/jsaddref)
-
-Скачайте [LUIS Dispatch sample][DispatchBotJs] (Пример LUIS Dispatch).  Установите необходимые пакеты, включая пакет `botbuilder-ai` для служб LUIS и QnA Maker, с помощью npm:
-
-* `npm install --save botbuilder@preview`
-* `npm install --save botbuilder-ai@preview`
+<!--
+# [JavaScript](#tab/javascript)
+-->
 
 ---
 
+Подключитесь к боту через Bot Framework Emulator.
 
-Настройте пример для использования приложения диспетчера.
+Вот некоторые входные данные для включенных в пример служб.
 
-# <a name="ctabcsbotconfig"></a>[C#](#tab/csbotconfig)
+* QnA Maker
+  * `hi`, `good morning`
+  * `what are you`, `what do you do`
+* LUIS (автоматизация дома)
+  * `turn on bedroom light`
+  * `turn off bedroom light`
+  * `make some coffee`
+* LUIS (погода)
+  * `whats the weather in chennai india`
+  * `what's the forecast for bangalore`
+  * `show me the forecast for nebraska`
 
-В файле **appsettings.json** во вкладке [Пример LUIS Dispatch][DispatchBotCS], измените следующие поля.
+## <a name="notes-about-the-code"></a>Примечания о коде
 
-| ИМЯ | ОПИСАНИЕ |
-|------|------|
-| `Luis-SubscriptionKey` |  Ключ подписки LUIS. Это может быть ключ конечных точек или ключ разработки, описанные [здесь](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-keys). | 
-| `Luis-ModelId-Dispatcher` | Идентификатор приложения LUIS, который создается средством подготовки к отправке. | 
-| `Luis-ModelId-HomeAutomation` | Идентификатор приложения, созданный из файла homeautomation.json  | 
-| `Luis-ModelId-Weather` | Идентификатор приложения, созданный из файла weather.json | 
-| `QnAMaker-Endpoint-Url` | Необходимо установить https://westus.api.cognitive.microsoft.com/qnamaker/v2.0 для предварительной версии служб QnA Maker. <br/>Установите https://YOUR-QNA-SERVICE-NAME.azurewebsites.net/qnamaker для новых служб QnA Maker (общедоступная версия).|
-| `QnAMaker-SubscriptionKey` | Ключ подписки Azure QnA Maker. | 
-| `QnAMaker-KnowledgeBaseId` | Идентификатор базы знаний, созданный на [портале QnA Maker](https://qnamaker.ai).| 
+### <a name="packages"></a>Пакеты
 
+В этом руководстве используются следующие пакеты.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В **Startup.cs** взгляните на метод `ConfigureServices`. Он содержит код для инициализации `LuisRecognizerMiddleware`, с помощью только что созданного идентификатора приложения LUIS.
+Последняя версия v4 этих [пакетов NuGet](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui#updating-a-package).
+
+* `Microsoft.Bot.Builder`
+* `Microsoft.Bot.Builder.AI.Luis`
+* `Microsoft.Bot.Builder.AI.QnA`
+* `Microsoft.Bot.Builder.Integration.AspNet.Core`
+* `Microsoft.Bot.Configuration`
+
+<!--
+# [JavaScript](#tab/javascript)
+
+Download the [LUIS Dispatch sample][DispatchBotJs].  Install the required packages, including the `botbuilder-ai` package for LUIS and QnA Maker, using npm:
+
+* `npm install --save botbuilder`
+* `npm install --save botbuilder-ai`
+-->
+
+---
+
+### <a name="botbuilder-cli-tools"></a>Средства CLI для Bot Builder
+
+Этот пример использует следующие [средства CLI для BotBuilder](https://aka.ms/botbuilder-tools-readme) (их можно получить через npm) для создания, обучения и публикации служб LUIS, QnA Maker и диспетчеризации, а также для сохранения сведений об этих службах в файле конфигурации (**.bot**) вашего бота.
+
+* [Диспетчеризации](https://aka.ms/botbuilder-tools-dispatch)
+* [LUDown](https://aka.ms/botbuilder-tools-ludown-readme)
+* [LUIS](https://aka.ms/botbuilder-tools-luis)
+* [MSBot Command Line tool](https://aka.ms/botbuilder-tools-msbot-readme) (Программа командной строки MSBot)
+* [QnAMaker](https://aka.ms/botbuilder-tools-qnaMaker)
+
+> [!TIP]
+> Чтобы убедиться в наличии последней версии npm и средств CLI, выполните следующую команду.
+>
+> ```shell
+> npm i -g npm dispatch ludown luis-apis msbot qnamaker
+> ```
+
+После настройки служб с помощью этих средств файл **.bot** для нашего примера должен выглядеть примерно следующим образом. (Вы можете запустить `msbot secret -n`, чтобы зашифровать конфиденциальные значения, сохраненные в этом файле.)
+
+```json
+{
+    "name": "NLP-With-Dispatch-Bot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "development",
+            "id": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages"
+        },
+        {
+            "type": "luis",
+            "name": "Home Automation",
+            "appId": "<your-home-automation-luis-app-id>",
+            "version": "0.1",
+            "authoringKey": "<your-luis-authoring-key>",
+            "subscriptionKey": "<your-cognitive-services-subscription-key>",
+            "region": "westus",
+            "id": "110"
+        },
+        {
+            "type": "luis",
+            "name": "Weather",
+            "appId": "<your-weather-luis-app-id>",
+            "version": "0.1",
+            "authoringKey": "<your-luis-authoring-key>",
+            "subscriptionKey": "<your-cognitive-services-subscription-key>",
+            "region": "westus",
+            "id": "92"
+        },
+        {
+            "type": "qna",
+            "name": "Sample QnA",
+            "kbId": "<your-qna-knowledge-base-id>",
+            "subscriptionKey": "<your-cognitive-services-subscription-key>",
+            "endpointKey": "<your-qna-endpoint-key>",
+            "hostname": "<your-qna-host-name>",
+            "id": "184"
+        },
+        {
+            "type": "dispatch",
+            "name": "NLP-With-Dispatch-BotDispatch",
+            "appId": "<your-dispatch-app-id>",
+            "authoringKey": "<your-luis-authoring-key>",
+            "subscriptionKey": "<your-cognitive-services-subscription-key>",
+            "version": "Dispatch",
+            "region": "westus",
+            "serviceIds": [
+                "110",
+                "92",
+                "184"
+            ],
+            "id": "27"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}
+```
+
+### <a name="connecting-to-the-services-from-your-bot"></a>Подключение к службам из кода бота
+
+Чтобы подключиться к службам диспетчеризации, LUIS и (или) QnA Maker, бот получает сведения из файла **.bot**.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+В **Startup.cs** `ConfigureServices` считывает файл конфигурации, а `InitBotServices` применяет эту информацию для инициализации службы. При каждом создании бот инициализируется зарегистрированным объектом `BotServices`. Ниже приведены соответствующие фрагменты этих двух методов.
 
 ```csharp
-// This method gets called by the runtime. Use this method to add services to the container.
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddSingleton(this.Configuration);
-    services.AddBot<LuisDispatchBot>(options =>
+    //...
+    var botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey);
+    services.AddSingleton(sp => botConfig
+        ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
+
+    // Retrieve current endpoint.
+    var environment = _isProduction ? "production" : "development";
+    var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
+    if (!(service is EndpointService endpointService))
     {
-        options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
+        throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
+    }
 
-        var (luisModelId, luisSubscriptionKey, luisUri) = GetLuisConfiguration(this.Configuration, "Dispatcher");
+    var connectedServices = InitBotServices(botConfig);
 
-        var luisModel = new LuisModel(luisModelId, luisSubscriptionKey, luisUri);
-
-        // If you want to get all the intents and scores that LUIS recognized, set Verbose = true in luisOptions
-        var luisOptions = new LuisRequest { Verbose = true };
-
-        var middleware = options.Middleware;
-        middleware.Add(new LuisRecognizerMiddleware(luisModel, luisOptions: luisOptions));
-    });
-}
-```
-Файлы с конфигурацией LUIS и QnA Maker можно получить с помощью методов `GetLuisConfiguration` и `GetQnAMakerConfiguration`.
-```csharp
-public static (string modelId, string subscriptionId, Uri uri) GetLuisConfiguration(IConfiguration configuration, string serviceName)
-{
-    var modelId = configuration.GetSection($"Luis-ModelId-{serviceName}")?.Value;
-    var subscriptionId = configuration.GetSection("Luis-SubscriptionKey")?.Value;
-    var uri = new Uri(configuration.GetSection("Luis-Url")?.Value);
-    return (modelId, subscriptionId, uri);
-}
-
-public static (string knowledgeBaseId, string subscriptionKey, string uri) GetQnAMakerConfiguration(IConfiguration configuration)
-{
-    var knowledgeBaseId = configuration.GetSection("QnAMaker-KnowledgeBaseId")?.Value;
-    var subscriptionKey = configuration.GetSection("QnAMaker-SubscriptionKey")?.Value;
-    var uri = configuration.GetSection("QnAMaker-Endpoint-Url")?.Value;
-    return (knowledgeBaseId, subscriptionKey, uri);
+    services.AddSingleton(sp => connectedServices);
+    //...
 }
 ```
 
-### <a name="dispatch-the-message"></a>Подготовка к отправке сообщения
+```csharp
+private static BotServices InitBotServices(BotConfiguration config)
+{
+    var qnaServices = new Dictionary<string, QnAMaker>();
+    var luisServices = new Dictionary<string, LuisRecognizer>();
 
-Взгляните на файл **LuisDispatchBot.cs**, где бот отправляет сообщение на приложение LUIS или QnA Maker для внутреннего компонента. 
+    foreach (var service in config.Services)
+    {
+        switch (service.Type)
+        {
+            case ServiceTypes.Luis:
+                {
+                    // ...
+                    var app = new LuisApplication(luis.AppId, luis.AuthoringKey, luis.GetEndpoint());
+                    var recognizer = new LuisRecognizer(app);
+                    luisServices.Add(luis.Name, recognizer);
+                    break;
+                }
 
-Если приложение диспетчера обнаруживает намерения `l_homeautomation` или `l_weather` в `DispatchToTopIntent`, он вызывает метод `DispatchToTopIntent`, который создает `LuisRecognizer` для вызова исходных приложений `homeautomation` и `weather`. Если бот обнаруживает намерение `q_faq` или `none`, которые используются в качестве резервного варианта, он вызывает метод, который запрашивает службу QnA Maker.
+            case ServiceTypes.Dispatch:
+                // ...
+                var dispatchApp = new LuisApplication(dispatch.AppId, dispatch.AuthoringKey, dispatch.GetEndpoint());
 
-> [!NOTE] 
-> Если имена намерений `l_homeautomation`, `l_weather` или `q_faq` не соответствуют приложению LUIS, созданному с помощью средства подготовки к отправке, измените их в соответствии со строчной версией имен намерений, с которой можно ознакомится на [портале LUIS](https://www.luis.ai).
+                // Since the Dispatch tool generates a LUIS model, we use the LuisRecognizer to resolve the
+                // dispatching of the incoming utterance.
+                var dispatchARecognizer = new LuisRecognizer(dispatchApp);
+                luisServices.Add(dispatch.Name, dispatchARecognizer);
+                break;
+
+            case ServiceTypes.QnA:
+                {
+                    // ...
+                    var qnaEndpoint = new QnAMakerEndpoint()
+                    {
+                        KnowledgeBaseId = qna.KbId,
+                        EndpointKey = qna.EndpointKey,
+                        Host = qna.Hostname,
+                    };
+
+                    var qnaMaker = new QnAMaker(qnaEndpoint);
+                    qnaServices.Add(qna.Name, qnaMaker);
+                    break;
+                }
+        }
+    }
+
+    return new BotServices(qnaServices, luisServices);
+}
+```
+
+<!--
+# [JavaScript](#tab/javascript)
+
+```javascript
+```
+-->
+
+---
+
+### <a name="calling-the-services-from-your-bot"></a>Вызов служб из кода бота
+
+Логика бота проверяет входные данные пользователя по объединенной модели диспетчеризации.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+В файле **NlpDispatchBot.cs** конструктор бота получает объект `BotServices`, который мы зарегистрировали при запуске.
 
 ```csharp
-private async Task DispatchToTopIntent(ITurnContext context, (string intent, double score)? topIntent)
+private readonly BotServices _services;
+
+public NlpDispatchBot(BotServices services)
 {
-    switch (topIntent.Value.intent.ToLowerInvariant())
+    _services = services ?? throw new System.ArgumentNullException(nameof(services));
+
+    //...
+}
+```
+
+В методе `OnTurnAsync` бота мы проверяем входящие сообщения от пользователя по модели диспетчеризации.
+
+```csharp
+// Get the intent recognition result
+var recognizerResult = await _services.LuisServices[DispatchKey].RecognizeAsync(context, cancellationToken);
+var topIntent = recognizerResult?.GetTopScoringIntent();
+
+if (topIntent == null)
+{
+    await context.SendActivityAsync("Unable to get the top intent.");
+}
+else
+{
+    await DispatchToTopIntentAsync(context, topIntent, cancellationToken);
+}
+```
+
+<!--
+# [JavaScript](#tab/javascript)
+
+```javascript
+```
+-->
+
+---
+
+### <a name="working-with-the-recognition-results"></a>Применение результатов распознавания
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код нашего бота направляет запрос в соответствующую службу и обрабатывает полученный от нее ответ.
+
+```csharp
+/// <summary>
+/// Depending on the intent from Dispatch, routes to the right LUIS model or QnA service.
+/// </summary>
+private async Task DispatchToTopIntentAsync(
+    ITurnContext context,
+    (string intent, double score)? topIntent,
+    CancellationToken cancellationToken = default(CancellationToken))
+{
+    const string homeAutomationDispatchKey = "l_Home_Automation";
+    const string weatherDispatchKey = "l_Weather";
+    const string noneDispatchKey = "None";
+    const string qnaDispatchKey = "q_sample-qna";
+
+    switch (topIntent.Value.intent)
     {
-        case "l_homeautomation":
-            await DispatchToLuisModel(context, this.luisModelHomeAutomation, "home automation");
+        case homeAutomationDispatchKey:
+            await DispatchToLuisModelAsync(context, HomeAutomationLuisKey);
+
+            // Here, you can add code for calling the hypothetical home automation service, passing in any entity
+            // information that you need.
             break;
-        case "l_weather":
-            await DispatchToLuisModel(context, this.luisModelWeather, "weather");
+        case weatherDispatchKey:
+            await DispatchToLuisModelAsync(context, WeatherLuisKey);
+
+            // Here, you can add code for calling the hypothetical weather service,
+            // passing in any entity information that you need
             break;
-        case "none":
-        // You can provide logic here to handle the known None intent (none of the above).
-        // In this example we fall through to the QnA intent.
-        case "q_faq":
-            await DispatchToQnAMaker(context, this.qnaEndpoint, "FAQ");
+        case noneDispatchKey:
+            // You can provide logic here to handle the known None intent (none of the above).
+            // In this example we fall through to the QnA intent.
+        case qnaDispatchKey:
+            await DispatchToQnAMakerAsync(context, QnAMakerKey);
             break;
+
         default:
             // The intent didn't match any case, so just display the recognition results.
-            await context.SendActivity($"Dispatch intent: {topIntent.Value.intent} ({topIntent.Value.score}).");
-
+            await context.SendActivityAsync($"Dispatch intent: {topIntent.Value.intent} ({topIntent.Value.score}).");
             break;
     }
 }
-```
 
-Метод `DispatchToQnAMaker` отправляет сообщение пользователя в службу QnA Maker. Убедитесь перед запуском бота, что служба опубликована на [портале QnA Maker](https://qnamaker.ai).
-
-```csharp
-private static async Task DispatchToQnAMaker(ITurnContext context, QnAMakerEndpoint qnaOptions, string appName)
+/// <summary>
+/// Dispatches the turn to the request QnAMaker app.
+/// </summary>
+private async Task DispatchToQnAMakerAsync(
+    ITurnContext context,
+    string appName,
+    CancellationToken cancellationToken = default(CancellationToken))
 {
-    QnAMaker qnaMaker = new QnAMaker(qnaOptions);
     if (!string.IsNullOrEmpty(context.Activity.Text))
     {
-        var results = await qnaMaker.GetAnswers(context.Activity.Text.Trim()).ConfigureAwait(false);
+        var results = await _services.QnAServices[appName].GetAnswersAsync(context).ConfigureAwait(false);
         if (results.Any())
         {
-            await context.SendActivity(results.First().Answer);
+            await context.SendActivityAsync(results.First().Answer, cancellationToken: cancellationToken);
         }
         else
         {
-            await context.SendActivity($"Couldn't find an answer in the {appName}.");
+            await context.SendActivityAsync($"Couldn't find an answer in the {appName}.");
         }
     }
 }
-```
 
-Метод `DispatchToLuisModel` отправляет сообщение пользователя в исходные приложения LUIS `homeautomation` и `weather`. Убедитесь перед запуском бота, что приложение LUIS опубликовано на [портале LUIS](https://www.luis.ai).
-
-```csharp
-private static async Task DispatchToLuisModel(ITurnContext context, LuisModel luisModel, string appName)
+/// <summary>
+/// Dispatches the turn to the requested LUIS model.
+/// </summary>
+private async Task DispatchToLuisModelAsync(
+    ITurnContext context,
+    string appName,
+    CancellationToken cancellationToken = default(CancellationToken))
 {
-    await context.SendActivity($"Sending your request to the {appName} system ...");
-    var (intents, entities) = await RecognizeAsync(luisModel, context.Activity.Text);
+    await context.SendActivityAsync($"Sending your request to the {appName} system ...");
+    var result = await _services.LuisServices[appName].RecognizeAsync(context, cancellationToken);
 
-    await context.SendActivity($"Intents detected by the {appName} app:\n\n{string.Join("\n\n", intents)}");
+    await context.SendActivityAsync($"Intents detected by the {appName} app:\n\n{string.Join("\n\n", result.Intents)}");
 
-    if (entities.Count() > 0)
+    if (result.Entities.Count > 0)
     {
-        await context.SendActivity($"The following entities were found in the message:\n\n{string.Join("\n\n", entities)}");
+        await context.SendActivityAsync($"The following entities were found in the message:\n\n{string.Join("\n\n", result.Entities)}");
     }
-    
-    // Here, you can add code for calling the hypothetical home automation or weather service, 
-    // passing in the appName and any intent or entity information that you need 
 }
 ```
 
-Метод `RecognizeAsync` вызывает `LuisRecognizer` для получения результатов из приложения LUIS.
-
-```cs
-private static async Task<(IEnumerable<string> intents, IEnumerable<string> entities)> RecognizeAsync(LuisModel luisModel, string text)
-{
-    var luisRecognizer = new LuisRecognizer(luisModel);
-    var recognizerResult = await luisRecognizer.Recognize(text, System.Threading.CancellationToken.None);
-
-    // list the intents
-    var intents = new List<string>();
-    foreach (var intent in recognizerResult.Intents)
-    {
-        intents.Add($"'{intent.Key}', score {intent.Value}");
-    }
-
-    // list the entities
-    var entities = new List<string>();
-    foreach (var entity in recognizerResult.Entities)
-    {
-        if (!entity.Key.ToString().Equals("$instance"))
-        {
-            entities.Add($"{entity.Key}: {entity.Value.First}");
-        }
-    }
-
-    return (intents, entities);
-}
-```
-
-# <a name="javascripttabjsbotconfig"></a>[JavaScript](#tab/jsbotconfig)
-
-Начните с кода в [Dispatch bot sample][DispatchBotJs] (Пример бота диспетчера). Откройте файл **app.js** и при необходимости замените поля `appId` идентификаторами приложений LUIS. Если оставить поля `appId` в их изначальном виде, то будет использоваться общедоступная версия приложения LUIS, созданная для демонстрационных целей. Как и `LUIS_SUBSCRIPTION_KEY`, вы можете найти этот идентификатор на странице публикации любого приложения LUIS. Идентификатор указан в ссылке на конечную точку на этой странице.
+<!--
+# [JavaScript](#tab/javascript)
 
 ```javascript
-// Packages
-const { BotFrameworkAdapter, MemoryStorage, ConversationState } = require('botbuilder');
-const { restify } = require('restify');
-const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
-const { DialogSet } = require('botbuilder-dialogs');
-
-// Create LuisRecognizers and QnAMaker
-// The LUIS applications are public, meaning you can use your own subscription key to test the applications.
-// For QnAMaker, users are required to create their own knowledge base.
-// The exported LUIS applications and QnAMaker knowledge base can be found with the sample bot.
-
-// The corresponding LUIS application JSON is `dispatchSample.json`
-const dispatcher = new LuisRecognizer({
-    appId: '0b18ab4f-5c3d-4724-8b0b-191015b48ea9',
-    subscriptionKey: process.env.LUIS_SUBSCRIPTION_KEY,
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com/',
-    verbose: true
-});
-
-// The corresponding LUIS application JSON is `homeautomation.json`
-const homeAutomation = new LuisRecognizer({
-    appId: 'c6d161a5-e3e5-4982-8726-3ecec9b4ed8d',
-    subscriptionKey: process.env.LUIS_SUBSCRIPTION_KEY,
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com/',
-    verbose: true
-});
-
-// The corresponding LUIS application JSON is `weather.json`
-const weather = new LuisRecognizer({
-    appId: '9d0c9e9d-ce04-4257-a08a-a612955f2fb5',
-    subscriptionKey: process.env.LUIS_SUBSCRIPTION_KEY,
-    serviceEndpoint: 'https://westus.api.cognitive.microsoft.com/',
-    verbose: true
-});
 ```
-
-В следующем коде замените `endpointKey` и `knowledgeBaseID` ключом и идентификатором базы знаний службы QnA Maker. `host` должно быть присвоено `https://westus.api.cognitive.microsoft.com/qnamaker/v2.0` для предварительной версии служб QnA Maker, а `https://YOUR-QNA-SERVICE-NAME.azurewebsites.net/qnamaker` — для новых служб QnA Maker (общедоступная версия).
-
-```javascript
-const faq = new QnAMaker(
-    {
-        knowledgeBaseId: '',
-        endpointKey: '',
-        host: ''
-    },
-    {
-        answerBeforeNext: true
-    }
-);
-
-```
-
-Остальная часть кода в **app.js** обрабатывает намерения `l_homeautomation`, `l_weather` и `None`, запустив соответствующие диалоговые окна. В случае использования намерения `q_faq`, приложение возвращает ответ службы QnAMaker.
-
-> [!NOTE] 
-> Если имена намерений `l_homeautomation`, `l_weather` или `q_faq` не соответствуют приложению LUIS, созданного с помощью средства подготовки к отправке, измените их в соответствии с именами намерений, с которыми можно ознакомится на [портале LUIS](https://www.luis.ai).
-
-```javascript
-// create conversation state
-const conversationState = new ConversationState(new MemoryStorage());
-adapter.use(conversationState);
-
-// register some dialogs for usage with the LUIS apps that are being dispatched to
-const dialogs = new DialogSet();
-
-function findEntities(entityName, entityResults) {
-    let entities = []
-    if (entityName in entityResults) {
-        entityResults[entityName].forEach((entity, idx) => {
-            entities.push(entity);
-        });
-    }
-    return entities.length > 0 ? entities : undefined;
-}
-
-dialogs.add('HomeAutomation_TurnOff', [
-    async (dialogContext, args) => {
-        const devices = findEntities('HomeAutomation_Device', args.entities);
-        const operations = findEntities('HomeAutomation_Operation', args.entities);
-
-        const state = conversationState.get(dialogContext.context);
-        state.homeAutomationTurnOff = state.homeAutomationTurnOff ? state.homeAutomationTurnOff + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.homeAutomationTurnOff}: You reached the "HomeAutomation.TurnOff" dialog.`);
-        if (devices) {
-            await dialogContext.context.sendActivity(`Found these "HomeAutomation_Device" entities:\n${devices.join(', ')}`);
-        }
-        if (operations) {
-            await dialogContext.context.sendActivity(`Found these "HomeAutomation_Operation" entities:\n${operations.join(', ')}`);
-        }
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('HomeAutomation_TurnOn', [
-    async (dialogContext, args) => {
-        const devices = findEntities('HomeAutomation_Device', args.entities);
-        const operations = findEntities('HomeAutomation_Operation', args.entities);
-
-        const state = conversationState.get(dialogContext.context);
-        state.homeAutomationTurnOn = state.homeAutomationTurnOn ? state.homeAutomationTurnOn + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.homeAutomationTurnOn}: You reached the "HomeAutomation.TurnOn" dialog.`);
-        if (devices) {
-            await dialogContext.context.sendActivity(`Found these "HomeAutomation_Device" entities:\n${devices.join(', ')}`);
-        }
-        if (operations) {
-            await dialogContext.context.sendActivity(`Found these "HomeAutomation_Operation" entities:\n${operations.join(', ')}`);
-        }
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('Weather_GetForecast', [
-    async (dialogContext, args) => {
-        const locations = findEntities('Weather_Location', args.entities);
-
-        const state = conversationState.get(dialogContext.context);
-        state.weatherGetForecast = state.weatherGetForecast ? state.weatherGetForecast + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.weatherGetForecast}: You reached the "Weather.GetForecast" dialog.`);
-        if (locations) {
-            await dialogContext.context.sendActivity(`Found these "Weather_Location" entities:\n${locations.join(', ')}`);
-        }
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('Weather_GetCondition', [
-    async (dialogContext, args) => {
-        const locations = findEntities('Weather_Location', args.entities);
-
-        const state = conversationState.get(dialogContext.context);
-        state.weatherGetCondition = state.weatherGetCondition ? state.weatherGetCondition + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.weatherGetCondition}: You reached the "Weather.GetCondition" dialog.`);
-        if (locations) {
-            await dialogContext.context.sendActivity(`Found these "Weather_Location" entities:\n${locations.join(', ')}`);
-        }
-        await dialogContext.end();
-    }
-]);
-
-dialogs.add('None', [
-    async (dialogContext) => {
-        const state = conversationState.get(dialogContext.context);
-        state.noneIntent = state.noneIntent ? state.noneIntent + 1 : 1;
-        await dialogContext.context.sendActivity(`${state.noneIntent}: You reached the "None" dialog.`);
-        await dialogContext.end();
-    }
-]);
-
-adapter.use(dispatcher);
-
-// Listen for incoming Activities
-server.post('/api/messages', (req, res) => {
-    adapter.processActivity(req, res, async (context) => {
-        if (context.activity.type === 'message') {
-            const state = conversationState.get(context);
-            const dc = dialogs.createContext(context, state);
-
-            // Retrieve the LUIS results from our dispatcher LUIS application
-            const luisResults = dispatcher.get(context);
-
-            // Extract the top intent from LUIS and use it to select which LUIS application to dispatch to
-            const topIntent = LuisRecognizer.topIntent(luisResults);
-
-            const isMessage = context.activity.type === 'message';
-            if (isMessage) {
-                switch (topIntent) {
-                    case 'l_homeautomation':
-                        const homeAutoResults = await homeAutomation.recognize(context);
-                        const topHomeAutoIntent = LuisRecognizer.topIntent(homeAutoResults);
-                        await dc.begin(topHomeAutoIntent, homeAutoResults);
-                        break;
-                    case 'l_weather':
-                        const weatherResults = await weather.recognize(context);
-                        const topWeatherIntent = LuisRecognizer.topIntent(weatherResults);
-                        await dc.begin(topWeatherIntent, weatherResults);
-                        break;
-                    case 'q_faq':
-                        await faq.answer(context);
-                        break;
-                    default:
-                        await dc.begin('None');
-                }
-            }
-
-            if (!context.responded) {
-                await dc.continue();
-                if (!context.responded && isMessage) {
-                    await dc.context.sendActivity(`Hi! I'm the LUIS dispatch bot. Say something and LUIS will decide how the message should be routed.`);
-                }
-            }
-        }
-    });
-});
-
-```
+-->
 
 ---
-## <a name="run-the-bot"></a>Запуск бота
-
-Проверьте бот с помощью [Bot Framework Emulator](../bot-service-debug-emulator.md). Напишите сообщение, например, "turn on the lights", чтобы отправить сообщение в приложение LUIS для домашней автоматизации, или напишите сообщение "get the weather in Seattle", чтобы отправить сообщение в приложение погоды LUIS.
-
-> [!NOTE] 
-> Перед запуском бота убедитесь, что опубликованы все приложения LUIS, созданные на [портале LUIS](https://www.luis.ai), и службы QnA Maker на [портале QnA Maker](https://qnamaker.ai).
-
-![Отправка сообщений в бот подготовки к отправке](media/tutorial-dispatch/run-dispatch-bot.png)
 
 ## <a name="evaluate-the-dispatchers-performance"></a>Оценка производительности диспетчера
 
-Иногда возникают сообщения пользователя, представленные в качестве примеров, как в приложениях LUIS, так и в службах QnA Maker. В этом случае объединенное приложение LUIS, которое создает средство подготовки к отправке, не будет эффективным для входных данных. Проверьте производительность приложения с помощью параметра `eval`. 
+Иногда возникают сообщения пользователя, представленные в качестве примеров, как в приложениях LUIS, так и в службах QnA Maker. В этом случае объединенное приложение LUIS, которое создает средство подготовки к отправке, не будет эффективным для входных данных. Производительность приложения можно проверить с помощью параметра `eval`.
 
-```
+```shell
 dispatch eval
 ```
 
-Выполнение команды `dispatch eval` создает файл **Summary.html**, который предоставляет статистику о производительности новой языковой модели.
+Выполнение команды `dispatch eval` создает файл **Summary.html**, который предоставляет статистику по прогнозируемой производительности языковой модели.
 
-> [!TIP] 
-> Фактически команду `dispatch eval` можно запустить в любом приложении LUIS, а не только в тех, что созданы с помощью средства подготовки к отправке.
+> [!TIP]
+> Команду `dispatch eval` можно запустить в любом приложении LUIS, а не только в тех, которые созданы средством диспетчеризации.
 
 ### <a name="edit-intents-for-duplicates-and-overlaps"></a>Изменение намерений для дубликатов и пересечений
 
-Просмотрите примеры фраз, помеченные как дубликаты в **Summary.html** и удалите похожие или пересекающиеся примеры. Например, предположим, что в приложение LUIS `homeautomation` для домашней автоматизации запросы типа "turn on the lights"сопоставляются с намерением TurnOnLights, а запросы типа "Why won't my lights turn on?" сопоставляются с намерением None. В этом случае они могут быть переданы в службу QnA Maker. При объединении приложения LUIS и службы QnA Maker с помощью отправки, необходимо выполнить следующие действия. 
+Просмотрите примеры фраз, помеченные как дубликаты в **Summary.html** и удалите похожие или пересекающиеся примеры. Для примера предположим, что в приложении LUIS `Home Automation` для домашней автоматизации запросы типа "turn on the lights" (Включить свет) сопоставляются с намерением TurnOnLights, а запросы типа "Why won't my lights turn on?" (Почему не включается свет?) сопоставляются с намерением None. Во втором случае запрос передается в службу QnA Maker. При объединении приложения LUIS и службы QnA Maker с помощью диспетчеризации необходимо выполнить следующие действия.
 
-* Удалить намерение "None" из исходного приложения LUIS `homeautomation`. Затем добавить фразы удаленного намерения в намерение "None" в приложение диспетчера.
+* Удалить намерение "None" из исходного приложения LUIS `Home Automation`. Затем добавить фразы удаленного намерения в намерение "None" в приложение диспетчера.
 * Если не удалить намерение "None" из исходного приложения LUIS, необходимо будет добавить в бот логику, чтобы передать сообщения в службу QnA Maker, которые соответствуют этому намерению.
 
-> [!TIP] 
+> [!TIP]
 > Просмотрите [Best practices for Language Understanding](./bot-builder-concept-luis.md#best-practices-for-language-understanding) (Рекомендации для распознавания речи), чтобы ознакомится с советами по улучшению производительности языковой модели.
+
+## <a name="to-clean-up-resources-from-this-sample"></a>Очистка ресурсов, созданных для этого примера
+
+Этот пример создает некоторое количество приложений и ресурсов. Чтобы удалить их, выполните следующие инструкции.
+
+### <a name="luis-resources"></a>Ресурсы LUIS
+
+1. Войдите на портал [luis.ai](https://www.luis.ai).
+1. Перейдите к странице **My Apps** (Мои приложения).
+1. Выберите приложения, созданные этим примером.
+   * `Home Automation`
+   * `Weather`
+   * `NLP-With-Dispatch-BotDispatch`
+1. Щелкните **Delete** (Удалить), а затем **ОК** для подтверждения.
+
+### <a name="qna-maker-resources"></a>Ресурсы QnA Maker
+
+1. Войдите на портал [qnamaker.ai](https://www.qnamaker.ai/).
+1. Перейдите к странице **Мои базы знаний**.
+1. Нажмите кнопку "Удалить" для базы знаний `Sample QnA`, затем щелкните **Удалить** для подтверждения.
+
+### <a name="azure-resources"></a>Ресурсы Azure
+
+> [!WARNING]
+> Не удаляйте такие ресурсы, которые могут использоваться другими приложениями и службами.
+
+1. Войдите на [портале Azure](https://portal.azure.com/).
+1. Перейдите к странице **Обзор** для ресурса Cognitive Services, который вы создали для этого примера.
+1. Щелкните **Удалить**, а затем **Да** для подтверждения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Using LUIS for Language Understanding][luis-v4-how-to] (Использование LUIS для распознавания речи)
-
-[luis-v4-how-to]: bot-builder-howto-v4-luis.md
-<!-- links -->
-
-[HomeAutomationJSON]: https://aka.ms/dispatch-luis1
-[WeatherJSON]: https://aka.ms/dispatch-luis2
-[DispatchJSON]: https://aka.ms/dispatch-luis
-[FAQ_TSV]: https://aka.ms/dispatch-qna-tsv
-
-[DispatchTool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
-[DispatchBotCS]: https://aka.ms/dispatch-sample-cs
-[DispatchBotJs]: https://aka.ms/dispatch-sample-js
-
-
-
+* [Распознавание речи](bot-builder-concept-luis.md)
+* [Проектирование ботов базы знаний](../bot-service-design-pattern-knowledge-base.md)
+* [Настройка подготовки речи](../bot-service-manage-speech-priming.md)
+* [Использование LUIS для распознавания речи](bot-builder-howto-v4-luis.md)
+* [Использование QnA Maker для ответов на вопросы](bot-builder-howto-qna.md)
