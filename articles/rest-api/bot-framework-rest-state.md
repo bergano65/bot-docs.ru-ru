@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 1557941d4e5413108ea3ce788f7d5d684252b657
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b0d5ca6893d70a73bc005a949ef6cc2518d3862f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300918"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000031"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -50,7 +51,7 @@ POST /v3/botstate/{channelId}/users/{userId}
 
 ### <a name="request"></a>Запрос 
 
-В следующем примере показан запрос, который сохраняет данные для пользователя на конкретном канале. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
+В следующем примере показан запрос, который сохраняет данные для пользователя на конкретном канале. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/botstate/abcd1234/users/12345678
@@ -92,7 +93,7 @@ GET /v3/botstate/{channelId}/users/{userId}
 
 ### <a name="request"></a>Запрос
 
-В следующем примере показан запрос, который получает данные, ранее сохраненные для пользователя. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
+В следующем примере показан запрос, который получает данные, ранее сохраненные для пользователя. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 GET https://smba.trafficmanager.net/apis/v3/botstate/abcd1234/users/12345678

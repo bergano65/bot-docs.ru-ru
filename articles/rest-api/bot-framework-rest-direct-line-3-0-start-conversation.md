@@ -5,18 +5,19 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ead16c0ff41ae93daff8952ca135fa0771bbbe78
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6754935070fefb890c3d5b7bd90f1c1a4c5d401d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305255"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000301"
 ---
 # <a name="start-a-conversation"></a>Начало общения
 
-Общения Direct Line открываются клиентами явным образом и могут выполняться, пока бот и клиент участвуют в них и имеют действительные учетные данные. Бот и клиент могут отправлять сообщения, пока общение остается открытым. К определенному общению могут подключаться несколько клиентов. Каждый из них может участвовать в нем от имени нескольких пользователей.
+Общения Direct Line открываются клиентами явным образом и могут выполняться, пока бот и клиент участвуют в них и имеют действительные учетные данные. Бот и клиент могут отправлять сообщения, пока общение остается открытым. К определенному диалогу могут подключаться несколько клиентов, и каждый из них может участвовать в нем от имени нескольких пользователей.
 
 ## <a name="open-a-new-conversation"></a>Открытие нового общения
 
@@ -69,5 +70,5 @@ HTTP/1.1 201 Created
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
-- [Получение действий через потоковую передачу WebSocket](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket)
+- [Receive activities via WebSocket stream](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) (Получение действий через поток по протоколу WebSocket)
 - [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)

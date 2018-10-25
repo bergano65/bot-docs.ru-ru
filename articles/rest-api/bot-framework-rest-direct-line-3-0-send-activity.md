@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f881f353f04be95ce3785c2fd82b724dd58cb88
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305562"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000041"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Отправка действия боту
 
@@ -78,11 +79,11 @@ HTTP/1.1 200 OK
 
 ## <a id="upload-attachments"></a> Отправка вложений путем передачи
 
-Иногда на устройстве клиента могут находиться изображения или документы, которые нужно отправить боту, но URL-адреса, соответствующие этим файлам, отсутствуют. В этом случае клиент может выполнить запрос `POST /v3/directline/conversations/{conversationId}/upload`, чтобы отправить вложения боту путем передачи. Формат и содержимое запроса зависят от того, сколько вложений отправляет клиент, — [одно](#upload-one-attachment) или [несколько](#upload-multiple-attachments).
+Иногда на устройстве клиента могут находиться изображения или документы, которые нужно отправить боту, но URL-адреса, соответствующие этим файлам, отсутствуют. В этом случае клиент может выполнить запрос `POST /v3/directline/conversations/{conversationId}/upload`, чтобы отправить вложения боту путем передачи. Формат и содержимое запроса зависят от того, сколько вложений отправляет клиент, — [одно](#upload-one-attachment) или [несколько](#upload-multiple-attachments).
 
 ### <a id="upload-one-attachment"></a> Отправка одного вложения путем передачи
 
-Чтобы отправить одно вложение путем передачи, выполните этот запрос: 
+Чтобы отправить одно вложение путем передачи, выполните следующий запрос. 
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations/{conversationId}/upload?userId={userId}
@@ -94,7 +95,7 @@ Content-Disposition: ATTACHMENT_INFO
 [file content]
 ```
 
-В этом URI запроса замените **{conversationId}** на идентификатор диалога, а **{userId}**  — на идентификатор пользователя, который отправляет сообщение. Параметр `userId` является обязательным. В заголовках запроса задайте для `Content-Type` тип вложения, а для `Content-Disposition` задайте имя файла вложения.
+В этом URI запроса замените **{conversationId}** на идентификатор общения, а **{userId}** — на идентификатор пользователя, который отправляет сообщение. Параметр `userId` является обязательным. В заголовках запроса задайте для `Content-Type` тип вложения, а для `Content-Disposition` задайте имя файла вложения.
 
 Ниже приведены примеры фрагментов кода для запроса отправки одного вложения и соответствующего ответа.
 
@@ -127,7 +128,7 @@ HTTP/1.1 200 OK
 
 ### <a id="upload-multiple-attachments"></a> Отправка нескольких вложений путем передачи
 
-Чтобы отправить несколько вложений путем передачи, `POST` составной запрос к конечной точке `/v3/directline/conversations/{conversationId}/upload`. Задайте `multipart/form-data` в качестве заголовка `Content-Type` запроса и включите заголовок `Content-Type` и заголовок `Content-Disposition` для каждой части, чтобы указать тип и имя файла каждого вложения. В URI запроса задайте параметру `userId` значение идентификатора пользователя, который отправляет сообщение. 
+Чтобы отправить несколько вложений путем передачи, отправьте составной запрос `POST` к конечной точке `/v3/directline/conversations/{conversationId}/upload`. Задайте `multipart/form-data` в качестве заголовка `Content-Type` запроса и включите заголовок `Content-Type` и заголовок `Content-Disposition` для каждой части, чтобы указать тип и имя файла каждого вложения. В URI запроса задайте параметру `userId` значение идентификатора пользователя, который отправляет сообщение. 
 
 В запрос можно включить объект [Activity](bot-framework-rest-connector-api-reference.md#activity-object), добавив часть, которая указывает значение `application/vnd.microsoft.activity` заголовка `Content-Type`. Если запрос содержит объект Activity, то перед отправкой этого объекта в него добавляются вложения, заданные другими частями полезных данных. Если в запросе отсутствует объект Activity, создается пустой объект Activity, который будет контейнером для сбора отправляемых указанных вложений.
 
@@ -182,7 +183,7 @@ HTTP/1.1 200 OK
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
-- [Начало диалога](bot-framework-rest-direct-line-3-0-start-conversation.md)
+- [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
 - [Повторное подключение к диалогу](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [Получение действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [Завершение диалога](bot-framework-rest-direct-line-3-0-end-conversation.md)
