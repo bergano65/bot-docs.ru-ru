@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27066f76db29a82b4ab9dd75bf5eee01dcce3116
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 16ef274bc7e8301825e574c566a49d53f01115c1
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389713"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383129"
 ---
 # <a name="prompt-users-for-input-using-the-dialogs-library"></a>Создание запросов на ввод данных пользователем с помощью библиотеки диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Для его непосредственного выполнения можно использовать метод _отправки действия_ объекта в [контексте реплики](bot-builder-concept-activity-processing.md#turn-context), а затем обработать следующее входящее сообщение как ответ. Однако пакет SDK Bot Builder предоставляет библиотеку **диалогов**, в которой содержатся методы, предназначенные для облегчения постановки вопросов и призванные гарантировать, что ответы соответствуют определенному типу данных или правилам настраиваемой проверки. В этом разделе описано, как достигнуть этого с помощью **запроса** входных данных у пользователя.
+Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Для его непосредственного выполнения можно использовать метод _отправки действия_ объекта в [контексте реплики](~/v4sdk/bot-builder-basics.md#defining-a-turn), а затем обработать следующее входящее сообщение как ответ. Однако пакет SDK Bot Builder предоставляет библиотеку **диалогов**, в которой содержатся методы, предназначенные для облегчения постановки вопросов и призванные гарантировать, что ответы соответствуют определенному типу данных или правилам настраиваемой проверки. В этом разделе описано, как достигнуть этого с помощью **запроса** входных данных у пользователя.
 
 В этой статье описывается использование запросов в диалоговом окне. Общие сведения об использовании диалогов см. в разделе [Управление ходом разговора с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
@@ -131,7 +131,9 @@ using Microsoft.Bot.Builder.Dialogs;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Установите пакет диалогов из NPM.
+Создание бота на JavaScript с помощью шаблона Echo. Дополнительные сведения см. в [кратком руководстве по JavaScript](../javascript/bot-builder-javascript-quickstart.md).
+
+Установите пакет диалогов из NPM:
 
 ```cmd
 npm install --save botbuilder-dialogs
@@ -139,24 +141,33 @@ npm install --save botbuilder-dialogs
 
 Чтобы использовать **диалоги** в боте, включите эту библиотеку в код бота.
 
-В файле app.js добавьте следующее.
+1. В файл **bot.js** добавьте следующий код.
 
-```javascript
-// Import components from the dialogs library.
-const { DialogSet } = require("botbuilder-dialogs");
-// Import components from the main Bot Builder library.
-const { ConversationState, MemoryStorage } = require('botbuilder');
+    ```javascript
+    // Import components from the dialogs library.
+    const { DialogSet, TextPrompt, WaterfallDialog } = require("botbuilder-dialogs");
 
-// Set up a memory storage system to store information.
-const storage = new MemoryStorage();
-// We'll use ConversationState to track the state of the dialogs.
-const conversationState = new ConversationState(storage);
-// Create a property used to track state.
-const dialogState = conversationState.createProperty('dialogState');
+    // Name for the dialog state property accessor.
+    const DIALOG_STATE_PROPERTY = 'dialogState';
 
-// Create a dialog set to control our prompts, store the state in dialogState
-const dialogs = new DialogSet(dialogState);
-```
+    // Define the names for the prompts and dialogs for the dialog set.
+    const TEXT_PROMPT = 'textPrompt';
+    const MAIN_DIALOG = 'mainDialog';
+    ```
+
+    _Набор диалогов_ будет содержать диалоги для этого бота, а _текстовый запрос_ нам поможет запросить входные данные у пользователя. Нам также потребуется метод доступа к свойству состояния диалога, чтобы набор диалогов мог отслеживать свое состояние.
+
+1. Обновите код конструктора бота. Мы скоро снова к этому вернемся.
+
+    ```javascript
+      constructor(conversationState) {
+        // Track the conversation state object.
+        this.conversationState = conversationState;
+
+        // Create a state property accessor for the dialog set.
+        this.dialogState = conversationState.createProperty(DIALOG_STATE_PROPERTY);
+    }
+    ```
 
 ---
 
@@ -214,36 +225,54 @@ const dialogs = new DialogSet(dialogState);
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Импортируйте класс TextPrompt в свое приложение.
+1. В конструкторе бота создайте набор диалогов и добавьте в него текстовый запрос и каскадный диалог.
 
-```javascript
-const { TextPrompt } = require("botbuilder-dialogs");
-```
+    ```javascript
+    // Create the dialog set, and add the prompt and the waterfall dialog.
+    this.dialogs = new DialogSet(this.dialogState)
+        .add(new TextPrompt(TEXT_PROMPT))
+        .add(new WaterfallDialog(MAIN_DIALOG, [
+            async (step) => {
+                // The results of this prompt will be passed to the next step.
+                return await step.prompt(TEXT_PROMPT, 'What is your name?');
+            },
+            async (step) => {
+                // The result property contains the result from the previous step.
+                const userName = step.result;
+                await step.context.sendActivity(`Hi ${userName}!`);
+                return await step.endDialog();
+            }
+        ]));
+    ```
 
-Создайте новый запрос и добавьте его в набор диалогов.
+1. В обработчик шагов в боте добавьте запуск диалога.
 
-```javascript
-// Greet user:
-// Ask for the user name and then greet them by name.
-dialogs.add(new TextPrompt('textPrompt'));
-dialogs.add('greetings', [
-    async function (step){
-        // the results of this prompt will be passed to the next step
-        return await step.prompt('textPrompt', 'What is your name?');
-    },
-    async function(step) {
-        // step.result is the result of the prompt defined above
-        const userName = step.result;
-        await step.context.sendActivity(`Hi ${userName}!`);
-        return await step.endDialog();
+    ```javascript
+    async onTurn(turnContext) {
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        if (turnContext.activity.type === ActivityTypes.Message) {
+            // Create a dialog context for the dialog set.
+            const dc = await this.dialogs.createContext(turnContext);
+            // Continue the dialog if it's active.
+            await dc.continueDialog();
+            if (!turnContext.responded) {
+                // Otherwise, start the dialog.
+                await dc.beginDialog(MAIN_DIALOG);
+            }
+        } else {
+            // Send a default message for activity types that we don't handle.
+            await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
+        }
+        // Save state changes
+        await this.conversationState.saveChanges(turnContext);
+        }
     }
-]);
-```
+    ```
 
 ---
 
 > [!NOTE]
-> Чтобы запустить диалоговое окно, получите контекст диалога и используйте метод _begin_. Дополнительные сведения см. в статье об [использовании диалогов для управления простым процессом общения](./bot-builder-dialog-manage-conversation-flow.md).
+> Чтобы запустить диалог, следует получить его контекст и вызвать метод _begin dialog_. Дополнительные сведения см. в статье об [использовании диалогов для управления простым процессом общения](./bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="reusable-prompts"></a>Многоразовые запросы
 
@@ -280,30 +309,29 @@ dialogs.add('greetings', [
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+В конструкторе бота каскад, добавив в него второй вопрос.
+
 ```javascript
-// Greet user:
-// Ask for the user name and then greet them by name.
-// Ask them where they work.
-dialogs.add(new TextPrompt('textPrompt'));
-dialogs.add('greetings',[
-    async function (step){
-        // Use the textPrompt to ask for a name.
-        return await step.prompt('textPrompt', 'What is your name?');
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new TextPrompt(TEXT_PROMPT))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their name.
+        return await step.prompt(TEXT_PROMPT, 'What is your name?');
     },
-    async function (step){
+    async (step) => {
+        // Acknowledge their response and ask for their place of work.
         const userName = step.result;
-        await step.context.sendActivity(`Hi ${ userName }!`);
-
-        // Now, reuse the same prompt to ask them where they work.
-        return await step.prompt('textPrompt', 'Where do you work?');
+        return await step.prompt(TEXT_PROMPT, `Hi ${userName}; where do you work?`);
     },
-    async function(step) {
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
         const workPlace = step.result;
-        await step.context.sendActivity(`${ workPlace } is a cool place!`);
-
+        await step.context.sendActivity(`${workPlace} is a cool place!`);
         return await step.endDialog();
     }
-]);
+    ]));
 ```
 
 ---
@@ -320,10 +348,20 @@ _dialogs.Add(new TextPrompt("workplace"));
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+Например, вот этот код:
+
 ```javascript
-dialogs.add(new TextPrompt('namePrompt'));
-dialogs.add(new TextPrompt('workPlacePrompt'));
+.add(new TextPrompt(TEXT_PROMPT))
 ```
+
+можно заменить следующим:
+
+```javascript
+.add(new TextPrompt('namePrompt'))
+.add(new TextPrompt('workPlacePrompt'))
+```
+
+После этого обновите все соответствующие каскадные шаги, чтобы использовать эти запросы по указанным именам.
 
 ---
 
@@ -335,7 +373,7 @@ dialogs.add(new TextPrompt('workPlacePrompt'));
 
 Указание строки повторного запроса рекомендуется, когда есть вероятность, что входные данные пользователя не соответствуют запросу либо потому, что находятся в формате, который запрос не может проанализировать, например "tomorrow" для числового запроса, либо потому, что входные данные не соответствуют критериям проверки. Числовой запрос может интерпретировать широкий диапазон входных данных, таких как "twelve" или "one quarter", а также "12" и "0,25".
 
-Local является необязательным параметром определенных запросов, таких как **NumberPrompt**. Он может помочь более точно проанализировать входные данные по запросу, но не является обязательным.
+Языковой стандарт является необязательным параметром для некоторых запросов, таких как **NumberPrompt**. Он может помочь более точно проанализировать входные данные по запросу, но не является обязательным.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -359,15 +397,33 @@ return await stepContext.PromptAsync(
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+Импортируйте класс `NumberPrompt` из библиотеки диалогов.
+
 ```javascript
-// Import the NumberPrompt class from the dialog library.
 const { NumberPrompt } = require("botbuilder-dialogs");
+```
 
-// Add a NumberPrompt to our dialog set and give it the ID numberPrompt.
-dialogs.add(new NumberPrompt('numberPrompt'));
+Используйте запрос числе в каскадном диалоге, указав строки для исходного и повторного запросов.
 
-// Call the numberPrompt dialog with the (optional) retryPrompt parameter.
-await dc.prompt('numberPrompt', 'How many people in your party?', { retryPrompt: `Sorry, please specify the number of people in your party.` })
+```javascript
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new NumberPrompt('partySize'))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their party size.
+        return await step.prompt('partySize', {
+            prompt: 'How many people in your party?',
+            retryPrompt: 'Sorry, please specify the number of people in your party.'
+        });
+    },
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
+        const partySize = step.result;
+        await step.context.sendActivity(`That's a party of ${partySize}, thanks.`);
+        return await step.endDialog();
+    }
+]));
 ```
 
 ---
@@ -395,20 +451,35 @@ private static async Task<DialogTurnResult> FavoriteColorAsync(WaterfallStepCont
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+Импортируйте класс `NumberPrompt` из библиотеки диалогов.
+
 ```javascript
-// Import the ChoicePrompt class into your app from the dialogs library.
 const { ChoicePrompt } = require("botbuilder-dialogs");
 ```
 
-```javascript
-// Add a ChoicePrompt to the dialog set and give it an ID of choicePrompt.
-dialogs.add(new ChoicePrompt('choicePrompt'));
-```
+Включите в каскадный диалог строку запроса с перечислением доступных вариантов.
 
 ```javascript
-// Call the choicePrompt into action, passing in an array of options.
+// Create the dialog set, and add the prompt and the waterfall dialog.
 const list = ['green', 'blue', 'red', 'yellow'];
-await dc.prompt('choicePrompt', 'Please make a choice', list, { retryPrompt: 'Please choose a color.' });
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new ChoicePrompt('choicePrompt'))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their party size.
+        return await step.prompt('choicePrompt', {
+            prompt: 'Please choose a color:',
+            retryPrompt: 'Sorry, please choose a color from the list.',
+            choices: list
+        });
+    },
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
+        const choice = step.result;
+        await step.context.sendActivity(`That's ${choice.value}, thanks.`);
+        return await step.endDialog();
+    }
+]));
 ```
 
 ---
@@ -443,29 +514,46 @@ private Task<bool> PartySizeValidatorAsync(PromptValidatorContext<int> promptCon
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+Добавьте метод проверки при создании строки запроса.
+
 ```javascript
-// Customized prompts with validations
-// A number prompt with validation for valid party size within a range.
-dialogs.add(new NumberPrompt('partySizePrompt', async (promptContext) => {
-    // Check to make sure a value was recognized.
-    if (promptContext.recognized.succeeded) {
-        const value = promptContext.recognized.value;
-        try {
-            if (value < 6 ) {
-                throw new Error('Party size too small.');
-            } else if (value > 20) {
-                throw new Error('Party size too big.')
-            } else {
-                return true; // Indicate that this is a valid value.
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new NumberPrompt('partySizePrompt', async (promptContext) =>                                                 {
+        // Check to make sure a value was recognized.
+        if (promptContext.recognized.succeeded) {
+            const value = promptContext.recognized.value;
+            try {
+                if (value < 6) {
+                    throw new Error('Party size too small.');
+                } else if (value > 20) {
+                    throw new Error('Party size too big.')
+                } else {
+                    return true; // Indicate that this is a valid value.
+                }
+            } catch (err) {
+                await promptContext.context.sendActivity(`${err.message} <br/>Please provide a valid number between 6 and 20.`);
+                return false; // Indicate that this is invalid.
             }
-        } catch (err) {
-            await promptContext.context.sendActivity(`${ err.message } <br/>Please provide a valid number between 6 and 20.`);
-            return false; // Indicate that this is invalid.
+        } else {
+            return false;
         }
-    } else {
-        return false;
-    }
-}));
+    }))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+        async (step) => {
+            // Ask the user for their party size.
+            return await step.prompt('partySizePrompt', {
+                prompt: 'How large is your party?',
+                retryPrompt: 'Sorry, please specify a size between 6 and 20.'
+            });
+        },
+        async (step) => {
+            // Acknowledge their response and exit the dialog.
+            const size = step.result;
+            await step.context.sendActivity(`That's a party of ${size}, thanks.`);
+            return await step.endDialog();
+        }
+    ]));
 ```
 
 ---
@@ -505,28 +593,43 @@ _dialogs.Add(new DateTimePrompt("date", DateTimeValidatorAsync));
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+```javascript
+const { DateTimePrompt } = require("botbuilder-dialogs");
+```
+
 ```JavaScript
-// A date and time prompt with validation for date/time in the future.
-dialogs.add(new atetimePrompt('dateTimePrompt', async (promptContext) => {
-    if (promptContext.recognized.succeeded) {
-        const values = promptContext.recognized.value;
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new DateTimePrompt('dateTimePrompt', async (promptContext) => {
         try {
-            if (values.length < 0) { throw new Error('missing time') }
-            if (values[0].type !== 'date') { throw new Error('unsupported type') }
+            if (!promptContext.recognized.succeeded) { throw new Error('Value not recognized.') }
+            const values = promptContext.recognized.value;
+            if (!Array.isArray(values) || values.length < 0) { throw new Error('Value missing.'); }
+            if ((values[0].type !== 'datetime') && (values[0].type !== 'date')) { throw new Error('Unsupported type.'); }
+            const now = new Date();
             const value = new Date(values[0].value);
-            if (value.getTime() < new Date().getTime()) { throw new Error('in the past') }
+            if (value.getTime() < now.getTime()) { throw new Error('Value in the past.') }
 
             // update the return value of the prompt to be a real date object
-            promptContext.recognized.value = value;
-            return true; // indicate valid 
+            promptContext.recognized.value = [value];
+            return true; // indicate valid
         } catch (err) {
-            await promptContext.context.sendActivity(`Please enter a valid time in the future like "tomorrow at 9am".`);
+            await promptContext.context.sendActivity(`${err} Please specify a date or a date and time in the future, like tomorrow at 9am.`);
             return false; // indicate invalid
         }
-    } else {
-        return false;
-    }
-}));
+    }))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+        async (step) => {
+            // Ask the user for their party size.
+            return await step.prompt('dateTimePrompt', 'When would you like to schedule that for?');
+        },
+        async (step) => {
+            // Acknowledge their response and exit the dialog.
+            const time = step.result;
+            await step.context.sendActivity(`That's ${time}, thanks.`);
+            return await step.endDialog();
+        }
+    ]));
 ```
 
 Дополнительные примеры можно найти в [примерах репозитория](https://aka.ms/bot-samples-readme).
@@ -549,3 +652,6 @@ dialogs.add(new atetimePrompt('dateTimePrompt', async (promptContext) => {
 ## <a name="next-steps"></a>Дополнительная информация
 
 Теперь, когда вы знаете, как запрашивать у пользователя входные данные, улучшите код бота и пользовательский интерфейс, управляя разнообразными последовательностями общения с помощью диалоговых окон.
+
+> [!div class="nextstepaction"]
+> [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md)

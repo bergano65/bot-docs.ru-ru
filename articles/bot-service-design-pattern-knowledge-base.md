@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
-ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
+ms.openlocfilehash: ab7e6a8e6bbb2cf12fca0371f2de561f4fb47fd8
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404080"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326531"
 ---
 # <a name="design-knowledge-bots"></a>Проектирование ботов базы знаний
 
@@ -129,7 +129,7 @@ ms.locfileid: "47404080"
 2. Сначала вызовите LUIS, и если никакое намерение не соответствует определенному пороговому значению, например запускается намерение None, после чего вызывается QnA Maker. В качестве альтернативы создайте намерение LUIS для QnA Maker, предоставляя модель LUIS с примерами вопросов QnA, сопоставляемые с QnAIntent. 
 3. Сначала вызовите QnA Maker и, если ответ не соответствует определенному пороговому значению, вызовите LUIS. 
 
-Пакет SDK для Bot Builder предоставляет встроенную поддержку LUIS и QnA Maker. Это позволяет активировать диалоги или автоматически отвечать на вопросы с помощью LUIS и/или QnA Maker без необходимости реализации пользовательских вызовов для любого из этих средств. Дополнительные сведения см. в разделе [bot service templates](bot-service-concept-templates.md) (Шаблоны службы Azure Bot).
+Пакет SDK для Bot Builder предоставляет встроенную поддержку LUIS и QnA Maker. Это позволяет активировать диалоги или автоматически отвечать на вопросы с помощью LUIS и/или QnA Maker без необходимости реализации пользовательских вызовов для любого из этих средств. Дополнительные сведения см. в [руководстве по средству Dispatch в Bot Builder](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0).
 
 > [!TIP]
 > При реализации комбинации LUIS, QnA Maker и/или Поиск Azure введите тестовые входные данные в каждое из средств, чтобы определить пороговое значение для каждой из моделей. Каждая из служб (LUIS, QnA Maker и Поиск Azure) генерирует значение, используя разные критерии оценки, поэтому оценки, полученные в этих средствах, не сопоставляются напрямую. Кроме того, LUIS и QnA Maker нормализуют оценки. Определенную оценку можно считать "хорошей" в одной модели LUIS, но "не очень" в другой модели. 

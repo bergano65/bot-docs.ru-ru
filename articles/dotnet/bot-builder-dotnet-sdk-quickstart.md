@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5f3a02783242697fccf267bef2d56ed453880c67
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: d299e4bdfd503475bf1ec560da2aff1d3a199e47
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707980"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326391"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Создание бота с помощью пакета SDK Bot Builder для .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "46707980"
 ![Проект Visual Studio](../media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
 > [!TIP] 
-> При необходимости обновите [пакеты NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio).
+> При необходимости измените тип сборки проекта на ``.Net Core 2.1``. Также при необходимости обновите [пакеты NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio).
 
 Благодаря шаблону проект содержит весь код, необходимый для создания бота в рамках этого краткого руководства. Теперь нет необходимости писать дополнительный код.
 
@@ -53,7 +53,11 @@ ms.locfileid: "46707980"
 ## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 
 Отправьте сообщение боту и получите от него сообщение в ответ.
+
 ![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
+
+> [!NOTE]
+> Если вы видите, что сообщение не отправляется, вам может потребоваться перезагрузить компьютер, так как ngrok еще не получил необходимые привилегии в вашей системе (это нужно выполнить только один раз).
 
 ## <a name="next-steps"></a>Дополнительная информация
 

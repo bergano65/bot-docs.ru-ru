@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0bbb507484840ab1fb0dc7c209b5d7ca8e9c9cfb
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 3c28ad1fd14fab90c558ece4736423be2cabd78b
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708150"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326551"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -502,10 +502,11 @@ async function updateSampleNote(storage, context) {
 ```csharp
 using Microsoft.Bot.Builder.Azure;
 ```
-
 Измените строку кода со свойством _myStorage_ и присвойте этому свойству значение существующей учетной записи хранилища BLOB-объектов.
 
 ```csharp
+
+
 private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
 ```
 
@@ -544,36 +545,71 @@ const mystorage = new BlobStorage({
 Хранилище расшифровок разговоров в BLOB-объектах Azure использует ту же учетную запись хранилища BLOB-объектов, которая описана в разделах _Создание учетной записи хранилища BLOB-объектов_ и _Добавление сведений о конфигурации_ выше. Для этой статьи мы добавили новый контейнер BLOB-объектов _mybottranscripts_. 
 
 ### <a name="implementation"></a>Реализация 
-В коде ниже указатель на хранилище расшифровок _myTranscripts_ подключается к новой учетной записи хранилища расшифровок в BLOB-объектах. Строка, которая подключает указатель на хранилище расшифровок _myTranscripts_.
+В коде ниже указатель на хранилище расшифровок _transcriptStore_ подключается к новой учетной записи хранилища расшифровок в BLOB-объектах. Показанный здесь исходный код решения для хранения бесед пользователя основан на примере [журнала бесед](https://aka.ms/bot-history-sample-code). 
 
 ```csharp
+// In Startup.cs
 using Microsoft.Bot.Builder.Azure;
-private readonly AzureBlobTranscriptStore _myTranscripts = new AzureBlobTranscriptStore("<your-blob-storage-account-string>", "<your-blob-storage-account-name>");
+
+// Enable the conversation transcript middleware.
+blobStore = new AzureBlobTranscriptStore(blobStorageConfig.ConnectionString, storageContainer);
+var transcriptMiddleware = new TranscriptLoggerMiddleware(blobStore);
+options.Middleware.Add(transcriptMiddleware);
+
+// In ConversationHistoryBot.cs
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
+
+private readonly AzureBlobTranscriptStore _transcriptStore;
+
+/// <param name="transcriptStore">Injected via ASP.NET dependency injection.</param>
+public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
+{
+    _transcriptStore = transcriptStore ?? throw new ArgumentNullException(nameof(transcriptStore));
+}
+
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Хранение расшифровок разговоров пользователей в виде BLOB-объектов Azure
-Создав контейнер BLOB-объектов для хранения расшифровок, можно будет сохранять разговоры пользователей с ботом. Эти разговоры можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Следующий код сохраняет разговор с пользователем для дальнейшей проверки.
+Создав контейнер BLOB-объектов для хранения расшифровок, можно будет сохранять разговоры пользователей с ботом. Эти разговоры можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Следующий код сохраняет данные, вводимые пользователем в ходе беседы, когда activity.text получает _!журнал_ входящих сообщений.
 
 
 ```csharp
 /// <summary>
 /// Every Conversation turn for our EchoBot will call this method. 
 /// </summary>
-/// <param name="context">Turn scoped context containing all the data needed
+/// <param name="turnContext">A <see cref="ITurnContext"/> containing all the data needed
 /// for processing this conversation turn. </param>        
-public async Task OnTurnAsync(ITurnContext context, CancellationToken cancellationToken = default(CancellationToken))
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
-    var activityType = context.Activity.Type;
-
-    await context.SendActivityAsync($"Activity type: {context.Activity.Type}.");
-
-    // This bot is processing Messages
-    if (activityType == ActivityTypes.Message)
+    var activity = turnContext.Activity;
+    if (activity.Type == ActivityTypes.Message)
     {
-        // save user input into bot transcript storage for later debugging and review.
-        await _myTranscripts.LogActivityAsync(context.Activity);
-```
+        if (activity.Text == "!history")
+        {
+           // Download the activities from the Transcript (blob store) when a request to upload history arrives.
+           var connectorClient = turnContext.TurnState.Get<ConnectorClient>(typeof(IConnectorClient).FullName);
+           // Get all the message type activities from the Transcript.
+           string continuationToken = null;
+           var count = 0;
+           do
+           {
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var activities = pagedTranscript.Items
+                  .Where(a => a.Type == ActivityTypes.Message)
+                  .Select(ia => (Activity)ia)
+                  .ToList();
+               
+               var transcript = new Transcript(activities);
 
+               await connectorClient.Conversations.SendConversationHistoryAsync(activity.Conversation.Id, transcript, cancellationToken: cancellationToken);
+
+               continuationToken = pagedTranscript.ContinuationToken;
+           }
+           while (continuationToken != null);
+```
 
 ### <a name="find-all-stored-transcripts-for-your-channel"></a>Поиск всех сохраненных расшифровок разговоров для вашего канала
 Для просмотра сохраненных данных можно использовать следующий код, который позволяет найти все объекты _ConversationID_ для всех сохраненных расшифровок разговоров программным способом. Если используется эмулятор бота для тестирования кода, при выборе функции _Начать снова_ начинается новая расшифровка с новым идентификатором _ConversationID_.
@@ -584,7 +620,7 @@ PagedResult<Transcript> pagedResult = null;
 var pageSize = 0;
 do
 {
-    pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+    pagedResult = await _transcriptStore.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
     
     // transcript item contains ChannelId, Created, Id.
     // save the converasationIds (Id) found by "ListTranscriptsAsync" to a local list.
@@ -596,7 +632,6 @@ do
     }
 } while (pagedResult.ContinuationToken != null);
 ```
-
 
 ### <a name="retrieve-user-conversations-from-azure-blob-transcript-storage"></a>Извлечение разговоров пользователей из хранилища расшифровок в виде BLOB-объектов Azure
 Сохранив расшифровки разговоров с ботом в хранилище BLOB-объектов Azure, можно извлечь их программным способом для тестирования или отладки, используя метод _GetTranscriptActivities_ экземпляра AzureBlobTranscriptStorage. Следующий пример кода извлекает все расшифровки разговоров с пользователями, каждая из которых содержит данные, собранные за последние 24 часа.
@@ -635,7 +670,7 @@ for (int i = 0; i < numTranscripts; i++)
    if (i > 0)
    {
        string thisConversationId = storedTranscripts[i];    
-       await _myTranscripts.DeleteTranscriptAsync("emulator", thisConversationId);
+       await _transcriptStore.DeleteTranscriptAsync("emulator", thisConversationId);
     }
 }
 ```

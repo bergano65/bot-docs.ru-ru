@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 7e09126d50cfbebfc0aad0ee7fcb71b4e7551a7d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 10/9/2018
+ms.openlocfilehash: 1c85c59591313f675e53af7cffc4751a05ce4bc4
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301214"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315170"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Подключение бота к Twilio
 
@@ -25,36 +25,43 @@ ms.locfileid: "39301214"
 
 ## <a name="create-a-twiml-application"></a>Создание приложения TwiML
 
-<a href="https://www.twilio.com/user/account/messaging/dev-tools/twiml-apps/add" target="_blank">Создайте приложение TwiML</a>
+<a href="https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Создайте приложения TwiML</a> в соответствии с инструкциями.
 
 ![Создание приложения](~/media/channels/twi-StepTwiml.png)
 
- В разделе Messaging (Обмен сообщениями) должен быть указан такой URL-адрес запроса: **https://sms.botframework.com/api/sms**.
+В разделе **Свойства**, введите **FRIENDLY NAME** (Понятное имя). В этом руководстве для примера используется имя "My TwiML app". Поле **REQUEST URL** (URL-адрес запроса) под Voice можно оставить пустым. В разделе **Messaging** (Обмен сообщениями) для параметра **Request URL** (URL-адрес запроса) введите значение `https://sms.botframework.com/api/sms`.
 
 ## <a name="select-or-add-a-phone-number"></a>Выбор или добавление номера телефона
 
-<a href="https://www.twilio.com/user/account/phone-numbers/incoming" target="_blank">Выберите или добавьте номер телефона</a>. Щелкните номер, чтобы добавить его в созданное приложение TwiML.
+Следуйте представленным <a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">здесь</a> инструкциям, чтобы добавить идентификатор проверенного вызывающего объекта через сайт консоли. После завершения вы увидите проверенный номер в поле **Active Numbers** (Активные номера) раздела **Manage Numbers** (Управление номерами).
 
 ![Установка номера телефона](~/media/channels/twi-StepPhone.png)
 
-## <a name="specify-application-to-use-for-messaging"></a>Указание приложения для обмена сообщениями
-В разделе **Messaging** (Обмен сообщениями) задайте в поле **TwiML App** (Приложение TwiML) имя созданного приложения TwiML.
-Скопируйте значение **номера телефона** для дальнейшего использования.
+## <a name="specify-application-to-use-for-voice-and-messaging"></a>Указание приложений для голосовой связи и обмена сообщениями
 
-![Указание приложения](~/media/channels/twi-StepPhone2.png)
+Щелкните число и перейдите к разделу **Настройка**. Для голосовой связи и обмена сообщениями укажите в поле **CONFIGURE WITH** (Настройка с помощью) значение "TwiML App", а в поле **TWIML APP** (Приложение TwiML) выберите "My TwiML app". Завершив настройку, щелкните **Сохранить**.
+
+![Выбор приложения](~/media/channels/twi-StepPhone2.png)
+
+Вернитесь к разделу **Управление номерами**. Вы увидите, что для голосовой связи и обмена сообщениями теперь в конфигурации указано приложение TwiML.
+
+![Указанный номер](~/media/channels/twi-StepPhone3.png)
+
 
 ## <a name="gather-credentials"></a>Получение учетных данных
 
-<a href="https://www.twilio.com/user/account/settings" target="_blank">Получите учетные данные</a> и щелкните значок глаза для просмотра маркера проверки подлинности.
+Вернитесь к [домашней странице консоли](https://www.twilio.com/console/), где на панели мониторинга проекта вы найдете идентификатор безопасности учетной записи и маркер проверки подлинности, как показано ниже.
 
 ![Сбор учетных данных приложения](~/media/channels/twi-StepAuth.png)
 
 ## <a name="submit-credentials"></a>Отправка учетных данных
 
-Введите номер телефона, SID учетной записи и маркер проверки подлинности, скопированный ранее, и щелкните **Submit Twilio Credentials** (Отправить учетные данные Twilio).
+В отдельном окне браузера откройте сайт Bot Framework, расположенный по адресу https://dev.botframework.com/. 
 
-## <a name="enable-the-bot"></a>Включение бота
-Установите флажок **Enable this bot on SMS** (Включить этот бот для SMS). Затем щелкните **I'm done configuring SMS** (Настройка SMS завершена).
+- Щелкните **My bots** (Мои боты) и выберите бот, который нужно подключить к Twilio. Это действие перенесет вас на портал Azure.
+- Выберите **Каналы** в разделе **Управление ботами**. Щелкните значок Twilio (SMS).
+- Введите номер телефона, идентификатор безопасности учетной записи и маркер проверки подлинности, которые вы записали ранее. Завершив настройку, щелкните **Сохранить**.
+
+![Отправка учетных данных](~/media/channels/twi-StepSubmit.png)
 
 Как только вы выполните эти действия, ваш бот будет настроен для взаимодействия с пользователями с помощью Twilio.
-

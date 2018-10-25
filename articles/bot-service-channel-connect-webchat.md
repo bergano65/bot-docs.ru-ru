@@ -7,32 +7,33 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.date: 10/10/2018
+ms.openlocfilehash: 6e81b51243afc15714653aed7b9ca6513314071c
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389633"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315160"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Подключение бота к веб-чату
+
+[!INCLUDE pre-release-label]
+
 При [создании бота](bot-service-quickstart.md) с помощью службы Bot канал "Веб-чат" настраивается автоматически. Канал "Веб-чат" включает элемент управления "Веб-чат", который предоставляет пользователям возможность взаимодействовать с ботом непосредственно на веб-странице.
 
-![Пример веб-чата](~/media/bot-service-channel-webchat/webchat-sample.png)
+![Пример веб-чата](./media/bot-service-channel-webchat/create-a-bot.png)
 
 Канал "Веб-чат" на портале Bot Framework содержит все необходимое для внедрения элемента управления "Веб-чат" на веб-странице. Для использования элемента управления "Веб-чат" нужно всего лишь получить секретный ключ бота и внедрить элемент управления на веб-странице.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a id="step-1"></a> Получение секретного ключа бота
 
 1. Откройте бот на [портале Azure](http://portal.azure.com) и выберите колонку **Каналы**.
 
 2. Щелкните **Изменить** для канала **Веб-чат**.  
-![Канал "Веб-чат"](~/media/bot-service-channel-webchat/bot-service-channel-list.png)
+![Канал "Веб-чат"](./media/bot-service-channel-webchat/bot-service-channel-list.png)
 
 3. В разделе **Secret keys** (Секретные ключи) щелкните **Show** (Показать) для первого ключа.  
-![Секретный ключ](~/media/bot-service-channel-webchat/secret-key.png)
+![Секретный ключ](./media/bot-service-channel-webchat/secret-key.png)
 
 4. Скопируйте **секретный ключ** и **код внедрения**.
 
@@ -127,8 +128,8 @@ ms.locfileid: "47389633"
 <iframe style="height:480px; width:402px" src="... SEE ABOVE ..."></iframe>
 ```
 
-![Клиент элемента управления чата](~/media/chatwidget-client.png)
+![Клиент элемента управления чата](./media/chatwidget-client.png)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Вы можете [загрузить исходный код](https://github.com/Microsoft/BotFramework-WebChat) для элемента управления "Веб-чат" с сайта GitHub.
+Вы можете [загрузить исходный код](https://aka.ms/BotFramework-WebChat-V4) для элемента управления "Веб-чат" с сайта GitHub.

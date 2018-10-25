@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a4ac88872e11cd32a9de96d52dcf9e917bb3488f
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029802"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326401"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -37,7 +37,7 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 az extension add -n botservice
 ```
 
-## <a name="configuration"></a>Конфигурация
+## <a name="configuration"></a>Параметр Configuration
 
 - Получите ключ разработки LUIS:
    - Ознакомьтесь [с этой статьей](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions), чтобы выбрать портал LUIS, соответствующий региону, в котором планируется развертывание. 
@@ -56,7 +56,7 @@ az account set --subscription "YOUR_SUBSCRIPTION_NAME"
 ```
 
 Для выполнения сквозных операций ботам на основе шаблона Enterprise Bot необходимы такие зависимости:
-- Веб-приложение Azure;
+- Веб-приложение Azure
 - учетная запись хранения Azure (расшифровки);
 - Azure Application Insights (телеметрия);
 - Azure Cosmos DB (состояние);
@@ -97,11 +97,11 @@ msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_K
 
 ## <a name="testing"></a>Тестирование
 
-После завершения развертывания запустите проект бота в среде разработки и откройте эмулятор Bot Framework Emulator. В эмуляторе в меню File (Файл) щелкните пункт Open Bot (Открыть бот) и выберите BOT-файл в своем каталоге.
+После завершения развертывания запустите проект бота в среде разработки и откройте эмулятор Bot Framework Emulator. В Emulator в меню File (Файл) щелкните пункт Open Bot (Открыть бот) и выберите BOT-файл в своем каталоге.
 
 Затем введите ```hi``` и убедитесь, что все работает.
 
-## <a name="deploy-to-azure"></a>Развертывание в Azure
+## <a name="deploy-to-azure"></a>Развернуть в Azure
 
 Тестирование можно провести комплексно и локально. Когда вы будете готовы развернуть бот в Azure для дополнительного тестирования, опубликует исходный код с помощью приведенной ниже команды. Ее можно выполнять каждый раз, когда нужно отправить обновления исходного кода.
 
@@ -113,7 +113,7 @@ az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.cspro
 
 Проект бота имеет дополнительные функциональные возможности, которые можно активировать.
 
-### <a name="authentication"></a>Аутентификация
+### <a name="authentication"></a>Authentication
 
 Чтобы включить аутентификацию, сначала на портале Azure укажите в настройках бота имя подключения для аутентификации, а затем выполните приведенные ниже действия. Дополнительные сведения см. в [документации](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0).
 

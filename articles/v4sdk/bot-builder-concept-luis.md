@@ -10,12 +10,12 @@ ms.prod: bot-framework
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: af79bb40e3d24557fd898fa0a0ca2ef7b0286af4
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: bef0d5f3220cd818767f4eead5c5f4a09d047c26
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707550"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383159"
 ---
 # <a name="language-understanding"></a>Распознавание речи
 
@@ -56,11 +56,11 @@ ms.locfileid: "46707550"
 
 ## <a name="how-your-bot-gets-messages-from-luis"></a>Получение ботом сообщения от LUIS
 
-Когда вы настроите и подключите LUIS, бот сможет отправлять сообщения приложениям LUIS, которые возвращают ответ JSON, содержащий намерения и сущности. Затем можно использовать [контекст реплик](bot-builder-concept-activity-processing.md#turn-context) в _обработчике реплик_ бота, чтобы направить процесс общения в соответствии с намерением в ответе от LUIS. 
+Когда вы настроите и подключите LUIS, бот сможет отправлять сообщения приложениям LUIS, которые возвращают ответ JSON, содержащий намерения и сущности. Затем можно использовать [контекст реплик](~/v4sdk/bot-builder-basics.md#defining-a-turn) в _обработчике реплик_ бота, чтобы направить процесс общения в соответствии с намерением в ответе от LUIS. 
 
 ![Передача боту намерений и сущностей](./media/cognitive-services-add-bot-language/cognitive-services-luis-message-flow-bot-code.png)
 
-Чтобы начать использовать приложение LUIS с ботом, ознакомьтесь со статьей [Использование LUIS для распознавания речи][luis-v4-how-to].
+Чтобы начать использовать приложение LUIS с ботом, ознакомьтесь со статьей [об использовании LUIS для распознавания речи](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0).
 
 ## <a name="best-practices-for-language-understanding"></a>Рекомендации для распознавания речи
 
@@ -99,7 +99,7 @@ ms.locfileid: "46707550"
 
 ## <a name="use-luis-to-improve-speech-recognition"></a>Использование LUIS для улучшения распознавания речи
 
-Интеграция со службой LUIS может помочь боту, с которым будут разговаривать пользователи, идентифицировать слова, которые могут быть неправильно поняты при преобразовании речи в текст.  Например, в сценарии шахматной игры пользователь может сказать: "Move knight to A 7". Без контекста для намерения пользователя высказывание может распознаваться как: "Move night 287". Создавая сущности, представляющие шахматные фигуры и координаты, и помещая их в высказывания, предоставляется контекст распознавания речи для их идентификации. Можно [включить подготовку распознавания речи][speechrecognitionpriming] каналами Bot Framework, которые интегрированы с API распознавания речи Bing, такими как веб-чат, Bot Framework Emulator и Кортана.  
+Интеграция со службой LUIS может помочь боту, с которым будут разговаривать пользователи, идентифицировать слова, которые могут быть неправильно поняты при преобразовании речи в текст.  Например, в сценарии шахматной игры пользователь может сказать: "Move knight to A 7". Без контекста для намерения пользователя высказывание может распознаваться как: "Move night 287". Создавая сущности, представляющие шахматные фигуры и координаты, и помещая их в высказывания, предоставляется контекст распознавания речи для их идентификации. Можно [включить распознавание речи](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0) каналами Bot Framework, которые интегрированы в API распознавания речи Bing, такими как веб-чат, Bot Framework Emulator и Кортана.  
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 Дополнительные сведения см. в документации по [Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/).

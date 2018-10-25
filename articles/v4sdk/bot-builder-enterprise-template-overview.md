@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9636b1c88bd99b94f3bf266a3a321d8f6e2747d4
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 5f00dd3666a0ebe300ec7c1e98baae020f603175
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029792"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326441"
 ---
 # <a name="enterprise-bot-template"></a>Шаблон Enterprise Bot 
 
@@ -32,7 +32,7 @@ ms.locfileid: "47029792"
 Основные намерения сообщений  | Набор основных намерений (приветствие, прощание, справка, отмена и т. д.) на английском, французском, итальянском, немецком и испанском языках. Они предоставляются в файлах с расширением .LU (распознавание речи), что позволяет легко вносить изменения.
 Основные ответы на сообщения  | Ответы на сообщения с основными намерениями, абстрагированные в отдельные классы представлений. В будущем мы перенесем их в LG-файлы (генерация текста).
 Обнаружение неприемлемого содержимого или личных сведений  |Обнаружение неприемлемых или личных сведений во входящих сообщениях с помощью [Content Moderator](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/) в компоненте ПО промежуточного слоя.
-Расшифровка  | Расшифровки всех сообщений, хранящиеся в Службе хранилища Azure.
+Расшифровка  | Расшифровки всех бесед, хранящиеся в Службе хранилища Azure
 Диспетчер | Интегрированная модель [диспетчеризации](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig), которая позволяет определить, нужно ли обработать высказывание с помощью LUIS и кода или передать его QnAMaker.
 Интеграция с QnAMaker  | Интеграция с [QnAMaker](https://www.qnamaker.ai) для ответа на общие вопросы из базы знаний, которая использует существующие источники данных (например, руководства в формате PDF).
 Аналитические сведения о диалоге  | Интеграция с [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/), которая позволяет собирать данные телеметрии для всех диалогов, и пример панели мониторинга Power BI для начала работы с аналитическими сведениями о ведении диалога.

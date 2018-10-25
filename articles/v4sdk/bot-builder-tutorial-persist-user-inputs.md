@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b70f0bfbc76ad06be30fc7f590118b69ab1baf92
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 61e86ce9536bc5d77dc7bd411054b2f65bce8dd9
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389743"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326561"
 ---
 # <a name="persist-user-data"></a>Хранение данных пользователя
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Когда бот попросит пользователя ввести данные, может возникнуть необходимость сохранить часть информации в некой форме в хранилище. Пакет SDK для Bot Builder позволяет хранить данные, вводимые пользователем, с помощью *размещенного в памяти хранилища* или хранилища баз данных, например *Cosmos DB*. Хранилища локального типа преимущественно используются на этапе тестирования или создания прототипа бота. А постоянные хранилища, такие как хранилище базы данных, лучше всего подходят для ботов в рабочей среде. 
+Когда бот попросит пользователя ввести данные, может возникнуть необходимость сохранить часть информации в некой форме в хранилище. Пакет SDK для Bot Builder позволяет хранить данные, вводимые пользователем, с помощью *размещенного в памяти хранилища* или хранилища баз данных, например *Cosmos DB*. Хранилища локального типа преимущественно используются на этапе тестирования или создания прототипа бота. А постоянные хранилища, такие как хранилище базы данных, лучше всего подходят для ботов в рабочей среде.
 
 В этой статье показано, как определить объект хранилища и сохранить в нем данные, вводимые пользователем. Используя диалог, мы попросим пользователя ввести имя, если вы еще не сделали это. Независимо от предпочитаемого типа хранилища, процессы подключения и сохранения данных одинаковы для всех типов. В коде, приведенном в этой статье, для хранения данных используется хранилище `CosmosDB`.
 
@@ -50,15 +50,18 @@ ms.locfileid: "47389743"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Эти пакеты можно установить из диспетчера пакетов NuGet:
+Мы начнем с базового шаблона EchoBot. Инструкции см. в [кратком руководстве по .NET](~/dotnet/bot-builder-dotnet-quickstart.md).
+
+Эти дополнительные пакеты можно установить из диспетчера пакетов NuGet.
 
 * **Microsoft.Bot.Builder.Azure**;
 * **Microsoft.Bot.Builder.Dialogs**;
-* **Microsoft.Bot.Builder.Integration.AspNet.Core**.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Перейдите в папку проекта вашего бота и установите пакет `botbuilder-dialogs` из NPM:
+Мы начнем с базового шаблона EchoBot. Инструкции вы найдете в [кратком руководстве по JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
+
+Установите эти дополнительные пакеты npm.
 
 ```cmd
 npm install --save botbuilder-dialogs
@@ -70,11 +73,13 @@ npm install --save botbuilder-azure
 Чтобы протестировать бот, который вы создадите в рамках этого руководства, необходимо установить [Bot Framework Channel Emulator](https://github.com/Microsoft/BotFramework-Emulator).
 
 ## <a name="create-a-cosmosdb-service-and-update-your-application-settings"></a>Создание службы Cosmos DB и обновление параметров приложения
+
 Чтобы настроить службу и базу данных Cosmos DB, следуйте инструкциям по [использованию Cosmos DB](bot-builder-howto-v4-storage.md#using-cosmos-db). Инструкции кратко перечислены ниже:
-   1. В новом окне браузера войдите на <a href="http://portal.azure.com/" target="_blank">портал Azure</a>.
-   1. Последовательно выберите **Создать ресурс > Базы данных > Azure Cosmos DB**.
-   1. На странице **Новая учетная запись** укажите уникальное имя в поле **Идентификатор**. В поле **API** выберите **SQL** и укажите нужные сведения в полях **Подписка**, **Расположение** и **Группа ресурсов**.
-   1. Нажмите кнопку **Создать**.
+
+1. В новом окне браузера войдите на <a href="http://portal.azure.com/" target="_blank">портал Azure</a>.
+1. Последовательно выберите **Создать ресурс > Базы данных > Azure Cosmos DB**.
+1. На странице **Новая учетная запись** укажите уникальное имя в поле **Идентификатор**. В поле **API** выберите **SQL** и укажите нужные сведения в полях **Подписка**, **Расположение** и **Группа ресурсов**.
+1. Нажмите кнопку **Создать**.
 
 Затем добавьте в эту службу коллекцию, чтобы использовать ее с ботом.
 
@@ -104,18 +109,18 @@ npm install --save botbuilder-azure
 
 Файл с расширением **.env**
 
-```cmd
-DB_SERVICE_ENDPOINT=<database service endpoint>
+```text
+DB_SERVICE_ENDPOINT=<your-CosmosDB-endpoint>
 AUTH_KEY=<authentication key>
-DATABASE=<database name>
-COLLECTION=<collection name>
+DATABASE=<your-primary-key>
+COLLECTION=<your-collection-identifier>
 ```
 
 Затем в основном файле бота **index.js** замените значения для `storage`, чтобы использовать `CosmosDbStorage` вместо `MemoryStorage`. Во время выполнения будут получены переменные среды, которые заполнят эти поля.
 
 ```javascript
 const storage = new CosmosDbStorage({
-    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT,
     authKey: process.env.AUTH_KEY, 
     databaseId: process.env.DATABASE,
     collectionId: process.env.COLLECTION
@@ -126,8 +131,7 @@ const storage = new CosmosDbStorage({
 
 ## <a name="create-storage-state-manager-and-state-property-accessor-objects"></a>Создание объектов хранилища, диспетчера состояний и метода доступа к свойству состояния
 
-Для администрирования и хранения данных боты используют объекты хранилища и управления состоянием. Диспетчер обеспечивает абстракцию, позволяющую вам получить доступ к свойствам состояния с помощью соответствующих методов доступа независимо от типа базового хранилища. Записывайте данные в хранилище с использованием диспетчера состояний. 
-
+Для администрирования и хранения данных боты используют объекты хранилища и управления состоянием. Диспетчер обеспечивает абстракцию, позволяющую вам получить доступ к свойствам состояния с помощью соответствующих методов доступа независимо от типа базового хранилища. Записывайте данные в хранилище с использованием диспетчера состояний.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -190,13 +194,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Azure;
-using Microsoft.Bot.Builder.BotFramework;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Integration;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Builder.TraceExtensions;
+using Microsoft.Bot.Configuration;
+using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 ```
 
@@ -215,14 +220,14 @@ public void ConfigureServices(IServiceCollection services)
         // ...
 
         // Use persistent storage and create state management objects.
-        var CosmosSettings = Configuration.GetSection("CosmosDB");
+        var cosmosSettings = Configuration.GetSection("CosmosDB");
         IStorage storage = new CosmosDbStorage(
             new CosmosDbStorageOptions
             {
-                DatabaseId = CosmosSettings["DatabaseID"],
-                CollectionId = CosmosSettings["CollectionID"],
-                CosmosDBEndpoint = new Uri(CosmosSettings["EndpointUri"]),
-                AuthKey = CosmosSettings["AuthenticationKey"],
+                DatabaseId = cosmosSettings["DatabaseID"],
+                CollectionId = cosmosSettings["CollectionID"],
+                CosmosDBEndpoint = new Uri(cosmosSettings["EndpointUri"]),
+                AuthKey = cosmosSettings["AuthenticationKey"],
             });
         options.State.Add(new ConversationState(storage));
         options.State.Add(new UserState(storage));
@@ -246,11 +251,12 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="indexjs"></a>Файл index.js
+### <a name="update-your-server-code"></a>Обновление кода сервера
 
-В основном файле бота **index.js** измените указанные ниже инструкции require.
+В файле **index.js** вашего проекта обновите указанные ниже инструкции require.
 
 ```javascript
+// Import required bot services.
 const { BotFrameworkAdapter, ConversationState, UserState } = require('botbuilder');
 const { CosmosDbStorage } = require('botbuilder-azure');
 ```
@@ -258,17 +264,49 @@ const { CosmosDbStorage } = require('botbuilder-azure');
 В рамках этого руководства для хранения данных мы будем использовать `UserState`. Нам нужно создать объект `userState` и обновить эту строку кода, чтобы передать второй параметр в класс `MainDialog`.
 
 ```javascript
-// Create conversation state with in-memory storage provider. 
+// Create conversation state with in-memory storage provider.
 const conversationState = new ConversationState(storage);
 const userState = new UserState(storage);
 
 // Create the main dialog.
-const mainDlg = new MainDialog(conversationState, userState);
+const bot = new MyBot(conversationState, userState);
 ```
 
-### <a name="dialogsmaindialogindexjs"></a>dialogs/mainDialog/index.js
+Если возникнет общая ошибка, очистите состояние беседы и пользователя.
 
-В классе `MainDialog` требуется указать библиотеки, необходимые для работы вашего бота. В рамках этого руководства мы будем использовать библиотеку **Dialogs**.
+```javascript
+// Catch-all for errors.
+adapter.onTurnError = async (context, error) => {
+    // This check writes out errors to console log .vs. app insights.
+    console.error(`\n [onTurnError]: ${error}`);
+    // Send a message to the user
+    context.sendActivity(`Oops. Something went wrong!`);
+    // Clear out state
+    await conversationState.load(context);
+    await conversationState.clear(context);
+    await userState.load(context);
+    await userState.clear(context);
+    // Save state changes.
+    await conversationState.saveChanges(context);
+    await userState.saveChanges(context);
+};
+```
+
+Также обновите цикл сервера HTTP для вызова объекта бота.
+
+```javascript
+// Listen for incoming requests.
+server.post('/api/messages', (req, res) => {
+    adapter.processActivity(req, res, async (context) => {
+        // Route to main dialog.
+        await bot.onTurn(context);
+    });
+});
+```
+
+### <a name="update-your-bot-logic"></a>Обновление логики бота
+
+В классе `MyBot` требуется указать библиотеки, необходимые для работы вашего бота. В рамках этого руководства мы будем использовать библиотеку **Dialogs**.
 
 ```javascript
 // Required packages for this bot
@@ -277,30 +315,29 @@ const { DialogSet, WaterfallDialog, TextPrompt, NumberPrompt } = require('botbui
 
 ```
 
-Обновите конструктор класса `MainDialog`, чтобы он принял `userState` в качестве второго параметра. Также обновите конструктор, определив состояния, диалоги и запросы, необходимые для работы с этим руководством. В этом случае мы определяем каскад из двух шагов, где на _шаге 1_ запрашивается имя пользователя, а на _шаге 2_ возвращаются входные данные пользователя. Способ хранения этой информации зависит от основной логики бота.
+Обновите конструктор класса `MyBot`, чтобы он принял `userState` в качестве второго параметра. Также обновите конструктор, определив состояния, диалоги и запросы, необходимые для работы с этим руководством. В этом случае мы определяем последовательность из двух шагов, где на _шаге 1_ запрашивается имя пользователя, а на _шаге 2_ возвращается ответ пользователя. Способ хранения этой информации зависит от основной логики бота.
 
 ```javascript
-constructor (conversationState, userState) {
+constructor(conversationState, userState) {
 
-    // creates a new state accessor property. see https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors 
+    // creates a new state accessor property.
     this.conversationState = conversationState;
     this.userState = userState;
 
     this.dialogState = this.conversationState.createProperty('dialogState');
-
     this.userDataAccessor = this.userState.createProperty('userData');
 
     this.dialogs = new DialogSet(this.dialogState);
-    
+
     // Add prompts
     this.dialogs.add(new TextPrompt('textPrompt'));
-    
-    // Check in user:
+
+    // Add a waterfall dialog to collect and return the user's name.
     this.dialogs.add(new WaterfallDialog('greetings', [
         async function (step) {
             return await step.prompt('textPrompt', "What is your name?");
         },
-        async function (step){
+        async function (step) {
             return await step.endDialog(step.result);
         }
     ]));
@@ -331,7 +368,7 @@ public class GreetingsDialog : DialogSet
     /// <summary>The ID of the main dialog.</summary>
     public const string MainDialog = "main";
 
-    /// <summary>The ID of the the text prompt to use in the dialog.</summary>
+    /// <summary>The ID of the text prompt to use in the dialog.</summary>
     private const string TextPrompt = "textPrompt";
 
     /// <summary>Creates a new instance of this dialog set.</summary>
@@ -483,14 +520,14 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
                     await turnContext.SendActivityAsync($"Pleased to meet you {userData.Name}.");
                 }
             }
-            // Else, if we don't have the user's name yet, ask for it.
             else if (userData.Name is null)
             {
+                // Else, if we don't have the user's name yet, ask for it.
                 await dc.BeginDialogAsync(GreetingsDialog.MainDialog);
             }
-            // Else, echo the user's message text.
             else
             {
+                // Else, echo the user's message text.
                 await turnContext.SendActivityAsync($"{userData.Name} said, '{turnContext.Activity.Text}'.");
             }
 
@@ -516,20 +553,17 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Обновите обработчик `onTurn` для `MainDialog`.
-
-**dialogs/mainDialog/index.js**
+Обновите дескриптор `onTurn` бота.
 
 ```javascript
 async onTurn(turnContext) {
-        
     const dc = await this.dialogs.createContext(turnContext); // Create dialog context
     const userData = await this.userDataAccessor.get(turnContext, {});
 
-    switch(turnContext.activity.type){
+    switch (turnContext.activity.type) {
         case ActivityTypes.ConversationUpdate:
             if (turnContext.activity.membersAdded[0].name !== 'Bot') {
-                if(userData.name){
+                if (userData.name) {
                     await turnContext.sendActivity(`Hi ${userData.name}! Welcome back to the User Data bot.`);
                 }
                 else {
@@ -538,12 +572,12 @@ async onTurn(turnContext) {
                     await dc.beginDialog('greetings');
                 }
             }
-        break;
+            break;
         case ActivityTypes.Message:
             // If there is an active dialog running, continue it
-            if(dc.activeDialog){
+            if (dc.activeDialog) {
                 var turnResult = await dc.continueDialog();
-                if(turnResult.status == "complete" && turnResult.result){
+                if (turnResult.status == "complete" && turnResult.result) {
                     // If it completes successfully and returns a value, save the name and greet the user.
                     userData.name = turnResult.result;
                     await this.userDataAccessor.set(turnContext, userData);
@@ -551,50 +585,48 @@ async onTurn(turnContext) {
                 }
             }
             // Else, if we don't have the user's name yet, ask for it.
-            else if(!userData.name){
+            else if (!userData.name) {
                 await dc.beginDialog('greetings');
             }
             // Else, echo the user's message text.
             else {
                 await turnContext.sendActivity(`${userData.name} said, ${turnContext.activity.text}.`);
             }
-        break;
-        case "deleteUserData":
+            break;
+        case ActivityTypes.DeleteUserData:
             // Delete the user's data.
-            // Note: You can use the emuluator to send this activity.
+            // Note: You can use the Emulator to send this activity.
             userData.name = null;
             await this.userDataAccessor.set(turnContext, userData);
             await turnContext.sendActivity("I have deleted your user data.");
-        break;
+            break;
     }
 
-    // Save changes to the user name.
-    await this.userState.saveChanges(turnContext);
-
-    // End this turn by saving changes to the conversation state.
+    // Save changes to the conversation and user states.
     await this.conversationState.saveChanges(turnContext);
-
+    await this.userState.saveChanges(turnContext);
 }
-
 ```
 
 ---
 
 ## <a name="start-your-bot-in-visual-studio"></a>Запуск бота в Visual Studio
+
 Скомпилируйте и запустите приложение.
 
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
 
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
-1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
+1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе.
 2. Выберите BOT-файл, расположенный в каталоге с созданным решением Visual Studio.
 
 ## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
+
 Отправьте сообщение боту и получите от него сообщение в ответ.
 ![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
 
-
 ## <a name="next-steps"></a>Дополнительная информация
+
 > [!div class="nextstepaction"]
 > [Управление состоянием диалога и пользователя](bot-builder-howto-v4-state.md)
