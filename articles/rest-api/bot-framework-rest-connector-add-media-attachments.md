@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 39247ec3be4da7129989041269e930de8fa766ae
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305306"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997641"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "39305306"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-Боты и каналы обычно обмениваются текстовыми строками, но некоторые каналы также поддерживают обмен вложениями, что позволяет вашему боту отправлять пользователям сообщения с более широким набором возможностей. Например, бот может отправлять вложения мультимедиа (такие как изображения, видео, звук и файлы) и [форматированные карточки](bot-framework-rest-connector-add-rich-cards.md). В этой статье описывается добавление вложений мультимедиа в сообщения с помощью службы соединителя ботов.
+Боты и каналы обычно обмениваются текстовыми строками, но некоторые каналы также поддерживают обмен вложениями, что позволяет боту отправлять пользователям сообщения с более широким набором возможностей. Например, бот может отправлять вложения мультимедиа (такие как изображения, видео, звук и файлы) и [форматированные карточки](bot-framework-rest-connector-add-rich-cards.md). В этой статье описывается добавление вложений мультимедиа в сообщения с помощью службы соединителя ботов.
 
 > [!TIP]
 > Сведения о том, как определить тип и число вложений, поддерживаемые каналом, и способ их обработки каналом, см. в разделе [Инспектор каналов][ChannelInspector].
@@ -173,7 +174,7 @@ Content-Type: application/json
 
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Добавление расширенных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
+- [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
 - [Инспектор каналов][ChannelInspector]
 
 [ChannelInspector]: ../bot-service-channel-inspector.md

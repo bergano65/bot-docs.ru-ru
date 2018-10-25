@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 2e47591b04a91ce02cfeb6bd6485080426d201b5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305094"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998111"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -43,11 +44,11 @@ Authorization: Bearer SECRET_OR_TOKEN
 | 200 | Запрос выполнен успешно. |
 | 201 | Запрос выполнен успешно. |
 | 202 | Запрос принят для обработки. |
-| 204 | Запрос выполнен успешно, но содержимое не было возвращено. |
+| 204 | Запрос успешно выполнен, но содержимое не было возвращено. |
 | 400 | Запрос неправильный или имеет недопустимый формат. |
 | 401 | Клиент не авторизован для выполнения запроса. Часто этот код состояния возникает, когда заголовок `Authorization` отсутствует или имеет недопустимый формат. |
 | 403 | Клиенту запрещено выполнять запрошенную операцию. Если в запросе указан действительный маркер с истекшим сроком действия, свойство `code` в объекте [Error](bot-framework-rest-connector-api-reference.md#error-object), который возвращается в [ErrorResponse](bot-framework-rest-connector-api-reference.md#errorresponse-object), будет иметь значение `TokenExpired`. |
-| 404 | Не удалось найти запрошенный ресурс. Обычно этот код состояния обозначает, что в запросе указан недопустимый URI. |
+| 404 | Запрошенный ресурс не найден. Обычно этот код состояния обозначает, что в запросе указан недопустимый URI. |
 | 500 | Внутренняя ошибка сервера в службе Direct Line |
 | 502 | Бот недоступен или вернул ошибку. **Это обобщенный код ошибки.** |
 
@@ -92,7 +93,7 @@ HTTP/1.1 502 Bad Gateway
 | [Создание токена](#generate-token) | Создает токен для нового диалога. | 
 | [Обновление токена](#refresh-token) | Обновляет токен. | 
 
-### <a name="generate-token"></a>Создание токена
+### <a name="generate-token"></a>Generate Token
 Создает токен, действующий для одного диалога. 
 ```http 
 POST /v3/directline/tokens/generate

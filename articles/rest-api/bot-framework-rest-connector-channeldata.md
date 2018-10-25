@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3cb6f552bee4857d3562e637b2a5728b30ac48a5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304955"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996901"
 ---
 # <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
 
@@ -22,10 +23,10 @@ ms.locfileid: "39304955"
 
 | Канал | Функции |
 |----|----|
-| Email | Отправка и получение сообщений электронной почты, которые содержат текст, тему и метаданные о важности |
-| Slack | Отправка сообщений Slack с полным контролем |
-| Facebook | Отправка уведомлений Facebook из кода приложения |
-| Telegram | Выполните действия, реализованные в Telegram, такие как предоставление в совместный доступ голосового напоминания или наклейки |
+| Email | Отправка и получение сообщений электронной почты, которые содержат текст, тему и метаданные о важности. |
+| Slack | Отправка сообщений Slack с полным контролем. |
+| Facebook | Отправка уведомлений Facebook из кода приложения. |
+| Telegram | Выполнение действий, реализованных в Telegram, таких как публикация голосового напоминания или наклейки. |
 | Kik | Отправка и получение сообщений Kik | 
 
 > [!NOTE]

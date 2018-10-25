@@ -5,15 +5,16 @@ author: MalarGit
 ms.author: malarch
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 6ceeca9adc9cad9e60a73c1c7c91bea43b97fdd9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905616"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997933"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Создание бота мультимедиа в реальном времени для Skype
 
@@ -34,7 +35,7 @@ ms.locfileid: "42905616"
 
 * Службе ботов требуется сертификат, выданный признанным центром сертификации. Отпечаток сертификата должен храниться в конфигурации облачной службы бота и считываться при запуске службы.
 
-* Должна быть подготовлена общедоступная <a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">входная конечная точка экземпляра</a>. Это позволит назначить уникальный общедоступный порт каждому экземпляру виртуальной машины в службе бота. Этот порт используется платформой мультимедиа в реальном времени для обмена данными с облаком вызовов Skype.
+* Должна быть подготовлена общедоступная <a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">входная конечная точка экземпляра</a>. Это позволит назначить уникальный общедоступный порт каждому экземпляру виртуальной машины в службе бота. Этот порт используется платформой мультимедиа в реальном времени для обмена данными с облаком вызовов Skype.
   ```xml
   <InstanceInputEndpoint name="InstanceMediaControlEndpoint" protocol="tcp" localPort="20100">
     <AllocatePublicPortFrom>
@@ -65,12 +66,12 @@ ms.locfileid: "42905616"
   </NetworkConfiguration>
   ```
 
-* Во время запуска экземпляра службы сценарий `MediaPlatformStartupScript.bat` (предоставляемый в составе пакета NuGet) должен запускаться как задача запуска с повышенными правами. Сценарий должен быть выполнен до вызова метода инициализации платформы. 
+* Во время запуска экземпляра службы сценарий `MediaPlatformStartupScript.bat` (предоставляемый в составе пакета NuGet) должен запускаться как задача запуска с повышенными правами. Сценарий должен быть выполнен до вызова метода инициализации платформы. 
 
 ```xml
 <Startup>
-<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
-</Startup> 
+<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
+</Startup> 
 ```
 
 ## <a name="initialize-the-media-platform-on-service-startup"></a>Инициализация платформы мультимедиа при запуске службы
@@ -237,25 +238,25 @@ private Task OnIncomingCallReceived(RealTimeMediaIncomingCallEvent incomingCallE
 `OnAnswerAppHostedMediaCompleted` вызывается при завершении действия `AnswerAppHostedMedia`. Свойство `Outcome` в `AnswerAppHostedMediaOutcomeEvent` указывает на успешное или неуспешное завершение события. Если не удается установить вызов, бот должен ликвидировать объекты AudioSocket и VideoSocket, созданные им для вызова.
 
 ## <a name="receive-audio-media"></a>Получение аудиоданных
-Если `AudioSocket` был создан с возможностью получения аудиоданных, то событие `AudioMediaReceived` будет вызываться каждый раз при получении кадра аудиоданных. Бот должен обрабатывать это событие приблизительно 50 раз в секунду, независимо от однорангового узла, который может быть источником аудиоданных (поскольку буферы устранения шума создаются локально, если аудиоданные не получены от однорангового узла). Каждый пакет аудиоданных доставляется в объекте `AudioMediaBuffer`. Этот объект содержит указатель на собственный буфер памяти, выделенный в куче, содержащий декодированные аудиоданные. 
+Если `AudioSocket` был создан с возможностью получения аудиоданных, то событие `AudioMediaReceived` будет вызываться каждый раз при получении кадра аудиоданных. Бот должен обрабатывать это событие приблизительно 50 раз в секунду, независимо от однорангового узла, который может быть источником аудиоданных (поскольку буферы устранения шума создаются локально, если аудиоданные не получены от однорангового узла). Каждый пакет аудиоданных доставляется в объекте `AudioMediaBuffer`. Этот объект содержит указатель на собственный буфер памяти, выделенный в куче, содержащий декодированные аудиоданные. 
 
 ```cs
 void OnAudioMediaReceived(
-            object sender,
-            AudioMediaReceivedEventArgs args)
+            object sender,
+            AudioMediaReceivedEventArgs args)
 {
-   var buffer = args.Buffer;
+   var buffer = args.Buffer;
 
    // native heap-allocated memory containing decoded content
-   IntPtr rawData = buffer.Data;            
+   IntPtr rawData = buffer.Data;            
 }
 ```
 
-Обработчик событий должен быстро возвращать данные. Рекомендуется, чтобы очередь приложения `AudioMediaBuffer` обрабатывалась асинхронно. События `OnAudioMediaReceived` будут сериализованы с помощью платформы мультимедиа в реальном времени (то есть следующее событие не будет вызываться до возврата текущего). Как только `AudioMediaBuffer` будет использовано, приложение должно вызвать метод Dispose буфера таким образом, чтобы базовая неуправляемая память была освобождена платформой мультимедиа. 
+Обработчик событий должен быстро возвращать данные. Рекомендуется, чтобы очередь приложения `AudioMediaBuffer` обрабатывалась асинхронно. События `OnAudioMediaReceived` будут сериализованы с помощью платформы мультимедиа в реальном времени (то есть следующее событие не будет вызываться до возврата текущего). Как только `AudioMediaBuffer` будет использовано, приложение должно вызвать метод Dispose буфера таким образом, чтобы базовая неуправляемая память была освобождена платформой мультимедиа. 
 
 ```cs
-   // release/dispose buffer when done 
-   buffer.Dispose();
+   // release/dispose buffer when done 
+   buffer.Dispose();
 ```
 
 > [!IMPORTANT]
@@ -269,15 +270,15 @@ void OnAudioMediaReceived(
 
 ```cs
 void AudioSocket_OnSendStatusChanged(
-             object sender,
-             AudioSendStatusChangedEventArgs args)
+             object sender,
+             AudioSendStatusChangedEventArgs args)
 {
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;
@@ -294,19 +295,19 @@ void AudioSocket_OnSendStatusChanged(
 
 ```cs
 void VideoSocket_OnSendStatusChanged(
-            object sender,
-            VideoSendStatusChangedEventArgs args)
+            object sender,
+            VideoSendStatusChangedEventArgs args)
 {
     VideoFormat preferredVideoFormat;
 
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         // bot is recommended to use this format for sourcing video content.
         preferredVideoFormat = args.PreferredVideoSourceFormat;
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;

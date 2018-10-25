@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f37d8e9215b0a2cd640431f237d1b8c53fad576b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a049d77d506fa3fa678a079de52aa424264847c9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300887"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997051"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Основные понятия API 1.1 для Direct Line
 
@@ -25,13 +26,13 @@ C помощью API для Direct Line вы сможете реализоват
 
 Аутентификацию запросов API 1.1 для Direct Line можно выполнять с помощью **секрета**, доступного на странице конфигурации канала Direct Line на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, или с помощью **маркера**, который вы можете получить во время выполнения.  Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-1-1-authentication.md) (Аутентификация в API речи).
 
-## <a name="starting-a-conversation"></a>Начало диалога
+## <a name="starting-a-conversation"></a>Начало общения
 
-Диалоги Direct Line открываются клиентами явным образом и могут выполняться, пока бот и клиент участвуют в них и имеют действительные учетные данные. Дополнительные сведения см. в статье о [начале диалога](bot-framework-rest-direct-line-1-1-start-conversation.md).
+Общения Direct Line открываются клиентами явным образом и могут выполняться, пока бот и клиент участвуют в них и имеют действительные учетные данные. Дополнительные сведения см. в статье [Начало общения](bot-framework-rest-direct-line-1-1-start-conversation.md).
 
 ## <a name="sending-messages"></a>Отправка сообщений
 
-С помощью API 1.1 для Direct Line клиент может отправлять боту сообщения, выполняя запросы `HTTP POST`. В каждом запросе клиент может отправить одно сообщение. Дополнительные сведения см. в статье [Send a message to the bot](bot-framework-rest-direct-line-1-1-send-message.md) (Отправка сообщения боту).
+С помощью API 1.1 для Direct Line клиент может отправлять боту сообщения, выполняя запросы `HTTP POST`. В каждом запросе клиент может отправить одно сообщение. Дополнительные сведения см. в разделе [Отправка сообщения боту](bot-framework-rest-direct-line-1-1-send-message.md).
 
 ## <a name="receiving-messages"></a>Получение сообщений
 
@@ -47,4 +48,4 @@ Bot Framework предоставляет клиентскую библиотек
 
 ### <a name="web-chat-control"></a>Элемент управления "Веб-чат" 
 
-Bot Framework предоставляет элемент управления, который позволяет внедрить бот с Direct Line в клиентское приложение. Дополнительные сведения см. в статье об <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">элементе управления "Веб-чат" в Microsoft Bot Framework</a>.
+Bot Framework предоставляет элемент управления, который позволяет внедрить бот, использующий Direct Line, в клиентское приложение. Дополнительные сведения см. в статье о <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat control</a> (Элемент управления WebChat в Microsoft Bot Framework).

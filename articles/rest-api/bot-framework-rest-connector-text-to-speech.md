@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 91385fa3e8ae1410679ca5274e40db7fe38bafea
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2aac000b7e8dd52b00659ffecde5184df6c29991
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306271"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998691"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 > [!div class="op_single_selector"]
@@ -58,13 +59,13 @@ Content-Type: application/json
 
 ## <a name="input-hints"></a>Подсказки для ввода
 
-При отправке сообщения по каналу с поддержкой речевых функций можно попытаться оказать влияние на состояние микрофона клиента, включив подсказку для ввода, указывающую, как бот реагирует на ввод данных пользователем: принимает, ожидает или игнорирует. Дополнительные сведения см. в статье [Добавление подсказок ввода к сообщениям](bot-framework-rest-connector-add-input-hints.md).
+При отправке сообщения по каналу с поддержкой речевых функций можно попытаться оказать влияние на состояние микрофона клиента, включив подсказку для ввода, указывающую, как бот реагирует на ввод данных пользователем — принимает, ожидает или игнорирует. Дополнительные сведения см. в статье [Добавление подсказок для ввода в сообщения](bot-framework-rest-connector-add-input-hints.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Добавление подсказок ввода к сообщениям](bot-framework-rest-connector-add-input-hints.md)
+- [Добавление подсказок для ввода в сообщения](bot-framework-rest-connector-add-input-hints.md)
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
