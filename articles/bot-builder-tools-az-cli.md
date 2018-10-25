@@ -6,24 +6,20 @@ ms.author: v-shimma
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/25/2018
+ms.date: 08/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1eb47e76ef1bd6765d5ba93c27b97a8d9e6143db
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 96660ecb8bf7a69115e517bfa8ec97a79a3e8c90
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905308"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404020"
 ---
 # <a name="create-bots-with-azure-cli"></a>Создание ботов с помощью Azure CLI
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
-[Средства Bot Builder](https://github.com/microsoft/botbuilder-tools) — это новый набор средств для управления и взаимодействия с ресурсами бота непосредственно из командной строки. 
-
-Из этого руководства можно узнать, как выполнять следующие действия.
-
-- Включить расширение бота Azure CLI
+Из этого руководства вы узнаете, как выполнять следующие задачи: 
 - Создать бота с помощью Azure CLI 
 - Скачать локальную копию для разработки
 - Использовать новое средство MSBot для хранения всей информации о ресурсе бота
@@ -33,45 +29,34 @@ ms.locfileid: "42905308"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы включить эти средства из командной строки, понадобится установить Node.js. 
-
+Чтобы использовать эти средства из командной строки, понадобится установить Node.js. 
 - [Node.js (версии 8.5 или более поздней)](https://nodejs.org/en/)
 
-## <a name="1-enable-azure-cli"></a>1. Включение Azure CLI
+## <a name="1-install-tools"></a>1. Средства установки
+1. [Установите](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) последнюю версию Azure CLI.
+2. [Установите](https://aka.ms/botbuilder-tools-readme) средства для Bot Builder.
 
-Теперь с помощью [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) можно управлять ботами, как и любым другим ресурсом в Azure. Чтобы включить Azure CLI, необходимо выполнить следующие действия.
-
-1. [Скачать](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI, если у вас его еще нет. 
-
-2. Ввести следующую команду для загрузки пакета dist расширения службы Azure Bot.
-
-```azurecli
-az extension add -n botservice
-```
+Теперь с помощью Azure CLI можно управлять ботами, как и любым другим ресурсом в Azure.
 
 >[!TIP]
 > На данный момент расширение службы Azure Bot поддерживает только ботов v3.
   
-3. Чтобы [войти](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)в Azure CLI, выполните следующую команду.
+3. Чтобы войти в Azure CLI, выполните следующую команду.
 
 ```azurecli
 az login
 ```
-Вам будет предложено ввести уникальный временный код. Чтобы войти, необходимо использовать веб-браузер и посетить страницу Майкрософт [Имя пользователя устройства](https://microsoft.com/devicelogin), где для продолжения требуется ввести код, предоставленный интерфейсом командной строки. 
+Она откроет окно браузера с интерфейсом для входа. После успешного входа вы увидите следующее сообщение:
 
-![Имя пользователя устройства Майкрософт](media/bot-builder-tools/ms-device-login.png)
+![Имя пользователя устройства Майкрософт](media/bot-builder-tools/az-browser-login.png)
 
-После успешного входа появится экран приветствия Azure CLI, а также список доступных параметров управления учетной записью и ресурсами.
+А в окне командной строки будет представлена следующая информация:
 
-![Интерфейс командной строки бота в Azure](media/bot-builder-tools/az-cli-bot.png)
-
-
- Список всех команд Azure CLI можно узнать на [этой странице](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest).
-
+![Команда для входа в Azure](media/bot-builder-tools/az-login-command.png)
 
 ## <a name="2-create-a-new-bot-from-azure-cli"></a>2. Создание бота в Azure CLI
 
-С помощью Azure CLI и нового расширение бота создание ботов может целиком проходить в командной строке. 
+С помощью Azure CLI ботов можно создавать полностью из командной строки. 
 
 ```azurecli
 az bot [command]
@@ -88,11 +73,11 @@ az bot [command]
 Чтобы создать бот в интерфейсе командной строки, необходимо выбрать существующую [группу ресурсов](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) или создать новую. 
 
 ```azurecli
-az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --description "description-of-my-bot"
+az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --version v3 --description "description-of-my-bot"
 ```
-Сообщение с подтверждением появится после успешного выполнения запроса.
+Поддерживаются следующие значения: `function, registration, webapp` для `--kind` и `v3, v4` для `--version`.  Сообщение с подтверждением появится после успешного выполнения запроса.
 ```
-obtained msa app id and password. Provisioning bot now.
+Obtained msa app id and password. Provisioning bot now.
 ```
 
 > [!TIP]
@@ -116,35 +101,30 @@ az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "
 
 ## <a name="3-download-the-bot-locally"></a>3. Локальная загрузка бота
 
-Для новых ботов существует два способа загрузки исходного кода.
-- Загрузить из портала Azure.
-- Загрузить с помощью Azure CLI.
+Есть два способа загрузить исходный код:
+- на портале Azure;
+- с помощью Azure CLI.
 
-Чтобы загрузить исходный код бота с портала, просто выберите ресурс бота, а затем в управлении ботом выберите **Cборка**. Существует несколько различных вариантов, доступных для управления или получения исходного кода бота локально. 
+Чтобы скачать исходный код бота с [портала Azure](http://portal.azure.com), выберите нужный ресурс бота и щелкните **Cборка** в разделе управления ботом. Существует несколько различных вариантов, доступных для управления или получения исходного кода бота локально.
 
 ![Загрузка бота с портала Azure](media/bot-builder-tools/az-portal-manage-code.png)
 
-Чтобы загрузить источник бота с помощью интерфейса командной строки, введите следующую команду. Бот будет загружен в подкаталог. Если подкаталога не существует, он будет создан командой.
+Чтобы загрузить источник бота с помощью интерфейса командной строки, введите следующую команду. Бот будет скачан в локальную систему.
 
 ```azurecli
 az bot download --name "my-bot-name" --resource-group "my-resource-group"
 ```
-Также можно указать каталог для загрузки бота.
-Например: 
 
 ![Команда загрузки в интерфейсе командной строки](media/bot-builder-tools/cli-bot-download-command.png)
 
-![Загрузка бота через интерфейс командной строки](media/bot-builder-tools/cli-bot-download.png)
-
-Команда, приведенная выше, позволяет загрузить исходный код бота непосредственно в указанное расположение, что позволяет разрабатывать ботов на локальном компьютере.
-
-
 ## <a name="4-store-your-bot-information-with-msbot"></a>4. Хранение информации бота с помощью MSBot
 
-Новое средство [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) позволяет создавать файл с расширением **.bot**, в котором хранятся метаданные о службах, используемых ботом. C помощью этого файла бот может использовать интерфейс командной строки для подключения данных служб. Средство доступно в качестве модуля npm. Чтобы его установить, необходимо выполнить следующую команду.
+Новое средство MSBot позволяет создавать файл с расширением **.bot**, где в едином месте хранятся метаданные о всех используемых ботом службах. C помощью этого файла бот может использовать интерфейс командной строки для подключения данных служб. Средства MSBot поддерживают несколько команд. Подробное описание см в файле [readme](https://aka.ms/botbuilder-tools-msbot-readme). 
+
+Чтобы установить MSBot, выполните следующую команду:
 
 ```shell
-npm install -g msbot 
+npm install -g msbot
 ```
 
 Чтобы создать файл бота, в интерфейсе командной строки введите команду **msbot init**, за которой следует имя бота и конечная точка целевого URL-адреса, например:
@@ -152,6 +132,7 @@ npm install -g msbot
 ```shell
 msbot init --name name-of-my-bot --endpoint http://localhost:bot-port-number/api/messages
 ```
+
 Чтобы подключить бот к службе, в интерфейс командной строки необходимо ввести команду **msbot connect**, за которой следует имя соответствующей службы:
 
 ```shell
@@ -166,36 +147,39 @@ msbot connect service-type
 | qna     |Подключение бота к базе знаний QnA|
 |help [cmd]  |Отображение справки по [cmd]|
 
+Полный список поддерживаемых служб вы найдете в файле [readme](https://aka.ms/botbuilder-tools-msbot-readme).
+
 ### <a name="connect-your-bot-to-abs-with-the-bot-file"></a>Подключение бота к ABS с помощью BOT-файла
 
-После установки средства MSBot можно легко подключить бот к существующей группе ресурсов службы Azure Bot. Для этого необходимо выполнить команду az bot **show**. 
+После установки средства MSBot можно легко подключить бот к существующей группе ресурсов службы Azure Bot. Для этого необходимо выполнить команду az bot **show**.
 
 ```azurecli
 az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --stdin
 ```
 
-Эта команда возьмет текущую конечную точку, идентификатор приложения MSA и пароль целевой группы ресурсов и обновит информацию о них в файле BOT. 
+Эта команда возьмет текущую конечную точку, идентификатор приложения MSA и пароль целевой группы ресурсов и обновит информацию о них в файле BOT.
 
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5. Обновление или создание служб LUIS и QnA и управление ими с помощью новых средств Bot Builder
 
-[Средства Bot Builder](https://github.com/microsoft/botbuilder-tools) — это новый набор средств для взаимодействия с ресурсами бота и управления ими непосредственно из командной строки. 
+[Средства Bot Builder](https://aka.ms/botbuilder-tools) — это новый набор средств для взаимодействия с ресурсами бота и управления ими непосредственно из командной строки.
 
 >[!TIP]
 > Каждое средство Bot Builder содержит команду глобальной справки, доступ к которой можно получить из командной строки посредством ввода **-h** или **--help**. Эта команда доступна в любое время из любого действия, что обеспечивает отображение доступных вариантов вместе с их описанием.
 
 ### <a name="ludown"></a>LUDown
-[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) позволяет описывать и создавать мощные компоненты языка для ботов с помощью файлов с расширением **LU**. Файл нового формата LU является типом формата разметки Markdown, который используется средством LUDown для вывода файлов JSON, адаптированных для целевой службы. В настоящее время файлы с форматом LU можно использовать для создания приложения [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) или базы знаний [QnA](https://qnamaker.ai/Documentation/CreateKb) с использованием разных форматов. LUDown доступен в виде модуля npm и может быть использован при глобальной установке на компьютер.
+
+[LUDown](https://aka.ms/botbuilder-ludown) позволяет описывать и создавать мощные компоненты языка для ботов с помощью файлов с расширением **LU**. Файл нового формата LU является типом формата разметки Markdown, который используется средством LUDown для вывода файлов JSON, адаптированных для целевой службы. В настоящее время файлы с форматом LU можно использовать для создания приложения [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) или базы знаний [QnA](https://qnamaker.ai/Documentation/CreateKb) с использованием разных форматов. LUDown доступен в виде модуля npm и может быть использован при глобальной установке на компьютер.
 
 ```shell
 npm install -g ludown
 ```
-Средство LUDown можно использовать для создания моделей JSON как для LUIS, так и для QnA.  
 
+Средство LUDown можно использовать для создания моделей JSON как для LUIS, так и для QnA.  
 
 ### <a name="creating-a-luis-application-with-ludown"></a>Создание приложения LUIS с помощью LUDown
 
-[Намерения](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) и [сущности](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities) определяются для приложения LUIS точно так же, как и на портале LUIS. 
+[Намерения](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) и [сущности](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities) определяются для приложения LUIS точно так же, как и на портале LUIS.
 
 `# \<intent-name\>` описывает новый раздел определения намерений. Последующие строки содержат [высказывания](https://docs.microsoft.com/azure/cognitive-services/luis/add-example-utterances), которые описывают это намерение.
 
@@ -296,7 +280,7 @@ ludown parse ToQna --in ludown-file-name.lu
 
 ### <a name="connect-to-luis-from-the-cli"></a>Подключение к LUIS из интерфейса командной строки 
 
-Теперь в набор средств добавлено [расширение LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/LUIS), которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать:
+Теперь в набор средств добавлено [расширение LUIS](https://aka.ms/botbuilder-luis-cli), которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать:
 
 ```shell
 npm install -g luis-apis
@@ -324,7 +308,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 
 ### <a name="connect-to-qna-from-the-cli"></a>Подключение к QnA из интерфейса командной строки
 
-Теперь в набор средств добавлено [расширение QnA](https://github.com/Microsoft/botbuilder-tools/tree/master/QnAMaker), которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать.
+Теперь в набор средств добавлено [расширение QnA](https://aka.ms/botbuilder-tools-qnaMaker), которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать.
 
 ```shell
 npm install -g qnamaker
@@ -351,10 +335,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>Ссылки
-- [Bot Builder tools (PREVIEW)](https://github.com/Microsoft/botbuilder-tools) (Средства Bot Builder (предварительная версия))
-- [MSBot Command Line tool](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) (Программа командной строки MSBot)
-- [ChatDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Chatdown)
-- [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/ludown)
-- [интерфейс командной строки Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-
+- [Bot Builder Tools](https://aka.ms/botbuilder-tools-readme) (Средства для Bot Builder)
+- [Интерфейс командной строки Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)

@@ -6,16 +6,17 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/20/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15c3ed60dacf1751e82c2bb0804cdd938f286f40
-ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
+ms.openlocfilehash: 74d4bb07274643d61da332d6ee1cdfb1a14372dc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48852329"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998431"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
 
@@ -113,7 +114,7 @@ public class DinnerMenu
 
 # <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
 
-Мы начнем с базового шаблона EchoBot. Инструкции см. в [кратком руководстве по JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
+Мы начнем с базового шаблона EchoBot. Инструкции вы найдете в [кратком руководстве по JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
 
 Библиотеку `botbuilder-dialogs` можно скачать из NPM. Чтобы установить библиотеку `botbuilder-dialogs`, выполните следующую команду npm:
 
