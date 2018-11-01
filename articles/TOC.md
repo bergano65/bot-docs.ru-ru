@@ -28,7 +28,6 @@
 ### [Бот для Интернета вещей](bot-service-scenario-internet-things.md)
 # Инструкции
 ## [Design](design/TOC.md) (Конструктор)
-## [Управление](manage/TOC.md)
 ## Разработка
 ### [Отправка приветственного сообщения пользователям](v4sdk/bot-builder-send-welcome-message.md)
 ### [Отправка текстовых и голосовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
@@ -48,13 +47,15 @@
 ### [Использование LUIS для распознавания речи](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы](v4sdk/bot-builder-howto-qna.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
-### [Скачивание и повторное развертывание кода бота](bot-service-build-download-source-code.md)
-### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
-### [Развертывание локального бота в Azure](bot-builder-howto-deploy-azure.md)
 ### [Реализация возможностей для определенных каналов](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [Отладка](debug/TOC.md)
+## Развертывание
+### [Скачивание и повторное развертывание кода бота](bot-service-build-download-source-code.md)
+### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
+### [Развертывание локального бота в Azure](bot-builder-howto-deploy-azure.md)
+## [Управление](manage/TOC.md)
 # Справочные материалы
 ## [Средства для Bot Builder](bot-builder-tools.md)
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/dotnetsdk4)
