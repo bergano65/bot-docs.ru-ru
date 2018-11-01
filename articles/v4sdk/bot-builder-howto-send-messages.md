@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b7faaae63bdc084dac570cb33ebbc755ccbcc19
-ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
+ms.openlocfilehash: 2e2c5f54d4ca077ad2b916787613f782779707ac
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49383119"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996791"
 ---
 # <a name="send-text-and-spoken-messages"></a>Отправка текстовых и голосовых сообщений
 
@@ -30,10 +31,10 @@ ms.locfileid: "49383119"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В методе **OnTurn** бота используйте объект контекста этапа **SendActivity** для отправки ответа в виде одного сообщения. Можно также использовать метод **SendActivities** объекта для отправки нескольких ответов за раз.
+В методе **OnTurn** бота используйте объект контекста этапа **SendActivityAsync** для отправки ответа в виде одного сообщения. Можно также использовать метод **SendActivitiesAsync** объекта для отправки нескольких ответов за раз.
 
 ```cs
-await context.SendActivity("Greetings from sample message.");
+await context.SendActivityAsync("Greetings from sample message.");
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -58,7 +59,7 @@ await context.sendActivity("Greetings from sample message.");
 Используйте необязательный параметр **speak** для ввода произнесенного текста как части ответа.
 
 ```cs
-await context.SendActivity(
+await context.SendActivityAsync(
     "This is the text to be displayed.",
     "This is the text to be spoken.");
 ```

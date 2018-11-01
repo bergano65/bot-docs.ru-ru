@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 21f864ba6f5beba5205e860f4a56697997048dfb
-ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
+ms.openlocfilehash: 972df2a12ffa7901ed4e4ecf14ce99233293c5a2
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48852299"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997711"
 ---
 # <a name="manage-conversation-and-user-state"></a>Управление состоянием диалога и пользователя
 
@@ -58,7 +59,7 @@ public class UserProfile
 Класс `TopicState` имеет флаг для отслеживания места в беседе и для его хранения использует состояние беседы. Запрос инициализируется значением askName, что позволяет начать беседу. После получения ботом ответа от пользователя запрос будет переопределен с использованием значения askNumber для начала следующей беседы. Класс `UserProfile` отслеживает имя и номер телефона пользователя и хранит эти данные в состоянии пользователя.
 
 ### <a name="property-accessors"></a>Методы доступа к свойствам
-Класс `EchoBotAccessors` в нашем примере создается как шаблон singleton и передается в конструктор `class EchoWithCounterBot : IBot` путем внедрения зависимостей. Конструктор класса `EchoBotAccessors` инициализирует новый экземпляр класса `EchoBotAccessors`. Он содержит классы `ConversationState` и `UserState` и связанный с ними класс `IStatePropertyAccessor`. Объект `conversationState` хранит состояние раздела и объект `userState`, в котором хранятся сведения о профиле пользователя. Объекты `ConversationState` и `UserState` создаются в файле Startup.cs. В объектах состояния беседы и пользователя мы сохраняем все сведения из области беседы и пользователя. 
+Класс `EchoBotAccessors` в нашем примере создается как шаблон singleton и передается в конструктор `class EchoWithCounterBot : IBot` путем внедрения зависимостей. Класс `EchoBotAccessors` содержит свойства `ConversationState`, `UserState` и связанный метод доступа `IStatePropertyAccessor`. Объект `conversationState` хранит состояние раздела и объект `userState`, в котором хранятся сведения о профиле пользователя. Объекты `ConversationState` и `UserState` будут созданы позднее в файле Startup.cs. В объектах состояния беседы и пользователя мы сохраняем все сведения из области беседы и пользователя. 
 
 Обновите конструктор, чтобы включить `UserState`, как показано ниже:
 ```csharp
@@ -102,7 +103,7 @@ services.AddBot<EchoWithCounterBot>(options =>
     options.State.Add(userState);
 });
 ```
-Строки `options.State.Add(ConversationState);` и `options.State.Add(userState);` добавляют состояние беседы и состояние пользователя соответственно. Затем создайте и зарегистрируйте методы доступа к состоянию. Создаваемые здесь методы доступа при каждой реплике передаются в класс, который является производным от IBot. Измените код таким образом, чтобы он включал состояние пользователя, как показано ниже:
+Строки `options.State.Add(ConversationState);` и `options.State.Add(userState);` добавляют состояние беседы и состояние пользователя соответственно. Затем создайте и зарегистрируйте методы доступа к состоянию. Создаваемые здесь методы доступа при каждой реплике передаются в класс, который наследует от IBot. Измените код таким образом, чтобы он включал состояние пользователя, как показано ниже:
 ```csharp
 services.AddSingleton<EchoBotAccessors>(sp =>
 {
@@ -121,17 +122,17 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 services.AddSingleton<EchoBotAccessors>(sp =>
 {
    ...
-    var accessors = new BotAccessors(conversationState, userState)
+    var accessors = new EchoBotAccessors(conversationState, userState)
     {
-        TopicState = conversationState.CreateProperty<TopicState>("TopicState"),
-        UserProfile = userState.CreateProperty<UserProfile>("UserProfile"),
+        TopicState = conversationState.CreateProperty<TopicState>(EchoBotAccessors.TopicStateName),
+        UserProfile = userState.CreateProperty<UserProfile>(EchoBotAccessors.UserProfileName),
      };
 
      return accessors;
  });
 ```
 
-Состояния диалога и пользователя связаны с шаблоном singleton с помощью блока кода `services.AddSingleton` и сохранены с помощью метода доступа к хранилищу состояний в коде, начинающемся со строки `var accessors = new BotAccessor(conversationState, userState)`.
+Состояния диалога и пользователя связаны с шаблоном singleton с помощью блока кода `services.AddSingleton` и сохранены с помощью метода доступа к хранилищу состояний в коде, начинающемся со строки `var accessors = new EchoBotAccessor(conversationState, userState)`.
 
 ### <a name="use-conversation-and-user-state-properties"></a>Использование свойств состояния общения и пользователя 
 В обработчике `OnTurnAsync` класса `EchoWithCounterBot : IBot` измените код таким образом, чтобы запросить имя пользователя, а затем его номер телефона. Для отслеживания места остановки беседы мы используем свойство Prompt, определенное в классе TopicState. Это свойство было инициализировано значением askName. После получения имени пользователя для этого свойства задается значение askNumber, а в качестве значения UserName устанавливается введенное пользователем имя. После получения номера телефона вы отправляете сообщение с подтверждением и устанавливаете для запроса значение confirmation, так как это конец беседы.

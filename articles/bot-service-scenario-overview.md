@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8d1ae09585898ce8babde6c06e525a0ade46c761
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: e195f83eefd5f162b74f8891f3b174efc8934700
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574920"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997971"
 ---
 # <a name="bot-scenarios"></a>Сценарии для ботов
 
@@ -44,7 +44,7 @@ ms.locfileid: "39574920"
 ## <a name="iot-bot-scenario"></a>Сценарий бота Интернета вещей
 Сценарий [Internet of Things (IoT) bot Scenario](bot-service-scenario-internet-things.md) (Сценарий бота Интернета вещей) упрощает процесс управления домашними устройствами, такими как лампочки Philips Hue, с помощью интерактивных команд чата.
 
-С помощью этого простого бота можно управлять лампочками Philips Hue в сочетании с бесплатной услугой "If This Then That" (IFTTT). Philips Hue, как устройством Интернета вещей, можно управлять локально через открытый API. Однако этот API не предоставляется для общего доступа за пределами локальной сети. Тем не менее IFTTT является [Friend of Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/) и таким образом предоставляет несколько команд управления, которые можно задать, например включение и выключение лампочек, изменение цвета или интенсивности света.
+С помощью этого простого бота можно управлять лампочками Philips Hue в сочетании с бесплатной услугой "If This Then That" (IFTTT). Philips Hue, как устройством Интернета вещей, можно управлять локально через открытый API. Однако этот API не предоставляется для общего доступа за пределами локальной сети. Тем не менее, IFTTT является [Friend of Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/) и таким образом предоставляет несколько команд управления, которые можно задать (например, включение и выключение лампочек, изменение цвета или интенсивности света).
 
 ## <a name="next-steps"></a>Дополнительная информация
 Теперь, когда вы ознакомились со сценариями, погрузитесь глубже в каждый из них.

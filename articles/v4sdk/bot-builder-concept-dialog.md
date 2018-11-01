@@ -6,15 +6,16 @@ author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2cf5da32b563c310ee201090c938da9ff410a70c
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 45bca42ddce527826d2723bc9a20a3c3e6c5aebe
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708863"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998611"
 ---
 # <a name="dialogs-library"></a>Библиотека диалогов
 
@@ -29,7 +30,7 @@ ms.locfileid: "46708863"
 - ContinueDialog;
 - ResumeDialog.
 
-Во время выполнения объекты Dialogs взаимодействуют с классом DialogContext, чтобы выбрать для обработки действия соответствующий объект Dialog. Класс DialogContext связывает сохраняемый стек объектов Dialog, входящее действие и класс DialogSet. Класс DialogSet содержит диалоги, которые может вызвать бот.
+Во время выполнения классы Dialog и DialogContext взаимодействуют друг с другом, чтобы выбрать для обработки действия соответствующий объект Dialog. Класс DialogContext связывает сохраняемый стек объектов Dialog, входящее действие и класс DialogSet. Класс DialogSet содержит диалоги, которые может вызвать бот.
 
 Интерфейс класса DialogContext отражает базовый принцип начала и продолжения диалога. Общая схема работы приложения заключается в том, что сначала всегда вызывается метод ContinueDialog. Если нет стека, а значит объекта ActiveDialog, приложение должно начать работу с выбранным объектом Dialog, вызвав метод BeginDialog объекта DialogContext. В результате соответствующей объект Dialog из набора DialogSet помещается в стек (с технической точки зрения в стек помещается идентификатор объекта Dialog), и стек делегирует вызов метода BeginDialog этого объекта Dialog. Если объект ActiveDialog существует, стек просто делегирует вызов метода ContinueDialog этого объекта Dialog, присваивая ему при этом соответствующие постоянные свойства.
 

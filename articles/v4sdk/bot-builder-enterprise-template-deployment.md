@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326401"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999031"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -30,7 +30,7 @@ ms.locfileid: "49326401"
 npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 ```
 
-- [Установите](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest) средства командной строки (CLI) Службы Azure Bot.
+- Установите средства командной строки (CLI) Azure, которые можно скачать [здесь](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Если вы уже установили инструмент командной строки Azure Bot Service, обновите его до последней версии, удалив текущую версию и установив новую.
 
 - Установите расширение AZ для Службы Bot.
 ```shell
@@ -101,6 +101,8 @@ msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_K
 
 Затем введите ```hi``` и убедитесь, что все работает.
 
+Если у вас наблюдаются проблемы с Bot Framework Emulator, убедитесь, что у вас установлена последняя версия эмулятора. Если старая версия эмулятора не обновляется надлежащим образом, удалите его и установите заново.
+
 ## <a name="deploy-to-azure"></a>Развернуть в Azure
 
 Тестирование можно провести комплексно и локально. Когда вы будете готовы развернуть бот в Azure для дополнительного тестирования, опубликует исходный код с помощью приведенной ниже команды. Ее можно выполнять каждый раз, когда нужно отправить обновления исходного кода.
@@ -123,7 +125,7 @@ az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.cspro
 
 Добавьте приведенную ниже строку в любое удобное место в коде, чтобы проверить простую последовательность входа.
     
-`var signInResult = await dc.BeginAsync(SignInDialog.Name);`
+`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
 
 ### <a name="content-moderation"></a>Модерация содержимого
 

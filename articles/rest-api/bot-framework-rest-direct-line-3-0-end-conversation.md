@@ -5,18 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ac984609acfdd8f85088bd47ccded1f45e953b2c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f0985f28fd1744bcfb6bf5cea1c2230254670e01
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305574"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000211"
 ---
 # <a name="end-a-conversation"></a>Завершение диалога
 
 Клиент или бот может дать сигнал об окончании диалога Direct Line, отправив [действие](bot-framework-rest-connector-activities.md) **endOfConversation**. 
+
+> [!NOTE] 
+> Событие endOfConversation поддерживается только в канале Cortana. В других каналах эта функциональность не реализована. Каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.
 
 ## <a name="send-an-endofconversation-activity"></a>Отправка действия endOfConversation
 
