@@ -47,6 +47,7 @@
 ### [Использование LUIS для распознавания речи](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы](v4sdk/bot-builder-howto-qna.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
+### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
 ### [Реализация возможностей для определенных каналов](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
