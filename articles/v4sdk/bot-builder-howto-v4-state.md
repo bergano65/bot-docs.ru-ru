@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 972df2a12ffa7901ed4e4ecf14ce99233293c5a2
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
+ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997711"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753612"
 ---
 # <a name="manage-conversation-and-user-state"></a>Управление состоянием диалога и пользователя
 
@@ -63,8 +63,6 @@ public class UserProfile
 
 Обновите конструктор, чтобы включить `UserState`, как показано ниже:
 ```csharp
-using EchoBotWithCounter;
-
 public EchoBotAccessors(ConversationState conversationState, UserState userState)
 {
     ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
@@ -138,8 +136,6 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 В обработчике `OnTurnAsync` класса `EchoWithCounterBot : IBot` измените код таким образом, чтобы запросить имя пользователя, а затем его номер телефона. Для отслеживания места остановки беседы мы используем свойство Prompt, определенное в классе TopicState. Это свойство было инициализировано значением askName. После получения имени пользователя для этого свойства задается значение askNumber, а в качестве значения UserName устанавливается введенное пользователем имя. После получения номера телефона вы отправляете сообщение с подтверждением и устанавливаете для запроса значение confirmation, так как это конец беседы.
 
 ```csharp
-using EchoBotWithCounter;
-
 if (turnContext.Activity.Type == ActivityTypes.Message)
 {
     // Get the conversation state from the turn context.
@@ -305,7 +301,7 @@ if (turnContext.activity.type === 'message') {
     
 }
 else {
-    await turnContext.sendActivity(`[${context.activity.type} event detected]`);
+    await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
 }
 ```
 
@@ -322,8 +318,9 @@ else {
 
 ### <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 
-Отправьте сообщение боту и получите от него сообщение в ответ.
-![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
+Отправьте своему боту сообщение "Hi", и он спросит ваши имя и номер телефона. Когда вы укажете эти сведения, бот отправит сообщение с подтверждением. Если вы продолжите общение с ботом, этот цикл будет повторяться.
+
+![Работающий эмулятор](../media/emulator-v4/emulator-running-manage-state.png)
 
 Если вы захотите управлять состоянием самостоятельно, см. статью [Создание собственных запросов на ввод данных пользователем](bot-builder-primitive-prompts.md). Альтернативой является использование каскадного диалога. Диалоговое окно отслеживает состояние общения, поэтому нет необходимости создавать флаги для отслеживания состояния. Дополнительные сведения см. в разделе [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 

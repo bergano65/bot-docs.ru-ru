@@ -1,19 +1,19 @@
 ---
 title: Справочник по API | Документация Майкрософт
 description: Дополнительные сведения о заголовках, операциях, объектах и ошибках в службах Bot Connector и Состояние бота.
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: cd4a0dd73feb18aa6f82699a51ab086c55c5d2cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/24/2018
+ms.openlocfilehash: 18f353ce6535dd56ca7a581776fdfab822555f2d
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998318"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134744"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -130,6 +130,7 @@ Authorization: Bearer ACCESS_TOKEN
 | [Отправить в общение](#send-to-conversation) | Отправляет действие (сообщение) в конец указанного общения. | 
 | [Ответить на действие](#reply-to-activity) | Отправляет действие (сообщение) в указанное общение как ответ на указанное действие. | 
 | [Получить участников общения](#get-conversation-members) | Возвращает участников указанного общения. |
+| [Получение участников беседы по страницам](#get-conversation-paged-members) | Возвращает участников указанной беседы по одной странице за раз. |
 | [Получить участников действия](#get-activity-members) | Возвращает участников указанного действия в указанном общении. | 
 | [Обновить действие](#update-activity) | Обновляет существующее действие. | 
 | [Удалить действие](#delete-activity) | Удаляет существующее действие. | 
@@ -178,6 +179,17 @@ GET /v3/conversations/{conversationId}/members
 |----|----|
 | **Текст запроса** | Недоступно |
 | **Возвращает** | Массив объектов [ChannelAccount](#channelaccount-object) | 
+
+### <a name="get-conversation-paged-members"></a>Получение участников беседы по страницам
+Возвращает участников указанной беседы по одной странице за раз.
+```http
+GET /v3/conversations/{conversationId}/pagedmembers
+```
+
+| | |
+|----|----|
+| **Текст запроса** | Недоступно |
+| **Возвращает** | Массив объектов [ChannelAccount](#channelaccount-object) и маркер продолжения, с помощью которого можно получить другие значения.|
 
 ### <a name="get-activity-members"></a>Получить участников действия
 Возвращает участников указанного действия в указанном общении.
@@ -386,7 +398,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [Объект ThumbnailCard](#thumbnailcard-object) | Определяет карту с эскизом изображения, заголовком, текстом и командной кнопкой. |
 | [Объект ThumbnailUrl](#thumbnailurl-object) | Определяет URL-адрес источника изображения. |
 | [Объект VideoCard](#videocard-object) | Определяет карту, которая может воспроизводить видео. |
-
+| [Объект SemanticAction](#semanticaction-object) | Определяет ссылку на программное действие. |
 
 ### <a name="activity-object"></a>Объект Activity
 Определяет сообщения, которыми обмениваются бот и пользователь.<br/><br/> 
@@ -423,6 +435,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **topicName** | строка | Раздел общения, к которому относится действие. |
 | **type** | строка | Тип действия. Одно из следующих значений: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing** или **endOfConversation**. Дополнительные сведения о типах действий см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md). |
 | **значение** | object | Открытое значение. |
+| **semanticAction** |[SemanticAction](#semanticaction-object) | Объект **SemanticAction**, представляющий ссылку на программное действие. |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
@@ -852,5 +865,15 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **text** | строка | Описание или запрос для отображения под заголовком или подзаголовком карты. |
 | **title** | строка | Заголовок карты. |
 | **значение** | object | Дополнительный параметр для этой карты.|
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
+### <a name="semanticaction-object"></a>Объект SemanticAction
+Определяет ссылку на программное действие.<br/><br/>
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **id** | строка | Идентификатор этого действия |
+| **entities** | [Сущность](#entity-object) | Объекты, связанные с этим действием |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>

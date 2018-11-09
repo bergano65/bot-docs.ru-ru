@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999031"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134704"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -21,6 +21,8 @@ ms.locfileid: "49999031"
 > Приведенные здесь сведения относятся к пакету SDK версии 4. 
 
 ## <a name="prerequisites"></a>Предварительные требования
+
+- Убедитесь, что библиотека [.NET Core](https://www.microsoft.com/net/download) обновлена до последней версии.
 
 - Убедитесь, что установлен [диспетчер пакетов Node](https://nodejs.org/en/).
 
@@ -40,7 +42,7 @@ az extension add -n botservice
 ## <a name="configuration"></a>Параметр Configuration
 
 - Получите ключ разработки LUIS:
-   - Ознакомьтесь [с этой статьей](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions), чтобы выбрать портал LUIS, соответствующий региону, в котором планируется развертывание. 
+   - Ознакомьтесь [с этой статьей](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions), чтобы выбрать портал LUIS, соответствующий региону, в котором планируется развертывание. Обратите внимание, что адрес www.luis.ai относится к региону США, и код разработки, полученный с этого портала, не будет работать в европейском развертывании.
    - Выполнив вход, щелкните свое имя в правом верхнем углу.
    - Выберите пункт "Параметры" и запишите ключ разработки, который понадобится на следующем этапе.
 
@@ -68,13 +70,13 @@ az account set --subscription "YOUR_SUBSCRIPTION_NAME"
 
 > После развертывания проверьте ценовые категории созданных служб и измените их в соответствии со своим сценарием.
 
-В файле README.md созданного проекта содержится пример команды msbot clone services. В этой команде нужно передать имя создаваемого бота и общую версию, как показано ниже. Укажите ключ разработки LUIS, полученный на предыдущем этапе, и выберите нужное расположение центра обработки данных Azure (например, westus или westeurope).
-
-> Убедитесь, что ключ разработки LUIS, полученный на предыдущем этапе, соответствует региону, который вы укажете далее.
+В файле README.md созданного проекта содержится пример команды msbot clone services. В этой команде нужно передать имя создаваемого бота и общую версию, как показано ниже. Укажите ключ разработки LUIS, полученный на предыдущем этапе, и выберите нужное расположение центра обработки данных Azure (например, westus или westeurope). Убедитесь, что ключ разработки LUIS, полученный на предыдущем этапе, соответствует региону, который вы укажете далее (например, westus для luis.ai или westeurope для eu.luis.ai).
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "westus"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
+
+> У некоторых пользователей при запуске развертывания может возникать следующая ошибка: `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. В этом случае перейдите по адресу https://apps.dev.microsoft.com и вручную создайте новое приложение, получив ApplicationID и пароль или секрет. Выполните приведенную выше команду msbot clone services, указав два новых аргумента (`appId` и `appSecret`) и передав только что полученные значения.
 
 Средство msbot отобразит план развертывания, включая расположение и номер SKU. Проверьте эти данные, прежде чем продолжить.
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 09/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 93d32d5d0ac35dead8e9f1c48b526058449fabad
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: aa9b08ff44df8cef5031b5e9dbf260839f0804c3
+ms.sourcegitcommit: 45dca6ed59bc90b2ad0b0de8dd42b00f36a8fe77
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998791"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50217776"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -296,7 +296,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 ### <a name="check-for-a-cached-token"></a>Проверка кэшированного токена
 
-Как видно из этого кода, сначала бот выполняет быструю проверку, чтобы определить, имеет ли служба Azure Bot токен пользователя (который идентифицирован текущим отправителем действия) и полученное ConnectionName (которое является именем подключения, используемое в конфигурации). К этому моменту служба Azure Bot уже будет обладать кэшированным токеном (или не будет). Эту быструю проверку можно выполнить с помощью вызова метода GetUserTokenAsync. Если служба Azure Bot имеет токен и возвращает его, он может быть использован мгновенно. Если служба Azure Bot не имеет токена, результатом выполнения этого метода будет NULL. В таком случае бот может отправить пользователю для входа настраиваемый OAuthCard.
+Как видно из этого кода, сначала бот выполняет быструю проверку, чтобы определить, имеет ли служба Azure Bot токен пользователя (который идентифицирован текущим отправителем действия) и полученное ConnectionName (которое является именем подключения, используемое в конфигурации). К этому моменту служба Azure Bot уже будет обладать кэшированным токеном (или не будет). Эту быструю проверку можно выполнить, вызвав метод GetUserTokenAsync. Если служба Azure Bot имеет токен и возвращает его, он может быть использован мгновенно. Если служба Azure Bot не имеет токена, результатом выполнения этого метода будет NULL. В таком случае бот может отправить пользователю для входа настраиваемый OAuthCard.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

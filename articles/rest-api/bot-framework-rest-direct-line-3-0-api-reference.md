@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
+ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998111"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234477"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -223,5 +223,6 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 - свойство `from` заполняется идентификатором пользователя, выбранным клиентом;
 - вложения могут содержать URL-адреса, ведущие к существующим ресурсам или ресурсам, отправленным через конечную точку вложений Direct Line;
 - свойство `channelData` сохраняется без изменений.
+- Общий размер действия, сериализованного в формате JSON, не должен превышать 300 тысяч символов.
 
 В каждом запросе клиент может [отправить](bot-framework-rest-direct-line-3-0-send-activity.md) только одно действие. 

@@ -7,20 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dbf2fd06d76b3e79fbcdd30891807ea71329bffd
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 914c33033be3fe35db7cae6d54b5835cb032a5fd
+ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999061"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50965692"
 ---
 # <a name="localize-form-content"></a>Локализация содержимого формы
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Язык для локализации формы определяется значениями [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) и [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) для текущего потока. По умолчанию язык и региональные параметры определяются в поле **Locale** для текущего сообщения, но вы можете переопределить это поведение. В зависимости от структуры вашего бота локализованную информацию можно получать из трех разных источников:
+Язык для локализации формы определяется значениями [CurrentUICulture](https://msdn.microsoft.com/library/system.threading.thread.currentuiculture(v=vs.110).aspx) и [CurrentCulture](https://msdn.microsoft.com/library/system.threading.thread.currentculture(v=vs.110).aspx) для текущего потока.
+По умолчанию язык и региональные параметры определяются в поле **Locale** для текущего сообщения, но вы можете переопределить это поведение.
+В зависимости от структуры вашего бота локализованную информацию можно получать из трех разных источников:
 
 - встроенные локализации для **PromptDialog** и **FormFlow**;
 - файл ресурсов, созданный для статических строк в форме;
@@ -28,7 +30,10 @@ ms.locfileid: "49999061"
 
 ## <a name="generate-a-resource-file-for-the-static-strings-in-your-form"></a>Создание файла ресурсов для статических строк в форме
 
-К статическим строкам относятся те строки в форме, которые она создает на основе параметров класса C#, и те, которые вы определяете в качестве запросов, шаблонов, сообщений и (или) подтверждений. Строки, создаваемые из встроенных шаблонов, не считаются статическими, так как они уже локализованы. Так как многие такие строки создаются в форме автоматически, для них нельзя напрямую использовать обычные строки ресурсов C#. Вместо этого вы можете создать файл ресурсов для статических строк в форме, используя метод `IFormBuilder.SaveResources` или средство **RView**, которое входит в пакет SDK Bot Builder для .NET.
+К статическим строкам относятся те строки в форме, которые она создает на основе параметров класса C#, и те, которые вы определяете в качестве запросов, шаблонов, сообщений и (или) подтверждений.
+Строки, создаваемые из встроенных шаблонов, не считаются статическими, так как они уже локализованы.
+Так как многие такие строки создаются в форме автоматически, для них нельзя напрямую использовать обычные строки ресурсов C#.
+Вместо этого вы можете создать файл ресурсов для статических строк в форме, используя метод `IFormBuilder.SaveResources` или средство **RView**, которое входит в пакет SDK Bot Builder для .NET.
 
 ### <a name="use-iformbuildersaveresources"></a>Использование IFormBuilder.SaveResources
 
@@ -36,7 +41,9 @@ ms.locfileid: "49999061"
 
 ### <a name="use-rview"></a>Использование RView
 
-Кроме того, можно создать файл ресурсов на основе существующих файлов .dll или .exe с помощью средства <a href="https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Tools/RView" target="_blank">RView</a>, которое входит в пакет SDK Bot Builder для .NET. Чтобы создать RESX-файл, запустите **rview** и укажите сборку, которая содержит статический метод создания формы, и путь к этому методу. В этом фрагменте кода показано, как создать файл ресурсов `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` с помощью **RView**. 
+Кроме того, можно создать файл ресурсов на основе существующих файлов .dll или .exe с помощью средства <a href="https://aka.ms/v3-cs-RView-library" target="_blank">RView</a>, которое входит в пакет SDK Bot Builder для .NET.
+Чтобы создать RESX-файл, запустите **rview** и укажите сборку, которая содержит статический метод создания формы, и путь к этому методу.
+В этом фрагменте кода показано, как создать файл ресурсов `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` с помощью **RView**.
 
 ```csharp
 rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildForm
@@ -83,7 +90,7 @@ rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.Anno
 
 ### <a name="localize-resource-files"></a>Локализация файлов ресурсов 
 
-Добавив в проект файлы ресурсов, вы можете локализовать их с помощью <a href="https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit" target="_blank">набора средств для многоязычных приложений (MAT)</a>. Установите и включите для проекта **MAT**:
+Добавив в проект файлы ресурсов, вы можете локализовать их с помощью <a href="https://developer.microsoft.com/windows/develop/multilingual-app-toolkit" target="_blank">набора средств для многоязычных приложений (MAT)</a>. Установите и включите для проекта **MAT**:
 
 1. Выберите проект в обозревателе решений Visual Studio.
 2. Щелкните **Средства**, **Набор средств для многоязычных приложений** и **Включить**.

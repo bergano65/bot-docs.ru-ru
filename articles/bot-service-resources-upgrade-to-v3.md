@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 6ee7120536d42257dde2ed1411df32d807268e33
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000023"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134714"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Обновление бота до API Bot Framework версии 3.
 
@@ -23,53 +23,73 @@ ms.locfileid: "50000023"
 
 ## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Шаг 1. Получение идентификатора приложения и пароля на портале Bot Framework
 
-Войдите на [портал Bot Framework](https://dev.botframework.com/), нажмите кнопку **Мои боты**, затем выберите нужный бот, чтобы открыть его панель мониторинга. Затем щелкните ссылку **ПАРАМЕТРЫ**, расположенную в правом верхнем углу страницы. 
+Войдите на [портал Bot Framework](https://dev.botframework.com/), нажмите кнопку **Мои боты**, затем выберите нужный бот, чтобы открыть его панель мониторинга. Затем перейдите по ссылке **Параметры** в левой части страницы в разделе **Управление ботами**. 
 
-В разделе **Конфигурация** страницы параметров проверьте содержимое поля **Идентификатор приложения** и выполните следующую процедуру в зависимости от того, заполнено ли поле **Идентификатор приложения**.
+В разделе **Конфигурация** на странице параметров просмотрите содержимое поля **Идентификатор приложения Майкрософт**, а затем переходите к дальнейшим действиям.
 
-### <a name="case-1-app-id-field-is-already-populated"></a>Вариант 1. Поле "Идентификатор приложения" уже заполнено
+<!-- TODO: Remove this 
+### Case 1: App ID field is already populated
 
-Если поле **Идентификатор приложения** уже заполнено, выполните следующие действия.
+If the **App ID** field is already populated, complete these steps:
+-->
 
 1. Щелкните **Управление идентификатором и паролем приложения Майкрософт**.  
-![Конфигурация](~/media/upgrade/manage-app-id.png)
+![Конфигурация](./media/upgrade/manage-app-id.png)
 
 2. Щелкните **Создать новый пароль**.  
-![Создание нового пароля](~/media/upgrade/generate-new-password.png)
+![Создание нового пароля](./media/upgrade/generate-new-password.png)
 
 3. Скопируйте и сохраните новый пароль, а также идентификатор приложения MSA. Эти значения потребуются в будущем.  
-![Новый пароль.](~/media/upgrade/new-password-generated.png)
+![Новый пароль.](./media/upgrade/new-password-generated.png)
 
-### <a name="case-2-app-id-field-is-empty"></a>Вариант 2. Поле "Идентификатор приложения" не содержит значения
+Еще один способ получить **идентификатор приложения Майкрософт и пароль** описывается в этих [инструкциях](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret/).
 
-Если поле **Идентификатор приложения** пустое, выполните следующие действия.
+<!-- TODO: These steps are no longer valid. AppID will always be generated, confirmed with Support Engineers
+### Case 2: App ID field is empty
 
-1. Щелкните **Создать идентификатор и пароль приложения Майкрософт**.  
-   ![Создание идентификатора приложения и пароля](~/media/upgrade/generate-appid-and-password.png)
+If the **App ID** field is empty, complete these steps:
+
+1. Click **Create Microsoft App ID and password**.  
+   ![Create App ID and password](~/media/upgrade/generate-appid-and-password.png)
    > [!IMPORTANT]
-   > Пока не устанавливайте переключатель **Версия 3.0**. Вы сделаете это позже, после [обновления кода бота](#update-code).</div>
+   > Do not select the **Version 3.0** radio button yet. You will do this later, after you have [updated your bot code](#update-code).</div>
 
-2. Нажмите кнопку **Создать пароль для продолжения**.  
-   ![Создание пароля приложения](~/media/upgrade/generate-a-password-to-continue.png)
+2. Click **Generate a password to continue**.  
+   ![Generate app password](~/media/upgrade/generate-a-password-to-continue.png)
 
-3. Скопируйте и сохраните новый пароль, а также идентификатор приложения MSA. Эти значения потребуются в будущем.  
-   ![Новый пароль.](~/media/upgrade/new-password-generated.png)
+3. Copy and save the new password along with the MSA App Id; you will need these values in the future.  
+   ![New password](~/media/upgrade/new-password-generated.png)
 
-4. Щелкните **Завершить операцию и вернуться к Bot Framework**.  
-   ![Завершить и вернуться на портал](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
+4. Click **Finish and go back to Bot Framework**.  
+   ![Finish and go back to Portal](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
 
-5. На странице параметров бота на портале Bot Framework перейдите вниз страницы и нажмите кнопку **Сохранить изменения**.  
-   ![Сохранение изменений](~/media/upgrade/save-changes.png)
+5. Back on the bot settings page in the Bot Framework Portal, scroll to the bottom of the page and click **Save changes**.  
+   ![Save changes](~/media/upgrade/save-changes.png)
+-->
 
-## <a id="update-code"></a> Шаг 2. Обновление кода бота до версии 3.0
+## <a id="update-code"></a> Шаг 2. Обновление кода бота до версии 4.0
 
-Чтобы обновить код бота до версии 3.0, выполните следующие действия.
+Боты версии 1 больше не поддерживаются. Чтобы обновить бота, необходимо создать нового бота версии 3. Если вы хотите сохранить какой либо старый код, его потребуется перенести вручную.
 
-1. Обновите [пакет SDK построителя ботов](https://github.com/Microsoft/BotBuilder) для языка бота до последней версии.
-2. Обновите код, чтобы применить необходимые изменения, в соответствии с инструкциями ниже.
-3. Используйте [эмулятор Bot Framework](~/bot-service-debug-emulator.md) для тестирования бота в локальной среде и в облаке.
+Самое простое решение — заново создать бота с помощью нового [пакета SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) и развернуть его. 
 
-В следующих разделах описаны основные различия между API версии 1 и 3. После обновления кода до API версии 3 можно завершить процесс обновления, [изменив параметры бота](#step-3) на портале Bot Framework.
+Если вы хотите сохранить старый код, выполните указанные ниже действия.
+
+1. Создайте приложение бота.
+2. Скопируйте старый код в новое приложение.
+3. Обновите пакет SDK до последней версии с помощью диспетчера пакетов Nuget.
+4. Исправьте все обнаруженные ошибки, ссылаясь на новый [пакет SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
+5. Разверните бота в Azure, следуя этим [инструкциям](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0).
+
+<!-- TODO: Remove outdated code 
+To update your bot code to version 3.0, complete these steps:
+
+1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+2. Update your code to apply the necessary changes, according the guidance below.
+3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
+
+The following sections describe the key differences between API v1 and API v3. After you have updated your code to API v3, you can finish the upgrade process by [updating your bot settings](#step-3) in the Bot Framework Portal.
+-->
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>Построитель ботов и соединитель теперь входят в один пакет SDK
 
@@ -143,21 +163,23 @@ ms.locfileid: "50000023"
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Шаг 3. Изменение параметров бота на портале Bot Framework
+## <a id="step-3"></a> Шаг 3. Развертывание обновленного бота в Azure.
 
-После обновления кода бота до API версии 3 и его развертывания в облаке завершите процесс обновления, выполнив следующие действия. 
+Обновив код бота до API версии 3, просто разверните бот в Azure, следуя этим [инструкциям](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Так как версия 1 больше не поддерживается, все боты будут автоматически использовать API версии 3 при развертывании в службах Azure.
 
-1. Войдите на [портал Bot Framework](https://dev.botframework.com/).
+<!-- TODO: Documentation set for removal 
+1. Sign in to the [Bot Framework Portal](https://dev.botframework.com/).
 
-2. Щелкните **Мои боты** и выберите нужный бот, чтобы открыть его панель мониторинга. 
+2. Click **My bots** and select your bot to open its dashboard. 
 
-3. Щелкните ссылку **ПАРАМЕТРЫ**, расположенную в правом верхнем углу страницы. 
+3. Click the **SETTINGS** link that is located near the top-right corner of the page. 
 
-4. В разделе **Версия 3.0** раздела **Конфигурация** вставьте конечную точку вашего бота в поле **Конечная точка обмена сообщениями**.  
-![Конфигурация версии 3](~/media/upgrade/paste-new-v3-enpoint-url.png)
+4. Under **Version 3.0** within the **Configuration** section, paste your bot's endpoint into the **Messaging endpoint** field.  
+![Version 3 configuration](~/media/upgrade/paste-new-v3-enpoint-url.png)
 
-5. Установите переключатель **Версия 3.0**.  
-![Выбор версии 3.0](~/media/upgrade/switch-to-v3-endpoint.png)
+5. Select the **Version 3.0** radio button.  
+![Select version 3.0](~/media/upgrade/switch-to-v3-endpoint.png)
 
-6. Перейдите вниз страницы и нажмите кнопку **Сохранить изменения**.  
-![Сохранение изменений](~/media/upgrade/save-changes.png)
+6. Scroll to the bottom of the page and click **Save changes**.  
+![Save changes](~/media/upgrade/save-changes.png)
+-->

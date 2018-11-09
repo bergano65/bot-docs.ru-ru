@@ -1,5 +1,5 @@
 ---
-title: Интеграция нескольких служб LUIS и QnA Maker с помощью средства подготовки к отправке | Документация Майкрософт
+title: Использование служб LUIS и QnA со средством Dispatch | Документация Майкрософт
 description: Сведения об использовании служб LUIS и QnA Maker в боте.
 keywords: Интеллектуальная служба распознавания речи (LUIS), служба QnA Maker, средство подготовки к отправке, несколько служб
 author: DeniseMak
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4d029dc7361ac8a7fadb61141faf60d8a62eab3c
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997401"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736682"
 ---
-# <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>Интеграция нескольких служб LUIS и служб QnA Maker с помощью средства подготовки к отправке
+# <a name="use-luis-and-qna-services-with-the-dispatch-tool"></a>Использование служб LUIS и QnA со средством Dispatch
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -31,7 +31,9 @@ ms.locfileid: "49997401"
 | Приложение LUIS | Weather | Распознает намерения Weather.GetForecast и Weather.GetCondition с данными о расположении.|
 | Служба QnA Maker | Часто задаваемые вопросы  | Предоставляет ответы на несколько простых вопросов о боте. |
 
-Код для этой статьи взят из примера **NLP с диспетчеризацией** [[C#](https://aka.ms/dispatch-sample-cs)<!-- | [JS](https://aka.ms/dispatch-sample-js)-->].
+Код для этой статьи взят из примера **NLP с Dispatch** [[C#](https://aka.ms/dispatch-sample-cs)].
+
+<!-- | [JS](https://aka.ms/dispatch-sample-js)-->
 
 Общие сведения о языковых службах см. в статье о [распознавании речи](bot-builder-concept-luis.md). Изучите статьи с инструкциями для [LUIS](bot-builder-howto-v4-luis.md) и [QnA Maker](bot-builder-howto-qna.md) по реализации языковых служб в ботах.
 

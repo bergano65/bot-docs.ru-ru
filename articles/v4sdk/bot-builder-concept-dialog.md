@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 45bca42ddce527826d2723bc9a20a3c3e6c5aebe
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 97f280d1698e8670be81572a2891c18bc7bf47ab
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998611"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736672"
 ---
 # <a name="dialogs-library"></a>Библиотека диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Центральным объектом в пакете SDK для управления общением является Dialog. Объекты Dialog обрабатывают входящие действия и генерируют исходящие ответы. Бизнес-логика бота прямо или косвенно выполняется в классах Dialog.
+В основе этого пакета SDK лежит управление беседами путем использования понятия Dialog. Объекты Dialog обрабатывают входящие действия и генерируют исходящие ответы. Бизнес-логика бота прямо или косвенно выполняется в классах Dialog.
 
 Во время выполнения экземпляры класса Dialog размещаются в стеке. Объект Dialog на вершине стека обозначается как ActiveDialog. Текущий активный диалог обрабатывает входящие действия. Состояние стека сохраняется между репликами общения (которое не ограничено во времени и может длиться несколько дней и дольше). 
 
