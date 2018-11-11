@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
-ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
+ms.openlocfilehash: 30ce9c9ff5c458758a4cc9612b8f9947fa12734c
+ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753612"
+ms.locfileid: "50743658"
 ---
 # <a name="manage-conversation-and-user-state"></a>Управление состоянием диалога и пользователя
 
@@ -319,8 +319,7 @@ else {
 ### <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 
 Отправьте своему боту сообщение "Hi", и он спросит ваши имя и номер телефона. Когда вы укажете эти сведения, бот отправит сообщение с подтверждением. Если вы продолжите общение с ботом, этот цикл будет повторяться.
-
-![Работающий эмулятор](../media/emulator-v4/emulator-running-manage-state.png)
+![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
 
 Если вы захотите управлять состоянием самостоятельно, см. статью [Создание собственных запросов на ввод данных пользователем](bot-builder-primitive-prompts.md). Альтернативой является использование каскадного диалога. Диалоговое окно отслеживает состояние общения, поэтому нет необходимости создавать флаги для отслеживания состояния. Дополнительные сведения см. в разделе [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
