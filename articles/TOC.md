@@ -13,10 +13,11 @@
 ## [Репозиторий с примерами на сайте GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
 # Основные понятия
 ## [Принципы работы бота](v4sdk/bot-builder-basics.md)
+## [Библиотека диалогов](v4sdk/bot-builder-concept-dialog.md)
+## [Состояние диалогов](v4sdk/bot-builder-dialog-state.md)
 ## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
-## [Библиотека диалога](v4sdk/bot-builder-concept-dialog.md)
-## [Состояния диалогов](v4sdk/bot-builder-dialog-state.md)
-<!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
+## [Приветствие для пользователя](v4sdk/bot-builder-welcome-user.md)
+## [Распознавание речи](v4sdk/bot-builder-concept-luis.md)
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [Основные сценарии для ботов](bot-service-scenario-overview.md)
@@ -25,31 +26,31 @@
 ### [Бот для повышения производительности на предприятии](bot-service-scenario-enterprise-productivity.md)
 ### [Информационный бот](bot-service-scenario-informational.md)
 ### [Бот для Интернета вещей](bot-service-scenario-internet-things.md)
-# Инструкции 
+# Инструкции
 ## [Design](design/TOC.md) (Конструктор)
 ## Разработка
-<!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
-### [Отправка и получение текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
-### [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md)
-### [Использование кнопки для ввода данных](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [Отправка приветственного сообщения пользователям](v4sdk/bot-builder-send-welcome-message.md)
-<!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
-### [Получение уведомлений от бота](v4sdk/bot-builder-howto-proactive-message.md)
-<!-- ## [Save user input](v4sdk/bot-builder-primitive-prompts.md) -->
-### [Сохранение данных пользователя и диалога](v4sdk/bot-builder-howto-v4-state.md) 
-### [Добавление возможности распознавания естественного языка в функционал бота](v4sdk/bot-builder-howto-v4-luis.md)
+### [Отправка текстовых и голосовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
+### [Включение мультимедийных вложений в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md)
+### [Добавление подсказок для ввода в сообщения](v4sdk/bot-builder-howto-add-input-hints.md)
+### [Рекомендация действий для пользователей](v4sdk/bot-builder-howto-add-suggested-actions.md)
+<!-- ### [Save user input](v4sdk/bot-builder-primitive-prompts.md) -->
+### [Управление состоянием](v4sdk/bot-builder-howto-v4-state.md) 
+### [Упреждающая отправка сообщений пользователю](v4sdk/bot-builder-howto-proactive-message.md)
+### [Добавление возможности распознавания речи](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы пользователя](v4sdk/bot-builder-howto-qna.md)
 ### Управление беседами с использованием библиотеки диалогов 
 #### [Сбор вводимых пользователем данных](v4sdk/bot-builder-prompts.md)
-#### [Реализация последовательной беседы](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [Реализация простой последовательной беседы](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [Создание сложной последовательной беседы с использованием ветвей и циклов](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-#### [Хранение данных пользователя](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+#### [Хранение данных в диалогах](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
 #### [Повторное использование диалогов](v4sdk/bot-builder-compositcontrol.md)
 ### [Непосредственная запись в хранилище](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
 ### [Управление ботами с помощью средств интерфейса командной строки](bot-builder-tools.md)
+### [Реализация возможностей для определенных каналов](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [Отладка](debug/TOC.md)
@@ -65,4 +66,9 @@
 ## [Пакет SDK версии 3 для .NET](/dotnet/api/?view=botbuilder-3.12.2.4)
 ## [Пакет SDK версии 3 для Node.js](https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html)
 ## [Сущности и типы действий](bot-service-activities-entities.md)
+# Сопутствующие материалы
+## [Веб-приложения](https://docs.microsoft.com/azure/app-service/)
+## [Функции](https://docs.microsoft.com/azure/azure-functions/)
+## [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+## [Application Insights](https://docs.microsoft.com/azure/azure-monitor/)
 # [Ресурсы](resources/TOC.md)
