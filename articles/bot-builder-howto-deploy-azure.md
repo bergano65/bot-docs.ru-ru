@@ -1,5 +1,5 @@
 ---
-title: Развертывание бота в Azure | Документация Майкрософт
+title: Развертывание бота на C# в Azure | Документация Майкрософт
 description: Развертывание бота в облаке Azure.
 keywords: развертывание бота, развертывание Azure, регистрация канала ботов, публикации Visual Studio
 author: ivorb
@@ -8,22 +8,24 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/19/2018
-ms.openlocfilehash: 5f3fc43bed16d50c347d4e07a9154dfd307f0dc0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/05/2018
+ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
+ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999371"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51028741"
 ---
-# <a name="deploy-your-bot-to-azure"></a>Развертывание бота в Azure
+# <a name="deploy-your-c-bot-to-azure"></a>Развертывание бота на C# в Azure
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-После создания и локальной проверки бот можно передать в Azure, чтобы сделать его доступным из любого места. Опубликовать бот C# в Azure можно с помощью Visual Studio или Azure CLI. 
+Завершив создание и локальную проверку бота, его можно передать в Azure и сделать доступным из любого расположения.
 
 ## <a name="publish-from-visual-studio"></a>Публикация из Visual Studio
 Сначала нужно развернуть бот в Службе приложений Azure из Visual Studio. Затем настройте бот, используя функцию регистрации каналов бота в службе Azure Bot.
+
+**Примечание. Если имя проекта Visual Studio содержит пробелы, описанные ниже инструкции по развертыванию будут неприменимы.**
 
 В окне обозревателя решений щелкните правой кнопкой мыши узел проекта и выберите "Опубликовать".
 

@@ -1,7 +1,7 @@
 ---
-title: Создание приветствия, отправляемого пользователю | Документация Майкрософт
+title: Отправка приветственного сообщения пользователям | Документация Майкрософт
 description: Сведения о том, как создать приветствие, которое бот отправляет пользователю.
-keywords: overview, develop, user experience, Welcome, personalized experience, C#, JS
+keywords: overview, develop, user experience, welcome, personalized experience, C#, JS, welcome message, bot, greet, greeting
 author: dashel
 ms.author: dashel
 manager: kamrani
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f5549385106cab890269e9a5fafacc00dc331520
-ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
+ms.openlocfilehash: b3582d962911b6024062942a6d9f6ff1efab4022
+ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50736612"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51273091"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
@@ -418,4 +418,4 @@ switch (text)
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
-> [Создание запросов на ввод данных пользователем с помощью библиотеки диалогов](bot-builder-prompts.md)
+> [Сбор вводимых пользователем данных](bot-builder-prompts.md)

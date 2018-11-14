@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/25/2018
+ms.openlocfilehash: eb08ca3b560f5058526387c71eca4b790d033a1e
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997641"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916811"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "49997641"
 Боты и каналы обычно обмениваются текстовыми строками, но некоторые каналы также поддерживают обмен вложениями, что позволяет боту отправлять пользователям сообщения с более широким набором возможностей. Например, бот может отправлять вложения мультимедиа (такие как изображения, видео, звук и файлы) и [форматированные карточки](bot-framework-rest-connector-add-rich-cards.md). В этой статье описывается добавление вложений мультимедиа в сообщения с помощью службы соединителя ботов.
 
 > [!TIP]
-> Сведения о том, как определить тип и число вложений, поддерживаемые каналом, и способ их обработки каналом, см. в разделе [Инспектор каналов][ChannelInspector].
+> Сведения о том, как определить тип и число вложений, поддерживаемые каналом, и способ их обработки каналом, см. в статье [Channel Inspector][ChannelInspector].
 
 ## <a name="add-a-media-attachment"></a>Добавление мультимедийного вложения  
 
@@ -126,6 +126,7 @@ Content-Type: application/json
         "title": "Allegro in C Major",
         "subtitle": "Allegro Duet",
         "text": "No Image, No Buttons, Autoloop, Autostart, Sharable",
+        "duration": "PT2M55S",
         "media": [
           {
             "url": "https://contoso.com/media/AllegrofromDuetinCMajor.mp3"
@@ -175,9 +176,7 @@ Content-Type: application/json
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
-- [Инспектор каналов][ChannelInspector]
-
-[ChannelInspector]: ../bot-service-channel-inspector.md
+- [Принципы использования карточек в Bot Framework](https://aka.ms/botSpecs-cardSchema)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object

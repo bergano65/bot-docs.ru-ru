@@ -1,45 +1,25 @@
 ---
-title: Управление ботом с помощью средств для Bot Builder
+title: Управление ботами с помощью средств CLI
 description: Средства для Bot Builder позволяют управлять ресурсами бота непосредственно из командной строки
-keywords: botbuilder templates, ludown, qna, luis, msbot
+keywords: botbuilder templates, ludown, qna, luis, msbot, manage, cli, .bot, bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ef57cdf6a202679f9fc3a83e3e44640b43adb67f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 357f9fdc3da4c703dbcd5c1fa347176002006567
+ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998366"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51273111"
 ---
-# <a name="bot-builder-tools"></a>Средства для Bot Builder
+# <a name="manage-bots-using-cli-tools"></a>Управление ботами с помощью средств CLI
 
-[Средства] для Bot Builder [cliTools] позволяют выполнять весь рабочий процесс разработки чат-ботов, включая планирование, разработку, тестирование, публикацию, подключение и оценку. Давайте узнаем, как эти средства помогут вам на каждом из этапов цикла разработки.
-
-[План](#plan)
-- Начните с изучения [рекомендаций по разработке](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-principles) для чат-ботов.
-- Создайте имитацию общения с помощью средства [Chatdown](#create-mock-conversations-using-chatdown).
-
-[Сборка](#build)
-- Освойте распознавание речи для ботов с помощью [Ludown](#bootstrap-language-understanding-with-ludown).
-- Сохраняйте ссылки на службы с помощью [MSBot](#keep-track-of-service-references-using-bot-file).
-- Создавайте приложения LUIS и управляйте ими с помощью [LUIS CLI](#create-and-manage-luis-applications-using-luis-cli).
-- Создайте базу знаний QnA Maker с помощью [QnA Maker CLI](#create-qna-maker-kb-using-qna-maker-cli).
-- Создайте модель диспетчеризации с помощью [интерфейса командной строки в Dispatch](#create-dipsatch-model-using-dispatch-cli).
-
-[Test](#test)
-- В тестировании бота вам поможет [Bot Framework Emulator версии 4](https://aka.ms/bot-framework-emulator-v4-overview)
-
-[Опубликовать](#publish)
-- Создайте, скачайте и опубликуйте бота в службе Azure Bot с помощью [Azure CLI][azureCli]
-
-[Подключение](#configure-channels)
-- Подключите бота к каналам службы Azure Bot с помощью [Azure CLI][azureCli]
+Средства Bot Builder позволяют выполнять весь рабочий процесс разработки чат-ботов, включая планирование, сборку, тестирование, публикацию, подключение и оценку. Давайте узнаем, как эти средства помогут вам на каждом из этапов цикла разработки.
 
 ## <a name="plan"></a>План
 
@@ -165,10 +145,9 @@ ludown parse ToLuis --in <luFile>
 ludown parse ToQna --in <luFile> 
 ```
 
-Полученные файлы JSON могут быть использованы LUIS и QnA либо через соответствующие порталы, либо через новые средства CLI.
+Полученные файлы JSON могут быть использованы LUIS и QnA либо через соответствующие порталы, либо через новые средства CLI. Дополнительные сведения можно найти в разделе репозитория GitHub для [LUdown CLI][ludown].
 
-Дополнительные сведения можно найти в разделе репозитория GitHub для [LUdown CLI][ludown].
-## <a name="track-service-references-using-bot-file"></a>Отслеживание ссылок на службы с помощью BOT-файла
+### <a name="track-service-references-using-bot-file"></a>Отслеживание ссылок на службы с помощью BOT-файла
 
 Новое средство [MSBot][msbotCli] позволяет создавать файл с расширением **.bot**, в котором хранятся метаданные о службах, используемых ботом. C помощью этого файла бот может использовать интерфейс командной строки для подключения данных служб. Средство доступно в качестве модуля npm. Чтобы его установить, необходимо выполнить следующую команду.
 
@@ -189,7 +168,7 @@ msbot connect [Service]
 
 Чтобы получить список поддерживаемых служб, изучите файл [readme][msbotCli].
 
-## <a name="create-and-manage-luis-applications-using-luis-cli"></a>Создание приложений LUIS и управление ими с помощью LUIS CLI
+### <a name="create-and-manage-luis-applications-using-luis-cli"></a>Создание приложений LUIS и управление ими с помощью LUIS CLI
 
 Теперь в новый набор средств добавлено [расширение LUIS][luisCli], которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать:
 
@@ -215,7 +194,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 ```
 Дополнительные сведения можно найти в разделе репозитория GitHub для [LUIS CLI][luisCli].
 
-## <a name="create-qna-maker-kb-using-qna-maker-cli"></a>Создание базы знаний QnA Maker с помощью QnA Maker CLI
+### <a name="create-qna-maker-kb-using-qna-maker-cli"></a>Создание базы знаний QnA Maker с помощью QnA Maker CLI
 
 Теперь в набор средств добавлено [расширение QnA][qnaCli], которое позволяет самостоятельно управлять ресурсами LUIS. Оно доступно в качестве модуля npm, который можно скачать.
 
@@ -230,7 +209,7 @@ qnamaker create --in qnaKB.json --msbot | msbot connect qna --stdin
 
 Дополнительные сведения можно найти в разделе репозитория GitHub для [QnA Maker CLI][qnaCli].
 
-## <a name="create-dispatch-model-using-dispatch-cli"></a>Создание модели диспетчеризации с помощью интерфейса командной строки в Dispatch
+### <a name="create-dispatch-model-using-dispatch-cli"></a>Создание модели диспетчеризации с помощью интерфейса командной строки в Dispatch
 
 Средство Dispatch позволяет создавать и оценивать модели LUIS, используемая для диспетчеризации намерений на несколько модулей чат-ботов, таких как модели LUIS, базы знаний QnA и т. п. (их можно добавить как тип файла для диспетчеризации).
 
@@ -253,12 +232,14 @@ dispatch create -b <YOUR-BOT-FILE> | msbot connect dispatch --stdin
 
 ## <a name="publish"></a>Опубликовать
 
-Вы можете использовать [Azure CLI][azureCli] для [создания](#create-azure-bot-service-bot), [скачивания](#download-azure-bot-service-bot) и [публикации](#publish-azure-bot-service-bot) ботов в службе Azure Bot. Установите расширение бота: 
+Вы можете создавать, скачивать и публиковать боты в службе Azure Bot с помощью Azure CLI. Установите расширение бота: 
 ```shell
 az extension add -n botservice
 ```
 
-## <a name="create-azure-bot-service-bot"></a>Создание бота в службе Azure Bot
+### <a name="create-azure-bot-service-bot"></a>Создание бота в службе Azure Bot
+
+Примечание. Необходимо установить последнюю версию `az cli`. Выполните обновление, чтобы использовать Azure CLI со средством MSBot. 
 
 Войдите в учетную запись Azure: 
 ```shell
@@ -322,7 +303,7 @@ Group
 ```
 
 ## <a name="additional-information"></a>Дополнительная информация
-- [Средства для Bot Builder][cliTools]
+- [Средства Bot Builder на сайте GitHub][cliTools]
 
 <!-- Footnote links -->
 
