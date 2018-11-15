@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 08/30/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4536bef820bc1e6e21ba2905fb643fe5608b3788
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 23cd0c531e00b19b24ee331a8ef1f510b55863b9
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999021"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645534"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Создание бота с помощью пакета SDK Bot Builder для Python
 
@@ -26,7 +26,7 @@ ms.locfileid: "49999021"
 
 ## <a name="pre-requisite"></a>Предварительные требования
 - [Python 3.6.4](https://www.python.org/downloads/); 
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
+- Bot Framework Channel [Emulator](https://aka.ms/Emulator-wiki-getting-started).
 
 ## <a name="create-a-bot"></a>Создание бота
 В файле main.py импортируйте следующие стандартные модули:

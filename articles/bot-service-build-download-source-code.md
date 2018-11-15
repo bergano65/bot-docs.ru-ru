@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 19dd474c16224cc811a214acea6e9cb51da95b3f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997281"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332768"
 ---
 # <a name="download-and-redeploy-bot-code"></a>Скачивание и повторное развертывание кода бота
 Служба Azure Bot дает возможность скачать весь исходный проект бота, с которым можно работать локально через любой IDE на ваш выбор. Завершив доработку кода, измененный проект можно снова опубликовать на портале Azure. Здесь мы продемонстрируем, как скачать код с помощью портала Azure и средства CLI `az`. Мы также обсудим повторное развертывание обновленного кода бота с помощью Visual Studio и средства CLI `az`. Вы можете выбрать для себя наиболее удобный метод.
@@ -39,14 +39,14 @@ ms.locfileid: "49997281"
   "botFileSecret": "ukxxxxxxxxxxxs="
 }
 ```
-`botFilePath` ссылается на имя бота. В этой строке достаточно заменить значение yourbasicBot.bot реальным именем вашего бота. Чтобы получить ключ `botFileSecret`, воспользуйтесь статьей [о шифровании файла бота](https://aka.ms/bot-file-encryption), где описано создание ключа для бота.
-
 
 Если вы используете бот на node.js, добавьте файл `.env` со следующими элементами:
 ```
 botFilePath=yourbasicBot.bot
 botFileSecret=ukxxxxxxxxxxxxs=
 ```
+
+`botFilePath` ссылается на имя бота. В этой строке достаточно заменить значение yourbasicBot.bot реальным именем вашего бота. Чтобы получить ключ `botFileSecret`, воспользуйтесь статьей [о шифровании файла бота](https://aka.ms/bot-file-encryption), где описано создание ключа для бота.
 
 Затем внесите изменения в исходный проект, отредактировав существующие файлы или добавив новые. Тестирование кода с помощью Emulator. Когда вы будете готовы выполнить повторное развертывание измененного код на портал Azure, следуйте приведенным ниже инструкциям.
 

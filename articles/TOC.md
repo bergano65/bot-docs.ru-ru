@@ -41,8 +41,8 @@
 ### [Добавление возможности распознавания естественного языка в функционал бота](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы пользователя](v4sdk/bot-builder-howto-qna.md)
 ### Управление беседами с использованием библиотеки диалогов 
-#### [Сбор вводимых пользователем данных](v4sdk/bot-builder-prompts.md)
 #### [Реализация последовательной беседы](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [Сбор данных, которые вводит пользователь, с помощью диалогового окна](v4sdk/bot-builder-prompts.md)
 #### [Создание сложной последовательной беседы с использованием ветвей и циклов](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 #### [Хранение данных пользователя](v4sdk/bot-builder-tutorial-persist-user-inputs.md)

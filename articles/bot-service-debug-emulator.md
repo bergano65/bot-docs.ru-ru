@@ -7,20 +7,20 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/20/2018
-ms.openlocfilehash: b1a20875eb25cbf4a07d8a96d79eed665b26157b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/13/2018
+ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996801"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645614"
 ---
 # <a name="debug-with-the-emulator"></a>Отладка ботов с помощью эмулятора
 
 Эмулятор Bot Framework — это классическое приложение, которое позволяет разработчикам локально или удаленно тестировать и отлаживать боты. С помощью эмулятора вы можете общаться с ботом и проверять сообщения, которые он посылает и получает. Эмулятор отображает сообщения так, как они будут выглядеть в интерфейсе веб-чата, и регистрирует запросы и ответы JSON при обмене сообщениями с ботом. Перед развертыванием бота в облаке запустите его локально и протестируйте с помощью эмулятора. Вы можете протестировать бот с помощью эмулятора, даже если вы еще не [создали](./bot-service-quickstart.md) его в службе Azure Bot или не настроили для запуска во всех каналах.
 
 ## <a name="prerequisites"></a>Предварительные требования
-- Установите [эмулятор](https://github.com/Microsoft/BotFramework-Emulator/releases).
+- Установите [эмулятор](https://aka.ms/Emulator-wiki-getting-started).
 - Установите программное обеспечение туннелирования [ngrok][ngrokDownload].
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Подключение к боту, работающему на локальном узле

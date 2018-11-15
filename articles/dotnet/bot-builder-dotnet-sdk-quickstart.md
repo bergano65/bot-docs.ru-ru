@@ -8,28 +8,28 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 77e24d58fb377ec2390671517204526bf076f78e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999381"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645544"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Создание бота с помощью пакета SDK Bot Builder для .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-В этом кратком руководстве описывается, как с помощью шаблона C# создать бот и протестировать его, используя Bot Framework Channel Emulator. 
+В этом кратком руководстве описывается, как с помощью шаблона C# создать бот и протестировать его, используя Bot Framework Channel Emulator.
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Visual Studio [2017](https://www.visualstudio.com/downloads).
 - Шаблон пакета SDK для Bot Builder версии 4 для [C#](https://botbuilder.myget.org/feed/aitemplates/package/vsix/BotBuilderV4.fbe0fc50-a6f1-4500-82a2-189314b7bea2).
-- Bot Framework Channel [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
+- Bot Framework Channel [Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Навыки разработки для [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index).
 
 ## <a name="create-a-bot"></a>Создание бота
-Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований. 
+Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований.
 
 В Visual Studio создайте новый проект бота с использованием шаблона Bot Builder Echo Bot версии 4.
 
