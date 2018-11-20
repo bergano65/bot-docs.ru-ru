@@ -34,10 +34,10 @@
 ### [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [Добавление кнопок для управления действиями пользователя](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [Сохранение данных пользователя и диалога](v4sdk/bot-builder-howto-v4-state.md) 
-### [Запрос пользователю на ввод данных](v4sdk/bot-builder-primitive-prompts.md) 
+### [Запрос на ввод данных пользователем](v4sdk/bot-builder-primitive-prompts.md) 
 ### [Отправка приветственного сообщения пользователям](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
-### [Получение уведомлений от бота](v4sdk/bot-builder-howto-proactive-message.md)
+### [Получение уведомлений от ботов](v4sdk/bot-builder-howto-proactive-message.md)
 ### [Добавление возможности распознавания естественного языка в функционал бота](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Использование QnA Maker для ответов на вопросы пользователя](v4sdk/bot-builder-howto-qna.md)
 ### Управление беседами с использованием библиотеки диалогов 
