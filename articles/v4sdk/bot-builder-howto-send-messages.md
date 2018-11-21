@@ -1,79 +1,68 @@
 ---
-title: Отправка сообщений | Документация Майкрософт
-description: Сведения об отправке сообщений с помощью пакета SDK построителя ботов.
-keywords: отправка сообщения, действия с сообщениями, простое текстовое сообщение, речь, голосовое сообщение
+title: Отправка и получение текстовых сообщений | Документация Майкрософт
+description: Узнайте, как отправлять и принимать текстовые сообщения с помощью пакета SDK Bot Builder.
+keywords: sending message, message activities, simple text message, message, text message, receive message
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 08/23/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e2c5f54d4ca077ad2b916787613f782779707ac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a01a64e032acfde2b3711e3efbb3886439888c42
+ms.sourcegitcommit: 5c40e2e21adb3a779022d45704c29cf11ed7f4a6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996791"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51506199"
 ---
-# <a name="send-text-and-spoken-messages"></a>Отправка текстовых и голосовых сообщений
+# <a name="send-and-receive-text-message"></a>Отправка и получение текстовых сообщений 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Основным способом взаимодействия бота с пользователями будут действия с **сообщениями**. Некоторые сообщения будут состоять из обычного текста, а другие — включать расширенное содержимое, такое как карточки или вложения. Обработчик этапа бота получает сообщения от пользователя, и вы можете отправлять ответы пользователю из него. Объект контекста этапа предоставляет методы для отправки сообщений обратно пользователю. Дополнительные сведения об обработке действий в целом см. в разделе [Обработка действий](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack).
+Основным способом взаимодействия бота с пользователями будут действия с **сообщениями**. Некоторые сообщения будут состоять из обычного текста, а другие — включать расширенное содержимое, такое как карточки или вложения. Обработчик этапа бота получает сообщения от пользователя, и вы можете отправлять ответы пользователю из него. Объект контекста этапа предоставляет методы для отправки сообщений обратно пользователю. В этой статье объясняется, как отправлять простые текстовые сообщения.
 
-В этой статье описывается, как отправить простые текстовые и голосовые сообщения. Сведения об отправке сообщений с расширенным содержимым см. в статье о [добавлении мультимедийных вложений](bot-builder-howto-add-media-attachments.md). Сведения о работе с объектами запроса см. в статье о том, как [запрашивать ввод у пользователей](bot-builder-prompts.md).
-
-## <a name="send-a-simple-text-message"></a>Отправка простого текстового сообщения
+## <a name="send-a-text-message"></a>Отправка текстового сообщения
 
 Для отправки простого текстового сообщения укажите строку, которую вы хотите отправить как действие:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В методе **OnTurn** бота используйте объект контекста этапа **SendActivityAsync** для отправки ответа в виде одного сообщения. Можно также использовать метод **SendActivitiesAsync** объекта для отправки нескольких ответов за раз.
+В методе `OnTurnAsync` бота используйте метод `SendActivityAsync` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `SendActivitiesAsync` объекта для отправки нескольких ответов за раз.
 
 ```cs
-await context.SendActivityAsync("Greetings from sample message.");
+await turnContext.SendActivityAsync($"Welcome!");
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-В обработчике этапа бота используйте метод **sendActivity** объекта контекста этапа для отправки ответа. Можно также использовать метод **SendActivities** объекта для отправки нескольких ответов за раз.
+В обработчике `onTurn` бота используйте метод `sendActivity` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `sendActivities` объекта для отправки нескольких ответов за раз.
 
 ```javascript
-await context.sendActivity("Greetings from sample message.");
+await context.sendActivity("Welcome!");
 ```
-
 ---
+## <a name="receive-a-text-message"></a>Получение текстового сообщения
 
-## <a name="send-a-spoken-message"></a>Отправка голосовых сообщений
-
-Некоторые каналы могут использовать боты с поддержкой речевых функций, что позволяет им "общаться" с пользователем. Такое общение может включать как письменное, так и голосовое содержимое.
-
-> [!NOTE]
-> Для каналов, которые не могут использовать ботов с речевой функцией, голосовое содержимое игнорируется.
+Чтобы получить простое текстовое сообщение, используйте свойство *text* объекта *activity*. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Используйте необязательный параметр **speak** для ввода произнесенного текста как части ответа.
+В методе `OnTurnAsync` бота используйте приведенный ниже код для получения сообщения. 
 
 ```cs
-await context.SendActivityAsync(
-    "This is the text to be displayed.",
-    "This is the text to be spoken.");
+var responseMessage = turnContext.Activity.Text;
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Чтобы добавить речь, вам потребуется `Microsoft.Bot.Builder.MessageFactory` для создания сообщений. `MessageFactory` чаще используется с [мультимедийными вложениями](bot-builder-howto-add-media-attachments.md) (в описании которых работа с ним объясняется более подробно), однако мы используем его здесь.
-
+В методе `OnTurnAsync` бота используйте приведенный ниже код для получения сообщения. 
 ```javascript
-// Require MessageFactory from botbuilder
-const {MessageFactory} = require('botbuilder');
-
-const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.');
-await context.sendActivity(basicMessage);
+let text = turnContext.activity.text;
 ```
-
 ---
+
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+Дополнительные сведения об обработке действий в целом см. в разделе [Обработка действий](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack). Сведения об отправке сообщений с расширенным содержимым см. в статье о [добавлении мультимедийных вложений](bot-builder-howto-add-media-attachments.md).

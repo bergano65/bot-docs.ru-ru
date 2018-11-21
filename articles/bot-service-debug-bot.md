@@ -1,59 +1,52 @@
 ---
-title: Отладка ботов, построенных с помощью службы Azure Bot | Документация Майкрософт
+title: Отладка бота | Документация Майкрософт
 description: Отладка ботов, построенных с помощью службы Azure Bot.
 author: v-ducvo
 ms.author: v-ducvo
-keywords: пакет SDK для Bot Builder, непрерывное развертывание, Служба приложений, эмулятор.
+keywords: Bot Builder SDK, debug bot, test bot, bot emulator, emulator
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 07/13/2018
-ms.openlocfilehash: 3312aa3508a7d9e57f1adc3e36c9d0325cdf6df6
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/13/2018
+ms.openlocfilehash: 997d907bfabb284e079f21437418645a7dac061e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997551"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645654"
 ---
-# <a name="debug-a-bot-service-bot"></a>Отладка бота службы Azure Bot
+# <a name="debug-a-bot"></a>Отладка бота
 
-В этой статье описывается отладка ботов с помощью интегрированной среды разработки (IDE), такой как Visual Studio или Visual Studio Code, и Bot Framework Emulator. Эти методы можно использовать для отладки любого бота локально. В этой статье используется **EchoBot**, созданный с помощью статьи [Создание бота с помощью службы Azure Bot](bot-service-quickstart.md).
+В этой статье описывается отладка ботов с помощью интегрированной среды разработки (IDE), такой как Visual Studio или Visual Studio Code, и Bot Framework Emulator. Эти методы можно использовать для локальной отладки любого бота. Но для работы с этой статьей используются боты [C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) и [JS](~/javascript/bot-builder-javascript-quickstart.md), созданные в рамках краткого руководства.
 
-## <a name="debug-a-javascript-bot"></a>Отладка бота JavaScript
-
-Выполните действия, описанные в этом разделе, для отладки бота, созданного на JavaScript.
-
-### <a name="prerequisites"></a>Предварительные требования
-
-Перед отладкой бота JavaScript, необходимо выполнить следующие задачи.
-
-- Скачайте исходный код для бота (из Azure), как описано в статье [Скачивание и повторное развертывание исходного кода бота](bot-service-build-download-source-code.md).
-- Скачайте и установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
-- Скачайте и установите редактор кодов <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>.
+## <a name="prerequisites"></a>Предварительные требования 
+- Скачайте и установите [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+- Скачайте и установите [Visual Studio Code](https://code.visualstudio.com) или [Visual Studio](https://www.visualstudio.com/downloads) (Community Edition или более поздней версии).
 
 ### <a name="debug-a-javascript-bot-using-command-line-and-emulator"></a>Отладка ботов JavaScript с помощью командной строки и эмулятора
 
 Для запуска бота JavaScript при помощи командной строки и тестирования ботов эмулятором, выполните следующие действия.
 1. В командной строке измените каталог на каталог проекта ботов.
-2. Запустите бота с помощью команды **node app.js**.
-3. Запустите эмулятор и подключитесь к конечной точке бота (например, **http://localhost:3978/api/messages**). Если бот запускается впервые, щелкните **Файл > Новая программа-робот** и следуйте инструкциям на экране. В противном случае, чтобы открыть существующий бот, щелкните **Файл > Открыть программу-робота**. Поскольку этот бот работает локально на компьютере, вы можете оставить строки **ИД приложения MSA** и **Пароль приложения MSA** пустыми. Дополнительные сведения см. в статье [Отладка ботов с помощью Bot Framework Emulator](bot-service-debug-emulator.md).
-4. Из эмулятора отправьте боту сообщение (например, "Hi"). 
-5. Для отладки бота используйте панели **Инспектор** и **Журнал** в правой части окна эмулятора. Например, по щелчку по любому из пузырьков сообщений (например, пузырек сообщения "Hi", показанный на снимке экрана ниже) на панели **Инспектор** раскроются подробности этого сообщения. Эту панель можно использовать для просмотра запросов и ответов при обмене сообщениями между эмулятором и ботом. Кроме того, можно щелкнуть любую ссылку на панели **Журнал** для просмотра сведений на панели **Инспектор**.
+1. Запустите бота с помощью команды **node app.js**.
+1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе.
+1. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
+1. Из эмулятора отправьте боту сообщение (например, "Hi"). 
+1. Для отладки бота используйте панели **Инспектор** и **Журнал** в правой части окна эмулятора. Например, по щелчку по любому из пузырьков сообщений (например, пузырек сообщения "Hi", показанный на снимке экрана ниже) на панели **Инспектор** раскроются подробности этого сообщения. Эту панель можно использовать для просмотра запросов и ответов при обмене сообщениями между эмулятором и ботом. Или вы можете щелкнуть любую ссылку на панели **Журнал** для просмотра сведений на панели **Инспектор**.
 
    ![Панель "Инспектор" в Bot Framework Emulator](~/media/bot-service-debug-bot/emulator_inspector.png)
 
 ### <a name="debug-a-javascript-bot-using-breakpoints-in-visual-studio-code"></a>Отладка бота JavaScript с использованием точек останова в Visual Studio Code
 
-Используя интегрированную среду разработки Visual Studio Code, можно установить точки останова и запустить бот в режиме отладки для пошагового выполнения кода. Чтобы установить точки останова в VS Code, выполните следующие действия.
+В Visual Studio Code можно установить точки останова и запустить бот в режиме отладки для пошагового выполнения кода. Чтобы установить точки останова в VS Code, выполните следующие действия.
 
 1. Запустите VS Code и откройте папку проекта бота.
 2. В строке меню щелкните **Отладка**, а затем — **Начать отладку**. Если будет предложено выбрать механизм среды выполнения для запуска кода, выберите **Node.js**. На этом этапе бот функционирует локально. 
-
+<!--
    > [!NOTE]
-   > Если возникает ошибка "Значение не может быть null", убедитесь, что параметры **Хранилища таблиц** допустимы.
-   > **EchoBot** по умолчанию использует **Хранилище таблиц**. Чтобы использовать Хранилище таблиц для ботов, требуются *имя* и *ключ* таблицы. При отсутствии готового экземпляра Хранилища таблиц его можно создать или, в целях тестирования, можно закомментировать код, который использует **TableBotDataStore**, и раскомментировать строку кода, которая использует **InMemoryDataStore**. **InMemoryDataStore** предназначен только для тестирования и создания прототипов.
-
+   > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
+   > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
+-->
 3. Задайте необходимые точки останова. В VS Code можно установить точки останова, наведя указатель мыши над столбцом слева от номеров строк. Появится красная точка. Если щелкнуть на нее, установятся точки останова. Если щелкнуть на нее снова, точки останова будут удалены.
 
    ![Задание точек останова в VS Code](~/media/bot-service-debug-bot/breakpoint-set.png)
@@ -63,39 +56,25 @@ ms.locfileid: "49997551"
 
    ![Отладка в VS Code](~/media/bot-service-debug-bot/breakpoint-caught.png)
 
-
-## <a name="debug-a-c-bot"></a>Отладка бота C#
-
-Следуйте инструкциям в этом разделе, чтобы отладить бота, созданного на C#.
-
-
-### <a name="prerequisites"></a>Предварительные требования
-
-Перед отладкой бота C# для веб-приложения необходимо выполнить следующие задачи.
-
-- Скачайте исходный код для бота (из Azure), как описано в статье [Скачивание и повторное развертывание исходного кода бота](bot-service-build-download-source-code.md).
-- Скачайте и установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
-- Загрузите и установите <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> (Community Edition или более поздней версии).
-
 ### <a name="debug-a-c-bot-using-breakpoints-in-visual-studio"></a>Отладка бота C# с использованием точек останова в Visual Studio
 
-Используя IDE, например Visual Studio (VS), можно установить точки останова и запустить бот в режиме отладки для пошагового выполнения код. Чтобы установить точки останова в VS, выполните следующие действия.
+В Visual Studio (VS) можно установить точки останова и запустить бот в режиме отладки для пошагового выполнения кода. Чтобы установить точки останова в VS, выполните следующие действия.
 
 1. Перейдите к папке ботов и откройте файл **SLN**. Откроется решение в Visual Studio.
 2. В строке меню щелкните **Построить**, затем **Построить решение**.
-3. В окне **обозревателя решений** разверните папку **Диалоговые окна** и щелкните **EchoDialog.cs**. Этот файл определяет логику основного бота.
-4. В строке меню щелкните **Отладка**, а затем — **Начать отладку**. На этом этапе бот функционирует локально. 
+3. В **обозревателе решений** щелкните **EchoWithCounterBot.cs**. Этот файл при необходимости определяет основную точку останова logic.Set для вашего бота. В VS можно установить точки останова, наведя указатель мыши на столбец слева от номеров строк. Появится красная точка. Если щелкнуть на нее, установятся точки останова. Если щелкнуть на нее снова, точки останова будут удалены.
+5. В строке меню щелкните **Отладка**, а затем — **Начать отладку**. На этом этапе бот функционирует локально. 
 
+<!--
    > [!NOTE]
-   > Если возникает ошибка "Значение не может быть null", убедитесь, что параметры **Хранилища таблиц** допустимы.
-   > **EchoBot** по умолчанию использует **Хранилище таблиц**. Чтобы использовать Хранилище таблиц для ботов, требуются *имя* и *ключ* таблицы. При отсутствии готового экземпляра Хранилища таблиц его можно создать или, в целях тестирования, можно закомментировать код, который использует **TableBotDataStore**, и раскомментировать строку кода, которая использует **InMemoryDataStore**. **InMemoryDataStore** предназначен только для тестирования и создания прототипов.
-
-5. Задайте необходимые точки останова. В VS можно установить точки останова, наведя указатель мыши на столбец слева от номеров строк. Появится красная точка. Если щелкнуть на нее, установятся точки останова. Если щелкнуть на нее снова, точки останова будут удалены.
+   > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
+   > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
+-->
 
    ![Задание точки останова в VS](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
 
-6. Запустите Bot Framework Emulator и подключитесь к боту, как описано выше. 
-7. Из эмулятора отправьте боту сообщение (например, "Hi"). Выполнение останавливается на строке, в которой установлена точка останова.
+7. Запустите Bot Framework Emulator и подключитесь к боту, как описано выше. 
+8. Из эмулятора отправьте боту сообщение (например, "Hi"). Выполнение останавливается на строке, в которой установлена точка останова.
 
    ![Отладка в VS](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
 
@@ -110,7 +89,7 @@ ms.locfileid: "49997551"
 Перед отладкой плана потребления ботов C# необходимо выполнить следующие задачи.
 
 - Загрузите исходный код для вашего бота (из Azure), как описано в разделе [Настройка непрерывного развертывания для бота в плане службы приложений](bot-service-continuous-deployment.md).
-- Скачайте и установите [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
+- Скачайте и установите [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Установите <a href="https://www.npmjs.com/package/azure-functions-cli" target="_blank">CLI Функций Azure</a>.
 - Установите <a href="https://github.com/dotnet/cli" target="_blank">DotNet CLI</a>.
   
@@ -153,4 +132,4 @@ ms.locfileid: "49997551"
 ## <a name="next-steps"></a>Дополнительная информация
 
 > [!div class="nextstepaction"]
-> [Отладка ботов с помощью Bot Framework Emulator](bot-service-debug-emulator.md).
+> [Отладка бота с помощью файлов записей разговоров](~/v4sdk/bot-builder-debug-transcript.md)

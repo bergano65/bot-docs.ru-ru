@@ -1,7 +1,7 @@
 ---
-title: Использование библиотеки диалогов для сбора данных, вводимых пользователем | Документация Майкрософт
+title: Сбор данных, которые вводит пользователь, с помощью диалогового окна | Документация Майкрософт
 description: Узнайте, как запросить у пользователя входные данные, используя библиотеку диалогов из пакета SDK Bot Builder.
-keywords: запросы, диалоговые окна, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, повторный запрос, проверка
+keywords: prompts, prompt, user input, dialogs, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, reprompt, validation
 author: JonathanFingold
 ms.author: v-jofing
 manager: kamrani
@@ -10,22 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 150d5f0a68d897ac278026a7cf36609aca05bb80
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: ec0cc5e942ed66c8683f8b0cc92ba7df2e36db42
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965722"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645674"
 ---
-# <a name="use-dialog-library-to-gather-user-input"></a>Использование библиотеки диалогов для сбора данных, вводимых пользователем
+# <a name="gather-user-input-using-a-dialog-prompt"></a>Сбор данных, которые вводит пользователь, с помощью диалогового окна
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Для его непосредственного выполнения можно использовать метод _отправки действия_ объекта в [контексте реплики](~/v4sdk/bot-builder-basics.md#defining-a-turn), а затем обработать следующее входящее сообщение как ответ. Но пакет SDK Bot Builder предоставляет библиотеку [диалогов](bot-builder-concept-dialog.md), в которой содержатся методы, которые упрощают постановку вопросов и гарантируют, что ответы соответствуют определенному типу данных или правилам настраиваемой проверки. В этой статье объясняется, как достичь этого с помощью объектов запроса для получения входных данных от пользователя.
-
-Из этой статьи вы узнаете, как создавать запросы и вызывать их из диалога.
-Инструкции по получению входных данных от пользователя без использования диалогов см. в [этой статье](bot-builder-primitive-prompts.md).
-Общие сведения об использовании диалогов см. в статье [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="prompt-types"></a>Типы запросов
 
@@ -53,7 +49,7 @@ ms.locfileid: "50965722"
 1. Определите для диалога метод доступа к свойству состояния.
 1. Создайте набор диалогов.
 1. Создайте собственные запросы и добавьте их в набор диалогов.
-1. Создайте диалог, в котором пользователю будут предлагаться ваши запросы, и добавьте его к набору диалогов.
+1. Создайте диалог, в котором будут использоваться ваши запросы, и добавьте его к набору диалогов.
 1. Добавьте в этот диалог вызовы запросов и получение результатов.
 
 В этой статье объясняется, как создавать запросы и вызывать их из каскадного диалога.
@@ -431,13 +427,6 @@ constructor(conversationState) {
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>Validates whether the party size is appropriate to make a reservation.</summary>
-/// <param name="promptContext">The validation context.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>Reservations can be made for groups of 6 to 20 people.
-/// If the task is successful, the result indicates whether the input was valid.</remarks>
 private async Task<bool> PartySizeValidatorAsync(
     PromptValidatorContext<int> promptContext,
     CancellationToken cancellationToken)
@@ -469,7 +458,7 @@ private async Task<bool> PartySizeValidatorAsync(
 
 ```javascript
 async partySizeValidator(promptContext) {
-    // Check whether the input could be recognized as an integer.
+    // Check whether the input could be recognized as date.
     if (!promptContext.recognized.succeeded) {
         await promptContext.context.sendActivity(
             "I'm sorry, I do not understand. Please enter the number of people in your party.");
@@ -503,13 +492,8 @@ async partySizeValidator(promptContext) {
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>Validates whether the reservation date is appropriate.</summary>
-/// <param name="promptContext">The validation context.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>Reservations must be made at least an hour in advance.
-/// If the task is successful, the result indicates whether the input was valid.</remarks>
+// Validates whether the reservation date is appropriate.
+// Reservations must be made at least an hour in advance.
 private async Task<bool> DateValidatorAsync(
     PromptValidatorContext<IList<DateTimeResolution>> promptContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -584,12 +568,7 @@ return false;
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>First step of the main dialog: prompt for party size.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// First step of the main dialog: prompt for party size.
 private async Task<DialogTurnResult> PromptForPartySizeAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -605,13 +584,8 @@ private async Task<DialogTurnResult> PromptForPartySizeAsync(
         cancellationToken);
 }
 
-/// <summary>Second step of the main dialog: record the party size and prompt for the
-/// reservation date.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// Second step of the main dialog: record the party size and prompt for the
+// reservation date.
 private async Task<DialogTurnResult> PromptForReservationDateAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -631,12 +605,7 @@ private async Task<DialogTurnResult> PromptForReservationDateAsync(
         cancellationToken);
 }
 
-/// <summary>Third step of the main dialog: return the collected party size and reservation date.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// Third step of the main dialog: return the collected party size and reservation date.
 private async Task<DialogTurnResult> AcknowledgeReservationAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -822,8 +791,6 @@ async onTurn(turnContext) {
 
 ---
 
-Дополнительные примеры можно найти в [примерах репозитория](https://aka.ms/bot-samples-readme).
-
 Можно использовать аналогичные методы для проверки ответов на запросы любого типа.
 
 ## <a name="handling-prompt-results"></a>Обработка результатов запроса
@@ -834,19 +801,10 @@ async onTurn(turnContext) {
 * Кэшируйте информацию в состоянии диалога, например установите свойство _values_ для контекста этапа каскадного диалога, а затем возвращайте собранные сведения при завершении диалога.
 * Сохраните информацию в сведениях о состоянии бота. Чтобы использовать этот вариант, диалог должен иметь доступ к методам доступа к свойству состояния бота.
 
-Статьи и примеры по этим сценариям перечислены в разделе дополнительных ресурсов.
-
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-
-* [Управление простым процессом общения](bot-builder-dialog-manage-conversation-flow.md)
-* [Управление сложным процессом общения](bot-builder-dialog-manage-complex-conversation-flow.md)
-* [Создание встроенного набора диалогов](bot-builder-compositcontrol.md)
-* [Хранение данных в диалогах](bot-builder-tutorial-persist-user-inputs.md)
-* Пример **запроса с несколькими репликами** (для [C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample))
+Чтобы больше узнать об использовании нескольких запросов, см. примеры на [[ C# ](https://aka.ms/cs-multi-prompts-sample) или [JS](https://aka.ms/js-multi-prompts-sample)].
 
 ## <a name="next-steps"></a>Дополнительная информация
 
-Теперь, когда вы знаете, как запрашивать у пользователя входные данные, улучшите код бота и пользовательский интерфейс, управляя разнообразными последовательностями общения с помощью диалоговых окон.
-
 > [!div class="nextstepaction"]
-> [Управление сложным процессом общения](bot-builder-dialog-manage-complex-conversation-flow.md)
+> [Реализация простой последовательной беседы](bot-builder-dialog-manage-conversation-flow.md)

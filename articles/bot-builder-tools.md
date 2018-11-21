@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
-ms.date: 11/07/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 357f9fdc3da4c703dbcd5c1fa347176002006567
-ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
+ms.openlocfilehash: 5ffaf9a946e1a540b82819b7f745200f47384819
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51273111"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645664"
 ---
 # <a name="manage-bots-using-cli-tools"></a>Управление ботами с помощью средств CLI
 
@@ -228,7 +228,7 @@ dispatch create -b <YOUR-BOT-FILE> | msbot connect dispatch --stdin
 
 ## <a name="test"></a>Тест
 
-[Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) — это классическое приложение, которое позволяет разработчикам локально или удаленно (через туннель) тестировать боты и (или) выполнять их отладку.
+Bot Framework [Emulator](bot-service-debug-emulator.md) — это классическое приложение, которое позволяет разработчикам локально или удаленно (через туннель) тестировать боты и (или) выполнять их отладку.
 
 ## <a name="publish"></a>Опубликовать
 

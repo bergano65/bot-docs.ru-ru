@@ -1,5 +1,5 @@
 ---
-title: Управление состоянием диалога и пользователя | Документация Майкрософт
+title: Сохранение данных пользователя и диалога | Документация Майкрософт
 description: Узнайте, как сохранять и извлекать данные о состоянии с помощью пакета SDK Bot Builder для .NET.
 keywords: conversation state, user state, conversation flow
 author: ivorb
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/18/18
+ms.date: 11/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
-ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
+ms.openlocfilehash: 5698c50b167e7162ef6910b7c428dab5ceb51d0e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753612"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645644"
 ---
-# <a name="manage-conversation-and-user-state"></a>Управление состоянием диалога и пользователя
+# <a name="save-user-and-conversation-data"></a>Сохранение данных пользователя и диалога
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -308,7 +308,9 @@ else {
 ---
 
 ## <a name="start-your-bot"></a>Запуск бота
-Запустите бот на локальном компьютере.
+- Для бота JavaScript: в терминале или командной строке перейдите к каталогу, созданному для бота, и запустите бот с помощью `npm start`. На этом этапе бот выполняется локально.
+
+- Для бота C#: локально запустите бот с помощью Visual Studio. Нажмете кнопку запуска. Visual Studio создаст приложение, развернет его в узле localhost и запустит веб-браузер для отображения страницы приложения ``default.htm``. На этом этапе бот выполняется локально.
 
 ### <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.

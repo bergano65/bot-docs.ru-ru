@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 09/18/2018
-ms.openlocfilehash: 43dacff8f3ce1e4c1fbae663ee607a1965c7f782
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b5b02773ab71801132f2a73f81123588e7ddfcdb
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000191"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645694"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -83,7 +83,7 @@ ms.locfileid: "50000191"
 # <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
-Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK для Bot Builder для разработки ботов и службу ботов для подключения ботов к каналам. В этом разделе вы сможете выбрать шаблон .NET или Node.js для создания бота, используя предварительную версию пакета SDK для Bot Builder версии 4.
+Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK для Bot Builder для разработки ботов и службу ботов для подключения ботов к каналам. В этой статье вы сможете выбрать шаблон .NET или Node.js для создания бота с помощью пакета SDK Bot Builder версии 4.
 
 ## <a name="log-in-to-azure"></a>Вход в Azure
 Войдите на [портал Azure](http://portal.azure.com).

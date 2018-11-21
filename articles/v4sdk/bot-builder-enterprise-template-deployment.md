@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134704"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645594"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -76,7 +76,7 @@ az account set --subscription "YOUR_SUBSCRIPTION_NAME"
 msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
 
-> У некоторых пользователей при запуске развертывания может возникать следующая ошибка: `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. В этом случае перейдите по адресу https://apps.dev.microsoft.com и вручную создайте новое приложение, получив ApplicationID и пароль или секрет. Выполните приведенную выше команду msbot clone services, указав два новых аргумента (`appId` и `appSecret`) и передав только что полученные значения.
+> У некоторых пользователей при запуске развертывания может возникать следующая ошибка: `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. В этом случае перейдите по адресу https://apps.dev.microsoft.com и вручную создайте новое приложение, получив ApplicationID и пароль или секрет. Выполните приведенную выше команду msbot clone services, указав два новых аргумента (`appId` и `appSecret`) и передав только что полученные значения. Обязательно заключите секрет в кавычки, чтобы избежать проблем с синтаксическим анализом, например: `-appSecret "YOUR_SECRET"`.
 
 Средство msbot отобразит план развертывания, включая расположение и номер SKU. Проверьте эти данные, прежде чем продолжить.
 
@@ -87,7 +87,7 @@ msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_K
 - Обновите файл `appsettings.json`, добавив в него имя и секрет созданного BOT-файла.
 - Выполните приведенную ниже команду, получите ключ инструментирования (InstrumentationKey) для экземпляра Application Insights и укажите этот ключ в файле `appsettings.json`.
 
-`msbot list --bot YOURBOTFILE.bot --secret YOUR_BOT_SECRET`
+`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
           "botFilePath": ".\\YOURBOTFILE.bot",

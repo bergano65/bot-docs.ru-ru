@@ -1,22 +1,18 @@
 ---
-title: Приветствие, отправляемое пользователю | Документация Майкрософт
-description: Сведения о том, как разработать приветствие, которое бот отправляет пользователю.
-keywords: overview, design, user experience, Welcome, personalized experience
-author: dashel
-ms.author: dashel
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 8/30/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f9c58762e0733fbb379b43375710e651424095fc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-send-welcome-message
+ms.openlocfilehash: ef281fd1b6539484c06f68caffbd4e87ec8acc2b
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998751"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332908"
 ---
+<a name="--"></a><!--
+---
+Title: Приветственное сообщение для пользователя | Документация Майкрософт description: Узнайте, как настроить бот для приветствия пользователя.
+keywords: overview, design, user experience, Welcome, personalized experience author: dashel ms.author: dashel manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 8/30/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="welcoming-the-user"></a>Приветствие, отправляемое пользователю
 
 Основная цель создания любого бота — ведение осмысленного диалога с пользователем. Лучший способ достичь этой цели — сделать так, чтобы с момента присоединения к диалогу пользователь понимал основное назначение вашего бота, его возможности и причины создания.
@@ -74,3 +70,5 @@ ms.locfileid: "49998751"
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
 > [Отправка приветственного сообщения пользователям](bot-builder-send-welcome-message.md)
+
+-->

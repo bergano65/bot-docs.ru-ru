@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d2f4692580843f530641827707d250fa726830e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000401"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332968"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -177,13 +177,19 @@ if(context.activity.type === 'message'){
 ## <a name="message"></a>Message
 
 <!-- Only the last link is different. -->
+
 ::: moniker range="azure-bot-service-3.0"
+
 Бот отправляет действия message для передачи сведений пользователям и получения действий message от пользователей.
-Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), [предлагаемые действия](v4sdk/bot-builder-howto-add-suggested-actions.md), [мультимедийные вложения](v4sdk/bot-builder-howto-add-media-attachments.md), [форматированные карточки](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) и [данные по каналу](~/dotnet/bot-builder-dotnet-channeldata.md).
+Некоторые сообщения могут состоять из простого текста, другие же могут включать самое разнообразное содержимое, такое как произносимый текст, [предлагаемые действия](v4sdk/bot-builder-howto-add-suggested-actions.md), [мультимедийные вложения](v4sdk/bot-builder-howto-add-media-attachments.md), [форматированные карточки](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) и [данные по каналу](~/dotnet/bot-builder-dotnet-channeldata.md).
+
 ::: moniker-end
+
 ::: moniker range="azure-bot-service-4.0"
+
 Бот отправляет действия message для передачи сведений пользователям и получения действий message от пользователей.
-Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), [предлагаемые действия](v4sdk/bot-builder-howto-add-suggested-actions.md), [мультимедийные вложения](v4sdk/bot-builder-howto-add-media-attachments.md), [форматированные карточки](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) и [данные по каналу](~/v4sdk/bot-builder-channeldata.md).
+Некоторые сообщения могут состоять из простого текста, другие же могут включать самое разнообразное содержимое, такое как произносимый текст, [предлагаемые действия](v4sdk/bot-builder-howto-add-suggested-actions.md), [мультимедийные вложения](v4sdk/bot-builder-howto-add-media-attachments.md), [форматированные карточки](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) и [данные по каналу](~/v4sdk/bot-builder-channeldata.md).
+
 ::: moniker-end
 
 ## <a name="contactrelationupdate"></a>contactRelationUpdate
@@ -237,6 +243,7 @@ if(context.activity.type === 'message'){
 Бот может отправлять действие typing, чтобы указать пользователю, что выполняется запрос или составление ответа.
 
 ::: moniker range="azure-bot-service-3.0"
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>

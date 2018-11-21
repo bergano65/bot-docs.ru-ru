@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b9c8a0bc04cfcf96f6c81b624464e9698eab1699
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998967"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645584"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Шаблон Enterprise Bot — настройка бота
 
@@ -108,7 +108,28 @@ ms.locfileid: "49998967"
     dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
 ```
 
-## <a name="adding-a-new-dialog"></a>Добавление нового диалога 
+### <a name="adding-an-additional-qnamaker-knowledgebase"></a>Добавление дополнительной базы знаний QnAMaker
+
+Возможно, вам потребуется добавить в бот дополнительную базу знаний QnAMaker. Ниже описано, как это сделать.
+
+1. Создайте базу знаний QnAMaker из JSON-файла с помощью приведенной ниже команды в каталоге помощника.
+```shell
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+```
+2. Выполните приведенную ниже команду, чтобы обновить модель Dispatch в соответствии с внесенными изменениями.
+```shell
+dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+```
+3. Обновите строго типизированный класс Dispatch таким образом, чтобы он отражал новый источник QnA.
+```shell
+msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+```
+4.  Обновите файл `Dialogs\Main\MainDialog.cs` таким образом, чтобы он включал соответствующее намерение Dispatch для нового источника QnA, как в приведенном ниже примере.
+
+Теперь вы можете использовать несколько источников QnA в своем боте.
+
+## <a name="adding-a-new-dialog"></a>Добавление нового диалога
 
 Чтобы добавить в бот новый диалог, сначала необходимо создать подпапку в папке Dialogs и убедиться, что этот класс наследует от `EnterpriseDialog`. Затем нужно настроить инфраструктуру диалога. Диалог Onboarding демонстрирует простой пример, который можно использовать для справки. Ниже приведен фрагмент кода и перечень шагов.
 
