@@ -14,9 +14,9 @@
 # Основные понятия
 ## [Принципы работы бота](v4sdk/bot-builder-basics.md)
 ## [Управление ресурсами бота с помощью BOT-файла](v4sdk/bot-file-basics.md)
+## [Управление состоянием](v4sdk/bot-builder-concept-state.md)
 ## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
-## [Библиотека диалога](v4sdk/bot-builder-concept-dialog.md)
-## [Состояния диалогов](v4sdk/bot-builder-dialog-state.md)
+## [Библиотека диалогов](v4sdk/bot-builder-concept-dialog.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
