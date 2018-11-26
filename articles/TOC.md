@@ -13,10 +13,10 @@
 ## [Репозиторий с примерами на сайте GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
 # Основные понятия
 ## [Принципы работы бота](v4sdk/bot-builder-basics.md)
-## [Управление ресурсами бота с помощью BOT-файла](v4sdk/bot-file-basics.md)
 ## [Управление состоянием](v4sdk/bot-builder-concept-state.md)
-## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
 ## [Библиотека диалогов](v4sdk/bot-builder-concept-dialog.md)
+## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
+## [Управление ресурсами с помощью файла бота](v4sdk/bot-file-basics.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
