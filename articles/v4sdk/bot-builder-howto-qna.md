@@ -1,21 +1,21 @@
 ---
 title: Использование QnA Maker для ответов на вопросы | Документация Майкрософт
 description: Узнайте, как использовать QnA Maker в боте.
-keywords: вопрос и ответ, QnA, часто задаваемые вопросы, ПО промежуточного слоя
+keywords: question and answer, QnA, FAQs, qna maker
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 10/08/2018
+ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4558a90b7d205d416657450224e2ab4892586b25
-ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
+ms.openlocfilehash: 984032373ce2b156c71dc39631838ed67b128a10
+ms.sourcegitcommit: 392c581aa2f59cd1798ee2136b6cfee56aa3ee6d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234467"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52156693"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -23,73 +23,41 @@ ms.locfileid: "50234467"
 
 Служба QnA Maker позволяет добавить в бот поддержку вопросов и ответов. Одна из основных сложностей при создании собственной службы QnA Maker — заполнить ее начальным набором вопросов и ответов. Во многих случаях вопросы и ответы уже существуют в таком содержимом как часто задаваемые вопросы или в другой документации. В других случаях следует настроить ответы на вопросы в более естественной манере общения.
 
+В этой статье мы создадим базу знаний и используем ее в боте.
+
 ## <a name="prerequisites"></a>Предварительные требования
-- Создание учетной записи [QnA Maker](https://www.qnamaker.ai/)
-- Скачайте образец QnA Maker [[C#](https://aka.ms/cs-qna) | [JavaScript](https://aka.ms/js-qna-sample)]
+- Учетная запись [QnA Maker](https://www.qnamaker.ai/)
+- Код в этой статье основан на примере **QnA Maker**. Вам потребуется копия этого примера на языке [C#](https://aka.ms/cs-qna) или [JS](https://aka.ms/js-qna-sample).
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download).
+- Понимание [основных принципов ботов](bot-builder-basics.md), [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) и файлов [.bot](bot-file-basics.md).
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>Создание службы QnA Maker и публикация базы знаний
+1. Прежде всего необходимо создать [службу QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure).
+1. Затем вы создадите базу знаний с помощью файла `smartLightFAQ.tsv`, который расположен в папке CognitiveModels проекта. Действия по созданию, обучению и публикации [базы знаний](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker описаны в документации по QnA Maker. При выполнении этих действий присвойте базе знаний имя `qna` и выберите для ее заполнения файл `smartLightFAQ.tsv`.
 
-После создания учетной записи службы QnA Maker выполните инструкции по созданию [службы QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure) и [базы знаний](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base). 
-
-Опубликовав свою базу знаний, запишите следующие значения для подключения бота к базе знаний программным способом.
-- На сайте [QnA Maker](https://www.qnamaker.ai/) выберите свою базу знаний.
-- При открытой базе знаний выберите **Параметры**. Сохраните значение из поля _имя службы_ как <имя_базы_знаний>
-- Прокрутите вниз, чтобы найти **Сведения о развертывании** и запишите следующие значения:
+## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>Получение значений для подключения бота к базе знаний
+1. На сайте [QnA Maker](https://www.qnamaker.ai/) выберите свою базу знаний.
+1. При открытой базе знаний выберите **Параметры**. Сохраните значение из поля _имя службы_ как <имя_базы_знаний>
+1. Прокрутите вниз, чтобы найти **Сведения о развертывании** и запишите следующие значения:
    - POST /knowledgebases/<идентификатор_базы_знаний>/generateAnswer
    - Узел: https://<имя_узла>.azurewebsites.net/qnamaker
    - Авторизация: EndpointKey <ключ_конечной_точки>
 
-## <a name="installing-packages"></a>Установка пакетов
-
-Прежде чем приступить к кодированию, убедитесь, что имеются пакеты, необходимые для QnA Maker.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-
-Добавьте в бот следующий [пакет NuGet](https://docs.microsoft.com/en-us/nuget/tools/package-manager-ui).
-
-* `Microsoft.Bot.Builder.AI.QnA`
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Компоненты QnA Maker входят в состав пакета `botbuilder-ai`. Этот пакет можно добавить в проект с помощью npm.
-
-```shell
-npm install --save botbuilder-ai
-```
-
----
-
-## <a name="using-cli-tools-to-update-your-bot-configuration"></a>Использование средств интерфейса командной строки для обновления конфигурации в файле .bot
-
-Есть и другой способ получить доступ к значениям из базы знаний: с помощью средств CLI для BotBuilder [qnamaker](https://aka.ms/botbuilder-tools-qnaMaker) и [msbot](https://aka.ms/botbuilder-tools-msbot-readme) получите метаданные базы знаний и добавьте их в файл .bot.
-
-1. Откройте окно терминала или командную строку и перейдите к корневому каталогу в проекте бота.
-2. Запустите `qnamaker init`, чтобы создать файл ресурсов QnA Maker (**.qnamakerrc**). Он предложит вам ввести ключ подписки QnA Maker.
-3. Выполните следующую команду, чтобы скачать метаданные и добавить их в файл конфигурации бота.
-
-    ```shell
-    qnamaker get kb --kbId <your-kb-id> --msbot | msbot connect qna --stdin [ --secret <your-secret>]
-    ```
-Если вы используете шифрование файла конфигурации, для его обновления необходимо указать секретный ключ.
-
-## <a name="using-qna-maker"></a>Использование QnA Maker
-Прежде всего следует добавить ссылку на приложение QnA Maker при инициализации бота. Затем вы сможете обращаться к нему из логики этого бота.
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
-Откройте пример QnA Maker, который вы скачали ранее. Мы немного изменим этот код для наших задач.
-Во-первых, добавьте в файл `BotConfiguration.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (KbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker.
+## <a name="update-the-bot-file"></a>Обновление файла .bot
+Во-первых, добавьте в файл `qnamaker.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (KbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker.
 
 ```json
 {
-  "name": "QnABotSample",
+  "name": "qnamaker",
   "services": [
     {
       "type": "endpoint",
       "name": "development",
       "endpoint": "http://localhost:3978/api/messages",
       "appId": "",
-      "id": "1",
       "appPassword": ""
+      "id": "25",
+    
     },
     {
       "type": "qna",
@@ -97,14 +65,16 @@ npm install --save botbuilder-ai
       "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
       "Hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
       "EndpointKey": "<YOUR_ENDPOINT_KEY>"
+      "id": "117"
     }
   ],
-  "version": "2.0",
-  "padlock": ""
+  "padlock": "",
+   "version": "2.0"
 }
 ```
 
-Далее мы создадим экземпляр QnA Maker в `Startup.cs`. Это действие извлекает перечисленные выше сведения из файла `BotConfiguration.bot`. Для целей тестирования эти значения можно просто включить в код.
+# <a name="ctabcs"></a>[C#](#tab/cs)
+Затем мы инициализируем в файле BotServices.cs новый экземпляр класса BotService, который извлекает перечисленные выше сведения из файла .bot. Внешняя служба настраивается с помощью класса BotConfiguration.
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -157,7 +127,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 }
 ```
 
-Теперь следует передать этот экземпляр QnAMaker боту. Откройте `QnABot.cs` и добавьте следующий код в начало файла. Если вы обращаетесь к собственной базе знаний, измените представленное ниже _приветственное сообщение_ на более полезное с инструкциями для пользователей.
+Затем в файле QnABot.cs мы передаем боту этот экземпляр QnAMaker. Если вы обращаетесь к собственной базе знаний, измените представленное ниже _приветственное сообщение_ на более полезное с инструкциями для пользователей.
 
 ```csharp
 public class QnABot : IBot
@@ -179,37 +149,8 @@ public class QnABot : IBot
 ```
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-Откройте пример QnA Maker, который вы скачали ранее. Мы немного изменим этот код для наших задач.
+
 В нашем примере код запуска находится в файле **index.js**, код с логикой бота — в файле **bot.js**, а дополнительные данные о конфигурации — в файле **qnamaker.bot**.
-
-Когда вы выполните все инструкции по созданию базы знаний и обновлению файла **.bot**, файл **qnamaker.bot** будет содержать запись о базе знаний QnA Maker.
-
-```json
-{
-    "name": "qnamaker",
-    "description": "",
-    "services": [
-        {
-            "type": "endpoint",
-            "name": "development",
-            "id": "1",
-            "appId": "",
-            "appPassword": "",
-            "endpoint": "http://localhost:3978/api/messages"
-        },
-        {
-            "type": "qna",
-            "name": "<YOUR_KB_NAME>",
-            "kbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-            "endpointKey": "<YOUR_ENDPOINT_KEY>",
-            "hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
-            "id": "221"
-        }
-    ],
-    "padlock": "",
-    "version": "2.0"
-}
-```
 
 В файле **index.js** мы считываем сведения о конфигурации и используем их для создания службы QnA Maker и инициализации бота.
 
@@ -344,7 +285,14 @@ module.exports.QnAMakerBot = QnAMakerBot;
 
 ---
 
-Задайте боту вопросы, чтобы увидеть ответы из службы QnA Maker. Дополнительные сведения о тестировании и публикации службы вопросов и ответов вы найдете в статье [о тестировании базы знаний](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/test-knowledge-base) в QnA Maker.
+## <a name="test-the-bot"></a>Тестирование бота
+
+Выполните этот пример на локальном компьютере. Если потребуются дополнительные инструкции, изучите файл readme для примера на [C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/11.qnamaker) или [JS](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/javascript_nodejs/11.qnamaker/README.md).
+
+В эмуляторе отправьте боту сообщение, как показано ниже.
+
+![Тестирование примера QnA](~/media/emulator-v4/qna-test-bot.png)
+
 
 ## <a name="next-steps"></a>Дополнительная информация
 

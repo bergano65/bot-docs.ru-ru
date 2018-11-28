@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/18/2018
-ms.openlocfilehash: b5b02773ab71801132f2a73f81123588e7ddfcdb
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 11/15/2018
+ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645694"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715138"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -85,17 +85,17 @@ ms.locfileid: "51645694"
 
 Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK для Bot Builder для разработки ботов и службу ботов для подключения ботов к каналам. В этой статье вы сможете выбрать шаблон .NET или Node.js для создания бота с помощью пакета SDK Bot Builder версии 4.
 
-## <a name="log-in-to-azure"></a>Вход в Azure
-Войдите на [портал Azure](http://portal.azure.com).
+## <a name="prerequisites"></a>Предварительные требования
+- Учетная запись [Azure](http://portal.azure.com)
 
-> [!TIP]
-> Если у вас еще нет подписки, вы можете зарегистрироваться для получения <a href="https://azure.microsoft.com/en-us/free/" target="_blank">бесплатной учетной записи</a>.
+### <a name="create-a-new-bot-service"></a>Создание службы ботов
 
-## <a name="create-a-new-bot-service"></a>Создание службы ботов
+1. Войдите на [портал Azure](http://portal.azure.com/).
+1. Щелкните ссылку **Создать ресурс** в верхнем левом углу окна портала Azure, затем выберите **Искусственный интеллект и машинное обучение** > **Web App bot** (Бот веб-приложения). 
 
-1. Щелкните ссылку **Создание ресурса** в верхнем левом углу окна портала Azure, затем выберите **Искусственный интеллект и машинное обучение > Web App bot** (Бот веб-приложения). 
+![Создание бота](~/media/azure-bot-quickstarts/abs-create-blade.png)
 
-2. Откроется новая колонка с информацией о **боте веб-приложения**.  
+2. Откроется *новая колонка* с информацией о **боте веб-приложения**.  
 
 3. В колонке **Служба программ-роботов** укажите требуемую информацию о своем боте, как указано в таблице под изображением.  <br/>
  ![Колонка создания бота веб-приложения](~/media/azure-bot-quickstarts/sdk-create-bot-service-blade.png)
@@ -132,6 +132,6 @@ ms.locfileid: "51645694"
 Из этого раздела вы узнали, как создать бот **Echo** веб-приложения с помощью службы Azure Bot, а также проверили работу бота с помощью встроенного элемента управления "Веб-чат". Теперь вы научитесь управлять ботом и приступите к работе с его исходным кодом.
 
 > [!div class="nextstepaction"]
-> [Управление ботом](bot-service-manage-overview.md)
+> [Принципы работы бота](~/v4sdk/bot-builder-basics.md)
 
 ::: moniker-end

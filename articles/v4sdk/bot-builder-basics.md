@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 852740695f4d5719ba4dc4cc3d49c6820d95b3ef
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333008"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715128"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -64,16 +64,16 @@ ms.locfileid: "51333008"
 ПО промежуточного слоя действует так же, как любое средство обработки сообщений, и состоит из линейного набора компонентов, каждый из которых выполняется в строгом порядке и получает возможность применить некоторую логику реагирования на событие. Последним этапом конвейера ПО промежуточного слоя является обратный вызов функции обработчика шагов (`OnTurnAsync` для C# и `onTurn` для JS) из класса бота, которую приложение регистрирует в адаптере. Обработчик шагов принимает в качестве аргумента контекст шага. Заключенная в обработчике шагов логика приложении обычно обрабатывает содержимое входящего действия и создает в ответ одно или несколько действий, которые затем отправляет с помощью функции *send activity* для контекста шага. Вызов *send activity* для контекста шага приводит к вызову компонентов ПО промежуточного слоя для исходящих действий. Компоненты ПО промежуточного слоя выполняются до и после функции обработчика шагов бота. Такое выполнение является конструктивно вложенным и иногда называется "матрешкой". Дополнительные сведения о ПО промежуточного слоя см. [здесь](~/v4sdk/bot-builder-concept-middleware.md).
 
 ## <a name="bot-structure"></a>Структура бота
+В следующих разделах мы рассмотрим основные компоненты бота.
 
-Давайте подробнее рассмотрим пример бота проверки связи со счетчиком [[C#](https://aka.ms/EchoBotWithStateCSharp) | [JS](https://aka.ms/EchoBotWithStateJS)] и ознакомимся с ключевыми элементами бота.
-
-[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
+### <a name="prerequisites"></a>Предварительные требования
+- Копия примера **EchoBotWithCounter** на языке [C#](https://aka.ms/EchoBotWithStateCSharp) или [JS](https://aka.ms/EchoBotWithStateJS). Здесь представлен только тот код, который важен для этой статьи. Полный исходный код можно найти в самом примере.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-Бот — это разновидность веб-приложения [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1). Основные компоненты для [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) содержат похожий код в таких файлах, как **Program.cs** и **Startup.cs**. Эти файлы являются обязательными для всех веб-приложений и не зависят от конкретного бота. Код некоторых из них мы здесь не приводим, но вы всегда можете изучить пример бота [C# echobot-with-counter](https://aka.ms/EchoBot-With-Counter).
+Бот — это разновидность веб-приложения [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1). Основные компоненты для [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) содержат похожий код в таких файлах, как **Program.cs** и **Startup.cs**. Эти файлы являются обязательными для всех веб-приложений и не зависят от конкретного бота. 
 
-### <a name="echowithcounterbotcs"></a>EchoWithCounterBot.cs
+### <a name="bot-logic"></a>Логика бота
 
 Основная логика бота определена в классе `EchoWithCounterBot`, который наследует интерфейс `IBot`. `IBot` определяет единственный метод `OnTurnAsync`. Приложение обязано реализовать этот метод. `OnTurnAsync` имеет свойство turnContext, через которое предоставляются сведения о входящем действии. Входящее действие соответствует поступившему HTTP-запросу. Входящие действия могут иметь разные типы, поэтому первым делом нужно проверить, получил ли бот сообщение. Если это действительно новое сообщение, мы получаем состояние беседы из очереди контекстов, увеличиваем значение счетчика и сохраняем его новое значение в состояние беседы. После этого мы отправляем пользователю сообщение с помощью вызова SendActivityAsync. Исходящее действие соответствует созданному HTTP-запросу.
 
@@ -105,9 +105,9 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 }
 ```
 
-### <a name="startupcs"></a>Startup.cs
+### <a name="set-up-services"></a>Настройка служб
 
-Метод `ConfigureServices` загружает подключенные службы из файла [.bot](bot-builder-basics.md#the-bot-file), перехватывает все возникшие на текущем шаге беседы ошибки и сохраняет их в протокол, затем настраивает поставщик учетных данных и создает объект состояния общения для хранения в памяти данных о беседе.
+Метод `ConfigureServices` в файле startup.cs загружает подключенные службы из файла [.bot](bot-builder-basics.md#the-bot-file), перехватывает все возникшие на текущем шаге беседы ошибки и сохраняет их в журнал, затем настраивает поставщик учетных данных и создает объект состояния общения для хранения в памяти данных беседы.
 
 ```csharp
 services.AddBot<EchoWithCounterBot>(options =>
@@ -162,10 +162,9 @@ services.AddBot<EchoWithCounterBot>(options =>
 });
 ```
 
-Он также создает и регистрирует `EchoBotAccessors`, которые определены в файле **EchoBotStateAccessors.cs** и (или) передаются в открытом конструкторе `EchoWithCounterBot` через платформу внедрения зависимостей ASP.NET Core.
+Метод `ConfigureServices` также создает и регистрирует методы доступа `EchoBotAccessors`, которые определены в файле **EchoBotStateAccessors.cs** и передаются в открытом конструкторе `EchoWithCounterBot` через платформу внедрения зависимостей в ASP.NET Core.
 
 ```csharp
-// Create and register state accessors.
 // Accessors created here are passed into the IBot-derived class on every turn.
 services.AddSingleton<EchoBotAccessors>(sp =>
 {
@@ -187,7 +186,7 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 
 Метод `Configure` указывается в конце конфигурации приложения вместе с информацией о том, что приложение использует Bot Framework и несколько других файлов. Для всех ботов, использующих Bot Framework, требуется выполнить вызов конфигурации. `ConfigureServices` и `Configure` вызываются средой выполнения при запуске приложения.
 
-### <a name="counterstatecs"></a>CounterState.cs
+### <a name="manage-state"></a>Управление состоянием
 
 Этот файл содержит простой класс, в котором бот сохраняет сведения о текущем состоянии. Он содержит только элемент `int`, который мы используем для увеличения значений счетчика.
 
@@ -198,7 +197,7 @@ public class CounterState
 }
 ```
 
-### <a name="echobotaccessorscs"></a>EchoBotAccessors.cs
+### <a name="accessor-class"></a>Класс методов доступа
 
 Класс `EchoBotAccessors` создается как singleton в классе `Startup` и передается в производный класс IBot. В этом случае — `public class EchoWithCounterBot : IBot`. Бот использует этот метод доступа для сохранения данных беседы. Конструктор `EchoBotAccessors` передается в объект беседы, который создается в файле Startup.cs.
 
@@ -401,7 +400,7 @@ exports.EchoBot = EchoBot;
 
 ---
 
-### <a name="the-bot-file"></a>Файл бота
+## <a name="the-bot-file"></a>Файл бота
 
 Файл **.bot** содержит некоторые сведения, например конечную точку, идентификатор приложения, пароль и ссылки на службы, используемые этим ботом. Этот файл создается автоматически, когда вы создаете бот на основе шаблона. Но вы можете создавать свой файл с помощью эмулятора или других средств. Вы можете указать, какой файл .bot следует использовать для проверки бота через [эмулятор](../bot-service-debug-emulator.md).
 
@@ -425,7 +424,7 @@ exports.EchoBot = EchoBot;
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения об управлении состоянием см. в статье об [управлении состоянием беседы и пользователя](bot-builder-howto-v4-state.md).
+Чтобы понять, какую роль играет бот в управлении ресурсами, изучите [файл бота](bot-file-basics.md).
 
 ## <a name="next-steps"></a>Дополнительная информация
 

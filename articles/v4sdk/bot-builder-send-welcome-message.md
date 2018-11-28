@@ -8,20 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: eb62df9bd1f74ab6de9b67fe352b1af4620a6bc6
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332918"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715108"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Основная цель создания любого бота — ведение осмысленного диалога с пользователем. Лучший способ достичь этой цели — сделать так, чтобы с момента присоединения к диалогу пользователь понимал основное назначение вашего бота, его возможности и причины создания. В этой статье представлены примеры кода, которые помогут создать приветствие, отправляемое ботом пользователю.
+
+## <a name="prerequisites"></a>Предварительные требования
+- Понимание [основных принципов работы ботов](bot-builder-basics.md). 
+- Копия **примера с приветствием пользователя** на языке [C#](https://aka.ms/proactive-sample-cs) или [JS](https://aka.ms/proactive-sample-js). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
 
 ## <a name="same-welcome-for-different-channels"></a>Отправка приветственного сообщения для различных каналов
 Приветственное сообщение должно создаваться, когда пользователь начинает взаимодействовать с ботом. Можно реализовать это, отслеживая типы действий в боте и новые подключения. При каждом новом подключении может создаваться не больше двух действий обновления диалога в зависимости от канала:
@@ -39,25 +43,13 @@ ms.locfileid: "51332918"
 - произошло событие обновления диалога;
 - в диалог добавлен новый участник (пользователь).
 
-В приведенном ниже примере отслеживаются новые действия *обновления диалога*, отправляется одно приветственное сообщение, когда пользователь присоединяется к диалогу, и устанавливается флаг состояния Prompt, чтобы игнорировать первое сообщение пользователя. Вы можете скачать полный исходный код на [[ C# ](https://aka.ms/bot-welcome-sample-cs) или [JS](https://aka.ms/bot-welcome-sample-js)] на сайте GitHub.
+В приведенном ниже примере отслеживаются новые действия *обновления диалога*, отправляется одно приветственное сообщение, когда пользователь присоединяется к диалогу, и устанавливается флаг состояния Prompt, чтобы игнорировать первое сообщение пользователя. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Этот набор библиотек обеспечивает поддержку всех приведенных ниже примеров кода C#.
-
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-```
-
-Теперь нужно создать объект состояния для определенного пользователя в диалоге и метод доступа.
+Нам нужно создать объект состояния для определенного пользователя в диалоге и метод доступа к нему.
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.
@@ -428,6 +420,8 @@ switch (text)
 }
 ```
 ---
+## <a name="test-the-bot"></a>Тестирование бота
+В файле [README](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) вы найдете инструкции по запуску и тестированию бота. 
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]

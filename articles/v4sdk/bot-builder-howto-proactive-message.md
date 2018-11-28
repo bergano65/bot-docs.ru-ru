@@ -1,5 +1,5 @@
 ---
-title: Получение уведомлений от бота | Документация Майкрософт
+title: Получение уведомлений от ботов | Документация Майкрософт
 description: Узнайте, как отправлять уведомления
 keywords: proactive message, notification message, bot notification,
 author: jonathanfingold
@@ -8,23 +8,23 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fac1e026ac92fcbe1b5c5bb9363c29e1d9e9b02a
-ms.sourcegitcommit: b6327fa0b4547556d2d45d8910796e0c02948e43
+ms.openlocfilehash: 82811d202e0e20169ae2ebb348949366009d2421
+ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51681591"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51826931"
 ---
-# <a name="get-notification-from-a-bot"></a>Получение уведомлений от бота
+# <a name="get-notification-from-bots"></a>Получение уведомлений от ботов
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
 Как правило, каждое сообщение, которое бот отправляет пользователю, напрямую связано с данными, введенными пользователем ранее.
 Иногда боту может потребоваться отправить пользователю сообщение, которое не имеет прямого отношения к текущей теме диалога или последнему сообщению пользователя. Такие сообщения называются _упреждающими_.
 
-## <a name="uses"></a>Использование
+## <a name="proactive-messages"></a>Упреждающие сообщения
 
 Упреждающие сообщения можно использовать в различных сценариях. Если бот устанавливает таймер или напоминание, ему потребуется оповестить пользователя в соответствующий момент времени. Если бот получает уведомление от внешней системы, ему может потребоваться незамедлительно передать эту информацию пользователю. Например, если пользователь ранее попросил бот отслеживать стоимость продукта, то бот может оповестить пользователя в случае, если стоимость продукта опустилась на 20 %. Если боту требуется какое-то время, чтобы сформировать ответ на вопрос пользователя, он может проинформировать пользователя о задержке и продолжить диалог. Когда бот сформирует ответ на вопрос, он передаст его пользователю.
 
@@ -33,21 +33,19 @@ ms.locfileid: "51681591"
 - Не следует отправлять несколько упреждающих сообщений за короткое время. Некоторые каналы ограничивают частоту, с которой бот может отправлять сообщения пользователю, и отключают бот, если он нарушает эти ограничения.
 - Не следует отправлять упреждающие сообщения пользователям, которые ранее не взаимодействовали с ботом или хотели связаться с ботом по другим каналам связи, например, по электронной почте или через SMS.
 
-**Динамическое упреждающее сообщение** — это самый простой тип упреждающих сообщений.
-Бот просто вставляет сообщение в диалог каждый раз, когда он активируется (вне зависимости от участия пользователя в отдельном разделе диалога с ботом в данный момент), и не пытается изменить диалог каким-либо способом.
+Динамическое упреждающее сообщение — это самый простой тип упреждающих сообщений. Бот просто вставляет сообщение в диалог каждый раз, когда он активируется (вне зависимости от участия пользователя в отдельном разделе диалога с ботом в данный момент), и не пытается изменить диалог каким-либо способом.
 
 Чтобы улучшить обработку уведомлений, рассмотрите другие варианты их интеграции в процесс общения, например указав флаг в состоянии диалога или добавив уведомление в очередь.
 
-### <a name="prerequisites"></a>Предварительные требования
-- Копия **примера упреждающих сообщений** на [ C# ](https://aka.ms/proactive-sample-cs) или [JS](https://aka.ms/proactive-sample-js).
-- Если вы используете JS, установите [Bot Builder](https://www.npmjs.com/package/botbuilder) для Node.js
+## <a name="prerequisites"></a>Предварительные требования
+- Понимание [основных принципов работы ботов](bot-builder-basics.md). 
+- Копия **примера упреждающих сообщений** на [ C# ](https://aka.ms/proactive-sample-cs) или [JS](https://aka.ms/proactive-sample-js). Этот пример используется в статье в качестве иллюстрации для упреждающего обмена сообщениями. 
 
-
-### <a name="about-the-sample-code"></a>Сведения о примере кода
+## <a name="about-the-sample-code"></a>Сведения о примере кода
 
 В примере упреждающих сообщений смоделированы задачи пользователя, длительность которых заранее неизвестна. Бот сохраняет сведения о такой задаче и сообщает пользователю о том, что сообщит о ее завершении, а затем продолжает беседу. После завершения задачи бот отправляет упреждающее сообщение с подтверждением в исходный сеанс беседы.
 
-#### <a name="define-job-data-and-state"></a>Определение данных и состояния задания
+## <a name="define-job-data-and-state"></a>Определение данных и состояния задания
 
 В этом случае отслеживаются произвольные задачи, которые могут быть созданы разными пользователями в нескольких сеансах беседы. Нам необходимо сохранить сведения о каждом из этих заданий, в том числе ссылку на беседу и идентификатор задания. Нам потребуется:
 - Ссылка на беседу, чтобы отправить упреждающее сообщение в правильный сеанс.
@@ -58,9 +56,9 @@ ms.locfileid: "51681591"
 
 Нам нужно определить классы для данных задания и состояния задания. Также мы хотим зарегистрировать наш чат-бот и настроить метод доступа к свойству состояния для журнала заданий.
 
-#### <a name="define-a-class-for-job-data"></a>Определение класса для данных задания
+### <a name="define-a-class-for-job-data"></a>Определение класса для данных задания
 
-Класс `JobLog` отслеживает данные задания, индексируя их по номеру задания (метке времени). Класс `JobLog` отслеживает все невыполненные задания.  Каждое задание идентифицируется уникальным ключом. `Job data` описывает состояние задания и определяется как внутренний класс словаря.
+Класс `JobLog` отслеживает данные задания, индексируя их по номеру задания (метке времени). Класс `JobLog` отслеживает все невыполненные задания.  Каждое задание идентифицируется уникальным ключом. `JobData` описывает состояние задания и определяется как внутренний класс словаря.
 
 ```csharp
 public class JobLog : Dictionary<long, JobLog.JobData>
@@ -79,9 +77,9 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 }
 ```
 
-#### <a name="define-a-state-middleware-class"></a>Определение класса ПО промежуточного слоя с поддержкой состояния
+### <a name="define-a-state-middleware-class"></a>Определение класса ПО промежуточного слоя с поддержкой состояния
 
-Класс **JobState** управляет сведениями о состоянии задания, независимо от состояния беседы и (или) пользователя.
+Класс `JobState` управляет состоянием задания независимо от состояния общения и (или) пользователя.
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -107,134 +105,37 @@ public class JobState : BotState
 
 Файл **Startup.cs** регистрирует чат-бот и связанные с ним службы.
 
-1. Метод `ConfigureServices` регистрирует чат-бот, в том числе обработку ошибок и управление состоянием. Он также регистрирует службы конечной точки бота и метода доступа к состоянию задания.
+Метод `ConfigureServices` регистрирует бот и службу конечной точки, в том числе обработку ошибок и управление состоянием. Он также регистрирует метод доступа к состоянию задания.
 
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // The Memory Storage used here is for local bot debugging only. When the bot
-        // is restarted, everything stored in memory will be gone.
-        IStorage dataStore = new MemoryStorage();
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // The Memory Storage used here is for local bot debugging only. When the bot
+    // is restarted, everything stored in memory will be gone.
+    IStorage dataStore = new MemoryStorage();
+    // ...
 
-        // ...
+    // Create Job State object.
+    // The Job State object is where we persist anything at the job-scope.
+    // Note: It's independent of any user or conversation.
+    var jobState = new JobState(dataStore);
 
-        // Create Job State object.
-        // The Job State object is where we persist anything at the job-scope.
-        // Note: It's independent of any user or conversation.
-        var jobState = new JobState(dataStore);
+    // Make it available to our bot
+    services.AddSingleton(sp => jobState);
 
-        // Make it available to our bot
-        services.AddSingleton(sp => jobState);
-
-        // Register the proactive bot.
-        services.AddBot<ProactiveBot>(options =>
-        {
-            var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-            var botFilePath = Configuration.GetSection("botFilePath")?.Value;
-
-            // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-            var botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey);
-            services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
-
-            // Retrieve current endpoint.
-            var environment = _isProduction ? "production" : "development";
-            var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
-            if (!(service is EndpointService endpointService))
-            {
-                throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
-            }
-
-            options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-
-            // Creates a logger for the application to use.
-            ILogger logger = _loggerFactory.CreateLogger<ProactiveBot>();
-
-            // Catches any errors that occur during a conversation turn and logs them.
-            options.OnTurnError = async (context, exception) =>
-            {
-                logger.LogError($"Exception caught : {exception}");
-                await context.SendActivityAsync("Sorry, it looks like something went wrong.");
-            };
-
-        });
-
-        services.AddSingleton(sp =>
-        {
-            var config = BotConfiguration.Load(@".\BotConfiguration.bot");
-            var endpointService = (EndpointService)config.Services.First(s => s.Type == "endpoint")
-                                    ?? throw new InvalidOperationException(".bot file 'endpoint' must be configured prior to running.");
-
-            return endpointService;
-        });
+    // ...      
     }
-    ```
+```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Файл **Index.js** предназначен для выполнения следующих задач:
-- задает ссылку на класс бота и файл **.bot**;
-- создание объектов HTTP-сервера, адаптера ботов и хранилища;
-- создает бот и запускает сервер, передавая боту действия.
+Бот использует систему хранения состояния для долгосрочного хранения состояний диалога и пользователя между сообщениями. В нашем примере для этого создается поставщик хранилища в памяти. 
 
 ```javascript
-const restify = require('restify');
-const path = require('path');
+// index.js 
 
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different part of a bot.
-const { BotFrameworkAdapter, BotState, MemoryStorage } = require('botbuilder');
-const { BotConfiguration } = require('botframework-config');
 
-const { ProactiveBot } = require('./bot');
-
-// Read botFilePath and botFileSecret from .env file.
-// Note: Ensure you have a .env file and include botFilePath and botFileSecret.
-const ENV_FILE = path.join(__dirname, '.env');
-require('dotenv').config({ path: ENV_FILE });
-
-// Create HTTP server.
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function() {
-    console.log(`\n${ server.name } listening to ${ server.url }.`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator.`);
-    console.log(`\nTo talk to your bot, open proactive-messages.bot file in the Emulator.`);
-});
-
-// .bot file path
-const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
-
-// Read the bot's configuration from a .bot file identified by BOT_FILE.
-// This includes information about the bot's endpoints and configuration.
-let botConfig;
-try {
-    botConfig = BotConfiguration.loadSync(BOT_FILE, process.env.botFileSecret);
-} catch (err) {
-    console.error(`\nError reading bot file. Please ensure you have valid botFilePath and botFileSecret set for your environment.`);
-    console.error(`\n - The botFileSecret is available under appsettings for your Azure Bot Service bot.`);
-    console.error(`\n - If you are running this bot locally, consider adding a .env file with botFilePath and botFileSecret.\n\n`);
-    process.exit();
-}
-
-const DEV_ENVIRONMENT = 'development';
-
-// Define the name of the bot, as specified in .bot file.
-// See https://aka.ms/about-bot-file to learn more about .bot files.
-const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
-
-// Load the configuration profile specific to this bot identity.
-const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
-
-// Create the adapter. See https://aka.ms/about-bot-adapter to learn more about using information from
-// the .bot file when configuring your adapter.
-const adapter = new BotFrameworkAdapter({
-    appId: endpointConfig.appId || process.env.MicrosoftAppId,
-    appPassword: endpointConfig.appPassword || process.env.MicrosoftAppPassword
-});
-
-// Define the state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state storage system to persist the dialog and user state between messages.
 const memoryStorage = new MemoryStorage();
-
-// Create state manager with in-memory storage provider.
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
 
 // Create the main dialog, which serves as the bot's main handler.
@@ -248,18 +149,12 @@ server.post('/api/messages', (req, res) => {
     });
 });
 
-// Catch-all for errors.
-adapter.onTurnError = async (context, error) => {
-    // This check writes out errors to console log .vs. app insights.
-    console.error(`\n [onTurnError]: ${ error }`);
-    // Send a message to the user
-    context.sendActivity(`Oops. Something went wrong!`);
-};
+// ...
 ```
 
 ---
 
-### <a name="define-the-bot"></a>Определение бота
+## <a name="define-the-bot"></a>Определение бота
 
 Пользователь может попросить чат-бота создать и запустить некоторое задание. Отдельная служба заданий будет уведомлять бота о завершении таких заданий. Сам бот должен выполнять следующее:
 
@@ -277,16 +172,15 @@ adapter.onTurnError = async (context, error) => {
 - обработчик шагов;
 - методы для создания и завершения заданий.
 
-#### <a name="declare-the-class"></a>Объявление класса
+### <a name="declare-the-class"></a>Объявление класса
+
+Каждое действие, полученное от пользователя, создает экземпляр класса `ProactiveBot`. Такой подход, при котором служба создается каждый раз, когда она нужна, называется службой с временным временем существования. Следует уделять особое внимание объектам, на создание которых требуется много ресурсов и (или) которые должны существовать дольше одного шага диалога.
+
+Каждое действие, полученное от пользователя, создает экземпляр класса `ProactiveBot`. Такой подход, при котором служба создается каждый раз, когда она нужна, называется службой с временным временем существования. Следует уделять особое внимание объектам, на создание которых требуется много ресурсов и (или) которые должны существовать дольше одного шага диалога.
 
 ```csharp
 namespace Microsoft.BotBuilderSamples
 {
-    // For each interaction from the user, an instance of this class is called.
-    // This is a Transient lifetime service.  Transient lifetime services are created
-    // each time they're requested. For each Activity received, a new instance of this
-    // class is created. Objects that are expensive to construct, or have a lifetime
-    // beyond the single Turn, should be carefully managed.
     public class ProactiveBot : IBot
     {
         // The name of events that signal that a job has completed.
@@ -299,7 +193,7 @@ namespace Microsoft.BotBuilderSamples
 }
 ```
 
-#### <a name="add-initialization-code"></a>Добавление кода инициализации
+### <a name="add-initialization-code"></a>Добавление кода инициализации
 
 ```csharp
 private readonly JobState _jobState;
@@ -310,17 +204,14 @@ public ProactiveBot(JobState jobState, EndpointService endpointService)
     _jobState = jobState ?? throw new ArgumentNullException(nameof(jobState));
     _jobLogPropertyAccessor = _jobState.CreateProperty<JobLog>(nameof(JobLog));
 
-    // Validate AppId.
-    // Note: For local testing, .bot AppId is empty for the Bot Framework Emulator.
-    AppId = string.IsNullOrWhiteSpace(endpointService.AppId) ? "1" : endpointService.AppId;
+    //...
 }
 
-private string AppId { get; }
 ```
 
-#### <a name="add-a-turn-handler"></a>Добавление обработчика шагов
+### <a name="add-a-turn-handler"></a>Добавление обработчика шагов
 
-Каждый бот должен реализовать обработчик шагов. Адаптер пересылает действия именно в этот метод.
+Адаптер перенаправляет действия обработчику шагов, который в свою очередь проверяет тип `Activity` и вызывает подходящий метод. Каждый бот должен реализовать обработчик шагов.
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
@@ -359,21 +250,8 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 
             case "show":
             case "show jobs":
-
                 // Display information for all jobs in the log.
-                if (jobLog.Count > 0)
-                {
-                    await turnContext.SendActivityAsync(
-                        "| Job number &nbsp; | Conversation ID &nbsp; | Completed |<br>" +
-                        "| :--- | :---: | :---: |<br>" +
-                        string.Join("<br>", jobLog.Values.Select(j =>
-                            $"| {j.TimeStamp} &nbsp; | {j.Conversation.Conversation.Id.Split('|')[0]} &nbsp; | {j.Completed} |")));
-                }
-                else
-                {
-                    await turnContext.SendActivityAsync("The job log is empty.");
-                }
-
+                // ...
                 break;
 
             default:
@@ -420,11 +298,15 @@ private static async Task SendWelcomeMessageAsync(ITurnContext turnContext)
         }
     }
 }
+```
 
-// Handles non-message activities.
+### <a name="handle-non-message-activities"></a>Обработка действий без сообщения
+
+Получив сообщение о выполнении задания, пометьте это задание как завершенное и уведомите пользователя.
+
+```csharp
 private async Task OnSystemActivityAsync(ITurnContext turnContext)
 {
-    // On a job completed event, mark the job as complete and notify the user.
     if (turnContext.Activity.Type is ActivityTypes.Event)
     {
         var jobLog = await _jobLogPropertyAccessor.GetAsync(turnContext, () => new JobLog());
@@ -447,11 +329,11 @@ private async Task OnSystemActivityAsync(ITurnContext turnContext)
 }
 ```
 
-#### <a name="add-job-creation-and-completion-methods"></a>Добавление методов создания и завершения задания
+### <a name="add-job-creation-and-completion-methods"></a>Добавление методов создания и завершения задания
 
 Чтобы запустить задание, чат-бот создает это задание и сохраняет в журнал заданий сведения о задании и текущей беседе. Когда бот получает событие выполнения задания для любого из сеансов общения, он проверяет идентификатор задания, а затем вызывает код обработки завершения задания.
 
-Код обработки завершения задания получает журнал задания из данных состояния, помечает задание как завершенное и отправляет упреждающее сообщение с помощью метода _продолжения диалога_ в адаптере.
+Код обработки завершения задания получает журнал задания из данных состояния, помечает задание как завершенное и отправляет упреждающее сообщение с помощью метода `ContinueConversationAsync` в адаптере.
 
 - Вызов продолжения диалога создает в канале следующий шаг, не зависящий от действий пользователя.
 - Адаптер выполняет соответствующий обратный вызов вместо обычного обработчика шагов в боте. Этот шаг будет иметь собственный контекст, из который мы извлекаем из данных о состоянии и передаем вместе с упреждающим сообщением для пользователя.
@@ -470,8 +352,11 @@ private JobLog.JobData CreateJob(ITurnContext turnContext, JobLog jobLog)
 
     return jobInfo;
 }
+```
 
-// Sends a proactive message to the user.
+### <a name="sends-a-proactive-message-to-the-user"></a>Отправка пользователю упреждающего сообщения
+
+```csharp
 private async Task CompleteJobAsync(
     BotAdapter adapter,
     string botId,
@@ -480,8 +365,11 @@ private async Task CompleteJobAsync(
 {
     await adapter.ContinueConversationAsync(botId, jobInfo.Conversation, CreateCallback(jobInfo), cancellationToken);
 }
+```
 
-// Creates the turn logic to use for the proactive message.
+### <a name="creates-the-turn-logic-to-use-for-the-proactive-message"></a>Создание логики шага, которую нужно использовать для упреждающего сообщения
+
+```csharp
 private BotCallbackHandler CreateCallback(JobLog.JobData jobInfo)
 {
     return async (turnContext, token) =>
@@ -512,7 +400,7 @@ private BotCallbackHandler CreateCallback(JobLog.JobData jobInfo)
 - обработчик шагов;
 - методы для создания и завершения заданий.
 
-#### <a name="declare-the-class-and-add-initialization-code"></a>Объявление класса и добавление кода инициализации
+### <a name="declare-the-class-and-add-initialization-code"></a>Объявление класса и добавление кода инициализации
 
 ```javascript
 const { ActivityTypes, TurnContext } = require('botbuilder');
@@ -543,7 +431,7 @@ function isEmpty(obj) {
 module.exports.ProactiveBot = ProactiveBot;
 ```
 
-#### <a name="the-turn-handler"></a>Обработчик шагов
+### <a name="the-turn-handler"></a>Обработчик шагов
 
 Методы `onTurn` и `showJobs` определены в классе `ProactiveBot`. Метод `onTurn` обрабатывает входные данные от пользователей. Также он получает действия событий от системы обработки заданий, которую мы здесь не рассматриваем. Форматирует `showJobs` и отправляет журнал задания.
 
@@ -605,7 +493,7 @@ async showJobs(turnContext) {
 }
 ```
 
-#### <a name="logic-to-start-a-job"></a>Логика запуска задания
+### <a name="logic-to-start-a-job"></a>Логика запуска задания
 
 Метод `createJob` определен в классе `ProactiveBot`. Он создает для пользователя новое задание и заносит сведения о нем в журнал. В полной реализации он также должен отправлять эту информацию в систему выполнения заданий.
 
@@ -648,7 +536,7 @@ async createJob(turnContext) {
 }
 ```
 
-#### <a name="logic-to-complete-a-job"></a>Логика обработки завершения задания
+### <a name="logic-to-complete-a-job"></a>Логика обработки завершения задания
 
 Метод `completeJob` определен в классе `ProactiveBot`. Он выполняет операции внутреннего учета и отправляет пользователю упреждающее сообщение (в исходном диалоге пользователя) о завершении задания.
 
@@ -693,17 +581,15 @@ async completeJob(turnContext, jobIdNumber) {
 
 ---
 
-### <a name="test-your-bot"></a>Тестирование бота
+## <a name="test-your-bot"></a>Тестирование бота
 
-Создайте бота и запустите его локально, открыв два окна Emulator.
+Создайте бота и запустите его локально, открыв два окна Emulator. Если вам нужны пошаговые инструкции, изучите файл [README](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/16.proactive-messages/README.md).
 
 1. Обратите внимание на то, что идентификатор диалога в этих окнах различается.
 1. В первом окне несколько раз введите `run`, чтобы запустить несколько заданий.
 1. Во втором окне введите `show`, чтобы просмотреть список заданий, внесенных в журнал.
 1. Во втором окне введите `done <jobNumber>`, где `<jobNumber>` обозначает номер любого из перечисленных заданий без угловых скобок. (Код чат-бота будет воспринимать такое сообщение как событие завершения задания jobComplete.)
 1. Вы увидите, что бот отправляет пользователю в первом окне упреждающее сообщение.
-
-<!--TODO: Recreate the screen shots once we're happy with both the C# and JS versions of the code.-->
 
 Теперь эта беседа будет выглядеть с точки зрения пользователя примерно так:
 
@@ -713,4 +599,5 @@ async completeJob(turnContext, jobIdNumber) {
 
 ![Эмулятор сеанса для системы выполнения заданий](~/v4sdk/media/how-to-proactive/job-system.png)
 
-<!-- Add a next steps section. -->
+## <a name="additional-resources"></a>Дополнительные ресурсы
+Изучите дополнительные примеры для языков в C# и JS на сайте [GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md).
