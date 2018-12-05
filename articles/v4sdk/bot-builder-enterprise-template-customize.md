@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 319700f8b7b236ce74058bac5fabb84f21e04d69
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645584"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452016"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Шаблон Enterprise Bot — настройка бота
 
@@ -36,7 +36,13 @@ ms.locfileid: "51645584"
     | - CognitiveModels     
         | - LUIS            // .LU file containing base conversational intents (Greeting, Help, Cancel)
         | - QnA             // .LU file containing example QnA items
-    | - DeploymentScripts   // msbot clone recipe for deployment
+    | - DeploymentScripts   // msbot clone recipes for deployment
+        | - de              // Deployment files for German
+        | - en              // Deployment files for English        
+        | - es              // Deployment files for Spanish
+        | - fr              // Deployment files for French
+        | - it              // Deployment files for Italian
+        | - zh              // Deployment files for Chinese
     | - Dialogs             // All Bot dialogs sit under this folder
         | - Main            // Root Dialog for all messages
             | - MainDialog.cs       // Dialog Logic
@@ -69,26 +75,26 @@ ms.locfileid: "51645584"
 
 ## <a name="updating-your-cognitive-models"></a>Обновление когнитивных моделей
 
-По умолчанию шаблон Enterprise Bot содержит две когнитивные модели: пример базы знаний QnAMaker с часто задаваемыми вопросами и модель LUIS для общих намерений (приветствие, справка, отмена и т. п.). Эти модели можно настроить в соответствии с вашими потребностями. Вы также можете добавить новые модели LUIS и базы знаний QnAMaker, чтобы расширить возможности бота.
+По умолчанию шаблон Enterprise содержит две когнитивные модели: пример базы знаний QnA Maker с часто задаваемыми вопросами и модель LUIS для общих намерений (приветствие, справка, отмена и т. п.). Эти модели можно настроить в соответствии с вашими потребностями. Вы также можете добавить новые модели LUIS и базы знаний QnA Maker, чтобы расширить возможности бота.
 
 ### <a name="updating-an-existing-luis-model"></a>Изменение существующей модели LUIS
 Чтобы обновить существующую модель LUIS в шаблоне Enterprise Bot, выполните следующие шаги:
 1. Измените модель LUIS на [портале LUIS](http://luis.ai) или воспользуйтесь инструментами командной строки [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) и [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS). 
 2. Выполните следующую команду, чтобы обновить модель Dispatch в соответствии с внесенными изменениями (для правильной маршрутизации сообщений):
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. Выполните следующую команду в корневой папке проекта для каждой обновленной модели, чтобы обновить соответствующие классы LuisGen: 
 ```shell
     luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
 ```
 
-### <a name="updating-an-existing-qnamaker-knowledge-base"></a>Обновление существующей базы знаний QnAMaker
-Чтобы обновить существующую базу знаний QnAMaker, выполните следующие шаги:
-1. Внесите изменения в базу знаний QnAMaker с помощью инструментов командной строки [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) и [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) или [портала QnAMaker](https://qnamaker.ai).
+### <a name="updating-an-existing-qna-maker-knowledge-base"></a>Обновление существующей базы знаний QnA Maker
+Чтобы обновить существующую базу знаний QnA Maker, выполните следующие шаги.
+1. Внесите изменения в базу знаний QnA Maker с помощью средств командной строки [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) и [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) или на [портале QnA Maker](https://qnamaker.ai).
 2. Выполните следующую команду, чтобы обновить модель Dispatch в соответствии с внесенными изменениями (для правильной маршрутизации сообщений):
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 
 ### <a name="adding-a-new-luis-model"></a>Добавление новой модели LUIS
@@ -101,28 +107,28 @@ ms.locfileid: "51645584"
 ```
 3. Добавьте новую модель LUIS в компонент Dispatch, выполнив следующую команду:
 ```shell
-    dispatch add -t luis -id YOUR_LUIS_APPID -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch add -t luis -id LUIS_APP_ID -bot "YOUR_BOT.bot" -secret YOURSECRET
 ```
 4. Обновите модель диспетчеризации, чтобы применить изменения модели LUIS, выполнив следующую команду:
 ```shell
-    dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch refresh -bot "YOUR_BOT.bot" -secret YOUR_SECRET
 ```
 
-### <a name="adding-an-additional-qnamaker-knowledgebase"></a>Добавление дополнительной базы знаний QnAMaker
+### <a name="adding-an-additional-qna-maker-knowledge-base"></a>Добавление дополнительной базы знаний QnA Maker
 
-Возможно, вам потребуется добавить в бот дополнительную базу знаний QnAMaker. Ниже описано, как это сделать.
+Возможно, вы захотите добавить в бот дополнительную базу знаний QnA Maker. Ниже описано, как это сделать.
 
-1. Создайте базу знаний QnAMaker из JSON-файла с помощью приведенной ниже команды в каталоге помощника.
+1. Создайте базу знаний QnA Maker из JSON-файла, выполнив приведенную ниже команду в каталоге помощника.
 ```shell
-qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
 ```
 2. Выполните приведенную ниже команду, чтобы обновить модель Dispatch в соответствии с внесенными изменениями.
 ```shell
-dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. Обновите строго типизированный класс Dispatch таким образом, чтобы он отражал новый источник QnA.
 ```shell
-msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
 luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
 ```
 4.  Обновите файл `Dialogs\Main\MainDialog.cs` таким образом, чтобы он включал соответствующее намерение Dispatch для нового источника QnA, как в приведенном ниже примере.
@@ -141,52 +147,57 @@ luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
 - В качестве значения InitialDialogId укажите первый диалог, который должен запустить компонент.
 
 ```
-InitialDialogId = nameof(OnboardingDialog);
+    InitialDialogId = nameof(OnboardingDialog);
 
-var onboarding = new WaterfallStep[]
-{
-    AskForName,
-    AskForEmail,
-    AskForLocation,
-    FinishOnboardingDialog,
-};
+    var onboarding = new WaterfallStep[]
+    {
+        AskForName,
+        AskForEmail,
+        AskForLocation,
+        FinishOnboardingDialog,
+    };
 
-AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
-AddDialog(new TextPrompt(NamePrompt));
-AddDialog(new TextPrompt(EmailPrompt));
-AddDialog(new TextPrompt(LocationPrompt));
+    AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
+    AddDialog(new TextPrompt(DialogIds.NamePrompt));
+    AddDialog(new TextPrompt(DialogIds.EmailPrompt));
+    AddDialog(new TextPrompt(DialogIds.LocationPrompt));
 ```
 
 Затем нужно создать экземпляр TemplateManager для обработки ответов. Создайте класс, наследующий от TemplateManager. Пример можно найти в файле OnboardingResponses.cs, и ниже приведен фрагмент кода.
 
-```
-public const string _namePrompt = "namePrompt";
-public const string _haveName = "haveName";
-public const string _emailPrompt = "emailPrompt";
-      
-private static LanguageTemplateDictionary _responseTemplates = new LanguageTemplateDictionary
-{
-    ["default"] = new TemplateIdMap
-    {
-        {
-            _namePrompt,
-            (context, data) => OnboardingStrings.NAME_PROMPT
-        },
-        {
-            _haveName,
-            (context, data) => string.Format(OnboardingStrings.HAVE_NAME, data.name)
-        },
-        {
-            _emailPrompt,
-            (context, data) => OnboardingStrings.EMAIL_PROMPT
-        },
+```    
+ ["default"] = new TemplateIdMap
+            {
+                { ResponseIds.EmailPrompt,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: OnboardingStrings.EMAIL_PROMPT,
+                        ssml: OnboardingStrings.EMAIL_PROMPT,
+                        inputHint: InputHints.ExpectingInput)
+                },
+                { ResponseIds.HaveEmailMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        ssml: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                { ResponseIds.HaveLocationMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        ssml: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                
+                ...
 ```
 
 Чтобы отображать ответы, можно использовать экземпляр TemplateManager для доступа к этим ответам с помощью методов `ReplyWith` или `RenderTemplate` экземпляров Prompt. Примеры приведены ниже.
 
 ```
-Prompt = await _responder.RenderTemplate(sc.Context, "en", OnboardingResponses._namePrompt),
-await _responder.ReplyWith(sc.Context, OnboardingResponses._haveName, new { name });
+Prompt = await _responder.RenderTemplate(sc.Context, sc.Context.Activity.Locale, OnboardingResponses.ResponseIds.NamePrompt)
+await _responder.ReplyWith(sc.Context, OnboardingResponses.ResponseIds.HaveNameMessage, new { name });
 ```
 
 Последним элементом инфраструктуры диалога является создание класса State, область видимости которого ограничена диалогом. Создайте класс, наследующий от `DialogState`.
@@ -195,4 +206,3 @@ await _responder.ReplyWith(sc.Context, OnboardingResponses._haveName, new { name
 
 ## <a name="conversational-insights-using-powerbi-dashboard-and-application-insights"></a>Аналитические сведения об общении с использованием панели мониторинга PowerBI и Application Insights
 - Чтобы начать получать аналитические сведения об общении, ознакомьтесь со [статьей о настройке аналитики общения с помощью панели мониторинга PowerBI](bot-builder-enterprise-template-powerbi.md).
-

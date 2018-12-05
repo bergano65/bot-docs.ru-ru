@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: c7977400a53af916217e595dda8e9c9a0ff85496
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645594"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500664"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -29,7 +29,7 @@ ms.locfileid: "51645594"
 - Установите средства командной строки (CLI) Службы Azure Bot. Даже если вы ранее использовали эти средства, обязательно выполните эти шаги, чтобы убедиться, что у вас установлена их последняя версия.
 
 ```shell
-npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
+npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 ```
 
 - Установите средства командной строки (CLI) Azure, которые можно скачать [здесь](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Если вы уже установили инструмент командной строки Azure Bot Service, обновите его до последней версии, удалив текущую версию и установив новую.
@@ -37,6 +37,12 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 - Установите расширение AZ для Службы Bot.
 ```shell
 az extension add -n botservice
+```
+
+- Установка средства LUISGen
+
+```shell
+dotnet tool install -g luisgen
 ```
 
 ## <a name="configuration"></a>Параметр Configuration
@@ -48,7 +54,7 @@ az extension add -n botservice
 
 ## <a name="deployment"></a>Развертывание
 
->Если у вас несколько подписок Azure и нужно убедиться, что для развертывания выбрана правильная подписка, выполните следующие команды, прежде чем продолжить.
+> Если у вас несколько подписок Azure и нужно убедиться, что для развертывания выбрана правильная подписка, выполните следующие команды, прежде чем продолжить.
 
  Войдите в учетную запись Azure в браузере.
 ```shell
@@ -63,17 +69,17 @@ az account set --subscription "YOUR_SUBSCRIPTION_NAME"
 - Azure Application Insights (телеметрия);
 - Azure Cosmos DB (состояние);
 - Azure Cognitive Services — Интеллектуальная служба распознавания речи;
-- Azure Cognitive Services — QnA Maker (включая Поиск Azure и Веб-приложение Azure);
+- Azure Cognitive Services — QnA Maker (включая Поиск Azure и Веб-приложения Azure);
 - Azure Cognitive Services — Content Moderator (необязательный этап, выполняемый вручную).
 
-Новый проект бота предусматривает возможность развертывания с помощью команды `msbot clone services`, которая автоматически развертывает все перечисленные выше службы в подписке Azure и обновляет BOT-файл проекта, добавляя в него все службы и ключи, необходимые для бесперебойного функционирования бота.
+Новый проект бота предусматривает возможность развертывания с помощью команды `msbot clone services`, которая автоматически развертывает все перечисленные выше службы в подписке Azure и обновляет BOT-файл проекта, добавляя в него все службы и ключи, необходимые для бесперебойного функционирования бота. Он также поддерживает несколько параметров конфигурации для следующих языков: китайский, английский, французский, немецкий, итальянский и испанский.
 
 > После развертывания проверьте ценовые категории созданных служб и измените их в соответствии со своим сценарием.
 
-В файле README.md созданного проекта содержится пример команды msbot clone services. В этой команде нужно передать имя создаваемого бота и общую версию, как показано ниже. Укажите ключ разработки LUIS, полученный на предыдущем этапе, и выберите нужное расположение центра обработки данных Azure (например, westus или westeurope). Убедитесь, что ключ разработки LUIS, полученный на предыдущем этапе, соответствует региону, который вы укажете далее (например, westus для luis.ai или westeurope для eu.luis.ai).
+В файле README.md созданного проекта содержится пример команды `msbot clone services`, в которую следует внести имя создаваемого бота. Ниже приводится ее обобщенная версия. Укажите ключ разработки LUIS, полученный на предыдущем этапе, и выберите нужное расположение центра обработки данных Azure (например, westus или westeurope). Убедитесь, что ключ разработки LUIS, полученный на предыдущем этапе, соответствует региону, который вы укажете далее (например, westus для luis.ai или westeurope для eu.luis.ai). Наконец, укажите ссылку на папку языка, которую вы хотите использовать (например, `DeploymentScripts\en`).
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
 > У некоторых пользователей при запуске развертывания может возникать следующая ошибка: `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. В этом случае перейдите по адресу https://apps.dev.microsoft.com и вручную создайте новое приложение, получив ApplicationID и пароль или секрет. Выполните приведенную выше команду msbot clone services, указав два новых аргумента (`appId` и `appSecret`) и передав только что полученные значения. Обязательно заключите секрет в кавычки, чтобы избежать проблем с синтаксическим анализом, например: `-appSecret "YOUR_SECRET"`.
@@ -82,15 +88,15 @@ msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_K
 
 ![Подтверждение развертывания](./media/enterprise-template/EnterpriseBot-ConfirmDeployment.png)
 
->По завершении развертывания **обязательно** запишите полученный секрет BOT-файла. Он понадобится вам на следующих этапах.
+>По завершении развертывания **обязательно** запишите полученный секрет BOT-файла. Он понадобится вам на следующих этапах. Можно также запустить `msbot secret --clear --secret YOUR_BOT_SECRET`, чтобы удалить секрет из файла бота и упростить разработку, пока вы не будете готовы развернуть бот в рабочей среде. Запустите `msbot secret --new`, чтобы создать новый секрет.
 
 - Обновите файл `appsettings.json`, добавив в него имя и секрет созданного BOT-файла.
 - Выполните приведенную ниже команду, получите ключ инструментирования (InstrumentationKey) для экземпляра Application Insights и укажите этот ключ в файле `appsettings.json`.
 
-`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
+`msbot list --bot YOUR_BOT_FILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
-          "botFilePath": ".\\YOURBOTFILE.bot",
+          "botFilePath": ".\\YOUR_BOT_FILE.bot",
           "botFileSecret": "YOUR_BOT_SECRET",
           "ApplicationInsights": {
             "InstrumentationKey": "YOUR_INSTRUMENTATION_KEY"
@@ -119,15 +125,15 @@ az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.cspro
 
 ### <a name="authentication"></a>Authentication
 
-Чтобы включить аутентификацию, сначала на портале Azure укажите в настройках бота имя подключения для аутентификации, а затем выполните приведенные ниже действия. Дополнительные сведения см. в [документации](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0).
+Чтобы включить аутентификацию, сначала на портале Azure укажите в настройках бота имя подключения для аутентификации, а затем выполните приведенные ниже действия. Дополнительные сведения см. в [документации](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0&tabs=csharp).
 
-Зарегистрируйте `SignInDialog` в конструкторе MainDialog:
+Зарегистрируйте `AuthenticationDialog` в конструкторе MainDialog:
     
-`AddDialog(new SignInDialog(_services.AuthConnectionName));`
+`AddDialog(new AuthenticationDialog(_services.AuthConnectionName));`
 
 Добавьте приведенную ниже строку в любое удобное место в коде, чтобы проверить простую последовательность входа.
     
-`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
+`var authResult = await dc.BeginDialogAsync(nameof(AuthenticationDialog));`
 
 ### <a name="content-moderation"></a>Модерация содержимого
 

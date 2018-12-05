@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b85b0e2d3c1ae8c30ea9d5d9fa62783c2968744
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: bb2f8abccc75fcc1c63589bc41289443cf1fc211
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645491"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452006"
 ---
 # <a name="enterprise-bot-template---creating-a-new-project"></a>Шаблон Enterprise Bot — создание проекта
 
@@ -49,7 +49,8 @@ ms.locfileid: "51645491"
 
 Теперь проект создан, и можно приступать к созданию инфраструктуры поддержки Azure, а также выполнить настройку и развертывание, чтобы бот был сразу же готов к работе. Сведения о развертывании бота см. [здесь](bot-builder-enterprise-template-deployment.md).
 
-> Это действие необходимо выполнить, иначе инициализация бота (AppInsights) и зависимости LUIS не будут доступны.
+> Если вы не выполните этот шаг, все зависимости бота (службы Azure Bot, Application Insights, LUIS, и т.д.) будут недоступны.
+
 ## <a name="customize-your-bot"></a>Настройка бота
 
 Убедившись, что развернутый бот готов к работе, настройте его в соответствии со своими потребностями. Сведения о настройке бота см. [здесь](bot-builder-enterprise-template-customize.md).

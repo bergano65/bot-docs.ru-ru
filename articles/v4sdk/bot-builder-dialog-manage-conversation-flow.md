@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288833"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452086"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация последовательной беседы
 
@@ -240,7 +240,7 @@ async onTurn(turnContext) {
 
 ---
 
-При определении каскадных действий нужно помнить о нескольких важных вещах.
+При определении каскадных шагов нужно помнить о нескольких важных аспектах.
 
 * На каждом шаге бота отображаются введенные пользователем данные, а затем ответ бота. Это означает, что бот запрашивает данные у пользователя в конце этапа каскадного диалога, а ответ на этот запрос получает в начале следующего этапа каскадного диалога.
 * Каждый запрос, по сути, является диалогом из двух реплик, для которого в цикле выводится своя строка запроса, пока не будут получены "допустимые" входные данные. 

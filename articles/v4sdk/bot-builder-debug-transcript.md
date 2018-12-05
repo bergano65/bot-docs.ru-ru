@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservices: sdk
 ms.date: 10/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7a8b7088e65d015f22438ee2050f97823b72e49
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134799"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452096"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Отладка бота с помощью файлов записей разговоров
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "50134799"
 
 ## <a name="debug-using-transcript-file"></a>Отладка с помощью файла записи разговора
 Теперь, когда файл записи разговора загружен, все готово к отладке взаимодействия между пользователем и ботом. Для этого просто щелкните любое событие или действие, записанное в разделе _Журнал_ в правой нижней области эмулятора. В приведенном ниже примере мы выбрали первое действие пользователя — отправку сообщения "Hello". При этом все данные из файла записи разговора, связанные с этим сообщением, отображаются в окне _INSPECTOR_ эмулятора в формате JSON. Просмотрев некоторые из этих значение снизу вверх, мы видим:
-* что тип действия — _message_;
+* что действие имеет тип _message_ (сообщение);
 * время отправки сообщения;
 * что отправленный обычный текст содержит строку "Hello";
 * что сообщение было отправлено нашему боту;

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 11/16/18
+ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: faf26b1c4ba87061631f217ee074283759f77c97
-ms.sourcegitcommit: 392c581aa2f59cd1798ee2136b6cfee56aa3ee6d
+ms.openlocfilehash: a512cb92f35374b457c4d4cef05667edbd8d2f1f
+ms.sourcegitcommit: 892bf81d306ba607c293ee8639d5c6b66ab3710a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52156703"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52460013"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -33,7 +33,7 @@ ms.locfileid: "52156703"
 
 1. Выберите **Import new app** (Импортировать новое приложение). 
 1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON) 
-1. Выберите файл `reminders.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **LuisBot**. Этот файл содержит три намерения: Calendar-Add, Calendar-Find и None. Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении. 
+1. Выберите файл `reminders.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **LuisBot**. Этот файл содержит три намерения: Calendar-Add, Calendar-Find и None. Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении. Если вы намерены добавить сущности, воспользуйтесь [дополнительным разделом](#optional---extract-entities) в конце этой статьи.
 1. [Обучите](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) приложение.
 1. [Опубликуйте](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) приложение в *рабочей* среде.
 
@@ -83,7 +83,7 @@ ms.locfileid: "52156703"
 ```
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-## <a name="configure-your-bot-to-use-your-luis-app"></a>Настройка бота для работы с приложением LUIS
+### <a name="configure-your-bot-to-use-your-luis-app"></a>Настройка бота для работы с приложением LUIS
 
 Затем мы инициализируем в `BotServices.cs` новый экземпляр класса BotService, который извлекает перечисленные выше сведения из файла `.bot`. Внешняя служба настраивается с помощью класса `BotConfiguration`.
 
@@ -241,7 +241,7 @@ server.post('/api/messages', (req, res) => {
 
 Теперь служба LUIS полностью настроена для вашего бота. Далее рассмотрим, как получить намерение из LUIS.
 
-## <a name="get-the-intent-by-calling-luis"></a>Получение намерения путем вызова LUIS
+### <a name="get-the-intent-by-calling-luis"></a>Получение намерения путем вызова LUIS
 
 Бот получает результаты из службы LUIS путем вызова API распознавания речи LUIS.
 
@@ -351,106 +351,166 @@ module.exports.LuisBot = LuisBot;
 
 ---
 
-<!--
-## Extract entities
-
-Besides recognizing intent, a LUIS app can also extract entities, which are important words for fulfilling a user's request. For example, for a weather bot, the LUIS app might be able to extract the location for the weather report from the user's message.
-
-A common way to structure your conversation is to identify any entities in the user's message, and prompt for any of the required entities that are not found. Then, the subsequent steps handle the response to the prompt.
-
-
-# [C#](#tab/cs)
-
-Let's say the message from the user was "What's the weather in Seattle"? The [LuisRecognizer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.ai.luis.luisrecognizer) gives you a [RecognizerResult](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult) with an [`Entities` property](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.core.extensions.recognizerresult#properties-) that has this structure:
-
-```json
-{
-"$instance": {
-    "Weather_Location": [
-        {
-            "startIndex": 22,
-            "endIndex": 29,
-            "text": "seattle",
-            "score": 0.8073087
-        }
-    ]
-},
-"Weather_Location": [
-        "seattle"
-    ]
-}
-```
-
-The following helper function can be added to your bot to get entities out of the `RecognizerResult` from LUIS. It will require the use of the `Newtonsoft.Json.Linq` library, which you'll have to add to your **using** statements.
-
-```cs
-// Get entities from LUIS result
-private T GetEntity<T>(RecognizerResult luisResult, string entityKey)
-{
-    var data = luisResult.Entities as IDictionary<string, JToken>;
-    if (data.TryGetValue(entityKey, out JToken value))
-    {
-        return value.First.Value<T>();
-    }
-    return default(T);
-}
-```
-
-When gathering information like entities from multiple steps in a conversation, it can be helpful to save the information you need in your state. If an entity is found, it can be added to the appropriate state field. In your conversation if the current step already has the associated field completed, the step to prompt for that information can be skipped.
-
-# [JavaScript](#tab/js)
-
-Let's say the message from the user was "What's the weather in Seattle"? The [LuisRecognizer](https://docs.microsoft.com/en-us/javascript/api/botbuilder-ai/luisrecognizer) gives you a [RecognizerResult](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core-extensions/recognizerresult) with an `entities` property that has this structure:
-
-```json
-{
-"$instance": {
-    "Weather_Location": [
-        {
-            "startIndex": 22,
-            "endIndex": 29,
-            "text": "seattle",
-            "score": 0.8073087
-        }
-    ]
-},
-"Weather_Location": [
-        "seattle"
-    ]
-}
-```
-
-This `findEntities` function looks for any entities recognized by the LUIS app that match the incoming `entityName`.
-
-```javascript
-// Helper function for finding a specified entity
-// entityResults are the results from LuisRecognizer.get(context)
-function findEntities(entityName, entityResults) {
-    let entities = []
-    if (entityName in entityResults) {
-        entityResults[entityName].forEach(entity => {
-            entities.push(entity);
-        });
-    }
-    return entities.length > 0 ? entities : undefined;
-}
-
-
-When gathering information like entities from multiple steps in a conversation, it can be helpful to save the information you need in your state. If an entity is found, it can be added to the appropriate state field. In your conversation if the current step already has the associated field completed, the step to prompt for that information can be skipped.
-
-/Snip -->
-
-## <a name="test-the-bot"></a>Тестирование бота
+### <a name="test-the-bot"></a>Тестирование бота
 
 1. Выполните этот пример на локальном компьютере. Если потребуются дополнительные инструкции, изучите файл readme для примера на [C#](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/12.nlp-with-luis/README.md) или [JS](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/javascript_nodejs/12.nlp-with-luis/README.md).
 
 1. В эмуляторе введите сообщение, как показано ниже. 
 
-![Тестирование примера NLP](~/media/emulator-v4/nlp-luis-sample-testing.png)
+![Тестирование входных данных для примера NLP](./media/nlp-luis-sample-message.png)
 
-В ответе бот возвратит намерение с самой высокой оценкой. В нашем примере это будет намерение `Calendar-Add`. Как вы помните, намерения определяются в файле `reminders.json`, который вы импортировали на портале luis.ai.
+В ответе бот возвратит намерение с самой высокой оценкой. В нашем примере это будет Calendar_Add. Как вы помните, в файле `reminders.json`, который вы импортировали на портале luis.ai, определены намерения Calendar-Add, Calendar-Find и None. 
+
+![Тестирование ответа в примере NLP](./media/nlp-luis-sample-response.png) 
 
 Оценка прогнозирования означает степень достоверности результатов прогнозирования LUIS. Оценка прогнозирования находится в диапазоне от нуля (0) до единицы (1). Пример оценки прогнозирования LUIS с высокой степенью достоверности — 0,99. Пример оценки прогнозирования LUIS с низкой достоверностью — 0,01. 
+
+## <a name="optional---extract-entities"></a>Извлечение сущностей (необязательно)
+
+Помимо распознавание намерений пользователя, приложения LUIS умеет возвращать сущности. Сущностями называются важные слова, которые имеют отношение к намерению. Иногда они помогают боту лучше выполнить запрос пользователя или реагировать более разумно. 
+
+### <a name="why-use-entities"></a>Для чего нужны сущности
+
+Сущности LUIS позволяют боту лучше понимать некоторые факты или события, которые отличаются от стандартных намерений. Это позволяет получить от пользователя дополнительную информацию, которая позволит боту точнее реагировать на действия пользователя или пропустить некоторые вопросы, в которых от пользователя запрашивается уже полученная информация. Например, в боте информации о погоде приложение LUIS может применить сущность _Location_ (Расположение) для извлечения из сообщения пользователя данных о местоположении, по которому запрошен отчет о погоде. Это позволит боту пропустить вопрос о местонахождении пользователя и сделать беседу с пользователем более осмысленной и краткой.
+
+### <a name="prerequisites"></a>Предварительные требования
+
+Чтобы использовать сущности в этом примере, следует создать приложение LUIS, которое включает в себя сущности. Выполните действия, описанные в разделе выше, чтобы [создать приложение LUIS](#create-a-luis-app-in-the-luis-portal), но вместо файла `reminders.json` используйте для сборки приложения LUIS файл [reminders-with-entities.json](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/nlp-with-luis). В этом файле описаны те же цели и три дополнительные сущности: Appointment (Встреча), Meeting (Собрание) и Schedule (Расписание). Эти сущности помогают LUIS определить намерение в сообщении пользователя. 
+
+### <a name="extract-and-display-entities"></a>Извлечение и отображение сущностей
+Приведенный ниже код можно (но не обязательно) добавить в этот пример приложения, чтобы извлекать и отображать сведения о сущностях, если LUIS использует их при определении намерений пользователя. 
+
+# <a name="ctabcs"></a>[C#](#tab/cs)
+
+Приведенную ниже вспомогательную функцию можно добавить в бот для получения сущностей из `RecognizerResult` от LUIS. Для этого потребуется библиотека `Newtonsoft.Json.Linq`, которую нужно добавить в операторы **using**. Если в ходе синтаксического анализа кода JSON, полученного от LUIS, обнаруживаются сведения о сущностях, функция Newtonsoft _DeserializeObject_ преобразует этот код JSON в динамический объект для доступа к этим сведениям о сущностях.
+
+```cs
+using Newtonsoft.Json.Linq;
+
+private string ParseLuisForEntities(RecognizerResult recognizerResult)
+{
+   var result = string.Empty;
+
+   // recognizerResult.Entities returns type JObject.
+   foreach (var entity in recognizerResult.Entities)
+   {
+       // Parse JObject for a known entity types: Appointment, Meeting, and Schedule.
+       var appointFound = JObject.Parse(entity.Value.ToString())["Appointment"];
+       var meetingFound = JObject.Parse(entity.Value.ToString())["Meeting"];
+       var schedFound = JObject.Parse(entity.Value.ToString())["Schedule"];
+
+       // We will return info on the first entity found.
+       if (appointFound != null)
+       {
+           // use JsonConvert to convert entity.Value to a dynamic object.
+           dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+           if (o.Appointment[0] != null)
+           {
+              // Find and return the entity type and score.
+              var entType = o.Appointment[0].type;
+              var entScore = o.Appointment[0].score;
+              result = "Entity: " + entType + ", Score: " + entScore + ".";
+              
+              return result;
+            }
+        }
+
+        if (meetingFound != null)
+        {
+            // use JsonConvert to convert entity.Value to a dynamic object.
+            dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+            if (o.Meeting[0] != null)
+            {
+                // Find and return the entity type and score.
+                var entType = o.Meeting[0].type;
+                var entScore = o.Meeting[0].score;
+                result = "Entity: " + entType + ", Score: " + entScore + ".";
+                
+                return result;
+            }
+        }
+
+        if (schedFound != null)
+        {
+            // use JsonConvert to convert entity.Value to a dynamic object.
+            dynamic o = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+            if (o.Schedule[0] != null)
+            {
+                // Find and return the entity type and score.
+                var entType = o.Schedule[0].type;
+                var entScore = o.Schedule[0].score;
+                result = "Entity: " + entType + ", Score: " + entScore + ".";
+                
+                return result;
+            }
+        }
+    }
+
+    // No entities were found, empty string returned.
+    return result;
+}
+```
+
+Обнаруженные сведения о сущностях можно отображать вместе с выявленным намерением пользователя. Чтобы отобразить эту информацию, добавьте следующие несколько строк кода в пример кода задачи _OnTurnAsync_ сразу после отображения сведений о намерении.
+
+```cs
+// See if LUIS found and used an entity to determine user intent.
+var entityFound = ParseLuisForEntities(recognizerResult);
+
+// Inform the user if LUIS used an entity.
+if (entityFound.ToString() != string.Empty)
+{
+   await turnContext.SendActivityAsync($"==>LUIS Entity Found: {entityFound}\n");
+}
+else
+{
+   await turnContext.SendActivityAsync($"==>No LUIS Entities Found.\n");
+}
+```
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+
+Можно добавить в бот следующий код, чтобы извлекать сведения о сущностях из результата `luisRecognizer`, полученного от LUIS. В код обработки `onTurn` в файле кода bot.js добавьте следующую строку сразу после объявления константы _topIntent_. Она собирает все полученные данные о сущностях: 
+
+```javascript
+// Since the LuisRecognizer was configured to include the raw results, get returned entity data.
+var entityData = results.luisResult.entities;
+
+```
+
+Чтобы предоставить пользователю все полученные сведения о сущностях, добавьте следующие строки кода сразу после вызова _sendActivity_, который в этом примере кода информирует пользователей о наличии значения topIntent.
+
+```javascript
+// See if LUIS found and used an entity to determine user intent.
+if (entityData.length > 0)
+{
+   if ((entityData[0].type == "Appointment") || (entityData[0].type == "Meeting") || (entityData[0].type == "Schedule") )
+   {
+      // inform user if LUIS used an entity.
+      await turnContext.sendActivity(`LUIS Entity Found: Entity: ${entityData[0].entity}, Score: ${entityData[0].score}.`);
+   }
+}
+else{
+       await turnContext.sendActivity(`No LUIS Entities Found.`);
+}
+```
+
+Этот код сначала проверяет, есть ли в результатах LUIS данные о сущностях, а при их наличии отображает сведения о первой обнаруженной сущности.
+
+---
+
+### <a name="test-bot-with-entities"></a>Тестирование бота с сущностями
+
+1. Чтобы выполнить тестирование бота, который использует сущности, выполните этот пример локально, как описано [выше](#test-the-bot).
+
+1. Введите в эмуляторе сообщение, предложенное ниже. 
+
+![Тестирование входных данных для примера NLP](./media/nlp-luis-sample-message.png)
+
+В следующем ответе бота содержится намерение Calendar_Add, получившее самую высокую оценку, а также сущность Meetings (Собрания), которую служба LUIS использовала для определения намерения пользователя.
+
+![Тестирование ответа в примере NLP](./media/nlp-luis-sample-entity-response.png) 
+
+Обнаружение сущностей может повысить общую производительность бота. Например, определение сущности Meetings (Собрания), как показано выше, позволяет приложению вызвать специализированную функцию для создания нового собрания в календаре пользователя.
 
 ## <a name="next-steps"></a>Дополнительная информация
 
