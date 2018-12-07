@@ -55,9 +55,9 @@
 ### [Node.js](nodejs/TOC.md)
 ## [Отладка](debug/TOC.md)
 ## Развертывание
-### [Скачивание и повторное развертывание кода бота](bot-service-build-download-source-code.md)
+### [Развертывание бота в Azure](bot-builder-howto-deploy-azure.md)
+<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
-### [Развертывание бота C# в Azure](bot-builder-howto-deploy-azure.md)
 ## [Управление](manage/TOC.md)
 # Справочные материалы
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/dotnetsdk4)
