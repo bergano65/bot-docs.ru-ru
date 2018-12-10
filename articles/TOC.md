@@ -55,7 +55,8 @@
 ### [Node.js](nodejs/TOC.md)
 ## [Отладка](debug/TOC.md)
 ## Развертывание
-### [Развертывание бота в Azure](bot-builder-howto-deploy-azure.md)
+### [Развертывание бота с помощью Azure CLI](bot-builder-deploy-az-cli.md)
+### [Развертывание бота на C# с помощью Visual Studio](bot-builder-howto-deploy-azure.md)
 <!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
 ## [Управление](manage/TOC.md)
