@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77e24d58fb377ec2390671517204526bf076f78e
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 20a7dad4398874febfbd71024cd68763107f7bd8
+ms.sourcegitcommit: 0b421ff71617f03faf55ea175fb91d1f9e348523
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645544"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286630"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Создание бота с помощью пакета SDK Bot Builder для .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "51645544"
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Visual Studio [2017](https://www.visualstudio.com/downloads).
-- Шаблон пакета SDK для Bot Builder версии 4 для [C#](https://botbuilder.myget.org/feed/aitemplates/package/vsix/BotBuilderV4.fbe0fc50-a6f1-4500-82a2-189314b7bea2).
+- Шаблон пакета SDK для Bot Builder версии 4 для [C#](https://aka.ms/bot-vsix).
 - Bot Framework Channel [Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Навыки разработки для [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index).
 
