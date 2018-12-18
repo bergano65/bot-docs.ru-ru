@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 818017a81b497b13ee181dbb6b87c03a0182736d
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332968"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120681"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -173,6 +173,11 @@ if(context.activity.type === 'message'){
 | [invoke](#invoke) | IInvokeActivity (C#) <br> Действие (JS) | Представляет связь, отправляемую боту для запроса, что он исполняет определенную операцию. Этот тип действия зарезервирован для внутреннего использования в Microsoft Bot Framework. |
 | [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Действие (JS) | Указывает, что пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Like". |
 | [typing](#typing) | ITypingActivity (C#) <br> Действие (JS) | Указывает, что пользователь или бот на другом конце общения составляет ответ. |
+| messageUpdate | IMessageUpdateActivity (C#) <br> Действие (JS) | Обозначает запрос на обновление предыдущего действия в беседе. |
+| messageDelete | IMessageDeleteActivity (C#) <br> Действие (JS) | Обозначает запрос на удаление предыдущего действия в беседе. |
+| suggestion | ISuggestionActivity (C#) <br> Действие (JS) | Обозначает частное предложение получателю по поводу другого конкретного действия. |
+| trace | ITraceActivity (C#) <br> Действие (JS) | Действие, по которому бот может сохранять внутренние сведения в запись журнала беседы. |
+| handoff | IHandoffActivity (C#) <br> Действие (JS) | Информирует о передаче управления беседой или содержит запрос на передачу управления беседой. |
 
 ## <a name="message"></a>Message
 

@@ -1,31 +1,38 @@
 ---
-title: Развертывание бота на C# в Azure | Документация Майкрософт
+title: Развертывание бота на C# с помощью Visual Studio | Документация Майкрософт
 description: Развертывание бота в облаке Azure.
-keywords: развертывание бота, развертывание Azure, регистрация канала ботов, публикации Visual Studio
+keywords: deploy bot, azure deploy, publish bot, az deploy bot, visual studio deploy bot, msbot publish, msbot clone
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 11/05/2018
-ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
-ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
+ms.date: 12/08/2018
+ms.openlocfilehash: ac4e5f2ea385cb8318ad59e04c8ca8787480f5c8
+ms.sourcegitcommit: 77664484e1b0780a15f686ef08bd23716b049b4a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51028741"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121790"
 ---
-# <a name="deploy-your-c-bot-to-azure"></a>Развертывание бота на C# в Azure
+# <a name="deploy-your-c-bot-using-visual-studio"></a>Развертывание бота на C# с помощью Visual Studio
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-Завершив создание и локальную проверку бота, его можно передать в Azure и сделать доступным из любого расположения.
+Завершив создание и локальную проверку бота, его можно развернуть в Azure, чтобы сделать доступным из любого расположения. Развертывание бота в Azure подразумевает оплату за используемые службы. Статья об [управлении счетами и расходами](https://docs.microsoft.com/en-us/azure/billing/) поможет вам понять, как расшифровывать счета Azure, отслеживать использование и расходы, а также управлять учетными записями и подписками.
 
-## <a name="publish-from-visual-studio"></a>Публикация из Visual Studio
+В этой статье мы покажем, как развернуть бот на C# с помощью Visual Studio и портала Azure. Будет полезно изучить эту статью перед выполнением описанных действий, чтобы полностью понимать все процессы при развертывании бота.
+
+## <a name="prerequisites"></a>Предварительные требования
+- Установленный [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+- Установленный и настроенный [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29).
+- Понимание структуры файла [.bot](v4sdk/bot-file-basics.md).
+
+## <a name="deploy-your-bot-in-app-service"></a>Развертывание бота в службе приложений
 Сначала нужно развернуть бот в Службе приложений Azure из Visual Studio. Затем настройте бот, используя функцию регистрации каналов бота в службе Azure Bot.
 
-**Примечание. Если имя проекта Visual Studio содержит пробелы, описанные ниже инструкции по развертыванию будут неприменимы.**
+**Примечание. Если имя проекта Visual Studio содержит пробелы, описанные ниже инструкции по развертыванию выполнить не удастся.**
 
 В окне обозревателя решений щелкните правой кнопкой мыши узел проекта и выберите "Опубликовать".
 
@@ -138,6 +145,22 @@ ms.locfileid: "51028741"
 ![Тестирование в веб-чате](media/azure-bot-quickstarts/getting-started-test-webchat.png)
 
 4. Введите сообщение, например, `Hi`, и нажмите клавишу ВВОД. Бот передаст обратно `Turn 1: You sent Hi`.
+
+---
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+При развертывании бота, как правило, на портале Azure создаются следующие ресурсы.
+
+| Ресурсы      | ОПИСАНИЕ |
+|----------------|-------------|
+| Бот веб-приложения | Бот в службе Azure Bot, который развернут в Службе приложений Azure.|
+| [Служба приложений](https://docs.microsoft.com/en-us/azure/app-service/)| Позволяет создавать и размещать веб-приложения.|
+| [План обслуживания приложения](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)| Определяет набор вычислительных ресурсов, на которых выполняется веб-приложение.|
+| [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)| Предоставляет средства для сбора и анализа данных телеметрии.|
+| [Учетная запись хранения](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction)| Предоставляет облачную службу с высоким уровнем доступности, безопасности, надежности, масштабируемости и избыточности.|
+
+Если вы еще не знакомы с концепцией группы ресурсов в Azure, изучите раздел со списком [терминов](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology).
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]

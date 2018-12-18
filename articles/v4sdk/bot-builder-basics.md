@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.openlocfilehash: c4d4879f7ad127838de9d2563dee8f8d7320d61e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715128"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010579"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -424,9 +424,6 @@ exports.EchoBot = EchoBot;
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Чтобы понять, какую роль играет бот в управлении ресурсами, изучите [файл бота](bot-file-basics.md).
-
-## <a name="next-steps"></a>Дополнительная информация
-
-> [!div class="nextstepaction"]
-> [Создание бота](~/bot-service-quickstart.md)
+- Общие сведения о роли состояния для ботов см. в статье [об управлении состоянием](bot-builder-concept-state.md).
+- Чтобы понять, какую роль играет BOT-файл в управлении ресурсами, изучите статью [об управлении ресурсами в файле .bot](bot-file-basics.md).
+- Чтобы создать свой первый бот, воспользуйтесь одним из кратких руководств: [для службы Azure Bot](../bot-service-quickstart.md), [для C#](../dotnet/bot-builder-dotnet-sdk-quickstart.md) или [для JavaScript](../javascript/bot-builder-javascript-quickstart.md)

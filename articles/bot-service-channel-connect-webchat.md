@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: 1658a5cd8ba3fc4e9c34849e1550f64461ced292
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 12/04/2018
+ms.openlocfilehash: 6c3cc52514988172e5c2cc85168aef401fbc1f22
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000151"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010499"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Подключение бота к веб-чату
 
-[!INCLUDE pre-release-label]
+[!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
 При [создании бота](bot-service-quickstart.md) с помощью службы Bot канал "Веб-чат" настраивается автоматически. Канал "Веб-чат" включает элемент управления "Веб-чат", который предоставляет пользователям возможность взаимодействовать с ботом непосредственно на веб-странице.
 
@@ -61,7 +61,7 @@ ms.locfileid: "50000151"
 
 ##### <a name="example-request"></a>Пример запроса
 
-```requestGET https://webchat.botframework.com/api/tokens Authorization: BotConnector YOUR_SECRET_HERE
+```requestGET https://webchat.botframework.com/api/tokens Авторизация: BotConnector ВАШ_СЕКРЕТ
 ```
 
 ##### Example response 

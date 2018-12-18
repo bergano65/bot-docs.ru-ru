@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14a56749c68cfe89ed4a0da3c046a39a8e0783fe
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916791"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010599"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -41,9 +41,8 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 | Образец | Версия Bot Builder | ОПИСАНИЕ |
 |:---|:---:|:---|
-| [C# Auth](http://aka.ms/v4csharpauth) | версия 4 | Реализована поддержка OAuthCard в пакете SDK версии 4 для C# |
-| [C# Auth Graph](http://aka.ms/v4csharpauthgraph) | версия 4 |  Реализована поддержка OAuthCard в пакете SDK версии 4 для C# с использованием AAD и Microsoft Graph API |
-| [Node Auth](http://aka.ms/v4cnodeauth) | версия 4 |  Реализована поддержка OAuthCard в пакете SDK версии 4 для Node/JavaScript |
+| **Аутентификация бота** ([C#](https://aka.ms/v4cs-bot-auth-sample) / [JS](https://aka.ms/v4js-bot-auth-sample)) | версия 4 | Демонстрация поддержки OAuthCard. |
+| **MSGraph для аутентификации бота** ([C#](https://aka.ms/v4cs-auth-msgraph-sample) / [JS](https://aka.ms/v4js-auth-msgraph-sample)) | версия 4 |  Демонстрация поддержки Microsoft Graph API с OAuth 2. |
 
 > [!NOTE]
 > Функции аутентификации также работают с Bot Builder версии 3. Но в этой статье мы рассматриваем только пример кода для версии 4.
@@ -52,7 +51,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 ## <a name="overview"></a>Обзор
 
-В этом руководстве создается пример бота, который подключается к Microsoft Graph, с помощью токена Azure AD версии 1 или 2. Для этого процесса используется код из репозитория GitHub. В этом руководстве есть инструкции по его настройке, включая настройку приложения бота.
+В этом руководстве создается пример бота, который подключается к Microsoft Graph, с помощью токена Azure AD версии 1 или 2. Для этого процесса используется код из репозитория GitHub [Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples). В этом руководстве есть инструкции по его настройке, включая настройку приложения бота.
 
 - **Создание бота и приложения проверки подлинности**
 - **Подготовка примера кода бота**
@@ -208,7 +207,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 1. Щелкните **Проверка подключения** в верхней части области **Service Provider Connection Setting** (Параметры подключения поставщика службы).
 1. При выполнении данного действия в первый раз должна открыться новая вкладка браузера с перечисленными разрешениями, которые запрашивает приложение, и предложение их принять.
 1. Нажмите кнопку **Принимаю**.
-1. Данное действие перенаправляет пользователя на страницу **Проверка подключения к <your-connection-name> успешно выполнена** .
+1. Вы перейдете на страницу **Проверка подключения к <имя-подключения> успешно выполнена**.
 
 ## <a name="prepare-the-bot-sample-code"></a>Подготовка примера кода бота
 
@@ -228,7 +227,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
     > [!IMPORTANT]
     > В зависимости от символов, находящихся в секрете, может потребоваться сменить пароль для XML. Например, символ амперсанда (&) потребуется кодировать как `&amp;`.
 
-    ```xml
+    ```json
     {
         "name": "BotAuthentication",
         "secretKey": "",
