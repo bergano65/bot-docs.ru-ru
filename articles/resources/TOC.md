@@ -19,4 +19,6 @@
 # [Соответствие службы Bot требованиям](../v4sdk/bot-service-compliance.md)
 # Устранение неполадок
 ## [Устранение общих неполадок](../bot-service-troubleshoot-general-problems.md)
+## [Устранение неполадок, связанных с конфигурацией бота](../bot-service-troubleshoot-bot-configuration.md)
+## [Устранение ошибок HTTP 500](../bot-service-troubleshoot-500-errors.md)
 ## [Устранение неполадок с аутентификацией](../bot-service-troubleshoot-authentication-problems.md)
