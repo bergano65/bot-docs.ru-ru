@@ -2,20 +2,20 @@
 title: Отправка приветственного сообщения пользователям | Документация Майкрософт
 description: Сведения о том, как создать приветствие, которое бот отправляет пользователю.
 keywords: overview, develop, user experience, welcome, personalized experience, C#, JS, welcome message, bot, greet, greeting
-author: dashel
-ms.author: dashel
+author: DanDev33
+ms.author: v-dashel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 12/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02fb57d5d766ddd72c2dcface673c5c6355cf184
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 7e6ea963ce018833b362be3f413f15da4d4bf658
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452036"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735944"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
@@ -25,7 +25,7 @@ ms.locfileid: "52452036"
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Понимание [основных принципов работы ботов](bot-builder-basics.md). 
-- Копия **примера с приветствием пользователя** на языке [C#](https://aka.ms/proactive-sample-cs) или [JS](https://aka.ms/proactive-sample-js). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
+- Копия **примера с приветствием пользователя** на языке [C#](https://aka.ms/bot-welcome-sample-cs) или [JS](https://aka.ms/bot-welcome-sample-js). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
 
 ## <a name="same-welcome-for-different-channels"></a>Отправка приветственного сообщения для различных каналов
 Приветственное сообщение должно создаваться, когда пользователь начинает взаимодействовать с ботом. Можно реализовать это, отслеживая типы действий в боте и новые подключения. При каждом новом подключении может создаваться не больше двух действий обновления диалога в зависимости от канала:
@@ -421,7 +421,7 @@ switch (text)
 ```
 ---
 ## <a name="test-the-bot"></a>Тестирование бота
-В файле [README](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) вы найдете инструкции по запуску и тестированию бота. 
+В файле [README](https://aka.ms/bot-welcome-sample-cs) вы найдете инструкции по запуску и тестированию бота.
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
