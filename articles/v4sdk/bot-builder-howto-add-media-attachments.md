@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/25/2018
+ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fcbe28110ec71da7263d125e79ca59d15efa9d5f
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916781"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735964"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
@@ -60,7 +60,9 @@ await turnContext.SendActivityAsync(reply, cancellationToken);
 
 ```javascript
 const { ActionTypes, ActivityTypes, CardFactory } = require('botbuilder');
+
 // Call function to get an attachment.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [this.getInternetAttachment()];
 reply.text = 'This is an internet attachment.';
 // Send the activity to the user.
@@ -130,30 +132,32 @@ const card = CardFactory.heroCard('', undefined,
 buttons, { text: 'You can upload an image or select one of the following choices.' });
 
 // add card to Activity.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [card];
 
 // Send hero card to the user.
 await turnContext.sendActivity(reply);
 ```
+
 ---
 
 ## <a name="process-events-within-rich-cards"></a>Обработка событий в форматированных карточках
 
-Для обработки событий в форматированных карточках используйте объекты _действий карточек_, чтобы указать, какие действия должны происходить, когда пользователь нажимает кнопку или щелкает сегмент карточки.
+Для обработки событий в форматированных карточках используйте объекты _действий карточек_, чтобы указать, какие действия должны происходить, когда пользователь нажимает кнопку или щелкает сегмент карточки. Каждое действие карточки имеет определенный _тип_ и _значение_.
 
-Во избежание ошибок следует назначить тип действия для каждого активного элемента карточки. В этой таблице перечислены допустимые значения для свойства типа объекта действия карточки и описано ожидаемое содержимое свойства значения для каждого типа.
+Во избежание ошибок следует назначить тип действия для каждого активного элемента карточки. В этой таблице перечислены и описаны доступные типы действий и требуемый формат для связанного свойства.
 
-| type | Значение |
-| :---- | :---- |
-| openUrl | URL-адрес, который будет открыт во встроенном браузере. Отвечает на нажатие кнопки открытием URL-адреса. |
-| imBack | Текст сообщения для отправки боту (от пользователя, который нажал кнопку или коснулся карты). Это сообщение (от пользователя к боту) увидят все участники общения через клиентское приложение, в котором ведется общение. |
-| postBack | Текст сообщения для отправки боту (от пользователя, который нажал кнопку или коснулся карты). Некоторые клиентские приложения могут отображать этот текст на канале сообщений, где он будет виден всем участникам общения. |
-| вызывает | Назначение телефонного звонка в формате `tel:123123123123`. Отвечает на нажатие кнопки, инициируя вызов.|
-| playAudio | URL-адрес аудио для воспроизведения. Отвечает на нажатие кнопки воспроизведением аудио. |
-| playVideo | URL-адрес видео для воспроизведения. Отвечает на нажатие кнопки воспроизведением видео. |
-| showImage | URL-адрес изображения для отображения. Отвечает на нажатие кнопки отображением изображения. |
-| downloadFile | URL-адрес файла для скачивания.  Отвечает на нажатие кнопки загрузкой файла. |
-| signin | URL-адрес для инициализации потока OAuth. Отвечает на нажатие кнопки, инициируя вход. |
+| type | ОПИСАНИЕ | Значение |
+| :---- | :---- | :---- |
+| openUrl | Открывает URL-адрес в окне встроенного браузера. | URL-адрес, который нужно открыть. |
+| imBack | Отправляет боту сообщение и отображает полученный ответ в чате. | Текст отправляемого сообщения. |
+| postBack | Отправляет боту сообщение, но не всегда отображает полученный ответ в чате. | Текст отправляемого сообщения. |
+| вызывает | Инициирует телефонный звонок. | Целевое назначение телефонного звонка в следующем формате: `tel:123123123123`. |
+| playAudio | Воспроизводит звук. | URL-адрес для воспроизведения звука. |
+| playVideo | Воспроизводит видео. | URL-адрес для воспроизведения видео. |
+| showImage | Отображает изображение. | URL-адрес для отображения изображения. |
+| downloadFile | Скачивает файл. | URL-адрес для скачивания файла. |
+| signin | Инициирует процесс входа OAuth. | URL-адрес потока OAuth, который нужно запустить. |
 
 ## <a name="hero-card-using-various-event-types"></a>Карточка для имиджевого баннера с различными типами событий
 
@@ -360,5 +364,5 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 Ознакомьтесь с [принципами использования карточек в Bot Framework](https://aka.ms/botSpecs-cardSchema).
 
-Здесь вы найдете примеры кода для карточек: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), адаптивных карточек: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), вложений: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js) и предложенных действий: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
+Примеры исходного кода для карточек: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), для адаптивных карточек: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), для вложений: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js), для предлагаемых действий: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
 Изучите репозиторий образцов для Bot Builder на [GitHub](https://aka.ms/bot-samples-readme), где есть дополнительные примеры.

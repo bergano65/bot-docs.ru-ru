@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20a7dad4398874febfbd71024cd68763107f7bd8
-ms.sourcegitcommit: 0b421ff71617f03faf55ea175fb91d1f9e348523
+ms.openlocfilehash: d40b203ccd044992c026a592d5f86b0881754a41
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53286630"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735924"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Создание бота с помощью пакета SDK Bot Builder для .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -59,6 +59,10 @@ ms.locfileid: "53286630"
 
 > [!NOTE]
 > Если вы видите, что сообщение не отправляется, вам может потребоваться перезагрузить компьютер, так как ngrok еще не получил необходимые привилегии в вашей системе (это нужно выполнить только один раз).
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+Подключение к удаленно размещенном боту описано в документации по [туннелированию (ngrok)](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-(ngrok)).
 
 ## <a name="next-steps"></a>Дополнительная информация
 

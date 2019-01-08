@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 43bc3c7606a12084690d71f8b6ea2dc3b2e5984d
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 3abfb82f555f458bc9cdd5125fafa1cfa70921cb
+ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451996"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654965"
 ---
 # <a name="enterprise-bot-template"></a>Шаблон Enterprise Bot 
 
@@ -34,10 +34,10 @@ ms.locfileid: "52451996"
 Обнаружение неприемлемого содержимого или личных сведений  |Обнаружение неприемлемых или личных сведений во входящих сообщениях с помощью [Content Moderator](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/) в компоненте ПО промежуточного слоя.
 Расшифровка  | Расшифровки всех бесед, хранящиеся в Службе хранилища Azure
 Диспетчер | Интегрированная модель [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig), которая позволяет определить, нужно ли обработать высказывание с помощью LUIS и кода или передать его QnAMaker.
-Интеграция с QnA Maker  | Интеграция с [QnA Maker](https://www.qnamaker.ai) для ответа на общие вопросы из базы знаний, основанной на существующих источниках данных (например, руководствах в формате PDF).
+Интеграция с QnA Maker  | Интеграция с [QnA Maker](https://www.qnamaker.ai) для ответа на общие вопросы из базы знаний, основанной на существующих источниках данных (например, руководствах в формате PDF). Также включается модель беседы для QnA Maker, которая обеспечит стандартные ответы на распространенные вопросы ([подробнее](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base)).
 Аналитические сведения о диалоге  | Интеграция с [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/), которая позволяет собирать данные телеметрии для всех диалогов, и пример панели мониторинга Power BI для начала работы с аналитическими сведениями о ведении диалога.
 
-Также автоматически развертываются все ресурсы Azure, необходимые для бота: служба регистрации бота, Служба приложений Azure, LUIS, QnA Maker, Content Moderator, Cosmos DB, Служба хранилища Azure и Application Insights. Кроме того, создаются, обучаются и публикуются основные модели LUIS, QnA Maker и Dispatch, чтобы обеспечить оперативное тестирование основных намерений и маршрутизации.
+Кроме того, автоматически развертываются все ресурсы Azure, необходимые для бота: регистрация бота, служба приложений Azure, LUIS, QnA Maker, Content Moderator, CosmosDB, служба хранилища Azure и Application Insights. Кроме того, создаются, обучаются и публикуются основные модели LUIS, QnA Maker и Dispatch, чтобы обеспечить оперативное тестирование основных намерений и маршрутизации.
 
 Когда шаблон будет создан и все этапы развертывания будут выполнены, нажмите клавишу F5, чтобы провести комплексное тестирование. Это обеспечит прочную основу для создания функций диалога и позволит сэкономить несколько дней работы над проектом, а также улучшить качество диалога.
 
