@@ -1,4 +1,4 @@
-# [Пакет SDK для построителя ботов для Node.js](bot-builder-nodejs-overview.md)
+# [Пакет SDK Bot Framework для Node.js](bot-builder-nodejs-overview.md)
 # [Основные понятия](bot-builder-nodejs-concepts.md)
 # Диалоги
 ## [Общие сведения о диалогах](bot-builder-nodejs-dialog-overview.md)
@@ -12,8 +12,8 @@
 ## [Отправка и получение вложений](bot-builder-nodejs-send-receive-attachments.md) 
 ## [Отправка упреждающих сообщений](bot-builder-nodejs-proactive-messages.md)
 ## [Добавление расширенных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md)
-## [Добавление преобразования речи в сообщения](bot-builder-nodejs-text-to-speech.md)
-## [Добавление подсказок для ввода в сообщения](bot-builder-nodejs-send-input-hints.md)
+## [Добавление речи в сообщения](bot-builder-nodejs-text-to-speech.md)
+## [Добавление подсказок ввода к сообщениям](bot-builder-nodejs-send-input-hints.md)
 ## [Добавление предлагаемых действий в сообщения](bot-builder-nodejs-send-suggested-actions.md)
 ## [Отправка индикатора ввода](bot-builder-nodejs-send-typing-indicator.md)
 ## [Перехват сообщений](bot-builder-nodejs-intercept-messages.md)

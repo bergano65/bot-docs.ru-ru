@@ -1,13 +1,13 @@
-# [Пакет SDK для построителя ботов для .NET](bot-builder-dotnet-overview.md)
+# [Пакет SDK Bot Framework для .NET](bot-builder-dotnet-overview.md)
 # [Основные понятия](bot-builder-dotnet-concepts.md)
 # Сообщения и действия
 ## [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 ## [Создание сообщений](bot-builder-dotnet-create-messages.md)
 ## [Добавление мультимедийных вложений в сообщения](bot-builder-dotnet-add-media-attachments.md)
-## [Добавление расширенных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
+## [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
 <!-- ## [Send carousel of cards](bot-builder-dotnet-add-carousel-card.md) -->
-## [Добавление преобразования речи в сообщения](bot-builder-dotnet-text-to-speech.md)
-## [Добавление подсказок для ввода в сообщения](bot-builder-dotnet-add-input-hints.md)
+## [Добавление речи в сообщения](bot-builder-dotnet-text-to-speech.md)
+## [Добавление подсказок ввода к сообщениям](bot-builder-dotnet-add-input-hints.md)
 ## [Добавление предлагаемых действий в сообщения](bot-builder-dotnet-add-suggested-actions.md)
 ## [Действия отправки и получения](bot-builder-dotnet-connector.md)
 ## [Внедрение глобальных обработчиков сообщений](bot-builder-dotnet-global-handlers.md)

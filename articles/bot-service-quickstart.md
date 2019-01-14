@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 11/15/2018
-ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.date: 01/08/2019
+ms.openlocfilehash: fd852a75b911f57743b40d252b24c6ef33b0420d
+ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715138"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114898"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -81,6 +81,7 @@ ms.locfileid: "51715138"
 ::: moniker range="azure-bot-service-4.0"
 
 # <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
+
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK для Bot Builder для разработки ботов и службу ботов для подключения ботов к каналам. В этой статье вы сможете выбрать шаблон .NET или Node.js для создания бота с помощью пакета SDK Bot Builder версии 4.
@@ -126,6 +127,15 @@ ms.locfileid: "51715138"
 ![Тестирование с помощью элемента управления "Веб-чат" в Azure](./media/azure-bot-quickstarts/azure-webchat-test.png)
 
 Введите сообщение. Бот должен ответить.
+
+## <a name="download-code"></a>Скачать код
+Можно скачать код, чтобы работать с ним локально. 
+1. В разделе **Bot Management** (Управление ботами) щелкните **Build** (Выполнить сборку). 
+1. Щелкните ссылку **Download Bot source code** (Скачивание исходного кода бота) справа. 
+1. Следуйте инструкциям на экране, чтобы скачать код, а затем распакуйте папку.
+
+Скачанный код использует зашифрованный [файл с расширением .bot](./v4sdk/bot-file-basics.md). Вам потребуется обновить записи `botFilePath` и `botFileSecret` в файле appsettings.json или .env. 
+Чтобы сделать это, перейдите на портал Azure. Выберите бот на портале, а затем в разделе **Параметры Службы приложений** щелкните **Параметры приложения**. В области **Параметры приложения** вы увидите значения `botFilePath` и `botFileSecret`. Скопируйте эти значения и обновите файл .env или appsettings.json. 
 
 ## <a name="next-steps"></a>Дополнительная информация
 

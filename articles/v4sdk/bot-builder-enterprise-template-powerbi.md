@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 73e19047ea64839f52bb20ea1eceee93803210bc
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 88208a2f5b0eb88d3b2964e63a21585484166d73
+ms.sourcegitcommit: 2d84d5d290359ac3cfb8c8f977164f799666f1ab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645494"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54152177"
 ---
 # <a name="enterprise-bot-template---conversational-analytics-using-powerbi-dashboard-and-application-insights"></a>Шаблон Enterprise Bot — анализ возможностей общения с помощью панели мониторинга Power BI и Application Insights
 
@@ -24,19 +24,10 @@ ms.locfileid: "51645494"
 
 Эти данные телеметрии можно просмотреть в колонке Application Insights на портале Azure и с помощью Log Analytics. Кроме того, эти данные телеметрии можно использовать в Power BI, чтобы получить более общие аналитические бизнес-сведения об использовании бота.
 
-Пример панели мониторинга Power BI можно найти в папке Power BI созданного проекта. Пример предоставлен для ознакомления. В нем показано, как можно приступить к созданию собственных аналитических сведений. Со временем мы усовершенствуем эти визуализации. 
+См. пример [панели мониторинга PowerBI](https://aka.ms/botPowerBiTemplate). 
 
-## <a name="getting-started"></a>Приступая к работе
+Пример предоставлен для ознакомления. В нем показано, как можно приступить к созданию собственных аналитических сведений. Со временем мы усовершенствуем эти визуализации. 
 
-- Скачайте Power BI Desktop [по этой ссылке](https://powerbi.microsoft.com/en-us/desktop/).
- 
-- Получите значение ```Application Id``` для ресурса Application Insights, который используется ботом. Для этого перейдите на страницу "Доступ через API" из раздела "Настройка" в колонке Application Insights на портале Azure.
-
-Дважды щелкните предоставленный файл шаблона Power BI, расположенный в папке Power BI вашего решения. Вам будет предложено ввести значение для ```Application Id```, полученное на предыдущем шаге. Пройдите аутентификацию при появлении соответствующего запроса, используя свои учетные данные подписки Azure. Возможно, для входа вам потребуется выбрать параметр "Учетная запись организации".
-
-Панель мониторинга теперь связана с экземпляром Application Insights. На ней вы увидите начальные аналитические сведения, если бот отправлял и получал сообщения.
-
->Обратите внимание, что визуализация тональности не будет отображаться, так как сейчас скрипт развертывания не поддерживает такую возможность при публикации модели LUIS. Если вы [повторно опубликуете](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-publish-app) модель LUIS и включите анализ тональности, функция будет работать.
 
 ## <a name="middleware-processing"></a>Обработка ПО промежуточного слоя
 
@@ -55,11 +46,13 @@ ms.locfileid: "51645494"
     - ActivityId
     - Channel
     - FromId
-    - Conversationid
+    - FromName
+    - ConversationId
     - ConversationName
     - Locale
-    - UserName
     - Text
+    - RecipientId
+    - RecipientName
 ```
   
 ```
@@ -67,10 +60,12 @@ ms.locfileid: "51645494"
     - ActivityId,
     - Channel
     - RecipientId
-    - Conversationid
+    - ConversationId
     - ConversationName
     - Locale
-    - ReceipientName
+    - RecipientId
+    - RecipientName
+    - ReplyToId
     - Text
 ```
 
@@ -83,6 +78,7 @@ ms.locfileid: "51645494"
     - SentimentScore
     - ConversationId
     - Question
+    - DialogId
 ```
 
 ```
@@ -90,8 +86,8 @@ ms.locfileid: "51645494"
     - ActivityId
     - ConversationId
     - OriginalQuestion
-    - UserName
-    - QnAItemFound
+    - FromName
+    - ArticleFound
     - Question
     - Answer
     - Score
