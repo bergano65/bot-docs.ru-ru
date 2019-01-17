@@ -1,4 +1,12 @@
-На этой схеме показана последовательность отображения экрана в обычном приложении в сравнении с последовательностью отображения диалогового окна бота. 
+---
+ms.openlocfilehash: 3e18ef9aec8a2f04e544b261cad246275c5caffa
+ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52953669"
+---
+На этой схеме показана последовательность отображения экрана в обычном приложении в сравнении с потоком диалога бота. 
 
 ![Бот](~/media/designing-bots/core/dialogs-screens.png)
 

@@ -134,7 +134,7 @@ az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.cspro
     
 `AddDialog(new AuthenticationDialog(_services.AuthConnectionName));`
 
-Добавьте приведенную ниже строку в любое удобное место в коде, чтобы проверить простую последовательность входа.
+Добавьте приведенную ниже строку в любое удобное место в коде, чтобы проверить простую процедуру входа.
     
 `var authResult = await dc.BeginDialogAsync(nameof(AuthenticationDialog));`
 
