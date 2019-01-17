@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f98391f05e962bfc8846818d8a236d16846c8c5c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: cdb512b0efe111870b34c440f978105786b6f36a
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997063"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202580"
 ---
 # <a name="enable-speech-in-web-chat"></a>Включение распознавания речи в веб-чате
 Вы можете включить голосовой интерфейс в элементе управления "Веб-чат". Пользователи взаимодействуют с голосовым интерфейсом, используя микрофон в элементе управления "Веб-чат".
@@ -66,7 +66,7 @@ ms.locfileid: "49997063"
 Настройка позволяет добавить функцию распознавания речи любым из следующих способов.
 
 * **Распознавание речи, предоставленное браузером**. Используется функция распознавания речи, встроенная в браузер. В настоящее время эта функция доступна только в браузере Chrome.
-* **Использование службы "Распознавание речи Bing"**. Вы можете использовать службу "Распознавание речи Bing" для обеспечения распознавания речи и ее синтеза. Такой способ доступа к функциям распознавания речи поддерживается различными браузерами. В этом случае обработка выполняется на сервере, а не в браузере.
+<!--* **Use Bing Speech service** - You can use the Bing Speech service to provide speech recognition and synthesis. This way of access speech functionality is supported by a variety of browsers. In this case, the processing is done on a server instead of on the browser.-->
 * **Создание пользовательской службы распознавания речи**. Вы можете создать собственные компоненты для распознавания речи и ее синтеза.
 
 ### <a name="browser-provided-speech"></a>Распознавание речи, предоставленное браузером
@@ -80,23 +80,23 @@ ms.locfileid: "49997063"
 
 [!code-js[Specify speech options to use in-browser speech (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#BrowserSpeech)]
 
-### <a name="bing-speech-service"></a>Служба "Распознавание речи Bing"
+<!--### Bing Speech service
 
-В следующем экземпляре кода реализованы компоненты распознавания речи и ее синтеза, которые использует служба "Распознавание речи Bing". Распознавание и создание речи выполняется на сервере. Этот механизм поддерживается в нескольких браузерах. 
+The following code instantiates speech recognizer and speech synthesis components that use the Bing Speech service. The recognition and generation of speech is performed on the server. This mechanism is supported in multiple browsers. 
 
 > [!TIP]
-> Использовать распознавание речи для улучшения точности распознавания речи бота можно в том случае, если вы пользуетесь службой "Распознавание речи Bing". Дополнительные сведения см. в записи блога [Speech Support in Bot Framework — Webchat to Directline, to Cortana](https://blog.botframework.com/2017/06/26/Speech-To-Text) (Поддержка речи в Bot Framework. От веб-чата к Directline и Кортане).
+> You can use speech recognition priming to improve your bot's speech recognition accuracy if you use the Bing Speech service. For more information, check out the [Speech Support in Bot Framework](https://blog.botframework.com/2017/06/26/Speech-To-Text) blog post.
 
 [!code-js[Specify speech options to use the Bing Speech API (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#BingSpeech)]
 
-#### <a name="use-the-bing-speech-service-with-a-token"></a>Использование службы "Распознавание речи Bing" с токеном
+#### Use the Bing Speech service with a token
 
-Кроме того, имеется возможность включить средства распознавания речи Cognitive Services с помощью токена. Токен создается с использованием ключа API в защищенной серверной части.
+You also have the option to enable Cognitive Services speech recognition using a token. The token is generated in a secure back end using your API key.
 
-В следующем примере кода показано, как токен извлекается из защищенной серверной части, чтобы избежать предоставления ключа API.
+The following example code shows how the token fetch is done from a secure back end to avoid exposing the API key.
 
 [!code-js[Fetch a token to use with the Bing Speech API (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#FetchToken)]
-
+-->
 ### <a name="custom-speech-service"></a>Пользовательская служба распознавания речи
 
 Вы также можете предоставить собственные компоненты распознавания речи, которые реализуют ISpeechRecognizer, или синтеза речи, который реализует ISpeechSynthesis. 

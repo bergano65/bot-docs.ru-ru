@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 622d5b4924a4739900659d6be8eebd1888191eab
-ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
+ms.openlocfilehash: e557b359da09615d2998c4c729f57ffb9faf0de1
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114888"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224969"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -35,6 +35,12 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 - Установите средства командной строки (CLI) Azure, которые можно скачать [здесь](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Если вы уже установили инструмент командной строки Azure Bot Service, обновите его до последней версии, удалив текущую версию и установив новую.
 
 > При использовании msbot версии 4.3.2 и выше единственным предварительным условием является версия AZ CLI не ниже 2.0.53. Если у вас также установлено расширение botservice, удалите его с помощью команды az extension remove --name botservice.
+
+- Установка средства LUISGen
+
+```shell
+dotnet tool install -g luisgen
+```
 
 - Установка средства LUISGen
 
