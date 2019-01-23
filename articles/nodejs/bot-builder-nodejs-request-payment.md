@@ -1,6 +1,6 @@
 ---
-title: Запрос платежей| Документация Майкрософт
-description: Сведения об отправке запроса платежей с помощью пакета SDK Bot Builder для Node.js.
+title: Запрос платежей | Документация Майкрософт
+description: Сведения об отправке запроса платежей с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999170"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225749"
 ---
 # <a name="request-payment"></a>Запрос платежей
 
@@ -24,11 +24,11 @@ ms.locfileid: "49999170"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
-Если бот позволяет пользователям приобретать элементы, он делает запрос платежей, включая специальный тип кнопки в [форматированной карточке](bot-builder-nodejs-send-rich-cards.md). Эта статья описывает отправку запроса платежей с помощью пакета SDK Bot Builder для Node.js.
+Если бот позволяет пользователям приобретать элементы, он делает запрос платежей, включая специальный тип кнопки в [форматированной карточке](bot-builder-nodejs-send-rich-cards.md). Эта статья описывает отправку запроса платежей с помощью пакета SDK Bot Framework для Node.js.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Прежде чем отправить запрос платежей, используя пакет SDK Bot Builder для Node.js, необходимо выполнить эти обязательные задачи.
+Чтобы отправлять запросы платежей с помощью пакета SDK Bot Framework для Node.js, необходимо выполнить обязательные предварительные задачи.
 
 ### <a name="register-and-configure-your-bot"></a>Регистрация и настройка бота
 

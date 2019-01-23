@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998731"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225739"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Перевод разговора с бота на человека
 
@@ -74,7 +74,7 @@ ms.locfileid: "49998731"
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример, в котором показано, как перевести диалог с бота на человека с помощью пакета SDK для построителя ботов для Node.js, см. в разделе <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Пример перевода диалога с бота на человека</a> в GitHub.
+Полный пример на основе пакета SDK Bot Framework для Node.js, в котором показано, как перевести диалог с бота на человека с помощью, см. в статье <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff sample</a> (Пример перевода беседы с бота на человека) на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

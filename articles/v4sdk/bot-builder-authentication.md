@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010599"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298321"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -34,7 +34,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 - Усовершенствования каналов поддержки новых функций проверки подлинности, таких как новые библиотеки WebChat и DirectLineJS, позволяют устранить необходимость в шестизначной проверке шифра.
 - Усовершенствования портала Azure по добавлению, удалению и настройке параметров подключения к различным поставщикам удостоверений OAuth.
 - Поддержка множества встроенных поставщиков удостоверений, включая Azure AD (конечные точки версий 1 и 2), GitHub и другие.
-- Обновления пакетов SDK Bot Builder для C# и Node.js, которые дают возможность извлекать токены, создавать OAuthCards и обрабатывать события TokenResponse.
+- Обновления пакетов SDK Bot Framework для C# и Node.js, которые дают возможность извлекать токены, создавать OAuthCards и обрабатывать события TokenResponse.
 - Примеры создания бота с аутентификацией в Azure AD.
 
 Чтобы добавить к существующему боту следующие функции, можно экстраполировать шаги, описанные в этой статье. Далее приведены примеры ботов, которые демонстрируют новые функции проверки подлинности.
@@ -256,7 +256,8 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 1. Запустите бот (с отладкой или без).
 1. Запишите номер порта localhost страницы. Данная информация потребуется для взаимодействия с ботом.
 1. Запустите эмулятор Bot Framework.
-1. Подключитесь к боту.
+1. Подключитесь к боту. Если вы используете аутентификацию, в конфигурации бота следует использовать **идентификатор приложения Microsoft** и **пароль приложения Microsoft**.
+1. Убедитесь, что включен параметр эмулятора **Use a sign-in verification code for OAuthCards** (Использовать код проверки входа в систему для OAuthCards) и включен **ngrok**, чтобы служба Azure Bot могла вернуть эмулятору маркер, когда он станет доступен.
 
    Если подключение еще не было настроено, необходимо предоставить адрес, а также идентификатор приложения Майкрософт и пароль для бота. К каждому из URL-адресов требуется добавить `/api/messages`. URL-адрес должен выглядеть примерно так: `http://localhost:portNumber/api/messages`.
 
@@ -486,4 +487,4 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 При последующих вызовах бота обратите внимание, что этот токен никогда не кэшируется ботом из этого примера. Это связано с тем, что бот всегда может запросить токен в службе Azure Bot. Это позволяет избежать того, что боту необходимо управлять жизненным циклом токена, обновлять токен и т. д., поскольку служба Azure Bot делает все это сама.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-[botbuilder-core package](https://github.com/microsoft/botbuilder)
+[Пакет SDK Bot Framework](https://github.com/microsoft/botbuilder)

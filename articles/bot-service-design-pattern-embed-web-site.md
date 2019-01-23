@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e11b99aeb8475ff27304c57c515e02a5c031e4ea
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 03c7e1316e463caf84b8dfd503e1502bb66469e6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998383"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224849"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Внедрение бота на веб-сайт
 
@@ -47,7 +47,7 @@ ms.locfileid: "49998383"
 
 ## <a name="sample-code"></a>Пример кода
 
-<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> доступен на сайте GitHub. Дополнительные сведения о том, как можно реализовать механизм обратного канала с помощью элемента управления веб-чатом с открытым кодом и пакета SDK Bot Builder для Node.js, см. в статье [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Использование механизма обратного канала).
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> доступен на сайте GitHub. Дополнительные сведения о том, как можно реализовать механизм обратного канала с помощью элемента управления веб-чатом с открытым кодом и пакета SDK Bot Framework для Node.js, см. в статье [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Использование механизма обратного канала).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 276b553a6990ed286acbf073825afa7c4656de32
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: fdf0b16cc89b322ffa9d36b5516b09b0338ce9dc
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452026"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317574"
 ---
 # <a name="manage-resources-with-a-bot-file"></a>Управление ресурсами с помощью файла .bot
 
@@ -38,8 +38,8 @@ ms.locfileid: "52452026"
 
 ## <a name="when-is-a-bot-file-created"></a>Когда создается BOT-файл 
 - Если вы создаете бот с помощью [службы Azure Bot](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryResultsListBlade/selectedSubMenuItemId/%7B%22menuItemId%22%3A%22gallery%2FCognitiveServices_MP%2FBotService%22%2C%22resourceGroupId%22%3A%22%22%2C%22resourceGroupLocation%22%3A%22%22%2C%22dontDiscardJourney%22%3Afalse%2C%22launchingContext%22%3A%7B%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%5D%2C%22menuItemId%22%3A%22CognitiveServices_MP%22%2C%22subMenuItemId%22%3A%22BotService%22%7D%7D), для вас автоматически создается BOT-файл с готовым списком подключенных служб. По умолчанию BOT-файл шифруется.
-- Если вы создаете бот с помощью [шаблона](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) для Visual Studio из пакета SDK Bot Builder версии 4 или с помощью [генератора Yeoman](https://www.npmjs.com/package/generator-botbuilder) из Bot Builder, BOT-файл создается автоматически. В этом потоке подключенные службы не подготавливаются и файл бота не шифруется.
-- Если вы начинаете работу с [образцами BotBuilder-samples](https://github.com/Microsoft/botbuilder-samples), каждый образец для пакета SDK Bot Builder версии 4 содержит готовый незашифрованный BOT-файл. 
+- Если вы создаете бот с помощью [шаблона](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) для Visual Studio из пакета SDK Bot Framework версии 4 или с помощью [генератора Yeoman](https://www.npmjs.com/package/generator-botbuilder) из Bot Builder, BOT-файл создается автоматически. В этом потоке подключенные службы не подготавливаются и файл бота не шифруется.
+- Если вы начинаете работу с [примерами BotBuilder-samples](https://github.com/Microsoft/botbuilder-samples) для пакета SDK Bot Framework версии 4, каждый из них содержит готовый незашифрованный BOT-файл. 
 - Также файл бота можно создать с помощью средства [MSBot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/README.md).
 
 ## <a name="what-does-a-bot-file-look-like"></a>Что представляет собой файл бота 
@@ -47,14 +47,17 @@ ms.locfileid: "52452026"
 Сведения о шифровании и расшифровке содержимого BOT-файла вы найдете в статье о [секретах ботов](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/bot-file-encryption.md).
 
 ## <a name="why-do-i-need-a-bot-file"></a>Зачем нужен BOT-файл
-BOT-файл **не** является обязательным при создании бота с помощью пакета SDK Bot Builder. Вы можете по-прежнему использовать файлы appsettings.json, web.config, env, хранилище ключей или любой другой механизм, который считаете подходящим для хранения ссылок на службы и ключей, которыми пользуется ваш бот. Но BOT-файл является обязательным для тестирования бота с помощью эмулятора. Рады сообщить, что эмулятор может самостоятельно создавать BOT-файл для тестирования. Для этого запустите эмулятор, щелкните ссылку **Create a new bot configuration** (Создать новую конфигурацию бота) на странице приветствия. В появившемся диалоговом окне введите **имя бота** и **URL-адрес конечной точки**. Теперь запустите подключение.
+
+BOT-файл **не** является обязательным для создания бота с помощью пакета SDK Bot Framework. Вы можете по-прежнему использовать файлы appsettings.json, web.config, env, хранилище ключей или любой другой механизм, который считаете подходящим для хранения ссылок на службы и ключей, которыми пользуется ваш бот. Но BOT-файл является обязательным для тестирования бота с помощью эмулятора. Рады сообщить, что эмулятор может самостоятельно создавать BOT-файл для тестирования. Для этого запустите эмулятор, щелкните ссылку **Create a new bot configuration** (Создать новую конфигурацию бота) на странице приветствия. В появившемся диалоговом окне введите **имя бота** и **URL-адрес конечной точки**. Теперь запустите подключение.
 
 Ниже перечислены преимущества использования BOT-файла.
 - Стандартный способ для хранения ресурсов, не зависящий от используемых языков и платформ.   
 - Bot Framework Emulator и средства CLI используют только этот стандартизированный формат (BOT-файл), благодаря чему отлично отслеживают подключенные службы. 
 - Элегантное решение инструментирования для создания служб и управления ими достаточно сложно создать без хорошо определенной (в BOT-файле) схемы.  
 
-## <a name="using-bot-file-in-your-bot-builder-sdk-bot"></a>Применение BOT-файла в боте, созданном на основе SDK Bot Builder
+
+## <a name="using-bot-file-in-your-bot-framework-sdk-bot"></a>Применение BOT-файла в боте, созданном на основе SDK Bot Framework
+
 BOT-файл позволяет получить сведения о конфигурации служб прямо из кода бота. Библиотека BotFramework-Configuration, которая предоставляется для [C#](https://www.nuget.org/packages/Microsoft.Bot.Configuration) и [JS](https://www.npmjs.com/package/botframework-config), поможет вам загрузить BOT-файл и поддерживает несколько методов поиска и получения сведений о конфигурации нужных служб.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

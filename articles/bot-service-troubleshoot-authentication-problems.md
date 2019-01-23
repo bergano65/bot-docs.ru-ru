@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/17
-ms.openlocfilehash: 0fdd196716c0fffb36583c0df894481b032dd83e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999413"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224659"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
@@ -30,7 +30,7 @@ ms.locfileid: "49999413"
 > [!NOTE]
 > Сведения о том, как найти значения **AppID** и **AppPassword** для развернутого бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
-## <a name="step-1-disable-security-and-test-on-localhost"></a>Шаг 1. Отключение системы безопасности и тестирование на локальном компьютере
+## <a name="step-1-disable-security-and-test-on-localhost"></a>Шаг 1. Отключение системы безопасности и тестирование на локальном компьютере
 
 На этом шаге бот доступен и функционирует на локальном компьютере, когда отключена система безопасности. 
 
@@ -43,7 +43,7 @@ ms.locfileid: "49999413"
 
 ::: moniker range="azure-bot-service-3.0"
 
-Если вы используете пакет SDK Bot Builder для .NET, измените эти параметры в файле Web.config. 
+Если вы используете пакет SDK Bot Framework для .NET, измените эти параметры в файле Web.config. 
 
 ```xml
 <appSettings>
@@ -52,7 +52,7 @@ ms.locfileid: "49999413"
 </appSettings>
 ```
 
-Если используется пакет SDK Bot Builder для Node.js, измените эти значения (или обновите соответствующие переменные среды).
+Если вы используете пакет SDK Bot Framework для Node.js, измените эти значения (или обновите соответствующие переменные среды).
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -65,16 +65,18 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Если вы используете пакет SDK Bot Builder для .NET, измените эти параметры в файле `appsettings.config`.
+Если вы используете пакет SDK Bot Framework для .NET, измените эти параметры в файле `.bot`.
 
-```xml
-<appSettings>
-  <add key="MicrosoftAppId" value="" />
-  <add key="MicrosoftAppPassword" value="" />
-</appSettings>
+```json
+"services": [
+  {
+    "appId": "<your app ID>",
+    "appPassword": "<your app password>",
+  }
+]
 ```
 
-Если используется пакет SDK Bot Builder для Node.js, измените эти значения (или обновите соответствующие переменные среды).
+Если вы используете пакет SDK Bot Framework для Node.js, измените эти значения (или обновите соответствующие переменные среды).
 
 ```javascript
 const adapter = new BotFrameworkAdapter({
@@ -108,7 +110,7 @@ const adapter = new BotFrameworkAdapter({
 * В настройках эмулятора указано значение для полей **идентификатора приложения Microsoft** и **пароля приложения Microsoft**. Оба поля должны быть пустыми.
 * Система безопасности бота не была отключена. [Проверьте](#disable-security-localhost), чтобы не было значений идентификатора или пароля приложения в настройках бота.
 
-## <a id="step-2"></a> Шаг 2: Проверка идентификатора и пароля приложения бота
+## <a id="step-2"></a> Шаг 2. Проверка идентификатора и пароля приложения бота
 
 На этом шаге проверяется допустимость идентификатора и пароля приложения бота, которые используются для проверки подлинности. (Если вы не знаете этих значений, [получите их](#PW) сейчас.) 
 
@@ -120,6 +122,9 @@ const adapter = new BotFrameworkAdapter({
 Эти инструкции описывают, как использовать [cURL](https://curl.haxx.se/download.html) для HTTP-запроса к службе входа в систему Microsoft. Можно использовать альтернативный инструмент, такой как Postman, просто убедитесь, что запрос соответствует [протоколу проверки подлинности](~/rest-api/bot-framework-rest-connector-authentication.md) Bot Framework.
 
 Чтобы убедиться, что идентификатор и пароль приложения бота действительны, выполните следующий запрос, используя **cURL**, заменив `APP_ID` и `APP_PASSWORD` идентификатором и паролем бота.
+
+> [!TIP]
+> Пароль может содержать специальные символы, и тогда описанный ниже вызов будет недопустимым. В этом случае попробуйте преобразовать пароль в формат URL-адреса.
 
 ```cmd
 curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token -d "grant_type=client_credentials&client_id=APP_ID&client_secret=APP_PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default"
@@ -135,15 +140,15 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 Если пришло сообщение об ошибке в ответ на запрос, проверьте его, чтобы определить причину. Если ответ указывает, что идентификатор приложения или пароль недопустимы, [получите правильные значения](#PW) с портала Bot Framework и повторно отправьте запрос с новыми значениями, чтобы подтвердить, что они действительны. 
 
-## Шаг 3. Включение системы безопасности и тестирования на локальном компьютере <a id="step-3"></a>
+## Шаг 3. Включение системы безопасности и тестирования на локальном компьютере <a id="step-3"></a>
 
 На этом шаге проверяется доступность и функциональность бота на локальном компьютере, когда система безопасности отключена, и подтверждается, что идентификатор приложения и пароль, которые бот будет использовать для аутентификации, действительны. На этом шаге убедитесь, что бот доступен и работает на локальном компьютере, когда включена система защиты.
 
 ### <a id="enable-security-localhost"></a> Включение системы безопасности
 
-Безопасность бота зависит от служб Microsoft, даже если бот работает только на локальном компьютере. Чтобы включить систему защиты для бота, отредактируйте его параметры конфигурации, чтобы заполнить идентификатор и пароль приложения с помощью значений, которые были подтверждены на [Шаге 2](#step-2).
+Безопасность бота зависит от служб Microsoft, даже если бот работает только на локальном компьютере. Чтобы включить систему защиты для бота, отредактируйте его параметры конфигурации, чтобы заполнить идентификатор и пароль приложения с помощью значений, которые были подтверждены на [Шаге 2](#step-2).  Кроме того, проверьте актуальность пакетов, особенно `System.IdentityModel.Tokens.Jwt` и `Microsoft.IdentityModel.Tokens`.
 
-Если вы используете пакет SDK Bot Builder для .NET, заполните эти параметры для `.bot` в файле `appsettings.config`:
+Если вы используете пакет SDK Bot Framework для .NET, заполните эти параметры в `appsettings.config` или аналогичные значения в файле `.bot`:
 
 ```xml
 <appSettings>
@@ -152,7 +157,7 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 </appSettings>
 ```
 
-Если используется пакет SDK Bot Builder для Node.js, заполните эти параметры (или обновите соответствующие переменные среды).
+Если используется пакет SDK Bot Framework для Node.js, заполните эти параметры (или обновите соответствующие переменные среды).
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -162,7 +167,7 @@ var connector = new builder.ChatConnector({
 ```
 
 > [!NOTE]
-> Сведения о том, как найти значения **AppID** и **AppPassword** бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
+> Сведения о том, как найти значения **AppID** и **AppPassword** для бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
 ### <a name="test-your-bot-on-localhost"></a>Тестирование бота на локальном компьютере 
 
@@ -186,7 +191,7 @@ var connector = new builder.ChatConnector({
 * В настройках эмулятора поля **идентификатор приложения Microsoft** и **пароль приложения Microsoft** не содержат допустимые значения. Оба поля должны быть заполнены и содержать соответствующие значения, которые были проверены на [Шаге 2](#step-2).
 * Для бота система безопасности не включена. [Убедитесь](#enable-security-localhost), что настройки конфигурации бота задают значения как для идентификатора приложения, так и для пароля.
 
-## Шаг 4. Тестирование бота в облаке <a id="step-4"></a>
+## Шаг 4. Тестирование бота в облаке <a id="step-4"></a>
 
 На этом шаге вы подтвердили, что бот доступен и функционирует на локальном узле, когда система безопасности отключена. Функционирование бота на локальном узле подтверждает, что идентификатор и пароль приложения бота являются допустимыми, когда включена система безопасности. На этом шаге разверните бот в облаке и убедитесь, что он доступен и работает там, где включена защита. 
 

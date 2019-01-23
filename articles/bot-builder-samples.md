@@ -1,6 +1,6 @@
 ---
-title: Примеры ботов для пакета SDK Bot Builder | Документация Майкрософт
-description: Ознакомьтесь с большим набором примеров ботов, которые помогут повысить эффективность разработки ботов с помощью пакета SDK Bot Builder.
+title: Примеры ботов на основе пакета SDK Bot Framework | Документация Майкрософт
+description: Ознакомьтесь с большим набором примеров ботов, которые помогут повысить эффективность разработки ботов с помощью пакета SDK Bot Framework.
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b38d0a66041403cc171d83216b3a57695170df3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 576b32cfaf8c98a0c1b6bd14cd97207cdf20af3a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996841"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224689"
 ---
-# <a name="bot-builder-sdk-samples-repo"></a>Репозиторий с примерами для пакета SDK Bot Builder
+# <a name="bot-framework-sdk-samples-repo"></a>Репозиторий примеров для пакета SDK Bot Framework
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 В примерах для Bot Builder из репозитория демонстрируются ориентированные на задачи боты, показывающие, как воспользоваться преимуществами функций в пакете SDK. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями.

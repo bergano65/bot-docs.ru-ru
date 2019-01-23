@@ -1,6 +1,6 @@
 ---
 title: Запрос пользователю на ввод данных | Документация Майкрософт
-description: Сведения об использовании запросов для сбора данных, введенных пользователем с помощью пакета SDK Bot Builder для Node.js.
+description: Сведения об использовании запросов для сбора данных, введенных пользователем с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0926c15d2c62bfa74ddb465d8c816dee7c8fb576
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0ee70c1e775780bf884c4237e47cff4edb8934a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451976"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224789"
 ---
 # <a name="prompt-for-user-input"></a>Запрос пользователю на ввод данных
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Пакет SDK Bot Builder для Node.js предоставляет набор встроенных запросов для упрощения сбора данных, вводимых от пользователя. 
+Пакет SDK Bot Framework для Node.js предоставляет набор встроенных запросов для упрощения сбора данных, вводимых от пользователя. 
 
 *Запрос* используется всякий раз, когда боту нужно, чтобы пользователь ввел данные. Запросы можно использовать, чтобы попросить пользователя ввести ряд данных, объединив запросы в каскад. Запросы можно использовать в сочетании с [каскадом](bot-builder-nodejs-dialog-waterfall.md), что может помочь в [управлении ходом общения](bot-builder-nodejs-manage-conversation-flow.md) в боте. 
 
@@ -74,7 +74,7 @@ bot.dialog('askName', [
 ```
 
 ## <a name="prompt-types"></a>Типы запросов
-В пакет SDK Bot Builder для Node.js включено несколько различных типов встроенных запросов. 
+В пакет SDK Bot Framework для Node.js включено несколько разных типов встроенных запросов. 
 
 |**Тип запроса**     | **Описание** |     
 | ------------------ | --------------- |

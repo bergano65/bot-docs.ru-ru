@@ -1,6 +1,6 @@
 ---
 title: Запись данных напрямую в хранилище | Документация Майкрософт
-description: Сведения о том, как выполнять операции чтения и записи непосредственно в хранилище с помощью пакета SDK Bot Builder для .NET.
+description: Сведения о том, как выполнять операции чтения и записи непосредственно в хранилище с помощью пакета SDK Bot Framework для .NET.
 keywords: хранилище, чтение и запись, хранилище в памяти, eTag
 author: DeniseMak
 ms.author: v-demak
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 803574e5d224b0556162fd677145d29cafa2cab1
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: cd1f8270acf426c84d64efef796b7a007c49c2c1
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645684"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360794"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -217,12 +217,12 @@ async function logMessageText(storage, context) {
 Создание учетной записи займет несколько минут. Подождите, пока на портале не откроется страница с сообщением "Поздравляем! Ваша учетная запись Azure Cosmos DB создана".
 
 ##### <a name="add-a-collection"></a>Добавление коллекции
-1. Выберите **Параметры > Создать коллекцию**. Справа отобразится область **Добавление коллекции** (вам может потребоваться прокрутить вправо, чтобы увидеть ее).
+1. Выберите **Параметры > Создать коллекцию**. Справа отобразится область **Добавление коллекции** (вам может потребоваться прокрутить вправо, чтобы увидеть ее). Из-за последних обновлений Cosmos DB теперь обязательным является ключ секции: _/id_. Этот ключ позволит избежать ошибок запросов между секциями.
 
 ![Добавление коллекции Cosmos DB](./media/add_database_collection.png)
 
 2. Имя новой базы данных — bot-cosmos-sql-db, а идентификатор коллекции — bot-storage. Эти значения будут использованы в примерах кода ниже.
-
+ -
 ![База данных Cosmos](./media/cosmos-db-sql-database.png)
 
 3. Универсальный код ресурса (URI) и ключ конечной точки доступны на вкладке **Ключи** параметров базы данных. Эти значения понадобятся для настройки кода далее. 
@@ -597,7 +597,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
            var count = 0;
            do
            {
-               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id, continuationToken);
                var activities = pagedTranscript.Items
                   .Where(a => a.Type == ActivityTypes.Message)
                   .Select(ia => (Activity)ia)

@@ -1,6 +1,6 @@
 ---
 title: Замена диалогов | Документация Майкрософт
-description: Узнайте, как заменить диалоги, чтобы повторно запросить входные данные и управлять потоком беседы, используя пакет SDK Bot Builder для Node.js.
+description: Узнайте, как заменить диалоги, чтобы повторно запросить входные данные и управлять потоком беседы, используя пакет SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 30ac28f5ce700829b8c382c49905883ffa45da29
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000061"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224989"
 ---
 # <a name="replace-dialogs"></a>Замена диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Возможность замены диалога может быть полезна для проверки входящих пользовательских данных или для повтора действия в ходе общения. С пакетом SDK Bot Builder для Node.js можно заменить диалог с помощью метода [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Этот метод позволяет завершить текущий диалог и заменить его на новый без возврата к вызывающей стороне. 
+Возможность замены диалога может быть полезна для проверки входящих пользовательских данных или для повтора действия в ходе общения. Пакет SDK Bot Framework для Node.js позволяет заменить диалог с помощью метода [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Этот метод позволяет завершить текущий диалог и заменить его на новый без возврата к вызывающей стороне. 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>Создание пользовательских запросов для проверки входных данных
 

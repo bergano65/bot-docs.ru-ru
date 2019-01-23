@@ -1,6 +1,6 @@
 ---
 title: Настройка взаимодействия с пользователем с помощью языка шаблонов | Документация Майкрософт
-description: Узнайте, как настроить запросы FormFlow и переопределить шаблоны FormFlow, используя язык шаблонов и пакет SDK Bot Builder для .NET.
+description: Узнайте, как настроить запросы FormFlow и переопределить шаблоны FormFlow, используя язык шаблонов и пакет SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bc0a2819f3adea63b53e464808f3bbaf5b93814a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998051"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225639"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Настройка взаимодействия с пользователем с помощью языка шаблонов
 
@@ -144,7 +144,7 @@ What kind of sandwich would you like?
 - [Настройка формы с помощью FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
 - [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
 [promptAttribute]: /dotnet/api/microsoft.bot.builder.formflow.promptattribute
 

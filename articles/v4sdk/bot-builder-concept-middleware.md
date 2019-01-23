@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bfa180967c55aac6012e02887ac2893947263f9
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 231ed330faf9ce777a5acc5f4e6272b747a6f7fc
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010589"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298281"
 ---
 # <a name="middleware"></a>ПО промежуточного слоя
 
@@ -96,5 +96,6 @@ _Сокращение каналов_ — важный фактор работы
 
 Добавьте объекты управления состоянием, которым потребуется обновлять объект _набора состояний бота_, и примените их при создании ПО промежуточного слоя для автоматического сохранения изменений.
 
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-Ознакомьтесь со сведениями о ПО промежуточного слоя для ведения журнала расшифровки, реализованное в пакете SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].
+Ознакомьтесь с реализацией ПО промежуточного слоя для ведения журнала расшифровки в пакете SDK Bot Framework [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

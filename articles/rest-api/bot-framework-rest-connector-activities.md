@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: b246e9e07243e4064f92e72ee3909541f642714e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: db09888c5f782b065ff6bd108ce93379cd42527a
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999931"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317684"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
-С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][Activity]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
+Служба Bot Connector выполняет обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][Activity]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Типы действий в службе Bot Connector
 

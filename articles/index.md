@@ -9,20 +9,15 @@ layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/16/2019
-ms.openlocfilehash: 5c7851bdc05180605d20698f3e94e07c9bcace2b
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360774"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
-> [!NOTE]
-> Эта статья содержит сведения о **предыдущей версии пакета SDK (версии 3)**. С документацией по текущей версии пакета SDK (версии 4) можно ознакомиться [здесь](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
-
 <div class="content">
     <h1>Документация по службе Azure Bot</h1>
+    <div class="alert is-info">
+        <p class="alert-title"><span class="docon docon-status-error-outline"></span> Примечание</p>
+        <p>Эта статья содержит сведения о <strong>предыдущей версии пакета SDK (версии 3)</strong>. С документацией по текущей версии пакета SDK (версии 4) можно ознакомиться <a href="https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0" data-linktype="external">здесь</a>.</p>
+    </div>
     <div class="intro" style="min-width: 200px">
         <p>Служба Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для Bot Framework с поддержкой .NET и Node.js. Узнайте, как использовать службу Bot, изучив краткое руководство и примеры.</p>
     </div>
@@ -67,11 +62,12 @@ ms.locfileid: "54360774"
 
 ::: moniker range="azure-bot-service-4.0"
 
-> [!NOTE] 
-> Эта статья содержит сведения о текущей версии пакета SDK (версии 4). С документацией по предыдущей версии пакета SDK (версии 3) можно ознакомиться [здесь.](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)
-
 <div class="content">
     <h1>Документация по службе Azure Bot</h1>
+    <div class="alert is-info">
+        <p class="alert-title"><span class="docon docon-status-error-outline"></span> Примечание</p>
+        <p>Эта статья содержит сведения о текущей версии пакета SDK (версии 4). С документацией по предыдущей версии пакета SDK (версии 3) можно ознакомиться <a href="https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0" data-linktype="external">здесь.</a></p>
+    </div>
     <div class="intro" style="min-width: 200px">
         <p>Служба Azure Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для Bot Framework с поддержкой C# и JavaScript. Узнайте, как использовать службу Bot, изучив краткие инструкции, примеры и руководства.
 </p>

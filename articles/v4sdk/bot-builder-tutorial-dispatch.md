@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/26/2018
+ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62cf3663a6e1c9b9321d7b74393b95e4a2ed3a69
-ms.sourcegitcommit: fd7781a06303fee5f39a253da5b3a3818d54b2ba
+ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
+ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53806775"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54323660"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -41,7 +41,7 @@ ms.locfileid: "53806775"
 
  ### <a name="create-your-bot-using-service-ui"></a>Создание бота с помощью пользовательского интерфейса службы
  
-Чтобы вручную создать бот, прежде всего скачайте из репозитория GitHub [BotFramework-Samples](https://github.com/Microsoft/BotFramework-Samples) в локальную папку следующие четыре файла: [home-automation.json](https://aka.ms/dispatch-home-automation-json), [weather.json](https://aka.ms/dispatch-weather-json), [nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json) и [QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv)
+Чтобы приступить к созданию бота вручную, скачайте следующие 4 файла из репозитория GitHub [BotFramework-Samples](https://aka.ms/botdispatchgitsamples) в локальную папку: [home-automation.json](https://aka.ms/dispatch-home-automation-json), [weather.json](https://aka.ms/dispatch-weather-json), [nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json), [QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv) Для этого можно, например, открыть приведенную выше ссылку на репозиторий GitHub, щелкнуть элемент **BotFramework-Samples** и выбрать действие Clone or download (Клонировать или скачать), чтобы переместить репозиторий на локальный компьютер. Обратите внимание, что эти файлы находятся не в том репозитории, где размещен указанный в предварительных требованиях пример.
 
 ### <a name="manually-create-luis-apps"></a>Создание приложений LUIS вручную
 
@@ -494,7 +494,10 @@ async onTurn(turnContext) {
 
 Любой из этих методов позволяет сократить число сообщений "Couldn't find an answer" (Не удалось найти ответ), которые бот будет возвращать пользователям. 
 
-## <a name="additional-resources"></a>Дополнительные ресурсы 
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+**Обновление или создание модели LUIS:** этот пример основан на предварительно настроенной модели LUIS. Сведения, которые вам потребуются для обновления этой модели или создания новой модели LUIS, вы найдете [здесь](https://aka.ms/create-luis-model#updating-your-cognitive-models
+).
 
 **Удаление ресурсов**. С помощью этого примера создается ряд приложений и ресурсов, которые можно удалить с помощью описанных ниже действий. Следите при этом за тем, чтобы не удалить ресурсы, от которых зависят *другие приложения или службы*. 
 

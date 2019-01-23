@@ -1,6 +1,6 @@
 ---
 title: Распознавание намерений и сущностей с помощью LUIS | Документы Майкрософт
-description: Узнайте, как "научить" бот понимать естественный язык с помощью диалогов LUIS в пакете SDK Bot Builder для .NET.
+description: Узнайте, как "научить" бот понимать естественный язык с помощью диалогов LUIS из пакета SDK Bot Framework для .NET.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec3c93bfca1ec8554655934d9165e436d88b9466
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997731"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225379"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
 
@@ -59,7 +59,7 @@ ms.locfileid: "49997731"
 
 Войдите в [https://www.luis.ai](https://www.luis.ai) с той же учетной записью, которая используется для входа Azure. Щелкните **Мои приложения**. В списке приложений найдите приложение, которое начинается с имени, указанного в поле **Имя приложения** в колонке **Служба ботов** при создании службы ботов. 
 
-Изначально приложение LUIS содержит 4 намерения: Cancel, Greeting, Help и None. <!-- picture -->
+Приложение LUIS изначально понимает 4 намерения: Cancel (Отмена), Greeting (Приветствие), Help (Справка) и None (Отсутствует). <!-- picture -->
 
 Выполнив следующие действия, вы сможете добавить намерения Note.Create, Note.ReadAloud и Note.Delete: 
 
@@ -77,7 +77,7 @@ ms.locfileid: "49997731"
    * Note.ReadAloud
    * Note.Create
    * Note.Delete
-   * None
+   * Нет
    * Справка
    * Greeting
    * Отмена 
@@ -388,7 +388,7 @@ using System.Collections.Generic;
 - [Диалоги](bot-builder-dotnet-dialogs.md)
 - [Управление потоком беседы с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

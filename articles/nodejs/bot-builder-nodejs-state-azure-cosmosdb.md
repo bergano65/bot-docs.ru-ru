@@ -1,6 +1,6 @@
 ---
 title: Управление данными о состоянии пользователя с помощью Azure Cosmos DB | Документация Майкрософт
-description: Узнайте, как сохранять и извлекать данные о состоянии с помощью Azure Cosmos DB и пакета SDK Bot Builder для Node.js.
+description: Узнайте, как сохранять и извлекать данные о состоянии в Azure Cosmos DB с помощью пакета SDK Bot Framework для Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0c0d91a7ec9fd1d72c7c51c042b0f52e28798778
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998121"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224519"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Управление данными о состоянии пользователя с помощью Azure Cosmos DB для Node.js
 
@@ -24,7 +24,7 @@ ms.locfileid: "49998121"
 
 - более высокая пропускная способность API состояния (больше контроля над производительностью);
 - уменьшенная задержка для географического распределения;
-- контроль над местом хранения данных (например, западная часть США или восточная часть США);
+- управление местом хранения данных (например, западная часть США или восточная часть США);
 - доступ к данным о фактическом состоянии;
 - базы данных с данными о состоянии не используются совместно с другими ботами;
 - возможность хранения более 32 КБ.

@@ -1,7 +1,7 @@
 ---
 title: Создание навыка Кортаны с помощью .NET | Документация Майкрософт
-description: Основные понятия для создания навыка Кортаны в пакете SDK Bot Builder для .NET.
-keywords: Bot Framework, Cortana skill, speech, .NET, Bot Builder, SDK, key concepts, core concepts
+description: Изучите основные понятия для создания навыка Кортаны, представленные в пакете SDK Bot Framework для .NET.
+keywords: Bot Framework, навык Кортана, речь, .NET, пакет SDK, ключевые концепции, основные понятия
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 030d17fa25a436ee8e8a1d093924e61f12e14e18
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 98fc10a806a4c8d1a4d6563934d92b0e0cdbb771
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998319"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224779"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -25,7 +25,7 @@ ms.locfileid: "49998319"
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 
-Пакет SDK Bot Builder для .NET позволяет создать бот с поддержкой речи путем его подключения к каналу Кортаны в качестве навыка Кортаны. 
+Пакет SDK Bot Framework для .NET позволяет создать бот с поддержкой речи путем его подключения к каналу Кортаны в качестве навыка Кортаны. 
 
 
 > [!TIP]
@@ -38,7 +38,7 @@ ms.locfileid: "49998319"
 
 ## <a name="adding-speech-to-your-bot"></a>Добавление речевых функций для бота
 
-Речевые сообщения бота представлены в виде SSML (Speech Synthesis Markup Language — язык разметки синтеза речи). Пакет SDK Bot Builder позволяет включать SSML в ответы бота, чтобы контролировать его высказывания в дополнение к тому, что он показывает.  Можно также контролировать состояние микрофона Кортаны, указав боту, как реагировать на входные данные пользователя — принимать, ожидать или игнорировать.
+Речевые сообщения бота представлены в виде SSML (Speech Synthesis Markup Language — язык разметки синтеза речи). Пакет SDK Bot Framework позволяет включать SSML в ответы бота, чтобы контролировать то, что он говорит, в дополнение к тому, что он показывает.  Можно также контролировать состояние микрофона Кортаны, указав боту, как реагировать на входные данные пользователя — принимать, ожидать или игнорировать.
 
 Задайте свойство`Speak` объекта `IMessageActivity`, чтобы указать, какое сообщение озвучит Кортана. Если указать обычный текст, Кортана самостоятельно определяет манеру произношения слов. 
 
@@ -335,7 +335,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 * [Card design best practices for Cortana][CardDesign] (Рекомендации по проектированию карточек для Кортаны)
 * [Cortana Dev Center][CortanaDevCenter] (Центр разработки Кортаны)
 * [Testing and debugging best practices for Cortana][Cortana-TestBestPractice] (Рекомендации по тестированию и отладке для Кортаны)
-* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
 [CortanaGetStarted]: /cortana/getstarted
 [BFPortal]: https://dev.botframework.com/

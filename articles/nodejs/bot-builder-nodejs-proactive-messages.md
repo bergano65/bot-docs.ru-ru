@@ -1,6 +1,6 @@
 ---
 title: Отправка упреждающих сообщений | Документация Майкрософт
-description: Узнайте, как прервать текущий ход общения упреждающим сообщением, используя пакет SDK Bot Builder для Node.js.
+description: Узнайте, как прервать текущий поток общения упреждающим сообщением, используя пакет SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ca33d59c967bc4eebc2f88fa4ddd67a9a6af6d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997161"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225579"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "49997161"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Отправка нерегламентированного упреждающего сообщения
 
-В следующих примерах кода показано, как отправить нерегламентированное упреждающее сообщение с помощью пакета SDK Bot Builder для Node.js.
+В следующих примерах кода показано, как отправить нерегламентированное упреждающее сообщение с помощью пакета SDK Bot Framework для Node.js.
 
 Чтобы иметь возможность отправить нерегламентированное сообщение пользователю, боту сначала необходимо собрать и сохранить сведения о пользователе из текущего сеанса общения. Свойство **address** сообщения сдержит все сведения, которые понадобятся боту, чтобы позже отправить нерегламентированное сообщение пользователю. 
 
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Отправка упреждающего сообщения на основе диалога
 
-В следующем примере кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Builder для Node.js. Полный рабочий пример доступен в папке [Microsoft/BotBuilder-примеры/узел/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
+В следующих примерах кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Framework для Node.js. Полный рабочий пример доступен в папке [Microsoft/BotBuilder-примеры/узел/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
 
 Чтобы иметь возможность отправить сообщение на основе диалога пользователю, боту сначала необходимо собрать (и сохранить) сведения из текущего сеанса общения. Объект `session.message.address` содержит все сведения, которые понадобятся боту, чтобы отправить пользователю упреждающее сообщение на основе диалога. 
 
@@ -122,7 +122,7 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Builder для Node.js, приведен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">примере proactiveMessages</a> на сайте GitHub. В примере proactiveMessages <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога.
+Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для Node.js, приведен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

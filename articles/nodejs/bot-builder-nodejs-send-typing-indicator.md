@@ -1,6 +1,6 @@
 ---
 title: Отправка индикатора ввода | Документация Майкрософт
-description: Узнайте, как добавить индикатор "please wait", чтобы сообщить пользователю, что бот обрабатывает запрос, используя пакет SDK Bot Builder для Node.js
+description: Узнайте, как добавить индикатор ожидания "please wait", чтобы сообщить пользователю, что бот обрабатывает запрос, используя пакет SDK Bot Framework для Node.js
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 738816e2e790dc365e858cb27ee5e58a9d8b6d97
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3852c0b25ea385301be11edd0a46ed5984510820
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000183"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224869"
 ---
 # <a name="send-a-typing-indicator"></a>Отправка индикатора ввода 
 

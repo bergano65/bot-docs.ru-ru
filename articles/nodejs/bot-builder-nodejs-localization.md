@@ -1,6 +1,6 @@
 ---
 title: Поддержка локализации | Документация Майкрософт
-description: Узнайте, как определить расположение пользователя и включить функциональные возможности локализации с помощью пакета SDK Bot Builder для Node.js.
+description: Узнайте, как определить расположение пользователя и включить функциональные возможности локализации с помощью пакета SDK Bot Framework для Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ac9fabcb0c6626e1b0133b7718b135a88d4c846
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998068"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224399"
 ---
 # <a name="support-localization"></a>Поддержка локализации
 
@@ -111,7 +111,7 @@ var bot = new builder.UniversalBot(connector, {
 ```
 
 ## <a name="localize-prompts"></a>Локализация запросов
-Система локализации по умолчанию для пакета SDK Bot Builder основывается на файлах и позволяет боту поддерживать несколько языков, используя файлы JSON, хранящиеся на диске. По умолчанию система локализации будет искать запросы бота в файле **./locale/<IETF TAG>/index.json**, в котором <IETF TAG> является допустимым [языковым тегом IETF][IEFT], представляющим предпочтительный язык, для которого нужно найти запросы. 
+Система локализации по умолчанию для пакета SDK Bot Framework основывается на файлах и позволяет боту поддерживать несколько языков, используя файлы JSON, хранящиеся на диске. По умолчанию система локализации будет искать запросы бота в файле **./locale/<IETF TAG>/index.json**, в котором <IETF TAG> является допустимым [языковым тегом IETF][IEFT], представляющим предпочтительный язык, для которого нужно найти запросы. 
 
 На следующем снимке экрана показана структура каталогов для бота с поддержкой трех языков: английского, итальянского и испанского.
 

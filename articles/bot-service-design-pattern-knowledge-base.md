@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
-ms.openlocfilehash: e228209b4d239a05f9c76203e9fd2fb342c14d36
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6820815f251c38c59391f1e0e7719e52a375ed48
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999291"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224909"
 ---
 # <a name="design-knowledge-bots"></a>Проектирование ботов базы знаний
 
@@ -130,16 +130,16 @@ ms.locfileid: "49999291"
 2. Сначала вызовите LUIS, и если никакое намерение не соответствует определенному пороговому значению, например запускается намерение None, после чего вызывается QnA Maker. В качестве альтернативы создайте намерение LUIS для QnA Maker, предоставляя модель LUIS с примерами вопросов QnA, сопоставляемые с QnAIntent. 
 3. Сначала вызовите QnA Maker и, если ответ не соответствует определенному пороговому значению, вызовите LUIS. 
 
-Пакет SDK для Bot Builder предоставляет встроенную поддержку LUIS и QnA Maker. Это позволяет активировать диалоги или автоматически отвечать на вопросы с помощью LUIS и/или QnA Maker без необходимости реализации пользовательских вызовов для любого из этих средств. Дополнительные сведения см. в [руководстве по средству Dispatch в Bot Builder](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0).
+Пакет SDK Bot Framework предоставляет встроенную поддержку LUIS и QnA Maker. Это позволяет активировать диалоги или автоматически отвечать на вопросы с помощью LUIS и/или QnA Maker без необходимости реализации пользовательских вызовов для любого из этих средств. Дополнительные сведения см. в [руководстве по средству Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0).
 
 > [!TIP]
 > При реализации комбинации LUIS, QnA Maker и/или Поиск Azure введите тестовые входные данные в каждое из средств, чтобы определить пороговое значение для каждой из моделей. Каждая из служб (LUIS, QnA Maker и Поиск Azure) генерирует значение, используя разные критерии оценки, поэтому оценки, полученные в этих средствах, не сопоставляются напрямую. Кроме того, LUIS и QnA Maker нормализуют оценки. Определенную оценку можно считать "хорошей" в одной модели LUIS, но "не очень" в другой модели. 
 
 ## <a name="sample-code"></a>Пример кода
 
-- Пример, в котором показано, как создать базовый бот базы знаний с помощью пакета SDK Bot Builder для .NET, см. в <a href="https://aka.ms/qna-with-appinsights" target="_blank">примере бота базы знаний</a> в репозитории GitHub. 
+- Пример, в котором показано, как создать базовый бот базы знаний с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://aka.ms/qna-with-appinsights" target="_blank">примере бота базы знаний</a> в репозитории GitHub. 
 <!-- TODO: Do not have a current bot sample to work with this
-- For a sample that shows how to create more complex knowledge bots using the Bot Builder SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
+- For a sample that shows how to create more complex knowledge bots using the Bot Framework SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
 -->
 
 [qnamakerTemplate]: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle

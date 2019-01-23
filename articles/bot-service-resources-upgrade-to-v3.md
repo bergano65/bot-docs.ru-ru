@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134714"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225949"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Обновление бота до API Bot Framework версии 3.
 
@@ -21,7 +21,7 @@ ms.locfileid: "50134714"
 
 В июле 2016 г. был выпущен API Bot Framework версии 3, а API Bot Framework версии 1 признан нерекомендуемым. Боты, использующие API версии 1, перестали работать в Skype в декабре 2016 г. и во всех остальных каналах — 23 февраля 2017 г. Если вы создали бот, используя API версии 1, обновите его до API версии 3, следуя инструкциям в этой статье, чтобы он мог снова функционировать. Чтобы получить полное представление о процессе обновления, прочитайте эту статью перед началом обновления. 
 
-## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Шаг 1. Получение идентификатора приложения и пароля на портале Bot Framework
+## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Шаг 1. Получение идентификатора приложения и пароля на портале Bot Framework
 
 Войдите на [портал Bot Framework](https://dev.botframework.com/), нажмите кнопку **Мои боты**, затем выберите нужный бот, чтобы открыть его панель мониторинга. Затем перейдите по ссылке **Параметры** в левой части страницы в разделе **Управление ботами**. 
 
@@ -84,7 +84,7 @@ If the **App ID** field is empty, complete these steps:
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
 
-1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+1. Update to the latest version of the [Bot Framework SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
 2. Update your code to apply the necessary changes, according the guidance below.
 3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
 
@@ -93,10 +93,10 @@ The following sections describe the key differences between API v1 and API v3. A
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>Построитель ботов и соединитель теперь входят в один пакет SDK
 
-Вместо того чтобы устанавливать отдельные пакеты SDK для построителя и соединителя с помощью нескольких пакетов NuGet (или модулей NPM), можно получить обе библиотеки в рамках одного пакета SDK построителя ботов:
+Вместо того, чтобы устанавливать отдельные пакеты SDK для построителя и соединителя в виде нескольких пакетов NuGet (или модулей NPM), теперь можно получить обе библиотеки в одном пакете SDK Bot Framework:
 
-- Пакет SDK построителя ботов для .NET: пакет NuGet `Microsoft.Bot.Builder`
-- Пакет SDK построителя ботов для Node.js: модуль NPM `botbuilder`
+- Пакет SDK Bot Framework для .NET: пакет NuGet `Microsoft.Bot.Builder`;
+- Пакет SDK Bot Framework для Node.js: модуль NPM `botbuilder`.
 
 Автономной пакет SDK `Microsoft.Bot.Connector` теперь является устаревшим и больше не поддерживается.
 

@@ -1,6 +1,6 @@
 ---
-title: Перехват сообщений | Документы Майкрософт
-description: Сведения о том, как создавать журналы и другие записи путем перехвата и обработки передаваемой информации с помощью пакета SDK Bot Builder.
+title: Перехват сообщений | Документация Майкрософт
+description: Сведения о том, как создавать журналы и другие записи путем перехвата и обработки передаваемой информации с помощью пакета SDK Bot Framework.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 31380961f117a2b4a3ffaae3c82d682a63001c0c
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: b262e936cd48bb73d7b5aa3fa4f7b6318ea7c2a0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965682"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225629"
 ---
 # <a name="intercept-messages"></a>Перехват сообщений
 
@@ -28,7 +28,7 @@ ms.locfileid: "50965682"
 
 ## <a name="example"></a>Пример
 
-В следующем примере кода показано, как перехватывать сообщения, которые передаются между пользователем и ботом, с помощью **ПО промежуточного слоя** в пакете SDK Bot Builder для Node.js. 
+В следующем примере кода показано, как перехватывать сообщения, которые передаются между пользователем и ботом, с помощью **ПО промежуточного слоя** в пакете SDK Bot Framework для Node.js. 
 
 Во-первых, настройте обработчики для входящих сообщений (`botbuilder`) и для исходящих сообщений (`send`).
 
@@ -65,4 +65,4 @@ module.exports = {
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример, в котором показано, как перехватывать сообщения и записывать их в журнал с помощью пакета SDK Bot Builder для Node.js, см. в разделе <a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">Пример использования ПО промежуточного слоя и записи в журнал</a> GitHub.
+Полный пример, в котором показано, как перехватывать сообщения и записывать их в журнал с помощью пакета SDK Bot Framework для Node.js, см. в <a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">примере использования ПО промежуточного слоя и записи в журнал</a> на сайте GitHub.

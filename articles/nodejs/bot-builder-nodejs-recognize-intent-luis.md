@@ -1,6 +1,6 @@
 ---
 title: Распознавание намерений и сущностей с помощью LUIS | Документы Майкрософт
-description: Интеграция бота с LUIS для определения намерений пользователя и выполнения соответствующих ответных действий путем активации диалоговых окон с помощью пакета SDK Builder SDK для Node.js.
+description: Интеграция бота с LUIS для определения намерений пользователя и выполнения соответствующих ответных действий путем активации диалоговых окон с помощью пакета SDK Bot Framework для Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5df1352241485bf95a46fa981b9b16c3cb7e3925
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: acdc6053f7d666c2f086dca554efafc93c8af769
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998701"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225289"
 ---
-# <a name="recognize-intents-and-entities-with-luis"></a>Распознаваний намерений и сущностей с помощью LUIS 
+# <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "49998701"
 
 Войдите в [https://www.luis.ai](https://www.luis.ai) с той же учетной записью, которая используется для входа Azure. Щелкните **Мои приложения**. В списке приложений найдите приложение, которое начинается с имени, указанного в поле **Имя приложения** в колонке **Служба ботов** при создании службы ботов. 
 
-Изначально приложение LUIS содержит 4 намерения: Cancel, Greeting, Help и None. <!-- picture -->
+Приложение LUIS изначально понимает 4 намерения: Cancel (Отмена), Greeting (Приветствие), Help (Справка) и None (Отсутствует). <!-- picture -->
 
 Выполнив следующие действия, вы сможете добавить намерения Note.Create, Note.ReadAloud и Note.Delete: 
 
@@ -77,7 +77,7 @@ ms.locfileid: "49998701"
    * Note.ReadAloud
    * Note.Create
    * Note.Delete
-   * None
+   * Нет
    * Справка
    * Greeting
    * Отмена

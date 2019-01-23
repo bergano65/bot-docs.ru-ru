@@ -1,6 +1,6 @@
 ---
 title: Требования и рекомендации для интерактивных мультимедийных ботов | Документация Майкрософт
-description: Важные требования и рекомендации, связанные с созданием интерактивных мультимедийных ботов для Skype с помощью пакета SDK Bot Builder для .NET.
+description: Важные требования и рекомендации, связанные с созданием интерактивных мультимедийных ботов для Skype с помощью пакета SDK Bot Framework для .NET.
 author: ssulzer
 ms.author: ssulzer
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 209fb3d16310754d192d66c8f757b354b99b643b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997331"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224939"
 ---
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Требования и рекомендации для интерактивных мультимедийных ботов
 

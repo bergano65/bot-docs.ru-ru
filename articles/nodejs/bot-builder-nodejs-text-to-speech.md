@@ -1,6 +1,6 @@
 ---
 title: Добавление речи в сообщения | Документы Майкрософт
-description: Сведения о добавлении речи в сообщения с помощью пакета SDK Bot Builder для Node.js.
+description: Сведения о добавлении речи в сообщения с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3c17097197ba4b6ed0523d84a81974d9cc9fe3b5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999137"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224299"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -29,7 +29,7 @@ ms.locfileid: "49999137"
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Указание текста, произносимого ботом
 
-С помощью пакета SDK Bot Builder для Node.js можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `IMessage.speak` и отправить сообщение с помощью метода `session.send()`, отправить сообщение с помощью метода `session.say()` (передав параметры, которые задают отображаемый текст, произносимый текст, и параметры) или отправить сообщение с помощью встроенного запроса (указав параметры `speak` и `retrySpeak`).
+С помощью пакета SDK Bot Framework для Node.js можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `IMessage.speak` и отправить сообщение с помощью метода `session.send()`, отправить сообщение с помощью метода `session.say()` (передав параметры, которые задают отображаемый текст, произносимый текст, и параметры) или отправить сообщение с помощью встроенного запроса (указав параметры `speak` и `retrySpeak`).
 
 ### <a id="message-speak"></a> IMessage.speak 
 
@@ -72,13 +72,13 @@ ms.locfileid: "49999137"
 
 ## <a name="sample-code"></a>Пример кода 
 
-Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Builder для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">примере игрока</a> на сайте GitHub.
+Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">примере игрока</a> на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Пример игрока (GitHub)</a>
-- [Справочник по пакету SDK построителя ботов для Node.js][SDKReference]
+- [Справочник по пакету SDK Bot Framework для Node.js][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
 

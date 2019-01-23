@@ -1,6 +1,6 @@
 ---
-title: Управление данными состояния | Документы Майкрософт
-description: Узнайте, как сохранять и извлекать данные о состоянии с помощью пакета SDK построителя ботов для Node.js.
+title: Управление данными о состоянии | Документация Майкрософт
+description: Узнайте, как сохранять и извлекать данные о состоянии с помощью пакета SDK Bot Framework для Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 519f188a29db2b9b37061ee0eff5361a63d2acac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6d653e47d2e906c6306134804c7731b374d830ba
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999991"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225009"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -56,7 +56,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 ## <a name="storage-containers"></a>Контейнеры хранилища
 
-В пакете SDK построителя ботов для Node.js объект `session` предоставляет следующие свойства для хранения данных о состоянии.
+В пакете SDK Bot Framework для Node.js объект `session` предоставляет следующие свойства для хранения данных о состоянии.
 
 | Свойство | Область действия | ОПИСАНИЕ |
 | ---- | ---- | ---- |
@@ -129,7 +129,7 @@ session.userdata.start = startDate.toISOString();
 
 ### <a name="saving-data"></a>Сохранение данных
 
-Данные, созданные в каждом контейнере хранилища, будут оставаться в памяти до сохранения контейнера. Пакет SDK построителя ботов для Node.js отправляет данные в службу `ChatConnector` в виде пакетов, сохраняемых при появлении сообщений для отправки. Чтобы сохранить данные, которые находятся в контейнерах хранилища без отправки сообщений, можно вручную вызвать метод [`save`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save). Если метод `save` не вызывается, данные, находящиеся в контейнерах хранилища, будут сохранены в ходе обработки пакета.
+Данные, созданные в каждом контейнере хранилища, будут оставаться в памяти до сохранения контейнера. Пакет SDK Bot Framework для Node.js отправляет данные в службу `ChatConnector` в виде пакетов, сохраняемых при появлении сообщений для отправки. Чтобы сохранить данные, которые находятся в контейнерах хранилища без отправки сообщений, можно вручную вызвать метод [`save`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save). Если метод `save` не вызывается, данные, находящиеся в контейнерах хранилища, будут сохранены в ходе обработки пакета.
 
 ```javascript
 session.userData.favoriteColor = "Red";

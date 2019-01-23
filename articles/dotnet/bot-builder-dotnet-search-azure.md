@@ -1,6 +1,6 @@
 ---
 title: Создание взаимодействия на основе данных с помощью Поиска Azure | Документация Майкрософт
-description: Узнайте, как создать взаимодействие на основе данных с помощью Поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Builder для .NET и Поиска Azure.
+description: Узнайте, как создать взаимодействие на основе данных с помощью Поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Framework для .NET и Поиска Azure.
 author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8205f40053b2b3d0e62d9b9ce622f59432e059a4
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999012"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224549"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -173,7 +173,7 @@ public class SearchHitStyler : PromptStyler
 
 ## <a name="samples"></a>Примеры
 
-Два полных примера, демонстрирующих поддержку Поиска Azure с помощью ботов и пакета SDK Bot Builder для .NET, приведены на сайте GitHub: это [пример бота для поиска недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) и [пример бота для поиска вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot). 
+Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для .NET, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Поиск Azure][search]

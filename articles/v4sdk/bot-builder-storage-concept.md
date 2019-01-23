@@ -1,16 +1,16 @@
 ---
 redirect_url: /bot-framework/bot-builder-howto-v4-state
-ms.openlocfilehash: cdbe139f6b901cf812356358deecc61394eae2a5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a0d2b1295be1271e827d617ad09878ee8cfcd356
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998901"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223919"
 ---
 <a name="--"></a><!--
 ---
-title: Состояние и хранение | Документация Майкрософт description: В этом руководстве описывается диспетчер состояния, состояние общения и состояние пользователя в пакете SDK для Bot Builder.
-keywords: LUIS, conversation state, user state, storage, manage state author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
+заголовок: Состояние и хранение | Документация Майкрософт description: Описывает диспетчер состояния, состояние общения и состояние пользователя в пакете SDK Bot Framework.
+keywords: LUIS, состояние беседы, состояние пользователя, хранилище, диспетчер состояния author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
 ---
 
 # <a name="state-and-storage"></a>Состояние и хранение
@@ -18,7 +18,7 @@ keywords: LUIS, conversation state, user state, storage, manage state author: De
 
 Важным аспектом качественной разработки бота является отслеживание контекста общения, то есть бот должен запоминать, например, ответы на предыдущие вопросы.
 В зависимости от того, для чего используется ваш бот, вам может понадобиться отслеживать информацию о состоянии или хранении данных дольше, чем время существования общения.
-*Состояние* бота — это информация, которую программа запоминает, чтобы адекватно отвечать на входящие сообщения. Пакет SDK для Bot Builder предоставляет классы для хранения и извлечения данных о состоянии как объект, связанный с пользователем или общением.
+*Состояние* бота — это информация, которую программа запоминает, чтобы адекватно отвечать на входящие сообщения. Пакет SDK Bot Framework предоставляет классы, которые сохраняют и извлекают данные о состоянии в виде объекта, связанного с пользователем или беседой.
 
 * **Свойства общения** позволяют боту отслеживать текущее общение с пользователем. Если ваш бот должен выполнить последовательные шаги или переключиться между темами общения, вы можете использовать свойства общения для управления шагами в последовательности или для отслеживания текущей темы. Так как свойства диалога отражают состояние текущего процесса общения, они обычно очищаются в конце диалога, когда бот получает действие _конец общения_.
 * **Свойства пользователя** можно использовать для многих целей, например для определения места остановки предыдущего общения пользователя или просто для приветствия вернувшегося пользователя по имени. Если сохранить параметры пользователя, то с помощью этих данных можно настроить общение в следующий раз. Например, можно оповестить пользователя о новостной статье на интересующую его тему или оповестить его о том, что освободилось время для встречи. Эти параметры следует очистить, если бот получает действие _удалить данные пользователя_.
@@ -46,7 +46,7 @@ Bots built using Azure Table Storage can be designed to be stateless and scalabl
 
 ## Writing directly to storage
 
-You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
+You can also use the Bot Framework SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
 For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 

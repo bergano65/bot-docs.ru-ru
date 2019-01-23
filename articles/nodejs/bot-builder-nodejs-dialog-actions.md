@@ -1,6 +1,6 @@
 ---
 title: Обработка действий пользователя | Документация Майкрософт
-description: Узнайте, как обрабатывать действия пользователя, позволив боту ожидать и обрабатывать введенные пользователем данные, содержащие определенные ключевые слова, с помощью пакета SDK Bot Builder для Node.js.
+description: Узнайте, как обрабатывать действия пользователя, позволив боту ожидать и обрабатывать введенные пользователем данные, содержащие определенные ключевые слова, с помощью пакета SDK Bot Framework для Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26f6e9520fe5d2ebb83ceb4e6a497a35e9d2611f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7ca595b1c24769addfbdf7975c48d3a052c4a2de
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999261"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54226009"
 ---
 # <a name="handle-user-actions"></a>Обработка действий пользователя
 
@@ -236,7 +236,7 @@ bot.dialog('orderDinner', [
 
 ### <a name="bind-an-endconversationaction"></a>Привязка endConversationAction
 
-При привязке `endConversationAction` это действие регистрируется в диалоге. После активации это действие завершает общение с пользователем. Активация этого действия аналогична вызову метода [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). После завершения общения пакет SDK Bot Builder для Node.js очищает стек диалогов и данные о сохраняемом состоянии. Дополнительные сведения о данных о сохраняемом состояния см. в статье [Управление данными состояния](bot-builder-nodejs-state.md).
+При привязке `endConversationAction` это действие регистрируется в диалоге. После активации это действие завершает общение с пользователем. Активация этого действия аналогична вызову метода [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). После завершения беседы пакет SDK Bot Framework для Node.js очищает стек диалогов и сохраняемые данные о состоянии. Дополнительные сведения о данных о сохраняемом состояния см. в статье [Управление данными состояния](bot-builder-nodejs-state.md).
 
 В следующем фрагменте кода показано, как привязать [endConversationAction][endConversationAction] к диалогу.
 

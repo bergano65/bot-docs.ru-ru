@@ -1,6 +1,6 @@
 ---
 title: Основные функции FormFlow | Документация Майкрософт
-description: Узнайте о последовательностях интерактивных бесед с помощью FormFlow в пакете SDK Bot Builder для .NET.
+description: Узнайте об управлении потоками беседы с помощью FormFlow из пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5b36e1f916539b78f9bdcdd0970317db723f408
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 710a8ce315faa02a72eaeb753c44b9b212524ec3
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000381"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224679"
 ---
 # <a name="basic-features-of-formflow"></a>Основные функции FormFlow
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-[Диалоговые окна](bot-builder-dotnet-dialogs.md) являются очень мощной и гибкой формой интерактивного общения (например, заказ сандвича), хоть и требующей некоторых усилий при обработке. В каждой точке беседы существует множество возможностей того, что произойдет дальше. Например, может потребоваться уточнение неоднозначности, предоставление справки, возврат и отображение хода выполнения задания. С помощью **FormFlow** в пакете SDK Bot Builder для .NET можно значительно упростить процесс управления интерактивной беседой следующим образом. 
+[Диалоговые окна](bot-builder-dotnet-dialogs.md) являются очень мощной и гибкой формой интерактивного общения (например, заказ сандвича), хоть и требующей некоторых усилий при обработке. В каждой точке беседы существует множество возможностей того, что произойдет дальше. Например, может потребоваться уточнение неоднозначности, предоставление справки, возврат и отображение хода выполнения задания. Использование **FormFlow** из пакета SDK Bot Builder для .NET позволяет значительно упростить процесс управления интерактивной беседой, как описано далее. 
 
 FormFlow автоматически генерирует диалоговые окна, которые необходимы для управления интерактивной беседой, в зависимости от указанных вами рекомендаций. Хоть при использовании FormFlow "жертвуется" некоторая гибкость, в противовес тому, что вы можете получить путем создания диалоговых окон и управления ими самостоятельно, проектирование интерактивной беседы с использованием FormFlow может значительно снизить время, необходимое для разработки бота. Кроме того, можно создать бот с помощью сочетания диалоговых окон, сформированных FormFlow, и диалоговых окон других типов. Например, диалоговое окно FormFlow может направлять пользователя в процессе заполнения формы, в то время как [LuisDialog][LuisDialog] может оценить входные данные пользователя для определения намерения.
 
@@ -323,7 +323,7 @@ FormFlow упрощает разработку диалогового окна. 
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
 - [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
 [LuisDialog]: /dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1
 

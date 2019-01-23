@@ -1,7 +1,7 @@
 ---
-title: Создание бота с помощью пакета SDK Bot Builder для JavaScript | Документация Майкрософт
-description: Быстрое создание бота с помощью пакета SDK Bot Builder для JavaScript.
-keywords: Краткое руководство, пакет SDK Bot Builder, приступая к работе
+title: Создание бота с помощью пакета SDK Bot Framework для JavaScript | Документация Майкрософт
+description: Быстрое создание бота с помощью пакета SDK Bot Framework для JavaScript.
+keywords: краткое руководство, пакет SDK Bot Framework, приступая к работе
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62451f8581d7a629f9e7ba628e70cdad7b531845
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 689c67817487a5cbd8193cb505ac131a55b0d053
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998981"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224629"
 ---
 ```
 {

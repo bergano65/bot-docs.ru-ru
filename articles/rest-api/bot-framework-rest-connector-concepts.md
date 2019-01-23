@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 20ae641a23399f5ee10aed9b31c4521f355903cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998963"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224559"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -44,10 +44,10 @@ ms.locfileid: "49998963"
 
 Bot Framework предоставляет клиентские библиотеки, которые могут использоваться для разработки ботов на C# или Node.js. 
 
-- Чтобы создать бот на языке C#, используйте [пакет SDK Bot Builder для C#](../dotnet/bot-builder-dotnet-overview.md). 
-- Чтобы создать бот на Node.js, используйте [пакет SDK Bot Builder для Node.js](../nodejs/index.md). 
+- Чтобы создать бот на языке C#, используйте [пакет SDK Bot Framework для C#](../dotnet/bot-builder-dotnet-overview.md). 
+- Чтобы создать бот на языке Node.js, используйте [пакет SDK Bot Framework для Node.js](../nodejs/index.md). 
 
-Помимо моделирования службы Bot Connector и службы Состояние бота, каждый пакет SDK для Bot Builder также предоставляет мощную систему для создания диалоговых окон, которые инкапсулируют логику общения, встроенные запросы, такие как "Да или Нет", строки, числа и перечисления, а также встроенную поддержку мощных платформ ИИ, например <a href="https://www.luis.ai/" target="_blank">LUIS</a>, и многое другое. 
+Помимо моделирования службы Bot Connector и службы Состояние бота, каждый пакет SDK Bot Framework также предоставляет мощную систему создания диалоговых окон с поддержкой логики беседы, встроенными запросами для простых сведений типа "Да или Нет", строк, чисел и перечислений, встроенной поддержкой мощных платформ ИИ (например, <a href="https://www.luis.ai/" target="_blank">LUIS</a>) и многими другими возможностями. 
 
 > [!NOTE]
 > Вместо пакета SDK для C# или пакета SDK для Node.js вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">файл Swagger для службы Bot Connector</a> и <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">файл Swagger для службы Состояние бота</a>.

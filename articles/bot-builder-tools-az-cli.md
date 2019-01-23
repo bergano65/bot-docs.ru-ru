@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a59c0a8b7ee664cdb38ab9d0cb186114938d73f
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 4b09ca152f99faa66d2da55ebeb93fb9cce090db
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743668"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317694"
 ---
 # <a name="create-bots-with-azure-cli"></a>Создание ботов с помощью Azure CLI
 
@@ -35,7 +35,7 @@ ms.locfileid: "50743668"
 
 ## <a name="1-install-tools"></a>1. Средства установки
 1. [Установите](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) последнюю версию Azure CLI.
-2. [Установите](https://aka.ms/botbuilder-tools-readme) средства для Bot Builder.
+2. [Установите](https://aka.ms/botbuilder-tools-readme) средства Bot Framework.
 
 Теперь с помощью Azure CLI можно управлять ботами, как и любым другим ресурсом в Azure.
 
@@ -64,12 +64,12 @@ az bot [command]
 ```
 |Команды|  |
 |----|----|
-| create      |добавить ресурс|
-| удалить     |клонировать ресурс|
-| загрузить   | загрузить исходный код бота|
-| Опубликовать   |публиковать в существующей службе бота|
-| show |показать существующие ресурсы бота.|
-| обновить| Обновление существующей службы бота|
+| create      |Создание нового бота|
+| удалить     |Удаление существующего бота|
+| загрузить   |Скачивание существующего бота|
+| Опубликовать   |Публикация в службе приложений, связанной с ботом|
+| show |Получение существующего бота|
+| обновить|Обновление существующего бота|
 
 Чтобы создать бот в интерфейсе командной строки, необходимо выбрать существующую [группу ресурсов](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) или создать новую. 
 
@@ -160,10 +160,10 @@ az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5. Обновление или создание служб LUIS и QnA и управление ими с помощью новых средств Bot Builder
 
-[Средства Bot Builder](https://aka.ms/botbuilder-tools) — это новый набор средств для взаимодействия с ресурсами бота и управления ими непосредственно из командной строки.
+[Средства Bot Framework](https://aka.ms/botbuilder-tools) — это новый набор средств для взаимодействия с ресурсами бота и управления ими непосредственно из командной строки.
 
 >[!TIP]
-> Каждое средство Bot Builder содержит команду глобальной справки, доступ к которой можно получить из командной строки посредством ввода **-h** или **--help**. Эта команда доступна в любое время из любого действия, что обеспечивает отображение доступных вариантов вместе с их описанием.
+> Каждое средство Bot Framework поддерживает глобальную команду справки, которую можно вызвать из командной строки с помощью параметра **-h** или **--help**. Эта команда доступна в любое время из любого действия, что обеспечивает отображение доступных вариантов вместе с их описанием.
 
 ### <a name="ludown"></a>LUDown
 
@@ -333,5 +333,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>Ссылки
-- [Bot Builder Tools](https://aka.ms/botbuilder-tools-readme) (Средства для Bot Builder)
+- [Средства Bot Framework](https://aka.ms/botbuilder-tools-readme)
 - [Интерфейс командной строки Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)

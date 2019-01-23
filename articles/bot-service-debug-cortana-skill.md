@@ -1,25 +1,25 @@
 ---
 title: Тестирование навыка Кортаны | Документация Майкрософт
 description: Узнайте, как тестировать бот Кортаны путем вызова навыка Кортаны.
-keywords: Bot Builder SDK, register your bot, cortana
+keywords: Пакет SDK Bot Framework, регистрация бота, Кортана
 author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/01/18
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 15711999271d1bb8e93c1ad72eb0bc4b6acb484a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: acf4f73ea83646878e08d14e036d0d2d66686756
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999971"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224959"
 ---
 # <a name="test-a-cortana-skill"></a>Тестирование навыка Кортаны
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
-Если вы создали навык Кортаны с помощью пакета SDK для Bot Builder, вы можете его протестировать путем вызова его из Кортаны. Приведенные ниже инструкции помогут выполнить шаги, необходимые для проверки навыка Кортаны.
+Если вы создали навык Кортаны с помощью пакета SDK Bot Framework, вы можете вызвать его из Кортаны для проверки работы. Приведенные ниже инструкции помогут выполнить шаги, необходимые для проверки навыка Кортаны.
 
 ## <a name="register-your-bot"></a>Регистрация бота
 Если вы [создали бот](~/bot-service-quickstart.md) с помощью службы Bot в Azure, то бот уже будет зарегистрирован и этот шаг можно пропустить.

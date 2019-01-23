@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 41cc36b7e4abc12bf57df7bf4272dd35031cf251
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1cb9143e5ab2d5eb7e92e263b838cdd9217492ef
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998001"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225359"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -22,7 +22,7 @@ ms.locfileid: "49998001"
 > [!IMPORTANT]
 > Очень важно сделать это правильно. После выполнения всех действий в этой статье снижается вероятность прочтения злоумышленником сообщений, отправляемых боту, уменьшается риск отправки сообщений, олицетворяющих бот, и кражи секретных ключей. 
 
-Если вы используете [пакет SDK Bot Builder для .NET](../dotnet/bot-builder-dotnet-overview.md) или [пакет SDK Bot Builder для Node.js](../nodejs/index.md), выполнять описанные в этой статье процедуры безопасности не требуется, так как эту задачу автоматически реализует пакет SDK. Просто настройте проект с использованием идентификатора приложения и пароля, полученных для бота во время [регистрации](../bot-service-quickstart-registration.md), а все остальное сделает пакет SDK.
+Если вы используете [пакет SDK Bot Framework для .NET](../dotnet/bot-builder-dotnet-overview.md) или [пакет SDK Bot Framework для Node.js](../nodejs/index.md), выполнять описанные в этой статье процедуры безопасности не требуется, так как эту задачу автоматически реализует пакет SDK. Просто настройте проект с использованием идентификатора приложения и пароля, полученных для бота во время [регистрации](../bot-service-quickstart-registration.md), а все остальное сделает пакет SDK.
 
 > [!WARNING]
 > В декабре 2016 г. в протоколе безопасности Bot Framework версии 3.1 были представлены изменения для нескольких значений, которые используются во время создания и проверки маркеров. В конце осени 2017 г. был представлен протокол безопасности Bot Framework версии 3.2 с внесенными изменениями для значений, которые используются во время создания и проверки маркеров.
@@ -56,7 +56,7 @@ Authorization: Bearer ACCESS_TOKEN
 > [!IMPORTANT]
 > Если это еще не сделано, [зарегистрируйте бот](../bot-service-quickstart-registration.md) в Bot Framework, чтобы получить идентификатор приложения и пароль. Они потребуются для запроса маркера доступа.
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Шаг 1. Запрос маркера доступа из службы входа MSA/AAD версии 2
+### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Шаг 1. Запрос маркера доступа из службы входа MSA/AAD версии 2
 
 Чтобы запросить маркер доступа из службы входа MSA/AAD версии 2, выполните приведенный ниже запрос, заменив **MICROSOFT-APP-ID** и **MICROSOFT-APP-PASSWOR** идентификатором приложения и паролем, полученными при [регистрации](../bot-service-quickstart-registration.md) бота в Bot Framework.
 
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Шаг 2. Получение маркера JWT из ответа службы входа MSA/AAD версии 2
+### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Шаг 2. Получение маркера JWT из ответа службы входа MSA/AAD версии 2
 
 Если приложение авторизовано службой входа MSA/AAD версии 2, в тексте ответа JSON будет указан маркер доступа, его тип и срок действия (в секундах). 
 
@@ -90,7 +90,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>Шаг 3. Указание маркера JWT в заголовке авторизации запросов
+### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>Шаг 3. Указание маркера JWT в заголовке авторизации запросов
 
 При отправке запроса API в службу Bot Connector укажите маркер доступа в заголовке `Authorization` каждого запроса API, используя следующий формат:
 
@@ -179,14 +179,14 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 GET https://login.botframework.com/v1/.well-known/keys
 ```
 
-В тексте ответа указан документ в [формате JWK](https://tools.ietf.org/html/rfc7517) и также содержатся дополнительные свойства для каждого ключа: `endorsements`. Список ключей относительно стабилен и может кэшироваться в течение длительного времени (по умолчанию — 5 дней в пакете SDK Bot Builder).
+В тексте ответа указан документ в [формате JWK](https://tools.ietf.org/html/rfc7517) и также содержатся дополнительные свойства для каждого ключа: `endorsements`. Список ключей относительно стабилен и может кэшироваться в течение длительного времени (по умолчанию — 5 дней в пакете SDK Bot Framework).
 
 Свойство `endorsements` в каждом ключе содержит одну или несколько строк подтверждения, которые можно использовать для проверки подлинности идентификатора канала, указанного в свойстве `channelId` в объекте [Activity][Activity] входящего запроса. Список идентификаторов каналов, требующих подтверждения, настраивается в каждом боте. По умолчанию в список будут входить все опубликованные идентификаторы каналов, однако разработчики ботов могут переопределить выбранные значения идентификаторов. Если требуется подтверждение для идентификатора канала:
 
 - любой объект [Activity][Activity], отправляемый в бот, должен сопровождаться маркером JWT, который подписан с помощью подтверждения для этого канала; 
 - если подтверждение отсутствует, бот должен отклонить запрос, возвратив код состояния **HTTP 403 (Запрещено)**.
 
-### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
+### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
 
 Чтобы проверить подлинность маркера, отправленного службой Bot Connector, необходимо извлечь его из заголовка `Authorization` запроса, проанализировать, проверить его содержимое и подпись. 
 
@@ -244,7 +244,7 @@ payload:
 ![Проверка подлинности вызовов из Bot Framework Emulator к боту](../media/connector/auth_bot_framework_emulator_to_bot.png)
 
 ---
-### <a name="step-2-get-the-msa-openid-metadata-document"></a>Шаг 2. Получение документа метаданных OpenID MSA
+### <a name="step-2-get-the-msa-openid-metadata-document"></a>Шаг 2. Получение документа метаданных OpenID MSA
 
 Документ метаданных OpenID указывает расположение второго документа, в котором перечислены допустимые ключи подписи. Чтобы получить документ метаданных OpenID MSA, отправьте следующий запрос по протоколу HTTPS:
 
@@ -275,7 +275,7 @@ Host: login.microsoftonline.com
 
 В тексте ответа документ указывается в [формате JWK](https://tools.ietf.org/html/rfc7517). 
 
-### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
+### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
 
 Чтобы проверить подлинность маркера, отправленного эмулятором, необходимо извлечь его из заголовка `Authorization` запроса, проанализировать, проверить его содержимое и подпись. 
 
@@ -323,7 +323,7 @@ payload:
 ## <a name="security-protocol-changes"></a>Изменения протокола безопасности
 
 > [!WARNING]
-> Поддержка протокола безопасности версии 3.0 была прекращена **31 июля 2017 г**. Если вы написали собственный код проверки подлинности (т. е. не использовали пакет SDK Bot Builder для создания бота), необходимо обновить протокол безопасности до версии 3.1 путем обновления приложения для использования приведенных ниже значений версии 3.1. 
+> Поддержка протокола безопасности версии 3.0 была прекращена **31 июля 2017 г**. Если вы написали собственный код проверки подлинности (т. е. не использовали для создания бота пакет SDK Bot Framework), следует обновить протокол безопасности до версии 3.1 путем обновления приложения для использования приведенных ниже значений версии 3.1. 
 
 ### <a name="bot-to-connector-authenticationbot-to-connector"></a>[Проверка подлинности бота в службе Bot Connector](#bot-to-connector)
 

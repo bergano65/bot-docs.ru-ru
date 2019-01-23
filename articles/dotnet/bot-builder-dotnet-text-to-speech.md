@@ -1,6 +1,6 @@
 ---
 title: Добавление речи в сообщения | Документы Майкрософт
-description: Узнайте, как добавить речь в сообщения с помощью пакета SDK Bot Builder для .NET.
+description: Сведения о добавлении речи в сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc542c7e85b3a79e1071edebea65d93c99742beb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000363"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225599"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -29,7 +29,7 @@ ms.locfileid: "50000363"
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Указание текста, произносимого ботом
 
-С помощью пакета SDK Bot Builder для .NET можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `Speak` [сообщения][IMessageActivity], вызвать метод `IDialogContext.SayAsync()` или указать параметры запроса `speak` и `retrySpeak` при отправке сообщения с помощью встроенного запроса.
+С помощью пакета SDK Bot Framework для .NET можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `Speak` [сообщения][IMessageActivity], вызвать метод `IDialogContext.SayAsync()` или указать параметры запроса `speak` и `retrySpeak` при отправке сообщения с помощью встроенного запроса.
 
 ### <a id="message-speak"></a> IMessageActivity.Speak
 
@@ -59,7 +59,7 @@ ms.locfileid: "50000363"
 
 ## <a name="sample-code"></a>Пример кода 
 
-Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Builder для .NET, представлен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">примере Roller Skill</a> на сайте GitHub.
+Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">примере Roller Skill</a> на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

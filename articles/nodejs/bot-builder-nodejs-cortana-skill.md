@@ -1,6 +1,6 @@
 ---
 title: Создание бота с поддержкой речевых функций с навыками Кортаны | Документация Майкрософт
-description: Узнайте, как создать бота с поддержкой речевых функций с навыками Кортаны и пакетом SDK Bot Builder для Node.js.
+description: Узнайте, как создать бота с поддержкой речевых функций, используя навыки Кортаны и пакет SDK Bot Framework для Node.js.
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e728a3999c484d19a78f03bd8eb7b8bd8833c39f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998041"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225307"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -23,7 +23,7 @@ ms.locfileid: "49998041"
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
-Пакет SDK Bot Builder для Node.js позволяет создать бота с поддержкой речевых функций, подключая его к каналу Кортаны в качестве навыка Кортаны. Навыки Кортаны позволяют предоставлять функциональность через Кортану в ответ на ввод речи пользователя.
+Пакет SDK Bot Framework для Node.js позволяет создать бот с поддержкой речи, подключив его к каналу Кортаны в качестве навыка Кортаны. Навыки Кортаны позволяют предоставлять функциональность через Кортану в ответ на ввод речи пользователя.
 
 > [!TIP]
 > Дополнительные сведения о том, что такое навык и каковы их возможности, см. в разделе [The Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны).
@@ -35,7 +35,7 @@ ms.locfileid: "49998041"
 
 ## <a name="adding-speech-to-your-bot"></a>Добавление речевых функций для бота
 
-Речевые сообщения бота представлены в виде SSML (Speech Synthesis Markup Language — язык разметки синтеза речи). Пакет SDK для Bot Builder позволяет включать SSML в ответы бота, чтобы контролировать то, что он говорит, в дополнение к тому, что он показывает.
+Речевые сообщения бота представлены в виде SSML (Speech Synthesis Markup Language — язык разметки синтеза речи). Пакет SDK Bot Framework позволяет включать SSML в ответы бота, чтобы контролировать то, что он говорит, в дополнение к тому, что он показывает.
 
 ### <a name="sessionsay"></a>Метод session.say
 
@@ -186,7 +186,7 @@ module.exports.speak = function (template, params, options) {
 }
 
 ```
-## <a name="sample-rollerskill"></a>Пример RollerSkill
+## <a name="sample-rollerskill"></a>Пример: RollerSkill
 Код в следующих разделах относится к примеру навыка Кортаны, который предназначен для того, чтобы бросать кости. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
 Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] помощнику Кортане. После [подключения бота к каналу Кортаны][CortanaChannel] и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).

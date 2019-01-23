@@ -1,6 +1,6 @@
 ---
 title: Сбор данных, которые вводит пользователь, с помощью диалогового окна | Документация Майкрософт
-description: Узнайте, как запросить у пользователя входные данные, используя библиотеку диалогов из пакета SDK Bot Builder.
+description: Узнайте, как запросить у пользователя входные данные, используя библиотеку диалогов из пакета SDK Bot Framework.
 keywords: prompts, prompt, user input, dialogs, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, reprompt, validation
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4acb12a5e06032db898a651c6c8bf1dae06765ef
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 57e43e6f0ad8673634bd8faafac79636a672eefd
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735974"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225849"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Сбор данных, которые вводит пользователь, с помощью диалогового окна
 

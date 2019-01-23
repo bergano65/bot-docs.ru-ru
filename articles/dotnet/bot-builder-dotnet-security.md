@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: deb184483bf7e0963f827b20377291ab971c1516
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 455ee87f31e70470d8d118f010c77327347c032d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997342"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224889"
 ---
 # <a name="secure-your-bot"></a>Защита для бота
 
@@ -40,7 +40,7 @@ ms.locfileid: "49997342"
 </appSettings>
 ```
 
-Затем во время создания бота с помощью пакета SDK Bot Builder для .NET используйте атрибут `[BotAuthentication]`, чтобы указать учетные данные проверки подлинности. 
+Затем во время создания бота с помощью пакета SDK Bot Framework для .NET используйте атрибут `[BotAuthentication]`, чтобы указать учетные данные проверки подлинности. 
 
 Чтобы использовать учетные данные проверки подлинности, которые хранятся в файле web.config, укажите `[BotAuthentication]` без параметров.
 
@@ -52,6 +52,6 @@ ms.locfileid: "49997342"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Пакет SDK Bot Builder для .NET](bot-builder-dotnet-overview.md)
+- [Пакет SDK Bot Framework для .NET](bot-builder-dotnet-overview.md)
 - [Основные понятия пакета SDK Bot Builder для .NET](bot-builder-dotnet-concepts.md)
 - [Register a bot with the Bot Framework](~/bot-service-quickstart-registration.md) (Регистрация бота на платформе Bot Framework)

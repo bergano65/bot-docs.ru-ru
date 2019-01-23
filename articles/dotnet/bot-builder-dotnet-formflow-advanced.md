@@ -1,6 +1,6 @@
 ---
 title: Дополнительные функции FormFlow | Документация Майкрософт
-description: Сведения о настройке взаимодействия с пользователем с помощью FormFlow и пакета SDK Bot Builder для .NET.
+description: Сведения о настройке взаимодействия с пользователем с помощью FormFlow и пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fbdaa845c86150a572772c4aae8239880f42dd9e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997781"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225959"
 ---
 # <a name="advanced-features-of-formflow"></a>Дополнительные функции FormFlow
 
@@ -277,7 +277,7 @@ For sandwich I understood Rotisserie Style Chicken. "checkin" is not an option.
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
 - [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
 [formDialog]: /dotnet/api/microsoft.bot.builder.formflow.formdialog
 

@@ -1,6 +1,6 @@
 ---
 title: Отправка упреждающих сообщений | Документация Майкрософт
-description: Узнайте, как отправлять упреждающие сообщения с помощью пакета SDK Bot Builder для .NET.
+description: Узнайте, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 201f1aa1aca0d75190335fa114ef8a26caed2a03
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d86ee290ebf33dbfd13017c3fe882ecfdd9102e4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998353"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225729"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
 
@@ -32,7 +32,7 @@ ms.locfileid: "49998353"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Отправка нерегламентированного упреждающего сообщения
 
-В следующих примерах кода показано, как отправить нерегламентированное упреждающее сообщение с помощью пакета SDK Bot Builder для .NET.
+В следующих примерах кода показано, как отправить нерегламентированное упреждающее сообщение с помощью пакета SDK Bot Framework для .NET.
 
 Чтобы иметь возможность отправить нерегламентированное сообщение пользователю, боту сначала необходимо собрать и сохранить сведения о пользователе из текущего сеанса общения. 
 
@@ -97,7 +97,7 @@ await connector.Conversations.SendToConversationAsync((Activity)message);
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Отправка упреждающего сообщения на основе диалога
 
-В следующем примере кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Builder для .NET.
+В следующих примерах кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Framework для .NET.
 
 Чтобы иметь возможность отправить упреждающее сообщение на основе диалога пользователю, боту сначала необходимо собрать (и сохранить) сведения из текущего сеанса общения. 
 
@@ -177,11 +177,11 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Builder для .NET, приведен в <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">примере proactiveMessages</a> на сайте GitHub. В примере proactiveMessages <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога. 
+Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для .NET, приведен в <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Проектирование потока диалога и управление им](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Пример proactiveMessages (GitHub)</a>
 

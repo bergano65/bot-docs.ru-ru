@@ -1,6 +1,6 @@
 ---
 title: Осуществление голосовых вызовов через Skype | Документы Майкрософт
-description: Узнайте, как совершать голосовые вызовы в Skype с помощью пакета SDK для построителя ботов для .NET.
+description: Узнайте, как совершать голосовые вызовы в Skype с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0d0489c23cd24a7323ba0160d5e8e5e914be3011
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998858"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224424"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Осуществление голосовых вызовов через Skype
 
@@ -22,7 +22,7 @@ ms.locfileid: "49998858"
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 
-Архитектура бота, поддерживающего голосовые вызовы, очень похожа на архитектуру обычного бота. В следующих примерах кода показано, как включить поддержку голосовых вызовов через Skype с помощью пакета SDK для построителя ботов для .NET. 
+Архитектура бота, поддерживающего голосовые вызовы, очень похожа на архитектуру обычного бота. В следующих примерах кода показано, как включить поддержку голосовых вызовов через Skype с помощью пакета SDK Bot Framework для .NET. 
 
 ## <a name="enable-support-for-audio-calls"></a>Включение поддержки голосовых вызовов
 
@@ -169,9 +169,9 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример реализации поддержки голосовых вызовов через Skype с помощью пакета SDK для построителя ботов для .NET см. в разделе <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Пример бота Skype для вызовов</a> в GitHub.
+Полный пример реализации поддержки голосовых вызовов через Skype с помощью пакета SDK Bot Framework для .NET см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">примере бота для вызовов Skype</a> на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK Bot Builder для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Пример бота Skype для вызовов (GitHub)</a>

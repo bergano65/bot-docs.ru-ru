@@ -2,19 +2,19 @@
 title: Подключение бота к Slack | Документация Майкрософт
 description: Сведения о настройке подключения бота к Slack.
 keywords: connect a bot, bot channel, Slack bot, Slack messaging app
-author: RobStand
-ms.author: kamrani
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: f69cfa4c67a1f628d835f0d96903065b8b033d32
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/09/2019
+ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000131"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202567"
 ---
 # <a name="connect-a-bot-to-slack"></a>Подключение бота к Slack
 
@@ -68,9 +68,11 @@ ms.locfileid: "50000131"
 
 1. Выберите вкладку **Подписки на события**.
 2. Выберите для параметра **Enable Events** (Включить события) значение **Вкл**.
-3. В поле **URL-адрес запроса** введите этот URL-адрес, но замените `{YourBotHandle}` дескриптором своего бота. В этом руководстве используется дескриптор testChannels.
-        `https://slack.botframework.com/api/Events/{YourBotHandle}`
-4. В разделе **Subscribe to Workspace Events** (Подписка на события рабочей области) щелкните **Add Workspace Event** (Добавить событие рабочей области).
+3. В поле **URL-адрес запроса** введите значение `https://slack.botframework.com/api/Events/{YourBotHandle}`, где `{YourBotHandle}` обозначает дескриптор бота без фигурных скобок. Для этого примера используется дескриптор **ContosoBot**.
+
+   ![Подписка на события (верх)](~/media/channels/slack-SubscribeEvents-a.png)
+
+4. В разделе **Subscribe to Bot Events** (Подписаться на события ботов) щелкните **Add Bot User Event** (Добавить пользовательское событие бота).
 5. В списке событий выберите следующие шесть типов событий:
     * `member_joined_channel`
     * `member_left_channel`
@@ -79,8 +81,11 @@ ms.locfileid: "50000131"
     * `message.im`
     * `message.mpim`
 
-![Подписка на события](~/media/channels/slack-SubscribeEvents.png)
+   ![Подписка на события (середина)](~/media/channels/slack-SubscribeEvents-b.png)
+
 6. Нажмите кнопку **Сохранить изменения**.
+
+   ![Подписка на события (низ)](~/media/channels/slack-SubscribeEvents-c.png)
 
 ## <a name="add-and-configure-interactive-messages-optional"></a>Добавление и настройка интерактивных сообщений (необязательно)
 

@@ -1,6 +1,6 @@
 ---
 title: Действия отправки и получения | Документы Майкрософт
-description: Сведения об обмене данными с пользователем через различные каналы связи с помощью службы соединителя в пакете SDK построителя ботов для .NET.
+description: Сведения об обмене данными с пользователем через различные каналы связи с использованием службы соединителя через пакет SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 393490fd97ce0d09b4087ad7598ee30b0fdc8c0e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997791"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225229"
 ---
 # <a name="send-and-receive-activities"></a>Действия отправки и получения
 
@@ -22,10 +22,10 @@ ms.locfileid: "49997791"
 
 Соединитель Bot Framework Connector предоставляет единый интерфейс REST API, позволяющий боту взаимодействовать через различные каналы связи, такие как Skype, электронная почта, Slack и т. д. Он обеспечивает обмен данными между ботом и пользователем, ретранслируя сообщения из бота в канал и из канала в бот. 
 
-В этой статье описывается, как использовать соединитель с помощью пакета SDK построителя ботов для .NET для обмена данными между ботом и пользователем через выбранный канал. 
+В этой статье описывается, как использовать соединитель с помощью пакета SDK Bot Framework для .NET для обмена данными между ботом и пользователем через выбранный канал. 
 
 > [!NOTE]
-> Хотя бот можно создать, используя только методы, описанные в этой статье, пакет SDK построителя ботов включает дополнительные функции, такие как [диалоги](bot-builder-dotnet-dialogs.md) и [FormFlow](bot-builder-dotnet-formflow.md), которые позволяют оптимизировать процесс управления потоком беседы и состоянием и упростить внедрение служб Cognitive Services, таких как распознавание речи.
+> Для создания бота вполне достаточно методов, которые описаны в этой статье, но пакет SDK Bot Framework содержит и дополнительные функции, например [диалоги](bot-builder-dotnet-dialogs.md) и [FormFlow](bot-builder-dotnet-formflow.md), которые позволяют оптимизировать управление потоком беседы и состоянием, а также упростить внедрение распознавания речи и других служб Cognitive Services.
 
 ## <a name="create-a-connector-client"></a>Создание клиента соединителя
 
@@ -44,7 +44,7 @@ ms.locfileid: "49997791"
 
 Когда бот получает действие из соединителя, свойство `Recipient` входящего действия задает удостоверение бота в этой беседе. Так как некоторые каналы (например, Slack) назначают боту новое удостоверение при его добавлении в беседу, бот должен всегда использовать значение свойства `Recipient` входящего действия в качестве значения свойства `From` в своем ответе.
 
-Несмотря на то, что вы можете создать и инициализировать исходящий объект `Activity` с нуля, пакет SDK построителя ботов обеспечивает более простой способ создания ответа. С помощью метода `CreateReply` входящего действия вы просто указываете текст сообщения для ответа, а исходящее действие создается с автоматически заполненными свойствами `Recipient`, `From` и `Conversation`.
+Вы можете самостоятельно создать с нуля и инициализировать исходящий объект `Activity`, но пакет SDK Bot Framework позволяет создать ответ намного проще. С помощью метода `CreateReply` входящего действия вы просто указываете текст сообщения для ответа, а исходящее действие создается с автоматически заполненными свойствами `Recipient`, `From` и `Conversation`.
 
 [!code-csharp[Create reply](../includes/code/dotnet-send-and-receive.cs#createReply)]
 
@@ -87,7 +87,7 @@ ms.locfileid: "49997791"
 
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочник по пакету SDK построителя ботов для .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">Класс ConnectorClient</a>
 

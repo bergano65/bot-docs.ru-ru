@@ -1,6 +1,6 @@
 ---
 title: Запрос платежей | Документация Майкрософт
-description: Сведения об отправке запроса платежей с помощью пакета SDK Bot Builder для .NET.
+description: Сведения об отправке запроса платежей с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b3d1a1cea450d1fe821a90951a7a319ca863dfed
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f9e693d8bd5aad03930259422939f5572a22ff0a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997691"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225459"
 ---
 # <a name="request-payment"></a>Запрос платежей
 
@@ -24,11 +24,11 @@ ms.locfileid: "49997691"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
-Если бот позволяет пользователям приобретать элементы, он делает запрос платежей, включая специальный тип кнопки в [форматированной карточке](bot-builder-dotnet-add-rich-card-attachments.md). Эта статья описывает отправку запроса платежей с помощью пакета SDK Bot Builder для .NET.
+Если бот позволяет пользователям приобретать элементы, он делает запрос платежей, включая специальный тип кнопки в [форматированной карточке](bot-builder-dotnet-add-rich-card-attachments.md). Эта статья описывает отправку запроса платежей с помощью пакета SDK Bot Framework для .NET.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Прежде чем отправить запрос платежей с помощью пакета SDK Bot Builder для .NET, необходимо выполнить эти обязательные задачи.
+Чтобы отправлять запросы платежей с помощью пакета SDK Bot Framework для .NET, необходимо выполнить обязательные предварительные задачи.
 
 ### <a name="update-webconfig"></a>Обновление файла Web.config
 
@@ -127,4 +127,4 @@ ms.locfileid: "49997691"
 - [Activities overview](bot-builder-dotnet-activities.md) (Общие сведения о действиях)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
 - <a href="http://www.w3.org/Payments/" target="_blank">Web Payments at W3C</a> (Веб-платежи в W3C) 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Справочник по пакету SDK Bot Builder для .NET)
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>

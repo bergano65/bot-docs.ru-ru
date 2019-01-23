@@ -1,6 +1,6 @@
 ---
 title: Создание взаимодействия на основе данных с помощью поиска Azure | Документы Майкрософт
-description: Узнайте, как создать взаимодействие на основе данных с помощью поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK для построителя ботов для Node.js и поиска Azure.
+description: Узнайте, как создать взаимодействие на основе данных с помощью поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Framework для Node.js и Поиска Azure.
 author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 204fb5d8f4838c78d771bfad5c0ed6511b27932b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ac4597e93f8cdaa4c9b015a4136ab09e9b7adc95
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000001"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224719"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -85,7 +85,7 @@ bot.library(SearchLibrary.create({
 
 ## <a name="create-a-search-dialog"></a>Создание диалога поиска
 
-Вы можете структурировать свои диалоги любым способом. Единственное требование для настройки диалога поиска Azure заключается в вызове метода `.begin` из объекта `SearchLibrary`, который передает объект `session`, созданный с помощью пакета SDK для построителя ботов. 
+Вы можете структурировать свои диалоги любым способом. Для настройки диалога Поиска Azure нужно лишь вызвать метод `.begin` из объекта `SearchLibrary` и передать ему объект `session`, созданный пакетом SDK Bot Framework. 
 
 ```javascript
 function (session) {
@@ -151,7 +151,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="sample-code"></a>Пример кода
 
-Два полноценных примера поддержки поиска Azure с помощью ботов и пакета SDK для построителя ботов для Node.js см. в разделах [Пример бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) или [Пример бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot) в GitHub. 
+Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для Node.js, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

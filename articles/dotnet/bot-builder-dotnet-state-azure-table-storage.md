@@ -1,6 +1,6 @@
 ---
 title: Управление данными пользовательских состояний с помощью хранилища таблиц Azure | Документы Майкрософт
-description: Узнайте, как сохранять и извлекать данные о состоянии с помощью Хранилища таблиц Azure и пакета SDK Bot Builder для .NET.
+description: Узнайте, как сохранять и извлекать данные о состоянии в хранилище таблиц Azure с помощью пакета SDK Bot Framework для .NET.
 author: kaiqb
 manager: kamrani
 ms.topic: article
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 170741b3806a29d9583cf5caca773b452cbbbc01
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d5d6dc4e635b41424dfee0e260a769f9ed5f595d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000271"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225789"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Управление данными пользовательских состояний с помощью Хранилища таблиц Azure для .NET
 

@@ -3,18 +3,18 @@ title: Отладка бота | Документация Майкрософт
 description: Отладка ботов, построенных с помощью службы Azure Bot.
 author: v-ducvo
 ms.author: v-ducvo
-keywords: Bot Builder SDK, debug bot, test bot, bot emulator, emulator
+keywords: Пакет SDK Bot Framework, отладка бота, тестирование бота, эмулятор бота, эмулятор
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/2018
-ms.openlocfilehash: fcda5c57a96b6f93aad965e868c824577616f630
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: b445ce7796c3f7f3180b15fd6dfac1ef82b808ae
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452046"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298301"
 ---
 # <a name="debug-a-bot"></a>Отладка бота
 
@@ -32,6 +32,7 @@ ms.locfileid: "52452046"
 1. Запустите эмулятор и подключитесь к конечной точке бота (например, **http://localhost:3978/api/messages**). Если бот запускается впервые, щелкните **Файл > Новая программа-робот** и следуйте инструкциям на экране. В противном случае, чтобы открыть существующий бот, щелкните **Файл > Открыть программу-робота**. Поскольку этот бот работает локально на компьютере, вы можете оставить строки **ИД приложения MSA** и **Пароль приложения MSA** пустыми. Дополнительные сведения см. в статье [Отладка ботов с помощью Bot Framework Emulator](bot-service-debug-emulator.md).
 1. Из эмулятора отправьте боту сообщение (например, "Hi"). 
 1. Для отладки бота используйте панели **Inspector** (Инспектор) и **Log** (Журнал) в правой части окна эмулятора. Например, щелкните любой из пузырьков сообщений (например, пузырек сообщения "Hi", показанный на снимке экрана ниже), чтобы открыть сведения об этом сообщении на панели **Inspector** (Инспектор). Эту панель можно использовать для просмотра запросов и ответов при обмене сообщениями между эмулятором и ботом. Или вы можете щелкнуть любую ссылку на панели **Журнал** для просмотра сведений на панели **Инспектор**.
+
 
    ![Панель Inspector (Инспектор) в Bot Framework Emulator](~/media/bot-service-debug-bot/emulator_inspector.png)
 

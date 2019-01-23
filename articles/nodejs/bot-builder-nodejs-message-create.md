@@ -1,6 +1,6 @@
 ---
 title: Создание сообщений | Документация Майкрософт
-description: Узнайте, как создавать сообщения с помощью пакета SDK Bot Builder для Node.js.
+description: Узнайте, как создавать сообщения с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8011611aa11e81cf322ba841f616fa2797038e84
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998171"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225219"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -26,7 +26,7 @@ ms.locfileid: "49998171"
 
 ## <a name="default-message-handler"></a>Обработчик сообщений по умолчанию
 
-Пакет SDK Bot Builder для Node.js содержит обработчик сообщений по умолчанию, встроенный в объект [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Этот обработчик сообщений позволяет отправлять и получать текстовые сообщения, передаваемые между ботом и пользователем.
+Пакет SDK Bot Framework для Node.js содержит обработчик сообщений по умолчанию, встроенный в объект [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Этот обработчик сообщений позволяет отправлять и получать текстовые сообщения, передаваемые между ботом и пользователем.
 
 ### <a name="send-a-text-message"></a>Отправка текстового сообщения
 
@@ -88,7 +88,7 @@ session.send(customMessage);
 | [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Выполняет составление сложного и случайного ответа пользователю. |
 | [`entities(list:Object[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Структурированные объекты, передаваемые боту или пользователю. |
 | [`inputHint(hint:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Указание, отправляемое пользователю и сообщающее о том, требует ли бот дальнейшего ввода данных. Это значение будет автоматически заполнено с помощью встроенных запросов для исходящих сообщений. |
-| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Местное время отправки сообщения клиентом или ботом (например: 2016-09-23T13:07:49.4714686-07:00). |
+| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Местное время отправки сообщения клиентом или ботом (устанавливается клиентом), например "2016-09-23T13:07:49.4714686-07:00". |
 | [`originalEvent(event:any)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Сообщение в исходном или собственном формате канала для входящих сообщений. |
 | [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Может использоваться для исходящих сообщений для передачи исходных данных события, например пользовательских вложений. |
 | [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Задает поле speak сообщения как поле *SSML*. Его содержимое будет произнесено для пользователя на поддерживаемых устройствах. |

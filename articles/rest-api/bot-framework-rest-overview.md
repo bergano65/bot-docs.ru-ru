@@ -1,5 +1,5 @@
 ---
-title: REST API Bot Builder | Документы Майкрософт
+title: Интерфейсы REST API Bot Framework | Документация Майкрософт
 description: Сведения о том, как приступить к работе с интерфейсами REST API Bot Framework, которые можно использовать для создания ботов и клиентов, подключающихся к ботам.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 632d0b1e603445954eb4894fcfc256d5ac738539
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: eace4852feaadcc180f7329261990fc8eaf7f522
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998441"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224269"
 ---
 # <a name="bot-framework-rest-apis"></a>REST API для Bot Framework
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "49998441"
 Создать бот можно с помощью любого языка программирования. В основе бота лежит служба Bot Connector, используемая для обмена сообщениями с каналами, настроенными на портале Bot Framework. 
 
 > [!TIP]
-> Bot Framework предоставляет клиентские библиотеки, которые могут использоваться для разработки ботов на C# или Node.js. Чтобы создать бот на языке C#, используйте [пакет SDK Bot Builder для C#](../dotnet/bot-builder-dotnet-overview.md). Чтобы создать бот на Node.js, используйте [пакет SDK Bot Builder для Node.js](../nodejs/index.md). 
+> Bot Framework предоставляет клиентские библиотеки, которые могут использоваться для разработки ботов на C# или Node.js. Чтобы создать бот на языке C#, используйте [пакет SDK Bot Framework для C#](../dotnet/bot-builder-dotnet-overview.md). Чтобы создать бот на языке Node.js, используйте [пакет SDK Bot Framework для Node.js](../nodejs/index.md). 
 
 Дополнительные сведения о создании ботов с использованием службы Bot Connector см. в разделе [Основные понятия](bot-framework-rest-connector-concepts.md).
 

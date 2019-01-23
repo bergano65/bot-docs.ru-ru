@@ -1,6 +1,6 @@
 ---
 title: Добавление возможности распознавания естественного языка в функционал бота | Документация Майкрософт
-description: Сведения об использовании LUIS для распознавания естественного языка с пакетом SDK для Bot Builder.
+description: Сведения об использовании LUIS для распознавания естественного языка с пакетом SDK Bot Framework.
 keywords: Распознавание речи, LUIS, намерение, распознаватель, сущности, ПО промежуточного слоя
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a512cb92f35374b457c4d4cef05667edbd8d2f1f
-ms.sourcegitcommit: 892bf81d306ba607c293ee8639d5c6b66ab3710a
+ms.openlocfilehash: 77dbf8658030a18596507129c88156601d4272e5
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52460013"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298311"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -33,7 +33,7 @@ ms.locfileid: "52460013"
 
 1. Выберите **Import new app** (Импортировать новое приложение). 
 1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON) 
-1. Выберите файл `reminders.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **LuisBot**. Этот файл содержит три намерения: Calendar-Add, Calendar-Find и None. Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении. Если вы намерены добавить сущности, воспользуйтесь [дополнительным разделом](#optional---extract-entities) в конце этой статьи.
+1. Выберите файл `reminders.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **LuisBot**. Этот файл содержит три намерения: Calendar_Add (Добавить в календарь), Calendar_Find (Найти в календаре) и None (Отсутствует). Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении. Если вы намерены добавить сущности, воспользуйтесь [дополнительным разделом](#optional---extract-entities) в конце этой статьи.
 1. [Обучите](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) приложение.
 1. [Опубликуйте](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) приложение в *рабочей* среде.
 
@@ -185,7 +185,7 @@ public class LuisBot : IBot
 Замените значение `LUIS_CONFIGURATION` именем приложения LUIS, которое отображается в файле конфигурации.
 
 ```javascript
-// Language Understanding (LUIS) service name as defined in the .bot file.YOUR_LUIS_APP_NAME is "LuisBot" in the C# code.
+// Language Understanding (LUIS) service name as defined in the .bot file.YOUR_LUIS_APP_NAME is "LuisBot" in the JavaScript code.
 const LUIS_CONFIGURATION = '<YOUR_LUIS_APP_NAME>';
 
 // Get endpoint and LUIS configurations by service name.

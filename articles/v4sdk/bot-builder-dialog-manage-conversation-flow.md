@@ -1,6 +1,6 @@
 ---
 title: Реализация последовательной беседы | Документация Майкрософт
-description: Сведения о том, как управлять простым процессом общения с помощью диалогов в пакете SDK Bot Builder для Node.js.
+description: Сведения о том, как управлять простым процессом общения с помощью диалогов в пакете SDK Bot Framework для Node.js.
 keywords: simple conversation flow, sequential conversation flow, dialogs, prompts, waterfalls, dialog set
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452086"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317624"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация последовательной беседы
 
@@ -58,7 +58,7 @@ public class MultiTurnPromptsBotAccessors
 }
 ```
 
-Класс с методами доступа мы регистрируем в методе `ConfigureServices` класса `Statup`.
+Класс с методами доступа мы регистрируем в методе `ConfigureServices` класса `Startup`.
 Здесь мы снова публикуем только часть кода.
 
 ```csharp

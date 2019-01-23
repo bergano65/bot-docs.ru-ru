@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 18350c7ea6fb7390796567b1754cd88be6b9be61
-ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
+ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/26/2018
-ms.locfileid: "53785417"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202550"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Устранение неполадок, связанных с конфигурацией бота
 
@@ -28,7 +28,7 @@ ms.locfileid: "53785417"
 
 ![Тестирование в веб-чате](./media/test-in-webchat.png)
 
-Если бот успешно возвращает ожидаемые выходные данные, перейдите к разделу [Бот не работает в веб-чате](#bot-does-not-work-in-web-chat). В противном случае перейдите к разделу [Бот работает в веб-чате, но не работает в других каналах](#bot-works-in-web-chat-but-not-in-other-channels).
+Если бот не возвращает ожидаемые выходные данные, перейдите к разделу [Бот не работает в веб-чате](#bot-does-not-work-in-web-chat). В противном случае перейдите к разделу [Бот работает в веб-чате, но не работает в других каналах](#bot-works-in-web-chat-but-not-in-other-channels).
 
 ## <a name="bot-does-not-work-in-web-chat"></a>Бот не работает в веб-чате
 

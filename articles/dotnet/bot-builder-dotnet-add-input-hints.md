@@ -1,6 +1,6 @@
 ---
 title: Добавление подсказок для ввода в сообщения | Документы Майкрософт
-description: Сведения о добавлении подсказок для ввода в сообщения с помощью пакета SDK построителя ботов для .NET.
+description: Сведения о добавлении подсказок для ввода в сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a88461e8a03ac941671cc78080e38efecc26aa30
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b9b210ad215e091801456750237978babd029696
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998401"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224649"
 ---
 # <a name="add-input-hints-to-messages"></a>Добавление подсказок для ввода в сообщения
 
@@ -62,7 +62,7 @@ await connector.Conversations.ReplyToActivityAsync(reply);
 
 ## <a name="default-values-for-input-hint"></a>Значения по умолчанию для подсказки для ввода
 
-Если подсказка для ввода в сообщении не задана, пакет SDK для Bot Builder автоматически настроит ее соответственно следующей логике.
+Если подсказка для ввода в сообщении не задана, пакет SDK Bot Framework автоматически настроит ее соответственно следующей логике.
 
 - Если бот отправляет запрос, подсказка для ввода в сообщение укажет, что бот **ожидает ввода данных**.</li>
 - Если бот отправляет одно сообщение, подсказка для ввода в сообщение укажет, что бот **принимает ввод данных**.</li>
