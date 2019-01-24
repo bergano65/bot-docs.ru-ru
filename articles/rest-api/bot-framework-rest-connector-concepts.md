@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 01/16/2019
+ms.openlocfilehash: 7464e6f19ac1cd1a5744af845bd62c3a48cd2eb8
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224559"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453828"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -50,7 +50,7 @@ Bot Framework предоставляет клиентские библиотек
 Помимо моделирования службы Bot Connector и службы Состояние бота, каждый пакет SDK Bot Framework также предоставляет мощную систему создания диалоговых окон с поддержкой логики беседы, встроенными запросами для простых сведений типа "Да или Нет", строк, чисел и перечислений, встроенной поддержкой мощных платформ ИИ (например, <a href="https://www.luis.ai/" target="_blank">LUIS</a>) и многими другими возможностями. 
 
 > [!NOTE]
-> Вместо пакета SDK для C# или пакета SDK для Node.js вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">файл Swagger для службы Bot Connector</a> и <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">файл Swagger для службы Состояние бота</a>.
+> Вместо пакета SDK для C# или пакета SDK для Node.js вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://aka.ms/connector-swagger-file" target="_blank">файл Swagger для службы Bot Connector</a> и <a href="https://aka.ms/state-swagger-file" target="_blank">файл Swagger для службы Состояние бота</a>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

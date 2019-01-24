@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77dbf8658030a18596507129c88156601d4272e5
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: 4c43426f508d629c325889da6a9f7b06cac7e846
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298311"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453898"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять последовательность общения. В этом разделе описывается настройка простого бота, который использует LUIS для распознавания нескольких разных намерений. 
+Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять поток общения. В этом разделе описывается настройка простого бота, который использует LUIS для распознавания нескольких разных намерений. 
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [luis.ai](https://www.luis.ai)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download).
@@ -147,13 +147,13 @@ public void ConfigureServices(IServiceCollection services)
         }
 
         options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-        
+
         // ...
     });
 }
 ```
 
-Теперь в файле `Luis.cs` бот получает этот экземпляр LUIS.
+Теперь в файле `LuisBot.cs` бот получает этот экземпляр LUIS.
 
 ```csharp
 public class LuisBot : IBot

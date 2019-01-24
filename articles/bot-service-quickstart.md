@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 01/08/2019
-ms.openlocfilehash: da809023338847374715f7576481fc8d17a21ded
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 01/17/2019
+ms.openlocfilehash: 515ef592e4ce7f159890db4cb5f61f97cccf3786
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225399"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453948"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
+
+::: moniker range="azure-bot-service-3.0"
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
@@ -79,13 +79,14 @@ ms.locfileid: "54225399"
 
 ::: moniker range="azure-bot-service-4.0"
 
-# <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
-
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK Bot Framework для разработки ботов и службу ботов для подключения ботов к каналам. В этой статье вы сможете выбрать шаблон .NET или Node.js для создания бота с помощью пакета SDK Bot Framework версии 4.
 
+[!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
+
 ## <a name="prerequisites"></a>Предварительные требования
+
 - Учетная запись [Azure](http://portal.azure.com)
 
 ### <a name="create-a-new-bot-service"></a>Создание службы ботов

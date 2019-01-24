@@ -1,5 +1,5 @@
 ---
-title: Управление ходом общения с помощью диалогов | Документы Майкрософт
+title: Управление потоком общения с помощью диалогов | Документация Майкрософт
 description: Узнайте, как моделировать общение и управлять потоком общения с помощью диалогов и пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8e482d8f4003ad7bcd807e8fd12e3c68c4ce8c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cfb849474c23c62a666e013c700b755519c1868a
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225899"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453809"
 ---
-# <a name="manage-conversation-flow-with-dialogs"></a>Управление ходом общения с помощью диалогов
+# <a name="manage-conversation-flow-with-dialogs"></a>Управление потоком общения с помощью диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -88,7 +88,7 @@ public class RootDialog : IDialog<object>
 
 ## <a id="dialog-lifecycle"></a> Жизненный цикл диалога
 
-При вызове диалог берет на себя управление ходом общения. Каждое новое сообщение будет обрабатываться этим диалогом, пока он не будет закрыт или перенаправлен к другому диалогу. 
+При вызове диалог берет на себя управление потоком общения. Каждое новое сообщение будет обрабатываться этим диалогом, пока он не будет закрыт или перенаправлен к другому диалогу. 
 
 В C# можно использовать `context.Wait()`, чтобы указать обратный вызов, выполняемый при следующей отправке сообщения пользователем. Чтобы закрыть диалог и удалить его из стека (и тем самым вернуть пользователя к предыдущему диалогу в стеке), используйте `context.Done()`. Необходимо завершать каждый метод диалога `context.Wait()`, `context.Fail()`, `context.Done()` или какой-либо директивой перенаправления, такой как `context.Forward()` или `context.Call()`. Метод диалога, который не заканчивается подобным образом, приведет к ошибке (так как платформа не будет знать, какое действие следует предпринять при следующей отправке сообщения пользователем).
 
@@ -129,11 +129,11 @@ private async Task NameDialogResumeAfter(IDialogContext context, IAwaitable<stri
 
 ## <a name="sample-code"></a>Пример кода 
 
-Полный пример, в котором показано, как управлять общением с помощью диалогов из пакета SDK Bot Framework для .NET, приведен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">примере Basic Multi-Dialog</a> на сайте GitHub.
+Полный пример, в котором показано, как управлять общением с помощью диалогов из пакета SDK Bot Framework для .NET, приведен в [примере Basic Multi-Dialog](https://aka.ms/v3cs-MultiDialog-Sample) на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Диалоги](bot-builder-dotnet-dialogs.md)
 - [Проектирование потока беседы и управление им](../bot-service-design-conversation-flow.md)
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">Простой пример с несколькими диалогами (GitHub)</a>
+- [Простой пример с несколькими диалогами (GitHub)](https://aka.ms/v3cs-MultiDialog-Sample)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
