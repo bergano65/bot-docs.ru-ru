@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/17/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 4805e1a3c86ce28833054ce374a57c5c40b717e1
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317604"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453868"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу. Список доступных карточек вы найдете в статье [о проектировании взаимодействия с пользователем](../bot-service-design-user-experience.md). 
+Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу. Список доступных карточек вы найдете в статье [о проектировании взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
 ## <a name="send-attachments"></a>Отправка вложений
 
@@ -84,11 +84,11 @@ getInternetAttachment() {
 
 ## <a name="send-a-hero-card"></a>Отправка карточки для имиджевого баннера
 
-Помимо изображений или видео, вы можете прикрепить **карточку для имиджевого баннера**, которая позволяет совмещать изображения и кнопки в один объект и отправлять их в таком виде пользователю.
+Помимо изображений или видео, вы можете прикрепить **карточку для имиджевого баннера**, которая позволяет совмещать изображения и кнопки в один объект и отправлять их в таком виде пользователю. Markdown поддерживается для большинства текстовых полей, но особенности поддержки зависят от канала.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-attachments-sample-code). 
+Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-attachments-sample-code).
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -363,7 +363,7 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Ознакомьтесь с [принципами использования карточек в Bot Framework](https://aka.ms/botSpecs-cardSchema).
+См. дополнительные сведения о [схеме карточек Bot Framework](https://aka.ms/botSpecs-cardSchema) и [действиях в беседах](https://aka.ms/botSpecs-activitySchema#message-activity).
 
 Примеры исходного кода для карточек: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), для адаптивных карточек: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), для вложений: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js), для предлагаемых действий: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
 Изучите репозиторий образцов для Bot Builder на [GitHub](https://aka.ms/bot-samples-readme), где есть дополнительные примеры.

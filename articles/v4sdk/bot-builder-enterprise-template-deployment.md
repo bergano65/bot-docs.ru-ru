@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e557b359da09615d2998c4c729f57ffb9faf0de1
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: dd52376e049f1f0e09216e0065ced7443b6eb02a
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224969"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453888"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Развертывание Enterprise Bot с помощью шаблона
 
@@ -81,8 +81,10 @@ az account set --subscription "YOUR_SUBSCRIPTION_NAME"
 
 В файле README.md созданного проекта содержится пример команды `msbot clone services`, в которую следует внести имя создаваемого бота. Ниже приводится ее обобщенная версия. Укажите ключ разработки LUIS, полученный на предыдущем этапе, и выберите нужное расположение центра обработки данных Azure (например, westus или westeurope). Убедитесь, что ключ разработки LUIS, полученный на предыдущем этапе, соответствует региону, который вы укажете далее (например, westus для luis.ai или westeurope для eu.luis.ai). Наконец, укажите ссылку на папку языка, которую вы хотите использовать (например, `DeploymentScripts\en`).
 
+> **Примечание.** В приведенной ниже команде msbot YOUR-BOT-NAME используется для создания имени службы Azure. Допустимые символы в именах служб Azure — строчные буквы, цифры и дефисы (-). Не используйте символы подчеркивания (_) и неалфавитные символы как часть YOUR-BOT-NAME.
+
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
+msbot clone services --name "YOUR-BOT-NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
 > У некоторых пользователей при запуске развертывания может возникать следующая ошибка: `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. В этом случае перейдите по адресу https://apps.dev.microsoft.com и вручную создайте новое приложение, получив ApplicationID и пароль или секрет. Выполните приведенную выше команду msbot clone services, указав два новых аргумента (`appId` и `appSecret`) и передав только что полученные значения. Обязательно заключите секрет в кавычки, чтобы избежать проблем с синтаксическим анализом, например: `-appSecret "YOUR_SECRET"`.
@@ -119,7 +121,7 @@ msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_K
 Тестирование можно провести комплексно и локально. Когда вы будете готовы развернуть бот в Azure для дополнительного тестирования, опубликует исходный код с помощью приведенной ниже команды. Ее можно выполнять каждый раз, когда нужно отправить обновления исходного кода.
 
 ```shell
-az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.csproj --sdk-version v4
+az bot publish -g YOUR-BOT-NAME -n YOUR-BOT-NAME --proj-file YOUR-BOT-NAME.csproj --sdk-version v4
 ```
 
 ## <a name="enabling-more-scenarios"></a>Активация дополнительных возможностей
