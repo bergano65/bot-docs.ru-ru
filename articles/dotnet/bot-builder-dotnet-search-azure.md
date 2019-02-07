@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224549"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783363"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -173,11 +173,10 @@ public class SearchHitStyler : PromptStyler
 
 ## <a name="samples"></a>Примеры
 
-Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для .NET, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
+Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для .NET, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Поиск Azure][search]
 * [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-dotnet-dialogs.md)
-* [Примеры ботов для Поиска Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search)
 
 [search]: /azure/search/search-what-is-azure-search

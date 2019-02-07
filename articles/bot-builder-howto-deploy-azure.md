@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/08/2018
-ms.openlocfilehash: ac4e5f2ea385cb8318ad59e04c8ca8787480f5c8
-ms.sourcegitcommit: 77664484e1b0780a15f686ef08bd23716b049b4a
+ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121790"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712018"
 ---
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Развертывание бота на C# с помощью Visual Studio
 
@@ -25,9 +25,8 @@ ms.locfileid: "53121790"
 В этой статье мы покажем, как развернуть бот на C# с помощью Visual Studio и портала Azure. Будет полезно изучить эту статью перед выполнением описанных действий, чтобы полностью понимать все процессы при развертывании бота.
 
 ## <a name="prerequisites"></a>Предварительные требования
-- Установленный [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
-- Установленный и настроенный [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29).
-- Понимание структуры файла [.bot](v4sdk/bot-file-basics.md).
+- Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+- Понимание структуры файла с расширением [.bot](v4sdk/bot-file-basics.md).
 
 ## <a name="deploy-your-bot-in-app-service"></a>Развертывание бота в службе приложений
 Сначала нужно развернуть бот в Службе приложений Azure из Visual Studio. Затем настройте бот, используя функцию регистрации каналов бота в службе Azure Bot.
@@ -150,7 +149,7 @@ ms.locfileid: "53121790"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-При развертывании бота, как правило, на портале Azure создаются следующие ресурсы.
+При развертывании бота, как правило, на портале Azure создаются следующие ресурсы:
 
 | Ресурсы      | ОПИСАНИЕ |
 |----------------|-------------|

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 8ab1cd34f2cc239602db423bccd131d9df39222a
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736026"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711978"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Устранение неполадок при ошибках HTTP 500
 
@@ -28,7 +28,7 @@ ms.locfileid: "53736026"
 
 ## <a name="enable-application-insights-on-nodejs"></a>Включение Application Insights для Node.js
 
-Базовая поддержка Application Insights описана в статье [о мониторинге служб и приложений Node.js с помощью Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs). Платформа Bot Framework (начиная с версии 4.2) предоставляет дополнительный уровень телеметрии для Application Insights, но без него можно обойтись при диагностике ошибок HTTP 500.
+Базовая поддержка Application Insights описана в статье [о мониторинге служб и приложений Node.js с помощью Application Insights](https://docs.microsoft.com/azure/azure-monitor/learn/nodejs-quick-start). Платформа Bot Framework (начиная с версии 4.2) предоставляет дополнительный уровень телеметрии для Application Insights, но без него можно обойтись при диагностике ошибок HTTP 500.
 
 ## <a name="query-for-exceptions"></a>Запрос исключений
 
