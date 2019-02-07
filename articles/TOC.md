@@ -44,7 +44,7 @@
 ### [Использование QnA Maker для ответов на вопросы пользователя](v4sdk/bot-builder-howto-qna.md)
 ### [Использование нескольких моделей LUIS и QnA](v4sdk/bot-builder-tutorial-dispatch.md)
 ### Управление беседами с использованием библиотеки диалогов 
-#### [Реализация последовательной беседы](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [Реализация процесса общения](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [Сбор данных, которые вводит пользователь, с помощью диалогового окна](v4sdk/bot-builder-prompts.md)
 #### [Создание сложной последовательной беседы с использованием ветвей и циклов](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
@@ -53,6 +53,7 @@
 ### [Непосредственная запись в хранилище](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
+### [Добавление данных телеметрии в бот](v4sdk/bot-builder-telemetry.md)
 ### [Управление ботами с помощью средств интерфейса командной строки](bot-builder-tools.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
@@ -63,6 +64,7 @@
 <!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
 ## [Управление](manage/TOC.md)
+## [Миграция](v4sdk/migration/TOC.md)
 # Справочные материалы
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/dotnetsdk4)
 ## [Пакет SDK версии 4 для JavaScript](https://aka.ms/jssdk4)

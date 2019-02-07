@@ -1,0 +1,1 @@
+# [Перенос бота в пределах одного проекта .NET Framework](conversion-framework.md)
