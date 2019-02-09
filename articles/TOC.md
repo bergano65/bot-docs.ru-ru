@@ -59,17 +59,17 @@
 ### [Node.js](nodejs/TOC.md)
 ## [Отладка](debug/TOC.md)
 ## Развертывание
-### [Развертывание бота с помощью Azure CLI](bot-builder-deploy-az-cli.md)
-### [Развертывание бота на C# с помощью Visual Studio](bot-builder-howto-deploy-azure.md)
-<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
-### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
+### [Развертывание бота в Azure](bot-builder-deploy-az-cli.md)
+<!-- ### [Deploy your C# bot using Visual Studio](bot-builder-howto-deploy-azure.md)
+### [Download and redeploy bot code](bot-service-build-download-source-code.md) 
+### [Set up continuous deployment](bot-service-build-continuous-deployment.md) -->
 ## [Управление](manage/TOC.md)
 ## [Миграция](v4sdk/migration/TOC.md)
 # Справочные материалы
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/dotnetsdk4)
 ## [Пакет SDK версии 4 для JavaScript](https://aka.ms/jssdk4)
 ## [REST](rest-api/TOC.md)
-## [Пакет SDK версии 3 для .NET](/dotnet/api/?view=botbuilder-3.12.2.4)
+## [Пакет SDK версии 3 для .NET](/dotnet/api/?view=botbuilder-dotnet-3.0)
 ## [Пакет SDK версии 3 для Node.js](https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html)
 ## [Сущности и типы действий](bot-service-activities-entities.md)
 # [Ресурсы](resources/TOC.md)
