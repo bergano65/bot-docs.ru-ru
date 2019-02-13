@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f0985f28fd1744bcfb6bf5cea1c2230254670e01
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 438558995f83ade38404856d61ba66ee77480a27
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000211"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711938"
 ---
 # <a name="end-a-conversation"></a>Завершение диалога
 
-Клиент или бот может дать сигнал об окончании диалога Direct Line, отправив [действие](bot-framework-rest-connector-activities.md) **endOfConversation**. 
+**EndOfConversation** — это [действие](bot-framework-rest-connector-activities.md) означает, что канал или бот завершили диалог. 
 
 > [!NOTE] 
-> Событие endOfConversation поддерживается только в канале Cortana. В других каналах эта функциональность не реализована. Каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.
+> Хотя событие **endOfConversation** отправляется несколькими каналами, канал Cortana — это единственный канал, который его принимает. Другие каналы, включая Direct Line, не реализуют эту функцию, отклоняя или пересылая вместо этого действие — каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.
 
 ## <a name="send-an-endofconversation-activity"></a>Отправка действия endOfConversation
 
@@ -63,5 +63,5 @@ HTTP/1.1 200 OK
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-- [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
+- [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)

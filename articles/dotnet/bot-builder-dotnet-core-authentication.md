@@ -1,21 +1,18 @@
 ---
-title: Проверка подлинности действий с помощью .NET Core | Документация Майкрософт
-description: Сведения о проверке подлинности действий ботов с помощью .NET Core.
-author: v-ducvo
-ms.author: v-ducvo
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3aa350cbada77bd9e423a1910f93440a7a1682d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-tutorial-authentication
+ms.openlocfilehash: 6dd1013e870fb749919f272e82b60ee633cddadb
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996991"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783373"
 ---
+<a name="--"></a><!--
+---
+заголовок: Проверка подлинности действий с помощью .NET Core | Документация Майкрософт description: Сведения о проверке подлинности действий ботов с помощью .NET Core.
+author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="authenticating-activities-using-net-core"></a>Проверка подлинности действий с помощью .NET Core
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -246,3 +243,4 @@ public async Task<OkResult> Post([FromBody] Activity activity)
     return Ok();
 }
 ```
+-->

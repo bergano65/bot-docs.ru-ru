@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 2096aa342fe954b9f9f1d128bc080c0e0e6efdce
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360804"
----
 ## <a name="prerequisites"></a>Предварительные требования
 - Visual Studio [2017](https://www.visualstudio.com/downloads).
 - Шаблон для пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix).
@@ -15,7 +7,7 @@ ms.locfileid: "54360804"
 ## <a name="create-a-bot"></a>Создание бота
 Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований.
 
-В Visual Studio создайте новый проект бота с использованием шаблона бота Echo для Bot Framework версии 4.
+В Visual Studio создайте проект бота с использованием шаблона **бота Echo для Bot Framework** версии 4.
 
 ![Проект Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 

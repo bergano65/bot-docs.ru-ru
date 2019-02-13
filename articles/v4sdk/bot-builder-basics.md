@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a1b155db3ec717a1084ae0e098e8f22997a80b0e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225939"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783383"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -67,7 +67,7 @@ ms.locfileid: "54225939"
 В следующих разделах мы рассмотрим основные компоненты бота.
 
 ### <a name="prerequisites"></a>Предварительные требования
-- Копия примера **EchoBotWithCounter** на языке [C#](https://aka.ms/EchoBotWithStateCSharp) или [JS](https://aka.ms/EchoBotWithStateJS). Здесь представлен только тот код, который важен для этой статьи. Полный исходный код можно найти в самом примере.
+- Копия примера **EchoBotWithCounter** на языке **[C#](https://aka.ms/EchoBotWithStateCSharp) или [JS](https://aka.ms/EchoBotWithStateJS)**. Здесь представлен только тот код, который важен для этой статьи. Полный исходный код можно найти в самом примере.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 

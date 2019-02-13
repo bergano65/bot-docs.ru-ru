@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4a221f6e94324c56f88dd1d4d6851d5cc4d38e6c
-ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
+ms.openlocfilehash: f1e3e3fa05a297aa50a2368a103a7aa00be49009
+ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54323680"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55764142"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -27,24 +27,28 @@ ms.locfileid: "54323680"
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [QnA Maker](https://www.qnamaker.ai/)
-- Код в этой статье основан на примере **QnA Maker**. Вам потребуется копия этого примера на языке [C#](https://aka.ms/cs-qna) или [JS](https://aka.ms/js-qna-sample).
+- Код в этой статье основан на примере **QnA Maker**. Вам потребуется копия примера [для C#](https://aka.ms/cs-qna) или [для Javascript](https://aka.ms/js-qna-sample).
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download).
 - Понимание [основных принципов ботов](bot-builder-basics.md), [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) и файлов [.bot](bot-file-basics.md).
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>Создание службы QnA Maker и публикация базы знаний
 1. Прежде всего необходимо создать [службу QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure).
 1. Затем вы создадите базу знаний с помощью файла `smartLightFAQ.tsv`, который расположен в папке CognitiveModels проекта. Действия по созданию, обучению и публикации [базы знаний](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker описаны в документации по QnA Maker. При выполнении этих действий присвойте базе знаний имя `qna` и выберите для ее заполнения файл `smartLightFAQ.tsv`.
+> Примечание. Инструкции из этой статьи можно применить и для получения доступа к собственной базе знаний QnA Maker, разработанной пользователем.
 
-## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>Получение значений для подключения бота к базе знаний
+## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>Получение значений для подключения бота к базе знаний
 1. На сайте [QnA Maker](https://www.qnamaker.ai/) выберите свою базу знаний.
-1. При открытой базе знаний выберите **Параметры**. Сохраните значение из поля _имя службы_ как <имя_базы_знаний>
-1. Прокрутите вниз, чтобы найти **Сведения о развертывании** и запишите следующие значения:
-   - POST /knowledgebases/<идентификатор_базы_знаний>/generateAnswer
+1. При открытой базе знаний выберите **Параметры**. Сохраните значение из поля _Имя службы_. Это значение поможет вам найти нужную базу знаний в интерфейсе портала QnA Maker. Оно не используется для подключения к этой базе знаний из приложения бота. 
+1. Прокрутите вниз, чтобы найти **Сведения о развертывании**, и запишите следующие значения:
+   - POST /knowledgebases/<идентификатор_базы_знаний>/getAnswers
    - Host: <имя_узла>/qnamaker
    - Авторизация: EndpointKey <ключ_конечной_точки>
+   
+Эти три значения содержат сведения, необходимые приложению для подключения к базе знаний QnA Maker через службу Azure QnA.  
 
 ## <a name="update-the-bot-file"></a>Обновление файла .bot
-Во-первых, добавьте в файл `qnamaker.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (KbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker.
+Во-первых, добавьте в файл `qnamaker.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (KbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker. 
+> Примечание. Если вы добавляете доступ к базе знаний QnA Maker в существующее приложение бота, не забудьте добавить в файл .bot раздел "type": "qna", как показано ниже. Параметр name в этом разделе предоставляет ключ для доступа к этой информации из приложения.
 
 ```json
 {
@@ -55,17 +59,16 @@ ms.locfileid: "54323680"
       "name": "development",
       "endpoint": "http://localhost:3978/api/messages",
       "appId": "",
-      "appPassword": ""
-      "id": "25",
-    
+      "appPassword": "",
+      "id": "25"    
     },
     {
       "type": "qna",
       "name": "QnABot",
-      "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-      "subscriptionKey": "<Your_Azure_Subscription_Key>", // Used when creating your QnA service.
-      "endpointKey": "<Your_Recorded_Endpoint_Key>",
-      "hostname": "<Your_Recorded_Hostname>",
+      "KbId": "<Your_Knowledge_Base_Id>",
+      "subscriptionKey": "",
+      "endpointKey": "<Your_Endpoint_Key>",
+      "hostname": "<Your_Hostname>",
       "id": "117"
     }
   ],
@@ -75,7 +78,7 @@ ms.locfileid: "54323680"
 ```
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
-Затем мы инициализируем в файле BotServices.cs новый экземпляр класса BotService, который извлекает перечисленные выше сведения из файла .bot. Внешняя служба настраивается с помощью класса BotConfiguration.
+Затем мы инициализируем в файле **BotServices.cs** новый экземпляр класса BotService, который извлекает перечисленные выше сведения из файла .bot. Внешняя служба настраивается с помощью класса BotConfiguration.
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -128,7 +131,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 }
 ```
 
-Затем в файле QnABot.cs мы передаем боту этот экземпляр QnAMaker. Если вы обращаетесь к собственной базе знаний, измените представленное ниже _приветственное сообщение_ на более полезное с инструкциями для пользователей.
+Затем в файле **QnABot.cs** мы передаем боту этот экземпляр QnAMaker. Если вы обращаетесь к собственной базе знаний, измените представленное ниже _приветственное сообщение_ на более полезное с инструкциями для пользователей. Именно в этом классе определяется и статическая переменная _QnAMakerKey_. Она указывает на раздел в файле .bot, который содержит сведения о соединении для доступа к базе знаний QnA Mkaer.
 
 ```csharp
 public class QnABot : IBot
@@ -155,11 +158,11 @@ public class QnABot : IBot
 
 В файле **index.js** мы считываем сведения о конфигурации и используем их для создания службы QnA Maker и инициализации бота.
 
-Замените значение `QNA_CONFIGURATION` именем базы данных, которое отображается в файле конфигурации.
+Обновите значение `QNA_CONFIGURATION` на значение параметра "name": в файле .bot. Это ключ, который следует разместить в разделе "type": "qna" файла .bot, где хранятся параметры для подключения к базе знаний QnA Maker.
 
 ```js
-// QnA Maker knowledge base name as specified in .bot file.
-const QNA_CONFIGURATION = '<YOUR_KB_NAME>';
+// Name of the QnA Maker service in the .bot file. 
+const QNA_CONFIGURATION = '<BOT_FILE_NAME>';
 
 // Get endpoint and QnA Maker configurations by service name.
 const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
@@ -230,7 +233,7 @@ else
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-В файле **bot.js** мы передаем пользовательский ввод в метод `generateAnswer` службы QnA Maker, чтобы получать ответы из базы знаний. Если вы обращаетесь к собственной базе знаний, измените представленные ниже сообщения _об отсутствии ответов_ и _приветствия_ на более полезное с инструкциями для пользователей.
+В файле **bot.js** мы передаем пользовательский ввод в метод `getAnswers` службы QnA Maker, чтобы получать ответы из базы знаний. Если вы обращаетесь к собственной базе знаний, измените представленные ниже сообщения _об отсутствии ответов_ и _приветствия_ на более полезное с инструкциями для пользователей.
 
 ```javascript
 const { ActivityTypes, TurnContext } = require('botbuilder');
@@ -258,7 +261,7 @@ class QnAMakerBot {
         // By checking the incoming Activity type, the bot only calls QnA Maker in appropriate cases.
         if (turnContext.activity.type === ActivityTypes.Message) {
             // Perform a call to the QnA Maker service to retrieve matching Question and Answer pairs.
-            const qnaResults = await this.qnaMaker.generateAnswer(turnContext.activity.text);
+            const qnaResults = await this.qnaMaker.getAnswers(turnContext.activity.text);
 
             // If an answer was received from QnA Maker, send the answer back to the user.
             if (qnaResults[0]) {

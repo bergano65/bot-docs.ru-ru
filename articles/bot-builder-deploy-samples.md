@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 3ca8ac4bfe14ed20f11a0ab26d8102ac21e60e2b
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317620"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711958"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>Развертывание ботов из репозитория botbuilder-samples
 
@@ -101,6 +101,7 @@ cd <local-bot-folder>
 Если вы используете учетную запись электронной почты [MSA](https://en.wikipedia.org/wiki/Microsoft_account), подготовьте значения appId и appSecret для использования в команде `msbot clone services`.
 
 - Перейдите на [портал регистрации приложений](https://apps.dev.microsoft.com/). Щелкните **Add an app** (Добавить приложение), чтобы зарегистрировать приложение, затем создайте **Application Id** (Идентификатор приложения) и щелкните **Generate New Password** (Создать пароль).
+> ПРИМЕЧАНИЕ. Если созданный пароль содержит символ |, такой пароль будет отклонен в Azure. Чтобы решить эту проблему, создайте другой пароль.
 - Сохраните идентификатор приложения и созданный пароль, чтобы применить их в команде `msbot clone services`.
 - Для развертывания выберите правильную команду в зависимости от типа бота.
 
