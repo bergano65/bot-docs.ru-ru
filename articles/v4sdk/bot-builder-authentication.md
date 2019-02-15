@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 10/30/2018
+ms.date: 02/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: c55909afa0a8942a01d3fca0f8a64331bbcdf963
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298321"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971524"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -51,7 +51,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 ## <a name="overview"></a>Обзор
 
-В этом руководстве создается пример бота, который подключается к Microsoft Graph, с помощью токена Azure AD версии 1 или 2. Для этого процесса используется код из репозитория GitHub [Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples). В этом руководстве есть инструкции по его настройке, включая настройку приложения бота.
+В этом руководстве создается пример бота, который подключается к Microsoft Graph с помощью токена Azure AD версии 1 или 2 и связанного приложения Azure AD. Для этого процесса используется код из репозитория GitHub [Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples). В этом руководстве есть инструкции по его настройке, включая настройку приложения бота.
 
 - **Создание бота и приложения проверки подлинности**
 - **Подготовка примера кода бота**

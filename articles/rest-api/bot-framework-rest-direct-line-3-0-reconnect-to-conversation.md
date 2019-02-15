@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 812ad04232629e889b0ab5472af07ff986ca787b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 2/09/2019
+ms.openlocfilehash: 45675e612553e79f51edde60eaee6bf14df0e44d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000311"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971404"
 ---
 # <a name="reconnect-to-a-conversation"></a>Повторное подключение к диалогу
 
@@ -60,8 +60,10 @@ HTTP/1.1 200 OK
 
 Клиент должен использовать новый URL-адрес потока по протоколу WebSocket, чтобы [повторно подключиться к диалогу](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) в течение 60 секунд. Если в течение этого времени не удается установить подключение, клиент должен выполнить новый запрос на повторное подключение, чтобы создать новый URL-адрес потока.
 
+Если параметр Enhanced authentication option (Расширенная проверка подлинности) включен в Direct Line, вы можете получить ошибку с кодом 400 — MissingProperty (свойство не найдено), информирующую о том, что идентификатор пользователя не указан.
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-- [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
+- [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Receive activities via WebSocket stream](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) (Получение действий через поток по протоколу WebSocket)

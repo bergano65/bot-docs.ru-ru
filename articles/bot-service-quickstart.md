@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 01/17/2019
-ms.openlocfilehash: 515ef592e4ce7f159890db4cb5f61f97cccf3786
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.date: 02/07/2019
+ms.openlocfilehash: 2648058456677fb009e3fe76c4215f8028aac6bf
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453948"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971514"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
 
@@ -138,10 +138,6 @@ ms.locfileid: "54453948"
 Чтобы сделать это, перейдите на портал Azure. Выберите бот на портале, а затем в разделе **Параметры Службы приложений** щелкните **Параметры приложения**. В области **Параметры приложения** вы увидите значения `botFilePath` и `botFileSecret`. Скопируйте эти значения и обновите файл .env или appsettings.json. 
 
 ## <a name="next-steps"></a>Дополнительная информация
-
-Из этого раздела вы узнали, как создать бот **Echo** веб-приложения с помощью службы Azure Bot, а также проверили работу бота с помощью встроенного элемента управления "Веб-чат". Теперь вы научитесь управлять ботом и приступите к работе с его исходным кодом.
-
-> [!div class="nextstepaction"]
-> [Принципы работы бота](~/v4sdk/bot-builder-basics.md)
+После скачивания кода вы можете продолжить разработку бота на своем локальном компьютере. Как только вы протестируете бота и будете готовы отправить соответствующий код на портал Azure, выполните инструкции в разделе [Настройка репозитория](./bot-builder-deploy-az-cli.md#setup-a-repository) в руководстве по развертыванию.
 
 ::: moniker-end

@@ -8,30 +8,35 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bcb2e545cea640f74a37cac20f16b288c690956
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
+ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764195"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56240180"
 ---
-# <a name="migrate-a-bot-within-the-same-net-framework-project"></a>Перенос бота в пределах одного проекта .NET Framework
+# <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Перенос бота с версии 3 в версию 4 пакета SDK для .NET
 
-Пакет SDK версии 4 для Bot Framework использует тот же базовый REST API, что и пакет SDK версии 3. Но в пакете SDK версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами. В пакет SDK внесены следующие основные изменения: <!--TODO: Replace with a snippet summary of changes that includes a link to the concept topic.-->
+В этой статье описывается, как преобразовать бот [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) версии 3 в бот версии 4, _не меняя тип проекта_. Это по-прежнему будет проект .NET Framework.
+Преобразование включает в себя следующие действия:
+
+1. Обновление и установка пакетов NuGet.
+1. Обновление файла global.asax.cs.
+1. Обновление класса MessagesController.
+1. Преобразование диалогов.
+
+<!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->
+
+Пакет SDK версии 4 для Bot Framework использует тот же базовый REST API, что и пакет SDK версии 3. Но в пакете SDK версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами. Основные изменения в пакете SDK:
 
 - Управление состоянием осуществляется через соответствующие объекты и методы доступа к свойствам.
 - Также изменились процессы настройки обработчика шагов и передачи ему действий.
 - Диалоги с возможностью оценки Scoreable больше не существуют. Вы можете проверить наличие глобальных команд в обработчике шагов, прежде чем передавать средства управления в диалоги.
 - Новая библиотека Dialogs, которая сильно отличается от предыдущей версии. Вам потребуется преобразовать все старые диалоги в новую систему, используя компонентные, каскадные диалоги и созданную сообществом реализацию диалогов Formflow для версии 4.
 
-В этой статье мы преобразуем пример [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) версии 3 в бот версии 4. <!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).--> При преобразовании бота мы не меняем тип проекта — это будет как и прежде проект .NET Framework. Преобразование включает в себя следующие действия:
-
-1. Обновление и установка пакетов NuGet.
-1. Обновление файла global.asax.cs.
-1. Обновление класса MessagesController.
-1. Преобразование диалогов.
+См. дополнительные сведения об [отличиях между версиями 3 и 4 пакета SDK для .NET](migration-about.md).
 
 ## <a name="update-and-install-nuget-packages"></a>Обновление и установка пакетов NuGet
 
@@ -343,7 +348,6 @@ namespace ContosoHelpdeskChatBot
 - Каскадные шаги имеют параметр `WaterfallStepContext`, который является производным от `DialogContext`.
 - Все конкретные классы диалогов и приглашений наследуют от абстрактного класса `Dialog`.
 - Идентификатор присваивается при создании компонентного диалога. Каждый диалог в наборе диалогов должен иметь уникальный в пределах этого набора идентификатор.
-- Мы реализуем методы расширения `PostAsync` и `Done`, чтобы наши преобразованные диалоги больше соответствовали версии 3. Вы можете добавить дополнительные методы расширения, чтобы процесс преобразования выполнялся более гладко, или не делать этого, чтобы итоговый код больше соответствовал версии 4.
 
 ### <a name="update-the-root-dialog"></a>Обновление корневого диалога
 

@@ -1,21 +1,18 @@
 ---
-title: Развертывание бота на C# с помощью Visual Studio | Документация Майкрософт
-description: Развертывание бота в облаке Azure.
-keywords: deploy bot, azure deploy, publish bot, az deploy bot, visual studio deploy bot, msbot publish, msbot clone
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: get-started-article
-ms.service: bot-service
-ms.subservice: abs
-ms.date: 12/08/2018
-ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: a300d6602a59c5e7d7cebdf14bb4f720a30ecbf8
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712018"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971474"
 ---
+<a name="--"></a><!--
+---
+заголовок: Развертывание бота на C# с помощью Visual Studio | Документация Майкрософт Развертывание бота в облаке Azure.
+keywords: deploy bot, azure deploy, publish bot, az deploy bot, visual studio deploy bot, msbot publish, msbot clone author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: get-started-article ms.service: bot-service ms.subservice: abs ms.date: 07.02.2019
+---
+
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Развертывание бота на C# с помощью Visual Studio
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
@@ -28,7 +25,16 @@ ms.locfileid: "55712018"
 - Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Понимание структуры файла с расширением [.bot](v4sdk/bot-file-basics.md).
 
+
+## <a name="update-bot-file-properties"></a>Обновление свойств файла .bot
+
+Прежде чем начать процесс развертывания, обновите следующие свойства файла .bot в Visual Studio:
+- **Действие сборки: Содержимое**.
+- **Копировать в выходной каталог: Всегда копировать**.
+
+
 ## <a name="deploy-your-bot-in-app-service"></a>Развертывание бота в службе приложений
+
 Сначала нужно развернуть бот в Службе приложений Azure из Visual Studio. Затем настройте бот, используя функцию регистрации каналов бота в службе Azure Bot.
 
 **Примечание. Если имя проекта Visual Studio содержит пробелы, описанные ниже инструкции по развертыванию выполнить не удастся.**
@@ -164,3 +170,4 @@ ms.locfileid: "55712018"
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
 > [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)
+-->

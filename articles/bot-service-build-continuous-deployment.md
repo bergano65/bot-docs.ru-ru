@@ -1,20 +1,17 @@
 ---
-title: Настройка непрерывного развертывания для службы Bot | Документация Майкрософт
-description: Узнайте, как настроить непрерывное развертывание из системы управления версиями для службы Bot.
-keywords: continuous deployment, publish, deploy, azure portal
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.date: 12/06/2018
-ms.openlocfilehash: ffbc3ef83c8fe1cd6f04697a3fff9e229df9956f
-ms.sourcegitcommit: 080b9633925ffe381f2c3cf11c8f8ca4b37e2046
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53068717"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971433"
 ---
+<a name="--"></a><!--
+---
+заголовок: Настройка непрерывного развертывания для службы Bot | Документация Майкрософт Узнайте, как настроить непрерывное развертывание из системы управления версиями для службы Bot. keywords: continuous deployment, publish, deploy, azure portal author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: article ms.service: bot-service ms.date: 06.12.2018
+---
+
 # <a name="set-up-continuous-deployment"></a>Непрерывное развертывание с использованием GIT в службе приложений Azure
 Если ваш код записывается после изменений в **GitHub** или **Azure DevOps (ранее Visual Studio Team Services)**, используйте непрерывное развертывание, чтобы автоматически развертывать изменения в коде из исходного репозитория в Azure. В этом разделе рассматривается настройка непрерывного развертывания с помощью **GitHub** и **Azure DevOps**.
 
@@ -71,3 +68,6 @@ ms.locfileid: "53068717"
 
 ## <a name="additional-information"></a>Дополнительная информация
 - Visual Studio Team Services теперь называется [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts).
+
+
+-->

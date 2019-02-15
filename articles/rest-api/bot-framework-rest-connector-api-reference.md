@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 81192c9b5806d467c2a1fd292ee3d5db539e9ead
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: fd98b1bc8c3aa3b2c9fd716289dfd3ce75bec75b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916871"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971544"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -433,7 +433,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **textFormat** | строка | Формат **текста** сообщения. Одно из следующих значений: **markdown**, **plain** или **xml**. Дополнительные сведения о формате текста см. в статье [Создание сообщений](bot-framework-rest-connector-create-messages.md). |
 | **Timestamp** | строка | Дата и время отправки сообщения в часовом поясе UTC, выраженные в формате <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
 | **topicName** | строка | Раздел общения, к которому относится действие. |
-| **type** | строка | Тип действия. Одно из следующих значений: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing** или **endOfConversation**. Дополнительные сведения о типах действий см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md). |
+| **type** | строка | Тип действия. Одно из следующих значений: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **event** и **endOfConversation**. Дополнительные сведения о типах действий см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md). |
 | **значение** | object | Открытое значение. |
 | **semanticAction** |[SemanticAction](#semanticaction-object) | Объект **SemanticAction**, представляющий ссылку на программное действие. |
 
@@ -463,8 +463,8 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **contentType** | строка | Тип мультимедиа содержимого во вложении. Для файлов мультимедиа задайте этому свойству значение известных типов мультимедиа, например **image/png**, **audio/wav** или **video/mp4**. Для форматированных карточек задайте этому свойству один из следующих типов, определяемых поставщиком:<ul><li>**application/vnd.microsoft.card.adaptive**. Форматированная карточка, которая может содержать любое сочетание текста, речи, изображений, кнопок и полей ввода. Для свойства **content** укажите объект <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a>.</li><li>**application/vnd.microsoft.card.animation**. Форматированная карточка для воспроизведения анимации. Для свойства **content** укажите объект [AnimationCard](#animationcard-object).</li><li>**application/vnd.microsoft.card.audio**. Форматированная карточка для воспроизведения аудиофайлов. Для свойства **content** укажите объект [AudioCard](#audiocard-object).</li><li>**application/vnd.microsoft.card.video**. Форматированная карточка для воспроизведения видео. Для свойства **content** укажите объект [VideoCard](#videocard-object).</li><li>**application/vnd.microsoft.card.hero**. Карта для имиджевого баннера. Для свойства **content** укажите объект [HeroCard](#herocard-object).</li><li>**application/vnd.microsoft.card.thumbnail**. Карта эскиза. Для свойства **content** укажите объект [ThumbnailCard](#thumbnailcard-object).</li><li>**application/vnd.microsoft.com.card.receipt**. Карта квитанции. Для свойства **content** укажите объект [ReceiptCard](#receiptcard-object).</li><li>**application/vnd.microsoft.com.card.signin**. Карта входа пользователя. Для свойства **content** укажите объект [SignInCard](#signincard-object).</li></ul> |
-| **contentUrl** | строка | URL-адрес для содержимого вложения. Например, если вложение — это изображение, укажите для свойства **contentUrl** URL-адрес, представляющий расположение изображения. Поддерживаются протоколы HTTP, HTTPS, файловый протокол и протокол передачи данных. |
+| **contentType** | строка | Тип мультимедиа содержимого во вложении. Для файлов мультимедиа задайте этому свойству значение известных типов мультимедиа, например **image/png**, **audio/wav** или **video/mp4**. Для форматированных карточек задайте этому свойству один из следующих типов, определяемых поставщиком:<ul><li>**application/vnd.microsoft.card.adaptive**: Функциональная карточка, которая может содержать произвольное сочетание текста, речи, изображений, кнопок и полей для ввода. Для свойства **content** укажите объект <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a>.</li><li>**application/vnd.microsoft.card.animation**: функциональная карточка для воспроизведения анимации. Для свойства **content** укажите объект [AnimationCard](#animationcard-object).</li><li>**application/vnd.microsoft.card.audio**: функциональная карточка для воспроизведения аудио-файлов. Для свойства **content** укажите объект [AudioCard](#audiocard-object).</li><li>**application/vnd.microsoft.card.video**: функциональная карточка для воспроизведения видео. Для свойства **content** укажите объект [VideoCard](#videocard-object).</li><li>**application/vnd.microsoft.card.hero**: карточка имиджевого баннера. Для свойства **content** укажите объект [HeroCard](#herocard-object).</li><li>**application/vnd.microsoft.card.thumbnail**: карточка эскиза. Для свойства **content** укажите объект [ThumbnailCard](#thumbnailcard-object).</li><li>**application/vnd.microsoft.com.card.receipt**: карточка квитанции. Для свойства **content** укажите объект [ReceiptCard](#receiptcard-object).</li><li>**application/vnd.microsoft.com.card.signin**: карточка входа пользователя. Для свойства **content** укажите объект [SignInCard](#signincard-object).</li></ul> |
+| **contentUrl** | строка | URL-адрес для содержимого вложения. Например, если вложение — это изображение, укажите для свойства **contentUrl** URL-адрес, представляющий расположение изображения. Поддерживаемые протоколы: HTTP, HTTPS, а также протоколы передачи файлов и данных. |
 | **content** | object | Содержимое вложения. Если вложение — это форматированная карточка, укажите для этого свойства объект форматированной карты. Это свойство и свойство **contentUrl** являются взаимоисключающими. |
 | **name** | строка | Имя вложения. |
 | **thumbnailUrl** | строка | URL-адрес эскиза, который канал может использовать, если поддерживает использование альтернативных, меньших форм свойств **content** или **contentUrl**. Например, если задать свойству **contentType** значение **application/word**, а свойству **contentUrl** — расположение документа Word, можно включить эскиз изображения, представляющего документ. Канал будет отображать эскиз изображения вместо документа. При щелчке изображения канал откроет документ. |
