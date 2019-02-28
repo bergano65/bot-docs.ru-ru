@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 06/06/2017
+ms.date: 02/19/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 975496786e66a4d9b1de5c6ead6d8257687f23b7
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 73193b82c8f03a1a49df1927ced15684bd7af955
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224529"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591115"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Добавление предлагаемых действий к сообщениям
 
@@ -26,9 +26,6 @@ ms.locfileid: "54224529"
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]
-
-> [!TIP]
-> Используйте [инспектор каналов][channelInspector], чтобы узнать, как предлагаемые действия отображаются и используются с разными каналами.
 
 ## <a name="suggested-actions-example"></a>Пример предлагаемых действий
 
@@ -44,10 +41,10 @@ ms.locfileid: "54224529"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Предварительный просмотр компонентов с помощью Channel Inspector][inspector]
-* [IMessage][IMessage]
-* [ICardAction][ICardAction]
-* [session.send][SessionSend]
+- [примеры][samples].
+- [IMessage][IMessage]
+- [ICardAction][ICardAction]
+- [session.send][SessionSend]
 
 [IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
@@ -55,6 +52,5 @@ ms.locfileid: "54224529"
 
 [ICardAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.icardaction.html
 
-[inspector]: ../bot-service-channel-inspector.md
-
-[channelInspector]: ../bot-service-channel-inspector.md
+<!-- The inspector is no longer supported: we're redirecting to the samples for now. -->
+[samples]: https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples
