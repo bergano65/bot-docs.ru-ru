@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/20/2018
+ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e591f19f7df8fa6281573c0ac7f1330d95f4c53
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4b18cc5d32d04b69fa349d22058b51fcec0e12d7
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225439"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591075"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -56,7 +56,7 @@ ms.locfileid: "54225439"
 Мы определяем следующие типы.
 
 - Класс `UserProfile` для хранения собранных ботом сведений о пользователе.
-- Класс `ConversationFlow` для хранения информации о текущем положении в беседе.
+- Класс `ConversationFlow` для отслеживания информации о текущем положении в беседе.
 - Внутреннее перечисление `ConversationFlow.Question` для отслеживания текущего положения в беседе.
 - Класс `CustomPromptBotAccessors` для хранения набора сведений об управлении состояниями.
 
@@ -84,6 +84,8 @@ ms.locfileid: "54225439"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
+В файле **CustomPromptBot.cs** получите свойство state и вызовите вспомогательный метод. (Обратите внимание, что свойство экземпляра `_accessors` задано в конструкторе бота.)
+
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
@@ -106,6 +108,8 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+В файле **bot.js** получите свойство state и вызовите вспомогательный метод. (Обратите внимание, что свойство экземпляра `conversationFlow` задано в конструкторе бота.)
 
 ```javascript
 // The bot's turn handler.
@@ -490,4 +494,4 @@ static validateDate(input) {
 ## <a name="next-step"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
-> [Реализация последовательной беседы](bot-builder-dialog-manage-conversation-flow.md)
+> [Реализация процесса общения](bot-builder-dialog-manage-conversation-flow.md)

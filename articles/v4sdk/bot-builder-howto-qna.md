@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6722a9c49961857ab53a2d80fca926775e712aae
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: 5a5aec71092503dad83827225f7c0adaf22c4d17
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240170"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56590979"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -47,7 +47,7 @@ ms.locfileid: "56240170"
 Эти три значения содержат сведения, необходимые приложению для подключения к базе знаний QnA Maker через службу Azure QnA.  
 
 ## <a name="update-the-bot-file"></a>Обновление файла .bot
-Во-первых, добавьте в файл `qnamaker.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (KbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker. 
+Во-первых, добавьте в файл `qnamaker.bot` необходимые сведения для доступа к базе знаний, в том числе имя узла, ключ конечной точки и идентификатор базы знаний (kbId). Это значения, сохраненные из раздела **Параметры** для базы знаний в QnA Maker. 
 > Примечание. Если вы добавляете доступ к базе знаний QnA Maker в существующее приложение бота, не забудьте добавить в файл .bot раздел "type": "qna", как показано ниже. Параметр name в этом разделе предоставляет ключ для доступа к этой информации из приложения.
 
 ```json
@@ -65,7 +65,7 @@ ms.locfileid: "56240170"
     {
       "type": "qna",
       "name": "QnABot",
-      "KbId": "<Your_Knowledge_Base_Id>",
+      "kbId": "<Your_Knowledge_Base_Id>",
       "subscriptionKey": "",
       "endpointKey": "<Your_Endpoint_Key>",
       "hostname": "<Your_Hostname>",
@@ -98,7 +98,7 @@ private static BotServices InitBotServices(BotConfiguration config)
                     throw new InvalidOperationException("The QnA service is not configured correctly in your '.bot' file.");
                 }
 
-                if (string.IsNullOrWhiteSpace(qna.KbId))
+                if (string.IsNullOrWhiteSpace(qna.kbId))
                 {
                     throw new InvalidOperationException("The QnA KnowledgeBaseId ('kbId') is required to run this sample. Please update your '.bot' file.");
                 }
@@ -115,7 +115,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 
                 var qnaEndpoint = new QnAMakerEndpoint()
                 {
-                    KnowledgeBaseId = qna.KbId,
+                    KnowledgeBaseId = qna.kbId,
                     EndpointKey = qna.EndpointKey,
                     Host = qna.Hostname,
                 };

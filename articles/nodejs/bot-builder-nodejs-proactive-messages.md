@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: e5f8ec76e5711371653e75e11ac6fcc447b4f2e1
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225579"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56590940"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Отправка упреждающего сообщения на основе диалога
 
-В следующих примерах кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Framework для Node.js. Полный рабочий пример доступен в папке [Microsoft/BotBuilder-примеры/узел/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
+В следующих примерах кода показано, как отправить упреждающее сообщение на основе диалога с помощью пакета SDK Bot Framework для Node.js. Полный рабочий пример доступен в папке [startNewDialog](https://aka.ms/js-startnewdialog-sample-v3).
 
 Чтобы иметь возможность отправить сообщение на основе диалога пользователю, боту сначала необходимо собрать (и сохранить) сведения из текущего сеанса общения. Объект `session.message.address` содержит все сведения, которые понадобятся боту, чтобы отправить пользователю упреждающее сообщение на основе диалога. 
 
@@ -103,7 +103,7 @@ function startProactiveDialog(address) {
 ```
 
 > [!NOTE]
-> В приведенном выше примере требуется пользовательский файл **botadapter.js**, который можно [скачать из репозитория GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/Node/core-proactiveMessages/startNewDialog/botadapter.js).
+> В приведенном выше примере требуется пользовательский файл **botadapter.js**, который можно [скачать из репозитория GitHub](https://aka.ms/js-botadaptor-file-v3).
 
 Диалог опроса управляет общением, пока не завершается. Затем он закрывается (путем вызова `session.endDialog()`), тем самым возвращая управление предыдущему диалогу. 
 
@@ -122,8 +122,8 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>Пример кода
 
-Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для Node.js, приведен в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога.
+Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для Node.js, приведен в <a href="https://aka.ms/js-proactivemessages-sample-v3" target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://aka.ms/js-simplesendmessage-sample-v3" target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://aka.ms/js-startnewdialog-sample-v3" target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Проектирование хода общения](../bot-service-design-conversation-flow.md)
+- [Проектирование потока общения](../bot-service-design-conversation-flow.md)

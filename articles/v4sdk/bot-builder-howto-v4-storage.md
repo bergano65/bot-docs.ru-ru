@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f5f566c48eb62bd6b60c869c28904bc61d74eda4
-ms.sourcegitcommit: fc75b206e276ce66e9848e97d75f562bf9401f04
+ms.openlocfilehash: 268ac62c68d2157a50d3b20cddf7e8f54cccaefe
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837981"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591205"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -33,16 +33,15 @@ ms.locfileid: "54837981"
 
 #### <a name="build-a-basic-bot"></a>Создание базового бота
 
-Остальная часть этой статьи описывает использование эхо-бота. Вы можете создать его с помощью [C#](../dotnet/bot-builder-dotnet-sdk-quickstart.md) или [JS](../javascript/bot-builder-javascript-quickstart.md). Для подключения к боту, взаимодействия с ним и его тестирования можно использовать эмулятор Bot Framework. В следующем примере каждое сообщение от пользователя добавляется в список. Структура данных, содержащая список, сохраняется в хранилище.
+Остальная часть этой статьи описывает использование эхо-бота. Пример кода эхо-бота для создания этого проекта можно найти здесь: [пример C#](https://aka.ms/cs-echobot-sample) или [примере JS](https://aka.ms/js-echobot-sample). Для подключения к боту, взаимодействия с ним и его тестирования можно использовать эмулятор Bot Framework. В следующем примере каждое сообщение от пользователя добавляется в список. Структура данных, содержащая список, записывается в хранилище.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
+**MyBot.cs**
 ```csharp
 using System;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.TraceExtensions;
-using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Schema;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,115 +67,167 @@ public class UtteranceLog : IStoreItem
 }
 
 // Every Conversation turn for our Bot calls this method.
-public async Task OnTurnAsync(ITurnContext context)
-{
-     
-     var activityType = context.Activity.Type;
-     // See if activity type for this turn is a message from the user.
-     if (activityType == ActivityTypes.Message)
-     {
-         var utterance = context.Activity.Text;
-         UtteranceLog logItems = null;
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{     
+   if (turnContext.Activity.Type == ActivityTypes.Message)
+   {
+      // Replace the two lines of code from original MyBot code with the following:
+      
+      // preserve user input.
+      var utterance = turnContext.Activity.Text;  
+      // make empty local logitems list.
+      UtteranceLog logItems = null;
           
-         // see if there are previous messages saved in sstorage.
+      // see if there are previous messages saved in storage.
+      try
+      {
          string[] utteranceList = { "UtteranceLog" };
          logItems = _myStorage.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
-
-         // If no stored messages were found, create and store a new entry.
-         if (logItems is null)
-         {
-             logItems = new UtteranceLog();
-         }
+      }
+      catch
+      {
+         // Inform the user an error occured.
+         await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
+      }
          
+      // If no stored messages were found, create and store a new entry.
+      if (logItems is null)
+      {
+            // add the current utterance to a new object.
+            logItems = new UtteranceLog();
+            logItems.UtteranceList.Add(utterance);
+            // set initial turn counter to 1.
+            logItems.TurnNumber++;
+
+            // Show user new user message.
+            await turnContext.SendActivityAsync($"{logItems.TurnNumber}: The list is now: {string.Join(", ", logItems.UtteranceList)}");
+
+            // Create Dictionary object to hold received user messages.
+            var changes = new Dictionary<string, object>();
+            {
+               changes.Add("UtteranceLog", logItems);
+            }
+         try
+         {
+            // Save the user message to your Storage.
+            await _myStorage.WriteAsync(changes, cancellationToken);
+         }
+         catch
+         {
+            // Inform the user an error occured.
+            await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
+         }
+      }
+      // Else, our Storage already contained saved user messages, add new one to the list.
+      else
+      {
          // add new message to list of messages to display.
          logItems.UtteranceList.Add(utterance);
          // increment turn counter.
          logItems.TurnNumber++;
          
          // show user new list of saved messages.
-         await context.SendActivityAsync($"The list is now: {string.Join(", ", logItems.UtteranceList)}");
+         await turnContext.SendActivityAsync($"{logItems.TurnNumber}: The list is now: {string.Join(", ", logItems.UtteranceList)}");
          
          // Create Dictionary object to hold new list of messages.
          var changes = new Dictionary<string, object>();
          {
-             changes.Add("UtteranceLog", logItems);
-          };
-          
-          // Save new list to your Storage.
-          await _myStorage.WriteAsync(changes,cancellationToken);
-     }
-     return;
+            changes.Add("UtteranceLog", logItems);
+         };
+         
+         try
+         {
+            // Save new list to your Storage.
+            await _myStorage.WriteAsync(changes,cancellationToken);
+         }
+         catch
+         {
+            // Inform the user an error occured.
+            await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
+         }
+      }
+   }
 }
 
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
+**index.js**
 ```javascript
-const { BotFrameworkAdapter, ConversationState, BotStateSet, MemoryStorage } = require('botbuilder');
+const { BotFrameworkAdapter, ConversationState, MemoryStorage } = require('botbuilder');
 const restify = require('restify');
 
 // Create server.
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
-    console.log(`${server.name} listening to ${server.url}`);
-});
+// let server = restify.createServer();
+// server.listen(process.env.port || process.env.PORT || 3978, function () {
+//    console.log(`${server.name} listening to ${server.url}`);
+// });
 
 // Create adapter.
-const adapter = new BotFrameworkAdapter({
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
-});
+// const adapter = new BotFrameworkAdapter({
+//    appId: process.env.MICROSOFT_APP_ID,
+//    appPassword: process.env.MICROSOFT_APP_PASSWORD
+//  });
 
 // Add memory storage.
 var storage = new MemoryStorage();
 
-const conversationState = new ConversationState(storage);
-adapter.use(conversationState);
+// const conversationState = new ConversationState(storage);
+// adapter.use(conversationState);
 
-// Listen for incoming activity .
+// Listen for incoming requests - adds storage for messages.
 server.post('/api/messages', (req, res) => {
-    // Route received activity to adapter for processing.
     adapter.processActivity(req, res, async (context) => {
+
         if (context.activity.type === 'message') {
-            const state = conversationState.get(context);
-            const count = state.count === undefined ? state.count = 0 : ++state.count;
-
+            // Route to main dialog.
+            await myBot.onTurn(context);
+            // Save updated utterance inputs.
             await logMessageText(storage, context);
-
-            await context.sendActivity(`${count}: You said "${context.activity.text}"`);
-        } else {
-            await context.sendActivity(`[${context.activity.type} event detected]`);
         }
+        else {
+            // Just route to main dialog.
+            await myBot.onTurn(context);
+        } 
     });
 });
 
+// This function stores new user messages. Creates new utterance log if none exists.
 async function logMessageText(storage, context) {
     let utterance = context.activity.text;
     try {
         // Read from the storage.
-        let storeItems = await storage.read(["UtteranceLog"])
+        let storeItems = await storage.read(["UtteranceLogJS"])
         // Check the result.
-        var utteranceLog = storeItems["UtteranceLog"];
+        var UtteranceLogJS = storeItems["UtteranceLogJS"];
 
-        if (typeof (utteranceLog) != 'undefined') {
+        if (typeof (UtteranceLogJS) != 'undefined') {
             // The log exists so we can write to it.
-            storeItems["UtteranceLog"].UtteranceList.push(utterance);
+            storeItems["UtteranceLogJS"].turnNumber++;
+            storeItems["UtteranceLogJS"].UtteranceList.push(utterance);
+            // Gather info for user message.
+            var storedString = storeItems.UtteranceLogJS.UtteranceList.toString();
+            var numStored = storeItems.UtteranceLogJS.turnNumber;
 
             try {
                 await storage.write(storeItems)
-                context.sendActivity('Successful write to utterance log.');
+                context.sendActivity(`${numStored}: You stored: ${storedString}`);
             } catch (err) {
-                context.sendActivity(`Write failed of UtteranceLog: ${err}`);
+                context.sendActivity(`Write failed of UtteranceLogJS: ${err}`);
             }
 
          } else {
-            context.sendActivity(`need to create new utterance log`);
-            storeItems["UtteranceLog"] = { UtteranceList: [`${utterance}`], "eTag": "*" }
+            context.sendActivity(`Creating and saving new utterance log`);
+            var turnNumber = 1;
+            storeItems["UtteranceLogJS"] = { UtteranceList: [`${utterance}`], "eTag": "*", turnNumber }
+            // Gather info for user message.
+            var storedString = storeItems.UtteranceLogJS.UtteranceList.toString();
+            var numStored = storeItems.UtteranceLogJS.turnNumber;
 
             try {
                 await storage.write(storeItems)
-                context.sendActivity('Successful write to log.');
+                context.sendActivity(`${numStored}: You stored: ${storedString}`);
             } catch (err) {
                 context.sendActivity(`Write failed: ${err}`);
             }
@@ -185,6 +236,7 @@ async function logMessageText(storage, context) {
         context.sendActivity(`Read rejected. ${err}`);
     };
 }
+
 ```
 
 ---
@@ -235,6 +287,7 @@ async function logMessageText(storage, context) {
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
+**MyBot.cs**
 ```csharp
 private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
 private const string CosmosDBKey = "<your-cosmos-db-account-key>";
@@ -245,13 +298,14 @@ private const string CosmosDBCollectionName = "bot-storage";
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Добавьте следующие сведения в файл `.env`. 
- 
+Добавьте следующие сведения в файл `.env`.
+
+Файл с расширением **.env**
 ```javascript
 ACTUAL_SERVICE_ENDPOINT=<your database URI>
 ACTUAL_AUTH_KEY=<your database key>
-DATABASE=Tasks
-COLLECTION=Items
+DATABASE=bot-cosmos-sql-db
+COLLECTION=bot-storage
 ```
 ---
 
@@ -286,12 +340,15 @@ npm install --save dotenv
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Следующий пример кода использует тот же код бота, что и в примере с [хранилищем в памяти](#memory-storage) выше.
-Пример кода ниже демонстрирует реализацию хранилища Cosmos DB для свойства _myStorage_ вместо локального хранилища в памяти. 
+Пример кода ниже демонстрирует реализацию хранилища Cosmos DB для свойства _myStorage_ вместо локального хранилища в памяти.
 
+**MyBot.cs**
 ```csharp
 using Microsoft.Bot.Builder.Azure;
 
-// Create access to Cosmos DB storage.
+// Create local Memory Storage - commented out.
+// private static readonly MemoryStorage _myStorage = new MemoryStorage();
+
 // Replaces Memory Storage with reference to Cosmos DB.
 private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
 {
@@ -308,25 +365,26 @@ private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new Cos
 
 Импортируйте `CosmosDbStorage` из botbuilder-azure и настройте dotenv для чтения файла `.env`.
 
-**app.js**
+**index.js**
 ```javascript
 const { CosmosDbStorage } = require("botbuilder-azure");
-require('dotenv').config()
 ```
+Закомментируйте хранилище в памяти, заменив ссылкой на Cosmos DB.
 
-Замените хранилище в памяти ссылкой на Cosmos DB.
-
+**index.js**
 ```javascript
+// Create local Memory Storage - commented out.
+// var storage = new MemoryStorage();
+
+// Create access to Cosmos DB storage.
 //Add CosmosDB 
 const storage = new CosmosDbStorage({
     serviceEndpoint: process.env.ACTUAL_SERVICE_ENDPOINT, 
     authKey: process.env.ACTUAL_AUTH_KEY, 
     databaseId: process.env.DATABASE,
-    collectionId: process.env.COLLECTION
+     collectionId: process.env.COLLECTION
 })
 
-const conversationState = new ConversationState(storage);
-adapter.use(conversationState);
 ```
 
 ---

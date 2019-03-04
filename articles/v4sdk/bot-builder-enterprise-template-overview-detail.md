@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b337614b37142dc15f6cf085388dace9f4b7cafe
-ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
+ms.openlocfilehash: 0fb59e63dc8786e204085eaa8570ec4b751492ff
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654975"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591085"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Подробный обзор шаблона Enterprise Bot
 
@@ -52,7 +52,7 @@ Content Moderator позволяет обнаруживать ненормати
 
 Данные телеметрии на уровне бота по своей природе связаны с данными телеметрии о его технических и эксплуатационных параметрах, что позволяет проверять, как бот отвечает на вопрос определенного пользователя и наоборот.
 
-Компонент ПО промежуточного слоя в сочетании с классом-оболочкой QnA Maker и классами пакета SDK LuisRecognizer предоставляют удобный способ для сбора согласованного набора событий. Эти согласованные события затем могут использоваться средствами Application Insights, а также такими средствами, как Power BI.
+Компонент ПО промежуточного слоя в сочетании с классом-оболочкой QnA Maker и классами пакета SDK LuisRecognizer предоставляют удобный способ для сбора согласованного набора событий. Эти согласованные события затем могут использоваться средствами Application Insights, а также такими инструментами, как Power BI.
 
 Пример панели мониторинга Power BI входит в состав каждого проекта, создаваемого с помощью шаблона Enterprise Bot. См. дополнительные сведения в разделе о [PowerBI](bot-builder-enterprise-template-powerbi.md).
 

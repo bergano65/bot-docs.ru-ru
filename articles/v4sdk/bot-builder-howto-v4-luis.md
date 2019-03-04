@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c43426f508d629c325889da6a9f7b06cac7e846
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: a30a3f5dfe4693d67a4cd42a50d35893f8888e07
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453898"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591042"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -25,7 +25,7 @@ ms.locfileid: "54453898"
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [luis.ai](https://www.luis.ai)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download).
-- Код в этой статье основан на примере **обработки естественного языка с помощью LUIS**. Вам потребуется копия этого примера на языке [C#](https://aka.ms/cs-luis-sample) или [JS](https://aka.ms/js-luis-sample). 
+- Код в этой статье основан на примере **обработки естественного языка с помощью LUIS**. Вам потребуется копия этого примера на [C#](https://aka.ms/cs-luis-sample) или [JS](https://aka.ms/js-luis-sample). 
 - Понимание [основных концепций ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) и файла [.bot](bot-file-basics.md).
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>Создание приложения LUIS на портале LUIS
@@ -84,10 +84,14 @@ ms.locfileid: "54453898"
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
 ### <a name="configure-your-bot-to-use-your-luis-app"></a>Настройка бота для работы с приложением LUIS
+Убедитесь, что пакет NuGet **Microsoft.Bot.Builder.AI.Luis** установлен для вашего проекта.
 
 Затем мы инициализируем в `BotServices.cs` новый экземпляр класса BotService, который извлекает перечисленные выше сведения из файла `.bot`. Внешняя служба настраивается с помощью класса `BotConfiguration`.
 
 ```csharp
+using Microsoft.Bot.Builder.AI.Luis;
+using Microsoft.Bot.Configuration;
+
 public class BotServices
 {
     // Initializes a new instance of the BotServices class
@@ -131,10 +135,9 @@ public void ConfigureServices(IServiceCollection services)
     var botConfig = BotConfiguration.Load(botFilePath ?? @".\nlp-with-luis.bot", secretKey);
     services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
 
-    // Initialize Bot Connected Services clients.
+    // Initialize Bot Connected Services client.
     var connectedServices = new BotServices(botConfig);
     services.AddSingleton(sp => connectedServices);
-    services.AddSingleton(sp => botConfig);
 
     services.AddBot<LuisBot>(options =>
     {
