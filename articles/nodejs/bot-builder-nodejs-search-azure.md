@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ac4597e93f8cdaa4c9b015a4136ab09e9b7adc95
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 259f709ae460fde13cdf25ce6d7cbf5dd44a333d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224719"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224862"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -151,7 +151,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="sample-code"></a>Пример кода
 
-Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для Node.js, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
+Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для Node.js, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
