@@ -7,13 +7,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/13/2018
-ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 2/26/2019
+ms.openlocfilehash: 2266dcb936205a20e1d19d97983a3b802fbe2736
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645614"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224872"
 ---
 # <a name="debug-with-the-emulator"></a>Отладка ботов с помощью эмулятора
 
@@ -81,7 +81,9 @@ ms.locfileid: "51645614"
 
 Эмулятор Bot Framework — это решение с открытым исходным кодом. Вы можете [принять участие][EmulatorGithubContribute] в разработке, [отправляя ошибки и предложения][EmulatorGithubBugs].
 
+Подробные сведения см. в статье об [устранении общих проблем](bot-service-troubleshoot-bot-configuration.md) и других статья об устранении неполадок в этом разделе.
 
+<!-- Footnote-style URLs -->
 
 [EmulatorGithubContribute]: https://github.com/Microsoft/BotFramework-Emulator/wiki/How-to-Contribute
 [EmulatorGithubBugs]: https://github.com/Microsoft/BotFramework-Emulator/wiki/Submitting-Bugs-%26-Suggestions

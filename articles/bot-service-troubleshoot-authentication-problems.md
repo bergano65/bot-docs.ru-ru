@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/17
-ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 780dcf4d9db48f9ef7f5a92180dc13c41cc63305
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224659"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224942"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
@@ -227,6 +227,7 @@ Bot Framework требует, чтобы боты были доступны из
 
 Если проблема не исчезла после выполнения действий, описанных выше, можно сделать следующее.
 
+* Воспользуйтесь инструкциями по [отладке бота](bot-service-debug-bot.md) и другими статьями об отладке в этом разделе.
 * [Провести отладку бота в облаке](~/bot-service-debug-emulator.md) с помощью Bot Framework Emulator и <a href="https://ngrok.com/" target="_blank">ngrok</a>.
 * Используйте инструменты прокси, например [Fiddler](https://www.telerik.com/fiddler), для проверки трафика HTTPS через бот. *Fiddler не является продуктом корпорации Майкрософт.*
 * Чтобы узнать о технологиях аутентификации, которые использует Bot Framework, см. раздел [Authentication][BotConnectorAuthGuide] (Проверка подлинности).

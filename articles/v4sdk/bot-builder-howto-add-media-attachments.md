@@ -8,24 +8,28 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4999f08c62d2926be37b5730a2d1025749fc280e
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711988"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224882"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу. Список доступных карточек вы найдете в статье [о проектировании взаимодействия с пользователем](../bot-service-design-user-experience.md).
+Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу.
+
+Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
 ## <a name="send-attachments"></a>Отправка вложений
 
 Чтобы отправить пользователю содержимое, например изображение или видео, нужно добавить вложение или список вложений в сообщение.
+
+Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -34,7 +38,6 @@ ms.locfileid: "55711988"
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -51,7 +54,7 @@ var attachment = new Attachment
 reply.Attachments = new List<Attachment>() { attachment };
 
 // Send the activity to the user.
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -92,7 +95,6 @@ getInternetAttachment() {
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -112,7 +114,7 @@ var card = new HeroCard
 // Add the card to our reply.
 reply.Attachments = new List<Attachment>() { card.ToAttachment() };
 
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -168,7 +170,6 @@ await turnContext.sendActivity(reply);
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -239,7 +240,6 @@ await context.sendActivity(hero);
 ```csharp
 using AdaptiveCards;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 
@@ -261,7 +261,7 @@ var cardAttachment = CreateAdaptiveCardAttachment(adaptiveCardJsonFilePath);
 var reply = turnContext.Activity.CreateReply();
 reply.Attachments = new List<Attachment>() { cardAttachment };
 
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -305,7 +305,6 @@ await context.sendActivity({
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 // Create the activity and attach a set of Hero cards.
@@ -339,7 +338,7 @@ var activity = MessageFactory.Carousel(
     });
 
 // Send the activity as a reply to the user.
-await context.SendActivity(activity);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -363,6 +362,8 @@ await context.sendActivity(messageWithCarouselOfCards);
 <!-- TODO: Add a media card, such as video or audion. Revisit which examples we put here and link to the 06 through 08 samples. -->
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
+
+Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
 См. дополнительные сведения о [схеме карточек Bot Framework](https://aka.ms/botSpecs-cardSchema) и [действиях в беседах](https://aka.ms/botSpecs-activitySchema#message-activity).
 

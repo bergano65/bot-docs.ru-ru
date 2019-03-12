@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.date: 2/26/2019
+ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202550"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224852"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Устранение неполадок, связанных с конфигурацией бота
 
@@ -87,3 +87,7 @@ ms.locfileid: "54202550"
 В некоторых случаях может прерываться обслуживание отдельных каналов. Обычно такие простои не продолжаются долго. Но если у вас есть основания считать, что произошел сбой канала, проверьте сведения на веб-сайте этого канала или в социальных сетях.
 
 Есть еще один способ быстро проверить наличие сбоев в канале: создайте тестовый бот (например, простейший повторитель сообщений) и добавьте в него проблемный канал. Если тестовый бот успешно работает с частью каналов, но не работает с другими каналами, проблема не в рабочем боте.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+См. инструкции по [отладке бота](bot-service-debug-bot.md) и другие статьи об отладке в этом разделе.

@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/26/2018
-ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225525"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224952"
 ---
 # <a name="troubleshooting-general-problems"></a>Устранение общих проблем
 Ответы на эти часто задаваемые вопросы помогут вам устранить распространенные проблемы, связанные с разработкой или эксплуатацией ботов.
@@ -20,11 +20,12 @@ ms.locfileid: "54225525"
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Как можно устранить неполадки с ботом?
 
 1. Выполните отладку исходного кода бота в [Visual Studio Code](debug-bots-locally-vscode.md) или [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
-2. Перед развертыванием в облаке протестируйте бот с помощью [эмулятора](bot-service-debug-emulator.md).
-3. Разверните бот на облачной платформе размещения, например Azure, а затем проверьте возможность подключения к боту с помощью встроенного элемента управления веб-чата на панели мониторинга бота на <a href="https://dev.botframework.com" target="_blank">портале Bot Framework</a>. Если после развертывания в Azure с ботом возникнут проблемы, просмотрите следующую запись блога: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Общие сведения об устранении неполадок и включении поддержки в Azure).
-4. Исключите [проверку подлинности][TroubleshootingAuth] как возможную проблему.
-5. Проверьте бот в Skype. Это поможет проверить полное взаимодействие с пользователем.
-6. Протестируйте бот в каналах с требованиями дополнительной проверки подлинности, таких как Direct Line или веб-чат.
+1. Перед развертыванием в облаке протестируйте бот с помощью [эмулятора](bot-service-debug-emulator.md).
+1. Разверните бот на облачной платформе размещения, например Azure, а затем проверьте возможность подключения к боту с помощью встроенного элемента управления веб-чата на панели мониторинга бота на <a href="https://dev.botframework.com" target="_blank">портале Bot Framework</a>. Если после развертывания в Azure с ботом возникнут проблемы, просмотрите следующую запись блога: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Общие сведения об устранении неполадок и включении поддержки в Azure).
+1. Исключите [проверку подлинности][TroubleshootingAuth] как возможную проблему.
+1. Проверьте бот в Skype. Это поможет проверить полное взаимодействие с пользователем.
+1. Протестируйте бот в каналах с требованиями дополнительной проверки подлинности, таких как Direct Line или веб-чат.
+1. Воспользуйтесь инструкциями по [отладке бота](bot-service-debug-bot.md) и прочитайте другие статьи об отладке в этом разделе.
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>Как устранить неполадки, связанные с проверкой подлинности?
 

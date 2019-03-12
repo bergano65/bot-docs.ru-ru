@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 10/18/2018
+ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 997ad82e15a0fcd67d47b2fd6495c8e88a5ea127
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452096"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224822"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Отладка бота с помощью файлов записей разговоров
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -65,9 +65,10 @@ ms.locfileid: "52452096"
 Использование файлов записей разговоров вместе с Bot Framework Emulator — это лишь один из многих способов тестирования и отладки кода бота и взаимодействия с пользователями. Другие способы тестирования и отладки ботов описываются в перечисленных ниже ресурсах.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
+
 Дополнительные сведения о тестировании и отладке:
+
 * [Рекомендации по тестированию и отладке ботов](./bot-builder-testing-debugging.md)
 * [Отладка ботов с помощью Bot Framework Emulator](../bot-service-debug-emulator.md)
+* [Сведения об устранении общих проблем](../bot-service-troubleshoot-bot-configuration.md) и другие статьи об устранении неполадок в этом разделе.
 * [Отладка в Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-
-

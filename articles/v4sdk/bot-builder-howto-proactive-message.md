@@ -1,5 +1,5 @@
 ---
-title: Получение уведомлений от ботов | Документация Майкрософт
+title: Отправка упреждающих уведомлений пользователям | Документация Майкрософт
 description: Узнайте, как отправлять уведомления
 keywords: proactive message, notification message, bot notification,
 author: jonathanfingold
@@ -10,14 +10,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 780fdb05acf2c81d72aaa6c415bdd9a6b0229082
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 207dfaf71e8af7af3a36e496deb506ff9d0c13c8
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971504"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224892"
 ---
-# <a name="get-notification-from-bots"></a>Получение уведомлений от ботов
+# <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
@@ -64,6 +64,7 @@ ms.locfileid: "55971504"
 
 Класс `JobLog` отслеживает данные задания, индексируя их по номеру задания (метке времени). Класс `JobLog` отслеживает все невыполненные задания.  Каждое задание идентифицируется уникальным ключом. `JobData` описывает состояние задания и определяется как внутренний класс словаря.
 
+**JobLog.cs**
 ```csharp
 public class JobLog : Dictionary<long, JobLog.JobData>
 {
@@ -85,6 +86,7 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 
 Класс `JobState` управляет состоянием задания независимо от состояния беседы или пользователя.
 
+**JobState.cs**
 ```csharp
 using Microsoft.Bot.Builder;
 
@@ -111,6 +113,7 @@ public class JobState : BotState
 
 Метод `ConfigureServices` регистрирует бот и службу конечной точки, в том числе обработку ошибок и управление состоянием. Он также регистрирует метод доступа к состоянию задания.
 
+**Startup.cs.**
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -135,9 +138,8 @@ public void ConfigureServices(IServiceCollection services)
 
 Бот использует систему хранения состояния для долгосрочного хранения состояний диалога и пользователя между сообщениями. В нашем примере для этого создается поставщик хранилища в памяти.
 
+**index.js**
 ```javascript
-// index.js
-
 const memoryStorage = new MemoryStorage();
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
 
@@ -179,6 +181,7 @@ server.post('/api/messages', (req, res) => {
 
 Каждое действие, полученное от пользователя, создает экземпляр класса `ProactiveBot`. Такой подход, при котором служба создается каждый раз, когда она нужна, называется службой с временным временем существования. Следует уделять особое внимание объектам, на создание которых требуется много ресурсов и (или) которые должны существовать дольше одного шага диалога.
 
+**ProactiveBot.cs**
 ```csharp
 namespace Microsoft.BotBuilderSamples
 {
@@ -196,6 +199,7 @@ namespace Microsoft.BotBuilderSamples
 
 ### <a name="add-initialization-code"></a>Добавление кода инициализации
 
+**ProactiveBot.cs**
 ```csharp
 private readonly JobState _jobState;
 private readonly IStatePropertyAccessor<JobLog> _jobLogPropertyAccessor;
@@ -214,6 +218,7 @@ public ProactiveBot(JobState jobState, EndpointService endpointService)
 
 Адаптер перенаправляет действия обработчику шагов, который в свою очередь проверяет тип `Activity` и вызывает подходящий метод. Каждый бот должен реализовать обработчик шагов.
 
+**ProactiveBot.cs**
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
@@ -305,6 +310,7 @@ private static async Task SendWelcomeMessageAsync(ITurnContext turnContext)
 
 Получив сообщение о выполнении задания, пометьте это задание как завершенное и уведомите пользователя.
 
+**ProactiveBot.cs**
 ```csharp
 private async Task OnSystemActivityAsync(ITurnContext turnContext)
 {
@@ -339,6 +345,7 @@ private async Task OnSystemActivityAsync(ITurnContext turnContext)
 - Вызов продолжения диалога создает в канале следующий шаг, не зависящий от действий пользователя.
 - Адаптер выполняет соответствующий обратный вызов вместо обычного обработчика шагов в боте. Этот шаг будет иметь собственный контекст, из который мы извлекаем из данных о состоянии и передаем вместе с упреждающим сообщением для пользователя.
 
+**ProactiveBot.cs**
 ```csharp
 // Creates and "starts" a new job.
 private JobLog.JobData CreateJob(ITurnContext turnContext, JobLog jobLog)
@@ -357,6 +364,7 @@ private JobLog.JobData CreateJob(ITurnContext turnContext, JobLog jobLog)
 
 ### <a name="sends-a-proactive-message-to-the-user"></a>Отправка пользователю упреждающего сообщения
 
+**ProactiveBot.cs**
 ```csharp
 private async Task CompleteJobAsync(
     BotAdapter adapter,
@@ -370,6 +378,7 @@ private async Task CompleteJobAsync(
 
 ### <a name="creates-the-turn-logic-to-use-for-the-proactive-message"></a>Создание логики шага, которую нужно использовать для упреждающего сообщения
 
+**ProactiveBot.cs**
 ```csharp
 private BotCallbackHandler CreateCallback(JobLog.JobData jobInfo)
 {
@@ -436,6 +445,7 @@ module.exports.ProactiveBot = ProactiveBot;
 
 Методы `onTurn` и `showJobs` определены в классе `ProactiveBot`. Метод `onTurn` обрабатывает входные данные от пользователей. Также он получает действия событий от системы обработки заданий, которую мы здесь не рассматриваем. Форматирует `showJobs` и отправляет журнал задания.
 
+**bot.js**
 ```javascript
 /**
     *
@@ -498,6 +508,7 @@ async showJobs(turnContext) {
 
 Метод `createJob` определен в классе `ProactiveBot`. Он создает для пользователя новое задание и заносит сведения о нем в журнал. В полной реализации он также должен отправлять эту информацию в систему выполнения заданий.
 
+**bot.js**
 ```javascript
 // Save job ID and conversation reference.
 async createJob(turnContext) {
@@ -541,6 +552,7 @@ async createJob(turnContext) {
 
 Метод `completeJob` определен в классе `ProactiveBot`. Он выполняет операции внутреннего учета и отправляет пользователю упреждающее сообщение (в исходном диалоге пользователя) о завершении задания.
 
+**bot.js**
 ```javascript
 async completeJob(turnContext, jobIdNumber) {
     // Get the list of jobs from the bot's state property accessor.

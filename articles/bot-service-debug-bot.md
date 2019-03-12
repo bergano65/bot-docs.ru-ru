@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/09/2019
-ms.openlocfilehash: 3aae1e212759dd70226fab3b0567ba5b4e345a30
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.date: 2/26/2019
+ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971454"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224842"
 ---
 # <a name="debug-a-bot"></a>Отладка бота
 
@@ -131,8 +131,10 @@ ms.locfileid: "55971454"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения об отладке ботов в рабочей среде см. в нашей записи блога [Debug any channel locally using ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/) (Локальная отладка каналов с помощью ngrok).
+- См. [статью об устранении общих проблем](bot-service-troubleshoot-bot-configuration.md) и другие статьи об устранении неполадок в этом разделе.
+- См. запись блога о [локальной отладке каналов с помощью ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/).
 
 ## <a name="next-steps"></a>Дополнительная информация
+
 > [!div class="nextstepaction"]
-> [Отладка бота с помощью файлов записей разговоров](~/v4sdk/bot-builder-debug-transcript.md)
+> [Отладка бота с помощью файлов записей разговоров](v4sdk/bot-builder-debug-transcript.md)
