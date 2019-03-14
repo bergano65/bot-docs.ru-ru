@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 38b26ed5a50409de64518562faabf532f45c857e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 65de0e4e4be129c9fa467cd8610cf0f0b13e5965
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999151"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568181"
 ---
 # <a name="publish-a-bot-to-bot-service"></a>Публикация бота в службе ботов
 
@@ -34,6 +34,7 @@ ms.locfileid: "49999151"
 Чтобы настроить публикацию из Visual Studio с помощью файла `.PublishSettings`, выполните следующие действия:
 
 1. На портале Azure выберите свою службу ботов, перейдите на вкладку **Сборка** и щелкните **Скачать ZIP-файл**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 3. Извлеките содержимое загруженного ZIP-файла в локальную папку.
 4. В проводнике найдите файл решения Visual Studio (SLN-файл) для вашего бота и дважды щелкните его.
 4. В Visual Studio выберите **Вид** > **Обозреватель решений**.
@@ -66,6 +67,7 @@ ms.locfileid: "49999151"
 Если вы хотите использовать систему управления версиями, *отличную от* Visual Studio Online или Github, выполните следующие действия. Visual Studio Online и Github извлекают исходный код вашего бота из Azure, чтобы пользователи этих двух служб могли пропустить эти действия.
 
 3. Найдите страницу бота для плана службы приложений в Azure, перейдите на вкладку **Сборка**, найдите раздел **Скачивание исходного кода** и щелкните **Скачать ZIP-файл**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 1. Создайте пустой репозиторий в одной из систем управления версиями, которые поддерживает Azure.
 
     ![Система управления версиями](~/media/continuous-integration-sourcecontrolsystem.png)
