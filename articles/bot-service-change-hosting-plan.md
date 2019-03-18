@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: aafbfb2a38e2d5370cb2db5721dd7bc130497d74
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e463b272385b97e630d4087908aa82e23a70fea9
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999221"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568191"
 ---
 # <a name="change-the-hosting-plan-for-your-bot-service"></a>Изменение плана размещения для службы ботов
 
@@ -33,7 +33,8 @@ ms.locfileid: "49999221"
 
 1. В боте Azure щелкните вкладку **Параметры** и раскройте раздел **Непрерывное развертывание**.  
 2. Щелкните синюю кнопку, чтобы скачать ZIP-файл, содержащий исходный код для вашего бота.  
-    ![Загрузка ZIP-файла бота](~/media/continuous-deployment-consumption-download.png)
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
+    ![Скачать ZIP-файл бота](~/media/continuous-deployment-consumption-download.png)
 3. Извлеките содержимое загруженного ZIP-файла в локальную папку. 
 
 
