@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/23/2018
+ms.date: 03/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fdf0b16cc89b322ffa9d36b5516b09b0338ce9dc
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: db7957c611df4a3010469f86f51184b52d49addb
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073860"
 ---
 # <a name="manage-resources-with-a-bot-file"></a>Управление ресурсами с помощью файла .bot
 
@@ -29,7 +29,7 @@ ms.locfileid: "54317574"
 * [**Служба Azure Bot**](https://azure.microsoft.com/en-us/services/bot-service/) — регистрации службы Azure Bot;
 * [**LUIS. AI**](https://www.luis.ai/) — служба LUIS предоставляет боту возможность взаимодействовать с другими пользователями на естественном языке; 
 * [**QnA Maker**](https://qnamaker.ai/) — позволяет за несколько минут создать, обучить и опубликовать простой бот вопросов и ответов, основанный на веб-страницах часто задаваемых вопросов, структурированных документах и (или) редакторских материалах;
-* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) — организует диспетчеризацию между несколькими службами;
+* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) — организует диспетчеризацию между несколькими службами;
 * [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/) — предоставляет полезные сведения и аналитическую информацию по работе бота;
 * [**Хранилище BLOB-объектов Azure**](https://azure.microsoft.com/en-us/services/storage/blobs/) — длительное сохранение состояний бота; 
 * [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/) — глобально распространенная многомодельная служба базы данных для сохранения состояний бота.
