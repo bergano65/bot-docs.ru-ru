@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
 ms.date: 03/01/2019
-ms.openlocfilehash: 0fb0f650b44d320d78a0ada5d46105048019964c
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 28c4ece705c001d5f80fdc877773c03ac400204c
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073850"
 ---
 # <a name="categorized-activities-by-channel"></a>Разделенные на категории действия по каналам
 
@@ -71,7 +71,7 @@ Event.*                    | :white_large_square: | :white_check_mark: | :white_
 Event.CreateConversation   | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 Event.ContinueConversation | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 
-- Действия событий — это механизм расширяемости в Direct Line (_также называется Direct Line_).
+- Действия событий — это механизм расширяемости в Direct Line (_также называется веб-чатом_).
 - Приложение, которому принадлежит клиент и сервер, может выбрать направлять собственные события через службу с помощь этого действия события.
 
 
@@ -85,7 +85,7 @@ Invoke.ComposeResponse     | :x:      | :x:          | :x: | :x:   | :x:       |
 
 - Наряду с некоторыми другими типизированными действиями, Microsoft Teams определяет несколько действий вызова для Teams.
 - Действия вызова зависят от приложения и не определяются клиентом.
-- Общее понятие об определенных подтипах действий, которые используют только вызов, отсутствует.
+- Общее понятие об определенных подтипах действий, которые используют вызов, отсутствует.
 - Вызов сейчас является единственным действием, которое запускает поведение "запрос — ответ" у бота.
 
 Это очень важно: если для реализации запроса OAuth используются диалоги, действие Invoke.TeamsVerification нужно переадресовать диалогу.
