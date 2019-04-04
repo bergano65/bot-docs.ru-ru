@@ -9,14 +9,14 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 33c6f22696038ed5e9d2ae09ad2ec99d401f6a60
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 62b5608de20bb89a31106c7e652b20f32b099d15
+ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317714"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58655504"
 ---
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]  
 
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 В этом руководстве используются функции бота проверки подлинности службы Azure Bot. Они упрощают разработку бота, который выполняет проверку подлинности пользователей в различных поставщиках удостоверений, например Azure AD (Azure Active Directory), GitHub, Uber и т. д. Также эти обновления помогают улучшить взаимодействие с пользователем путем устранения _проверки шифра_ для некоторых клиентов.
@@ -52,7 +52,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 ## <a name="overview"></a>Обзор
 
-В этом руководстве создается пример бота, который подключается к Microsoft Graph, с помощью токена Azure AD версии 1 или 2. <!--verify this info and fix wording--> В рамках этого процесса используется код из репозитория GitHub. В этом руководстве содержатся инструкции о его настройке, включая настройку приложения бота.
+В этом руководстве создается пример бота, который подключается к Microsoft Graph, с помощью токена Azure AD версии 1 или 2. <!--verify this info and fix wording--> Для этого процесса используется код из репозитория GitHub. В этом руководстве есть инструкции по его настройке, включая настройку приложения бота.
 
 - [Создание бота и приложения проверки подлинности](#create-your-bot-and-an-authentication-application)
 - [Подготовка примера кода бота](#prepare-the-bot-sample-code)
