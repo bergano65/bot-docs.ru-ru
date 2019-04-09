@@ -9,20 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a8619a8de7b3b73d67c297a8abb4234d520fa425
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: 6bd918416c4eee9fc74809b0d5837012021556e0
+ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298241"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58655484"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>Подключение бота к Skype для бизнеса
 
 Skype для бизнеса Online обеспечивает связь со своими сотрудниками и партнерами по бизнесу посредством мгновенных сообщений, телефонных звонков и видеосвязи. Расширьте эту функцию, создав боты, которых пользователи могут открывать и взаимодействовать через интерфейс Skype для бизнеса.
 
-> [!NOTE]
-> Канал Skype для бизнеса на платформе Bot Framework находится в состоянии предварительной версии для разработчиков.
-> Он доступен в Skype для бизнеса Online и гибридных конфигурациях. Skype для бизнеса Server 2015 не поддерживается. 
+> [!IMPORTANT]
+> **Канал Skype для бизнеса в Bot Framework будет считаться нерекомендуемым с 30 июня 2019 г.**
+> 
+> После этой даты новые боты не смогут добавлять канал Skype для бизнеса.  Существующие боты будут работать до 31 октября 2019 г. Microsoft Teams — это предпочтительное средство связи от Майкрософт.  Узнайте, как [подключить бота к Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots).
 
 ## <a name="enable-the-channel"></a>Включение канала
 

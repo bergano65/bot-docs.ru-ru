@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 02/13/2019
-ms.openlocfilehash: 8db2f0629b0d95dda0cb5d10dea5c9225e5d8d83
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.date: 04/02/2019
+ms.openlocfilehash: 556c444086fedf6c5be052726d934d9226b4eebb
+ms.sourcegitcommit: f1412178e4766fb6b29f0f33f7eff7cc9d0885cc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073790"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58868034"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -25,9 +25,8 @@ ms.locfileid: "58073790"
 В этой статье описано, как развернуть в Azure боты, написанные на C# или JavaScript. Эту статью полезно изучить до выполнения описанных действий, чтобы ознакомиться со всеми процессами, связанными с развертыванием бота.
 
 ## <a name="prerequisites"></a>Предварительные требования
-
-- Установите последнюю версию средства [msbot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot).
-- Бот на [C#](./dotnet/bot-builder-dotnet-sdk-quickstart.md) или [JavaScript](./javascript/bot-builder-javascript-quickstart.md), разработанный на локальном компьютере.
+- Если у вас еще нет [ подписки Azure](http://portal.azure.com), создайте бесплатную учетную запись Azure, прежде чем начинать работу.
+- Бот на [**C#**](./dotnet/bot-builder-dotnet-sdk-quickstart.md) или [**JavaScript**](./javascript/bot-builder-javascript-quickstart.md), разработанный на локальном компьютере.
 
 ## <a name="1-prepare-for-deployment"></a>1. Подготовка к развертыванию
 Для процесса развертывания требуется целевой бот веб-приложения в Azure, в котором нужно развернуть локальный бот. Целевой бот веб-приложения и подготовленные для него ресурсы в Azure используются локальным ботом для развертывания. Эта необходимость вызвана тем, что у локального бота нет необходимых ресурсов Azure. При создании целевого бота веб-приложения для вас автоматически подготавливаются следующие ресурсы:
@@ -39,7 +38,7 @@ ms.locfileid: "58073790"
 Во время создания целевого бота веб-приложения для вас будут созданы идентификатор приложения и пароль. В Azure идентификатор и пароль приложения используются для [проверки подлинности и авторизации в службе](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization). Часть этой информации вы получите для использования в коде локального бота. 
 
 > [!IMPORTANT]
-> Язык шаблона бота для службы должен совпадать с языком, на котором написан сам бот.
+> Язык программирования для шаблона бота, используемого на портале Azure, должен совпадать с языком программирования, на котором написан ваш бот.
 
 Если вы уже создали в Azure нужный бот, новый бот веб-приложения можно не создавать.
 
@@ -50,92 +49,49 @@ ms.locfileid: "58073790"
 1. Нажмите кнопку **Создать** для создания службы и развертывания бота в облаке. Это может занять несколько минут.
 
 ### <a name="download-the-source-code"></a>Скачивание исходного кода
-После создания целевого бота веб-приложения следует скачать код бота с портала Azure на локальный компьютер. Так вы сможете получить ссылки на службы, которые содержатся в [файле .bot](./v4sdk/bot-file-basics.md). Это ссылки на службы бота веб-приложения, план Службы приложений, Службу приложений и учетную запись хранения. 
+После создания целевого бота веб-приложения следует скачать код бота с портала Azure на локальный компьютер. Скачать код нужно, чтобы получить ссылки на службы (например, MicrosoftAppID, MicrosoftAppPassword, LUIS или QnA) из файла appsettings.json или .env. 
 
 1. В разделе **Bot Management** (Управление ботами) щелкните **Build** (Выполнить сборку).
 1. Щелкните ссылку **Download Bot source code** (Скачивание исходного кода бота) справа.
 1. Следуйте инструкциям на экране, чтобы скачать код, а затем распакуйте папку.
     1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
-### <a name="decrypt-the-bot-file"></a>Расшифровка файла .bot
+### <a name="update-your-local-appsettingsjson-or-env-file"></a>Обновление локальных файлов appsettings.json или .env
 
-Исходный код, скачанный с портала Azure, содержит зашифрованный файл .bot. Вам потребуется расшифровать его, чтобы скопировать значения в локальный файл .bot. Этот шаг является обязательным, чтобы скопировать фактические ссылки на службы, а не зашифрованные.  
-
-1. Откройте ресурс "Бот веб-приложения" для своего бота на портале Azure.
-1. Откройте **параметры приложения** для бота.
-1. В окне **Параметры приложения** перейдите к разделу **Параметры приложения**.
-1. Найдите параметр **botFileSecret** и скопируйте его значение.
-1. Воспользуйтесь `msbot cli` для расшифровки файла.
-
-    ```cmd
-    msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
-    ```
-
-### <a name="update-your-local-bot-file"></a>Обновите локальный файл .bot.
-
-Откройте расшифрованный файл .bot. Скопируйте **все** записи, перечисленные в разделе `services`, и добавьте их в локальный файл .bot. Устраните все повторяющиеся записи или идентификаторы служб. Сохраните все дополнительные ссылки на службы, от которых зависит ваш бот. Например: 
-
-```json
-"services": [
-    {
-        "type": "abs",
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group-name>",
-        "serviceName": "<bot-service-name>",
-        "name": "<friendly-service-name>",
-        "id": "1",
-        "appId": "<app-id>"
-    },
-    {
-        "type": "blob",
-        "connectionString": "<connection-string>",
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group-name>",
-        "serviceName": "<blob-service-name>",
-        "id": "2"
-    },
-    {
-        "type": "endpoint",
-        "appId": "",
-        "appPassword": "",
-        "endpoint": "<local-endpoint-url>",
-        "name": "development",
-        "id": "3"
-    },
-    {
-        "type": "endpoint",
-        "appId": "<app-id>",
-        "appPassword": "<app-password>",
-        "endpoint": "<hosted-endpoint-url>",
-        "name": "production",
-        "id": "4"
-    },
-    {
-        "type": "appInsights",
-        "instrumentationKey": "<instrumentation-key>",
-        "applicationId": "<appinsights-app-id>",
-        "apiKeys": {},
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group>",
-        "serviceName": "<appinsights-service-name>",
-        "id": "5"
-    }
-],
-```
+Откройте скачанный файл appsettings.json или .env. Скопируйте из файла **все** записи и добавьте их в _локальный_ файл appsettings.json или .env. Устраните все повторяющиеся записи или идентификаторы служб. Сохраните все дополнительные ссылки на службы, от которых зависит ваш бот.
 
 Сохраните файл.
 
-Вы можете использовать средство msbot, чтобы создать секрет и зашифровать файл .bot перед его публикацией. Если вы повторно зашифруете файл .bot, обновите строку **botFileSecret** на портале Azure, указав в ней новый секрет.
+### <a name="update-local-bot-code"></a>Обновление кода локального бота
+Обновите локальный файл Startup.cs или index.js, чтобы использовать файл appsettings.json или .env, а не файл .bot. Файл .bot теперь считается нерекомендуемым, и мы продолжаем обновлять шаблоны VSIX, генераторы Yeoman, примеры и другие документы с рекомендацией использовать файл appsettings.json или .env, а не файл .bot. Вам же пока что нужно внести изменения в код бота. 
 
-```cmd
-msbot secret --bot <name-of-bot-file> --new
+Обновите код, чтобы считать параметры из файла appsettings.json или .env. 
+
+# [<a name="c"></a>C#](#tab/csharp)
+В методе `ConfigureServices` воспользуйтесь предоставляемым ASP.NET Core объектом конфигурации, например: 
+
+**Startup.cs**
+```csharp
+var appId = Configuration.GetSection("MicrosoftAppId").Value;
+var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
+options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
 ```
 
-> [!TIP]
-> Просмотрите свойства вашего файла с расширением .bot в Visual Studio и убедитесь, что параметру **Копировать в выходной каталог** задано значение *Всегда копировать*.
+# [<a name="js"></a>JS](#tab/js)
+
+В JavaScript укажите для файла .env ссылки на объект `process.env`, например:
+   
+**Файл index.js**
+
+```js
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+```
+---
+
+- Сохраните файл и протестируйте бота.
 
 ### <a name="setup-a-repository"></a>Настройка репозитория
 
@@ -144,12 +100,11 @@ msbot secret --bot <name-of-bot-file> --new
 Убедитесь, что корень репозитория содержит нужные файлы, которые описаны в разделе [Подготовка репозитория](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment#prepare-your-repository).
 
 ### <a name="update-app-settings-in-azure"></a>Обновление параметров приложения в Azure
-Локальный бот не использует зашифрованный файл .bot, но портал Azure настроен на использование зашифрованного файла .bot. Чтобы решить эту проблему, вы можете удалить строку **botFileSecret** в параметрах бота Azure.
+Локальный бот не использует зашифрованный файл .bot, но _если_ портал Azure настроен на использование зашифрованного файла .bot. Чтобы решить эту проблему, вы можете удалить строку **botFileSecret** в параметрах бота Azure.
 1. Откройте ресурс **Бот веб-приложения** для своего бота на портале Azure.
 1. Откройте **параметры приложения** для бота.
 1. В окне **Параметры приложения** перейдите к разделу **Параметры приложения**.
-1. Найдите параметр **botFileSecret** и удалите его. (Если вы повторно зашифровали файл .bot, убедитесь, что строка **botFileSecret** содержит новый секрет и **не** удаляйте этот параметр.)
-1. Обновите имя файла бота, чтобы оно совпадало с именем измененного файла в репозитории.
+1. Проверьте, присутствуют ли в боте записи **botFileSecret** и **botFilePath**. Если присутствуют, удалите их.
 1. Сохраните изменения.
 
 ## <a name="2-deploy-using-azure-deployment-center"></a>2. Развертывание с помощью центра развертывания Azure
