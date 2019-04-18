@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: a7f6c22f35719eacf66598e79df5fe52ff19dd43
+ms.sourcegitcommit: 103aa3316f9ff658cf2b0d341c5e76c3efc581ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783383"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59540368"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Бот — это приложение, с которым пользователи взаимодействуют, общаясь с помощью текста, графики (карт или изображений) или речи. Каждое взаимодействие между пользователем и ботом создает некоторое *действие*. Служба Bot Framework, которая входит в состав службы Azure Bot, передает информацию между пользовательскими приложениями (например, Facebook, Skype, Slack и другими *каналами*) и ботом. Каждый канал может передавать в отправляемых событиях дополнительные сведения. Прежде чем создавать ботов, важно хорошо разобраться в использовании объектов действия для общения с пользователями бота. Для начала мы рассмотрим действия, которые передаются при выполнении простого бота проверки связи. 
 
