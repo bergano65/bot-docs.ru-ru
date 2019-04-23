@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7d881e5e7748da11ea46721c23c5489597cdc94
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073830"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541130"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -621,7 +621,7 @@ public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Хранение расшифровок разговоров пользователей в виде BLOB-объектов Azure
-Создав контейнер BLOB-объектов для хранения расшифровок, можно будет сохранять разговоры пользователей с ботом. Эти разговоры можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Следующий код сохраняет данные, вводимые пользователем в ходе беседы, когда activity.text получает _!журнал_ входящих сообщений.
+После добавления TranscriptLoggerMiddleware хранилище расшифровок будет запущено автоматически для сохранения бесед пользователя с ботом. Эти разговоры можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Указанный ниже код извлекает расшифровку, а затем отправляет ее в текущую беседу, если свойство activity.text получает входящее сообщение _!history_. Примечание. Метод SendConversationHistoryAsync поддерживается в каналах Direct Line, веб-чата и эмулятора.
 
 
 ```csharp

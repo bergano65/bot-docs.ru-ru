@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aea34c068afa6fef3a701bc1179341ff4861e32a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224882"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541100"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
@@ -225,9 +225,9 @@ await context.sendActivity(hero);
 
 Во-вторых, адаптивная карточка отправляет сообщения в формате карточки и канал определяет макет карточки. Формат сообщений, предоставляемый MessageFactory, зависит от канала, и это необязательно формат карточек, если только адаптивная карточка не является частью вложения. 
 
-Последние сведения о поддержке каналами адаптивных карточек см. в разделе, посвященном <a href="http://adaptivecards.io/visualizer/">визуализатору адаптивных карточек</a>.
+Последние сведения о поддержке каналов адаптивных карточек см. на странице <a href="http://adaptivecards.io/designer/">конструктора адаптивных карточек</a>.
 
-Чтобы использовать адаптивные карточки, не забудьте добавить пакет NuGet `Microsoft.AdaptiveCards`. 
+Чтобы использовать адаптивные карточки, не забудьте добавить пакет NuGet `AdaptiveCards`. 
 
 
 > [!NOTE]

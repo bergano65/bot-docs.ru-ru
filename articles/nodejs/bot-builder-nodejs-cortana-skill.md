@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225307"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508161"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -57,43 +57,47 @@ ms.locfileid: "54225307"
 | Значение | ОПИСАНИЕ |
 |------|------|
 | **acceptingInput** | Бот пассивно готов к вводу, но не ожидает ответа. Кортана принимает входные данные от пользователя, если пользователь удерживает кнопку микрофона.|
-| **expectingInput** | Указывает, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
-| **ignoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку, если он активно обрабатывает запрос и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет завершен.  |
-
+| **expectingInput** | Указывает на то, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
+||Примечание. _Не_ используйте **expectingInput** на устройствах без дисплея. См. [вопросы и ответы о наборе навыков Кортаны](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
+| **ignoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку, если он активно обрабатывает запрос, и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет выполнен.  |
 
 В следующем примере показано, как Кортана читает простой текст или SSML.
 
 ```javascript
+
 // Have Cortana read plain text
 session.say('This is the text that Cortana displays', 'This is the text that is spoken by Cortana.');
 
 // Have Cortana read SSML
 session.say('This is the text that Cortana displays', '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">This is the text that is spoken by Cortana.</speak>');
+
 ```
 
 В этом примере показано, как дать знать Кортане, что ожидается пользовательский ввод. Микрофон остается открытым.
+
 ```javascript
+
 // Add an InputHint to let Cortana know to expect user input
 session.say('Hi there', 'Hi, what’s your name?', {
     inputHint: builder.InputHint.expectingInput
 });
+
 ```
 <!-- TODO: tip about time limit and batching -->
-
 
 ### <a name="prompts"></a>Запросы
 
 Помимо использования метода **session.say ()** также можно передавать текст или SSML во встроенные запросы, используя параметры **speak** и **retrySpeak**.  
 
 ```javascript
+
 builder.Prompts.text(session, 'text based prompt', {                                    
     speak: 'Cortana reads this out initially',                                               
     retrySpeak: 'This message is repeated by Cortana after waiting a while for user input',  
     inputHint: builder.InputHint.expectingInput                                              
 });
+
 ```
-
-
 
 <!-- TODO: Link to SSML library -->
 
@@ -102,6 +106,7 @@ builder.Prompts.text(session, 'text based prompt', {
 **Prompts.choice** поддерживает порядковый выбор. Это означает, что пользователь может выбрать элемент в списке, сказав "the first", "the second" или "the third". Например, учитывая следующие запросы, если пользователь запрашивает Кортану "the second option", запрос вернет значение 8.
 
 ```javascript
+
         var choices = [
             { value: '4', action: { title: '4 Sides' }, synonyms: 'four|for|4 sided|4 sides' },
             { value: '8', action: { title: '8 Sides' }, synonyms: 'eight|ate|8 sided|8 sides' },
@@ -111,11 +116,13 @@ builder.Prompts.text(session, 'text based prompt', {
         builder.Prompts.choice(session, 'choose_sides', choices, { 
             speak: speak(session, 'choose_sides_ssml') // use helper function to format SSML
         });
+
 ```
 
 В предыдущем примере SSML свойство **speak** запросы форматируется с использованием строк, которые хранятся в файле локализованных запросов в следующем формате. 
 
 ```json
+
 {
     "choose_sides": "__Number of Sides__",
     "choose_sides_ssml": [
@@ -124,8 +131,8 @@ builder.Prompts.text(session, 'text based prompt', {
         "All the standard sizes are supported."
     ]
 }
-```
 
+```
 
 Затем вспомогательная функция создает необходимый корневой элемент Speech Synthesis Markup Language (SSML). 
 
@@ -149,15 +156,15 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Отображение карт в Кортане
 
 Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие форматированные карточки:
-* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html);
-* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html);
-* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html).
+* [HeroCard (имиджевая карточка)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
+* [ReceiptCard (карточка квитанции)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
+* [ThumbnailCard (эскизная карточка)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
-Сведения о том, как эти карты выглядят в Кортане, см. в разделе [Principles of Cortana Skills design][CardDesign] (Принципы проектирования навыков Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
+Сведения о том, как эти карточки выглядят в Кортане, см. в разделе [Card design best practices][CardDesign] (Рекомендации по проектированию карточек для Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
 
 Следующий код демонстрирует, как добавить свойства **speak** и **inputHint** в сообщение, содержащее карту Hero.
 
-```javascript 
+```javascript
 
 bot.dialog('HelpDialog', function (session) {
     var card = new builder.HeroCard(session)
@@ -172,7 +179,6 @@ bot.dialog('HelpDialog', function (session) {
         .inputHint(builder.InputHint.acceptingInput); // Tell Cortana to accept input
     session.send(msg).endDialog();
 }).triggerAction({ matches: /help/i });
-
 
 /** This helper function builds the required root element of a Speech Synthesis Markup Language (SSML) document. */
 module.exports.speak = function (template, params, options) {
@@ -196,6 +202,7 @@ module.exports.speak = function (template, params, options) {
 Пример RollerSkill начинается с открытия карты несколькими кнопками, чтобы сообщить пользователю, какие параметры для него доступны.
 
 ```javascript
+
 /**
  *   Create your bot with a default message handler that receive messages from the user.
  * - This function is be called anytime the user's utterance isn't
@@ -231,8 +238,6 @@ bot.dialog('HelpDialog', function (session) {
 
 
 ```javascript
-
-
 bot.dialog('CreateGameDialog', [
     function (session) {
         // Initialize game structure.
@@ -293,6 +298,7 @@ bot.dialog('CreateGameDialog', [
     /(roll|role|throw|shoot).*(dice|die|dye|bones)/i,
     /new game/i
  ]});
+
 ```
 
 ### <a name="render-results"></a>Результаты отрисовки
@@ -402,6 +408,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
         session.replaceDialog('CreateGameDialog');
     }
 }).triggerAction({ matches: /(roll|role|throw|shoot) again/i });
+
 ```
 
 ## <a name="next-steps"></a>Дополнительная информация

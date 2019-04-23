@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a30a3f5dfe4693d67a4cd42a50d35893f8888e07
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 1f077cb5efd838f8a91a0f18a9bcc2f64455ceb6
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591042"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541120"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -42,7 +42,7 @@ ms.locfileid: "56591042"
 После публикации приложения LUIS ваш бот сможет обратиться к нему. Для доступа к приложению LUIS из кода бота потребуется записать несколько значений. Нужные сведения можно получить с помощью портала LUIS.
 
 #### <a name="retrieve-application-information-from-the-luisai-portal"></a>Получение сведений о приложении на портале LUIS.ai
-Файл .bot используется для того, чтобы собрать в одном месте ссылки на все службы. Полученные данные будут добавлены в файл .bot в следующем разделе. 
+Файл .bot используется для того, чтобы собрать в одном месте ссылки на все службы. Полученные данные будут добавлены в файл с расширением .bot в следующем разделе. 
 1. Выберите опубликованное приложение LUIS на сайте [luis.ai](https://www.luis.ai).
 1. Открыв опубликованное приложение LUIS, выберите в нем вкладку **MANAGE** (Управление).
 1. Выберите слева вкладку **Application Information** (Сведения о приложении) и сохраните значение из поля _Application ID_ (Идентификатор приложения) в параметр <YOUR_APP_ID>.

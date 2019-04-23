@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: b3f9a0d2c24809c0814baa9bfb8f993a4ba55ef7
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59551532"
+---
 ## <a name="prerequisites"></a>Предварительные требования
 
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
@@ -8,9 +16,10 @@
 - навыки разработки для [Restify](http://restify.com/) и асинхронного программирования в JavaScript.
 
 > [!NOTE]
-> Установка Microsoft Build Tools, указанная ниже, требуется, только если Windows используется как операционная система для разработки. Для некоторых конфигураций при установке Restify возникает ошибка, связанная с node-gyp.
+> Установка Microsoft Build Tools, указанная ниже, требуется только в том случае, если Windows используется как операционная система для разработки. Для некоторых конфигураций при установке Restify возникает ошибка, связанная с node-gyp.
 > В таком случае попробуйте выполнить следующую команду с дополнительными разрешениями.
 > Этот вызов также может зависнуть без завершения, если на компьютере уже установлена среда Python.
+
 > ```bash
 > npm install -g windows-build-tools
 > ```

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7aaf9aedf26682a04fa288ec336afc934a1657aa
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 024791aaf6aea0b09b097b275d4ca954fcd27ddf
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073820"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508241"
 ---
 # <a name="managing-state"></a>Управление состоянием
 
@@ -139,5 +139,5 @@ ms.locfileid: "58073820"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Состояние в Dialog](bot-builder-concept-dialog.md#dialog-state)
-- [Непосредственная запись в хранилище](bot-builder-howto-v4-storage.md)
-- [Сохранение данных пользователя и диалога](bot-builder-howto-v4-state.md)
+- [Запись данных напрямую в хранилище](bot-builder-howto-v4-storage.md)
+- [Сохранение данных пользователя и беседы](bot-builder-howto-v4-state.md)

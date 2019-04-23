@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 04/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27c97d257261a6f3b9d867503aee40382b685e20
-ms.sourcegitcommit: 562dd44e38abacaa31427da5675da556a970cf11
+ms.openlocfilehash: 1a295f68be626c2d2ef17dcb49b7c7d31ae2cefa
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59477107"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541050"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -49,9 +49,9 @@ ms.locfileid: "59477107"
 
 В этой статье описан пример бота, который подключается к Microsoft Graph с помощью маркера AAD версии 1 или 2. Здесь также рассматривается, как создать и зарегистрировать связанное с ним приложение AAD. При этом будет использоваться код из репозитория GitHub [Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples). В этой статье описаны все эти процессы.
 
-- **Создание ресурса бота**
-- **Создание приложения Azure AD**
-- **Регистрация в боте приложения Azure AD**
+- **Создание ресурса бота**.
+- **Создание приложения Azure AD**.
+- **Регистрация в боте приложения Azure AD**.
 - **Подготовка примера кода бота**
 
 Завершив этот процесс, вы получите локально выполняемый бот, который может отвечать на несколько простых действий с использованием приложения AAD, например проверять и отправлять электронную почту или отображать сведения о пользователе и его руководителе. Чтобы это сделать, бот будет использовать токен приложения Azure AD библиотеки Microsoft.Graph. Вам не обязательно публиковать бота, чтобы протестировать возможности OAuth для проверки подлинности, но боту потребуется допустимый идентификатор приложения Azure и пароль к нему.
@@ -168,7 +168,7 @@ Sample payload
 
 Следующим шагом является регистрация приложения AAD в созданном боте.
 
-# [<a name="azure-ad-v1"></a>AAD версии 1](#tab/aadv1)
+# <a name="azure-ad-v1tabaadv1"></a>[Azure AD версии 1](#tab/aadv1)
 
 1. На [портале Azure](http://portal.azure.com/) перейдите к странице ресурса бота.
 1. Щелкните **Параметры**.
@@ -193,7 +193,7 @@ Sample payload
 > [!NOTE]
 > Используя API Microsoft Graph, эти значения позволяют приложению получать доступ к данным Office 365.
 
-# [<a name="azure-ad-v2"></a>AAD версии 2](#tab/aadv2)
+# <a name="azure-ad-v2tabaadv2"></a>[Azure AD версии 2](#tab/aadv2)
 
 1. Перейдите к странице регистрации каналов бота на [портале Azure](http://portal.azure.com/).
 1. Щелкните **Параметры**.
@@ -273,10 +273,14 @@ Sample payload
     }
     ```
 
-    Если вы не знаете, как получить значения **Идентификатор приложения Майкрософт** и **Пароль приложения Майкрософт**, посмотрите параметр **ApplicationSettings** службы приложений Azure, который был подготовлен для бота на портале Azure.
+    Если вы не знаете, как получить **идентификатор приложения Майкрософт** и **пароль приложения Майкрософт**, можете создать новый пароль, как описано здесь:
+
+    [Пароль службы "Регистрация каналов бота"](../bot-service-quickstart-registration.md#bot-channels-registration-password)
+
+    Или получите **идентификатор приложения Майкрософт** и **пароль приложения Майкрософт**, предоставляемые при **регистрации каналов бота**, из развертывания, как описано здесь: [Find Your Azure Bot’s AppID and AppSecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) (Поиск идентификатора и секрета приложения для бота Azure).
 
     > [!NOTE]
-    > Теперь код бота можно опубликовать в подписке Azure (щелкните проект правой кнопкой мыши и выберите **Опубликовать**), но данное действие не является обязательным для текущего руководства. Необходимо будет настроить конфигурацию публикации, которая использует план приложения и размещения, который использовался при настройке бота на портале Azure.
+    > Теперь код бота можно опубликовать в подписке Azure (щелкните проект правой кнопкой мыши и выберите **Опубликовать**), но это действие необязательно для текущего руководства. Необходимо будет настроить конфигурацию публикации, которая использует план приложения и размещения, который использовался при настройке бота на портале Azure.
 
 ## <a name="use-the-emulator-to-test-your-bot"></a>Подключение эмулятора Bot Framework для проверки бота
 
@@ -327,7 +331,7 @@ Sample payload
 
 Как видно из этого кода, сначала бот выполняет быструю проверку, чтобы определить, имеет ли служба Azure Bot токен пользователя (который идентифицирован текущим отправителем действия) и полученное ConnectionName (которое является именем подключения, используемое в конфигурации). К этому моменту служба Azure Bot уже будет обладать кэшированным токеном (или не будет). Эту быструю проверку можно выполнить, вызвав метод GetUserTokenAsync. Если служба Azure Bot имеет токен и возвращает его, он может быть использован мгновенно. Если служба Azure Bot не имеет токена, результатом выполнения этого метода будет NULL. В таком случае бот может отправить пользователю для входа настраиваемый OAuthCard.
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 // First ask Bot Service if it already has a token for this user
@@ -342,7 +346,7 @@ else
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 public async getUserToken(context: TurnContext, code?: string): Promise<TokenResponse|undefined> {
@@ -364,7 +368,7 @@ public async getUserToken(context: TurnContext, code?: string): Promise<TokenRes
 
 В конце вызова боту требуется подождать на "возвращение токена". Ожидание происходит в основной ленте активности, потому что для входа в систему может потребоваться много времени.
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity message, CancellationToken cancellationToken = default(CancellationToken))
@@ -397,7 +401,7 @@ private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<Activity>): Promise<void> {
@@ -429,7 +433,7 @@ private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<A
 
 Изучив код каждого из примеров бота, вы увидите, что действия `Event` и `Invoke` также направляются в стек диалогов.
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 // This can be called when the bot receives an Activity after sending an OAuthCard
@@ -477,7 +481,7 @@ private bool IsTeamsVerificationInvoke(ITurnContext turnContext)
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 private async recognizeToken(context: TurnContext): Promise<PromptRecognizerResult<TokenResponse>> {
