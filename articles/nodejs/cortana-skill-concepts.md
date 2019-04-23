@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 909294243abe00ac95e8f5d89d6babc2edc4f994
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5de773f6f8f4d46c0c1fe880588f2530c3c68f56
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225689"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508211"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Ключевые понятия для создания бота для навыков Кортаны с помощью Node.js
  
@@ -40,57 +40,49 @@ ms.locfileid: "54225689"
 
 Пользователь запутается, если система не сможет подтверждать его высказывания. Например, ниже приведен сеанс общения, в котором не вполне понятно, что делать, когда бот спрашивает "What's next?" (Что же дальше?)
 
-```
-Agent: Did you want to review some more of your profile?
-
-User: No.
-
-Agent: What's next?
-```
+> **Кортана**: Did you want to review some more of your profile? (Хотите просмотреть другие данные профиля?)  
+> **User**: №  
+> **Кортана**: Что дальше?
 
 Если бот будет добавлять "Okay" (ОК) в качестве подтверждения, это будет понятнее для пользователя.
 
-```
-Agent: Did you want to review some more of your profile?
-
-User: No.
-
-Agent: **Okay**, what's next?
-```
-
+> **Кортана**: Did you want to review some more of your profile? (Хотите просмотреть другие данные профиля?)  
+> **User**: №  
+> **Кортана**: **Okay**, what's next? (Хорошо. Что дальше?)
 
 Степени подтверждения в порядке усиления:
+
 1. Непрерывное внимание.
 2. Последующее соответствующее вовлечение.
 3. Подтверждение. Минимальный ответ или фраза для поддержания разговора: "yeah" (Ну да), "uh-huh" (Ага), "okay" (ОК), "great" (Отлично).
 4. Демонстрация. Подтверждение понимания путем перефразирования или завершения фразы.
 5. Отображение. Повторение всей фразы или ее части.
 
-#### <a name="acknowledgement-and-next-relevant-contribution"></a>Подтверждение и последующее вовлечение
-Пользователь: "..." "I need to travel in May" (Мне нужно слетать кое-куда в мае).
-Агент: **And**, what day in May did you want to travel?" (А в какой день мая вы хотите кое-куда слетать?)
-User: Пользователь: "OK I need to be there from the 12th to the 15th?" (Мне нужно быть там с 12-го по 15-е)
-Агент: Агент: "**And**, you're flying into what city?" (А в какой город вы летите?)
+### <a name="acknowledgement-and-next-relevant-contribution"></a>Подтверждение и последующее вовлечение
 
-#### <a name="grounding-by-demonstration"></a>Подтверждение с помощью демонстрации
-Пользователь: "..." "I need to travel in May" (Мне нужно слетать кое-куда в мае).
-Агент: **And**, what day in May did you want to travel?" (А в какой день мая вы хотите кое-куда слетать?)
-User: Пользователь: "OK I need to be there from the 12th to the 15th?" (Мне нужно быть там с 12-го по 15-е)
-Агент: Агент: "**And**, you're flying into what city?" (А в какой город вы летите?)
+> **User**: "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
+> **Кортана**: **Okay**. (Хорошо.) What day in May did you want to travel? (В какой день мая вы хотите кое-куда слетать?)  
+> **User**: Well, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
+> **Кортана**: **Okay**. (Хорошо.) What city are you flying into ? (В какой город вы летите?)  
 
+### <a name="grounding-by-demonstration"></a>Подтверждение с помощью демонстрации
 
+> **User**: "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
+> **Кортана**: **And**, what day in May did you want to travel?" (А в какой день мая вы хотите кое-куда слетать?)  
+> **User**: Okay, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
+> **Кортана**: **And** you're flying into what city? (А в какой город вы летите?)  
+    
 ### <a name="closure"></a>Завершение
 
-Бот, выполняющий действие, должен подтвердить его успешное завершение.
-Важно также указать ошибку или понимание фразы. 
-* Безмолвное завершение. Когда вы нажимаете кнопку лифта, она подсвечивается.
-Двухэтапный процесс:
-* Уровень представления 
-* принятие.
+Бот, выполняющий действие, должен подтвердить его успешное завершение. Важно также указать ошибку или понимание фразы. 
 
+* Безмолвное завершение. Когда вы нажимаете кнопку лифта, она подсвечивается.  
+Этот процесс включает два этапа:
+    * представление (при нажатии кнопки);
+    * принятие (когда кнопка загорается).
 
-### <a name="differences-in-content-presentation"></a>Различия в представлении содержимого
-При разработке бота с поддержкой речевых функций помните, что устный диалог часто отличается от текстовых сообщений, отправляемых ботом.
+## <a name="differences-in-content-presentation"></a>Различия в представлении содержимого
+Учтите, что Кортана поддерживается на различных устройствах, но не все из них оборудованы экранами. Один из факторов, которые вам надо учитывать при проектировании бота с поддержкой речевых функций, заключается в том, что разговорный диалог часто будет не совпадать с текстовыми сообщениями, отображаемыми ботом.
 <!-- If there are differences in what the bot will say, in the text vs the speak fields of a prompt or in a waterfall, for example, discuss them here.
 
 ## Speech
@@ -119,7 +111,7 @@ The **inputHint** property can take the following values:
 * **acceptingInput**: Indicates that the bot is passively ready for input but is not waiting on a response. Cortana accepts input from the user if the user holds down the microphone button.
 * **ignoringInput**: Cortana is ignoring input. Your bot may send this hint if it is actively processing a request and will ignore input from users until the request is complete.
 
-Prompts can take a `speak:` or `retrySpeak` option.
+Prompts must use the `speak:` option.
 
 ```javascript
         builder.Prompts.choice(session, "Decision Options", choices, {
@@ -130,12 +122,9 @@ Prompts can take a `speak:` or `retrySpeak` option.
 
 Prompts.number has *ordinal support*, meaning that you can say "the last", "the first", "the next-to-last" to choose an item in a list.
 
-
-
-
 ## Using synonyms
 
-<!-- Axl Rose example -->     
+<!-- Axl Rose example -->
 ```javascript   
          var choices = [
             { 
@@ -165,13 +154,12 @@ Prompts.number has *ordinal support*, meaning that you can say "the last", "the 
         });
 ```
 
-
 ## <a name="configuring-your-bot"></a>Настройка бота
 
 ## <a name="prompts"></a>Запросы
 
-
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-[CortanaGetstarted]: /cortana/getstarted
-[SSMLRef]: https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx
+Документация по Кортане: [документация по навыкам Кортаны](/cortana/skills/).
+
+Справочник по SSML для Кортаны: [справочник по языку разметки синтеза речи (SSML)](/cortana/skills/speech-synthesis-markup-language).
