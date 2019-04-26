@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 68c01b0f12790393fe0ee7ae0bd28addf2d26ae7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 811921cdeccc8c870b5b9dfc9daaab57e449c0cd
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591125"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905047"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Сбор данных, которые вводит пользователь, с помощью диалогового окна
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Библиотека *Dialogs* упрощает отправку вопросов и проверку ответов, чтобы убедиться в правильности типов данных и (или) выполнении пользовательских правил проверки. В этой статье подробно описывается создание и вызов запросов из каскадного диалога.
 

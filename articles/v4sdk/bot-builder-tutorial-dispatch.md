@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: 373470b000b168e6e434ed5ed08b35c18ab09a99
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712008"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904967"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 В этом руководстве мы покажем, как использовать службу Dispatch для передачи высказываний в системе с несколькими моделями LUIS и QnA Maker, чтобы реализовать в боте все требуемые сценарии. В этом примере мы настроим диспетчеризацию между несколькими моделями LUIS, чтобы поддерживать беседы об автоматизации дома и о погоде, и службой QnA Maker для ответов на вопросы по текстовому файлу вопросов и ответов. Этот пример объединяет следующие службы.
 

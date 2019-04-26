@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/28/2018
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27bcd53e9f3d582a1206c5ed74cc844acab795b4
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a5f3fe4fbec5a44a68bd6dcb7a2d6e2770052923
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225889"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905027"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 В этой статье мы покажем, как управлять сложными беседами с ветвлениями и циклами. Мы также продемонстрируем передачу аргументов между разными частями диалога.
 
@@ -498,7 +498,7 @@ async loopStep(stepContext) {
 
 ## <a name="update-the-bots-turn-handler"></a>Обновление обработчика шагов бота
 
-Обработчик шагов бота повторяет одну и ту же последовательность беседы, которая определена в этих диалогах.
+Обработчик шагов бота повторяет один и тот же поток общения, который определен в этих диалогах.
 При получении сообщения от пользователя применяется следующий алгоритм.
 
 1. Продолжить активный диалог, если таковой имеется.

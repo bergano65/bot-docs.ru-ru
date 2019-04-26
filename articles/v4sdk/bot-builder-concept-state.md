@@ -8,16 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/25/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 024791aaf6aea0b09b097b275d4ca954fcd27ddf
-ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
+ms.openlocfilehash: b2650a52c25ad8ac3dd6e0e4ff2d2b5ec2dd5b6a
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59508241"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904487"
 ---
 # <a name="managing-state"></a>Управление состоянием
+
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Состояние бота подчиняется тем же принципам, что и современные веб-приложения, и пакет SDK для Bot Framework предоставляет некоторые абстракции, позволяющие упростить управление состоянием.
 
@@ -139,5 +141,5 @@ ms.locfileid: "59508241"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Состояние в Dialog](bot-builder-concept-dialog.md#dialog-state)
-- [Запись данных напрямую в хранилище](bot-builder-howto-v4-storage.md)
-- [Сохранение данных пользователя и беседы](bot-builder-howto-v4-state.md)
+- [Непосредственная запись в хранилище](bot-builder-howto-v4-storage.md)
+- [Сохранение данных пользователя и диалога](bot-builder-howto-v4-state.md)

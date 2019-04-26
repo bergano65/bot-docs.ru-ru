@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 04/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b72ffa951e176a174dd8b00e69229b27bf28a360
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: c0b225cd114f369d14978c16108827f493434390
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711998"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905147"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Представьте себе, что вы создаете бот для отеля, который обрабатывает множество задач, таких как приветствие пользователя, резервирование обеденного стола, заказ еды, установка сигнала будильника, отображение текущей погоды и много других. Каждую из этих задач в боте можно выполнять в одном объекте диалога, но это сделает код диалога слишком громоздким и запутанным.
 

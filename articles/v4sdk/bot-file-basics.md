@@ -7,16 +7,18 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 03/30/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14552c55da4b1f9b581b81917496de179e92762b
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 65ad712a4d3cfeebb5c85375e023e301f0e101ca
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58811506"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904527"
 ---
 # <a name="manage-bot-resources"></a>Управление ресурсами бота
+
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Боты часто используют разные службы, например [LUIS.ai](https://luis.ai) или [QnaMaker.ai](https://qnamaker.ai). При разработке ботов вам необходимо иметь возможность отслеживать их все. Вы можете использовать разные средства, например файлы appsettings.json, web.config или .env. 
 

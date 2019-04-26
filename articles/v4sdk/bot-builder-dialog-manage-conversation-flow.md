@@ -1,5 +1,5 @@
 ---
-title: Реализация последовательной беседы | Документация Майкрософт
+title: Реализация процесса общения | Документация Майкрософт
 description: Сведения о том, как управлять простым процессом общения с помощью диалогов в пакете SDK Bot Framework для Node.js.
 keywords: simple conversation flow, sequential conversation flow, dialogs, prompts, waterfalls, dialog set
 author: JonathanFingold
@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/18/2018
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 5361b2e411e12b296b60a0f27b560dee5f1f769f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317624"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904867"
 ---
-# <a name="implement-sequential-conversation-flow"></a>Реализация последовательной беседы
+# <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 С помощью библиотеки диалогов можно управлять простыми и сложными процессами общения. В самом простом сценарии взаимодействия бот выполняет фиксированную последовательность действий и завершает диалог. В этой статье мы применим _каскадный диалог_, несколько _запросов_ и _набор диалогов_ для создания простого взаимодействия, в котором пользователю предлагаются несколько вопросов.
 
