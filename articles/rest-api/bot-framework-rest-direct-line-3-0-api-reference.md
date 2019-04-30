@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
-ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
+ms.openlocfilehash: 28074e7ad59249cabbd38436bd02dc48bcab5b88
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234477"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904887"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -194,7 +194,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **activities** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | Массив объектов **Activity**. |
+| **действия** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | Массив объектов **Activity**. |
 | **watermark** | строка | Максимальное значение для водяного знака действий в наборе. Клиент может использовать значение `watermark`, чтобы указать последнее полученное им сообщение, при [получении новых действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) или при [создании нового URL-адреса потока WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
 
 ### <a name="conversation-object"></a>Объект Conversation
@@ -223,6 +223,6 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 - свойство `from` заполняется идентификатором пользователя, выбранным клиентом;
 - вложения могут содержать URL-адреса, ведущие к существующим ресурсам или ресурсам, отправленным через конечную точку вложений Direct Line;
 - свойство `channelData` сохраняется без изменений.
-- Общий размер действия, сериализованного в формате JSON, не должен превышать 300 тысяч символов.
+- Общий размер действия, сериализованного и зашифрованного в формате JSON, не должен превышать 256 тысяч символов. Поэтому рекомендуется, чтобы количество действий не превышало 150 тысяч. Если требуется больше данных, разбейте действие на несколько составных частей или рассмотрите возможность использования вложений.
 
 В каждом запросе клиент может [отправить](bot-framework-rest-direct-line-3-0-send-activity.md) только одно действие. 
