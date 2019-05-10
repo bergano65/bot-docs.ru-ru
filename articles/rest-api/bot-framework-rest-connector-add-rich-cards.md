@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e38bb7ca93c5fc4174d67d1c5ebb0655eef68653
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a662bb24f384d072a162242a4634fe4fe3a4b395
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997924"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033447"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "49997924"
 |----|----|----|
 | Тип | строка | тип действия (одно из значений, указанных в таблице ниже) |
 | title | строка | название кнопки |
-| изображение | строка | URL-адрес изображения для кнопки |
+| image | строка | URL-адрес изображения для кнопки |
 | value | строка | значение, необходимое для выполнения указанного типа действия |
 
 > [!NOTE]
@@ -117,7 +117,7 @@ Content-Type: application/json
                 "text": "descriptive text goes here",
                 "images": [
                     {
-                        "url": "http://aka.ms/Fo983c",
+                        "url": "https://aka.ms/DuckOnARock",
                         "alt": "picture of a duck",
                         "tap": {
                             "type": "playAudio",
@@ -134,7 +134,7 @@ Content-Type: application/json
                     {
                         "type": "openUrl",
                         "title": "Watch Video",
-                        "image": "http://aka.ms/Fo983c",
+                        "image": "https://aka.ms/DuckOnARock",
                         "value": "url goes here of the duck in flight"
                     }
                 ]

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 3ac44cd05bcea93416a2362c97aaa382aa744aa4
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563664"
+---
 Чтобы полностью протестировать платный бот, [настройте](~/bot-service-manage-channels.md) его для использования каналов, которые поддерживают платежи Bot Framework, такие как веб-чат и Skype. Кроме того, можно протестировать бот локально с помощью [Bot Framework Emulator](~/bot-service-debug-emulator.md).
 
 > [!TIP]

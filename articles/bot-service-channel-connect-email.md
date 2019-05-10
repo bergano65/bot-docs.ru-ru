@@ -10,11 +10,11 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/08/2019
 ms.openlocfilehash: e77f6cddac07cdcc06d6d35cda98544f33dd1d43
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591185"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563424"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Подключение бота к электронной почте Office 365
 

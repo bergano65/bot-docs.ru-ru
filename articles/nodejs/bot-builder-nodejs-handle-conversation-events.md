@@ -10,11 +10,11 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 91fd349173dfe469c7b71bc84b8adf9c19e07277
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54223609"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64564052"
 ---
 # <a name="handle-user-and-conversation-events"></a>Обработка событий пользователя и диалога
 

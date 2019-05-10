@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3e18ef9aec8a2f04e544b261cad246275c5caffa
-ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
+ms.openlocfilehash: 7eed8c8328456bad43f3bdfe0029df09efa062d6
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52953669"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563489"
 ---
 На этой схеме показана последовательность отображения экрана в обычном приложении в сравнении с потоком диалога бота. 
 

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: bb7520e8e99ad6326d7d00d8190dae306bf11afa
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905169"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035753"
 ---
 Опубликуйте бот из локальной среды в Azure. Этот процесс может занять некоторое время.
 

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 8e5677fe59dd9edad6ac1da9d029e5f7c08bf179
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563959"
+---
 ## <a name="next-steps"></a>Дополнительная информация
 Развернув бот в облаке и убедившись, что развертывание выполнено успешно (проверив бот с помощью Bot Framework Emulator), можно перейти к следующему шагу процесса публикации бота. Он зависит от того, зарегистрировали ли вы уже бот с помощью платформы Bot Framework.
 

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 4e2ab87f509c29c33a27810668445975e31f6ac4
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563850"
+---
 ## <a name="application-settings-and-messaging-endpoint"></a>Параметры приложения и конечная точка "Обмен сообщениями"
 
 ### <a name="verify-application-settings"></a>Проверка параметров приложения

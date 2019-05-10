@@ -6,13 +6,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 5/2/2019
+ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225739"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033050"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Перевод разговора с бота на человека
 
@@ -71,10 +71,6 @@ ms.locfileid: "54225739"
 
 > [!NOTE]
 > В более сложных сценариях бот может выполнять больше задач, чем просто пересылать сообщения между пользователем и агентом. Например, бот может выбрать подходящий ответ и попросить агента подтвердить выбор.
-
-## <a name="sample-code"></a>Пример кода
-
-Полный пример на основе пакета SDK Bot Framework для Node.js, в котором показано, как перевести диалог с бота на человека с помощью, см. в статье <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff sample</a> (Пример перевода беседы с бота на человека) на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

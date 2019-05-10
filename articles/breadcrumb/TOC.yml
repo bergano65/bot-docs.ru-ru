@@ -1,4 +1,4 @@
-- name: Документация
+- name: Docs
   href: /
   homepage: /
   items:
@@ -6,7 +6,7 @@
       tocHref: /Bot-Framework/
       topicHref: /Bot-Framework/index
       items:
-        - name: Пакет SDK для построителя ботов для .NET
+        - name: Пакет SDK Bot Builder для .NET
           tocHref: /Bot-Framework/dotnet
           topicHref: /Bot-Framework/dotnet/
         - name: Пакет SDK для построителя ботов для Node.js

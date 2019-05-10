@@ -15,7 +15,7 @@
 ## [Отправка упреждающих сообщений](bot-builder-dotnet-proactive-messages.md)
 # Диалоги
 ## [Общие сведения о диалогах](bot-builder-dotnet-dialogs.md)
-## [Управление последовательностью диалога](bot-builder-dotnet-manage-conversation-flow.md)
+## [Управление потоком общения с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 ## [Диалоги с возможностью оценки](bot-builder-dotnet-scorable-dialogs.md)
 # FormFlow
 ## [Основные функции FormFlow](bot-builder-dotnet-formflow.md)
@@ -28,11 +28,13 @@
 ## [Реализация возможностей для определенных каналов](bot-builder-dotnet-channeldata.md)
 ## [Создание навыка для Cortana](bot-builder-dotnet-cortana-skill.md)
 ## [Осуществление голосовых звонков с помощью Skype](bot-builder-dotnet-audio-calls.md)
-## Осуществление мультимедийных вызовов с помощью Skype в реальном времени
-### [Основные понятия о мультимедийных вызовах в реальном времени](bot-builder-dotnet-real-time-media-concepts.md)
-### [Требования к ботам для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-media-requirements.md)
-### [Создание бота для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-audio-video-call-overview.md)
-### [Развертывание бота для мультимедийных вызовов в реальном времени](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+<!--
+## Conduct real-time media calls with Skype
+### [Real-time media calling concepts](bot-builder-dotnet-real-time-media-concepts.md)
+### [Requirements for real-time media bots](bot-builder-dotnet-real-time-media-requirements.md)
+### [Build a real-time media bot](bot-builder-dotnet-real-time-audio-video-call-overview.md)
+### [Deploy a real-time media bot](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+-->
 # Данные о состоянии
 ## [Управление данными о состоянии](bot-builder-dotnet-state.md)
 ## [Управление данными о состоянии с использованием Cosmos DB](bot-builder-dotnet-state-azure-cosmosdb.md)

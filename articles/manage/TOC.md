@@ -4,7 +4,10 @@
 ## [Подключение бота к каналам](../bot-service-manage-channels.md)
 ## [Реализация возможностей для определенных каналов](../v4sdk/bot-builder-channeldata.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
-## [Direct Line](../bot-service-channel-connect-directline.md)
+## Direct Line
+### [Сведения о Direct Line](../bot-service-channel-directline.md)
+### [Подключение к Direct Line](../bot-service-channel-connect-directline.md)
+### [Подключение к каналу "Речь Direct Line"](../bot-service-channel-connect-directlinespeech.md)
 ## [Электронная почта](../bot-service-channel-connect-email.md)
 ## [Включение распознавания речи в веб-чате](../bot-service-channel-connect-webchat-speech.md)
 ## [Facebook](../bot-service-channel-connect-facebook.md) 

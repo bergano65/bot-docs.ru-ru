@@ -9,11 +9,11 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996901"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64564008"
 ---
 # <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
 
@@ -167,7 +167,7 @@ ms.locfileid: "49996901"
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-| метод | Вызываемый метод API Telegram Bot. |
+| method | Вызываемый метод API Telegram Bot. |
 | parameters | Параметры указанного метода. |
 
 Поддерживаются следующие методы Telegram: 
@@ -241,7 +241,7 @@ ms.locfileid: "49996901"
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-| отправляемых из облака на устройство | Массив сообщений Kik. См. дополнительные сведения о <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">формате сообщений Kik</a>. |
+|  отправляемых из облака на устройство | Массив сообщений Kik. См. дополнительные сведения о <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">формате сообщений Kik</a>. |
 
 В этом фрагменте кода демонстрируется свойство `channelData` для собственного сообщения Kik.
 

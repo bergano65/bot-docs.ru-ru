@@ -10,11 +10,11 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 076e460f393c5db524cfade81e5c007484fe2cca
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225669"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64564074"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
@@ -38,7 +38,7 @@ ms.locfileid: "54225669"
 | [invoke](#invoke) | IInvokeActivity | Представляет сообщение, отправляемое боту для запроса определенной операции. Этот тип действия зарезервирован для внутреннего использования в Microsoft Bot Framework. |
 | [messageReaction](#messagereaction) | IMessageReactionActivity | Указывает, что пользователь отреагировал на существующее действие. Например, в сообщение, пользователь нажимает кнопку "Like". |
 
-## <a name="message"></a>Message
+## <a name="message"></a>message
 
 Бот отправляет действия **message** для передачи сведений пользователям и получения действий **message** от пользователей. Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](bot-builder-dotnet-text-to-speech.md), [предлагаемые действия](bot-builder-dotnet-add-suggested-actions.md), [мультимедийные вложения](bot-builder-dotnet-add-media-attachments.md), [форматированные карточки](bot-builder-dotnet-add-rich-card-attachments.md) и [данные по каналу](bot-builder-dotnet-channeldata.md). Дополнительные сведения о часто используемых свойствах сообщения см. в статье [Создание сообщений](bot-builder-dotnet-create-messages.md).
 

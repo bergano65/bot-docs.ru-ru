@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 86faca976bc95a5e91e17749096cd148483edc61
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563641"
+---
 ## <a name="payment-process-overview"></a>Обзор процесса оплаты
 
 Процесс оплаты состоит из трех отдельных частей.

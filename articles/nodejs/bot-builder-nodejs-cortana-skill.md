@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
-ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
+ms.openlocfilehash: ff2d55ccdd6312e95bdb1acb223d8e1d5f60b0b3
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59508161"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032632"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -57,7 +57,7 @@ ms.locfileid: "59508161"
 | Значение | ОПИСАНИЕ |
 |------|------|
 | **acceptingInput** | Бот пассивно готов к вводу, но не ожидает ответа. Кортана принимает входные данные от пользователя, если пользователь удерживает кнопку микрофона.|
-| **expectingInput** | Указывает на то, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
+| **expectingInput** | Указывает, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
 ||Примечание. _Не_ используйте **expectingInput** на устройствах без дисплея. См. [вопросы и ответы о наборе навыков Кортаны](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
 | **ignoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку, если он активно обрабатывает запрос, и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет выполнен.  |
 
@@ -156,11 +156,11 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Отображение карт в Кортане
 
 Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие форматированные карточки:
-* [HeroCard (имиджевая карточка)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
-* [ReceiptCard (карточка квитанции)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
-* [ThumbnailCard (эскизная карточка)](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
+* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html);
+* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html);
+* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html).
 
-Сведения о том, как эти карточки выглядят в Кортане, см. в разделе [Card design best practices][CardDesign] (Рекомендации по проектированию карточек для Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
+Сведения о том, как эти карты выглядят в Кортане, см. в разделе [Principles of Cortana Skills design][CardDesign] (Принципы проектирования навыков Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
 
 Следующий код демонстрирует, как добавить свойства **speak** и **inputHint** в сообщение, содержащее карту Hero.
 
@@ -444,6 +444,5 @@ bot.dialog('PlayGameDialog', function (session, args) {
 [Cortana-Publish]: https://aka.ms/cortana-publish
 
 
-[CortanaTry]: https://aka.ms/try-cortana-bot
 [CortanaChannel]: https://aka.ms/bot-cortana-channel
 [Cortana-TestBestPractice]: https://aka.ms/cortana-test-best-practice

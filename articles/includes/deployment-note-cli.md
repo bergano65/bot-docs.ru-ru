@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: cc7e656d7c8a61e7bf784db579d0065c3bff331a
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035772"
+---
 Если вы используете такие службы, как LUIS, необходимо передавать `luisAuthoringKey`. Если вы хотите использовать существующую группу ресурсов Azure, добавьте в описанную выше команду аргумент `groupName`.
 
 Мы настоятельно рекомендуем использовать параметр `verbose` для устранения проблем, которые могут возникнуть во время развертывания бота. Ниже описаны дополнительные параметры для команды `msbot clone services`.

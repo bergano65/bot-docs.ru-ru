@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 9c5c13b9693c34a6a50352fa12a0a7ef66317b95
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804861"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035705"
 ---
 Затем создайте ресурс бота, в котором вы будете публиковать этот бот. Это подготовит в Azure необходимые ресурсы и создаст приложение бота, вместо которого вы запишете локальную версию бота.
 

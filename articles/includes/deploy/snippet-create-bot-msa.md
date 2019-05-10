@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: fed6222fb9cf2d7793776c5575dfbcda49b54224
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: 14d9632ad578014a36b5f13e6dee883e2a6e1722
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360920"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035685"
 ---
-1. Перейдите на [**портал регистрации приложений**](https://apps.dev.microsoft.com/).
+1. Перейдите на [**портал регистрации приложений**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 1. Щелкните **Add an app** (Добавить приложение), чтобы зарегистрировать приложение, затем создайте **Application Id** (Идентификатор приложения) и щелкните **Generate New Password** (Создать пароль). Если у вас уже есть приложение и пароль для него, но вы не помните этот пароль, следует создать новый пароль в разделе секретов приложения.
 1. Сохраните идентификатор приложения и созданный пароль, чтобы применить их в команде `az bot create`.  
 

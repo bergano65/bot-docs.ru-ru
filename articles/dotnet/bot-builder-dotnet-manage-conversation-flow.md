@@ -10,11 +10,11 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: cfb849474c23c62a666e013c700b755519c1868a
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453809"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563493"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Управление потоком общения с помощью диалогов
 

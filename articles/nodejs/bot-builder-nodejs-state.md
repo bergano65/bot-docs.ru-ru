@@ -10,11 +10,11 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 6d653e47d2e906c6306134804c7731b374d830ba
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225009"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563963"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -198,7 +198,7 @@ session.dialogData = {};
 Теперь, когда вы ознакомились с механизмами управления данными о состоянии, давайте разберемся, как можно их использовать для более эффективного управления потоком беседы.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-nodejs-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
+> [Управление потоком общения с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 - [Запрос пользователю на ввод данных](bot-builder-nodejs-dialog-prompt.md)

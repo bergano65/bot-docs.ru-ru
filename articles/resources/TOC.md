@@ -1,9 +1,8 @@
-# Корпоративный шаблон
-## [Обзор](../v4sdk/bot-builder-enterprise-template-overview.md)
-## [Приступая к работе](../v4sdk/bot-builder-enterprise-template-getting-started.md)
-## [Настройка шаблона](../v4sdk/bot-builder-enterprise-template-customize.md)
-# Виртуальный помощник 
+# Виртуальный помощник
 ## [Обзор](../v4sdk/bot-builder-virtual-assistant-introduction.md)
+## [Общие сведения о шаблонах](../v4sdk/bot-builder-virtual-assistant-template.md)
+# Навыки 
+## [Обзор](../v4sdk/bot-builder-skills-overview.md)
 # [Часто задаваемые вопросы](../bot-service-resources-bot-framework-faq.md)
 # [Получение поддержки](../bot-service-resources-links-help.md)
 # [Справочник по использованию каналов](../bot-service-channels-reference.md)
