@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/26/2019
-ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 4/30/2019
+ms.openlocfilehash: c208cef52d1850a00b62828ae0ea622a2606ec5b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224852"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033421"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Устранение неполадок, связанных с конфигурацией бота
 
@@ -72,7 +72,7 @@ ms.locfileid: "57224852"
 
 ### <a name="channel-specific-behavior"></a>Особое поведение для канала
 
-Возможно, в реализации разных каналов различаются некоторые функции. Например, сейчас не все каналы поддерживают адаптивные карточки. Большинство каналов поддерживают кнопки, но отображают их по-разному. Если вы заметите различия в поведении определенных типов сообщений в разных каналах, используйте [Channel Inspector](https://docs.botframework.com/channel-inspector/channels/Skype).
+Возможно, в реализации разных каналов различаются некоторые функции. Например, сейчас не все каналы поддерживают адаптивные карточки. Большинство каналов поддерживают кнопки, но отображают их по-разному. Если вы заметите различия в поведении определенных типов сообщений в разных каналах, см. [справочник по использованию каналов](bot-service-channels-reference.md).
 
 Ниже приведены некоторые ссылки с дополнительной информацией по отдельным каналам.
 

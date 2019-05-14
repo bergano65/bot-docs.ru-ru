@@ -8,15 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/13/2017
-ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.date: 4/13/2019
+ms.openlocfilehash: 17d80fe4d4730ed294b770fd05bc5d7ea3d114af
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591165"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033038"
 ---
 # <a name="manage-a-bot"></a>Управление ботом
+
+[!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
 В этом разделе рассматривается управление ботами с помощью портала Azure.
 
@@ -46,17 +48,11 @@ ms.locfileid: "56591165"
 
 ![Параметры службы приложений](~/media/azure-manage-a-bot/app-service-settings.png)
 
-Колонка **Параметры приложения** содержит подробные сведения о боте, например о его среде, параметрах отладки и ключах параметров приложения, включая botFilePath and botFileSecret.
+Колонка **Application Settings** (Параметры приложения) содержит подробные сведения о боте, например о его среде, параметрах отладки и ключах параметров приложения.
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID и MicrosoftAppPassword
 
-**MicrosoftAppID** и **MicrosoftAppPassword** хранятся в файле `.bot` бота. Чтобы получить эти значения, скачайте файл бота и расшифруйте его. Это может быть необходимо при локальном тестировании с использованием идентификатора и пароля.
-
-### <a name="bot-file-path-and-secret"></a>Путь к файлу и секрет бота
-
-Значения **botFilePath** и **botFileSecret** для вашего бота можно найти в колонке **Параметры приложения**.
-
-![Путь к файлу и секрет бота (Майкрософт)](~/media/azure-manage-a-bot/app-settings.png)
+**MicrosoftAppID** и **MicrosoftAppPassword** хранятся в файле конфигурации бота или Azure Key Vault. Чтобы извлечь их, скачайте файл параметров или конфигурации бота либо обратитесь к Azure Key Vault. Это может быть необходимо при локальном тестировании с использованием идентификатора и пароля.
 
 > [!NOTE]
 > Служба бота **Регистрация каналов бота** поставляется с идентификатором *MicrosoftAppID*, но поскольку с ней не связана ни одна служба приложений, для нее нет колонки **Параметры приложения**, где вы можете найти значение *MicrosoftAppPassword*. Чтобы получить пароль, его необходимо создать. Сведения о создании пароля для службы **Регистрация каналов бота** см. в разделе [Пароль регистрации каналов бота](bot-service-quickstart-registration.md#bot-channels-registration-password).

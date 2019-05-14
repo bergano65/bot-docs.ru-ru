@@ -8,19 +8,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.date: 4/30/2019
+ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711978"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033085"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Устранение неполадок при ошибках HTTP 500
 
 Если вы столкнулись с ошибками HTTP 500, первым шагом для устранения неполадок будет включение Application Insights.
 
-В примерах luis-with-appinsights ([C#](https://aka.ms/cs-luis-with-appinsights-sample) / [JS](https://aka.ms/js-luis-with-appinsights-sample)) и qna-with-appinsights ([C#](https://aka.ms/qna-with-appinsights) / [JS](https://aka.ms/js-qna-with-appinsights-sample)) представлены боты, которые поддерживают Azure Application Insights. См. сведения о добавлении Application Insights к существующему боту в статье [о телеметрии аналитики бесед](https://aka.ms/botPowerBiTemplate).
+<!-- TODO: Add links back in once there's a fresh AppInsights sample.
+The luis-with-appinsights ([C# sample](https://aka.ms/cs-luis-with-appinsights-sample) / [JS sample](https://aka.ms/js-luis-with-appinsights-sample)) and qna-with-appinsights ([C# sample](https://aka.ms/qna-with-appinsights) / [JS sample](https://aka.ms/js-qna-with-appinsights-sample)) samples demonstrate bots that support Azure Application Insights.
+-->
+См. подробнее о добавлении Application Insights к существующему боту в инструкциях по [использованию телеметрии аналитики бесед](https://aka.ms/botframeworkanalytics).
 
 ## <a name="enable-application-insights-on-aspnet"></a>Включение Application Insights для ASP.NET
 
@@ -71,7 +74,7 @@ union_all
 
 ### <a name="ensure-configuration-files-are-being-copied-net-only"></a>Проверка копирования файлов конфигурации (только для .NET)
 
-Убедитесь, что файлы конфигурации `.bot` и `appsettings.json` правильно пакуются в процессе развертывания.
+Убедитесь, что файл `appsettings.json` и любые другие файлы конфигурации правильно упаковываются в процессе развертывания.
 
 #### <a name="application-assemblies"></a>Сборки приложения
 
@@ -86,7 +89,7 @@ union_all
 - Microsoft.AI.DependencyCollector
 - Microsoft.AI.Agent.Intercept
 
-Убедитесь, что файлы конфигурации `.bot` и `appsettings.json` правильно пакуются в процессе развертывания.
+Убедитесь, что файл `appsettings.json` и любые другие файлы конфигурации правильно упаковываются в процессе развертывания.
 
 #### <a name="appsettingsjson"></a>appsettings.json
 
@@ -114,8 +117,6 @@ union_all
 
 ```json
 {
-    "botFilePath": "mybot.bot",
-    "botFileSecret": "<my secret>",
     "ApplicationInsights": {
         "InstrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
@@ -124,12 +125,13 @@ union_all
 
 ---
 
-### <a name="verify-bot-config-file"></a>Проверка файла конфигурации .bot
+### <a name="verify-config-file"></a>Проверка файла конфигурации
 
-Убедитесь, что в файл .bot включен ключ Application Insights.
+Убедитесь, что в файл конфигурации включен ключ Application Insights.
 
 ```json
-    {
+{
+    "ApplicationInsights": {
         "type": "appInsights",
         "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -140,7 +142,8 @@ union_all
         "applicationId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "apiKeys": {},
         "id": ""
-    },
+    }
+},
 ```
 
 ### <a name="check-logs"></a>Проверка журналов

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783363"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032925"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -28,18 +28,17 @@ ms.locfileid: "55783363"
 
 Поиск Azure — это служба Azure, которая обеспечивает поиск по ключевым словам, встроенные лингвистические правила, настраиваемую оценку, фасетную навигацию и многое другое. Поиск Azure может индексировать содержимое из различных источников, включая базы данных SQL Azure, DocumentDB, хранилище BLOB-объектов и хранилище таблиц. Он поддерживает принудительное индексирование для других источников данных и может открывать PDF-файлы, документы Office и другие форматы, содержащие неструктурированные данные. После сбора содержимое переходит в индекс службы поиска Azure, которой бот может отправлять запросы.
 
-
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите пакет Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) в проект бота. 
+Установите пакет Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) в проект бота.
 
-В решении бота требуются приведенные ниже три проекта C#. Эти проекты обеспечивают дополнительные возможности для ботов и Поиска Azure. Создайте вилку проектов из [GitHub](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search) или напрямую скачайте исходный код.
+В решении бота требуются приведенные ниже три проекта C#. Эти проекты обеспечивают дополнительные возможности для ботов и Поиска Azure. Создайте вилку проектов из [GitHub](https://aka.ms/v3-cs-search-demo) или напрямую скачайте исходный код.
 
-* [Search.Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Azure) определяет вызов службы Azure. 
-* [Search.Contracts](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Contracts) определяет универсальные интерфейсы и модели данных для обработки данных.
-* [Search.Dialogs](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Dialogs) включает в себя различные универсальные диалоги Bot Builder, используемые для отправки запросов к Поиску Azure.
+- Проект **Search.Azure** определяет вызов службы Azure.
+- Проект **Search.Contracts** определяет универсальные интерфейсы и модели данных для обработки данных.
+- Проект **Search.Dialogs** включает разные универсальные диалоги Bot Builder, используемые для отправки запросов к Поиску Azure.
 
-## <a name="configure-azure-search-settings"></a>Настройка параметров Поиска Azure 
+## <a name="configure-azure-search-settings"></a>Настройка параметров Поиска Azure
 
 Настройте параметры Поиска Azure в файле **Web.config** проекта, указав собственные учетные данные Поиска Azure в полях значений. Конструктор в классе `AzureSearchClient` будет использовать эти параметры для регистрации и привязки бота к службе Azure.
 
@@ -176,7 +175,8 @@ public class SearchHitStyler : PromptStyler
 Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для .NET, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-* [Поиск Azure][search]
-* [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-dotnet-dialogs.md)
+
+- [Поиск Azure][search]
+- [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-dotnet-dialogs.md)
 
 [search]: /azure/search/search-what-is-azure-search

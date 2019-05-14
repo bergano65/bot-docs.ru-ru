@@ -1,21 +1,18 @@
 ---
-title: Требования и рекомендации для интерактивных мультимедийных ботов | Документация Майкрософт
-description: Важные требования и рекомендации, связанные с созданием интерактивных мультимедийных ботов для Skype с помощью пакета SDK Bot Framework для .NET.
-author: ssulzer
-ms.author: ssulzer
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 8868ee0d72aa0de6480a392368469b6adf18b561
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224939"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032907"
 ---
+<a name="--"></a><!--
+---
+заголовок: Требования и рекомендации по использованию интерактивных мультимедийных ботов | Документация Майкрософт description: Важные требования и рекомендации, связанные с созданием интерактивных мультимедийных ботов для Skype с помощью пакета SDK Bot Framework для .NET.
+author: ssulzer ms.author: ssulzer manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Требования и рекомендации для интерактивных мультимедийных ботов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -54,3 +51,4 @@ ms.locfileid: "54224939"
   2. В настоящее время платформа мультимедиа в реальном времени не позволяет использовать преимущества графических процессоров (GPU), доступных на виртуальной машине, для разгрузки кодирования и декодирования видео в формате H.264. Вместо этого кодирование и декодирование видео выполняется в программном обеспечении на ЦП. Если доступен GPU, бот может использовать его преимущества для отрисовки графики (например, если бот использует модуль трехмерной графики).
 
 - Экземпляр виртуальной машины, на котором размещен интерактивный мультимедийный бот, должен иметь по крайней мере 2 ядра ЦП. Для Azure рекомендуется использовать виртуальную машину серии Dv2. Подробные сведения о типах виртуальных машин Azure доступны в <a href="/azure/virtual-machines/windows/sizes-general" target="_blank">документации Azure</a>. 
+-->

@@ -1,13 +1,21 @@
+---
+ms.openlocfilehash: 04f9101d0cf29618fb7d50e126c008190064a831
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199392"
+---
 ## <a name="prerequisites"></a>Предварительные требования
-- Visual Studio [2017](https://www.visualstudio.com/downloads).
-- Шаблон для пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix).
-- Bot Framework Channel [Emulator](https://aka.ms/Emulator-wiki-getting-started).
-- Навыки разработки для [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index).
+- Visual Studio [2017 или 2017](https://www.visualstudio.com/downloads).
+- Шаблон пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix).
+- [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+- Опыт работы с [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index).
 
 ## <a name="create-a-bot"></a>Создание бота
 Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований.
 
-В Visual Studio создайте проект бота с использованием шаблона **бота Echo для Bot Framework** версии 4.
+В Visual Studio создайте проект бота с использованием шаблона **эхо-бота для Bot Framework версии 4**.
 
 ![Проект Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
@@ -24,8 +32,8 @@
 
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
-1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
-2. Выберите BOT-файл, расположенный в каталоге с созданным решением Visual Studio.
+1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+2. Заполните поля для бота, а затем щелкните **Save and connect** (Сохранить и подключить).
 
 ## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 

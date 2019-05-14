@@ -10,34 +10,38 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 4/13/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1f74e34c0eaf303e612f94605104482cd5f1f080
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 417833b380e80788e26682ce3abd9cc98199eee5
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904503"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032820"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Вы можете выполнять операции записи и чтения непосредственно в объекте хранилища, не используя ПО промежуточного слоя или объект контекста. Это может быть необходимо для данных бота, которые поступают из источника за пределами потока общения бота. Например, предположим, что пользователь запрашивает у бота прогноз погоды. Тогда бот извлекает прогноз для указанной даты, считывая его из внешней базы данных. Содержимое базы данных о погоде не зависит от сведений о пользователе или от контекста общения, поэтому вы можете только читать его напрямую из хранилища, вместо использования диспетчера состояния. Примеры кода в этой статье демонстрируют, как выполнять операции записи и чтения в хранилище с использованием **хранилища в памяти**, **Cosmos DB**, **хранилища BLOB-объектов** и **хранилища расшифровок в BLOB-объектах Azure**. 
+Вы можете выполнять операции записи и чтения непосредственно в объекте хранилища, не используя ПО промежуточного слоя или объект контекста. Это может требоваться для данных, которые бот использует для сохранения беседы, или данных, которые поступают из источника за пределами потока общения бота. В рамках этой модели хранилища данные считываются непосредственно из хранилища без использования диспетчера состояний. Примеры кода в этой статье демонстрируют, как выполнять операции записи и чтения в хранилище с использованием **хранилища в памяти**, **Cosmos DB**, **хранилища BLOB-объектов** и **хранилища расшифровок в BLOB-объектах Azure**. 
 
 ## <a name="prerequisites"></a>Предварительные требования
-- Если у вас еще нет подписки Azure, создайте [бесплатную](https://azure.microsoft.com/en-us/free/) учетную запись Azure, прежде чем начинать работу.
-- Установка Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
+- Если у вас еще нет подписки Azure, создайте [бесплатную](https://azure.microsoft.com/free/) учетную запись Azure, прежде чем начинать работу.
+- Ознакомьтесь с руководством по локальному созданию бота для [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart) или [NodeJs](https://aka.ms/bot-framework-www-node-js-quickstart).
+- Шаблон для пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix) или [NodeJS](https://nodejs.org) и [Yeoman](http://yeoman.io).
+
+## <a name="about-this-sample"></a>Об этом примере
+Пример кода в этой статье определяет структуру базового эхо-бота. Добавив дополнительный код (см. ниже), вы сможете расширить функции этого бота. Этот расширенный код создает список для хранения вводимых пользователем данных по мере получения. На каждом шаге полный список этих данных возвращается пользователю. Структура данных, содержащая этот список, записывается в хранилище в конце соответствующего шага. Мы рассмотрим разные типы хранилищ по мере добавления расширенных функций в пример кода.
 
 ## <a name="memory-storage"></a>Хранилище в памяти
 
-Сначала мы создадим бот, который будет выполнять операции записи и чтения данных в хранилище в памяти. Хранилище в памяти используется только для тестирования и не предназначено для рабочей среды. Прежде чем публиковать бот, настройте использование хранилища в Cosmos DB или хранилища BLOB-объектов.
+Пакет SDK Bot Framework позволяет хранить вводимые пользователем данные с помощью размещенного в памяти хранилища. Хранилище в памяти используется только для тестирования и не предназначено для рабочей среды. Постоянные хранилища, такие как хранилище базы данных, лучше всего подходят для ботов в рабочей среде. Прежде чем публиковать бот, настройте использование хранилища в Cosmos DB или хранилища BLOB-объектов.
 
 #### <a name="build-a-basic-bot"></a>Создание базового бота
 
-Остальная часть этой статьи описывает использование эхо-бота. Пример кода эхо-бота для создания этого проекта можно найти здесь: [пример C#](https://aka.ms/cs-echobot-sample) или [примере JS](https://aka.ms/js-echobot-sample). Для подключения к боту, взаимодействия с ним и его тестирования можно использовать эмулятор Bot Framework. В следующем примере каждое сообщение от пользователя добавляется в список. Структура данных, содержащая список, записывается в хранилище.
+Остальная часть этой статьи описывает использование эхо-бота. Пример кода эхо-бота можно создать локально для [C#](https://aka.ms/bot-framework-www-c-sharp-quickstart) или [JS](https://aka.ms/bot-framework-www-node-js-quickstart).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**MyBot.cs**
+**EchoBot.cs**
 ```csharp
 using System;
 using System.Threading.Tasks;
@@ -47,32 +51,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-// Create local Memory Storage.
-private static readonly MemoryStorage _myStorage = new MemoryStorage();
-
-// Create cancellation token (used by Async Write operation).
-public CancellationToken cancellationToken { get; private set; }
-
-// Class for storing a log of utterances (text of messages) as a list.
-public class UtteranceLog : IStoreItem
+// Represents a bot saves and echoes back user input.
+public class EchoBot : ActivityHandler
 {
-     // A list of things that users have said to the bot
-     public List<string> UtteranceList { get; } = new List<string>();
+   // Create local Memory Storage.
+   private static readonly MemoryStorage _myStorage = new MemoryStorage();
 
-     // The number of conversational turns that have occurred        
-     public int TurnNumber { get; set; } = 0;
+   // Create cancellation token (used by Async Write operation).
+   public CancellationToken cancellationToken { get; private set; }
 
-     // Create concurrency control where this is used.
-     public string ETag { get; set; } = "*";
-}
-
-// Every Conversation turn for our Bot calls this method.
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{     
-   if (turnContext.Activity.Type == ActivityTypes.Message)
+   // Class for storing a log of utterances (text of messages) as a list.
+   public class UtteranceLog : IStoreItem
    {
-      // Replace the two lines of code from original MyBot code with the following:
-      
+      // A list of things that users have said to the bot
+      public List<string> UtteranceList { get; } = new List<string>();
+
+      // The number of conversational turns that have occurred        
+      public int TurnNumber { get; set; } = 0;
+
+      // Create concurrency control where this is used.
+      public string ETag { get; set; } = "*";
+   }
+     
+   // Echo back user input.
+   protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+   {
       // preserve user input.
       var utterance = turnContext.Activity.Text;  
       // make empty local logitems list.
@@ -93,20 +96,20 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
       // If no stored messages were found, create and store a new entry.
       if (logItems is null)
       {
-            // add the current utterance to a new object.
-            logItems = new UtteranceLog();
-            logItems.UtteranceList.Add(utterance);
-            // set initial turn counter to 1.
-            logItems.TurnNumber++;
+         // add the current utterance to a new object.
+         logItems = new UtteranceLog();
+         logItems.UtteranceList.Add(utterance);
+         // set initial turn counter to 1.
+         logItems.TurnNumber++;
 
-            // Show user new user message.
-            await turnContext.SendActivityAsync($"{logItems.TurnNumber}: The list is now: {string.Join(", ", logItems.UtteranceList)}");
+         // Show user new user message.
+         await turnContext.SendActivityAsync($"{logItems.TurnNumber}: The list is now: {string.Join(", ", logItems.UtteranceList)}");
 
-            // Create Dictionary object to hold received user messages.
-            var changes = new Dictionary<string, object>();
-            {
-               changes.Add("UtteranceLog", logItems);
-            }
+         // Create Dictionary object to hold received user messages.
+         var changes = new Dictionary<string, object>();
+         {
+            changes.Add("UtteranceLog", logItems);
+         }
          try
          {
             // Save the user message to your Storage.
@@ -146,50 +149,52 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
             await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
          }
       }
+      ...  // OnMessageActivityAsync( )
    }
 }
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**index.js**
+Чтобы использовать файл конфигурации .env, нужно установить дополнительный пакет. Если он не установлен, получите пакет dotnet с помощью npm:
+
+```powershell
+npm install --save dotenv
+```
+
+**bot.js**
 ```javascript
-const { BotFrameworkAdapter, ConversationState, MemoryStorage } = require('botbuilder');
+const { ActivityHandler, MemoryStorage } = require('botbuilder');
 const restify = require('restify');
 
 // Add memory storage.
 var storage = new MemoryStorage();
 
-// const conversationState = new ConversationState(storage);
-// adapter.use(conversationState);
-
-// Listen for incoming requests - adds storage for messages.
-server.post('/api/messages', (req, res) => {
-    adapter.processActivity(req, res, async (context) => {
-
-        if (context.activity.type === 'message') {
-            // Route to main dialog.
-            await myBot.onTurn(context);
-            // Save updated utterance inputs.
-            await logMessageText(storage, context);
-        }
-        else {
-            // Just route to main dialog.
-            await myBot.onTurn(context);
-        } 
+// Process incoming requests - adds storage for messages.
+class MyBot extends ActivityHandler {
+    constructor() {
+        super();
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        this.onMessage(async turnContext => { console.log('this gets called (message)'); 
+        await turnContext.sendActivity(`You said '${ turnContext.activity.text }'`); 
+        // Save updated utterance inputs.
+        await logMessageText(storage, turnContext);
     });
-});
+        this.onConversationUpdate(async turnContext => { console.log('this gets called (conversation update)'); 
+        await turnContext.sendActivity('[conversationUpdate event detected]'); });
+    }
+}
 
 // This function stores new user messages. Creates new utterance log if none exists.
-async function logMessageText(storage, context) {
-    let utterance = context.activity.text;
+async function logMessageText(storage, turnContext) {
+    let utterance = turnContext.activity.text;
+    // debugger;
     try {
         // Read from the storage.
         let storeItems = await storage.read(["UtteranceLogJS"])
         // Check the result.
         var UtteranceLogJS = storeItems["UtteranceLogJS"];
-
         if (typeof (UtteranceLogJS) != 'undefined') {
             // The log exists so we can write to it.
             storeItems["UtteranceLogJS"].turnNumber++;
@@ -200,13 +205,13 @@ async function logMessageText(storage, context) {
 
             try {
                 await storage.write(storeItems)
-                context.sendActivity(`${numStored}: You stored: ${storedString}`);
+                turnContext.sendActivity(`${numStored}: The list is now: ${storedString}`);
             } catch (err) {
-                context.sendActivity(`Write failed of UtteranceLogJS: ${err}`);
+                turnContext.sendActivity(`Write failed of UtteranceLogJS: ${err}`);
             }
-
-         } else {
-            context.sendActivity(`Creating and saving new utterance log`);
+        }
+        else{
+            turnContext.sendActivity(`Creating and saving new utterance log`);
             var turnNumber = 1;
             storeItems["UtteranceLogJS"] = { UtteranceList: [`${utterance}`], "eTag": "*", turnNumber }
             // Gather info for user message.
@@ -215,167 +220,325 @@ async function logMessageText(storage, context) {
 
             try {
                 await storage.write(storeItems)
-                context.sendActivity(`${numStored}: You stored: ${storedString}`);
+                turnContext.sendActivity(`${numStored}: The list is now: ${storedString}`);
             } catch (err) {
-                context.sendActivity(`Write failed: ${err}`);
+                turnContext.sendActivity(`Write failed: ${err}`);
             }
         }
-    } catch (err) {
-        context.sendActivity(`Read rejected. ${err}`);
-    };
+    }
+    catch (err){
+        turnContext.sendActivity(`Read rejected. ${err}`);
+    }
 }
 
-```
+module.exports.MyBot = MyBot;
 
+```
 ---
 
 ### <a name="start-your-bot"></a>Запуск бота
 Запустите бот на локальном компьютере.
 
 ### <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
-После этого запустите эмулятор и подключитесь к боту в эмуляторе.
+- Установите [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme). После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
-1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
-2. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
+1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+2. Заполните поля для подключения к боту, используя сведения на веб-странице, отображаемой при запуске бота.
 
 ### <a name="interact-with-your-bot"></a>Взаимодействие с ботом
-Отправьте сообщение боту, и он отобразит список полученных сообщений.
-![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
+Отправьте сообщение боту. Он отобразит список полученных сообщений.
 
- 
+![Окно Bot Framework Emulator](./media/emulator-direct-storage-test.png)
+
 ## <a name="using-cosmos-db"></a>Использование Cosmos DB
 Начав использовать хранилище в памяти, мы изменим код, чтобы начать работу с Azure Cosmos DB. Cosmos DB — это глобально распределенная многомодельная база данных Майкрософт. Azure Cosmos DB позволяет гибко и независимо масштабировать пропускную способность и ресурсы хранилища в любом количестве регионов Azure. Она гарантирует пропускную способность, задержку, доступность и согласованность в соответствии с комплексными Соглашениями об уровне обслуживания (SLA). 
 
 ### <a name="set-up"></a>Настройка
-Для использования Cosmos DB в боте необходимо выполнить некоторое настройки, прежде чем приступать к написанию кода.
+Для использования Cosmos DB в боте необходимо выполнить некоторое настройки, прежде чем приступать к написанию кода. См. подробнее о создании приложения и базы данных Cosmos DB для [dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) и [Node.js](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
 
-#### <a name="create-your-database-account"></a>Создание учетной записи базы данных
+### <a name="create-your-database-account"></a>Создание учетной записи базы данных
+
 1. В новом окне браузера войдите на [портал Azure](http://portal.azure.com).
+
+![Создание базы данных Cosmos DB](./media/create-cosmosdb-database.png)
+
 2. Выберите **Создать ресурс > Базы данных > Azure Cosmos DB**.
-3. На странице **Новая учетная запись** укажите уникальное имя в поле **Идентификатор**. В поле **API** выберите **SQL** и укажите нужные сведения в полях **Подписка**, **Расположение** и **Группа ресурсов**.
-4. Затем щелкните **Создать**.
+
+![Страница создания учетной записи Cosmos DB](./media/cosmosdb-new-account-page.png)
+
+3. На **странице создания учетной записи** укажите сведения о **подписке** и **группе ресурсов**. Укажите уникальное имя в поле **Имя учетной записи**. Это имя будет включено в URL-адрес для доступа к данным. В поле **API**выберите **Core(SQL)** и укажите ближайшее к вам **расположение**, чтобы ускорить доступ к данным.
+4. Щелкните **Просмотреть и создать**.
+5. Проверив сведения, щелкните **Создать**.
 
 Создание учетной записи займет несколько минут. Подождите, пока на портале не откроется страница с сообщением "Поздравляем! Ваша учетная запись Azure Cosmos DB создана".
 
-##### <a name="add-a-collection"></a>Добавление коллекции
-1. Выберите **Параметры > Создать коллекцию**. Справа отобразится область **Добавление коллекции** (вам может потребоваться прокрутить вправо, чтобы увидеть ее). Из-за последних обновлений Cosmos DB теперь обязательным является ключ секции: _/id_. Этот ключ позволит избежать ошибок запросов между секциями.
+### <a name="add-a-collection"></a>Добавление коллекции
 
 ![Добавление коллекции Cosmos DB](./media/add_database_collection.png)
 
-2. Имя новой базы данных — bot-cosmos-sql-db, а идентификатор коллекции — bot-storage. Эти значения будут использованы в примерах кода ниже.
- -
+1. Выберите **Параметры > Создать коллекцию**. Справа отобразится область **Добавление коллекции** (вам может потребоваться прокрутить вправо, чтобы увидеть ее). Из-за последних обновлений Cosmos DB теперь обязательным является ключ секции: _/id_. Этот ключ позволит избежать ошибок запросов между секциями.
+
 ![База данных Cosmos](./media/cosmos-db-sql-database.png)
 
-3. Универсальный код ресурса (URI) и ключ конечной точки доступны на вкладке **Ключи** параметров базы данных. Эти значения понадобятся для настройки кода далее. 
+2. Имя новой базы данных — bot-cosmos-sql-db, а идентификатор коллекции — bot-storage. Эти значения будут использованы в примерах кода ниже.
 
 ![Ключи Cosmos DB](./media/comos-db-keys.png)
 
-#### <a name="add-configuration-information"></a>Добавление сведений о конфигурации
+3. Универсальный код ресурса (URI) и ключ конечной точки доступны на вкладке **Ключи** параметров базы данных. Эти значения понадобятся для настройки кода далее. 
+
+### <a name="add-configuration-information"></a>Добавление сведений о конфигурации
 Данные конфигурации, добавляемые в хранилище Cosmos DB, короткие и простые. По мере усложнения бота вы можете добавлять дополнительные параметры конфигурации, используя те же методы. В этом примере используются имена базы данных и коллекции Cosmos DB из примера выше.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**MyBot.cs**
+**EchoBot.cs**
 ```csharp
-private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
-private const string CosmosDBKey = "<your-cosmos-db-account-key>";
-private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
-private const string CosmosDBCollectionName = "bot-storage";
+public class EchoBot : ActivityHandler
+{
+   private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
+   private const string CosmosDBKey = "<your-cosmos-db-account-key>";
+   private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
+   private const string CosmosDBCollectionName = "bot-storage";
+   ...
+   
+}
 ```
 
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте следующие сведения в файл `.env`.
 
 Файл с расширением **.env**
 ```javascript
-ACTUAL_SERVICE_ENDPOINT=<your database URI>
-ACTUAL_AUTH_KEY=<your database key>
-DATABASE=bot-cosmos-sql-db
-COLLECTION=bot-storage
+DB_SERVICE_ENDPOINT="<your-Cosmos-db-URI>"
+AUTH_KEY="<your-cosmos-db-account-key>"
+DATABASE="<bot-cosmos-sql-db>"
+COLLECTION="<bot-storage>"
 ```
 ---
 
 #### <a name="installing-packages"></a>Установка пакетов
 Убедитесь, что вы установили пакеты, необходимые для работы с Cosmos DB.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```powershell
 Install-Package Microsoft.Bot.Builder.Azure
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Вы можете добавить ссылки на пакет botbuilder-azure в свой проект с помощью npm: -->
-
+Вы можете добавить ссылки на пакет botbuilder-azure в свой проект с помощью npm.
+>**Примечание.** Этот пакет npm зависит от версии Python, установленной на компьютере разработки. Если вы еще не установили Python, перейдите по следующей ссылке: [Python.org](https://www.python.org/downloads/)
 
 ```powershell
 npm install --save botbuilder-azure 
 ```
 
-Чтобы использовать файл конфигурации с расширением .env, нужно установить дополнительный пакет. Сначала установите пакет dotnet с помощью npm:
+При необходимости вы можете получить пакет dotnet с помощью npm, чтобы получить доступ к параметрам файла `.env`.
 
 ```powershell
 npm install --save dotenv
 ```
-
 ---
 
 ### <a name="implementation"></a>Реализация 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Следующий пример кода использует тот же код бота, что и в примере с [хранилищем в памяти](#memory-storage) выше.
-Пример кода ниже демонстрирует реализацию хранилища Cosmos DB для свойства _myStorage_ вместо локального хранилища в памяти.
+Пример кода ниже демонстрирует реализацию хранилища Cosmos DB для свойства _myStorage_ вместо локального хранилища в памяти. Хранилище в памяти закомментировано и заменено ссылкой на Cosmos DB.
 
-**MyBot.cs**
+**EchoBot.cs**
 ```csharp
+
+using System;
+...
 using Microsoft.Bot.Builder.Azure;
-
-// Create local Memory Storage - commented out.
-// private static readonly MemoryStorage _myStorage = new MemoryStorage();
-
-// Replaces Memory Storage with reference to Cosmos DB.
-private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+...
+public class EchoBot : ActivityHandler
 {
-   AuthKey = CosmosDBKey,
-   CollectionId = CosmosDBCollectionName,
-   CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
-   DatabaseId = CosmosDBDatabaseName,
-});
+   // Create local Memory Storage - commented out.
+   // private static readonly MemoryStorage _myStorage = new MemoryStorage();
+
+   // Replaces Memory Storage with reference to Cosmos DB.
+   private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+   {
+      AuthKey = CosmosDBKey,
+      CollectionId = CosmosDBCollectionName,
+      CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
+      DatabaseId = CosmosDBDatabaseName,
+   });
+   
+   ...
+}
+
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Следующий пример кода соответствует примеру с [хранилищем в памяти](#memory-storage), но имеет некоторые отличия.
 
-Импортируйте `CosmosDbStorage` из botbuilder-azure и настройте dotenv для чтения файла `.env`.
+Импортируйте `CosmosDbStorage` из `botbuilder-azure` и настройте dotenv для чтения файла `.env`.
 
-**index.js**
+**bot.js**
+
 ```javascript
 const { CosmosDbStorage } = require("botbuilder-azure");
 ```
 Закомментируйте хранилище в памяти, заменив ссылкой на Cosmos DB.
 
-**index.js**
+**bot.js**
 ```javascript
+// initialized to access values in .env file.
+var dotenv = require('dotenv');
+dotenv.load();
+
 // Create local Memory Storage - commented out.
 // var storage = new MemoryStorage();
 
-// Create access to Cosmos DB storage.
-//Add CosmosDB 
-const storage = new CosmosDbStorage({
-    serviceEndpoint: process.env.ACTUAL_SERVICE_ENDPOINT, 
-    authKey: process.env.ACTUAL_AUTH_KEY, 
+// Create access to CosmosDb Storage - this replaces local Memory Storage.
+var storage = new CosmosDbStorage({
+    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+    authKey: process.env.AUTH_KEY, 
     databaseId: process.env.DATABASE,
-     collectionId: process.env.COLLECTION
+    collectionId: process.env.COLLECTION
 })
 
 ```
-
 ---
+
+## <a name="start-your-bot"></a>Запуск бота
+Запустите бот на локальном компьютере.
+
+## <a name="test-your-bot-with-bot-framework-emulator"></a>Тестирование бота с помощью Bot Framework Emulator
+Подключитесь к боту через Bot Framework Emulator.
+
+1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+2. Заполните поля для подключения к боту, используя сведения на веб-странице, отображаемой при запуске бота.
+
+## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
+Отправьте сообщение боту, и он отобразит список полученных сообщений.
+![Работающий эмулятор](./media/emulator-direct-storage-test.png)
+
+
+### <a name="view-your-data"></a>Просмотр данных
+Если вы запустили бот и сохранили информацию, ее можно просмотреть на портале Azure на вкладке **Обозреватель данных**. 
+
+![Пример Data Explorer](./media/data_explorer.PNG)
+
+
+## <a name="using-blob-storage"></a>Использование хранилища BLOB-объектов 
+Хранилище BLOB-объектов Azure — это решение корпорации Майкрософт для хранения объектов в облаке. Хранилище BLOB-объектов оптимизировано для хранения больших объемов неструктурированных данных, например текстовых или двоичных данных.
+
+### <a name="create-your-blob-storage-account"></a>Создание учетной записи хранилища BLOB-объектов
+Для использования хранилища BLOB-объектов в боте необходимо выполнить некоторые настройки, прежде чем приступать к написанию кода.
+1. В новом окне браузера войдите на [портал Azure](http://portal.azure.com).
+
+![Создание хранилища BLOB-объектов](./media/create-blob-storage.png)
+
+2. Нажмите **Создать ресурс > Хранилище > Учетная запись хранения — BLOB-объект, файл, таблица, очередь**.
+
+![Страница создания учетной записи хранилища BLOB-объектов](./media/blob-storage-new-account.png)
+
+3. На странице **Создание учетной записи** введите **Имя учетной записи хранения**, выберите **Хранилище BLOB-объектов** в поле **Тип учетной записи**, а также укажите нужные сведения в полях **Расположение**, **Группа ресурсов** и **Подписка**.  
+4. Щелкните **Просмотреть и создать**.
+5. Проверив сведения, щелкните **Создать**.
+
+### <a name="create-blob-storage-container"></a>Создание контейнера хранилища BLOB-объектов
+Создав учетную запись хранилища BLOB-объектов, откройте ее, сделав следующее: 
+1. Выберите ресурс.
+2. Откройте учетную запись с помощью Обозревателя службы хранилища (предварительная версия).
+
+![Создание контейнера хранилища BLOB-объектов](./media/create-blob-container.png)
+
+3. Щелкните правой кнопкой "Контейнеры больших двоичных объектов" и выберите _Создать контейнер BLOB-объектов_.
+4. Укажите имя. Это имя будет использоваться в качестве значения <your-blob-storage-container-name> при получении доступа к учетной записи хранилища BLOB-объектов.
+
+#### <a name="add-configuration-information"></a>Добавление сведений о конфигурации
+Найдите ключи к хранилищу BLOB-объектов, которые необходимы для настройки хранилища в вашем боте, как показано выше:
+1. На портале Azure откройте свою учетную запись хранилища BLOB-объектов и выберите **Настройки > Ключи доступа**.
+
+![Нахождение ключей доступа к хранилищу BLOB-объектов](./media/find-blob-storage-keys.png)
+
+_Строка подключения_ key1 будет использоваться в качестве значения <your-blob-storage-account-string>при получении доступа к учетной записи хранилища BLOB-объектов.
+
+#### <a name="installing-packages"></a>Установка пакетов
+При необходимости установите следующие пакеты для использования Cosmos DB.
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```powershell
+Install-Package Microsoft.Bot.Builder.Azure
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Вы можете добавить ссылки на пакет botbuilder-azure в свой проект с помощью npm.
+>**Примечание.** Этот пакет npm зависит от версии Python, установленной на компьютере разработки. Если вы еще не установили Python, перейдите по следующей ссылке: [Python.org](https://www.python.org/downloads/)
+
+```powershell
+npm install --save botbuilder-azure 
+```
+
+При необходимости вы можете получить пакет dotnet с помощью npm, чтобы получить доступ к параметрам файла `.env`.
+
+```powershell
+npm install --save dotenv
+```
+---
+
+### <a name="implementation"></a>Реализация 
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**EchoBot.cs**
+```csharp
+using Microsoft.Bot.Builder.Azure;
+```
+Измените строку кода со свойством _myStorage_ и присвойте этому свойству значение существующей учетной записи хранилища BLOB-объектов.
+
+**EchoBot.cs**
+```csharp
+private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Добавьте следующие сведения в файл `.env`.
+
+Файл с расширением **.env**
+```javascript
+BLOB_NAME="<your-blob-storage-container-name>"
+BLOB_STRING="<your-blob-storage-account-string>"
+```
+
+Обновите файл `bot.js` следующим образом. Вам нужно использовать `BlobStorage` из `botbuilder-azure`.
+
+**bot.js**
+```javascript
+const { BlobStorage } = require("botbuilder-azure");
+```
+
+При необходимости добавьте код для загрузки файла `.env` для реализации хранилища Cosmos DB.
+
+```javascript
+// initialized to access values in .env file.
+var dotenv = require('dotenv');
+dotenv.load();
+```
+Теперь обновите код, чтобы связать _storage_ с существующей учетной записью хранилища BLOB-объектов, закомментировав предыдущие определения хранилища и добавив следующее.
+
+**bot.js**
+```javascript
+var storage = new BlobStorage({
+    containerName: process.env.BLOB_NAME,
+    storageAccountOrConnectionString: process.env.BLOB_STRING
+});
+```
+---
+
+Когда вы свяжете storage с учетной записью хранилища BLOB-объектов, бот сможет сохранять данные в это хранилище и извлекать их оттуда.
 
 ## <a name="start-your-bot"></a>Запуск бота
 Запустите бот на локальном компьютере.
@@ -383,18 +546,134 @@ const storage = new CosmosDbStorage({
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
-1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
-2. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
+1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
+2. Заполните поля для подключения к боту, используя сведения на веб-странице, отображаемой при запуске бота.
 
 ## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 Отправьте сообщение боту, и он отобразит список полученных сообщений.
-![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
 
+![Окно Bot Framework Emulator](./media/emulator-direct-storage-test.png)
 
 ### <a name="view-your-data"></a>Просмотр данных
-Если вы запустили бот и сохранили информацию, ее можно просмотреть на портале Azure на вкладке **Обозреватель данных**. 
+Если вы запустили бот и сохранили информацию, ее можно просмотреть на портале Azure на вкладке **Обозреватель службы хранилища**.
 
-![Пример Data Explorer](./media/data_explorer.PNG)
+## <a name="blob-transcript-storage"></a>Хранилище расшифровок разговоров в BLOB-объектах
+Хранилище расшифровок в BLOB-объектах Azure — это специализированное хранилище, которое позволяет легко сохранять и получать разговоры пользователей в виде записей расшифровок. Использовать хранилище расшифровок разговоров в больших двоичных объектах Azure особенно удобно для автоматической записи данных, вводимых пользователями, и дальнейшего их анализа при отладке бота.
+
+### <a name="set-up"></a>Настройка
+Хранилище расшифровок разговоров в BLOB-объектах Azure использует ту же учетную запись хранилища BLOB-объектов, которая описана в разделах _Создание учетной записи хранилища BLOB-объектов_ и _Добавление сведений о конфигурации_ выше. Теперь добавьте контейнер для хранения расшифровок.
+
+![Создание контейнера для расшифровок](./media/create-blob-transcript-container.png)
+
+1. Откройте учетную запись хранилища BLOB-объектов Azure
+1. Откройте _Обозреватель службы хранилища_.
+1. Щелкните правой кнопкой мыши _Контейнеры больших двоичных объектов_ и выберите _Создать контейнер BLOB-объектов_.
+1. Присвойте имя контейнеру для расшифровок и щелкните _ОК_. (Мы указали mybottranscripts.)
+
+### <a name="implementation"></a>Реализация 
+В коде ниже указатель на хранилище расшифровок `_myTranscripts` подключается к новой учетной записи хранилища BLOB-объектов с расшифровками. Чтобы создать эту ссылку с новым именем контейнера <your-blob-transcript-container-name>, в хранилище BLOB-объектов создается новый контейнер для хранения файлов с расшифровками.
+
+**echoBot.cs**
+```csharp
+using Microsoft.Bot.Builder.Azure;
+
+public class EchoBot : ActivityHandler
+{
+   ...
+   
+   private readonly AzureBlobTranscriptStore _myTranscripts = new AzureBlobTranscriptStore("<your-blob-transcript-storage-account-string>", "<your-blob-transcript-container-name>");
+   
+   ...
+}
+
+```
+
+### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Хранение расшифровок разговоров пользователей в виде BLOB-объектов Azure
+Создав контейнер BLOB-объектов для хранения расшифровок, можно будет сохранять разговоры пользователей с ботом. Эти диалоги можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Каждое действие _перезапуска диалога_ инициирует создание нового списка диалогов с расшифровками. Следующий код сохраняет диалог с пользователем в сохраненном файле с расшифровками.
+- Текущая расшифровка сохраняется с использованием `LogActivityAsync`.
+- Сохраненные расшифровки можно получить с использованием `ListTranscriptsAsync`.
+В этом примере кода идентификатор каждой сохраненной расшифровки включается в список storedTranscripts. Позже этот список используется для управления количеством расшифровок, хранимых в больших двоичных объектах.
+
+**echoBot.cs**
+```csharp
+
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    await _myTranscripts.LogActivityAsync(turnContext.Activity);
+
+    List<string> storedTranscripts = new List<string>();
+    PagedResult<Microsoft.Bot.Builder.TranscriptInfo> pagedResult = null;
+    var pageSize = 0;
+    do
+    {
+       pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+       pageSize = pagedResult.Items.Count();
+
+       // transcript item contains ChannelId, Created, Id.
+       // save the channelIds found by "ListTranscriptsAsync" to a local list.
+       foreach (var item in pagedResult.Items)
+       {
+          storedTranscripts.Add(item.Id);
+       }
+    } while (pagedResult.ContinuationToken != null);
+    
+    ...
+}
+
+```
+
+### <a name="manage-stored-blob-transcripts"></a>Управление расшифровками, хранимыми в больших двоичных объектах
+Хотя хранимые расшифровки можно использовать как средство отладки, со временем их количество превышает возможности хранилища. Дополнительный код ниже использует `DeleteTranscriptAsync` для удаления из хранилища BLOB-объектов всех извлеченных элементов расшифровок, кроме последних трех.
+
+**echoBot.cs**
+```csharp
+
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    await _myTranscripts.LogActivityAsync(turnContext.Activity);
+
+    List<string> storedTranscripts = new List<string>();
+    PagedResult<Microsoft.Bot.Builder.TranscriptInfo> pagedResult = null;
+    var pageSize = 0;
+    do
+    {
+       pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+       pageSize = pagedResult.Items.Count();
+
+       // transcript item contains ChannelId, Created, Id.
+       // save the channelIds found by "ListTranscriptsAsync" to a local list.
+       foreach (var item in pagedResult.Items)
+       {
+          storedTranscripts.Add(item.Id);
+       }
+    } while (pagedResult.ContinuationToken != null);
+    
+    // Manage the size of your transcript storage.
+    for (int i = 0; i < pageSize; i++)
+    {
+       // Remove older stored transcripts, save just the last three.
+       if (i < pageSize - 3)
+       {
+          string thisTranscriptId = storedTranscripts[i];
+          try
+          {
+             await _myTranscripts.DeleteTranscriptAsync("emulator", thisTranscriptId);
+           }
+           catch (System.Exception ex)
+           {
+              await turnContext.SendActivityAsync("Debug Out: DeleteTranscriptAsync had a problem!");
+              await turnContext.SendActivityAsync("exception: " + ex.Message);
+           }
+       }
+    }
+    ...
+}
+
+```
+
+По ссылке ниже можно найти дополнительные сведения о [хранилище BLOB-объектов Azure с расшифровками](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore). 
+
+## <a name="additional-information"></a>Дополнительная информация
 
 ### <a name="manage-concurrency-using-etags"></a>Управление параллелизмом с помощью тегов eTag
 В нашем примере кода бота мы установили свойство `eTag` каждого экземпляра `IStoreItem` равным `*`. Член `eTag` (тег сущности) объекта хранилища используется в Cosmos DB для управления параллелизмом. `eTag` указывает базе данных, что делать, если другой экземпляр бота изменил объект в том же хранилище, в которое записывает данные ваш бот. 
@@ -411,10 +690,11 @@ const storage = new CosmosDbStorage({
 
 Например, предположим, что ваш бот должен изменять сохраненные заметки, но вы не хотите, чтобы он перезаписывал изменения, выполненные другим экземпляром бота. Если другой экземпляр бота внес изменения, пользователь должен изменять последнюю версию со всеми внесенными изменениями.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Во-первых, создайте класс, который реализует `IStoreItem`.
 
+**EchoBot.cs**
 ```csharp
 public class Note : IStoreItem
 {
@@ -426,6 +706,7 @@ public class Note : IStoreItem
 
 Затем создайте начальную заметку, создав объект хранилища и добавив объект в это хранилище.
 
+**EchoBot.cs**
 ```csharp
 // create a note for the first time, with a non-null, non-* ETag.
 var note = new Note { Name = "Shopping List", Contents = "eggs", ETag = "x" };
@@ -439,6 +720,7 @@ await NoteStore.WriteAsync(changes, cancellationToken);
 
 Впоследствии обновите заметку, сохранив значение `eTag`, прочитанное из хранилища.
 
+**EchoBot.cs**
 ```csharp
 var note = NoteStore.ReadAsync<Note>("Note").Result?.FirstOrDefault().Value;
 
@@ -456,11 +738,12 @@ if (note != null)
 Если заметка в хранилище была изменена перед записью ваших изменений, то при вызове `Write` возникнет исключение.
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте в конец кода бота вспомогательную функцию, которая будет записывать пример заметки в хранилище данных.
 Сначала создайте объект `myNoteData`.
 
+**bot.js**
 ```javascript
 // Helper function for writing a sample note to a data store
 async function createSampleNote(storage, context) {
@@ -477,6 +760,7 @@ async function createSampleNote(storage, context) {
 
 Во вспомогательной функции `createSampleNote` инициализируйте объект `changes`, добавьте в него *заметки* и запишите объект в хранилище.
 
+**bot.js**
 ```javascript
 // Write the note data to the "Note" key
 var changes = {};
@@ -487,15 +771,25 @@ changes["Note"] = myNoteData;
 // The first time you write to Note, the eTag is changed from *, and file contents will become:
 //    {"name":"Shopping List","contents":"eggs","eTag":"1"}
 try {
-    await storage.write(changes);
-    await context.sendActivity('Successful created a note.');
+     await storage.write(changes);
+     var list = changes["Note"].contents;
+     await context.sendActivity(`Successful created a note: ${list}`);
 } catch (err) {
-    await context.sendActivity(`Could not create note: ${err}`);
+     await context.sendActivity(`Could not create note: ${err}`);
 }
 ```
 
-Позже для доступа к заметке и ее обновления мы создадим другую вспомогательную функцию. Эта функция вызывается, когда пользователь вводит команду update note для обновления заметки.
+Доступ к вспомогательной функции осуществляется с использованием логики бота путем добавления следующего вызова:
 
+**bot.js**
+```javascript
+// Save a note with etag.
+await createSampleNote(storage, turnContext);
+```
+
+Для последующего получения и обновления созданной заметки мы создадим другую вспомогательную функцию. Она вызывается, когда пользователь вводит команду update note.
+
+**bot.js**
 ```javascript
 async function updateSampleNote(storage, context) {
     try {
@@ -507,9 +801,11 @@ async function updateSampleNote(storage, context) {
         console.log(`Updated note=${JSON.stringify(note)}`);
 
         try {
-            await storage.write(note); // Write the changes back to storage
-            await context.sendActivity('Successfully updated to note.');
-        } catch (err) {            console.log(`Write failed: ${err}`);
+             await storage.write(note); // Write the changes back to storage
+             var list = note["Note"].contents;
+             await context.sendActivity(`Successfully updated note: ${list}`);
+        } catch (err) {            
+             console.log(`Write failed: ${err}`);
         }
     }
     catch (err) {
@@ -518,213 +814,19 @@ async function updateSampleNote(storage, context) {
 }
 ```
 
-Если заметка в хранилище была изменена перед записью ваших изменений, то при вызове `write` возникнет исключение.
+Доступ к вспомогательной функции осуществляется с использованием логики бота путем добавления следующего вызова:
+
+**bot.js**
+```javascript
+// Update a note with etag.
+await updateSampleNote(storage, turnContext);
+```
+
+Если примечание обновлено в хранилище другим пользователем перед попыткой выполнить обратную запись изменений, значение `eTag` не будет больше соответствовать, и при вызове `write` возникнет исключение.
 
 ---
 
 Для поддержания параллелизма всегда считывайте значение свойства из хранилища, затем изменяйте прочитанное свойство, чтобы сохранить `eTag`. При считывании сведений о пользователях из хранилища ответ будет содержать свойство eTag. Если вы изменили данные и записываете обновленные данные в хранилище, ваш запрос должен включать свойство eTag, содержащее то же значение, которое было прочитано ранее. Однако при записи объекта со свойством `eTag`, имеющим значение `*`, будет разрешена перезапись любых других изменений.
-
-## <a name="using-blob-storage"></a>Использование хранилища BLOB-объектов 
-Хранилище BLOB-объектов Azure — это решение корпорации Майкрософт для хранения объектов в облаке. Хранилище BLOB-объектов оптимизировано для хранения больших объемов неструктурированных данных, например текстовых или двоичных данных.
-
-### <a name="create-your-blob-storage-account"></a>Создание учетной записи хранилища BLOB-объектов
-Для использования хранилища BLOB-объектов в боте необходимо выполнить некоторые настройки, прежде чем приступать к написанию кода.
-1. В новом окне браузера войдите на [портал Azure](http://portal.azure.com).
-2. Нажмите **Создать ресурс > Хранилище > Учетная запись хранения — BLOB-объект, файл, таблица, очередь**.
-3. На странице **Создание учетной записи** введите **Имя учетной записи хранения**, выберите **Хранилище BLOB-объектов** в поле **Тип учетной записи**, а также укажите нужные сведения в полях **Расположение**, **Группа ресурсов** и **Подписка**.  
-4. Затем щелкните **Создать**.
-
-![Создание хранилища BLOB-объектов](./media/create-blob-storage.png)
-
-#### <a name="add-configuration-information"></a>Добавление сведений о конфигурации
-
-Найдите ключи к хранилищу BLOB-объектов, которые необходимы для настройки хранилища в вашем боте, как показано выше:
-1. На портале Azure откройте свою учетную запись хранилища BLOB-объектов и выберите **Настройки > Ключи доступа**.
-
-![Нахождение ключей доступа к хранилищу BLOB-объектов](./media/find-blob-storage-keys.png)
-
-Теперь с помощью этих двух ключей мы предоставим доступ из нашего кода к учетной записи хранилища BLOB-объектов.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-using Microsoft.Bot.Builder.Azure;
-```
-Измените строку кода со свойством _myStorage_ и присвойте этому свойству значение существующей учетной записи хранилища BLOB-объектов.
-
-```csharp
-
-
-private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-```javascript
-const mystorage = new BlobStorage({
-   <youy_containerName>,
-   <your_storageAccountOrConnectionString>,
-   <your_storageAccessKey>
-})
-```
----
-
-Когда свойству _myStorage_ будет присвоено значение учетной записи хранилища BLOB-объектов, бот сможет сохранять данные в это хранилище и извлекать их оттуда.
-
-## <a name="start-your-bot"></a>Запуск бота
-Запустите бот на локальном компьютере.
-
-## <a name="start-the-emulator-and-connect-your-bot"></a>Запуск эмулятора и подключение бота
-После этого запустите эмулятор и подключитесь к боту в эмуляторе.
-
-1. Щелкните ссылку **Open Bot** (Открыть бот) на вкладке приветствия в эмуляторе. 
-2. Выберите файл с расширением .bot, расположенный в каталоге созданного проекта.
-
-## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
-Отправьте сообщение боту, и он отобразит список полученных сообщений.
-![Работающий эмулятор](../media/emulator-v4/emulator-running.png)
-
-### <a name="view-your-data"></a>Просмотр данных
-Если вы запустили бот и сохранили информацию, ее можно просмотреть на портале Azure на вкладке **Обозреватель службы хранилища**.
-
-## <a name="blob-transcript-storage"></a>Хранилище расшифровок разговоров в BLOB-объектах
-Хранилище расшифровок в BLOB-объектах Azure — это специализированное хранилище, которое позволяет легко сохранять и получать разговоры пользователей в виде записей расшифровок. Использовать хранилище расшифровок разговоров в BLOB-объектах Azure особенно удобно для автоматической записи данных, вводимых пользователями и дальнейшего их анализа при отладке работы бота.
-
-### <a name="set-up"></a>Настройка
-Хранилище расшифровок разговоров в BLOB-объектах Azure использует ту же учетную запись хранилища BLOB-объектов, которая описана в разделах _Создание учетной записи хранилища BLOB-объектов_ и _Добавление сведений о конфигурации_ выше. Для этой статьи мы добавили новый контейнер BLOB-объектов _mybottranscripts_. 
-
-### <a name="implementation"></a>Реализация 
-В коде ниже указатель на хранилище расшифровок _transcriptStore_ подключается к новой учетной записи хранилища расшифровок в BLOB-объектах. Показанный здесь исходный код решения для хранения бесед пользователя основан на примере [журнала бесед](https://aka.ms/bot-history-sample-code). 
-
-```csharp
-// In Startup.cs
-using Microsoft.Bot.Builder.Azure;
-
-// Enable the conversation transcript middleware.
-blobStore = new AzureBlobTranscriptStore(blobStorageConfig.ConnectionString, storageContainer);
-var transcriptMiddleware = new TranscriptLoggerMiddleware(blobStore);
-options.Middleware.Add(transcriptMiddleware);
-
-// In ConversationHistoryBot.cs
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Azure;
-using Microsoft.Bot.Connector;
-using Microsoft.Bot.Schema;
-
-private readonly AzureBlobTranscriptStore _transcriptStore;
-
-/// <param name="transcriptStore">Injected via ASP.NET dependency injection.</param>
-public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
-{
-    _transcriptStore = transcriptStore ?? throw new ArgumentNullException(nameof(transcriptStore));
-}
-
-```
-
-### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Хранение расшифровок разговоров пользователей в виде BLOB-объектов Azure
-После добавления TranscriptLoggerMiddleware хранилище расшифровок будет запущено автоматически для сохранения бесед пользователя с ботом. Эти разговоры можно позже использовать для отладки, чтобы проанализировать взаимодействие пользователей с ботом. Указанный ниже код извлекает расшифровку, а затем отправляет ее в текущую беседу, если свойство activity.text получает входящее сообщение _!history_. Примечание. Метод SendConversationHistoryAsync поддерживается в каналах Direct Line, веб-чата и эмулятора.
-
-
-```csharp
-/// <summary>
-/// Every Conversation turn for our EchoBot will call this method. 
-/// </summary>
-/// <param name="turnContext">A <see cref="ITurnContext"/> containing all the data needed
-/// for processing this conversation turn. </param>        
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    var activity = turnContext.Activity;
-    if (activity.Type == ActivityTypes.Message)
-    {
-        if (activity.Text == "!history")
-        {
-           // Download the activities from the Transcript (blob store) when a request to upload history arrives.
-           var connectorClient = turnContext.TurnState.Get<ConnectorClient>(typeof(IConnectorClient).FullName);
-           // Get all the message type activities from the Transcript.
-           string continuationToken = null;
-           var count = 0;
-           do
-           {
-               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id, continuationToken);
-               var activities = pagedTranscript.Items
-                  .Where(a => a.Type == ActivityTypes.Message)
-                  .Select(ia => (Activity)ia)
-                  .ToList();
-               
-               var transcript = new Transcript(activities);
-
-               await connectorClient.Conversations.SendConversationHistoryAsync(activity.Conversation.Id, transcript, cancellationToken: cancellationToken);
-
-               continuationToken = pagedTranscript.ContinuationToken;
-           }
-           while (continuationToken != null);
-```
-
-### <a name="find-all-stored-transcripts-for-your-channel"></a>Поиск всех сохраненных расшифровок разговоров для вашего канала
-Для просмотра сохраненных данных можно использовать следующий код, который позволяет найти все объекты _ConversationID_ для всех сохраненных расшифровок разговоров программным способом. Если используется эмулятор бота для тестирования кода, при выборе функции _Начать снова_ начинается новая расшифровка с новым идентификатором _ConversationID_.
-
-```csharp
-List<string> storedTranscripts = new List<string>();
-PagedResult<Transcript> pagedResult = null;
-var pageSize = 0;
-do
-{
-    pagedResult = await _transcriptStore.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
-    
-    // transcript item contains ChannelId, Created, Id.
-    // save the converasationIds (Id) found by "ListTranscriptsAsync" to a local list.
-    foreach (var item in pagedResult.Items)
-    {
-         // Make sure we store an unescaped conversationId string.
-         var strConversationId = item.Id;
-         storedTranscripts.Add(Uri.UnescapeDataString(strConversationId));
-    }
-} while (pagedResult.ContinuationToken != null);
-```
-
-### <a name="retrieve-user-conversations-from-azure-blob-transcript-storage"></a>Извлечение разговоров пользователей из хранилища расшифровок в виде BLOB-объектов Azure
-Сохранив расшифровки разговоров с ботом в хранилище BLOB-объектов Azure, можно извлечь их программным способом для тестирования или отладки, используя метод _GetTranscriptActivities_ экземпляра AzureBlobTranscriptStorage. Следующий пример кода извлекает все расшифровки разговоров с пользователями, каждая из которых содержит данные, собранные за последние 24 часа.
-
-
-```csharp
-var numTranscripts = storedTranscripts.Count();
-for (int i = 0; i < numTranscripts; i++)
-{
-    PagedResult<IActivity> pagedActivities = null;
-    do
-    {
-        string thisConversationId = storedTranscripts[i];
-        // Find all inputs in the last 24 hours.
-        DateTime yesterday = DateTime.Now.AddDays(-1);
-        // Retrieve iActivities for this transcript.
-        pagedActivities = await _myTranscripts.GetTranscriptActivitiesAsync("emulator", thisConversationId, pagedActivities?.ContinuationToken, yesterday);
-        foreach (var item in pagedActivities.Items)
-        {
-            // View as message and find value for key "text" :
-            var thisMessage = item.AsMessageActivity();
-            var userInput = thisMessage.Text;
-         }
-    } while (pagedActivities.ContinuationToken != null);
-}
-```
-
-### <a name="remove-stored-transcripts-from-azure-blob-transcript-storage"></a>Удаление сохраненных расшифровок из хранилища BLOB-объектов Azure
-Завершив тестирование или отладку с использованием записанных разговоров с пользователями, сохраненные расшифровки можно удалить из хранилища BLOB-объектов Azure программным способом. Следующий пример кода удаляет все сохраненные расшифровки разговоров с ботом из хранилища.
-
-
-```csharp
-for (int i = 0; i < numTranscripts; i++)
-{
-   // Remove all stored transcripts except the last one found.
-   if (i > 0)
-   {
-       string thisConversationId = storedTranscripts[i];    
-       await _transcriptStore.DeleteTranscriptAsync("emulator", thisConversationId);
-    }
-}
-```
-
-
-По ссылке ниже можно найти дополнительные сведения о [хранилище расшифровок в виде BLOB-объектов Azure](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore).  
 
 ## <a name="next-steps"></a>Дополнительная информация
 Теперь, когда вы знаете, как напрямую считывать данные из хранилища и записывать данные в хранилища, посмотрим, как сделать это с помощью диспетчера состояний.

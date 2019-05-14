@@ -1,21 +1,18 @@
 ---
-title: Мультимедийные вызовы в реальном времени для Skype | Документация Майкрософт
-description: Обзор основных понятий, относящихся к созданию бота, который может осуществлять через Skype аудио- и видеовызовы в реальном времени, на основе пакете SDK Bot Framework для .NET.
-author: ssulzer
-ms.author: ssulzer
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/2017
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 893458a484c0e26545c23016ccbf3049adc61960
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: f6568ed5d4f98addb19f452142a0a5d6d37e00c8
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225259"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032975"
 ---
+<a name="--"></a><!--
+---
+заголовок: Мультимедийные вызовы в реальном времени для Skype | Документация Майкрософт description: Обзор основных понятий, относящихся к созданию бота, который может осуществлять через Skype аудио- и видеовызовы в реальном времени, на основе пакете SDK Bot Framework для .NET.
+author: ssulzer ms.author: ssulzer manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/2017 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="real-time-media-calling-with-skype"></a>Основные понятия о мультимедийных вызовах в реальном времени для Skype
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -65,3 +62,4 @@ ms.locfileid: "54225259"
 ### <a name="code-samples"></a>Примеры кода
 
 Репозиторий [BotBuilder-RealTimeMediaCalling](https://github.com/Microsoft/BotBuilder-RealTimeMediaCalling) на GitHub содержит образцы, которые показывают, как создать бот для мультимедийных вызовов в режиме реального времени для Skype.
+-->

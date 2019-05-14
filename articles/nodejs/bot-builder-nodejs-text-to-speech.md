@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
+ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224299"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64906299"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -31,7 +31,7 @@ ms.locfileid: "54224299"
 
 С помощью пакета SDK Bot Framework для Node.js можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `IMessage.speak` и отправить сообщение с помощью метода `session.send()`, отправить сообщение с помощью метода `session.say()` (передав параметры, которые задают отображаемый текст, произносимый текст, и параметры) или отправить сообщение с помощью встроенного запроса (указав параметры `speak` и `retrySpeak`).
 
-### <a id="message-speak"></a> IMessage.speak 
+### <a id="message-speak"></a> IMessage.speak
 
 При создании сообщения, которое будет отправлено с помощью метода `session.send()`, задайте свойство `speak`, чтобы указать текст, произносимый ботом. В следующем примере кода показано создание сообщения, которое задает текст для произнесения и указывает, что бот [принимает входные данные пользователя](bot-builder-nodejs-send-input-hints.md).
 
@@ -47,7 +47,7 @@ ms.locfileid: "54224299"
 |----|----|
 | `displayText` | Отображаемый текст. |
 | `speechText` | Произносимый текст (в виде обычного текста или в формате <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>). |
-| `options` | Объект [IMessage][IMessage], который может содержать вложение или [подсказку для ввода](bot-builder-nodejs-send-input-hints.md). |
+| `options` | Объект `IMessage`, который может содержать вложение или [подсказку для ввода](bot-builder-nodejs-send-input-hints.md). |
 
 В следующем примере кода показана отправка сообщения, которое задает текст для отображения и текст для произнесения и указывает, что бот [игнорирует входные данные пользователя](bot-builder-nodejs-send-input-hints.md).
 
@@ -78,10 +78,3 @@ ms.locfileid: "54224299"
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Пример игрока (GitHub)</a>
-- [Справочник по пакету SDK Bot Framework для Node.js][SDKReference]
-
-[SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
-
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage

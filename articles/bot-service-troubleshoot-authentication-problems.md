@@ -6,20 +6,20 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/26/2019
-ms.openlocfilehash: 780dcf4d9db48f9ef7f5a92180dc13c41cc63305
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 04/30/2019
+ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224942"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033651"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
 Это руководство поможет при устранении неполадок проверки подлинности с помощью бота, оценивая ряд сценариев, чтобы определить, где существует проблема. 
 
 > [!NOTE]
-> Чтобы выполнить все действия, описанные в этом руководстве, необходимо загрузить и использовать [Bot Framework Emulator][Emulator] и иметь доступ к параметрам регистрации бота на <a href="https://dev.botframework.com" target="_blank">портале Bot Framework</a>.
+> Чтобы выполнить все действия, описанные в этом руководстве, необходимо загрузить и использовать [Bot Framework Emulator][Emulator] и иметь доступ к параметрам регистрации бота на <a href="https://portal.azure.com" target="_blank">портале Azure</a>.
 
 ## <a id="PW"></a> Идентификатор приложения и пароль
 
@@ -65,15 +65,11 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Если вы используете пакет SDK Bot Framework для .NET, измените эти параметры в файле `.bot`.
+Если вы используете пакет SDK Bot Framework для .NET, измените эти параметры в файле `appsettings.json`.
 
 ```json
-"services": [
-  {
-    "appId": "<your app ID>",
-    "appPassword": "<your app password>",
-  }
-]
+  "MicrosoftAppId": "<your app ID>",
+  "MicrosoftAppPassword": "<your app password>"
 ```
 
 Если вы используете пакет SDK Bot Framework для Node.js, измените эти значения (или обновите соответствующие переменные среды).
@@ -84,8 +80,6 @@ const adapter = new BotFrameworkAdapter({
     appPassword: null
 });
 ```
-
-Если вы используете файл конфигурации `.bot`, можно обновить `appId` и `appPassword` до `""`.
 
 ::: moniker-end
 
@@ -148,7 +142,7 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 Безопасность бота зависит от служб Microsoft, даже если бот работает только на локальном компьютере. Чтобы включить систему защиты для бота, отредактируйте его параметры конфигурации, чтобы заполнить идентификатор и пароль приложения с помощью значений, которые были подтверждены на [Шаге 2](#step-2).  Кроме того, проверьте актуальность пакетов, особенно `System.IdentityModel.Tokens.Jwt` и `Microsoft.IdentityModel.Tokens`.
 
-Если вы используете пакет SDK Bot Framework для .NET, заполните эти параметры в `appsettings.config` или аналогичные значения в файле `.bot`:
+Если вы используете пакет SDK Bot Framework для .NET, заполните эти параметры в `appsettings.config` или аналогичные значения в файле `appsettings.json`:
 
 ```xml
 <appSettings>
@@ -200,7 +194,7 @@ var connector = new builder.ChatConnector({
 Bot Framework требует, чтобы боты были доступны из Интернета, поэтому нужно развернуть бот на платформе облачного размещения, такой ​​как Azure. Не забудьте включить систему безопасности для бота до развертывания, как описано на [Шаге 3](#step-3).
 
 > [!NOTE]
-> Если у вас еще нет облачного хранилища, можно зарегистрироваться для получения <a href="https://azure.microsoft.com/en-us/free/" target="_blank">бесплатной учетной записи</a>. 
+> Если у вас еще нет облачного хранилища, можно зарегистрироваться для получения <a href="https://azure.microsoft.com/free/" target="_blank">бесплатной учетной записи</a>. 
 
 Если разворачивать бот в Azure, протокол SSL будет автоматически настроен для приложения, тем самым позволяя Bot Framework требовать конечную точку **HTTPS**. Если используется другой провайдер облачного размещения, убедитесь, что приложение настроено для протокола SSL, чтобы у бота была конечная точка **HTTPS**.
 
@@ -209,7 +203,7 @@ Bot Framework требует, чтобы боты были доступны из
 Чтобы протестировать бот в облаке с включенной системой безопасности, выполните следующие действия.
 
 1. Убедитесь, что бот успешно развернут и запущен. 
-2. Войдите на <a href="https://dev.botframework.com" target="_blank">портал Bot Framework</a>.
+2. Войдите на <a href="https://portal.azure.com" target="_blank">портал Azure</a>.
 3. Щелкните **Мои боты**.
 4. Выберите бот, который требуется проверить.
 5. Нажмите **Тест**, чтобы открыть бот во встроенном элементе управления "Веб-чат".
@@ -228,7 +222,7 @@ Bot Framework требует, чтобы боты были доступны из
 Если проблема не исчезла после выполнения действий, описанных выше, можно сделать следующее.
 
 * Воспользуйтесь инструкциями по [отладке бота](bot-service-debug-bot.md) и другими статьями об отладке в этом разделе.
-* [Провести отладку бота в облаке](~/bot-service-debug-emulator.md) с помощью Bot Framework Emulator и <a href="https://ngrok.com/" target="_blank">ngrok</a>.
+* [Выполните отладку бота в облаке](~/bot-service-debug-emulator.md) с помощью Bot Framework Emulator и ПО для туннелирования <a href="https://ngrok.com/" target="_blank">ngrok</a>. *ngrok не является продуктом корпорации Майкрософт*.
 * Используйте инструменты прокси, например [Fiddler](https://www.telerik.com/fiddler), для проверки трафика HTTPS через бот. *Fiddler не является продуктом корпорации Майкрософт.*
 * Чтобы узнать о технологиях аутентификации, которые использует Bot Framework, см. раздел [Authentication][BotConnectorAuthGuide] (Проверка подлинности).
 * Запросить помощь от других пользователей, используя [поддержку][Support] ресурсов Bot Framework. 

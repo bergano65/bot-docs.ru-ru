@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 1/10/2019
+ms.date: 04/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7f6c22f35719eacf66598e79df5fe52ff19dd43
-ms.sourcegitcommit: 103aa3316f9ff658cf2b0d341c5e76c3efc581ee
+ms.openlocfilehash: 53dd51c871b3d386caaa01bd2e652092e7477e09
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59540368"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033507"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -55,171 +55,65 @@ ms.locfileid: "59540368"
 
 В приведенном выше примере в ответ на действие сообщения бот отправляет другое действие сообщения, помещая в него текст из первого сообщения. Обработка начинается с поступления на веб-сервер запроса HTTP POST, в котором сведения о действии передаются в формате полезных данных JSON. В C# этот процесс обычно выполняется в проекте ASP.NET, а для проектов JavaScript Node.js часто используются такие платформы, как Express и Restify.
 
-Встроенный компонент пакета SDK, который называется *адаптером*, является ядром среды выполнения SDK. Действие передается в тексте запроса HTTP POST в формате JSON. Этот код JSON десериализуется в объект Activity (Действие), который обрабатывается адаптером с помощью вызова метода *process activity*. При получении действия адаптер создает *turn context* (контекст шага) и вызывает ПО промежуточного слоя. Имя *turn context* (контекст шага) основано на понятии "шаг" и употребляется для описания всех операций, связанных с получением действия. Контекст шага является одной из важнейших абстракций в пакете SDK, которая предоставляет всем компонентам ПО промежуточного слоя и логике приложения не только само входящее действие, но и механизм для отправки исходящих действий. Объект контекста предоставляет методы _отправки, обновления и удаления действия_, которые можно использовать при обработке полученного действия. Каждый метод ответа выполняется в асинхронном процессе. 
+Встроенный компонент пакета SDK, который называется *адаптером*, является ядром среды выполнения SDK. Действие передается в тексте запроса HTTP POST в формате JSON. Этот код JSON десериализуется в объект Activity (Действие), который обрабатывается адаптером с помощью вызова метода *process activity*. При получении действия адаптер создает *turn context* (контекст шага) и вызывает ПО промежуточного слоя. 
+
+Как упоминалось выше, контекст шага позволяет ботам отправлять исходящие действия, чаще всего в ответ на входящее действие. Для этого контекст шага предоставляет такие методы реагирования, как _отправка, обновление и удаление действия_. Каждый метод ответа выполняется в асинхронном процессе. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
+## <a name="activity-handlers"></a>Обработчики событий
+
+Когда бот получает действие, он передает его в *обработчики действий*. На самом деле есть один базовый обработчик, который называется *обработчиком шагов*. Все действия передаются в него. Затем этот обработчик вызывает обработчика того действия, которое он получил.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Например, если бот получает действие сообщения, обработчик шагов оценивает это входящее действие, а затем отправляет его в обработчик действий `OnMessageActivityAsync`. 
+
+У созданного бота логика обработки сообщений и реагирования на них будет связываться с этим обработчиком `OnMessageActivityAsync`. Аналогичным образом, логика обработки участников, добавляемых в диалог, будет связываться с вашим обработчиком `OnMembersAddedAsync`, который вызывается при каждом добавлении участника в диалог.
+
+Чтобы реализовать логику для этих обработчиков, вам нужно переопределить эти методы в боте, как описано в разделе [Логика ботов](#bot-logic) ниже. Базовой реализации для каждого из этих обработчиков нет, поэтому просто добавляйте логику, используемую при переопределении.
+
+В некоторых ситуациях требуется переопределить основной обработчик шагов, например, для [сохранения состояния](bot-builder-concept-state.md) в конце шага. Перед этим обязательно вызовите `await base.OnTurnAsync(turnContext, cancellationToken);`, чтобы убедиться, что базовая реализация `OnTurnAsync` выполняется перед дополнительным кодом. Эта базовая реализация, помимо прочего, отвечает за вызов остальных обработчиков действий, таких как `OnMessageActivityAsync`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Например, если бот получает действие сообщения, обработчик шагов оценивает это входящее действие, а затем отправляет его в обработчик действий `onMessage`.
+
+У созданного бота логика обработки сообщений и реагирования на них будет связываться с этим обработчиком `onMessage`. Аналогичным образом, логика обработки участников, добавляемых в диалог, будет связываться с вашим обработчиком `onMembersAdded`, который вызывается при каждом добавлении участника в диалог.
+
+Чтобы реализовать логику для этих обработчиков, вам нужно переопределить эти методы в боте, как описано в разделе [Логика ботов](#bot-logic) ниже. Для каждого из этих обработчиков определите логику бота, а затем **вызовите `next()` в конце шага**. Вызывая `next()`, вы обеспечиваете выполнение следующего обработчика.
+
+В некоторых ситуациях не требуется переопределять основной обработчик шагов, поэтому делайте это с осторожностью. Для таких действий, как [сохранение состояния](bot-builder-concept-state.md), которые должны выполняться в конце шага, существует специальный обработчик, который называется `onDialog`. Обработчик `onDialog` выполняется в конце шага после выполнения остальных обработчиков. Он не привязан к определенным типам действий. Как и для всех упомянутых выше обработчиков, обязательно вызовите `next()`, чтобы закончить завершающую часть процесса.
+
+---
 
 ## <a name="middleware"></a>ПО промежуточного слоя
-ПО промежуточного слоя действует так же, как любое средство обработки сообщений, и состоит из линейного набора компонентов, каждый из которых выполняется в строгом порядке и получает возможность применить некоторую логику реагирования на событие. Последним этапом конвейера ПО промежуточного слоя является обратный вызов функции обработчика шагов (`OnTurnAsync` для C# и `onTurn` для JS) из класса бота, которую приложение регистрирует в адаптере. Обработчик шагов принимает в качестве аргумента контекст шага. Заключенная в обработчике шагов логика приложении обычно обрабатывает содержимое входящего действия и создает в ответ одно или несколько действий, которые затем отправляет с помощью функции *send activity* для контекста шага. Вызов *send activity* для контекста шага приводит к вызову компонентов ПО промежуточного слоя для исходящих действий. Компоненты ПО промежуточного слоя выполняются до и после функции обработчика шагов бота. Такое выполнение является конструктивно вложенным и иногда называется "матрешкой". Дополнительные сведения о ПО промежуточного слоя см. [здесь](~/v4sdk/bot-builder-concept-middleware.md).
+
+ПО промежуточного слоя действует так же, как любое средство обработки сообщений, и состоит из линейного набора компонентов, каждый из которых выполняется в строгом порядке и получает возможность применить некоторую логику реагирования на событие. Последним этапом конвейера ПО промежуточного слоя является обратный вызов обработчика шагов из класса бота, регистрируемого приложением с использованием метода *действия обработки* адаптера. Как правило, обработчик шагов представляет собой `OnTurnAsync` в C# и `onTurn` в JavaScript.
+
+Обработчик шагов принимает в качестве аргумента контекст шага. Заключенная в обработчике шагов логика приложении обычно обрабатывает содержимое входящего действия и создает в ответ одно или несколько действий, которые затем отправляет с помощью функции *send activity* для контекста шага. Вызов *send activity* для контекста шага приводит к вызову компонентов ПО промежуточного слоя для исходящих действий. Компоненты ПО промежуточного слоя выполняются до и после функции обработчика шагов бота. Такое выполнение является конструктивно вложенным и иногда называется "матрешкой". Дополнительные сведения о ПО промежуточного слоя см. [здесь](~/v4sdk/bot-builder-concept-middleware.md).
 
 ## <a name="bot-structure"></a>Структура бота
-В следующих разделах мы рассмотрим основные компоненты бота.
 
-### <a name="prerequisites"></a>Предварительные требования
-- Копия примера **EchoBotWithCounter** на языке **[C#](https://aka.ms/EchoBotWithStateCSharp) или [JS](https://aka.ms/EchoBotWithStateJS)**. Здесь представлен только тот код, который важен для этой статьи. Полный исходный код можно найти в самом примере.
+В следующих разделах мы рассмотрим _основные части_ EchoBot, которые можно легко создать с помощью шаблонов для [**C#**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) и [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md).
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+<!--Need to add section calling out the controller in code, and explaining it further-->
 
-Бот — это разновидность веб-приложения [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1). Основные компоненты для [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) содержат похожий код в таких файлах, как **Program.cs** и **Startup.cs**. Эти файлы являются обязательными для всех веб-приложений и не зависят от конкретного бота. 
+Бот — это веб-приложение, и мы предоставляем шаблоны для каждого языка.
 
-### <a name="bot-logic"></a>Логика бота
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Основная логика бота определена в классе `EchoWithCounterBot`, который наследует интерфейс `IBot`. `IBot` определяет единственный метод `OnTurnAsync`. Приложение обязано реализовать этот метод. `OnTurnAsync` имеет свойство turnContext, через которое предоставляются сведения о входящем действии. Входящее действие соответствует поступившему HTTP-запросу. Входящие действия могут иметь разные типы, поэтому первым делом нужно проверить, получил ли бот сообщение. Если это действительно новое сообщение, мы получаем состояние беседы из очереди контекстов, увеличиваем значение счетчика и сохраняем его новое значение в состояние беседы. После этого мы отправляем пользователю сообщение с помощью вызова SendActivityAsync. Исходящее действие соответствует созданному HTTP-запросу.
+Шаблон VSIX создает веб-приложение [ASP.NET MVC Core](https://dotnet.microsoft.com/apps/aspnet/mvc). Основные компоненты для [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) содержат похожий код в таких файлах, как **Program.cs** и **Startup.cs**. Эти файлы являются обязательными для всех веб-приложений и не зависят от конкретного бота.
 
-```cs
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-        // Get the conversation state from the turn context.
-        var oldState = await _accessors.CounterState.GetAsync(turnContext, () => new CounterState());
+### <a name="appsettingsjson-file"></a>Файл appsettings.json
 
-        // Bump the turn count for this conversation.
-        var newState = new CounterState { TurnCount = oldState.TurnCount + 1 };
+В файле **appsettings.json** указываются сведения о конфигурации для вашего бота, в том числе идентификатор приложения и пароль. Если вы применяете некоторые технологии или используете этот бот в рабочей среде, нужно добавить в эту конфигурацию определенные ключи или URL-адрес. Сейчас для Echo Bot не нужно добавлять такие сведения. Можете не указывать идентификатор приложения и пароль на этом этапе.
 
-        // Set the property using the accessor.
-        await _accessors.CounterState.SetAsync(turnContext, newState);
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-        // Save the new turn count into the conversation state.
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
+<!-- TODO: Update this aka link to point to samples/javascript_nodejs/02.echobot (instead of samples/javascript_nodejs/02.a.echobot) once work-in-progress is merged into master. -->
 
-        // Echo back to the user whatever they typed.
-        var responseMessage = $"Turn {newState.TurnCount}: You sent '{turnContext.Activity.Text}'\n";
-        await turnContext.SendActivityAsync(responseMessage);
-    }
-    else
-    {
-        await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected");
-    }
-}
-```
-
-### <a name="set-up-services"></a>Настройка служб
-
-Метод `ConfigureServices` в файле startup.cs загружает подключенные службы из файла [.bot](bot-builder-basics.md#the-bot-file), перехватывает все возникшие на текущем шаге беседы ошибки и сохраняет их в журнал, затем настраивает поставщик учетных данных и создает объект состояния общения для хранения в памяти данных беседы.
-
-```csharp
-services.AddBot<EchoWithCounterBot>(options =>
-{
-    // Creates a logger for the application to use.
-    ILogger logger = _loggerFactory.CreateLogger<EchoWithCounterBot>();
-
-    var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-    var botFilePath = Configuration.GetSection("botFilePath")?.Value;
-
-    // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-    BotConfiguration botConfig = null;
-    try
-    {
-        botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey);
-    }
-    catch
-    {
-        //...
-    }
-
-    services.AddSingleton(sp => botConfig);
-
-    // Retrieve current endpoint.
-    var environment = _isProduction ? "production" : "development";
-    var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
-    if (!(service is EndpointService endpointService))
-    {
-        throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
-    }
-
-    options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-
-    // Catches any errors that occur during a conversation turn and logs them.
-    options.OnTurnError = async (context, exception) =>
-    {
-        logger.LogError($"Exception caught : {exception}");
-        await context.SendActivityAsync("Sorry, it looks like something went wrong.");
-    };
-
-    // The Memory Storage used here is for local bot debugging only. When the bot
-    // is restarted, everything stored in memory will be gone.
-    IStorage dataStore = new MemoryStorage();
-
-    // ...
-
-    // Create Conversation State object.
-    // The Conversation State object is where we persist anything at the conversation-scope.
-    var conversationState = new ConversationState(dataStore);
-
-    options.State.Add(conversationState);
-});
-```
-
-Метод `ConfigureServices` также создает и регистрирует методы доступа `EchoBotAccessors`, которые определены в файле **EchoBotStateAccessors.cs** и передаются в открытом конструкторе `EchoWithCounterBot` через платформу внедрения зависимостей в ASP.NET Core.
-
-```csharp
-// Accessors created here are passed into the IBot-derived class on every turn.
-services.AddSingleton<EchoBotAccessors>(sp =>
-{
-    var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-    // ...
-    var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-    // ...
-
-    // Create the custom state accessor.
-    // State accessors enable other components to read and write individual properties of state.
-    var accessors = new EchoBotAccessors(conversationState)
-    {
-        CounterState = conversationState.CreateProperty<CounterState>(EchoBotAccessors.CounterStateName),
-    };
-
-    return accessors;
-});
-```
-
-Метод `Configure` указывается в конце конфигурации приложения вместе с информацией о том, что приложение использует Bot Framework и несколько других файлов. Для всех ботов, использующих Bot Framework, требуется выполнить вызов конфигурации. `ConfigureServices` и `Configure` вызываются средой выполнения при запуске приложения.
-
-### <a name="manage-state"></a>Управление состоянием
-
-Этот файл содержит простой класс, в котором бот сохраняет сведения о текущем состоянии. Он содержит только элемент `int`, который мы используем для увеличения значений счетчика.
-
-```cs
-public class CounterState
-{
-    public int TurnCount { get; set; } = 0;
-}
-```
-
-### <a name="accessor-class"></a>Класс методов доступа
-
-Класс `EchoBotAccessors` создается как singleton в классе `Startup` и передается в производный класс IBot. В этом случае — `public class EchoWithCounterBot : IBot`. Бот использует этот метод доступа для сохранения данных беседы. Конструктор `EchoBotAccessors` передается в объект беседы, который создается в файле Startup.cs.
-
-```cs
-public class EchoBotAccessors
-{
-    public EchoBotAccessors(ConversationState conversationState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-    }
-
-    public static string CounterStateName { get; } = $"{nameof(EchoBotAccessors)}.CounterState";
-
-    public IStatePropertyAccessor<CounterState> CounterState { get; set; }
-
-    public ConversationState ConversationState { get; }
-}
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Генератор Yeoman создает веб-приложение с типом [restify](http://restify.com/). Краткое руководство по быстрому началу работы в документации по restify содержит приложение, аналогичное созданному файлу **index.js**. В этом разделе описаны главным образом файлы **package.json**, **.env** , **index.js**, **bot.js** и **echobot-with-counter.bot**. Код некоторых из них мы здесь не приводим, но вы увидите его при выполнении бота или можете найти в примере [echobot-with-counter для Node.js](https://aka.ms/js-echobot-with-counter).
+Генератор Yeoman создает веб-приложение с типом [restify](http://restify.com/). Краткое руководство по быстрому началу работы в документации по restify содержит приложение, аналогичное созданному файлу **index.js**. Здесь описаны некоторые ключевые файлы, созданные с помощью шаблона. Код некоторых из них мы не приводим, но его можно просмотреть при выполнении бота или в примере [Node.js EchoBot](https://aka.ms/js-echobot-sample).
 
 ### <a name="packagejson"></a>package.json
 
@@ -233,7 +127,169 @@ public class EchoBotAccessors
 
 `npm install dotenv`
 
-### <a name="indexjs"></a>Файл index.js
+---
+
+### <a name="bot-logic"></a>Логика бота
+
+Логика бота обрабатывает входящие действия из одного или нескольких каналов и создает исходящие действия в ответ.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Основная логика бота определяется в коде бота. Здесь это `Bots/EchoBot.cs`. `EchoBot` является производным от `AcitivityHandler` (является производным от интерфейса `IBot`). `ActivityHandler` определяет различные обработчики для разных типов действий, например указанных здесь `OnMessageActivityAsync` и `OnMembersAddedAsync`. Эти методы являются защищенными, но могут быть перезаписаны с учетом наследования от `ActivityHandler`.
+
+Ниже описаны обработчики, определенные в `ActivityHandler`:
+
+| Событие | Обработчик | ОПИСАНИЕ |
+| :-- | :-- | :-- |
+| Любой тип полученного действия | `OnTurnAsync` | Вызывает один из других обработчиков на основе типа полученного действия. |
+| Полученное действие сообщения | `OnMessageActivityAsync` | Переопределите для обработки действия `Message`. |
+| Полученное действие обновления диалога | `OnConversationUpdateActivityAsync` | В действии `ConversationUpdate` вызывает обработчик, если участники не добавлены в бота или покидают беседу. |
+| Не добавленные в бота участники, которые присоединяются к беседе | `OnMembersAddedAsync` | Переопределите для обработки участников, присоединяющихся к беседе. |
+| Не добавленные в бота участники, которые покидают беседу | `OnMembersRemovedAsync` | Переопределите для обработки участников, покидающих беседу. |
+| Полученное действие события | `OnEventActivityAsync` | В действии `Event` вызывает обработчик для события определенного типа. |
+| Полученное действие события ответа маркера | `OnTokenResponseEventAsync` | Переопределите для обработки событий ответа маркера. |
+| Полученное действие события другого ответа | `OnEventAsync` | Переопределите для обработки событий других типов. |
+| Другой тип полученного действия | `OnUnrecognizedActivityTypeAsync` | Переопределите для обработки действия любого типа, которое иначе не будет обработано. |
+
+Эти разные обработчики используют `turnContext` для получения сведений о входящем действии, которое соответствует входящему HTTP-запросу. Действия могут быть разных типов, поэтому каждый обработчик предоставляет действием со строгой типизацией в параметре контекста шага. В большинстве случаев `OnMessageActivityAsync` является наиболее распространенным и всегда обрабатывается.
+
+Как и в предыдущих версиях 4.x этой платформы, в этой версии также можно реализовать открытый метод `OnTurnAsync`. Сейчас базовая реализация этого метода выполняет проверку ошибок, а затем вызывает каждый из определенных обработчиков (например те два, которые мы определяем в этом примере) в зависимости от типа входящего действия. В большинстве случаев можно не изменять этот метод и использовать отдельные обработчики. Но при необходимости вы также можете работать с пользовательской реализацией `OnTurnAsync`.
+
+> [!IMPORTANT]
+> При переопределении метода `OnTurnAsync` вам нужно вызвать `base.OnTurnAsync`, чтобы получить базовую реализацию для вызова всех остальных обработчиков `On<activity>Async`. Но вы также можете вызвать эти обработчики самостоятельно. В противном случае эти обработчики не будут вызваны и код не будет выполняться.
+
+В этом примере мы приветствуем нового пользователя или возвращаем сообщение пользователя, отправленное с помощью вызова `SendActivityAsync`. Исходящее действие соответствует исходящему HTTP-запросу.
+
+```cs
+public class MyBot : ActivityHandler
+{
+    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+    {
+        await turnContext.SendActivityAsync(MessageFactory.Text($"Echo: {turnContext.Activity.Text}"), cancellationToken);
+    }
+
+    protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+    {
+        foreach (var member in membersAdded)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text($"welcome {member.Name}"), cancellationToken);
+        }
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Основная логика бота определяется в коде бота. Здесь это `bots\echoBot.js`. `EchoBot` является производным от `AcitivityHandler`. `ActivityHandler` определяет различные обработчики для разных типов действий. Вы можете изменить поведение бота, предоставляя дополнительную логику, например, с использованием `onMessage` и `onConversationUpdate`, как в нашем примере.
+
+Ниже описаны обработчики, определенные в `ActivityHandler`:
+
+| Событие | Обработчик | ОПИСАНИЕ |
+| :-- | :-- | :-- |
+| Любой тип полученного действия | `onTurn` | Вызывает один из других обработчиков на основе типа полученного действия. |
+| Полученное действие сообщения | `onMessage` | Предоставьте функцию для обработки действия `Message`. |
+| Полученное действие обновления диалога | `onConversationUpdate` | В действии `ConversationUpdate` вызывает обработчик, если участники не добавлены в бота или покидают беседу. |
+| Не добавленные в бота участники, которые присоединяются к беседе | `onMembersAdded` | Предоставьте функцию для обработки участников, присоединяющихся к беседе. |
+| Не добавленные в бота участники, которые покидают беседу | `onMembersRemoved` | Предоставьте функцию для обработки участников, покидающих беседу. |
+| Полученное действие события | `onEvent` | В действии `Event` вызывает обработчик для события определенного типа. |
+| Полученное действие события ответа маркера | `onTokenResponseEvent` | Предоставьте функцию для обработки событий ответа маркера. |
+| Другой тип полученного действия | `onUnrecognizedActivityType` | Предоставьте функцию для обработки действия любого типа, которое иначе не будет обработано. |
+| Выполненные обработчики действий | `onDialog` | Предоставьте функцию для обработки любого процесса, который должен быть выполнен в конце шага, после выполнения остальных обработчиков действий. |
+
+На каждом шаге мы первым делом проверяем, получил ли бот сообщение. Когда мы получаем сообщение от пользователя, мы возвращаем отправленное сообщение.
+
+```javascript
+const { ActivityHandler } = require('botbuilder');
+
+class MyBot extends ActivityHandler {
+    constructor() {
+        super();
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        this.onMessage(async (context, next) => {
+            await context.sendActivity(`You said '${ context.activity.text }'`);
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
+        this.onConversationUpdate(async (context, next) => {
+            await context.sendActivity('[conversationUpdate event detected]');
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
+    }
+}
+
+module.exports.MyBot = MyBot;
+```
+
+---
+
+### <a name="access-the-bot-from-your-app"></a>Доступ к боту из приложения
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+#### <a name="set-up-services"></a>Настройка служб
+
+Метод `ConfigureServices` в файле `Startup.cs` загружает подключенные службы, а также их ключи из `appsettings.json` или Azure Key Vault (при наличии), состояние подключения и т. д. Мы добавляем MVC и указываем версию совместимости для служб, а затем делаем адаптер и бота доступными путем внедрения зависимостей в контроллер бота.
+
+<!-- want to explain the singleton vs transient here?-->
+
+```csharp
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+    // Create the credential provider to be used with the Bot Framework Adapter.
+    services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
+
+    // Create the Bot Framework Adapter.
+    services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
+
+    // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
+    services.AddTransient<IBot, EchoBot>();
+}
+```
+
+Метод `Configure` указывается в конце конфигурации приложения вместе с информацией о том, что приложение использует MVC и несколько других файлов. Для всех ботов, использующих Bot Framework, требуется выполнить вызов конфигурации. Но это поведение уже определено в примерах или шаблоне VSIX при создании бота. `ConfigureServices` и `Configure` вызываются средой выполнения при запуске приложения.
+
+#### <a name="bot-controller"></a>Контроллер бота
+
+В соответствии со стандартной структурой MVC контроллер позволяет настроить маршрутизацию сообщений и HTTP-запросов POST. Для нашего бота мы передаем входящий запрос в метод *асинхронного действия обработки* адаптера, как описано в разделе [Стек обработки действия](#the-activity-processing-stack) выше. В этом вызове мы указываем бота и другие сведения об авторизации, которые могут потребоваться.
+
+Контроллер реализует `ControllerBase`, содержит адаптер и бота, которые мы настроили в `Startup.cs` (доступные путем внедрения зависимостей), и передает в бот необходимые сведения при получении входящего HTTP-запроса POST.
+
+Здесь мы рассмотрим класс, за которым следуют атрибуты маршрута и контроллера. Они помогают платформе соответствующим образом направлять сообщения, определяя, какой контроллер использовать. Если вы измените значение в атрибуте маршрута, также будет изменена конечная точка, которую эмулятор или другие каналы используют для обращения к боту.
+
+```cs
+// This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
+// implementation at runtime. Multiple different IBot implementations running at different endpoints can be
+// achieved by specifying a more specific type for the bot constructor argument.
+[Route("api/messages")]
+[ApiController]
+public class BotController : ControllerBase
+{
+    private readonly IBotFrameworkHttpAdapter Adapter;
+    private readonly IBot Bot;
+
+    public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
+    {
+        Adapter = adapter;
+        Bot = bot;
+    }
+
+    [HttpPost]
+    public async Task PostAsync()
+    {
+        // Delegate the processing of the HTTP POST to the adapter.
+        // The adapter will invoke the bot.
+        await Adapter.ProcessAsync(Request, Response, Bot);
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="indexjs"></a>Файл index.js
 
 `index.js` настраивает бота и службы размещения, которые будут пересылать действия в логику бота.
 
@@ -242,188 +298,75 @@ public class EchoBotAccessors
 В начале файла `index.js` вы найдете набор обязательных модулей или библиотек. Эти модули предоставляют доступ к набору функций, которые, возможно, потребуется добавить в приложение.
 
 ```javascript
-// Import required packages
+const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
 
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage } = require('botbuilder');
+// Import required bot services.
+// See https://aka.ms/bot-services to learn more about the different parts of a bot.
+const { BotFrameworkAdapter } = require('botbuilder');
+
+// This bot's main dialog.
+const { MyBot } = require('./bot');
+
 // Import required bot configuration.
-const { BotConfiguration } = require('botframework-config');
-
-const { EchoBot } = require('./bot');
-
-// Read botFilePath and botFileSecret from .env file
-// Note: Ensure you have a .env file and include botFilePath and botFileSecret.
 const ENV_FILE = path.join(__dirname, '.env');
-const env = require('dotenv').config({ path: ENV_FILE });
+dotenv.config({ path: ENV_FILE });
 ```
 
-#### <a name="bot-configuration"></a>Конфигурация бота
+#### <a name="set-up-services"></a>Настройка служб
 
-На следующем этапе загружаются данные из файла конфигурации бота.
-
-```javascript
-// Get the .bot file path
-// See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.
-const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
-let botConfig;
-try {
-    // Read bot configuration from .bot file.
-    botConfig = BotConfiguration.loadSync(BOT_FILE, process.env.botFileSecret);
-} catch (err) {
-    console.error(`\nError reading bot file. Please ensure you have valid botFilePath and botFileSecret set for your environment.`);
-    console.error(`\n - The botFileSecret is available under appsettings for your Azure Bot Service bot.`);
-    console.error(`\n - If you are running this bot locally, consider adding a .env file with botFilePath and botFileSecret.`);
-    console.error(`\n - See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.\n\n`);
-    process.exit();
-}
-
-// For local development configuration as defined in .bot file
-const DEV_ENVIRONMENT = 'development';
-
-// Define name of the endpoint configuration section from the .bot file
-const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
-
-// Get bot endpoint configuration by service name
-// Bot configuration as defined in .bot file
-const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
-```
-
-#### <a name="bot-adapter-http-server-and-bot-state"></a>Адаптер бота, HTTP-сервер и состояние бота
-
-На следующем этапе выполняется настройка сервера и адаптера, которые позволят боту общаться с пользователем и отправлять ответы. Сервер будет ожидать данные на порту, который указан в файле конфигурации **BotConfiguration.bot**. По умолчанию используется порт _3978_ для связи с эмулятором. Адаптер будет выступать в качестве проводника для вашего бота, управлять входящими и исходящими сообщениями, аутентификацией и т. д.
-
-Также мы создаем объект состояния, который использует `MemoryStorage` в качестве поставщика хранилища. Это состояние определяется в виде свойства `ConversationState`, которое просто позволяет сохранить данные о состоянии диалога. `ConversationState` позволяет сохранить необходимые сведения. В нашем случае это просто данные счетчика реплик в памяти.
+На следующем этапе выполняется настройка сервера и адаптера, которые позволят боту общаться с пользователем и отправлять ответы. Сервер будет ожидать передачи данных на порту, указанном в файле конфигурации, или вернется к порту _3978_, чтобы установить подключение к эмулятору. Адаптер будет выступать в качестве проводника для вашего бота, управлять входящими и исходящими сообщениями, аутентификацией и т. д.
 
 ```javascript
-// Create bot adapter.
-// See https://aka.ms/about-bot-adapter to learn more about bot adapter.
-const adapter = new BotFrameworkAdapter({
-    appId: endpointConfig.appId || process.env.microsoftAppID,
-    appPassword: endpointConfig.appPassword || process.env.microsoftAppPassword
+// Create HTTP server
+const server = restify.createServer();
+server.listen(process.env.port || process.env.PORT || 3978, () => {
+    console.log(`\n${ server.name } listening to ${ server.url }`);
+    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
+    console.log(`\nTo talk to your bot, open the emulator select "Open Bot"`);
 });
 
-// Catch-all for any unhandled errors in your bot.
+// Create adapter.
+// See https://aka.ms/about-bot-adapter to learn more about how bots work.
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+
+// Catch-all for errors.
 adapter.onTurnError = async (context, error) => {
     // This check writes out errors to console log .vs. app insights.
     console.error(`\n [onTurnError]: ${ error }`);
     // Send a message to the user
-    context.sendActivity(`Oops. Something went wrong!`);
-    // Clear out state
-    await conversationState.clear(context);
-    // Save state changes.
-    await conversationState.saveChanges(context);
+    await context.sendActivity(`Oops. Something went wrong!`);
 };
 
-// Define a state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state store to persist the dialog and user state between messages.
-let conversationState;
-
-// For local development, in-memory storage is used.
-// CAUTION: The Memory Storage used here is for local bot debugging only. When the bot
-// is restarted, anything stored in memory will be gone.
-const memoryStorage = new MemoryStorage();
-conversationState = new ConversationState(memoryStorage);
-
 // Create the main dialog.
-const bot = new EchoBot(conversationState);
-
-// Create HTTP server
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function() {
-    console.log(`\n${ server.name } listening to ${ server.url }`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
-    console.log(`\nTo talk to your bot, open echoBot-with-counter.bot file in the Emulator`);
-});
+const myBot = new MyBot();
 ```
 
-#### <a name="bot-logic"></a>Логика бота
+#### <a name="forwarding-requests-to-the-bot-logic"></a>Переадресация запросов в логику бота
 
 Метод адаптера `processActivity` отправляет входящие действия в логику бота.
-Третий параметр в `processActivity` представляет собой функцию-обработчик, которая вызывается для выполнения логики бота после того, как адаптер и ПО промежуточного слоя выполнят для полученного [действия](#the-activity-processing-stack) все этапы предварительной обработки. Переменную контекста шага, которая передается обработчику функций в виде аргумента, можно использовать для предоставления сведений о входящем действии, отправителе и получателе, канале, беседе и т.д. Для обработки действие передается в `onTurn` из EchoBot.
+Третий параметр в `processActivity` представляет собой обработчик функций. Он вызывается для выполнения логики бота после того, как адаптер и ПО промежуточного слоя выполнят для полученного [действия](#the-activity-processing-stack) все этапы предварительной обработки. Переменную контекста шага, которая передается обработчику функций в виде аргумента, можно использовать для предоставления сведений о входящем действии, отправителе и получателе, канале, беседе и т.д. Для обработки действие передается в метод `run` бота. `run` определяется в `ActivityHandler`. При этом выполняется проверка ошибок с последующим вызовом обработчиков событий бота на основе типа полученного действия.
 
 ```javascript
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
-    // Route received request to adapter for processing
-    adapter.processActivity(req, res, (context) => {
+    adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
-        await bot.onTurn(context);
+        await myBot.run(context);
     });
 });
 ```
 
-### <a name="echobot"></a>EchoBot
-
-Все обрабатываемые действия перенаправляются к обработчику `onTurn` в этом классе. При создании класса ему передается объект состояния. Используя этот объект состояния, конструктор создает метод доступа `this.countProperty` для сохранения счетчика шагов бота.
-
-На каждом шаге мы первым делом проверяем, получил ли бот сообщение. Если это не сообщение, мы отправляем обратно тип полученного действия. После этого создается переменная состояния, которая позволяет хранить информацию о диалоге с ботом. Если переменная счетчика имеет значение `undefined`, ей присваивается новое значение 1 (это произойдет при первом запуске бота), в противном случае ее значение увеличивается на единицу (для каждого нового сообщения). Значение этого счетчика мы возвращаем пользователю вместе с полученным от него сообщением. И, наконец, мы устанавливаем значение счетчика и сохраняем изменения в состоянии.
-
-```javascript
-const { ActivityTypes } = require('botbuilder');
-
-// Turn counter property
-const TURN_COUNTER_PROPERTY = 'turnCounterProperty';
-
-class EchoBot {
-
-    constructor(conversationState) {
-        // Creates a new state accessor property.
-        // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors
-        this.countProperty = conversationState.createProperty(TURN_COUNTER_PROPERTY);
-        this.conversationState = conversationState;
-    }
-
-    async onTurn(turnContext) {
-        // Handle message activity type. User's responses via text or speech or card interactions flow back to the bot as Message activity.
-        // Message activities may contain text, speech, interactive cards, and binary or unknown attachments.
-        // see https://aka.ms/about-bot-activity-message to learn more about the message and other activity types
-        if (turnContext.activity.type === ActivityTypes.Message) {
-            // read from state.
-            let count = await this.countProperty.get(turnContext);
-            count = count === undefined ? 1 : ++count;
-            await turnContext.sendActivity(`${ count }: You said "${ turnContext.activity.text }"`);
-            // increment and set turn counter.
-            await this.countProperty.set(turnContext, count);
-        } else {
-            // Generic handler for all other activity types.
-            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
-        }
-        // Save state changes
-        await this.conversationState.saveChanges(turnContext);
-    }
-}
-
-exports.EchoBot = EchoBot;
-```
-
 ---
 
-## <a name="the-bot-file"></a>Файл бота
+## <a name="manage-bot-resources"></a>Управление ресурсами бота
 
-Файл **.bot** содержит некоторые сведения, например конечную точку, идентификатор приложения, пароль и ссылки на службы, используемые этим ботом. Этот файл создается автоматически, когда вы создаете бот на основе шаблона. Но вы можете создавать свой файл с помощью эмулятора или других средств. Вы можете указать, какой файл .bot следует использовать для проверки бота через [эмулятор](../bot-service-debug-emulator.md).
-
-```json
-{
-    "name": "echobot-with-counter",
-    "services": [
-        {
-            "type": "endpoint",
-            "name": "development",
-            "endpoint": "http://localhost:3978/api/messages",
-            "appId": "",
-            "appPassword": "",
-            "id": "1"
-        }
-    ],
-    "padlock": "",
-    "version": "2.0"
-}
-```
+Ресурсами ботов, такими как идентификаторы приложений, пароли, ключи или секреты для подключенных служб, необходимо управлять соответствующим образом. См. подробнее об [управлении ресурсами бота](bot-file-basics.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - Общие сведения о роли состояния для ботов см. в статье [об управлении состоянием](bot-builder-concept-state.md).
-- Чтобы понять, какую роль играет BOT-файл в управлении ресурсами, изучите статью [об управлении ресурсами в файле .bot](bot-file-basics.md).
-- Чтобы создать свой первый бот, воспользуйтесь одним из кратких руководств: [для службы Azure Bot](../bot-service-quickstart.md), [для C#](../dotnet/bot-builder-dotnet-sdk-quickstart.md) или [для JavaScript](../javascript/bot-builder-javascript-quickstart.md)

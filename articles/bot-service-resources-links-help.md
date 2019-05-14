@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f9379613953714333ce4d174f5fa544213f84e99
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b63f58596e5e0f4548e766f30be1b13b5d2fcd4e
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224919"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033595"
 ---
 # <a name="bot-framework-additional-resources"></a>Дополнительные ресурсы Bot Framework
 
@@ -27,6 +27,7 @@ ms.locfileid: "54224919"
 |        <strong>Группа чата сообщества</strong>        |                                                                                                                                                                                                                        [Gitter.IM](https://gitter.im/Microsoft/BotBuilder)                                                                                                                                                                                                                        |
 |            <strong>Использование бота</strong>             |                                                                                                                                                                                                                    Обратитесь к разработчику бота по электронной почте издателя                                                                                                                                                                                                                     |
 | <strong>Проблемы и рекомендации относительно пакета SDK Bot Framework</strong> |                                                                                                                                                                                           Воспользуйтесь вкладкой проблем в <a href="https://github.com/Microsoft/BotBuilder-v3/" target="_blank">репозиторий GitHub</a>                                                                                                                                                                                            |
+| <strong>Справка и поддержка в Azure</strong>             |                                                                                       [Справка и поддержка в Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)                                                                                                                                                            |
 |        <strong>Проблема с документацией</strong>        |                                                                                                                                                                     Отправьте <a href="https://github.com/MicrosoftDocs/bot-framework-docs/issues" target="_blank">запрос</a> в репозиторий GitHub для документации по Bot Framework.                                                                                                                                                                      |
 |       <strong>Обновления документации</strong>        |                                                                                                                                                   Щелкните ссылку "Изменить" в статье и отправьте запрос на вытягивание в <a href="https://github.com/MicrosoftDocs/bot-framework-docs" target="_blank">репозиторий GitHub документации по Bot Framework</a>.                                                                                                                                                   |
 |          <strong>Сообщение о нарушении</strong>           |                                                                                                                                                                                                            Свяжитесь с нами по адресу [bf-reports@microsoft.com](mailto://bf-reports@microsoft.com)                                                                                                                                                                                                            |

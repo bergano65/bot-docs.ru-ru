@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/18/2019
+ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bf3c8ffb00034a39700f10cd326af764b8deeb6c
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 7f2c31ab0a7f97917be83334c39bdc4750547614
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905127"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033194"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство по Создание и развертывание простого бота
 
@@ -44,70 +44,150 @@ ms.locfileid: "59905127"
 
 ## <a name="deploy-your-bot"></a>Развертывание бота
 
-Разверните созданный бот в Azure.
-
 ### <a name="prerequisites"></a>Предварительные требования
+- Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/), прежде чем начинать работу.
+- Описанный выше бот, запущенный на локальном компьютере.
+- Последняя версия [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
 
-[!INCLUDE [prerequisite snippet](~/includes/deploy/snippet-prerequisite.md)]
+### <a name="1-prepare-for-deployment"></a>1. Подготовка к развертыванию
+Если бот создается на основе шаблонов Visual Studio или Yeoman, его исходный код содержит папку `deploymentTemplates` с шаблонами ARM. В описанном здесь процессе развертывания используется шаблон ARM для подготовки необходимых для бота ресурсов Azure с помощью Azure CLI. 
 
-### <a name="login-to-azure-cli-and-set-your-subscription"></a>Вход в Azure CLI и настройка подписки.
+#### <a name="login-to-azure"></a>Вход в Azure
 
-Итак, вы уже создали бот и протестировали его локально, а теперь хотите развернуть его в Azure.
+Итак, вы уже создали бот и протестировали его локально, а теперь хотите развернуть его в Azure. Откройте командную строку, чтобы войти на портал Azure.
 
-[!INCLUDE [az login snippet](~/includes/deploy/snippet-az-login.md)]
+```cmd
+az login
+```
+Она откроет окно браузера с интерфейсом для входа.
 
-### <a name="create-a-web-app-bot"></a>Создание бота веб-приложения
+#### <a name="set-the-subscription"></a>Настройка подписки
+Укажите подписку, которая будет использоваться по умолчанию.
 
-Если у вас еще нет группы ресурсов для публикации бота, создайте ее.
+```cmd
+az account set --subscription "<azure-subscription>"
+```
 
-[!INCLUDE [az create group snippet](~/includes/deploy/snippet-az-create-group.md)]
+Если вы не уверены, какую подписку выбрать для развертывания бота, просмотрите список подписок в учетной записи с помощью команды `az account list`. Перейдите в папку бота.
 
-[!INCLUDE [az create web app snippet](~/includes/deploy/snippet-create-web-app.md)]
+#### <a name="create-an-app-registration"></a>Регистрация приложения
+Регистрация приложения означает, что вы сможете использовать Azure AD для аутентификации пользователей и для запроса доступа к ресурсам пользователей. Боту нужно зарегистрированное в Azure приложение, которое предоставит боту доступ к службе Bot Framework для отправки и получения сообщений с проверкой подлинности. Чтобы зарегистрировать приложение с помощью Azure CLI, выполните следующую команду:
 
-Прежде чем продолжить работу, ознакомьтесь с описанными ниже инструкциями, выбрав нужный раздел в зависимости от типа учетной записи электронной почты, с которой вы входите в Azure.
+```cmd
+az ad app create --display-name "displayName" --password "AtLeastSixteenCharacters_0" --available-to-other-tenants
+```
 
-#### <a name="msa-email-account"></a>Учетная запись электронной почты MSA
+| Параметр   | ОПИСАНИЕ |
+|:---------|:------------|
+| display-name | Отображаемое имя приложения. |
+| password | Пароль приложения, также называемый "секрет клиента". Пароль должен содержать не менее 16 символов, среди которых есть хотя бы по одной букве в верхнем и нижнем регистрах и хотя бы один специальный символ. |
+| available-to-other-tenants| Приложение может использоваться из любого клиента Azure AD.  Допустимые значения: false, true. По умолчанию имеет значение TRUE. Это позволяет боту работать с каналами службы Azure Bot.|
 
-Если вы используете учетную запись электронной почты [MSA](https://en.wikipedia.org/wiki/Microsoft_account), вам потребуется создать идентификатор и пароль приложения на портале регистрации приложений для использования в команде `az bot create`.
+Приведенная выше команда выводит код JSON с ключом `appId`. Сохраните значение этого ключа для развертывания с помощью ARM, где этот ключ нужно указать в параметре `appId`. Предоставленный пароль будет использоваться в параметре `appSecret`.
 
-[!INCLUDE [create bot msa snippet](~/includes/deploy/snippet-create-bot-msa.md)]
+Вы можете развернуть бота в новой группе ресурсов или использовать существующую. Выберите любой вариант, который вам подходит.
 
-#### <a name="business-or-school-account"></a>Рабочая или учебная учетная запись
+# <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)](#tab/newrg)
 
-[!INCLUDE [create bot snippet](~/includes/deploy/snippet-create-bot.md)]
+#### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
-### <a name="download-the-bot-from-azure"></a>Скачивание бота из Azure
+Вы создадите новую группу ресурсов в Azure, а затем с помощью шаблона ARM создадите указанные в нем ресурсы. В нашем примере это план Службы приложений, веб-приложение и регистрация каналов бота.
 
-Теперь скачайте бот, который вы только что создали. 
-[!INCLUDE [download bot snippet](~/includes/deploy/snippet-download-bot.md)]
+```cmd
+az deployment create --name "<name-of-deployment>" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" botSku=F0 newAppServicePlanName="<name-of-app-service-plan>" newWebAppName="<name-of-web-app>" groupName="<new-group-name>" groupLocation="<location>" newAppServicePlanLocation="<location>"
+```
 
-[!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
+| Параметр   | ОПИСАНИЕ |
+|:---------|:------------|
+| name | Понятное имя развертывания. |
+| template-file | Путь к шаблону ARM. Вы можете использовать файл `template-with-new-rg.json` из папки проекта `deploymentTemplates`. |
+| location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
+| parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `botSku` обозначает ценовую категорию — F0 (Бесплатный) или S1 (Стандартный). `newAppServicePlanName` — имя плана Службы приложений. `newWebAppName` — имя веб-приложения, которое вы создаете. `groupName` — имя группы ресурсов Azure, которую вы создаете. `groupLocation` — расположение группы ресурсов Azure. `newAppServicePlanLocation` — расположение плана Службы приложений. |
 
-### <a name="decrypt-the-downloaded-bot-file-and-use-in-your-project"></a>Расшифровка скачанного файла .bot и применение его в проекте
+# <a name="deploy-via-arm-template-with-existing--resource-grouptaberg"></a>[Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)](#tab/erg)
 
-Конфиденциальные сведения в файле .bot шифруются, и для удобства работы их следует расшифровать. 
+#### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
-Для начала перейдите в каталог со скачанным ботом.
+Если вы используете существующую группу ресурсов, можно выбрать существующий план Службы приложений или создать новый. Ниже описаны процедуры для обоих вариантов. 
 
-[!INCLUDE [decrypt bot snippet](~/includes/deploy/snippet-decrypt-bot.md)]
+**Вариант 1. Существующий план Службы приложений** 
 
-### <a name="test-your-bot-locally"></a>Локальное тестирование бота
+В этом варианте мы используем существующий план Службы приложений, но создаем новое веб-приложение и новую регистрацию каналов бота. 
 
-На этом этапе бот будет работать точно так же, как с использованием старого файла `.bot`. Убедитесь, что он работает правильно с новым файлом `.bot`.
+_Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
 
-Теперь вы увидите в эмуляторе конечную точку *Production*. Если ее там нет, скорее всего, вы используете старый файл `.bot`.
+```cmd
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation=<location>"
+```
 
-### <a name="publish-your-bot-to-azure"></a>Публикация бота в Azure
+**Вариант 2. Новый план Службы приложений** 
 
-<!-- TODO: re-encrypt your .bot file? -->
+В этом варианте мы создаем план Службы приложений, веб-приложение и регистрацию каналов бота. 
 
-[!INCLUDE [publish snippet](~/includes/deploy/snippet-publish.md)]
+```cmd
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+```
 
-<!-- TODO: If we tell them to re-encrypt, this step is not necessary. -->
+| Параметр   | ОПИСАНИЕ |
+|:---------|:------------|
+| name | Понятное имя развертывания. |
+| resource-group | Имя группы ресурсов Azure. |
+| template-file | Путь к шаблону ARM. Вы можете использовать файл `template-with-preexisting-rg.json` из папки проекта `deploymentTemplates`. |
+| location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
+| parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `newWebAppName` — имя веб-приложения, которое вы создаете. `newAppServicePlanName` — имя плана Службы приложений. `newAppServicePlanLocation` — расположение плана Службы приложений. |
 
-[!INCLUDE [clear encryption snippet](~/includes/deploy/snippet-clear-encryption.md)]
+---
 
-Теперь вы можете протестировать бот в веб-чате.
+#### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Получение или создание файлов, необходимых для IIS либо Kudu
+
+**Для ботов на C#**
+
+```cmd
+az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
+```
+
+Необходимо указать путь к CSPROJ-файлу относительно папки --code-dir. Для этого можно применить аргумент --proj-file-path. Эта команда разрешит аргументы --code-dir и --proj-file-path в значение ./MyBot.csproj.
+
+**Для ботов на JavaScript**
+
+```cmd
+az bot prepare-deploy --code-dir "." --lang Javascript
+```
+
+Эта команда получает файл web.config, который необходим для работы приложений Node.js со службами IIS в Службе приложений Azure. Убедитесь, что файл web.config сохранен в корневой каталог бота.
+
+#### <a name="zip-up-the-code-directory-manually"></a>Архивация каталога кода вручную
+
+Если для развертывания кода бота используются ненастроенные интерфейсы [API развертывания ZIP-файлов](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url), Web App или Kudu демонстрирует следующее поведение.
+
+_Kudu по умолчанию предполагает, что развертывание из ZIP-файлов готово к выполнению и не требует дополнительных шагов сборки, таких как npm install или dotnet restore/dotnet publish._
+
+Поэтому важно включить весь код сборки и все необходимые зависимости в ZIP-файл, предназначенный для развертывания веб-приложения, иначе бот не будет работать должным образом.
+
+> [!IMPORTANT]
+> Прежде чем запаковать файлы проекта, убедитесь, что вы зашли _в_ нужную папку. 
+> - Для ботов на C# это папка, в которой расположен CSPROJ-файл. 
+> - Для ботов на JS это папка, в которой расположен файл app.js или index.js. 
+>
+> Если расположение корневой папки выбрано неверно, **бот не сможет запуститься на портале Azure**.
+
+### <a name="2-deploy-code-to-azure"></a>2. Развертывание кода в Azure
+Теперь мы готовы развернуть код в виде веб-приложения Azure. Запустите следующую команду из командной строки, чтобы выполнить развертывание с помощью принудительного развертывания в Kudu из ZIP-файла веб-приложения.
+
+```cmd
+az webapp deployment source config-zip --resource-group "<new-group-name>" --name "<name-of-web-app>" --src "code.zip" 
+```
+
+| Параметр   | ОПИСАНИЕ |
+|:---------|:------------|
+| resource-group | Имя созданной ранее группы ресурсов Azure. |
+| name | Имя веб-приложения, которое вы использовали ранее. |
+| src  | Путь к созданному ранее ZIP-файлу. |
+
+### <a name="3-test-in-web-chat"></a>3. Тестирование в веб-чате
+- На портале Azure перейдите к колонке веб-приложения бота.
+- В разделе **управления ботами** щелкните **Test in Web Chat** (Тестирование в веб-чате). Служба Azure Bot загрузит элемент управления "Веб-чат" и подключится к боту.
+- Подождите несколько секунд после успешного завершения развертывания. Можно также перезапустить веб-приложение, чтобы очистить все кэши. Вернитесь в колонку "Бот веб-приложения" и выполните тестирование с помощью веб-чата на портале Azure.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -115,5 +195,4 @@ ms.locfileid: "59905127"
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
-> Чтобы продолжить, [добавьте в бот дополнительные службы](bot-builder-tutorial-add-qna.md).
-
+> [Использование QnA Maker в боте для ответов на вопросы.](bot-builder-tutorial-add-qna.md)

@@ -11,561 +11,193 @@ ms.subservice: sdk
 ms.date: 04/18/2019
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9089334823c1c57c8ace48531c767c3f966b3355
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: bd8682966dbb2e33a536a72a4016ef23e9c1fc75
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905017"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032618"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Обработка прерываний является важным аспектом для создания надежного бота.
+Обработка прерываний является важным аспектом для создания надежного бота. Пользователи не всегда будут строго соблюдать определенный вами процесс общения. Они могут задать вопрос в середине процесса или отменить процесс вместо завершения. В этом разделе рассматривается несколько распространенных способов обработки прерываний со стороны пользователя.
 
-При этом вы можете подумать, что ваши пользователи будут следить за потоком беседы шаг за шагом, но скорее всего они изменят свое мнение или вместо того, чтобы отвечать, зададут вопрос в середине процесса. В таких ситуациях как вы хотите, чтобы бот обрабатывал входные данные пользователя? На что должно быть похоже взаимодействие с пользователем? Как поддерживать пользовательские данные о состоянии? Обработка прерываний позволяет подготовить бота к таким ситуациям.
+## <a name="prerequisites"></a>Предварительные требования
 
-Нет единственного правильного ответа на эти вопросы, так как каждая ситуация является уникальной для сценария, который обрабатывает ваш бот. В этом разделе рассматривается несколько распространенных способов обработки прерываний со стороны пользователя и предлагаются некоторые способы их реализации в боте.
+- Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [повторного использования диалогов][component-dialogs].
+- Вам потребуется копия этого примера на языке [**CSharp**][cs-sample] или [**JavaScript**][js-sample].
 
-## <a name="handle-expected-interruptions"></a>Обработка ожидаемых прерываний
+## <a name="about-this-sample"></a>Об этом примере
 
-Поток процедурной беседы имеет базовый набор шагов, которым должен следовать пользователь, и любые его действия, которые отличаются от этих шагов, являются потенциальными прерываниями. В обычном потоке существуют ожидаемые прерывания.
+Пример в этой статье моделирует работу бота для бронирования авиабилетов, который использует диалоги для получения от пользователя информации о нужном рейсе. В любой момент общения с ботом пользователь может выдать команду _help_ (помощь) или _cancel_ (отмена), что должно вызвать прерывание. Здесь мы будем использовать два вида прерываний.
 
-**Резервирование столов.** Основные шаги бота, который резервирует стол, могут заключаться в том, чтобы попросить пользователя задать дату и время, количество людей и имя для резервирования. Некоторые ожидаемые прерывания в этом процессе, которые можно спрогнозировать:
+- **На уровне шага**. Обработка на уровне шага отменяется, но сам диалог сохраняется в стеке вместе с предоставленной информацией. Следующий шаг будет продолжен с того же места, где мы остановились. 
+- **На уровне диалога**. Полная отмена обработки, позволяющая боту начать работу сначала.
 
-* `cancel`: Выход из процесса.
-* `help`: Предоставление дополнительных сведений об этом процессе.
-* `more info`: Предоставление указаний и предложений или альтернативных способов резервирования столов (например, адрес электронной почты или номер телефона для связи).
-* `show list of available tables`: Отображение списка доступных столов на дату и время, которое нужно пользователю (если возможно).
+## <a name="define-and-implement-the-interruption-logic"></a>Определение и реализация логики прерывания
 
-**Заказ ужина.** В боте заказа ужина основные действия могут включать предоставление меню и добавление пользователем блюд в "корзину". Некоторые ожидаемые прерывания в этом процессе, которые можно спрогнозировать:
+Сначала нам нужно определить и реализовать прерывания по командам _help_ и _help_.
 
-* `cancel`: Выход из процесса заказа.
-* `more info`: Предоставление диетических сведений о каждом пункте меню.
-* `help`: Предоставление справки по использованию системы.
-* `process order`: Обработка заказа.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Можно предоставить их пользователю как список **предлагаемых действий** или как указание, чтобы он, по крайней мере, знал, какие команды нужно отправить боту, чтобы он понял.
+Чтобы использовать диалоги, установите пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
 
-Например, в потоке заказа ужина ожидаемые прерывания можно указать вместе с элементами меню. В этом случае элементы меню отправляются как массив `choices`.
+**Dialogs\CancelAndHelpDialog.cs**
 
-# <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
+Первым делом мы реализуем класс `CancelAndHelpDialog` для обработки прерываний со стороны пользователя.
 
-Мы определим набор диалогов как подкласс **DialogSet**.
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=11)]
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Dialogs.Choices;
+В классе `CancelAndHelpDialog` методы `OnBeginDialogAsync` и `OnContinueDialogAsync` вызывают метод `InerruptAsync`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `InterruptAsync`.
 
-public class OrderDinnerDialogs : DialogSet
-{
-    public OrderDinnerDialogs(IStatePropertyAccessor<DialogState> dialogStateAccessor)
-        : base(dialogStateAccessor)
-    {
-    }
-}
-```
+[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=18-27)]
 
-Мы определим несколько внутренних классов для описания меню.
+Если пользователь вводит слово help, метод `InterrupAsync` отправляет сообщение и вызывает `DialogTurnResult (DialogTurnStatus.Waiting)`, чтобы обозначить ожидание ответа от пользователя в диалоге верхнего уровня. В этом случае процесс общения прерывается только на один шаг, а на следующем шаге продолжается с того места, где мы остановились.
 
-```cs
-/// <summary>
-/// Contains information about an item on the menu.
-/// </summary>
-public class DinnerItem
-{
-    public string Description { get; set; }
+Если пользователь вводит cancel, то вызывается метод `CancelAllDialogsAsync` в контексте внутреннего диалога. Это действие очищает стек диалогов и приводит к выходу из диалога с состоянием отмены и без результирующего значения. С точки зрения `MainDialog` (см. далее) все будет выглядеть так, как будто диалог бронирования завершился и вернул значение NULL. Этот равнозначно ситуации, когда пользователь отказался подтвердить бронирование.
 
-    public double Price { get; set; }
-}
+[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=40-61&highlight=11-12,16-17)]
 
-/// <summary>
-/// Describes the dinner menu, including the items on the menu and options for
-/// interrupting the ordering process.
-/// </summary>
-public class DinnerMenu
-{
-    /// <summary>Gets the items on the menu.</summary>
-    public static Dictionary<string, DinnerItem> MenuItems { get; } = new Dictionary<string, DinnerItem>
-    {
-        ["Potato salad"] = new DinnerItem { Description = "Potato Salad", Price = 5.99 },
-        ["Tuna sandwich"] = new DinnerItem { Description = "Tuna Sandwich", Price = 6.89 },
-        ["Clam chowder"] = new DinnerItem { Description = "Clam Chowder", Price = 4.50 },
-    };
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-    /// <summary>Gets all the "interruptions" the bot knows how to process.</summary>
-    public static List<string> Interrupts { get; } = new List<string>
-    {
-        "More info", "Process order", "Help", "Cancel",
-    };
+Чтобы использовать диалоги, установите пакет npm **botbuilder-dialogs**.
 
-    /// <summary>Gets all of the valid inputs a user can make.</summary>
-    public static List<string> Choices { get; }
-        = MenuItems.Select(c => c.Key).Concat(Interrupts).ToList();
-}
-```
+**dialogs/cancelAndHelpDialog.js**
 
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
+Первым делом мы реализуем класс `CancelAndHelpDialog` для обработки прерываний со стороны пользователя.
 
-Мы начнем с базового шаблона EchoBot. Инструкции вы найдете в [кратком руководстве по JavaScript](~/javascript/bot-builder-javascript-quickstart.md).
+[!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=10)]
 
-Библиотеку `botbuilder-dialogs` можно скачать из NPM. Чтобы установить библиотеку `botbuilder-dialogs`, выполните следующую команду npm:
+В классе `CancelAndHelpDialog` методы `onBeginDialog` и `onContinueDialog` вызывают метод `interrupt`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `interrupt`.
 
-```cmd
-npm install --save botbuilder-dialogs
-```
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11-25)]
 
-В файле **bot.js** добавьте ссылки на классы и определите идентификаторы, которые мы будем использовать.
+Если пользователь вводит слово help, метод `interrupt` отправляет сообщение и возвращает объект `{ status: DialogTurnStatus.waiting }`, чтобы обозначить ожидание ответа от пользователя в диалоге верхнего уровня. В этом случае процесс общения прерывается только на один шаг, а на следующем шаге продолжается с того места, где мы остановились.
 
-```javascript
-const { ActivityTypes } = require('botbuilder');
-const { DialogSet, ChoicePrompt, WaterfallDialog, DialogTurnStatus } = require('botbuilder-dialogs');
+Если пользователь вводит cancel, то вызывается метод `cancelAllDialogs` в контексте внутреннего диалога. Это действие очищает стек диалогов и приводит к выходу из диалога с состоянием отмены и без результирующего значения. С точки зрения `MainDialog` (см. далее) все будет выглядеть так, как будто диалог бронирования завершился и вернул значение NULL. Этот равнозначно ситуации, когда пользователь отказался подтвердить бронирование.
 
-// Name for the dialog state property accessor.
-const DIALOG_STATE_PROPERTY = 'dialogStateProperty';
-
-// Name of the order-prompt dialog.
-const ORDER_PROMPT = 'orderingDialog';
-
-// Name for the choice prompt for use in the dialog.
-const CHOICE_PROMPT = 'choicePrompt';
-```
-
-Определите варианты выбора, которые должны отображаться в диалоге заказа.
-
-```javascript
-// The options on the dinner menu, including commands for the bot.
-const dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50",
-        "Process order", "Cancel", "More info", "Help"],
-    "Potato Salad - $5.99": {
-        description: "Potato Salad",
-        price: 5.99
-    },
-    "Tuna Sandwich - $6.89": {
-        description: "Tuna Sandwich",
-        price: 6.89
-    },
-    "Clam Chowder - $4.50": {
-        description: "Clam Chowder",
-        price: 4.50
-    }
-}
-```
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=27-40&highlight=7-8,11-12)]
 
 ---
 
-В логике упорядочивания их можно проверить с помощью строки сопоставления или регулярных выражений.
+## <a name="check-for-interruptions-each-turn"></a>Проверка прерываний на каждом шаге
 
-# <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
+Теперь мы знаем, как работает класс обработки прерываний. Давайте вернемся немного назад и рассмотрим, что происходит при получении ботом нового сообщения от пользователя.
 
-Сначала нам нужно определить вспомогательное приложение для отслеживания заказов.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-```cs
-/// <summary>Helper class for storing the order.</summary>
-public class Order
-{
-    public double Total { get; set; } = 0.0;
+**Dialogs\MainDialog.cs**
 
-    public List<DinnerItem> Items { get; set; } = new List<DinnerItem>();
+При поступлении действия с новым сообщением бот выполняет `MainDialog`. В `MainDialog` у пользователя спрашивается, какая помощь тому требуется. Затем запускается `BookingDialog` в методе `MainDialog.ActStepAsync` с помощью вызова `BeginDialogAsync`, как показано ниже.
 
-    public bool ReadyToProcess { get; set; } = false;
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=54-68&highlight=13-14)]
 
-    public bool OrderProcessed { get; set; } = false;
-}
-```
+После этого в методе `FinalStepAsync` класса `MainDialog` завершается диалог бронирования — оно считается завершенным или отмененным.
 
-Добавьте несколько констант для отслеживания нужных идентификаторов.
+[!code-csharp[FinalStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=70-91)]
 
-```csharp
-/// <summary>The ID of the top-level dialog.</summary>
-public const string MainDialogId = "mainMenu";
+Код в `BookingDialog` здесь не показан, так как он не имеет прямого отношения к обработке прерывания. Он используется, чтобы запросить у пользователя сведения о бронировании. Вы можете найти этот код в файле **Dialogs\BookingDialogs.cs**.
 
-/// <summary>The ID of the choice prompt.</summary>
-public const string ChoicePromptId = "choicePrompt";
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-/// <summary>The ID of the order card value, tracked inside the dialog.</summary>
-public const string OrderCartId = "orderCart";
-```
+**dialogs/mainDialog.js**
 
-Добавьте в конструктор строку запроса и каскадный диалог. Также мы определим методы, которые реализуют каскадные действия.
+При поступлении действия с новым сообщением бот выполняет `MainDialog`. В `MainDialog` у пользователя спрашивается, какая помощь тому требуется. Затем запускается `bookingDialog` в методе `MainDialog.actStep` с помощью вызова `beginDialog`, как показано ниже.
 
-```cs
-public OrderDinnerDialogs(IStatePropertyAccessor<DialogState> dialogStateAccessor)
-    : base(dialogStateAccessor)
-{
-    // Add a choice prompt for the dialog.
-    Add(new ChoicePrompt(ChoicePromptId));
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-88&highlight=16-17)]
 
-    // Define and add the main waterfall dialog.
-    WaterfallStep[] steps = new WaterfallStep[]
-    {
-        PromptUserAsync,
-        ProcessInputAsync,
-    };
+После этого в методе `finalStep` класса `MainDialog` завершается диалог бронирования — оно считается завершенным или отмененным.
 
-    Add(new WaterfallDialog(MainDialogId, steps));
-}
+[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=93-110)]
 
-/// <summary>
-/// Defines the first step of the main dialog, which is to ask for input from the user.
-/// </summary>
-/// <param name="stepContext">The current waterfall step context.</param>
-/// <param name="cancellationToken">The cancellation token.</param>
-/// <returns>The task to perform.</returns>
-private async Task<DialogTurnResult> PromptUserAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Initialize order, continuing any order that was passed in.
-    Order order = (stepContext.Options is Order oldCart && oldCart != null)
-        ? new Order
-        {
-            Items = new List<DinnerItem>(oldCart.Items),
-            Total = oldCart.Total,
-            ReadyToProcess = oldCart.ReadyToProcess,
-            OrderProcessed = oldCart.OrderProcessed,
-        }
-        : new Order();
-
-    // Set the order cart in dialog state.
-    stepContext.Values[OrderCartId] = order;
-
-    // Prompt the user.
-    return await stepContext.PromptAsync(
-        "choicePrompt",
-        new PromptOptions
-        {
-            Prompt = MessageFactory.Text("What would you like for dinner?"),
-            RetryPrompt = MessageFactory.Text(
-                "I'm sorry, I didn't understand that. What would you like for dinner?"),
-            Choices = ChoiceFactory.ToChoices(DinnerMenu.Choices),
-        },
-        cancellationToken);
-}
-
-/// <summary>
-/// Defines the second step of the main dialog, which is to process the user's input, and
-/// repeat or exit as appropriate.
-/// </summary>
-/// <param name="stepContext">The current waterfall step context.</param>
-/// <param name="cancellationToken">The cancellation token.</param>
-/// <returns>The task to perform.</returns>
-private async Task<DialogTurnResult> ProcessInputAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Get the order cart from dialog state.
-    Order order = stepContext.Values[OrderCartId] as Order;
-
-    // Get the user's choice from the previous prompt.
-    string response = (stepContext.Result as FoundChoice).Value;
-
-    if (response.Equals("process order", StringComparison.InvariantCultureIgnoreCase))
-    {
-        order.ReadyToProcess = true;
-
-        await stepContext.Context.SendActivityAsync(
-            "Your order is on it's way!",
-            cancellationToken: cancellationToken);
-
-        // In production, you may want to store something more helpful.
-        // "Process" the order and exit.
-        order.OrderProcessed = true;
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-    else if (response.Equals("cancel", StringComparison.InvariantCultureIgnoreCase))
-    {
-        // Cancel the order.
-        await stepContext.Context.SendActivityAsync(
-            "Your order has been canceled",
-            cancellationToken: cancellationToken);
-
-        // Exit without processing the order.
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-    else if (response.Equals("more info", StringComparison.InvariantCultureIgnoreCase))
-    {
-        // Send more information about the options.
-        string message = "More info: <br/>" +
-            "Potato Salad: contains 330 calories per serving. Cost: 5.99 <br/>"
-            + "Tuna Sandwich: contains 700 calories per serving. Cost: 6.89 <br/>"
-            + "Clam Chowder: contains 650 calories per serving. Cost: 4.50";
-        await stepContext.Context.SendActivityAsync(
-            message,
-            cancellationToken: cancellationToken);
-
-        // Continue the ordering process, passing in the current order cart.
-        return await stepContext.ReplaceDialogAsync(MainDialogId, order, cancellationToken);
-    }
-    else if (response.Equals("help", StringComparison.InvariantCultureIgnoreCase))
-    {
-        // Provide help information.
-        string message = "To make an order, add as many items to your cart as " +
-            "you like. Choose the `Process order` to check out. " +
-            "Choose `Cancel` to cancel your order and exit.";
-        await stepContext.Context.SendActivityAsync(
-            message,
-            cancellationToken: cancellationToken);
-
-        // Continue the ordering process, passing in the current order cart.
-        return await stepContext.ReplaceDialogAsync(MainDialogId, order, cancellationToken);
-    }
-
-    // We've checked for expected interruptions. Check for a valid item choice.
-    if (!DinnerMenu.MenuItems.ContainsKey(response))
-    {
-        await stepContext.Context.SendActivityAsync("Sorry, that is not a valid item. " +
-            "Please pick one from the menu.");
-
-        // Continue the ordering process, passing in the current order cart.
-        return await stepContext.ReplaceDialogAsync(MainDialogId, order, cancellationToken);
-    }
-    else
-    {
-        // Add the item to cart.
-        DinnerItem item = DinnerMenu.MenuItems[response];
-        order.Items.Add(item);
-        order.Total += item.Price;
-
-        // Acknowledge the input.
-        await stepContext.Context.SendActivityAsync(
-            $"Added `{response}` to your order; your total is ${order.Total:0.00}.",
-            cancellationToken: cancellationToken);
-
-        // Continue the ordering process, passing in the current order cart.
-        return await stepContext.ReplaceDialogAsync(MainDialogId, order, cancellationToken);
-    }
-}
-```
-
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
-
-Определите диалоговое окно в конструкторе ботов. Обратите внимание, что код _сначала_ проверяет прерывания и обрабатывает их, и лишь затем переходит к следующим логическим шагам.
-
-```javascript
-constructor(conversationState) {
-    this.dialogStateAccessor = conversationState.createProperty(DIALOG_STATE_PROPERTY);
-    this.conversationState = conversationState;
-
-    this.dialogs = new DialogSet(this.dialogStateAccessor)
-        .add(new ChoicePrompt(CHOICE_PROMPT))
-        .add(new WaterfallDialog(ORDER_PROMPT, [
-            async (step) => {
-                if (step.options && step.options.orders) {
-                    // If an order cart was passed in, continue to use it.
-                    step.values.orderCart = step.options;
-                } else {
-                    // Otherwise, start a new cart.
-                    step.values.orderCart = {
-                        orders: [],
-                        total: 0
-                    };
-                }
-                return await step.prompt(CHOICE_PROMPT, "What would you like?", dinnerMenu.choices);
-            },
-            async (step) => {
-                const choice = step.result;
-                if (choice.value.match(/process order/ig)) {
-                    if (step.values.orderCart.orders.length > 0) {
-                        // If the cart is not empty, process the order by returning the order to the parent context.
-                        await step.context.sendActivity("Your order has been processed.");
-                        return await step.endDialog(step.values.orderCart);
-                    } else {
-                        // Otherwise, prompt again.
-                        await step.context.sendActivity("Your cart was empty. Please add at least one item to the cart.");
-                        return await step.replaceDialog(ORDER_PROMPT);
-                    }
-                } else if (choice.value.match(/cancel/ig)) {
-                    // Cancel the order, and return "cancel" to the parent context.
-                    await step.context.sendActivity("Your order has been canceled.");
-                    return await step.endDialog("cancelled");
-                } else if (choice.value.match(/more info/ig)) {
-                    // Provide more information, and then continue the ordering process.
-                    var msg = "More info: <br/>Potato Salad: contains 330 calories per serving. <br/>"
-                        + "Tuna Sandwich: contains 700 calories per serving. <br/>"
-                        + "Clam Chowder: contains 650 calories per serving."
-                    await step.context.sendActivity(msg);
-                    return await step.replaceDialog(ORDER_PROMPT, step.values.orderCart);
-                } else if (choice.value.match(/help/ig)) {
-                    // Provide help information, and then continue the ordering process.
-                    var msg = `Help: <br/>`
-                        + `To make an order, add as many items to your cart as you like then choose `
-                        + `the "Process order" option to check out.`
-                    await step.context.sendActivity(msg);
-                    return await step.replaceDialog(ORDER_PROMPT, step.values.orderCart);
-                } else {
-                    // The user has chosen a food item from the menu. Add the item to cart.
-                    var item = dinnerMenu[choice.value];
-                    step.values.orderCart.orders.push(item.description);
-                    step.values.orderCart.total += item.price;
-
-                    await step.context.sendActivity(`Added ${item.description} to your cart. <br/>`
-                        + `Current total: $${step.values.orderCart.total}`);
-
-                    // Continue the ordering process.
-                    return await step.replaceDialog(ORDER_PROMPT, step.values.orderCart);
-                }
-            }
-        ]));
-}
-```
-
-Обновите обработчик шагов для вызова диалога и отображения результатов из процесса оформления заказа.
-
-```javascript
-async onTurn(turnContext) {
-    if (turnContext.activity.type === ActivityTypes.Message) {
-        let dc = await this.dialogs.createContext(turnContext);
-        let dialogTurnResult = await dc.continueDialog();
-        if (dialogTurnResult.status === DialogTurnStatus.complete) {
-            // The dialog completed this turn.
-            const result = dialogTurnResult.result;
-            if (!result || result === "cancelled") {
-                await turnContext.sendActivity('You cancelled your order.');
-            } else {
-                await turnContext.sendActivity(`Your order came to $${result.total}`);
-            }
-        } else if (!turnContext.responded) {
-            // No dialog was active.
-            await turnContext.sendActivity("Let's order dinner...");
-            await dc.cancelAllDialogs();
-            await dc.beginDialog(ORDER_PROMPT);
-        } else {
-            // The dialog is active.
-        }
-    } else {
-        await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
-    }
-    // Save state changes
-    await this.conversationState.saveChanges(turnContext);
-}
-```
+Код в `BookingDialog` здесь не показан, так как он не имеет прямого отношения к обработке прерывания. Он используется, чтобы запросить у пользователя сведения о бронировании. Вы можете найти этот код в файле **dialogs/bookingDialogs.js**.
 
 ---
 
-## <a name="handle-unexpected-interruptions"></a>Обработка непредвиденных прерываний
+## <a name="handle-unexpected-errors"></a>Обработка непредвиденных ошибок
 
-Существуют прерывания в работе, которые находятся вне области функций бота.
-Хотя невозможно предвидеть все прерывания, существуют шаблоны, на использование которых можно запрограммировать бот.
+Теперь мы разберемся с необработанными исключениями, которые могут возникнуть при работе.
 
-### <a name="switching-topic-of-conversations"></a>Переключение темы диалогов
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Что делать, если пользователь находится в середине одного диалога и хочет перейти к другому? Например, бот может зарезервировать столик и заказать ужин.
-Находясь в потоке _резервирования столов_, пользователь не отвечает на вопрос "Сколько пользователей будет на вечеринке?", а отправляет сообщение "Заказать ужин". В этом случае пользователь изменил свое мнение и хочет открыть диалог о заказе ужина. Как обрабатывать это прерывание?
+**AdapterWithErrorHandler.cs**
 
-Вы можете переключить темы на поток заказа ужина или сделать его прикрепленной проблемой, сообщая пользователю, что ожидается ввод количества людей и переспросить его. Если вы разрешите переключать темы, необходимо решить, будет ли сохраняться прогресс, чтобы пользователь мог начать с того места, где он остановился, или все сведения будут удалены и в следующий раз, когда ему нужно будет заказать столик, придется начать процесс сначала. Дополнительные сведения об управлении пользовательскими данными см. в статье [Save state using conversation and user properties](bot-builder-howto-v4-state.md) (Сохранение состояния с помощью свойств общения и пользователя).
+В нашем примере обработчик `OnTurnError` в адаптере получает все исключения, создаваемые в соответствии с логикой шага в боте. Если создано исключение, обработчик удаляет состояние текущей беседы, чтобы бот не застрял в цикле ошибки из-за неправильного состояния.
 
-### <a name="apply-artificial-intelligence"></a>Применение искусственного интеллекта
+[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=12-41)]
 
-Для прерываний, которые находятся вне области функций, можно попытаться угадать намерения пользователя. Вы можете это сделать с помощью служб искусственного интеллекта, например QnAMaker, LUIS или пользовательской логики, а затем добавить предположения бота о желаниях пользователя.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Например, в середине потока резервирования стола пользователь говорит: "Я хочу заказать гамбургер". В этом случае бот не знает, как обработать это намерение из этого потока общения. Так как текущий поток не имеет ничего общего с заказом, а другая команда беседы бота — "заказать ужин", бот не знает, что делать с этими входными данными. Например, если применить LUIS, вы сможете обучить модель распознавать то, что пользователь хочет заказать еду (например, LUIS может возвращать намерение orderFood). Таким образом бот может отвечать: "Похоже, что вы хотите заказать еду. Вы хотите переключиться на процесс заказа ужина?" Дополнительные сведения об обучении LUIS и обнаружении намерений пользователя см. в статье [Using LUIS for Language Understanding](bot-builder-howto-v4-luis.md) (Использование LUIS для распознавания речи).
+**index.js**
 
-### <a name="default-response"></a>Ответ по умолчанию
+В нашем примере обработчик `onTurnError` в адаптере получает все исключения, создаваемые в соответствии с логикой шага в боте. Если создано исключение, обработчик удаляет состояние текущей беседы, чтобы бот не застрял в цикле ошибки из-за неправильного состояния.
 
-Если все остальное не удастся, следует отправить ответ по умолчанию, чтобы пользователь не оставался в недоумении от молчания бота. Ответ по умолчанию должен сообщать, какие команды понимает бот, чтобы пользователь мог вернуться в нужное русло.
-
-Вы можете проверить контекст флага **ответа** в конце логики бота, чтобы узнать, отправил ли бот что-либо пользователю в ответ. Если бот обрабатывает входные данные пользователя, но не отвечает, скорее всего, бот не знает, что делать со входными данными. В этом случае можно перехватить и отправить пользователю сообщение по умолчанию.
-
-Если по умолчанию ваш бот предоставляет пользователю диалог `mainMenu`, вам следует выбрать доступные для пользователя возможности в этой ситуации.
-
-# <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
-
-```cs
-// Check whether we replied. If not then clear the dialog stack and present the main menu.
-if (!turnContext.Responded)
-{
-    await dc.CancelAllDialogsAsync(cancellationToken);
-    await dc.BeginDialogAsync(OrderDinnerDialogs.MainDialogId, null, cancellationToken);
-}
-```
-
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
-
-```javascript
-// Check to see if anyone replied. If not then clear all the stack and present the main menu
-if (!context.responded) {
-    await dc.cancelAllDialogs();
-    await step.beginDialog('mainMenu');
-}
-```
+[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=28-38)]
 
 ---
 
-## <a name="handling-global-interruptions"></a>Обработка глобальных прерываний
+## <a name="register-services"></a>Регистрация служб
 
-В приведенном выше примере мы обрабатываем прерывания, которые могут возникнуть на определенном шаге определенного диалога. Как же нам поступать с глобальными прерываниями, то есть такими, которые могут произойти в любое время?
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Логику обработки таких прерываний можно вынести в основной обработчик бота. Это функция, которая обрабатывает входящий `turnContext` и решает, что с ним делать.
+**Startup.cs.**
 
-В следующем примере _первое действие_ бота — проверка входящего текстового сообщения и поиск указаний пользователя на то, что он хочет получить помощь или отменить заказ — это два самых распространенных прерывания в работе ботов. После завершения этой проверки бот вызывает `dc.continueDialog()` для обработки всех незавершенных активных диалогов.
+Наконец, в `Startup.cs` создается временный бот, то есть на каждом шаге создается новый экземпляр бота.
 
-# <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=46-47)]
 
-```cs
-// Check for top-level interruptions.
-string utterance = turnContext.Activity.Text.Trim().ToLowerInvariant();
+Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 
-if (utterance == "help")
-{
-    // Start a general help dialog. Dialogs already on the stack remain and will continue
-    // normally if the help dialog exits normally.
-    await dc.BeginDialogAsync(OrderDinnerDialogs.HelpDialogId, null, cancellationToken);
-}
-else if (utterance == "cancel")
-{
-    // Cancel any dialog on the stack.
-    await turnContext.SendActivityAsync("Canceled.", cancellationToken: cancellationToken);
-    await dc.CancelAllDialogsAsync(cancellationToken);
-}
-else
-{
-    await dc.ContinueDialogAsync(cancellationToken);
+[!code-csharp[MainDialog signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=15)]
+[!code-csharp[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogAndWelcomeBot.cs?range=16)]
+[!code-csharp[DialogBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogBot.cs?range=18)]
 
-    // Check whether we replied. If not then clear the dialog stack and present the main menu.
-    if (!turnContext.Responded)
-    {
-        await dc.CancelAllDialogsAsync(cancellationToken);
-        await dc.BeginDialogAsync(OrderDinnerDialogs.MainDialogId, null, cancellationToken);
-    }
-}
-```
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-# <a name="javascripttabjstab"></a>[JavaScript](#tab/jstab)
+**index.js**
 
-Мы можем обрабатывать прерывания перед отправкой ответа в диалог с пользователем.
+Наконец, в `index.js` создается бот.
 
-В этом фрагменте предполагается, что в нашем наборе диалогов есть `helpDialog` и `mainMenu`.
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=55-56)]
 
-```javascript
-const utterance = (context.activity.text || '').trim();
+Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 
-// Let's look for some interruptions first!
-if (utterance.match(/help/ig)) {
-    // Launch a new help dialog if the user asked for help
-    await dc.beginDialog('helpDialog');
-} else if (utterance.match(/cancel/ig)) {
-    // Cancel any active dialogs if the user says cancel
-    await dc.context.sendActivity('Canceled.');
-    await dc.cancelAllDialogs();
-}
-
-// If the bot hasn't yet responded...
-if (!context.responded) {
-    // Continue any active dialog, which might send a response...
-    await dc.continueDialog();
-
-    // Finally, if the bot still hasn't sent a response, send instructions.
-    if (!context.responded) {
-        await dc.cancelAllDialogs();
-        await context.sendActivity("Starting the main menu...");
-        await dc.beginDialog('mainMenu');
-    }
-}
-```
+[!code-javascript[MainDialog signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=12)]
+[!code-javascript[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogAndWelcomeBot.js?range=8)]
+[!code-javascript[DialogBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogBot.js?range=6)]
 
 ---
+
+## <a name="to-test-the-bot"></a>Тестирование бота
+
+1. Установите [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme), если вы этого еще не сделали.
+1. Выполните этот пример на локальном компьютере.
+1. Запустите эмулятор, подключитесь к боту и отправьте несколько сообщений, как показано ниже.
+
+<!--![test dialog prompt sample](~/media/emulator-v4/test-dialog-prompt.png)-->
+
+## <a name="additional-information"></a>Дополнительная информация
+
+- В [примере проверки подлинности](https://aka.ms/logout) показана обработка выхода пользователя. Там применен тот же шаблон, что и для обработки прерываний в этом примере.
+
+- Вместо бездействия следует отправить ответ по умолчанию, чтобы пользователь не оставался в недоумении от молчания бота. Ответ по умолчанию должен сообщать, какие команды понимает бот, чтобы пользователь мог вернуться в нужное русло.
+
+- В любой точке шага свойство контекста _responded_ указывает, отправлял ли бот пользователю сообщение на этом шаге. Следите за тем, чтобы бот обязательно отправил пользователю хоть что-то до завершения шага, хотя бы просто подтверждение ввода.
+
+<!-- Footnote-style links -->
+
+[concept-basics]: bot-builder-basics.md
+[concept-state]: bot-builder-concept-state.md
+[concept-dialogs]: bot-builder-concept-dialog.md
+
+[using-luis]: bot-builder-howto-v4-luis.md
+[using-qna]: bot-builder-howto-qna.md
+
+[simple-flow]: bot-builder-dialog-manage-conversation-flow.md
+[prompting]: bot-builder-prompts.md
+[component-dialogs]: bot-builder-compositcontrol.md
+
+[cs-sample]: https://aka.ms/cs-core-sample
+[js-sample]: https://aka.ms/js-core-sample

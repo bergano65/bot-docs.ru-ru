@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c6d1e779215b54f635adc019d93af39735e16e0
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 0d4279df31aba6cecb12b7d8d7262069aed8836b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904877"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033386"
 ---
 # <a name="send-and-receive-text-message"></a>Отправка и получение текстовых сообщений
 
@@ -31,7 +31,7 @@ Markdown поддерживается для большинства тексто
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В методе `OnTurnAsync` бота используйте метод `SendActivityAsync` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `SendActivitiesAsync` объекта для отправки нескольких ответов за раз.
+В обработчиках действий бота используйте метод `SendActivityAsync` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `SendActivitiesAsync` объекта для отправки нескольких ответов за раз.
 
 ```cs
 await turnContext.SendActivityAsync($"Welcome!");
@@ -39,7 +39,7 @@ await turnContext.SendActivityAsync($"Welcome!");
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-В обработчике `onTurn` бота используйте метод `sendActivity` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `sendActivities` объекта для отправки нескольких ответов за раз.
+В обработчиках действий бота используйте метод `sendActivity` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения. Кроме того, вы можете использовать метод `sendActivities` объекта для отправки нескольких ответов за раз.
 
 ```javascript
 await context.sendActivity("Welcome!");
@@ -51,7 +51,7 @@ await context.sendActivity("Welcome!");
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В методе `OnTurnAsync` бота используйте приведенный ниже код для получения сообщения. 
+В обработчиках действий бота используйте следующий код для получения сообщения. 
 
 ```cs
 var responseMessage = turnContext.Activity.Text;
@@ -59,7 +59,7 @@ var responseMessage = turnContext.Activity.Text;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-В методе `OnTurnAsync` бота используйте приведенный ниже код для получения сообщения.
+В обработчиках действий бота используйте следующий код для получения сообщения.
 
 ```javascript
 let text = turnContext.activity.text;
@@ -70,5 +70,9 @@ let text = turnContext.activity.text;
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - Дополнительные сведения об обработке действий в целом см. в разделе [Обработка действий](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack).
-- Сведения об отправке сообщений с расширенным содержимым см. в статье о [добавлении мультимедийных вложений](bot-builder-howto-add-media-attachments.md).
 - См. дополнительные сведения о схеме действий Bot Framework и [действиях в беседах](https://aka.ms/botSpecs-activitySchema#message-activity).
+
+## <a name="next-steps"></a>Дополнительная информация
+
+> [!div class="nextstepaction"]
+> [Добавление мультимедиа в сообщения](./bot-builder-howto-add-media-attachments.md)
