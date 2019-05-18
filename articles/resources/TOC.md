@@ -1,8 +1,10 @@
 # Виртуальный помощник
 ## [Обзор](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [Общие сведения о шаблонах](../v4sdk/bot-builder-virtual-assistant-template.md)
+## [Приступая к работе](../v4sdk/bot-builder-virtual-assistant-gettingstarted.md)
 # Навыки 
 ## [Обзор](../v4sdk/bot-builder-skills-overview.md)
+## [Приступая к работе](../v4sdk/bot-builder-skills-gettingstarted.md)
 # [Часто задаваемые вопросы](../bot-service-resources-bot-framework-faq.md)
 # [Получение поддержки](../bot-service-resources-links-help.md)
 # [Справочник по использованию каналов](../bot-service-channels-reference.md)
