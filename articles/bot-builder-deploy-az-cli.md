@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a44e45cd5e9b83b2e4512c5a1fd882593024e1b3
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 6e7bd108bc67595c1d523c3c038e8b403ce387b1
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032889"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733299"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -99,7 +99,7 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 _Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation=<location>"
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
 **Вариант 2. Новый план Службы приложений** 

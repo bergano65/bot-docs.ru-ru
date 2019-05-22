@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/25/2019
+ms.date: 05/08/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 74c3af688a8f35b4583aa7b195348a6b205292a2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3470b1c8f3fbcfb7fecbb060a54b1a356ad41b61
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033160"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733322"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -70,9 +70,9 @@ ms.locfileid: "65033160"
 
 В **index.js** создайте свойства состояния и бот, затем вызовите метод бота `run` из `processActivity`.
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
 
 ---
 
@@ -92,11 +92,11 @@ ms.locfileid: "65033160"
 
 В конструкторе мы создадим методы доступа к свойствам состояния и настроим объекты управления состоянием (созданные выше) для нашей беседы.
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
 
 Затем мы определим второй обработчик `onDialog`, который будет выполняться после основного обработчика сообщений (как описано в следующем разделе). Этот второй обработчик гарантирует сохранение состояния на всех этапах.
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
 
 ---
 
@@ -112,7 +112,7 @@ ms.locfileid: "65033160"
 
 Для обработки действий сообщений мы зададим данные для беседы и пользователя, а затем вызовем вспомогательный метод `fillOutUserProfile()`. Ниже приведен полный код для обработчика шагов.
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
 ---
 
 ## <a name="filling-out-the-user-profile"></a>Заполнение профиля пользователя
@@ -131,7 +131,7 @@ ms.locfileid: "65033160"
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
 
 ---
 
@@ -157,7 +157,7 @@ ms.locfileid: "65033160"
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
+**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
 
 ---
 
