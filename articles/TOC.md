@@ -2,12 +2,12 @@
 # Обзор
 ## [Общие сведения о службе Azure Bot](bot-service-overview-introduction.md)
 ## [Новые возможности](what-is-new.md)
-# Быстрый запуск
+# Краткое руководство
 ## [Создание бота с помощью службы Azure Bot](~/bot-service-quickstart.md)
 ## Создание бота в локальной среде
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
-# Учебники
+# Руководства
 ## [1. Создание и развертывание простого бота](v4sdk/bot-builder-tutorial-basic-deploy.md)
 ## [2. Добавление QnA Maker и повторное развертывание бота](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [Добавление аутентификации в бот](bot-builder-tutorial-authentication.md)
@@ -38,7 +38,6 @@
 ### [Сохранение данных пользователя и диалога](v4sdk/bot-builder-howto-v4-state.md) 
 ### [Запрос на ввод данных пользователем](v4sdk/bot-builder-primitive-prompts.md) 
 ### [Отправка приветственного сообщения пользователям](v4sdk/bot-builder-send-welcome-message.md)
-<!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [Отправка упреждающих уведомлений пользователям](v4sdk/bot-builder-howto-proactive-message.md)
 ### [Реализация процесса общения](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 ### [Добавление возможности распознавания естественного языка в функционал бота](v4sdk/bot-builder-howto-v4-luis.md)
@@ -48,7 +47,6 @@
 ### [Повторное использование диалогов](v4sdk/bot-builder-compositcontrol.md)
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-<!--#### [Persist user data](v4sdk/bot-builder-tutorial-persist-user-inputs.md)--TODO: redirect to write directly to storage.-->
 ### [Непосредственная запись в хранилище](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)

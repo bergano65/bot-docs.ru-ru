@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c486970a3880c95ff10e9d4bb59b50a5600c7343
+ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033462"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855878"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Перенос бота с версии 3 в версию 4 пакета SDK для .NET
 
@@ -1001,9 +1001,3 @@ namespace ContosoHelpdeskChatBot
 - [Отправка и получение текстовых сообщений](../bot-builder-howto-send-messages.md)
 - [Сохранение данных пользователя и диалога](../bot-builder-howto-v4-state.md)
 - [Реализация процесса общения](../bot-builder-dialog-manage-conversation-flow.md)
-- [Сбор данных, которые вводит пользователь, с помощью диалогового окна](../bot-builder-prompts.md)
-
-<!-- TODO:
-- The conceptual piece
-- The migration to a .NET Core project
--->
