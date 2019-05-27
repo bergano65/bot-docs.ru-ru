@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: deafe148310dd214ab857d60595edb1abef9e46d
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: e51683a5dbae29879d73ee322586272d49708b22
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039719"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973869"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство по Использование QnA Maker в боте для ответов на вопросы.
 
@@ -61,7 +61,19 @@ ms.locfileid: "65039719"
 1. Выполните для базы знаний действие **Save and train** (Сохранить и обучить).
 1. Щелкните **Publish** (Опубликовать).
 
-Теперь база знаний готова для использования в боте. Запишите идентификатор базы знаний, ключ конечной точки и имя узла. Эти значения потребуются для следующего шага.
+После публикации приложения QnA Maker откройте вкладку _SETTINGS_ (Параметры) и прокрутите эту страницу вниз до раздела Deployment Details (Сведения о развертывании). Запишите следующие значения из примера HTTP-запроса _Postman_.
+
+```text
+POST /knowledgebases/<knowledge-base-id>/generateAnswer
+Host: <your-hostname>  // NOTE - this is a URL ending in /qnamaker.
+Authorization: EndpointKey <qna-maker-resource-key>
+```
+
+Полная строка URL-адреса для имени узла будет выглядеть так: https://< >.azure.net/qnamaker.
+
+Эти значения будут использоваться на следующем шаге в файле `appsettings.json` или `.env`.
+
+Теперь база знаний готова для использования в боте.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Добавление сведений о базе знаний в бота
 Начиная с бот-платформы версии 4.3, файлы с расширением .bot больше не предоставляются в Azure для скачивания вместе с исходным кодом бота. Следуйте дальнейшим инструкциям, чтобы подключить своего бота на C# или JavaScript к базе знаний.
@@ -76,9 +88,9 @@ ms.locfileid: "65039719"
   "MicrosoftAppPassword": "",
   "ScmType": "None",
   
-  "QnAKnowledgebaseId": "<your-knowledge-base-id>",
-  "QnAAuthKey": "<your-knowledge-base-endpoint-key>",
-  "QnAEndpointHostName": "<your-qna-service-hostname>" // This is a URL
+  "QnAKnowledgebaseId": "<knowledge-base-id>",
+  "QnAAuthKey": "<qna-maker-resource-key>",
+  "QnAEndpointHostName": "<your-hostname>" // This is a URL ending in /qnamaker
 }
 ```
 
@@ -91,18 +103,18 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-QnAKnowledgebaseId="<your-knowledge-base-id>"
-QnAAuthKey="<your-knowledge-base-endpoint-key>"
-QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
+QnAKnowledgebaseId="<knowledge-base-id>"
+QnAAuthKey="<qna-maker-resource-key>"
+QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 ```
 
 ---
 
 | Поле | Значение |
 |:----|:----|
-| kbId | Идентификатор базы знаний, автоматически созданный на портале QnA Maker. |
-| endpointKey | Ключ конечной точки, автоматически созданный на портале QnA Maker. |
-| hostname | URL-адрес узла, созданный на портале QnA Maker. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полная строка URL-адреса будет выглядеть так: https://< >.azure.net/qnamaker. |
+| QnAKnowledgebaseId | Идентификатор базы знаний, автоматически созданный на портале QnA Maker. |
+| QnAAuthKey | Ключ конечной точки, автоматически созданный на портале QnA Maker. |
+| QnAEndpointHostName | URL-адрес узла, созданный на портале QnA Maker. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полная строка URL-адреса будет выглядеть так: https://< >.azure.net/qnamaker. |
 
 Сохраните изменения.
 
@@ -259,6 +271,15 @@ QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
 ## <a name="republish-your-bot"></a>Повторная публикация бота
 
 Теперь можно повторно опубликовать бота.
+
+> [!IMPORTANT]
+> Прежде чем создавать архив с файлами проекта, убедитесь, что вы перешли _в нужную папку_. 
+> - Для ботов на C# это папка, в которой расположен CSPROJ-файл. 
+> - Для ботов на JS это папка, в которой расположен файл app.js или index.js. 
+>
+> Выберите все файлы и заархивируйте их, а затем выполните команду, оставаясь в той же папке.
+>
+> Если расположение корневой папки выбрано неверно, **бот не сможет запуститься на портале Azure**.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ```cmd

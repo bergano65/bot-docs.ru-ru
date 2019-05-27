@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/15/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e488615f318529935d35dbebbed2dd3b734f62
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: c81e463c221c64250684827a4e0ed059e7f98a02
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039744"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973879"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -90,9 +90,25 @@ ms.locfileid: "65039744"
 
 ### <a name="create-qna-maker-kb"></a>Создание базы данных QnA Maker
 
-Первый шаг при настройке базы знаний службы QnA Maker — настройка службы QnA Maker в Azure. Чтобы сделать это, выполните пошаговые инструкции, приведенные на [этой странице](https://aka.ms/create-qna-maker). Теперь войдите на [веб-портал QnA Maker](https://qnamaker.ai). Перейдите к шагу 2.
+Первый шаг при настройке базы знаний службы QnA Maker — настройка службы QnA Maker в Azure. Чтобы сделать это, см. [пошаговые инструкции](https://aka.ms/create-qna-maker).
 
-![Создание QnA, шаг 2](./media/tutorial-dispatch/create-qna-step-2.png)
+Создав в Azure службу QnA Maker, запишите _ключ 1_ Cognitive Services, который предоставлен для вашей службы QnA Maker. Его нужно будет сохранить как \<azure-qna-service-key1> при добавлении QnA в приложение для отправки. Чтобы получить этот ключ, сделайте следующее:
+    
+![Выбор Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
+
+1. На портале Azure выберите службу QnA Maker из Cognitive Services.
+
+![Выбор ключей в Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-keys.png)
+
+2. Выберите ключи, которые расположены в разделе _управления ресурсами_ в меню слева.
+
+![Выбор ключа 1 в Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-key1.png)
+
+3. Скопируйте значение _ключа 1_ в буфер обмена и сохраните его на локальном компьютере. Он будет потом использоваться в качестве значения ключа (-k) \<azure-qna-service-key1> при добавлении QnA в приложение для отправки.
+
+Теперь войдите на [веб-портал QnA Maker](https://qnamaker.ai). Перейдите к шагу 2.
+
+![Создание QnA, шаг 2](./media/tutorial-dispatch/create-qna-step-2.png) 
 
 Выберите здесь следующие значения:
 1. Учетную запись Azure AD.
@@ -124,7 +140,7 @@ ms.locfileid: "65039744"
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
 Host: <your-hostname>  // NOTE - this is a URL.
-Authorization: EndpointKey <your-endpoint-key>
+Authorization: EndpointKey <qna-maker-resource-key>
 ```
 
 Полная строка URL-адреса для имени узла будет выглядеть так: https://< >.azure.net/qnamaker.
@@ -156,7 +172,7 @@ Authorization: EndpointKey <your-endpoint-key>
     ```cmd
     dispatch add -t luis -i "<app-id-for-weather-app>" -n "<name-of-weather-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_Weather
     dispatch add -t luis -i "<app-id-for-home-automation-app>" -n "<name-of-home-automation-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_HomeAutomation
-    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<your-cognitive-services-subscription-id>" --intentName q_sample-qna
+    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<azure-qna-service-key1>" --intentName q_sample-qna
     ```
 
 1. Используйте `dispatch create` для создания модели отправки из файла .dispatch.
@@ -206,7 +222,7 @@ Authorization: EndpointKey <your-endpoint-key>
 "MicrosoftAppPassword": "",
   
 "QnAKnowledgebaseId": "<knowledge-base-id>",
-"QnAAuthKey": "<your-endpoint-key>",
+"QnAAuthKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
 
 "LuisAppId": "<app-id-for-dispatch-app>",
@@ -245,7 +261,7 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 
 QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<your-endpoint-key>"
+QnAAuthKey="<qna-maker-resource-key>"
 QnAEndpointHostName="<your-hostname>"
 
 LuisAppId=<app-id-for-dispatch-app>

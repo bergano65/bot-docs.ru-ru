@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 04/17/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f24fc4e0aa4ccb9d99275360df693c8465e5a4ad
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 10ae35f51a072a1af6cf7d4bdf2fd2f4cb3d66ee
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039766"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973857"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -58,10 +58,10 @@ QnA Maker создает слой вопросов и ответов для ди
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>Получение значений для подключения бота к базе знаний
 1. На сайте [QnA Maker](https://www.qnamaker.ai/) выберите свою базу знаний.
 1. При открытой базе знаний выберите **Параметры**. Сохраните значение из поля _Имя службы_. Это значение поможет вам найти нужную базу знаний в интерфейсе портала QnA Maker. Оно не используется для подключения к этой базе знаний из приложения бота. 
-1. Прокрутите вниз, чтобы найти **Сведения о развертывании**, и запишите следующие значения:
-   - POST /knowledgebases/<идентификатор_базы_знаний>/getAnswers
-   - Host: <имя_узла>/qnamaker
-   - Авторизация: EndpointKey <ключ_конечной_точки>
+1. Прокрутите вниз, чтобы найти **сведения о развертывании**, и запишите следующие значения из примера HTTP-запроса Postman:
+   - POST /knowledgebases/\<идентификатор_базы_знаний>/generateAnswer
+   - Узел: \<имя_узла> // полный URL-адрес, заканчивающийся /qnamaker
+   - Авторизация: EndpointKey \<ключ_конечной_точки>
    
 Полная строка URL-адреса для имени узла будет выглядеть так: https://< >.azure.net/qnamaker. Эти три значения предоставят приложению сведения, необходимые для подключения к базе знаний QnA Maker через службу Azure QnA.  
 

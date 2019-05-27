@@ -1,0 +1,22 @@
+---
+title: Начало работы с навыками Bot Framework | Документация Майкрософт
+description: Узнайте, как начать работу с навыками Bot Framework
+author: darrenj
+ms.author: darrenj
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.date: 05/06/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: 5d5f22351592db4548ad1db35ecfea1d08e98b20
+ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65856693"
+---
+# <a name="bot-framework-skills---getting-started"></a>Начало работы с навыками Bot Framework
+
+Чтобы помочь вам в создании собственных навыков Bot Framework, мы подготовили набор [руководств](https://github.com/microsoft/AI/tree/master/docs#tutorials) и разместили их в [репозитории GitHub для решений Bot Framework](https://github.com/Microsoft/botframework-solutions). Они позволят вам быстро создать собственные навыки и добавить их в виртуальный помощник или другого бота на основе пакета SDK версии 4.
+
+Кроме описанной выше документации доступны дополнительные [практические руководства](https://github.com/microsoft/AI/tree/master/docs#how-to) и [справочные статьи](https://github.com/microsoft/AI/tree/master/docs#reference) с более подробными сведениями.

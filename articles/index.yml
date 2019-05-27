@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Документация по службе Azure Bot
+metadata:
+  document_id: 1d934240-28c7-635f-d41b-3e43ae02970c
+  title: Документация по службе Azure Bot. Руководства и справочник по API
+  meta.description: 'Learn how to create bots. Documentation helps you create, deploy, and manage bots in the cloud.'
+  author: ivorb
+  manager: kamrani
+  ms.service: bot-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/23/2019
+  ms.author: ivorb
+abstract:
+  description: 'Служба Azure Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для Bot Framework с поддержкой C# и JavaScript. Узнайте, как использовать службу Bot, изучив краткие инструкции, примеры и руководства.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/video/satya-video.png
+      width: 250
+    title: "Сатья Наделла (Satya Nadella)\_— выступление на Build 2019 (1:25:09)"
+    href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
+    width: 250
+sections:
+  - title: Пятиминутные руководства по началу работы
+    items:
+      - type: paragraph
+        text: 'Узнайте, как создать свой первый бот:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/azure_portal.png
+            text: Портал Azure
+            href: 'https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart'
+          - image:
+              src: v4sdk/media/logo_csharp.svg
+            text: 'C#'
+            href: 'https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
+          - image:
+              src: v4sdk/media/logo_js.svg
+            text: JavaScript
+            href: 'https://docs.microsoft.com/en-us/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+  - title: Пошаговые руководства
+    items:
+      - type: paragraph
+        text: 'Узнайте, как создавать и развертывать боты в Azure.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/bot-framework/bot-builder-tutorial-basic-deploy">Создание и развертывание простого бота</a>
+          - html: <a href="/bot-framework/bot-builder-tutorial-add-qna">Добавление QnA Maker и повторное развертывание бота</a>
+  - title: Справочные материалы
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Языки
+            html: '<p><a href="/dotnet/api/?view=botbuilder-dotnet-stable">.NET</a></p><p><a href="https://docs.microsoft.com/en-us/javascript/api/botbuilder/index?view=botbuilder-ts-latest">JavaScript</a></p>'
