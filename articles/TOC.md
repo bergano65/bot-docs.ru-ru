@@ -1,4 +1,4 @@
-# [Документация по службе Azure Bot](index.md)
+# [Документация по службе Azure Bot](index.yml)
 # Обзор
 ## [Общие сведения о службе Azure Bot](bot-service-overview-introduction.md)
 ## [Новые возможности](what-is-new.md)
