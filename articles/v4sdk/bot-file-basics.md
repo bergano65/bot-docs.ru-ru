@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20b434c4fe5106ffe953c1a9ba9a282254511c9c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032320"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214139"
 ---
 # <a name="manage-bot-resources"></a>Управление ресурсами бота
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032320"
 Боты часто используют разные службы, например [LUIS.ai](https://luis.ai) или [QnaMaker.ai](https://qnamaker.ai). При разработке ботов вам необходимо иметь возможность отслеживать их все. Вы можете использовать разные средства, например файлы appsettings.json, web.config или .env. 
 
 > [!IMPORTANT]
-> До выпуска для Bot Framework пакета SDK версии 4.3 мы предлагали файл .bot в качестве средства управления ресурсами. Но в будущем мы рекомендуем вам использовать для этого файлы appsettings.json или .env. Боты, которые используют файл .bot, пока будут работать и дальше, хотя файл .bot был объявлен **_нерекомендуемым_**. Если вы используете файл .bot для управления ресурсами, выполните соответствующие шаги по переносу параметров. 
+> До выпуска для Bot Framework пакета SDK версии 4.3 мы предлагали файл .bot в качестве средства управления ресурсами. Но в будущем мы рекомендуем вам использовать для этого файлы appsettings.json или .env. Боты, которые используют файл .bot, пока будут работать и дальше, хотя файл .bot был объявлен **_нерекомендуемым_** . Если вы используете файл .bot для управления ресурсами, выполните соответствующие шаги по переносу параметров. 
 
 ## <a name="migrating-settings-from-bot-file"></a>Перенос параметров из файла .bot
 В разделах ниже описано, как перенести параметры из файла .bot. Следуйте подходящему для вас сценарию.

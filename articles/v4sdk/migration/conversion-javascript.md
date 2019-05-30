@@ -1,21 +1,21 @@
 ---
 title: Перенос существующего бота JavaScript версии 3 в новый проект версии 4 | Документация Майкрософт
 description: Узнайте, как перенести существующий бот JavaScript версии 3 в пакет SDK версии 4, используя новый проект.
-keywords: JavaScript, bot migration, formflow, dialogs, v3 bot
+keywords: JavaScript, bot migration, dialogs, v3 bot
 author: JonathanFingold
 ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/13/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3692c723bf2ac4d2275176bb0f7c5f8103225808
-ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65856663"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215607"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Перенос бота на основе пакета SDK для JavaScript версии 3 в версию 4
 

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/25/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 53dd51c871b3d386caaa01bd2e652092e7477e09
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 94a3459760c8f0f14886a068d082dafeb9530b19
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033507"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215540"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -95,7 +95,7 @@ ms.locfileid: "65033507"
 
 ## <a name="bot-structure"></a>Структура бота
 
-В следующих разделах мы рассмотрим _основные части_ EchoBot, которые можно легко создать с помощью шаблонов для [**C#**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) и [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md).
+В следующих разделах мы рассмотрим _основные части_ EchoBot, которые можно легко создать с помощью шаблонов для [**C#** ](../dotnet/bot-builder-dotnet-sdk-quickstart.md) и [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md).
 
 <!--Need to add section calling out the controller in code, and explaining it further-->
 

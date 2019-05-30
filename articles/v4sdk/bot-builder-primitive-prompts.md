@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/08/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3470b1c8f3fbcfb7fecbb060a54b1a356ad41b61
-ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
+ms.openlocfilehash: bfd37b703a43e056142ad161eb3308fd2b754e25
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65733322"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215327"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -28,7 +28,7 @@ ms.locfileid: "65733322"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Код в этой статье основан на примере запроса на ввод данных пользователем. Вам потребуется копия примера **[для C#](https://aka.ms/cs-primitive-prompt-sample) или [для JavaScript](https://aka.ms/js-primitive-prompt-sample)**.
+- Код в этой статье основан на примере запроса на ввод данных пользователем. Вам потребуется копия примера **[для C#](https://aka.ms/cs-primitive-prompt-sample) или [для JavaScript](https://aka.ms/js-primitive-prompt-sample)** .
 - Понимание принципов [управления состоянием](bot-builder-concept-state.md) и [сохранения данных пользователя и диалога](bot-builder-howto-v4-state.md).
 
 ## <a name="about-the-sample-code"></a>Сведения о примере кода
@@ -104,7 +104,7 @@ ms.locfileid: "65733322"
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Чтобы обрабатывать действия сообщений, мы используем вспомогательный метод _FillOutUserProfileAsync()_ перед сохранением состояния с помощью _SaveChangesAsync()_. Ниже приведен полный код.
+Чтобы обрабатывать действия сообщений, мы используем вспомогательный метод _FillOutUserProfileAsync()_ перед сохранением состояния с помощью _SaveChangesAsync()_ . Ниже приведен полный код.
 
 **Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
 

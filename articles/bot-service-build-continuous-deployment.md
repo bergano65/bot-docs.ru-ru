@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d755572c6559ca1de7f0cf93a120273aa0fff947
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: dc4b524659df3fb0b91b54fca65b4b7dd36378cd
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033100"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214272"
 ---
 # <a name="set-up-continuous-deployment"></a>Непрерывное развертывание с использованием GIT в службе приложений Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "65033100"
 
 |Среда выполнения | Файлы в корневом каталоге |
 |:-------|:---------------------|
-| ASP.NET Core; | .sln или .csproj |
+| ASP.NET Core | .sln или .csproj |
 | Node.js | server.js, app.js или package.json со скриптом запуска |
 
 

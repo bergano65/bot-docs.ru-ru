@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/13/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d72c374978f509bec0a17ba99c585578757ded61
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 69ce362f35054c5ee42035d8bffefb17c6fa7f71
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904477"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215506"
 ---
 # <a name="activity-processing"></a>Обработка действий
 
@@ -29,7 +29,7 @@ ms.locfileid: "59904477"
 
 Адаптер ботов инкапсулирует процессы проверки подлинности, а также отправляет и получает действия от службы Bot Connector. Когда бот получает действие, адаптер скрывает полные сведения о нем, создает [объект контекста](#turn-context), передает логику приложения бота и отправляет ответы, созданные ботом, обратно в почтовый ящик канала.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Аутентификация
 
 Адаптер проверяет подлинность каждой входящей активности, получаемой приложением, используя информацию из действия и заголовок `Authentication` из запроса REST. Адаптер использует объект соединителя и учетные данные приложения для проверки подлинности исходящих действий для пользователя.
 

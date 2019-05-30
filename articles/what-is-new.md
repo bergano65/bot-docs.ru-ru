@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/05/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ded465802ff3e16563dd56998e4114d6bd98ad5f
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: de497fa5ad694081258486dd5c6e9fd37b107879
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65047891"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215558"
 ---
 # <a name="whats-new-in-bot-framework"></a>Новые возможности Bot Framework
 Пакет SDK Bot Framework версии 4 — это [пакет SDK с открытым кодом][1a], позволяющий разработчикам моделировать и создавать сложные диалоги с использованием популярных языков программирования.
@@ -152,7 +152,7 @@ Bot Framework Emulator включает бета-версию нового ко�
 [34]:https://aka.ms/qnamaker-docs-home
 [35]:https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
 
-### <a name="speech-services"></a>Службы распознавания речи
+### <a name="speech-services"></a>Служба "Речь"
 [Службы речи](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/) выполняют преобразование звука в текст, перевод речи и преобразование текста в речь с помощью унифицированных решений. С помощью служб речи можно интегрировать речь в бота, создавать пользовательские слова для активации или создавать содержимое на нескольких языках.
 
 ### <a name="adaptive-cards"></a>Адаптивные карточки

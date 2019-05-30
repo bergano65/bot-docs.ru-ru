@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/28/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 55b5a4073340bb29074af5b2ee74dd952ea40f0c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 862fbf59cf33406e35e9051c0814489fdfdaa8f3
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032236"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215583"
 ---
 # <a name="differences-between-the-v3-and-v4-net-sdk"></a>Различия между версиями 3 и 4 пакета SDK для .NET
 
@@ -132,7 +132,7 @@ ms.locfileid: "65032236"
 
 Ниже приведен список стандартных операций в версии 3, а также описывается их выполнение в каскадном диалоге. Обратите внимание, что каждый шаг каскадного диалога должен возвращать значение `DialogTurnResult`. В противном случае каскадный диалог может преждевременно завершиться.
 
-| Операция | версия 3 | версия 4 |
+| Операция | Версия 3 | версия 4 |
 |:---|:---|:---|
 | Обработка запуска диалога | Реализуйте `IDialog.StartAsync` | Сделайте этот шаг первым в каскадном диалоге. |
 | Отправка действия | Вызовите `IDialogContext.PostAsync`. | Вызовите `ITurnContext.SendActivityAsync`.<br/>Используйте свойство `Context` контекста шага, чтобы получить контекст шага.  |

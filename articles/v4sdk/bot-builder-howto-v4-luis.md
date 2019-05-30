@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 4/18/19
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 58d1e83b67d0601a9783e175318a50f8c0646bb2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033565"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215353"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -25,7 +25,7 @@ ms.locfileid: "65033565"
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [LUIS](https://www.luis.ai).
-- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на языке **[CSharp](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)**. 
+- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на языке **[CSharp](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)** . 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере
