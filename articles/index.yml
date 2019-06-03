@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/23/2019
+  ms.date: 05/31/2019
   ms.author: ivorb
 abstract:
   description: 'Служба Azure Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для Bot Framework с поддержкой C# и JavaScript. Узнайте, как использовать службу Bot, изучив краткие инструкции, примеры и руководства.'
@@ -25,6 +25,22 @@ abstract:
     href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
     width: 250
 sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction'
+            html: <p>Узнайте подробнее о службе Azure Bot.</p>
+            image:
+              src: media/index/i_overview.png
+            title: Общие сведения о службе Azure Bot
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics'
+            html: '<p>Узнайте, как работают боты.</p>'
+            image:
+              src: media/index/i_guidelines.png
+            title: Принципы работы бота
   - title: Пятиминутные руководства по началу работы
     items:
       - type: paragraph
@@ -33,17 +49,17 @@ sections:
         style: icon48
         items:
           - image:
-              src: media/index/azure_portal.png
-            text: Портал Azure
-            href: 'https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart'
-          - image:
               src: v4sdk/media/logo_csharp.svg
             text: 'C#'
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
           - image:
               src: v4sdk/media/logo_js.svg
             text: JavaScript
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+          - image:
+              src: media/index/azure_portal.png
+            text: Портал Azure
+            href: 'https://docs.microsoft.com/azure/bot-service/bot-service-quickstart'
   - title: Пошаговые руководства
     items:
       - type: paragraph
