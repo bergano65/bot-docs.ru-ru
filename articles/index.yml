@@ -31,12 +31,17 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction'
+          - href: 'https://docs.microsoft.com/azure/bot-service/what-is-new'
+            html: <p>Новые возможности в службе Azure Bot.</p>
+            image:
+              src: media/index/i_guidelines.png
+            title: Новые возможности
+          - href: 'https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction'
             html: <p>Узнайте подробнее о службе Azure Bot.</p>
             image:
               src: media/index/i_overview.png
             title: Общие сведения о службе Azure Bot
-          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics'
+          - href: 'https://docs.microsoft.com/azure/bot-service/bot-builder-basics'
             html: '<p>Узнайте, как работают боты.</p>'
             image:
               src: media/index/i_guidelines.png
