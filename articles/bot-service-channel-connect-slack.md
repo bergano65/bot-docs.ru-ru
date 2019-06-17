@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/09/2019
-ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.openlocfilehash: 58416147a057bce8947943521a1226e1d9acbdf1
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202567"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693597"
 ---
 # <a name="connect-a-bot-to-slack"></a>Подключение бота к Slack
 
@@ -134,3 +134,7 @@ Slack предоставляет HTML-код, с помощью которого
 3. Вставьте его из буфера обмена в HTML-код, предоставленный для кнопки Slack. Этот URL-адрес заменяет значение href, предоставленное Slack для этого бота.
 
 Авторизованные пользователи могут нажать кнопку **Add to Slack** (Добавить в Slack), предоставленную этим измененным HTML, для доступа к боту в Slack.
+
+## <a name="also-available-as-an-adapter"></a>Также предоставляется как адаптер
+
+Этот канал также [предоставляется как адаптер](https://botkit.ai/docs/v4/platforms/slack.html). См. подробнее о выборе между адаптером и каналом в списке [доступных адаптеров](bot-service-channel-additional-channels.md#currently-available-adapters).

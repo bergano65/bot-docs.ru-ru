@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215353"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693668"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -76,6 +76,8 @@ ms.locfileid: "66215353"
 ### <a name="why-use-entities"></a>Для чего нужны сущности
 Сущности LUIS позволяют боту лучше понимать некоторые факты или события, которые отличаются от стандартных намерений. Это позволяет получить от пользователя дополнительную информацию, которая позволит боту точнее реагировать на действия пользователя или пропустить некоторые вопросы, в которых от пользователя запрашивается уже полученная информация. В файле FlightBooking.json определены не только три намерения LUIS (Book Flight, Cancel и None), но и набор дополнительных сущностей, таких как From.Airport и To.Airport. Эти сущности позволяют LUIS обнаруживать и возвращать дополнительные сведения из данных, которые пользователь предоставляет при запросе нового бронирования.
 
+См. подробнее об отображении сведений о сущности в результате LUIS в руководстве по [извлечению данных из речевых фрагментов с намерениями и сущностями](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction).
+
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>Получение значений для подключения к приложению LUIS
 После публикации приложения LUIS ваш бот сможет обратиться к нему. Для доступа к приложению LUIS из кода бота потребуется записать несколько значений. Нужные сведения можно получить с помощью портала LUIS.
 
@@ -93,7 +95,8 @@ ms.locfileid: "66215353"
 
 Добавьте в файл `appsettings.json` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
-**appsetting.json** [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
+**appsetting.json**  
+[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -112,7 +115,8 @@ ms.locfileid: "66215353"
 
 Для подключения к службе LUIS бот извлекает сведения, которые вы ранее добавили в файл appsetting.json. Код класса `LuisHelper` импортирует параметры из файла appsetting.json и отправляет запрос к службе LUIS, вызывая метод `RecognizeAsync`. Если самым вероятным намерением будет Book_Flight, он проверяет наличие сущностей с информацией об исходном, конечном пунктах и дате полета.
 
-**LuisHelper.cs** [!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
+**LuisHelper.cs**  
+[!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 

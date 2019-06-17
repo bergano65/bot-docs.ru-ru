@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9109808c786e3992d8bae6cd68b4272201a9b4f8
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215453"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693730"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Реализация пользовательского хранилища для бота
 
@@ -93,11 +93,13 @@ Bot Framework включает реализацию по умолчанию, к�
 
 В результате мы получаем следующий интерфейс:
 
-**IStore.cs** [!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
+**IStore.cs**  
+[!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
 
 Его реализация в хранилище BLOB-объектов Azure не составляет никаких трудностей.
 
-**BlobStore.cs** [!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
+**BlobStore.cs**  
+[!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
 
 Как вы видите, основную работу выполняет хранилище BLOB-объектов. Обратите внимание, как перехватываются конкретные исключения и как они приводятся в соответствие с ожиданиями вызывающего кода. Мы хотим, чтобы исключение "Не найдено" при загрузке возвращало значение null, а исключение "Необходимое условие не выполнено" при сохранении возвращало логическое значение.
 

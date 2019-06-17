@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 7d7416940ccad4e62c98f4a386dac43189301b56
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998317"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693619"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Подключение бота к Twilio
 
@@ -66,3 +66,7 @@ ms.locfileid: "49998317"
 ![Отправка учетных данных](~/media/channels/twi-StepSubmit.png)
 
 Как только вы выполните эти действия, ваш бот будет настроен для взаимодействия с пользователями с помощью Twilio.
+
+## <a name="also-available-as-an-adapter"></a>Также предоставляется как адаптер
+
+Этот канал также [предоставляется как адаптер](https://botkit.ai/docs/v4/platforms/twilio-sms.html). См. подробнее о выборе между адаптером и каналом в списке [доступных адаптеров](bot-service-channel-additional-channels.md#currently-available-adapters).
