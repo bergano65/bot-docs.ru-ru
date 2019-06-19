@@ -21,6 +21,7 @@
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
 ## [Веб-чат](../bot-service-channel-connect-webchat.md)
+## [Дополнительные каналы](../bot-service-channel-additional-channels.md)
 # [Настройка параметров бота](../bot-service-manage-settings.md)
 # [Настройка подготовки речи](../bot-service-manage-speech-priming.md)
 # [Регистрация бота с помощью службы Azure Bot](../bot-service-quickstart-registration.md)
