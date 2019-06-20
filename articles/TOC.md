@@ -18,7 +18,7 @@
 ## [Управление состоянием](v4sdk/bot-builder-concept-state.md)
 ## [Библиотека диалогов](v4sdk/bot-builder-concept-dialog.md)
 ## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
-## [Аутентификация пользователей](v4sdk/bot-builder-concept-authentication.md)
+## [Проверка подлинности пользователей](v4sdk/bot-builder-concept-authentication.md)
 ## [Управление ресурсами бота](v4sdk/bot-file-basics.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
