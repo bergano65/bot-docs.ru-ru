@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 34f2cb79d4dcef9ddb68c6de0333a94b4128b301
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225719"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404706"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Управление данными пользовательских состояний с помощью хранилища таблиц Azure для Node.js
 
@@ -37,7 +37,7 @@ ms.locfileid: "54225719"
 - [Обозреватель хранилища](http://storageexplorer.com/).
 
 ## <a name="create-azure-account"></a>Создание учетной записи Azure
-Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/en-us/free/), чтобы зарегистрировать бесплатную учетную запись.
+Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/free/), чтобы зарегистрировать бесплатную учетную запись.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Настройка службы хранилища таблиц Azure
 1. После входа на портал Azure нажмите **Создать**, чтобы создать новую службу хранилища таблиц Azure. 
@@ -73,7 +73,7 @@ npm install --save botbuilder-azure
    ```
    Значения `storageName` и `storageKay` можно найти в меню **Ключи доступа** в таблице Azure. Если значение `tableName` не существует в таблице Azure, оно будет создано автоматически.
 
-3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к таблице Azure. Во-первых, создайте экземпляр `AzureTableClient`, который передается в параметры конфигурации подключения. Затем создайте экземпляр `AzureBotStorage`, который передается в объект `AzureTableClient`. Например: 
+3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к таблице Azure. Во-первых, создайте экземпляр `AzureTableClient`, который передается в параметры конфигурации подключения. Затем создайте экземпляр `AzureBotStorage`, который передается в объект `AzureTableClient`. Например:
 
    ```javascript
    var azureTableClient = new azure.AzureTableClient(tableName, storageName, storageKey);
@@ -81,7 +81,7 @@ npm install --save botbuilder-azure
    var tableStorage = new azure.AzureBotStorage({gzipData: false}, azureTableClient);
    ```
 
-4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранения в памяти и добавьте сведения о сеансе в базу данных. Например: 
+4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранения в памяти и добавьте сведения о сеансе в базу данных. Например:
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {
@@ -134,7 +134,7 @@ node app.js
 
 ## <a name="next-step"></a>Дальнейшие действия
 
-Теперь, когда имеется полный контроль над данными о состоянии бота, узнайте, как можно использовать их для более эффективного управления последовательностью общения.
+Теперь, когда имеется полный контроль над данными о состоянии бота, узнайте, как можно использовать их для более эффективного управления потоком общения.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-nodejs-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
+> [Управление потоком общения с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation-flow.md)

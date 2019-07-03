@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
-ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
+ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64906299"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404694"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -46,7 +46,7 @@ ms.locfileid: "64906299"
 | Параметр | ОПИСАНИЕ |
 |----|----|
 | `displayText` | Отображаемый текст. |
-| `speechText` | Произносимый текст (в виде обычного текста или в формате <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>). |
+| `speechText` | Произносимый текст (в виде обычного текста или в формате <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>). |
 | `options` | Объект `IMessage`, который может содержать вложение или [подсказку для ввода](bot-builder-nodejs-send-input-hints.md). |
 
 В следующем примере кода показана отправка сообщения, которое задает текст для отображения и текст для произнесения и указывает, что бот [игнорирует входные данные пользователя](bot-builder-nodejs-send-input-hints.md).
@@ -61,7 +61,7 @@ ms.locfileid: "64906299"
 
 ## <a id="ssml"></a> Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)
 
-Чтобы задать текст, произносимый ботом, используйте строку обычного текста или строку в формате SSML — языка разметки на основе XML, который позволяет контролировать различные характеристики речи бота, например голос, скорость, громкость, произношение, высоту звука и многое другое. Дополнительные сведения о SSML см. в <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">справочнике по языку разметки синтеза речи</a>.
+Чтобы задать текст, произносимый ботом, используйте строку обычного текста или строку в формате SSML — языка разметки на основе XML, который позволяет контролировать различные характеристики речи бота, например голос, скорость, громкость, произношение, высоту звука и многое другое. Дополнительные сведения о SSML см. в <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">справочнике по языку разметки синтеза речи</a>.
 
 > [!TIP]
 > Для создания SSML в правильном формате следует использовать <a href="https://www.npmjs.com/search?q=ssml" target="_blank">библиотеку SSML</a>.
@@ -76,5 +76,5 @@ ms.locfileid: "64906299"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
+- <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Пример игрока (GitHub)</a>
