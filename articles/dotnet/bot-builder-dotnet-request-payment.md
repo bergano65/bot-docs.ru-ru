@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/17
+ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f9e693d8bd5aad03930259422939f5572a22ff0a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 1b27cbc9a901318a4e1b050720fb9f8b230f9e75
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563653"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496648"
 ---
 # <a name="request-payment"></a>Запрос платежей
 
@@ -41,7 +41,7 @@ ms.locfileid: "64563653"
 
 1. <a href="https://dashboard.stripe.com/register" target="_blank">Создайте и активируйте учетную запись Stripe, если у вас ее еще нет.</a>
 
-2. <a href="https://seller.microsoft.com/en-us/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Войдите в Seller Center с учетной записью Microsoft.</a>
+2. <a href="https://seller.microsoft.com/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Войдите в Seller Center с учетной записью Microsoft.</a>
 
 3. Подключите свою учетную запись в Seller Center с помощью Stripe.
 

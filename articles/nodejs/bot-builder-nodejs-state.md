@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d653e47d2e906c6306134804c7731b374d830ba
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 779411235bfef24719044b0fbad26574a373a34f
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563963"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404297"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -129,7 +129,7 @@ session.userdata.start = startDate.toISOString();
 
 ### <a name="saving-data"></a>Сохранение данных
 
-Данные, созданные в каждом контейнере хранилища, будут оставаться в памяти до сохранения контейнера. Пакет SDK Bot Framework для Node.js отправляет данные в службу `ChatConnector` в виде пакетов, сохраняемых при появлении сообщений для отправки. Чтобы сохранить данные, которые находятся в контейнерах хранилища без отправки сообщений, можно вручную вызвать метод [`save`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save). Если метод `save` не вызывается, данные, находящиеся в контейнерах хранилища, будут сохранены в ходе обработки пакета.
+Данные, созданные в каждом контейнере хранилища, будут оставаться в памяти до сохранения контейнера. Пакет SDK Bot Framework для Node.js отправляет данные в службу `ChatConnector` в виде пакетов, сохраняемых при появлении сообщений для отправки. Чтобы сохранить данные, которые находятся в контейнерах хранилища без отправки сообщений, можно вручную вызвать метод [`save`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save). Если метод `save` не вызывается, данные, находящиеся в контейнерах хранилища, будут сохранены в ходе обработки пакета.
 
 ```javascript
 session.userData.favoriteColor = "Red";
@@ -203,9 +203,9 @@ session.dialogData = {};
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 - [Запрос пользователю на ввод данных](bot-builder-nodejs-dialog-prompt.md)
 
-[userDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
-[conversationDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#conversationdata
-[privateConversationDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#privateconversationdata
-[dialogDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#dialogdata
+[userDataURL]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
+[conversationDataURL]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#conversationdata
+[privateConversationDataURL]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#privateconversationdata
+[dialogDataURL]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#dialogdata
 
-[ChatConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
+[ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html

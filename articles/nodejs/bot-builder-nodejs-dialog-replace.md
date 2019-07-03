@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7417e105ab20c3aca2c2a4e525248728ac49bf18
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224989"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404923"
 ---
 # <a name="replace-dialogs"></a>Замена диалогов
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Возможность замены диалога может быть полезна для проверки входящих пользовательских данных или для повтора действия в ходе общения. Пакет SDK Bot Framework для Node.js позволяет заменить диалог с помощью метода [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Этот метод позволяет завершить текущий диалог и заменить его на новый без возврата к вызывающей стороне. 
+Возможность замены диалога может быть полезна для проверки входящих пользовательских данных или для повтора действия в ходе общения. Пакет SDK Bot Framework для Node.js позволяет заменить диалог с помощью метода [`session.replaceDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Этот метод позволяет завершить текущий диалог и заменить его на новый без возврата к вызывающей стороне. 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>Создание пользовательских запросов для проверки входных данных
 
@@ -61,7 +61,7 @@ bot.dialog('phonePrompt', [
 
 ## <a name="repeat-an-action"></a>Повтор действия
 
-В ходе разговора могут появляться моменты, когда нужно повторить диалог, чтобы пользователь мог выполнить определенное действие несколько раз. Например, если бот предлагает широкий спектр служб, изначально может понадобиться отображение меню служб, затем ознакомление пользователя с процессом запроса службы, а затем снова меню службы, что позволяет пользователю запросить другую службу. Для этого можно использовать метод [`session.replaceDialog`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog), чтобы отобразить меню служб снова, а не заканчивать диалог с помощью метода [session.endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation). 
+В ходе разговора могут появляться моменты, когда нужно повторить диалог, чтобы пользователь мог выполнить определенное действие несколько раз. Например, если бот предлагает широкий спектр служб, изначально может понадобиться отображение меню служб, затем ознакомление пользователя с процессом запроса службы, а затем снова меню службы, что позволяет пользователю запросить другую службу. Для этого можно использовать метод [`session.replaceDialog`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog), чтобы отобразить меню служб снова, а не заканчивать диалог с помощью метода [session.endConversation](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation). 
 
 В следующем примере показано, как использовать метод `session.replaceDialog` для реализации сценария такого типа. Сначала определяется меню служб:
 
@@ -83,7 +83,7 @@ var menuItems = {
 }
 ```
 
-Диалог `mainMenu` вызывается по умолчанию, поэтому меню для пользователя будет отображаться в начале диалога. Кроме того, [`triggerAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) присоединяется к диалогу `mainMenu`, чтобы меню отображалось в любое время, когда входные данные пользователя — "main menu". Когда меню отобразится для пользователя и он выберет параметр, соответствующий выбору диалог вызовется с помощью метода `session.beginDialog`.
+Диалог `mainMenu` вызывается по умолчанию, поэтому меню для пользователя будет отображаться в начале диалога. Кроме того, [`triggerAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) присоединяется к диалогу `mainMenu`, чтобы меню отображалось в любое время, когда входные данные пользователя — "main menu". Когда меню отобразится для пользователя и он выберет параметр, соответствующий выбору диалог вызовется с помощью метода `session.beginDialog`.
 
 ```javascript
 var inMemoryStorage = new builder.MemoryBotStorage();
@@ -160,9 +160,9 @@ bot.dialog('orderDinner', [
 
 Два триггера, позволяющие пользователю начать заново ("start over") или отменить ("cancel") заказ в любое время процесса заказа, прикреплены к диалогу `orderDinner`. 
 
-Первый триггер — [`reloadAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction). Он позволяет пользователю начать процесс заказа заново, отправляя входные данные "start over". Если триггер соответствует высказыванию "start over", `reloadAction` перезапускает диалог с самого начала. 
+Первый триггер — [`reloadAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction). Он позволяет пользователю начать процесс заказа заново, отправляя входные данные "start over". Если триггер соответствует высказыванию "start over", `reloadAction` перезапускает диалог с самого начала. 
 
-Второй триггер — [`cancelAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction). Он позволяет пользователю прервать процесс заказа полностью, отправляя входные данные "cancel". Этот триггер автоматически не отображает главное меню, но вместо этого отправляет сообщение, которое сообщает пользователю, что делать дальше, указывая "Введите "Main Menu", чтобы продолжить".
+Второй триггер — [`cancelAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction). Он позволяет пользователю прервать процесс заказа полностью, отправляя входные данные "cancel". Этот триггер автоматически не отображает главное меню, но вместо этого отправляет сообщение, которое сообщает пользователю, что делать дальше, указывая "Введите "Main Menu", чтобы продолжить".
 
 ### <a name="dialog-loops"></a>Циклы диалогов
 
@@ -269,7 +269,7 @@ bot.dialog('orderDinner', [
 
 ## <a name="cancel-a-dialog"></a>Отмена диалога
 
-Хотя метод `session.replaceDialog` можно использовать для замены *текущего* диалога на новый, его нельзя использовать для замены диалога, находящегося ниже по стеку диалога. Для замены диалога в стеке, который не является*текущим*, используйте метод [`session.cancelDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) вместо этого. 
+Хотя метод `session.replaceDialog` можно использовать для замены *текущего* диалога на новый, его нельзя использовать для замены диалога, находящегося ниже по стеку диалога. Для замены диалога в стеке, который не является*текущим*, используйте метод [`session.cancelDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) вместо этого. 
 
 Метод `session.cancelDialog` можно использовать для завершения диалога, независимо от того, где он находится в стеке диалога, и вызова нового диалога вместо текущего при необходимости. Для вызова метода `session.cancelDialog` укажите идентификатор диалога для отмены и при необходимости укажите идентификатор диалога, который будет вызван вместо него. Например, этот фрагмент кода отменяет диалог `orderDinner` и заменяет его на диалог `mainMenu`:
 
@@ -277,7 +277,7 @@ bot.dialog('orderDinner', [
 session.cancelDialog('orderDinner', 'mainMenu'); 
 ```
 
-Когда вызывается метод `session.cancelDialog`, поиск по стеку диалога будет выполняться в обратном направлении и первое вхождение этого диалога будет отменено, в результате чего диалог и его дочерние диалоги (если таковые имеются) будут удалены из стека диалога. Затем управление будет возвращено в вызывающий диалог, который может проверить код [`results.resumed`](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed), равный [`ResumeReason.notCompleted`](http://docs.botframework.com/en-us/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted), чтобы обнаружить отмену.
+Когда вызывается метод `session.cancelDialog`, поиск по стеку диалога будет выполняться в обратном направлении и первое вхождение этого диалога будет отменено, в результате чего диалог и его дочерние диалоги (если таковые имеются) будут удалены из стека диалога. Затем управление будет возвращено в вызывающий диалог, который может проверить код [`results.resumed`](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed), равный [`ResumeReason.notCompleted`](http://docs.botframework.com/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted), чтобы обнаружить отмену.
 
 В качестве альтернативы указанию идентификатора диалога для отмены при вызове метода `session.cancelDialog` можно вместо идентификатора указать нулевой индекс диалога для отмены, где индекс представляет позицию диалога в стеке диалога. Например, следующий фрагмент кода завершает текущий активный диалог (индекс = 0) и запускает диалог `mainMenu` вместо него. Диалог `mainMenu` вызывается в положении 0 стека диалога, тем самым становясь новым диалогом по умолчанию.
 

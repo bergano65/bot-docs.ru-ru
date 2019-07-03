@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 14d9632ad578014a36b5f13e6dee883e2a6e1722
-ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035685"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252652"
 ---
 1. Перейдите на [**портал регистрации приложений**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 1. Щелкните **Add an app** (Добавить приложение), чтобы зарегистрировать приложение, затем создайте **Application Id** (Идентификатор приложения) и щелкните **Generate New Password** (Создать пароль). Если у вас уже есть приложение и пароль для него, но вы не помните этот пароль, следует создать новый пароль в разделе секретов приложения.

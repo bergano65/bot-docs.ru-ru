@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a049d77d506fa3fa678a079de52aa424264847c9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 288fde1d8c4333256b956b270fe37a56217632ca
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997051"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404656"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Основные понятия API 1.1 для Direct Line
 
@@ -22,7 +22,7 @@ C помощью API для Direct Line вы сможете реализоват
 > [!IMPORTANT]
 > В этой статье раскрыты основные понятия API 1.1 для Direct Line и приведены сведения о соответствующих ресурсах для разработчиков. При создании подключения между клиентским приложением и ботом используйте [API версии 3.0 для Direct Line](bot-framework-rest-direct-line-3-0-concepts.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Аутентификация
 
 Аутентификацию запросов API 1.1 для Direct Line можно выполнять с помощью **секрета**, доступного на странице конфигурации канала Direct Line на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, или с помощью **маркера**, который вы можете получить во время выполнения.  Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-1-1-authentication.md) (Аутентификация в API речи).
 
@@ -44,7 +44,7 @@ C помощью API для Direct Line вы сможете реализоват
 
 Bot Framework предоставляет клиентскую библиотеку, которая позволяет легко получить доступ к API для 1.1 Direct Line с помощью C#. Чтобы использовать клиентскую библиотеку в проекте Visual Studio, установите <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">пакет NuGet версии 1.х</a> `Microsoft.Bot.Connector.DirectLine`. 
 
-Вместо клиентской библиотеки C# вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://docs.botframework.com/en-us/restapi/directline/swagger.json" target="_blank">файл Swagger для API 1.1 для Direct Line</a>.
+Вместо клиентской библиотеки C# вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://docs.botframework.com/restapi/directline/swagger.json" target="_blank">файл Swagger для API 1.1 для Direct Line</a>.
 
 ### <a name="web-chat-control"></a>Элемент управления "Веб-чат" 
 

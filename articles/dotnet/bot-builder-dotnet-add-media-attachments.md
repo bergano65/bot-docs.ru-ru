@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6dcfe6595f1c5961151a90783dd8ceee9c7684dd
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a719ae4b3aa3fbf61503b4a6f055ec5cc3f5104a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224339"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464595"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 
@@ -25,7 +25,9 @@ ms.locfileid: "54224339"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-Обмен сообщениями между пользователем и ботом может включать мультимедийные вложения (например, изображения, видео, аудио и файлы). Свойство `Attachments` объекта <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> содержит массив объектов <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a>, представляющих мультимедийные вложения и функциональные карточки, прилагаемые к сообщениям. 
+Обмен сообщениями между пользователем и ботом может включать мультимедийные вложения (например, изображения, видео, аудио и файлы). 
+
+Свойство `Attachments` объекта <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> содержит массив объектов <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a>, представляющих мультимедийные вложения и функциональные карточки, прилагаемые к сообщениям. 
 
 > [!NOTE]
 > [См. сведения о добавлении функциональных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md).
@@ -44,8 +46,8 @@ ms.locfileid: "54224339"
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
 - [Add Rich Cards to Messages](bot-builder-dotnet-add-rich-card-attachments.md) (Добавление функциональных карточек в сообщения)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment class</a> (Класс Attachment)
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment class</a> (Класс Attachment)
 
 [inspector]: ../bot-service-channel-inspector.md
 

@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d5d6dc4e635b41424dfee0e260a769f9ed5f595d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 05ab8f9148cd520be266d9340cd65a9903bf6e23
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225789"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405621"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Управление данными пользовательских состояний с помощью Хранилища таблиц Azure для .NET
 
@@ -28,7 +28,7 @@ ms.locfileid: "54225789"
 
 ## <a name="prerequisites"></a>Предварительные требования
 Что вам понадобится:
- - [Учетная запись Microsoft Azure](https://azure.microsoft.com/en-us/free/).
+ - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/).
  - [Visual Studio 2015 или более поздней версии](https://www.visualstudio.com/).
  - [Пакет Azure NuGet для Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/).
  - [Пакет NuGet Autofac.WebApi2](https://www.nuget.org/packages/Autofac.WebApi2/).
@@ -36,7 +36,7 @@ ms.locfileid: "54225789"
  - [Azure Storage Explorer;](http://storageexplorer.com/)
  
 ## <a name="create-azure-account"></a>Создание учетной записи Azure
-Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/en-us/free/), чтобы зарегистрировать бесплатную учетную запись.
+Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/free/), чтобы зарегистрировать бесплатную учетную запись.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Настройка службы хранилища таблиц Azure
 1. После входа на портал Azure нажмите **Создать**, чтобы создать новую службу хранилища таблиц Azure. 
@@ -109,10 +109,10 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 Чтобы просмотреть данные о состоянии, откройте **Обозреватель службы хранилища** и подключитесь к Azure с помощью своих учетных данных для портала Azure или подключитесь напрямую к таблице с помощью имени хранилища и ключа к хранилищу, затем перейдите к нужной таблице.  
 
 ## <a name="next-steps"></a>Дополнительная информация
-В этой статье было реализовано Хранилище таблиц Azure для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать ход общения с помощью диалогов.
+В этой статье было реализовано Хранилище таблиц Azure для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать поток общения с помощью диалогов.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-dotnet-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
+> [Управление потоком общения с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

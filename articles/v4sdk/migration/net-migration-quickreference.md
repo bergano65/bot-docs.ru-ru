@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4226e842384caf1315170354c763a44c15b0c70
-ms.sourcegitcommit: 18ff5705d15b8edc85fb43001969b173625eb387
+ms.openlocfilehash: 1bbc598ac8cd43b17d2ddaaf0803318ed6121abc
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453208"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405991"
 ---
 # <a name="net-migration-quick-reference"></a>Краткий справочник по миграции для .NET
 
@@ -459,7 +459,7 @@ protected override Task OnEventActivityAsync(ITurnContext<IEventActivity> turnCo
 
 ### <a name="v3"></a>Версия 3
 
-Используется [IActivityLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.history.iactivitylogger).
+Используется [IActivityLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.history.iactivitylogger).
 
 ```csharp
 builder.RegisterType<ActivityLoggerImplementation>().AsImplementedInterfaces().InstancePerDependency(); 
@@ -475,7 +475,7 @@ public class ActivityLoggerImplementation : IActivityLogger
 
 ### <a name="v4"></a>версия 4
 
-Используйте [ITranscriptLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.itranscriptlogger).
+Используйте [ITranscriptLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.itranscriptlogger).
 
 ```csharp
 var transcriptMiddleware = new TranscriptLoggerMiddleware(new TranscriptLoggerImplementation(Configuration.GetSection("StorageConnectionString").Value));
@@ -498,7 +498,7 @@ public class TranscriptLoggerImplementation : ITranscriptLogger
 
 Состояние сохранено путем использования реализации `IBotDataStore`, а также включения его в систему состояния диалога из пакета SDK, с помощью Autofac.  Майкрософт предоставляет классы `MemoryStorage`, `DocumentDbBotDataStore`, `TableBotDataStore` и `SqlBotDataStore` в [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/).
 
-Для хранения данных используется [IBotDataStore<BotData>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0).
+Для хранения данных используется [IBotDataStore<BotData>](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0).
 
 ```csharp
 Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);
@@ -521,7 +521,7 @@ builder.Register(c => storage)
 
 На уровне хранилища используется интерфейс `IStorage`. Укажите объект уровня хранилища при создании каждого объекта управления состоянием для бота, например `UserState`, `ConversationState` или `PrivateConversationState`. Объект управления состоянием предоставляет ключи для базового уровня хранилища и также используется как диспетчер свойств. Например, используйте `IPropertyManager.CreateProperty<T>(string name)`, чтобы создать метод доступа к свойству состояния.  Эти методы доступа к свойствам используются для получения и хранения значений в базовом хранилище бота и за его пределами.
 
-Используйте [IStorage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) для хранения данных.
+Используйте [IStorage](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) для хранения данных.
 
 ```csharp
 Task DeleteAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
@@ -548,7 +548,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>Версия 3
 
-[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) включен в базовый пакет SDK Bot Builder.
+[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) включен в базовый пакет SDK Bot Builder.
 
 ### <a name="v4"></a>версия 4
 
@@ -558,7 +558,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>Версия 3
 
-[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) включен в базовый пакет SDK Bot Builder.
+[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) включен в базовый пакет SDK Bot Builder.
 
 ### <a name="v4"></a>версия 4
 

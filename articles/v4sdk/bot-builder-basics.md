@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 94a3459760c8f0f14886a068d082dafeb9530b19
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 187a8427fd8627b0ce6b812ce8ee857e62b0394d
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215540"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252687"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -135,7 +135,7 @@ ms.locfileid: "66215540"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Основная логика бота определяется в коде бота. Здесь это `Bots/EchoBot.cs`. `EchoBot` является производным от `AcitivityHandler` (является производным от интерфейса `IBot`). `ActivityHandler` определяет различные обработчики для разных типов действий, например указанных здесь `OnMessageActivityAsync` и `OnMembersAddedAsync`. Эти методы являются защищенными, но могут быть перезаписаны с учетом наследования от `ActivityHandler`.
+Основная логика бота определяется в коде бота. Здесь это `Bots/EchoBot.cs`. `EchoBot` является производным от `ActivityHandler` (является производным от интерфейса `IBot`). `ActivityHandler` определяет различные обработчики для разных типов действий, например указанных здесь `OnMessageActivityAsync` и `OnMembersAddedAsync`. Эти методы являются защищенными, но могут быть перезаписаны с учетом наследования от `ActivityHandler`.
 
 Ниже описаны обработчики, определенные в `ActivityHandler`:
 
@@ -180,7 +180,7 @@ public class MyBot : ActivityHandler
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Основная логика бота определяется в коде бота. Здесь это `bots\echoBot.js`. `EchoBot` является производным от `AcitivityHandler`. `ActivityHandler` определяет различные обработчики для разных типов действий. Вы можете изменить поведение бота, предоставляя дополнительную логику, например, с использованием `onMessage` и `onConversationUpdate`, как в нашем примере.
+Основная логика бота определяется в коде бота. Здесь это `bots\echoBot.js`. `EchoBot` является производным от `ActivityHandler`. `ActivityHandler` определяет различные обработчики для разных типов действий. Вы можете изменить поведение бота, предоставляя дополнительную логику, например, с использованием `onMessage` и `onConversationUpdate`, как в нашем примере.
 
 Ниже описаны обработчики, определенные в `ActivityHandler`:
 

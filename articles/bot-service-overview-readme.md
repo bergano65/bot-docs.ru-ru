@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 85ef0fde39980bab1b891518e338fddbd56b275a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563876"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405809"
 ---
 # <a name="how-bot-service-works"></a>Как работает служба Azure Bot
 
 Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK Bot Framework для разработки ботов и Bot Framework для подключения ботов к каналам. Служба Azure Bot предоставляет пять шаблонов, которые можно выбрать при создании ботов с поддержкой .NET и Node.js.
 
 > [!IMPORTANT]
-> Для использования службы Azure Bot потребуется подписка Microsoft Azure. Если у вас еще нет подписки, вы можете зарегистрироваться для получения <a href="https://azure.microsoft.com/en-us/free/" target="_blank">бесплатной учетной записи</a>.
+> Для использования службы Azure Bot потребуется подписка Microsoft Azure. Если у вас еще нет подписки, вы можете зарегистрироваться для получения <a href="https://azure.microsoft.com/free/" target="_blank">бесплатной учетной записи</a>.
 
 ## <a name="hosting-plans"></a>Планы размещения
 Служба Azure Bot предоставляет два плана размещения для ботов. Вы можете выбрать подходящий план размещения.

@@ -10,17 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 167e496fa510cdf755be13f71cf3a596b0183ec1
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215469"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404139"
 ---
 # <a name="conversation-flow"></a>Поток общения
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Проектирование потока общения бота включает решение, как бот отвечает, когда пользователь что-то ему говорит. Бот сначала распознает тему задачи или общения на основе сообщения от пользователя. Чтобы определить задачу или тему (известную как *намерение*), связанную с сообщением пользователя, бот может искать слова или шаблоны в тексте сообщения пользователя или воспользоваться такими службами, как [Интеллектуальная служба распознавания речи](bot-builder-concept-luis.md) и [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
+Проектирование потока общения бота включает решение, как бот отвечает, когда пользователь что-то ему говорит. Бот сначала распознает тему задачи или общения на основе сообщения от пользователя. Чтобы определить задачу или тему (известную как *намерение*), связанную с сообщением пользователя, бот может искать слова или шаблоны в тексте сообщения пользователя или воспользоваться такими службами, как [Интеллектуальная служба распознавания речи](bot-builder-concept-luis.md) и [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview).
 
 Как только бот распознает намерение пользователя, в зависимости от сценария он может выполнить запрос пользователя с помощью одного ответа, завершить общение за одно включение или потребовать серию включений. Для потоков беседы с несколькими шагами пакет SDK Bot Framework поддерживает [управление состоянием](./bot-builder-howto-v4-state.md) для отслеживания общения, [приглашения](bot-builder-prompts.md) для запроса информации и [диалоги](bot-builder-dialog-manage-conversation-flow.md) для формирования потока общения.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e1ebc07c73dcd7033a6b9a22c94379593c5890e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7b3380a409641bd7d406c877ebcbf83ddf15431c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215266"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404441"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Рекомендации по тестированию и отладке бота
 
@@ -65,7 +65,7 @@ ms.locfileid: "66215266"
 
 ### <a name="other-testing"></a>Другие виды тестирования
 
-Различные виды тестирования можно выполнять в сочетании с указанными уровнями или различными способами, такими как нагрузочное тестирование, тестирование производительности или профилирование действий вашего бота. Visual Studio предоставляет методы, с помощью которых можно сделать это локально, а также [набор средств](https://azure.microsoft.com/en-us/solutions/dev-test/) для тестирования приложения, а [портал Azure](https://portal.azure.com) предоставляет сведения о производительности бота.
+Различные виды тестирования можно выполнять в сочетании с указанными уровнями или различными способами, такими как нагрузочное тестирование, тестирование производительности или профилирование действий вашего бота. Visual Studio предоставляет методы, с помощью которых можно сделать это локально, а также [набор средств](https://azure.microsoft.com/solutions/dev-test/) для тестирования приложения, а [портал Azure](https://portal.azure.com) предоставляет сведения о производительности бота.
 
 ## <a name="debugging"></a>Отладка
 
@@ -105,7 +105,7 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 Отслеживание состояния является важной частью бота, особенно для сложных задач. В целом рекомендуется обрабатывать действия как можно быстрее, а также позволить обработке завершиться, чтобы состояние сохранялось. Действия могут отправляться в бот практически в одно и то же время, и это может привести к ошибкам из-за асинхронной архитектуры.
 
-Самое главное — убедитесь, что состояние сохраняется тем способом, который соответствует вашим ожиданиям. В зависимости от того, где находится ваше сохраненное состояние, с помощью эмуляторов хранилища для [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) и [Хранилища таблиц Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) можно проверить это состояние, прежде чем использовать рабочее хранилище.
+Самое главное — убедитесь, что состояние сохраняется тем способом, который соответствует вашим ожиданиям. В зависимости от того, где находится ваше сохраненное состояние, с помощью эмуляторов хранилища для [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) и [Хранилища таблиц Azure](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) можно проверить это состояние, прежде чем использовать рабочее хранилище.
 
 ### <a name="how-to-use-activity-handlers"></a>Как использовать обработчики действий
 
@@ -117,9 +117,9 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Отладка в Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-* [Отладка, трассировка и профилирование](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/) для Bot Framework
-* Для методов, которые не нужно добавлять в рабочий код, используйте [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0)
+* [Отладка в Visual Studio](https://docs.microsoft.com/visualstudio/debugger/index)
+* [Отладка, трассировка и профилирование](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/) для Bot Framework
+* Для методов, которые не нужно добавлять в рабочий код, используйте [ConditionalAttribute](https://docs.microsoft.com/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0)
 * Для просмотра сетевого трафика используйте такие инструменты, как [Fiddler](https://www.telerik.com/fiddler)
 * [Репозиторий средств бота](https://github.com/Microsoft/botbuilder-tools)
 * Платформы могут помочь с тестированием, например [Moq](https://github.com/moq/moq4)

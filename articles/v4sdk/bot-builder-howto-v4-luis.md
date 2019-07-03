@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e019d2d04d843cc0efd5a39135d65fe4cfc022f3
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693668"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404503"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -26,7 +26,7 @@ ms.locfileid: "66693668"
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [LUIS](https://www.luis.ai).
 - Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на языке **[CSharp](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)** . 
-- Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
+- Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -70,8 +70,8 @@ ms.locfileid: "66693668"
 1. Выберите **Import new app** (Импортировать новое приложение). 
 1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON) 
 1. Выберите файл `FlightBooking.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **FlightBooking**. Этот файл содержит три намерения: Book Flight, Cancel и None. Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении.
-1. [Обучите](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) приложение.
-1. [Опубликуйте](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) приложение в *рабочей* среде.
+1. [Обучите](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train) приложение.
+1. [Опубликуйте](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp) приложение в *рабочей* среде.
 
 ### <a name="why-use-entities"></a>Для чего нужны сущности
 Сущности LUIS позволяют боту лучше понимать некоторые факты или события, которые отличаются от стандартных намерений. Это позволяет получить от пользователя дополнительную информацию, которая позволит боту точнее реагировать на действия пользователя или пропустить некоторые вопросы, в которых от пользователя запрашивается уже полученная информация. В файле FlightBooking.json определены не только три намерения LUIS (Book Flight, Cancel и None), но и набор дополнительных сущностей, таких как From.Airport и To.Airport. Эти сущности позволяют LUIS обнаруживать и возвращать дополнительные сведения из данных, которые пользователь предоставляет при запросе нового бронирования.
@@ -102,7 +102,7 @@ ms.locfileid: "66693668"
 
 Добавьте в файл `.env` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
-**.env**
+Файл с расширением **.env**  
 [!code[env](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 ---

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 69ce362f35054c5ee42035d8bffefb17c6fa7f71
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215506"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404314"
 ---
 # <a name="activity-processing"></a>Обработка действий
 
@@ -23,7 +23,7 @@ ms.locfileid: "66215506"
 
 Боты и пользователи взаимодействуют и обмениваются данными с помощью действий. Каждое действие, получаемое приложением бота, передается адаптеру бота, который передает сведения о действиях в логику бота и в конечном счете отправляет ответы пользователю. Получение действия и последующая его обработка ботом называется репликовым шагом. Репликовый шаг представляет один полный цикл работы бота. Шаг завершается, когда выполнены все операции, действие полностью обработано и завершены все уровни бота.
 
-Действия, особенно те, которые [отправляет бот](#generating-responses) в рамках репликового шага, обрабатываются асинхронно. Это необходимая часть построения бота. Если нужно разобраться, как это работает, изучите в зависимости от выбора языка [средства асинхронного программирования для .NET](https://docs.microsoft.com/en-us/dotnet/csharp/async) или [средства асинхронного программирования для JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+Действия, особенно те, которые [отправляет бот](#generating-responses) в рамках репликового шага, обрабатываются асинхронно. Это необходимая часть построения бота. Если нужно разобраться, как это работает, изучите в зависимости от выбора языка [средства асинхронного программирования для .NET](https://docs.microsoft.com/dotnet/csharp/async) или [средства асинхронного программирования для JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function).
 
 ## <a name="the-bot-adapter"></a>Адаптер бота
 

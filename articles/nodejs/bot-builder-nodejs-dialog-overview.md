@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dfa52914b3f0a2e81f4ff3a2f90c7404bfe53d4a
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f0b933a5bdcea5090ede1b2f589cd69f9e681757
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225999"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405009"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Диалоги в пакете SDK Bot Framework для Node.js.
 
@@ -53,7 +53,7 @@ ms.locfileid: "54225999"
 Перед Bot Framework версии 3.5 *корневой* диалог определялся добавлением диалога с именем `/`, что привело к тому, что соглашения об именовании бесед такие же, как и у URL-адресов. Это соглашение об именовании оказалось неподходящим для диалогов. 
 
 > [!NOTE]
-> Начиная с версии 3.5 Bot Framework, *диалог по умолчанию* зарегистрирован в качестве второго параметра в конструкторе [`UniversalBot`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor).  
+> Начиная с версии 3.5 Bot Framework, *диалог по умолчанию* зарегистрирован в качестве второго параметра в конструкторе [`UniversalBot`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor).  
 
 В следующем фрагменте кода показано, как определять диалог по умолчанию при создании объекта `UniversalBot`.
 
@@ -71,7 +71,7 @@ var bot = new builder.UniversalBot(connector, [
 
 ## <a name="starting-and-ending-dialogs"></a>Запуск и завершение диалога
 
-Чтобы запустить новый диалог (и поместить его в стек), используйте [`session.beginDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog). Чтобы завершить диалог (и удалить его из стека, возвращая управление вызывающему диалогу), используйте либо [`session.endDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog), либо [`session.endDialogWithResult()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult). 
+Чтобы запустить новый диалог (и поместить его в стек), используйте [`session.beginDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog). Чтобы завершить диалог (и удалить его из стека, возвращая управление вызывающему диалогу), используйте либо [`session.endDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog), либо [`session.endDialogWithResult()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult). 
 
 ## <a name="using-waterfalls-and-prompts"></a>Использование каскадов и запросов
 

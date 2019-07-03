@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96a0c63575b1e77418262a22050013413f39141f
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: eaebb40e7b0e57966f0eb06c6d0108f6db1b62ff
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225919"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405677"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -26,7 +26,7 @@ ms.locfileid: "54225919"
 
 ## <a name="customizing-a-message"></a>Настройка сообщения
 
-Чтобы обеспечить больший контроль над форматированием текста сообщений, можно создать пользовательский объект [Activity](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) и задать необходимые свойства перед его отправкой пользователю.
+Чтобы обеспечить больший контроль над форматированием текста сообщений, можно создать пользовательский объект [Activity](https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) и задать необходимые свойства перед его отправкой пользователю.
 
 В этом примере показано, как создать пользовательский объект `message` и задать свойства `Text`, `TextFormat` и `Local`.
 
@@ -127,6 +127,6 @@ ms.locfileid: "54225919"
 - [Добавление речи в сообщения](bot-builder-dotnet-text-to-speech.md)
 - [Добавление предлагаемых действий в сообщения](bot-builder-dotnet-add-suggested-actions.md)
 - [Реализация возможностей для определенных каналов](bot-builder-dotnet-channeldata.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">Интерфейс IMessageActivity</a>
 

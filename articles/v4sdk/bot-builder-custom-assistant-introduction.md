@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: eba4ad9ba2fae85fbc2488e5fef8d5a7dac593ee
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215464"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464765"
 ---
 ## <a name="custom-assistant-overview"></a>Общие сведения о личном помощнике
 
@@ -35,17 +35,17 @@ ms.locfileid: "66215464"
 
 ## <a name="complete-ownership-and-control-of-data"></a>Полное владение данными и управление ими
 
-Ваш личный помощник будет развернут в подписке Azure. Это значит, что все создаваемые помощником данные (задаваемые вопросы и ответы, сведения о поведении пользователей и т. д.) также содержатся в подписке Azure. Дополнительные сведения см. в разделе [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) (Надежное облако Azure служб Cognitive Services) и [разделе об Azure в центре управления безопасностью](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure).
+Ваш личный помощник будет развернут в подписке Azure. Это значит, что все создаваемые помощником данные (задаваемые вопросы и ответы, сведения о поведении пользователей и т. д.) также содержатся в подписке Azure. Дополнительные сведения см. в разделе [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) (Надежное облако Azure служб Cognitive Services) и [разделе об Azure в центре управления безопасностью](https://www.microsoft.com/TrustCenter/CloudServices/Azure).
 
 ## <a name="your-assistant-anywhere"></a>Помощник, который всегда рядом с вами
 
-Личный помощник использует платформу искусственного интеллекта Майкрософт для общения, следовательно, он может быть предоставлен через любой [канал](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, включая веб-чат, Facebook Messenger, Skype и т. д. Кроме того, с помощью канала [Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) можно внедрить средства взаимодействия в классические и мобильные приложения, а также такие устройства, как автомобили, динамики, будильники и т. д.
+Личный помощник использует платформу искусственного интеллекта Майкрософт для общения, следовательно, он может быть предоставлен через любой [канал](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, включая веб-чат, Facebook Messenger, Skype и т. д. Кроме того, с помощью канала [Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) можно внедрить средства взаимодействия в классические и мобильные приложения, а также такие устройства, как автомобили, динамики, будильники и т. д.
 
 ## <a name="built-on-enterprise-grade-technology"></a>Встроенная технология корпоративного уровня
 
-В основе решения "Личный помощник" лежат такие службы, как Azure Bot, Language Understanding Cognitive Service, единая служба распознавания речи, а также множество вспомогательных компонентов Azure. Это означает, что вы можете использовать преимущества [глобальной инфраструктуры Azure](https://azure.microsoft.com/en-gb/global-infrastructure/).
+В основе решения "Личный помощник" лежат такие службы, как Azure Bot, Language Understanding Cognitive Service, единая служба распознавания речи, а также множество вспомогательных компонентов Azure. Это означает, что вы можете использовать преимущества [глобальной инфраструктуры Azure](https://azure.microsoft.com/global-infrastructure/).
 
-Кроме того, поддержка функций распознавания речи обеспечивается службой LUIS Cognitive Service, которая поддерживает [ряд языков](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) предоставляет дополнительные возможности машинного перевода, расширяя возможности личного помощника.
+Кроме того, поддержка функций распознавания речи обеспечивается службой LUIS Cognitive Service, которая поддерживает [ряд языков](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) предоставляет дополнительные возможности машинного перевода, расширяя возможности личного помощника.
 
 ## <a name="integrated-and-context-aware"></a>Интеграция с учетом контекста
 
@@ -61,7 +61,7 @@ ms.locfileid: "66215464"
 
 ## <a name="adaptive-cards"></a>Адаптивные карточки
 
-Благодаря [адаптивным карточкам](https://adaptivecards.io/) личный помощник может возвращать не только ответы на основе текста, но и элементы пользовательского интерфейса (например, карточки, изображения, кнопки). Эти адаптивные карточки отображаются на различных устройствах и платформах с экраном или холстом диалога. Это обеспечивает необходимую поддержку пользовательского интерфейса. См. примеры [адаптивных карточек](https://adaptivecards.io/samples/) и информацию о [параметрах отображения](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started).
+Благодаря [адаптивным карточкам](https://adaptivecards.io/) личный помощник может возвращать не только ответы на основе текста, но и элементы пользовательского интерфейса (например, карточки, изображения, кнопки). Эти адаптивные карточки отображаются на различных устройствах и платформах с экраном или холстом диалога. Это обеспечивает необходимую поддержку пользовательского интерфейса. См. примеры [адаптивных карточек](https://adaptivecards.io/samples/) и информацию о [параметрах отображения](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started).
 
 
 ## <a name="skills"></a>Навыки

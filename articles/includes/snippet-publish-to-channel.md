@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 88fe2e3dca0559c101c55edb4353f3b57096a8d4
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 8484df6b140447d175805b396a81832c059c3b76
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563730"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405205"
 ---
 ### <a name="cortana"></a>Кортана
 Боты публикуются в Кортане с [панели мониторинга](https://aka.ms/cortana-publish) и используются для расширения ее навыков. При публикации бот отправляется на проверку. Навыки Кортаны можно развертывать для личного пользования, для небольшой группы или для всего мира.
@@ -13,7 +13,7 @@ ms.locfileid: "64563730"
 Боты публикуются в Skype со [страницы конфигурации](~/bot-service-channel-connect-skype.md). При публикации бот отправляется на проверку. До проверки бот поддерживает до 100 контактов. Для утвержденных ботов количество контактов не ограничено. Кроме того, их можно включать в каталог ботов Skype.
 
 ### <a name="skype-for-business"></a>Skype для бизнеса
-Боты Skype для бизнеса регистрируются в [клиенте Skype для бизнеса Online](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview) администратором клиента.
+Боты Skype для бизнеса регистрируются в [клиенте Skype для бизнеса Online](https://msdn.microsoft.com/skype/Skype-For-Business-Bot-Framework/docs/overview) администратором клиента.
 
 > [!TIP]
 > Чтобы просмотреть состояние проверки, откройте бота на [портале Bot Framework](https://dev.botframework.com/) и выберите **Каналы**.

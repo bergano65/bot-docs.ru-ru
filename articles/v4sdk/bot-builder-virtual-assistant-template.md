@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ce3ab86d5716250e24a44268f5e5fc39fbdd3398
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214174"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464665"
 ---
 # <a name="virtual-assistant---template-outline"></a>Виртуальный помощник — описание шаблона
 
@@ -29,12 +29,12 @@ ms.locfileid: "66214174"
 Базовая модель LUIS  | Поддерживает распространенные намерения, например **Отмена**, **Справка**, **Эскалация** и т. д.
 Базовые диалоги | Потоки диалогов для записи базовой информации о пользователе, а также логики прерывания для намерений отмены и справки.
 Базовые ответы  | Текстовые и голосовые ответы для базовых намерений и диалогов.
-Вопросы и ответы | Интеграция с [QnA Maker](https://www.qnamaker.ai) для предоставления ответов на общие вопросы из базы знаний. 
-Беседа | Модель беседы с профессионалом для предоставления стандартных ответов на распространенные вопросы ([подробнее](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base)).
-Диспетчер | Интегрированная модель [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig), которая позволяет определить, нужно ли обработать конкретный речевой фрагмент с помощью LUIS или QnA Maker.
+Часто задаваемые вопросы | Интеграция с [QnA Maker](https://www.qnamaker.ai) для предоставления ответов на общие вопросы из базы знаний. 
+Беседа | Модель беседы с профессионалом для предоставления стандартных ответов на распространенные вопросы ([подробнее](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base)).
+Диспетчер | Интегрированная модель [Dispatch](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig), которая позволяет определить, нужно ли обработать конкретный речевой фрагмент с помощью LUIS или QnA Maker.
 Поддержка языков | Доступно на английском, французском, итальянском, немецком, испанском и китайском языках.
 Расшифровка | Расшифровки всех бесед, хранящихся в службе хранилища Azure.
-Телеметрия  | Интеграция с [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) для сбора телеметрии всех бесед.
+Телеметрия  | Интеграция с [Application Insights](https://azure.microsoft.com/services/application-insights/) для сбора телеметрии всех бесед.
 Analytics | Пример панели мониторинга Power BI для начала работы с аналитическими сведениями о ведении бесед.
 Автоматизированное развертывание | Простое развертывание всех упомянутых выше служб с помощью шаблонов Azure ARM.
 
@@ -95,7 +95,7 @@ StartOver    |*restart*|
 - Если фразы в модели LUIS и QnA Maker иногда частично совпадали, это могло приводить к странному поведению, при котором служба LUIS пыталась обработать вопрос, который должен быть передан в QnA Maker.
 - При использовании двух и более моделей LUIS боту было необходимо вызывать каждую из них и выполнять своего рода сравнительную оценку намерений, чтобы определить, куда отправить определенную фразу. Так как общей базовой оценки не существует, сравнение между моделями работало плохо, из-за чего взаимодействие пользователя и бота было неэффективным.
 
-[Dispatcher](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) обеспечивает изящное решение этой проблемы. Это средство извлекает фразы из каждой настроенной модели LUIS и вопросы из QnA Maker и создает централизованную модель диспетчеризации для LUIS.
+[Dispatcher](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) обеспечивает изящное решение этой проблемы. Это средство извлекает фразы из каждой настроенной модели LUIS и вопросы из QnA Maker и создает централизованную модель диспетчеризации для LUIS.
 
 Это позволяет боту быстро определять, какой компонент или модель LUIS должны обрабатывать определенную фразу. Более того, данные службы QnA Maker принимаются во внимание на начальном этапе обработки намерений, а не только для обработки фраз, для которых не удалось определить намерение, как было раньше.
 

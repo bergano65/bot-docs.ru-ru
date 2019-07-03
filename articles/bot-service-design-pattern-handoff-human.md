@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 5/2/2019
-ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d1fed33682349948d1b33d9b4fecdf718a20a248
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033050"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405845"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Перевод разговора с бота на человека
 
@@ -42,7 +42,7 @@ ms.locfileid: "65033050"
 
 Понимание естественного языка и анализ тональности помогают боту определить, когда переводить диалог на человека. Это особенно важно при попытке определить, когда пользователь расстроен или хочет поговорить с агентом-человеком. 
  
-Бот анализирует содержимое сообщений пользователя с помощью <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API анализа текста</a> для определения тональности или с помощью <a href="https://www.luis.ai" target="_blank">API распознавания речи</a>. 
+Бот анализирует содержимое сообщений пользователя с помощью <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API анализа текста</a> для определения тональности или с помощью <a href="https://www.luis.ai" target="_blank">API распознавания речи</a>. 
 
 
 > [!TIP]
@@ -77,7 +77,7 @@ ms.locfileid: "65033050"
 ::: moniker range="azure-bot-service-4.0"
 
 - [Диалоги](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API анализа текста</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API анализа текста</a>
 
 ::: moniker-end
 
@@ -85,7 +85,7 @@ ms.locfileid: "65033050"
 
 - [Управление потоком беседы с помощью диалогов (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Управление потоком беседы с помощью диалогов (.Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API анализа текста</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API анализа текста</a>
 
 
 ::: moniker-end

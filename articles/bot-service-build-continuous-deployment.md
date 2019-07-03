@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc4b524659df3fb0b91b54fca65b4b7dd36378cd
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 8d324138db60c2b34f9bebd3ff53c30a12c3cefa
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214272"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405948"
 ---
 # <a name="set-up-continuous-deployment"></a>Непрерывное развертывание с использованием GIT в службе приложений Azure
 
@@ -69,6 +69,6 @@ ms.locfileid: "66214272"
 1. Нажмите кнопку **Отключить** для отключения непрерывного развертывания. Чтобы снова включить непрерывное развертывание, повторите действия, описанные в соответствующем разделе выше.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-- Чтобы включить непрерывное развертывание из BitBucket и Azure DevOps Services, воспользуйтесь [этим руководством](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment).
+- Чтобы включить непрерывное развертывание из BitBucket и Azure DevOps Services, воспользуйтесь [этим руководством](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment).
 
 

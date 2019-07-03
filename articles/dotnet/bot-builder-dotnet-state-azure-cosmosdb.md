@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19b44fbb09af69bde803b9b884d58108c248ebe5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7c00c17eaa8d4e84ffbeff1e318cbc403de2038a
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224838"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405637"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Управление данными о пользовательских состояниях с помощью Azure Cosmos DB
 
@@ -28,20 +28,20 @@ ms.locfileid: "54224838"
  
 ## <a name="prerequisites"></a>Предварительные требования
 Что вам понадобится:
- - [Учетная запись Microsoft Azure](https://azure.microsoft.com/en-us/free/).
+ - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/).
  - [Visual Studio 2015 или более поздней версии](https://www.visualstudio.com/).
  - [Пакет Azure NuGet для Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/).
  - [Пакет NuGet Autofac.WebApi2](https://www.nuget.org/packages/Autofac.WebApi2/).
  - [Bot Framework Emulator](~/bot-service-debug-emulator.md).
  
 ## <a name="create-azure-account"></a>Создание учетной записи Azure
-Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/en-us/free/), чтобы зарегистрировать бесплатную учетную запись.
+Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/free/), чтобы зарегистрировать бесплатную учетную запись.
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Настройка базы данных Azure Cosmos DB
 1. После входа на портал Azure щелкните **Создать**, чтобы создать базу данных *Azure Cosmos DB*. 
 2. Щелкните **Базы данных**. 
 3. Найдите **Azure Cosmos DB** и щелкните **Создать**.
-4. Заполните поля. Для поля **API** выберите значение **SQL (DocumentDB)**. Заполните все поля и нажмите кнопку **Создать** в нижней части экрана, чтобы развернуть новую базу данных. 
+4. Заполните поля. Для поля **API** выберите значение **SQL (DocumentDB)** . Заполните все поля и нажмите кнопку **Создать** в нижней части экрана, чтобы развернуть новую базу данных. 
 5. После развертывания новой базы данных перейдите к ней. Щелкните **Ключи доступа**, чтобы найти ключи и строки подключения. Ваш бот будет использовать эту информацию для вызова службы хранилища и сохранения данных о состоянии.
 
 ## <a name="install-nuget-packages"></a>Установка пакетов Nuget
@@ -114,13 +114,13 @@ namespace SampleApp
 3. Протестируйте бот, введя несколько сообщений в эмуляторе. 
 
 ## <a name="view-state-data-on-azure-portal"></a>Просмотр данных о состоянии на портале Azure.
-Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)**, чтобы убедиться, что сведения о состоянии из бота сохраняются. 
+Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)** , чтобы убедиться, что сведения о состоянии из бота сохраняются. 
 
 ## <a name="next-steps"></a>Дополнительная информация
-В этой статье вы использовали Cosmos DB для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать ход общения с помощью диалогов.
+В этой статье вы использовали Cosmos DB для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать поток общения с помощью диалогов.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-dotnet-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
+> [Управление потоком общения с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 Если вы не знакомы с контейнерами инверсии управления и шаблоном внедрения зависимостей, используемыми в приведенном выше коде, посетите сайт [Autofac](http://autofac.readthedocs.io/en/latest/), чтобы узнать больше. 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 4de93d821c6b652021a9f695536350610776f5b4
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693619"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405903"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Подключение бота к Twilio
 
@@ -26,7 +26,7 @@ ms.locfileid: "66693619"
 
 ## <a name="create-a-twiml-application"></a>Создание приложения TwiML
 
-<a href="https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Создайте приложения TwiML</a> в соответствии с инструкциями.
+<a href="https://support.twilio.com/hc/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Создайте приложения TwiML</a> в соответствии с инструкциями.
 
 ![Создание приложения](~/media/channels/twi-StepTwiml.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "66693619"
 
 ## <a name="select-or-add-a-phone-number"></a>Выбор или добавление номера телефона
 
-Следуйте представленным <a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">здесь</a> инструкциям, чтобы добавить идентификатор проверенного вызывающего объекта через сайт консоли. После завершения вы увидите проверенный номер в поле **Active Numbers** (Активные номера) раздела **Manage Numbers** (Управление номерами).
+Следуйте представленным <a href = "https://support.twilio.com/hc/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">здесь</a> инструкциям, чтобы добавить идентификатор проверенного вызывающего объекта через сайт консоли. После завершения вы увидите проверенный номер в поле **Active Numbers** (Активные номера) раздела **Manage Numbers** (Управление номерами).
 
 ![Установка номера телефона](~/media/channels/twi-StepPhone.png)
 

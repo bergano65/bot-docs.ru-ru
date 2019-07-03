@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 36df5898f4a5c02253aae04b3b85dbe70fc21ada
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225219"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404876"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -26,7 +26,7 @@ ms.locfileid: "54225219"
 
 ## <a name="default-message-handler"></a>Обработчик сообщений по умолчанию
 
-Пакет SDK Bot Framework для Node.js содержит обработчик сообщений по умолчанию, встроенный в объект [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Этот обработчик сообщений позволяет отправлять и получать текстовые сообщения, передаваемые между ботом и пользователем.
+Пакет SDK Bot Framework для Node.js содержит обработчик сообщений по умолчанию, встроенный в объект [`session`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Этот обработчик сообщений позволяет отправлять и получать текстовые сообщения, передаваемые между ботом и пользователем.
 
 ### <a name="send-a-text-message"></a>Отправка текстового сообщения
 
@@ -54,7 +54,7 @@ var userMessage = session.message.text;
 
 ## <a name="customizing-a-message"></a>Настройка сообщения
 
-Чтобы обеспечить больший контроль над форматированием текста сообщений, можно создать пользовательский объект [`message`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html) и задать необходимые свойства перед его отправкой пользователю.
+Чтобы обеспечить больший контроль над форматированием текста сообщений, можно создать пользовательский объект [`message`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html) и задать необходимые свойства перед его отправкой пользователю.
 
 В этом примере показано, как создать пользовательский объект `message` и задать свойства `text`, `textFormat` и `textLocale`.
 
@@ -72,7 +72,7 @@ session.send(customMessage);
 
 ## <a name="message-property"></a>Свойство Message
 
-Объект [`Message`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html) содержит внутреннее свойство **data**, которое используется для управления отправляемым сообщением. Другие свойства можно задать, используя различные предоставляемые этим объектом методы. 
+Объект [`Message`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html) содержит внутреннее свойство **data**, которое используется для управления отправляемым сообщением. Другие свойства можно задать, используя различные предоставляемые этим объектом методы. 
 
 ## <a name="message-methods"></a>Методы Message
 
@@ -80,26 +80,26 @@ session.send(customMessage);
 
 | Метод | ОПИСАНИЕ |
 | ---- | ---- | 
-| [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | Добавляет вложение в сообщение.|
-| [`addEntity(obj:Object)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | Добавляет сущность в сообщение. |
-| [`address(adr:IAddress)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#address) | Адрес для отправки сообщения. Чтобы отправить упреждающее сообщение пользователю, сохраните адрес сообщения в контейнере userData. |
-| [`attachmentLayout(style:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachmentlayout) | Указание по размещению нескольких вложений для клиента. По умолчанию используется значение "list". |
-| [`attachments(list:AttachmentType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachments) | Список карточек или изображений для отправки пользователю. |
-| [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Выполняет составление сложного и случайного ответа пользователю. |
-| [`entities(list:Object[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Структурированные объекты, передаваемые боту или пользователю. |
-| [`inputHint(hint:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Указание, отправляемое пользователю и сообщающее о том, требует ли бот дальнейшего ввода данных. Это значение будет автоматически заполнено с помощью встроенных запросов для исходящих сообщений. |
-| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Местное время отправки сообщения клиентом или ботом (устанавливается клиентом), например "2016-09-23T13:07:49.4714686-07:00". |
-| [`originalEvent(event:any)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Сообщение в исходном или собственном формате канала для входящих сообщений. |
-| [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Может использоваться для исходящих сообщений для передачи исходных данных события, например пользовательских вложений. |
-| [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Задает поле speak сообщения как поле *SSML*. Его содержимое будет произнесено для пользователя на поддерживаемых устройствах. |
-| [`suggestedActions(suggestions:ISuggestedActions `&#124;` IIsSuggestedActions)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#suggestedactions) | Необязательные предлагаемые действия для отправки пользователю. Предлагаемые действия отображается только в каналах, которые их поддерживают. |
-| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | Текст, который отображается как альтернативный текст и краткое описание содержимого сообщения (например: "List of recent conversations" (Список последних бесед)). |
-| [`text(text:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#text) | Задает текст сообщения. |
-| [`textFormat(style:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textformat) | Задает формат текста. Формат по умолчанию — **markdown**. |
-| [`textLocale(locale:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textlocale) | Задает целевой язык сообщения. |
-| [`toMessage()`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#tomessage) | Получает JSON сообщения. |
-| [`composePrompt(session:Session, prompts:string[], args?:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#composeprompt-1) | Объединяет массив запросов в единый локализованный запрос и затем, при необходимости, заполняет слоты шаблона запросов переданными аргументами. |
-| [`randomPrompt(prompts:TextType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#randomprompt) | Получает случайный запрос из переданного массива **prompts*. |
+| [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | Добавляет вложение в сообщение.|
+| [`addEntity(obj:Object)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | Добавляет сущность в сообщение. |
+| [`address(adr:IAddress)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#address) | Адрес для отправки сообщения. Чтобы отправить упреждающее сообщение пользователю, сохраните адрес сообщения в контейнере userData. |
+| [`attachmentLayout(style:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachmentlayout) | Указание по размещению нескольких вложений для клиента. По умолчанию используется значение "list". |
+| [`attachments(list:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachments) | Список карточек или изображений для отправки пользователю. |
+| [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Выполняет составление сложного и случайного ответа пользователю. |
+| [`entities(list:Object[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Структурированные объекты, передаваемые боту или пользователю. |
+| [`inputHint(hint:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Указание, отправляемое пользователю и сообщающее о том, требует ли бот дальнейшего ввода данных. Это значение будет автоматически заполнено с помощью встроенных запросов для исходящих сообщений. |
+| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Местное время отправки сообщения клиентом или ботом (устанавливается клиентом), например "2016-09-23T13:07:49.4714686-07:00". |
+| [`originalEvent(event:any)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Сообщение в исходном или собственном формате канала для входящих сообщений. |
+| [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Может использоваться для исходящих сообщений для передачи исходных данных события, например пользовательских вложений. |
+| [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Задает поле speak сообщения как поле *SSML*. Его содержимое будет произнесено для пользователя на поддерживаемых устройствах. |
+| [`suggestedActions(suggestions:ISuggestedActions `&#124;` IIsSuggestedActions)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#suggestedactions) | Необязательные предлагаемые действия для отправки пользователю. Предлагаемые действия отображается только в каналах, которые их поддерживают. |
+| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | Текст, который отображается как альтернативный текст и краткое описание содержимого сообщения (например: "List of recent conversations" (Список последних бесед)). |
+| [`text(text:TextType, ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#text) | Задает текст сообщения. |
+| [`textFormat(style:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textformat) | Задает формат текста. Формат по умолчанию — **markdown**. |
+| [`textLocale(locale:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textlocale) | Задает целевой язык сообщения. |
+| [`toMessage()`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#tomessage) | Получает JSON сообщения. |
+| [`composePrompt(session:Session, prompts:string[], args?:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#composeprompt-1) | Объединяет массив запросов в единый локализованный запрос и затем, при необходимости, заполняет слоты шаблона запросов переданными аргументами. |
+| [`randomPrompt(prompts:TextType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#randomprompt) | Получает случайный запрос из переданного массива **prompts*. |
 
 ## <a name="next-step"></a>Дальнейшие действия
 

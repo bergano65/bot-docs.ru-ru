@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5cb6431988e65a4fa4a889f3095404622d51626
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0d13a27ef81660c6702f5a09487b731bc891c750
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224449"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405802"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Регистрация бота с помощью службы Bot
 
@@ -29,7 +29,7 @@ ms.locfileid: "54224449"
 Войдите на [портал Azure](http://portal.azure.com).
 
 > [!TIP]
-> Если у вас еще нет подписки, вы можете зарегистрироваться для получения <a href="https://azure.microsoft.com/en-us/free/" target="_blank">бесплатной учетной записи</a>.
+> Если у вас еще нет подписки, вы можете зарегистрироваться для получения <a href="https://azure.microsoft.com/free/" target="_blank">бесплатной учетной записи</a>.
 
 ## <a name="create-a-bot-channels-registration"></a>Создание службы "Регистрация каналов бота"
 Для использования службы Bot вам потребуется служба бота **Регистрация каналов бота**. Бот регистрации позволяет подключить бот к каналам.
@@ -50,7 +50,7 @@ ms.locfileid: "54224449"
    |         <strong>Подписка</strong>          |        Ваша подписка        |                                                                                Выберите подписку Azure, которую нужно использовать.                                                                                 |
    |        <strong>Группа ресурсов</strong>         |         myResourceGroup         |                                 Вы можете создать [группу ресурсов](/azure/azure-resource-manager/resource-group-overview#resource-groups) или выбрать имеющуюся.                                  |
    |                    Расположение                    |             Запад США             |                                                        Выберите расположение, ближайшее к расположению развертывания бота, или расположение рядом с другими службами, к которым бот будет обращаться.                                                         |
-   |         <strong>Ценовая категория</strong>          |               F0                |             Выберите ценовую категорию. Вы можете обновить ценовую категорию в любое время. Дополнительные сведения см. на странице [цен на службу Bot](https://azure.microsoft.com/en-us/pricing/details/bot-service/).              |
+   |         <strong>Ценовая категория</strong>          |               F0                |             Выберите ценовую категорию. Вы можете обновить ценовую категорию в любое время. Дополнительные сведения см. на странице [цен на службу Bot](https://azure.microsoft.com/pricing/details/bot-service/).              |
    |      <strong>Messaging endpoint</strong> (Конечная точка обмена сообщениями)       |               URL-адрес               |                                                                               Введите URL-адрес конечной точки обмена сообщениями своего бота.                                                                                |
    |     <strong>Application Insights</strong>      |               С                | Решите, хотите ли вы <strong>включить</strong> или <strong>выключить</strong> [Application Insights](bot-service-manage-analytics.md). Если вы выберете параметр <strong>Вкл.</strong>, необходимо также указать региональное расположение. |
    | <strong>Microsoft App ID and password</strong> (Идентификатор и пароль приложения Майкрософт) | Auto create App ID and password (Автоматическое создание идентификатора и пароля приложения) |              Используйте этот параметр, если вам нужно вручную ввести идентификатор и пароль приложения Майкрософт. В противном случае они будут созданы при создании бота.               |

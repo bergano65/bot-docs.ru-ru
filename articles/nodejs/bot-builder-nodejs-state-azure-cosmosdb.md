@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 67e86455aefd000c8a6956a71adcfdb821266196
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224519"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404335"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Управление данными о состоянии пользователя с помощью Azure Cosmos DB для Node.js
 
@@ -36,13 +36,13 @@ ms.locfileid: "54224519"
 - Необходимо иметь бот на Node.js. Если у вас его нет, см. раздел [Create a bot with the Bot Builder SDK for Node.js](bot-builder-nodejs-quickstart.md) (Создание бота с помощью пакета SDK Bot Builder для Node.js). 
 
 ## <a name="create-azure-account"></a>Создание учетной записи Azure
-Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/en-us/free/), чтобы зарегистрировать бесплатную учетную запись.
+Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/free/), чтобы зарегистрировать бесплатную учетную запись.
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Настройка базы данных Azure Cosmos DB
 1. После входа на портал Azure щелкните **Создать**, чтобы создать базу данных *Azure Cosmos DB*. 
 2. Щелкните **Базы данных**. 
 3. Найдите **Azure Cosmos DB** и щелкните **Создать**.
-4. Заполните поля. Для поля **API** выберите значение **SQL (DocumentDB)**. Заполните все поля и нажмите кнопку **Создать** в нижней части экрана, чтобы развернуть новую базу данных. 
+4. Заполните поля. Для поля **API** выберите значение **SQL (DocumentDB)** . Заполните все поля и нажмите кнопку **Создать** в нижней части экрана, чтобы развернуть новую базу данных. 
 5. После развертывания новой базы данных перейдите к ней. Щелкните **Ключи доступа**, чтобы найти ключи и строки подключения. Ваш бот будет использовать эту информацию для вызова службы хранилища и сохранения данных о состоянии.
 
 ## <a name="install-botbuilder-azure-module"></a>Установка модуля botbuilder-azure
@@ -74,14 +74,14 @@ npm install --save botbuilder-azure
    ```
    Значения `host` и `masterKey` можно найти в меню **Ключи** базы данных. Если записи `database` и `collection` в базе данных Azure не существуют, они будут созданы автоматически.
 
-3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к базе данных Azure. Во-первых, создайте экземпляр `DocumentDBClient`, который передается в параметры конфигурации подключения (определяется как `documentDbOptions` сверху). Затем создайте экземпляр `AzureBotStorage`, который передается в объект `DocumentDBClient`. Например: 
+3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к базе данных Azure. Во-первых, создайте экземпляр `DocumentDBClient`, который передается в параметры конфигурации подключения (определяется как `documentDbOptions` сверху). Затем создайте экземпляр `AzureBotStorage`, который передается в объект `DocumentDBClient`. Например:
    ```javascript
    var docDbClient = new azure.DocumentDbClient(documentDbOptions);
 
    var cosmosStorage = new azure.AzureBotStorage({ gzipData: false }, docDbClient);
    ```
 
-4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранилища в памяти. Например: 
+4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранилища в памяти. Например:
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {
@@ -110,11 +110,11 @@ node app.js
 
 ## <a name="view-state-data-on-azure-portal"></a>Просмотр данных о состоянии на портале Azure
 
-Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)**, чтобы убедиться, что сохраняются сведения о состоянии от бота.
+Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)** , чтобы убедиться, что сохраняются сведения о состоянии от бота.
 
 ## <a name="next-step"></a>Дальнейшие действия
 
-Теперь, когда имеется полный контроль над данными о состоянии бота, узнайте, как можно использовать их для более эффективного управления последовательностью общения.
+Теперь, когда имеется полный контроль над данными о состоянии бота, узнайте, как можно использовать их для более эффективного управления потоком общения.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-nodejs-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалоговых окон)
+> [Управление потоком общения с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation-flow.md)

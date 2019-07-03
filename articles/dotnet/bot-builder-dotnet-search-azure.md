@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: ee1e8c660eae27efae5c18b1392ff68d716f73da
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032925"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405642"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032925"
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
 
-Вы можете добавить в бот [Поиск Azure](https://azure.microsoft.com/en-us/services/search/), чтобы помочь пользователю ориентироваться в большом объеме содержимого и создать средства взаимодействия на основе данных.
+Вы можете добавить в бот [Поиск Azure](https://azure.microsoft.com/services/search/), чтобы помочь пользователю ориентироваться в большом объеме содержимого и создать средства взаимодействия на основе данных.
 
 Поиск Azure — это служба Azure, которая обеспечивает поиск по ключевым словам, встроенные лингвистические правила, настраиваемую оценку, фасетную навигацию и многое другое. Поиск Azure может индексировать содержимое из различных источников, включая базы данных SQL Azure, DocumentDB, хранилище BLOB-объектов и хранилище таблиц. Он поддерживает принудительное индексирование для других источников данных и может открывать PDF-файлы, документы Office и другие форматы, содержащие неструктурированные данные. После сбора содержимое переходит в индекс службы поиска Azure, которой бот может отправлять запросы.
 
@@ -176,7 +176,7 @@ public class SearchHitStyler : PromptStyler
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Поиск Azure][search]
+- [Поиск Azure;][search]
 - [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-dotnet-dialogs.md)
 
 [search]: /azure/search/search-what-is-azure-search

@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 4b5181babf728861107a0c7bc28f844491761a7a
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 117f95799df0abbe957000d4979b10f05baf262c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033888"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405536"
 ---
-До начала развертывания убедитесь, что у вас установлена последняя версия [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) и [.Net CLI](https://dotnet.microsoft.com/download). Если у вас нет .Net CLI, установите программу с помощью среды выполнения .Net Core по приведенной выше ссылке. 
+До начала развертывания убедитесь, что у вас установлена последняя версия [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) и [.Net CLI](https://dotnet.microsoft.com/download). Если у вас нет .Net CLI, установите программу с помощью среды выполнения .Net Core по приведенной выше ссылке. 
 
 ### <a name="login-to-azure-cli-and-set-your-subscription"></a>Вход в Azure CLI и настройка подписки.
 Итак, вы уже создали бот и протестировали его локально, а теперь хотите развернуть его в Azure. Откройте командную строку, чтобы войти на портал Azure.
@@ -92,7 +92,7 @@ az bot create --kind webapp --name <bot-name-in-azure> --location <geographic-lo
 }
 ```
 
-Скопируйте значения `appId` и `appPassword` и вставьте их в файл appsettings.json или .env. Например: 
+Скопируйте значения `appId` и `appPassword` и вставьте их в файл appsettings.json или .env. Например:
 
 ```JSON
 {
@@ -106,7 +106,7 @@ az bot create --kind webapp --name <bot-name-in-azure> --location <geographic-lo
 
 Далее выполните описанные ниже действия в зависимости от языка программирования (**C#** или **JS**), который вы выбрали для создания бота.
 
-**Бот на C#**. 
+**Бот на C#** . 
 
 Откройте командную строку и перейдите к папке проекта. Выполните следующую команду из командной строки.
 
