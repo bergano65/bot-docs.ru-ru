@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 08/15/2018
-ms.openlocfilehash: e68358ed65b9300ed8595496b88c5d0736819671
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5a0ded9af5f624398df764f16e6dd2db0105255c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998221"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405877"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Внедрение бота в приложение
 
@@ -25,7 +25,7 @@ ms.locfileid: "49998221"
 
 ### <a name="native-mobile-app"></a>Собственное мобильное приложение
 
-Приложение, создаваемое с использованием машинного кода, может взаимодействовать с Bot Framework через [API для Direct Line][directLineAPI] с помощью REST или подключения Websocket.
+Приложение, создаваемое с использованием машинного кода, может взаимодействовать с Bot Framework через [Direct Line API][directLineAPI] с помощью REST или подключения Websocket.
 
 ### <a name="web-based-mobile-app"></a>Мобильное веб-приложение
 
@@ -33,11 +33,11 @@ ms.locfileid: "49998221"
 
 ### <a name="iot-app"></a>Приложение Интернета вещей
 
-Приложение Интернета вещей может взаимодействовать с Bot Framework с помощью [API для Direct Line][directLineAPI]. В некоторых сценариях они также могут использовать <a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a> для предоставления таких возможностей, как распознавание изображений и речь.
+Приложение Интернета вещей может взаимодействовать с Bot Framework с помощью [Direct Line API][directLineAPI]. В некоторых сценариях они также могут использовать <a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a> для предоставления таких возможностей, как распознавание изображений и речь.
 
 ### <a name="other-types-of-apps-and-games"></a>Другие виды приложений и игр
 
-Другие виды приложений и игр могут взаимодействовать с Bot Framework с помощью [API для Direct Line][directLineAPI]. 
+Другие виды приложений и игр могут взаимодействовать с Bot Framework с помощью [Direct Line API][directLineAPI]. 
 
 ## <a name="creating-a-cross-platform-mobile-app-that-runs-a-bot"></a>Создание кроссплатформенного мобильного приложения для выполнения бота
 
@@ -71,7 +71,7 @@ For a complete sample that shows how to create a cross-platform mobile app that 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [API для Direct Line][directLineAPI]
+- [Direct Line API][directLineAPI]
 - <a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a>.
 
-[directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle
+[directLineAPI]: https://docs.botframework.com/restapi/directline3/#navtitle

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693517"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405977"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -26,7 +26,8 @@ ms.locfileid: "66693517"
 ## <a name="prerequisites"></a>Предварительные требования
 - Если у вас еще нет подписки Azure, создайте [учетную запись](https://azure.microsoft.com/free/), прежде чем начинать работу.
 - Бот на C#, JavaScript или TypeScript, который вы разработали на локальном компьютере.
-- Последняя версия [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+- Последняя версия [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- Знакомство с [Azure CLI и шаблонами ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="1-prepare-for-deployment"></a>1. Подготовка к развертыванию
 Если бот создается на основе шаблонов Visual Studio или Yeoman, его исходный код содержит папку `deploymentTemplates` с шаблонами ARM. В описанном здесь процессе развертывания используется шаблон ARM для подготовки необходимых для бота ресурсов Azure с помощью Azure CLI. 
@@ -182,7 +183,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 - Подождите несколько секунд после успешного завершения развертывания. Можно также перезапустить веб-приложение, чтобы очистить все кэши. Вернитесь в колонку "Бот веб-приложения" и выполните тестирование с помощью веб-чата на портале Azure.
 
 ## <a name="additional-information"></a>Дополнительная информация
-Развертывание бота в Azure подразумевает оплату за используемые службы. Руководство по [управлению счетами и расходами](https://docs.microsoft.com/en-us/azure/billing/) поможет вам понять, как расшифровывать счета Azure, отслеживать использование и расходы, а также управлять учетными записями и подписками.
+Развертывание бота в Azure подразумевает оплату за используемые службы. Руководство по [управлению счетами и расходами](https://docs.microsoft.com/azure/billing/) поможет вам понять, как расшифровывать счета Azure, отслеживать использование и расходы, а также управлять учетными записями и подписками.
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]

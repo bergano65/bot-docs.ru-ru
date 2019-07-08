@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4df2dcc8857c2af9a69c18e6acf8c8d064e1e043
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225229"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405693"
 ---
 # <a name="send-and-receive-activities"></a>Действия отправки и получения
 
@@ -29,7 +29,7 @@ ms.locfileid: "54225229"
 
 ## <a name="create-a-connector-client"></a>Создание клиента соединителя
 
-Класс [ConnectorClient][ConnectorClient] содержит методы, которые бот использует для взаимодействия с пользователем по каналу. При получении ботом объекта <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> из этого соединителя он должен использовать указанный для этого действия `ServiceUrl` для создания клиента соединителя, который впоследствии будет использоваться для создания ответа. 
+Класс [ConnectorClient][ConnectorClient] содержит методы, которые бот использует для взаимодействия с пользователем по каналу. При получении ботом объекта <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> из этого соединителя он должен использовать указанный для этого действия `ServiceUrl` для создания клиента соединителя, который впоследствии будет использоваться для создания ответа. 
 
 [!code-csharp[Create connector client](../includes/code/dotnet-send-and-receive.cs#createConnectorClient)]
 
@@ -88,7 +88,7 @@ ms.locfileid: "54225229"
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">Класс ConnectorClient</a>
 
 [ConnectorClient]: /dotnet/api/microsoft.bot.connector.connectorclient

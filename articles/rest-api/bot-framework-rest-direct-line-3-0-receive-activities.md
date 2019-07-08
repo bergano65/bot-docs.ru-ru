@@ -7,27 +7,29 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: dd5e81ba3feaba09e60011c138dcbe1537144b5a
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.date: 06/13/2019
+ms.openlocfilehash: c99e7ce86415ee1291a92e2684b975fd03c822f7
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541010"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252694"
 ---
 # <a name="receive-activities-from-the-bot"></a>Получение действий от бота
 
-С помощью протокола Direct Line 3.0 клиенты могут получать действия через поток `WebSocket` или извлекать действия путем выполнения запросов `HTTP GET`. 
+С помощью протокола Direct Line 3.0 клиенты могут получать действия через поток `WebSocket` или извлекать действия путем выполнения запросов `HTTP GET`.
 
 ## <a name="websocket-vs-http-get"></a>WebSocket и запрос GET HTTP
 
-Потоковая передача WebSocket эффективно передает сообщения клиентам, тогда как интерфейс GET позволяет клиентам точно запрашивать сообщения. Несмотря на то что механизм WebSocket часто является предпочтительным благодаря своей эффективности, механизм GET может быть полезен клиентам, которые не могут использовать WebSocket. 
+Потоковая передача WebSocket эффективно передает сообщения клиентам, тогда как интерфейс GET позволяет клиентам точно запрашивать сообщения. Несмотря на то что механизм WebSocket часто является предпочтительным благодаря своей эффективности, механизм GET может быть полезен клиентам, которые не могут использовать WebSocket.
+
+Служба позволяет только 1 подключение WebSocket для диалога. Direct Line может закрыть дополнительные подключения WebSocket со значением причины `collision`.
 
 Не все [типы действий](bot-framework-rest-connector-activities.md) доступны как через WebSocket, так и через запрос GET HTTP. В следующей таблице описана доступность различных типов действий для клиентов, использующих протокол Direct Line.
 
 | тип действия; | Доступность | 
 |----|----|
-| Message | HTTP GET и WebSocket |
+| message | HTTP GET и WebSocket |
 | typing | Только WebSocket |
 | conversationUpdate | Недоступно для отправки и получения через клиент |
 | contactRelationUpdate | Не поддерживается в Direct Line |
@@ -170,7 +172,7 @@ HTTP/1.1 200 OK
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-- [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
+- [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
 - [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)
 - [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)

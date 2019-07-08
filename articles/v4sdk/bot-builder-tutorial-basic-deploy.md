@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 305e89f5bef4b50e99b24780b0e31580e3b38fb9
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: fd6b1b7ed38b57e8245098679d7753bd5cbb9387
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693703"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464686"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство по Создание и развертывание простого бота
 
@@ -47,7 +47,7 @@ ms.locfileid: "66693703"
 ### <a name="prerequisites"></a>Предварительные требования
 - Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/), прежде чем начинать работу.
 - Описанный выше бот, запущенный на локальном компьютере.
-- Последняя версия [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+- Последняя версия [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ### <a name="1-prepare-for-deployment"></a>1. Подготовка к развертыванию
 Если бот создается на основе шаблонов Visual Studio или Yeoman, его исходный код содержит папку `deploymentTemplates` с шаблонами ARM. В описанном здесь процессе развертывания используется шаблон ARM для подготовки необходимых для бота ресурсов Azure с помощью Azure CLI. 
@@ -65,7 +65,7 @@ az login
 Укажите подписку, которая будет использоваться по умолчанию.
 
 ```cmd
-az account set --subscription "<azure-subscription>"
+az account set --subscription "azure-subscription"
 ```
 
 Если вы не уверены, какую подписку выбрать для развертывания бота, просмотрите список подписок в учетной записи с помощью команды `az account list`. Перейдите в папку бота.
@@ -85,7 +85,7 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 
 Приведенная выше команда выводит код JSON с ключом `appId`. Сохраните значение этого ключа для развертывания с помощью ARM, где этот ключ нужно указать в параметре `appId`. Предоставленный пароль будет использоваться в параметре `appSecret`.
 
-Вы можете развернуть бота в новой группе ресурсов или использовать существующую. Выберите любой вариант, который вам подходит.
+Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
 
 # <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)](#tab/newrg)
 
@@ -94,7 +94,7 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 Вы создадите новую группу ресурсов в Azure, а затем с помощью шаблона ARM создадите указанные в нем ресурсы. В нашем примере это план Службы приложений, веб-приложение и регистрация каналов бота.
 
 ```cmd
-az deployment create --name "<name-of-deployment>" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" botSku=F0 newAppServicePlanName="<name-of-app-service-plan>" newWebAppName="<name-of-web-app>" groupName="<new-group-name>" groupLocation="<location>" newAppServicePlanLocation="<location>"
+az deployment create --name "name-of-deployment" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" botSku=F0 newAppServicePlanName="name-of-app-service-plan" newWebAppName="name-of-web-app" groupName="new-group-name" groupLocation="location" newAppServicePlanLocation="location"
 ```
 
 | Параметр   | ОПИСАНИЕ |
@@ -117,7 +117,7 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 _Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 **Вариант 2. Новый план Службы приложений** 
@@ -125,7 +125,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 В этом варианте мы создаем план Службы приложений, веб-приложение и регистрацию каналов бота. 
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" newAppServicePlanName="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 | Параметр   | ОПИСАНИЕ |
@@ -177,7 +177,7 @@ _Kudu по умолчанию предполагает, что разверты�
 Теперь мы готовы развернуть код в виде веб-приложения Azure. Запустите следующую команду из командной строки, чтобы выполнить развертывание с помощью принудительного развертывания в Kudu из ZIP-файла веб-приложения.
 
 ```cmd
-az webapp deployment source config-zip --resource-group "<new-group-name>" --name "<name-of-web-app>" --src "code.zip" 
+az webapp deployment source config-zip --resource-group "new-group-name" --name "name-of-web-app" --src "code.zip" 
 ```
 
 | Параметр   | ОПИСАНИЕ |

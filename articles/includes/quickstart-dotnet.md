@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: 04f9101d0cf29618fb7d50e126c008190064a831
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 0570ec6a44c9fe1b007c1fd1b8c335288baa63cb
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199392"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464847"
 ---
 ## <a name="prerequisites"></a>Предварительные требования
-- Visual Studio [2017 или 2017](https://www.visualstudio.com/downloads).
-- Шаблон пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix).
+- [Visual Studio 2017 или более поздней версии](https://www.visualstudio.com/downloads)
+- [Шаблон пакета SDK Bot Framework версии 4 для C#](https://aka.ms/bot-vsix)
 - [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
-- Опыт работы с [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index).
+- Опыт работы с [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/index).
 
 ## <a name="create-a-bot"></a>Создание бота
 Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований.
@@ -20,7 +20,7 @@ ms.locfileid: "65199392"
 ![Проект Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
 > [!TIP] 
-> При необходимости укажите для проекта тип сборки ``.Net Core 2.1``. Также, если потребуется, обновите [пакеты NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio) `Microsoft.Bot.Builder`.
+> При необходимости укажите для проекта тип сборки ``.Net Core 2.1``. Также, если потребуется, обновите [пакеты NuGet](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio) `Microsoft.Bot.Builder`.
 
 Благодаря шаблону проект содержит весь код, необходимый для создания бота в рамках этого краткого руководства. Теперь нет необходимости писать дополнительный код.
 
@@ -33,7 +33,8 @@ ms.locfileid: "65199392"
 После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 
 1. Щелкните ссылку **Create a new bot configuration** (Создать конфигурацию бота) на вкладке Welcome (Приветствие) эмулятора. 
-2. Заполните поля для бота, а затем щелкните **Save and connect** (Сохранить и подключить).
+2. Заполните поля для своего бота. Используйте адрес страницы приветствия своего бота (обычно http://localhost:3978) и добавьте к нему сведения маршрутизации "/api/messages".
+3. Щелкните **Сохранить и подключиться**.
 
 ## <a name="interact-with-your-bot"></a>Взаимодействие с ботом
 

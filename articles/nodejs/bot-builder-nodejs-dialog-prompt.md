@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0ee70c1e775780bf884c4237e47cff4edb8934a9
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 1cad11c8b1dde800543c919ab579b0112e7d3036
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224789"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404991"
 ---
 # <a name="prompt-for-user-input"></a>Запрос пользователю на ввод данных
 
@@ -22,7 +22,7 @@ ms.locfileid: "54224789"
 
 Пакет SDK Bot Framework для Node.js предоставляет набор встроенных запросов для упрощения сбора данных, вводимых от пользователя. 
 
-*Запрос* используется всякий раз, когда боту нужно, чтобы пользователь ввел данные. Запросы можно использовать, чтобы попросить пользователя ввести ряд данных, объединив запросы в каскад. Запросы можно использовать в сочетании с [каскадом](bot-builder-nodejs-dialog-waterfall.md), что может помочь в [управлении ходом общения](bot-builder-nodejs-manage-conversation-flow.md) в боте. 
+*Запрос* используется всякий раз, когда боту нужно, чтобы пользователь ввел данные. Запросы можно использовать, чтобы попросить пользователя ввести ряд данных, объединив запросы в каскад. Запросы можно использовать в сочетании с [каскадом](bot-builder-nodejs-dialog-waterfall.md), что может помочь в [управлении потоком общения](bot-builder-nodejs-manage-conversation-flow.md) в боте. 
 
 Из этой статьи можно узнать, как работают запросы и как их можно использовать для сбора сведений от пользователей.
 
@@ -45,7 +45,7 @@ bot.dialog('greetings', [
 ]);
 ```
 
-Используя эту базовую конструкцию, можно моделировать ход общения, добавляя столько запросов и ответов, сколько требуется боту.
+Используя эту базовую конструкцию, можно моделировать поток общения, добавляя столько запросов и ответов, сколько требуется боту.
 
 ## <a name="prompt-results"></a>Результаты запроса 
 
@@ -97,7 +97,7 @@ builder.Prompts.text(session, "What is your name?");
 
 ### <a name="promptsconfirm"></a>Prompts.confirm
 
-Используйте метод [Prompts.confirm()][PromptsConfirm], чтобы запросить у пользователя подтверждение действия, содержащего ответ **Да или Нет**. Запрос возвращает ответ пользователя как значение параметра [IPromptConfirmResult](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptconfirmresult.html).
+Используйте метод [Prompts.confirm()][PromptsConfirm], чтобы запросить у пользователя подтверждение действия, содержащего ответ **Да или Нет**. Запрос возвращает ответ пользователя как значение параметра [IPromptConfirmResult](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptconfirmresult.html).
 
 ```javascript
 builder.Prompts.confirm(session, "Are you sure you wish to cancel your order?");
@@ -105,7 +105,7 @@ builder.Prompts.confirm(session, "Are you sure you wish to cancel your order?");
 
 ### <a name="promptsnumber"></a>Prompts.number
 
-Используйте метод [Prompts.number()][PromptsNumber], чтобы запросить у пользователя ввод **числа**. Запрос возвращает ответ пользователя как значение параметра [IPromptNumberResult](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptnumberresult.html).
+Используйте метод [Prompts.number()][PromptsNumber], чтобы запросить у пользователя ввод **числа**. Запрос возвращает ответ пользователя как значение параметра [IPromptNumberResult](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptnumberresult.html).
 
 ```javascript
 builder.Prompts.number(session, "How many would you like to order?");
@@ -113,9 +113,9 @@ builder.Prompts.number(session, "How many would you like to order?");
 
 ### <a name="promptstime"></a>Prompts.time
 
-Используйте метод [Prompts.text()][PromptsTime], чтобы запросить у пользователя ввод **времени** или **даты и времени**. Запрос возвращает ответ пользователя как значение параметра [IPromptTimeResult](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html). Для анализа ответа пользователя и поддержки как относительных (например, "in 5 minutes"), так и не относительных ответов (например, "June 6th at 2pm"), в платформе используется библиотека [Chrono](https://github.com/wanasit/chrono).
+Используйте метод [Prompts.text()][PromptsTime], чтобы запросить у пользователя ввод **времени** или **даты и времени**. Запрос возвращает ответ пользователя как значение параметра [IPromptTimeResult](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html). Для анализа ответа пользователя и поддержки как относительных (например, "in 5 minutes"), так и не относительных ответов (например, "June 6th at 2pm"), в платформе используется библиотека [Chrono](https://github.com/wanasit/chrono).
 
-Поле [results.response](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html#response), в котором отображается ответ пользователя, содержит объект [сущности](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ientity.html), указывающий дату и время. Чтобы сопоставить дату и время в объекте JavaScript `Date`, используйте метод [EntityRecognizer.resolveTime()](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#resolvetime).
+Поле [results.response](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html#response), в котором отображается ответ пользователя, содержит объект [сущности](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ientity.html), указывающий дату и время. Чтобы сопоставить дату и время в объекте JavaScript `Date`, используйте метод [EntityRecognizer.resolveTime()](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#resolvetime).
 
 > [!TIP] 
 > Время, которое пользователь вводит, преобразуется в формат UTC и зависит от часового пояса сервера, на котором размещен бот. Необходимо учитывать часовые пояса, так как сервер может находиться в другом часовом поясе, отличном от часового пояса пользователя. Для преобразования даты и времени в локальное время попросите пользователя указать, в каком часовом поясе он находится.
@@ -155,9 +155,9 @@ bot.dialog('createAlarm', [
 
 ### <a name="promptschoice"></a>Prompts.choice
 
-Используйте метод [Prompts.choice()][PromptsChoice], чтобы запросить у пользователя  **выбор варианта из списка**. Пользователь может передать свой выбор путем ввода номера, связанного с выбранным вариантом или путем ввода имени выбранного варианта. Поддерживаются как полные, так и частичные совпадения имен параметров. Запрос возвращает ответ пользователя как значение параметра [IPromptChoiceResult](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptchoiceresult.html). 
+Используйте метод [Prompts.choice()][PromptsChoice], чтобы запросить у пользователя **выбор варианта из списка**. Пользователь может передать свой выбор путем ввода номера, связанного с выбранным вариантом или путем ввода имени выбранного варианта. Поддерживаются как полные, так и частичные совпадения имен параметров. Запрос возвращает ответ пользователя как значение параметра [IPromptChoiceResult](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptchoiceresult.html). 
 
-Чтобы указать стиль списка, который представлен пользователю, задайте свойство [IPromptOptions.listStyle](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptoptions.html#liststyle). В следующей таблице приведены значения перечисления `ListStyle` для этого свойства.
+Чтобы указать стиль списка, который представлен пользователю, задайте свойство [IPromptOptions.listStyle](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptoptions.html#liststyle). В следующей таблице приведены значения перечисления `ListStyle` для этого свойства.
 
 
 Далее приведены значения перечисления `ListStyle`.
@@ -168,7 +168,7 @@ bot.dialog('createAlarm', [
 | 1 | строкой | Варианты отображаются как список в одну строку следующего вида: "1. Красный, 2. Зеленый, или 3. Синий". |
 | 2 | list | Варианты отображаются в виде нумерованного списка. |
 | 3 | кнопка | Варианты отображаются как кнопки для каналов, поддерживающих кнопки. Для остальных каналов они будут отображены в виде текста. |
-| 4. | авто | Выбор стиля осуществляется автоматически и основывается на канале и количестве вариантов для выбора. | 
+| 4\. | авто | Выбор стиля осуществляется автоматически и основывается на канале и количестве вариантов для выбора. | 
 
 Доступ к этому перечислению можно получить из объекта `builder` или можно указать индекс, чтобы выбрать `ListStyle`. Например, обе строки кода, приведенные ниже, при выполнении имеют одинаковый результат.
 
@@ -229,7 +229,7 @@ bot.dialog('getSalesData', [
 
 ### <a name="promptsattachment"></a>Prompts.attachment
 
-Используйте метод [Prompts.attachment()][PromptsAttachment], чтобы запросить у пользователя загрузку файла, например изображения или видео. Запрос возвращает ответ пользователя как значение параметра [IPromptAttachmentResult](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptattachmentresult.html).
+Используйте метод [Prompts.attachment()][PromptsAttachment], чтобы запросить у пользователя загрузку файла, например изображения или видео. Запрос возвращает ответ пользователя как значение параметра [IPromptAttachmentResult](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptattachmentresult.html).
 
 ```javascript
 builder.Prompts.attachment(session, "Upload a picture for me to transform.");
@@ -237,10 +237,10 @@ builder.Prompts.attachment(session, "Upload a picture for me to transform.");
 
 ## <a name="next-steps"></a>Дополнительная информация
 
-Теперь, когда вы знаете, как провести пользователей через каскад и запросить у них информацию, рассмотрим способы, которые помогут лучше управлять последовательностью общения.
+Теперь, когда вы знаете, как провести пользователей через каскад и запросить у них информацию, рассмотрим способы, которые помогут лучше управлять потоком общения.
 
 > [!div class="nextstepaction"]
-> [Manage conversation flow with dialogs](bot-builder-nodejs-dialog-manage-conversation-flow.md) (Управление последовательностью общения с помощью диалогов)
+> [Управление потоком общения с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 
 [SendAttachments]: bot-builder-nodejs-send-receive-attachments.md
@@ -248,49 +248,49 @@ builder.Prompts.attachment(session, "Upload a picture for me to transform.");
 [RecognizeUserIntent]: bot-builder-nodejs-recognize-intent-messages.md
 [SaveUserData]: bot-builder-nodejs-save-user-data.md
 
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-[ChatConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
-[Session]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
+[Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session
 
 
-[SendTyping]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#sendtyping
+[SendTyping]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#sendtyping
 
-[EndDialogWithResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#enddialogwithresult
+[EndDialogWithResult]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#enddialogwithresult
 
-[IPromptResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html
+[IPromptResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html
 
-[Result_Response]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#response
+[Result_Response]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#response
 
-[ResumeReason]: https://docs.botframework.com/en-us/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html
+[ResumeReason]: https://docs.botframework.com/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html
 
-[Result_Resumed]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed
+[Result_Resumed]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed
 
-[entity]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ientity.html
+[entity]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ientity.html
 
-[ResolveTime]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#resolvetime
+[ResolveTime]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#resolvetime
 
-[PromptsRef]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html
+[PromptsRef]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html
 
-[PromptsText]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#text
+[PromptsText]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#text
 
-[IPromptTextResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttextresult.html
+[IPromptTextResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttextresult.html
 
-[PromptsConfirm]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#confirm
+[PromptsConfirm]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#confirm
 
-[IPromptConfirmResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptconfirmresult.html
+[IPromptConfirmResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptconfirmresult.html
 
-[PromptsNumber]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#number
+[PromptsNumber]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#number
 
-[IPromptNumberResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptnumberresult.html
+[IPromptNumberResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptnumberresult.html
 
-[PromptsTime]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#time
+[PromptsTime]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#time
 
-[IPromptTimeResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html
+[IPromptTimeResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iprompttimeresult.html
 
-[PromptsChoice]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
+[PromptsChoice]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
 
-[IPromptChoiceResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptchoiceresult.html
+[IPromptChoiceResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptchoiceresult.html
 
-[PromptsAttachment]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#attachment
+[PromptsAttachment]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#attachment
 
-[IPromptAttachmentResult]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptattachmentresult.html
+[IPromptAttachmentResult]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptattachmentresult.html

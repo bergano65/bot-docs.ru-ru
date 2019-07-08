@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 569438e43a64a96239f7d9e490563498e7f6f279
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: b3c0efb243cc5b039034f908a46557e960adb7b0
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039772"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464563"
 ---
 # <a name="about-azure-bot-service"></a>Общие сведения о службе Azure Bot
 
@@ -73,7 +73,7 @@ ms.locfileid: "65039772"
  
 - Проверка бота в [Интернете](bot-service-manage-test-webchat.md). Завершив настройку бота через портал Azure, вы сможете обратиться к нему через веб-интерфейс чата. Веб-интерфейс чата — это отличный способ предоставить доступ к боту инженерам-испытателям и другим заинтересованным лицам, у которых нет прямого доступа к исполняемому коду бота.
 
-### <a name="publish"></a>Опубликовать 
+### <a name="publish"></a>Публикация 
 Когда все будет готово для публикации бота, передайте его содержимое в [Azure](bot-builder-howto-deploy-azure.md) или в собственной веб-службе или центре обработки данных. Постоянный адрес в общедоступном сегменте Интернета будет первым шагом к активному использованию бота на вашем сайте или в специализированных каналах для чата.
 
 ### <a name="connect"></a>Подключение          

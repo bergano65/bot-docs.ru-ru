@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/20/2018
-ms.openlocfilehash: 0b5bc1e82b6ef2dc5550fcaa5db176d06a7d2ea7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ecccbcadab93417dd52f72512a0046e70a83e85e
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999701"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405826"
 ---
 # <a name="design-the-user-experience"></a>Проектирование взаимодействия с пользователем
 
@@ -47,7 +47,7 @@ ms.locfileid: "49999701"
 
 Карточки позволяют вам создать свой бот один раз и обеспечить его работу на разных каналах. Однако не все типы карточек полностью поддерживаются на всех доступных каналах. 
 
-Подробные инструкции по добавлению карточек в ваш бот можно найти в статьях [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md) и [Add suggested actions to messages](v4sdk/bot-builder-howto-add-suggested-actions.md) (Добавление предлагаемых действий в сообщения). В них также приводятся ссылки на примеры кода для карточек [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js), адаптивных карточек [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), вложений [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code) и предложенных действий [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
+Подробные инструкции по добавлению карточек в ваш бот можно найти в статьях [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md) и [Add suggested actions to messages](v4sdk/bot-builder-howto-add-suggested-actions.md) (Добавление предлагаемых действий в сообщения). Примеры исходного кода для карточек: [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js) для адаптивных карточек: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), для вложений: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code), для предлагаемых действий: [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
 
 
 
@@ -77,7 +77,7 @@ ms.locfileid: "49999701"
 > При проектировании бота, требующего от пользователя ввода конкретных команд, вы зачастую обеспечиваете оптимальное взаимодействие с пользователем и устраняете необходимость в распознавании естественного языка.
 
   
-В случае бота *базы знаний* или бота *вопросов и ответов* пользователь может **задавать общие вопросы**. Например, представьте себе бот, который может отвечать на вопросы, основываясь на содержании тысяч документов. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> и <a href="https://azure.microsoft.com/en-us/services/search/" target="_blank">Поиск Azure</a> — это технологии, специально разработанные для этого типа сценариев. Дополнительные сведения см. в статье [Проектирование ботов базы знаний](bot-service-design-pattern-knowledge-base.md).
+В случае бота *базы знаний* или бота *вопросов и ответов* пользователь может **задавать общие вопросы**. Например, представьте себе бот, который может отвечать на вопросы, основываясь на содержании тысяч документов. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> и <a href="https://azure.microsoft.com/services/search/" target="_blank">Поиск Azure</a> — это технологии, специально разработанные для этого типа сценариев. Дополнительные сведения см. в статье [Проектирование ботов базы знаний](bot-service-design-pattern-knowledge-base.md).
 
 > [!TIP]
 > Если вы разрабатываете бот, который будет отвечать на вопросы на основе структурированных или неструктурированных данных из баз данных, веб-страниц или документов, попробуйте использовать технологии, специально разработанные для этого сценария, а не решайте проблему за счет распознавания естественного языка.

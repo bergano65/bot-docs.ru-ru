@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ff2d55ccdd6312e95bdb1acb223d8e1d5f60b0b3
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 1b62ca7e98313fb0247d45cb66fcae8be32e6492
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032632"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405057"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -26,9 +26,9 @@ ms.locfileid: "65032632"
 Пакет SDK Bot Framework для Node.js позволяет создать бот с поддержкой речи, подключив его к каналу Кортаны в качестве навыка Кортаны. Навыки Кортаны позволяют предоставлять функциональность через Кортану в ответ на ввод речи пользователя.
 
 > [!TIP]
-> Дополнительные сведения о том, что такое навык и каковы их возможности, см. в разделе [The Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны).
+> Дополнительные сведения о том, что такое навык и как его можно использовать, см. в статье [Cortana Skills Kit][CortanaGetStarted] (Набор навыков Кортаны).
 
-Создание навыка Кортаны с использованием Bot Framework требует очень мало знаний о Кортане и прежде всего состоит из создания бота. Одним из ключевых отличий от других ботов, которые можно создать, является то, что Кортана имеет как визуальные, так и звуковые компоненты. Визуальный компонент Кортана предоставляет область холста для отрисовки содержимого, например карты. Для звукового компонента необходимо предоставить текст или SSML в сообщениях бота, которые Кортана зачитывает пользователю, предоставляя боту голос. 
+Создание навыка Кортаны с использованием Bot Framework не требует глубоких знаний о Кортане и предусматривает прежде всего создание бота. Одним из ключевых отличий от других ботов, которые можно создать, является то, что Кортана имеет как визуальные, так и звуковые компоненты. Визуальный компонент Кортана предоставляет область холста для отрисовки содержимого, например карты. Для звукового компонента необходимо предоставить текст или SSML в сообщениях бота, которые Кортана зачитывает пользователю, предоставляя боту голос. 
 
 > [!NOTE]
 > Помощник Кортана доступен на различных устройствах. У одних есть экран, в то время как другие, например автономный динамик, могут и не иметь его. Следует убедиться, что бот способен работать в обоих сценариях. Чтобы узнать, как проверить сведения об устройстве, см. статью [Get Cortana's Channel Data][CortanaSpecificEntities] (Получение данных о канале Кортаны).
@@ -58,7 +58,7 @@ ms.locfileid: "65032632"
 |------|------|
 | **acceptingInput** | Бот пассивно готов к вводу, но не ожидает ответа. Кортана принимает входные данные от пользователя, если пользователь удерживает кнопку микрофона.|
 | **expectingInput** | Указывает, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
-||Примечание. _Не_ используйте **expectingInput** на устройствах без дисплея. См. [вопросы и ответы о наборе навыков Кортаны](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
+||Примечание. _Не_ используйте **expectingInput** на устройствах без дисплея. См. [вопросы и ответы о наборе навыков Кортаны](https://review.docs.microsoft.com/cortana/skills/faq).|
 | **ignoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку, если он активно обрабатывает запрос, и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет выполнен.  |
 
 В следующем примере показано, как Кортана читает простой текст или SSML.
@@ -156,11 +156,11 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Отображение карт в Кортане
 
 Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие форматированные карточки:
-* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html);
-* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html);
-* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html).
+* [HeroCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html);
+* [ReceiptCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html);
+* [ThumbnailCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html).
 
-Сведения о том, как эти карты выглядят в Кортане, см. в разделе [Principles of Cortana Skills design][CardDesign] (Принципы проектирования навыков Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
+Сведения о том, как эти карты выглядят в Кортане, см. в разделе [Principles of Cortana skills design][CardDesign] (Принципы проектирования навыков Кортаны). Пример того, как добавить форматированную карточку в бот, см. в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). 
 
 Следующий код демонстрирует, как добавить свойства **speak** и **inputHint** в сообщение, содержащее карту Hero.
 
@@ -195,7 +195,7 @@ module.exports.speak = function (template, params, options) {
 ## <a name="sample-rollerskill"></a>Пример: RollerSkill
 Код в следующих разделах относится к примеру навыка Кортаны, который предназначен для того, чтобы бросать кости. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] помощнику Кортане. После [подключения бота к каналу Кортаны][CortanaChannel] и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
+Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] Кортане. После подключения бота к каналу Кортаны и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
 
 ### <a name="explore-the-code"></a>Обзор кода
 
@@ -421,8 +421,8 @@ bot.dialog('PlayGameDialog', function (session, args) {
 * [Speech Synthesis Markup Language (SSML) reference][SSMLRef] (Справочник по SSML)
 * [Voice design best practices for Cortana][VoiceDesign] (Рекомендации по проектированию речевых функций для Кортаны)
 * [Card design best practices for Cortana][CardDesign] (Рекомендации по проектированию карточек для Кортаны)
-* [Cortana Dev Center][CortanaDevCenter] (Центр разработки Кортаны)
-* [Testing and debugging Cortana Skills][Cortana-TestBestPractice] (Тестирование и отладка навыков Кортаны)
+* [Центр разработки Кортаны][CortanaDevCenter]
+* [Testing and debugging best practices for Cortana][Cortana-TestBestPractice] (Рекомендации по тестированию и отладке для Кортаны)
 
 
 [CortanaGetStarted]: /cortana/getstarted
@@ -430,9 +430,9 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[IMessage]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
-[Send]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[IMessage]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
+[Send]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

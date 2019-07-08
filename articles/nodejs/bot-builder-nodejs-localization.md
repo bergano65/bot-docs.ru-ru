@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224399"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404907"
 ---
 # <a name="support-localization"></a>Поддержка локализации
 
@@ -119,7 +119,7 @@ var bot = new builder.UniversalBot(connector, {
 
 Структура файла представляет собой простую карту JSON идентификаторов сообщений в локализованных текстовых строках. Если значение является массивом, а не строкой, из массива в произвольном порядке выбирается один запрос при получении этого значения с помощью [session.localizer.gettext()][GetText]. 
 
-Бот автоматически извлекает локализованную версию сообщения, если передать идентификатор сообщения в вызове [session.send()](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send) вместо языкового текста.
+Бот автоматически извлекает локализованную версию сообщения, если передать идентификатор сообщения в вызове [session.send()](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send) вместо языкового текста.
 
 ```javascript
 var bot = new builder.UniversalBot(connector, [
@@ -159,14 +159,14 @@ builder.Prompts.choice(session, "choice_prompt", options);
 
 
 [LUIS]: https://www.luis.ai/
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-[LUISRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[LUISRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 [LUISSample]: https://aka.ms/v3-js-luisSample
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
-[preferredLocal]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[preferredLocale]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[promptsChoice]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
-[GetText]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
+[preferredLocal]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[preferredLocale]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[promptsChoice]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
+[GetText]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
 [IEFT]: https://en.wikipedia.org/wiki/IETF_language_tag
 

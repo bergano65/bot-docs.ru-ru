@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/17
+ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ee3af72d1c03faf485a64adb8d9fa2548f5d99d
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: fc4fe669c57c53b8b53a98bf495ed858094ef4b6
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563592"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496634"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -94,7 +94,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 Каждый объект [Activity][Activity] содержит свойства, которые вы можете использовать для управления данными о состоянии.
 
-| Свойство | ОПИСАНИЕ | Вариант использования  |
+| Свойство | ОПИСАНИЕ | Вариант использования |
 |----|----|----|
 | `From` | Уникальный идентификатор пользователя в канале | Сохранение и извлечение данных о состоянии, связанных с определенным пользователем |
 | `Conversation` | Уникальный идентификатор беседы | Сохранение и извлечение данных о состояния, связанных с определенной беседой |
@@ -114,4 +114,4 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 - [Руководство по устранению неполадок с Bot Framework](../bot-service-troubleshoot-general-problems.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
-[Activity]: https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html
+[Activity]: https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f9fa2bee156752f1545d201768040b6106558e01
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 97bdb1cb8b2181904b6c6992b6e0c3bd3b9f20cd
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563742"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405860"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Внедрение бота на веб-сайт
 
@@ -31,7 +31,7 @@ ms.locfileid: "64563742"
 
 ## <a name="open-source-web-control"></a>Веб-элемент управления с открытым кодом
 
-<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> создан на базе ReactJS и использует [API для Direct Line][directLineAPI] для взаимодействия с Bot Framework. Элемент управления веб-чатом предоставляет пустой холст для реализации веб-чата, его возможности, а также дает полный контроль над его поведением. 
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> создан на базе ReactJS и использует [Direct Line API][directLineAPI] для взаимодействия с Bot Framework. Элемент управления веб-чатом предоставляет пустой холст для реализации веб-чата, его возможности, а также дает полный контроль над его поведением. 
 
 Механизм *обратного канала* обеспечивает прямое взаимодействие веб-страницы, на которой размещается элемент управления, с ботом способом, полностью невидимым для пользователя. Эта возможность позволяет использовать ряд полезных сценариев: 
 
@@ -51,8 +51,8 @@ ms.locfileid: "64563742"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [API для Direct Line][directLineAPI]
+- [Direct Line API][directLineAPI]
 - [Элемент управления "Веб-чат" с открытым кодом](https://github.com/Microsoft/BotFramework-WebChat)
 - [Использование механизма обратного канала](~/nodejs/bot-builder-nodejs-backchannel.md)
 
-[directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle
+[directLineAPI]: https://docs.botframework.com/restapi/directline3/#navtitle

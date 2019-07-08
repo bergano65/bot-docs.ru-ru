@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1911a5b0f8e8f8b53de6f661c0a939767df1efbb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ac74fff5fa7635bf0ef585423b0f8663a1df41c4
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224699"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404829"
 ---
 # <a name="send-and-receive-attachments"></a>Отправка и получение вложений
 
@@ -28,10 +28,10 @@ ms.locfileid: "54224699"
 Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Типы вложений, которые могут быть отправлены, зависят от канала, но это базовые типы.
 
 * **Мультимедиа и файлы**. Вы можете отправлять файлы разных форматов, например изображения, аудио- и видеофайлы, указав в параметре **contentType** тип MIME для [объекта IAttachment][IAttachment] и передав ссылку на файл в параметре **contentUrl**.
-* **Карточки**. Можно отправлять обширный набор визуальных карточек <!-- and custom keyboards -->, задав в параметре **contentType** нужный тип карточки и передав содержимое этой карточки в формате JSON. При использовании одного из таких классов построителя форматированных карточек, как **HeroCard**, вложение добавляется автоматически. С соответствующими примерами можно ознакомиться в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md).
+* **Карточки**. Вы можете отправлять обширный набор визуальных карточек, <!-- and custom keyboards --> задав в параметре **contentType** нужный тип карточки и передав содержимое этой карточки в формате JSON. При использовании одного из таких классов построителя форматированных карточек, как **HeroCard**, вложение добавляется автоматически. С соответствующими примерами можно ознакомиться в разделе [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md).
 
 ## <a name="add-a-media-attachment"></a>Добавление мультимедийного вложения
-Объект message должен быть экземпляром [IMessage][IMessage]. Он особенно удобен для отправки пользователю сообщения в виде объекта, если требуется что-то вложить в сообщение (например, изображение). Используйте метод [session.send()][SessionSend] для отправки сообщений в виде объекта JSON. 
+Объект message должен быть экземпляром [IMessage][IMessage]. Он особенно удобен для отправки пользователю сообщения в виде объекта, если требуется что-то вложить в сообщение (например, изображение). Используйте метод session.send() для отправки сообщений в виде объекта JSON. 
 
 ## <a name="example"></a>Пример
 
@@ -67,8 +67,8 @@ var bot = new builder.UniversalBot(connector, function (session) {
 * [Отправка форматированной карточки][SendRichCard]
 * [session.send][SessionSend]
 
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 [SendRichCard]: bot-builder-nodejs-send-rich-cards.md
-[SessionSend]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#send
-[IAttachment]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iattachment.html
+[SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#send
+[IAttachment]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iattachment.html
 [inspector]: ../bot-service-channel-inspector.md

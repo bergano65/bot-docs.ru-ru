@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 51bdc5e52bd147747e9d068fc4721ca4b782ef27
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317679"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464510"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 
@@ -25,7 +25,9 @@ ms.locfileid: "54317679"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-В обмене сообщениями между пользователем и ботом может быть задействована одна или несколько форматированных карточек, отображаемых в виде списка или карусели. Свойство `Attachments` объекта <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> содержит массив объектов <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a>, представляющих вложения в виде форматированных карточек и файлов мультимедиа. 
+В обмене сообщениями между пользователем и ботом может быть задействована одна или несколько форматированных карточек, отображаемых в виде списка или карусели. 
+
+Свойство `Attachments` объекта <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> содержит массив объектов <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a>, представляющих вложения в виде форматированных карточек и файлов мультимедиа. 
 
 > [!NOTE]
 > Сведения о добавлении мультимедийных вложений в сообщения см. в статье [Добавление мультимедийных вложений в сообщения](bot-builder-dotnet-add-media-attachments.md).
@@ -37,12 +39,12 @@ ms.locfileid: "54317679"
 | Тип карточки | ОПИСАНИЕ |
 |----|----|
 | <a href="/adaptive-cards/get-started/bots">Адаптивная карточка</a> | Настраиваемая карточка, которая может содержать любое сочетание текста, речи, изображений, кнопок и полей для ввода. См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status).  |
-| [Анимационная карточка][animationCard] | Карточка, который может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
+| [Анимационная карточка][animationCard] | Карточка, которая может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
 | [Карточка с аудио][audioCard] | Карточка, которая может воспроизводить звуковой файл. |
-| [Карточка для имиджевого баннера][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или нескольких кнопок и текст. |
+| [Карточка для имиджевого баннера][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
 | [Карточка с эскизом][thumbnailCard] | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст. |
 | [Карточка квитанции][receiptCard] | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог, а также общую информацию и другой текст. |
-| [Карточка для входа][signinCard] | Карточка, позволяющая боту запрашивать вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
+| [Карточка для входа][signinCard] | Карточка, в которой бот запрашивает вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
 | [Карточка с видео][videoCard] | Карточка, которая может воспроизводить видео. |
 
 > [!TIP]
@@ -129,8 +131,8 @@ ms.locfileid: "54317679"
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
 - [Добавление мультимедийных вложений в сообщения](bot-builder-dotnet-add-media-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment class</a> (Класс Attachment)
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment class</a> (Класс Attachment)
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
 

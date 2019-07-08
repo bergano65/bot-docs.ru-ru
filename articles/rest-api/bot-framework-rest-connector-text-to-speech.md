@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 2aac000b7e8dd52b00659ffecde5184df6c29991
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 279386fc2a49e6f71980515e32ad2fcbe40cef15
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998691"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464751"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 > [!div class="op_single_selector"]
@@ -25,9 +25,9 @@ ms.locfileid: "49998691"
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Указание текста, произносимого ботом
 
-Чтобы указать текст, который бот будет произносить по каналу с поддержкой речи, задайте свойство `speak` в объекте [Activity][Activity], который представляет ваше сообщение. Можно установить свойство `speak` в текстовую строку или строку, которая отформатирована как <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language (SSML)</a> (Язык разметки синтеза речи) — язык разметки на основе XML, который позволяет управлять различными характеристиками речи бота, такими как голос, скорость, громкость, произношение, тон и другое. 
+Чтобы указать текст, который бот будет произносить по каналу с поддержкой речи, задайте свойство `speak` в объекте [Activity][Activity], который представляет ваше сообщение. Можно установить свойство `speak` в текстовую строку или строку, которая отформатирована как <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Speech Synthesis Markup Language (SSML)</a> (Язык разметки синтеза речи) — язык разметки на основе XML, который позволяет управлять различными характеристиками речи бота, такими как голос, скорость, громкость, произношение, тон и другое. 
 
-В следующем примере запроса показана отправка сообщения, которое задает текст для отображения и текст для произнесения и указывает, что бот [принимает входные данные пользователя](bot-framework-rest-connector-add-input-hints.md). Он определяет свойство `speak`, используя формат <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>, чтобы указать, что слово "sure" должно быть произнесено с умеренным количеством акцентов. В этом примере запроса `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
+В следующем примере запроса показана отправка сообщения, которое задает текст для отображения и текст для произнесения и указывает, что бот [принимает входные данные пользователя](bot-framework-rest-connector-add-input-hints.md). Он определяет свойство `speak`, используя формат <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a>, чтобы указать, что слово "sure" должно быть произнесено с умеренным количеством акцентов. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723
@@ -51,7 +51,7 @@ Content-Type: application/json
         "name": "recipient's name"
     },
     "text": "Are you sure that you want to cancel this transaction?",
-    "speak": "Are you <emphasis level='moderate'>sure</emphasis> that you want to cancel this transaction?",
+    "speak": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\">Are you <emphasis level=\"moderate\">sure</emphasis> that you want to cancel this transaction?</speak>",
     "inputHint": "expectingInput",
     "replyToId": "5d5cdc723"
 }
@@ -66,6 +66,6 @@ Content-Type: application/json
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление подсказок для ввода в сообщения](bot-framework-rest-connector-add-input-hints.md)
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

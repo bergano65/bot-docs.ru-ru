@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: d41c2c24ed38fffe76cd73a6bb8a685d3861ac55
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fee70da7288b3214ff7f384998a69b40f91b3226
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000431"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464522"
 ---
 # <a name="configure-adaptive-cards"></a>Настройка адаптивных карточек
 > [!IMPORTANT]
@@ -41,19 +41,19 @@ Conversation Designer предоставляет тесно интегриров
 
 Во фрагменте кода ниже показано, как сущность **myName** определена в коде.
 
-``javascript
+```javascript
 {
    "type": "Input.Text",
    "id": "myName",
    "placeholder": "Last, First"
 }
-``
+```
 
 Кроме того, если идентификатор поля имеет значение `@task`, то значение поля будет использоваться в качестве имени задачи. При активации этого поля (например, при нажатии кнопки) будет выполняться именованная задача. 
 
 Для примера возьмем этот фрагмент кода.
 
-``javascript
+```javascript
 {
   'type': 'Action.Submit',
   'title': 'Search',
@@ -62,7 +62,7 @@ Conversation Designer предоставляет тесно интегриров
     '@task': 'Hotel Search'
   }
 }
-``
+```
 
 При нажатии кнопки активируется действие submit и `context.sticky` присваивается значение `Hotel Search`. В результате будет выполнена задача **Hotel Search**. Чтобы использовать эту функцию, убедитесь, что `@task` совпадает с именем задачи, которую вы определили в Conversation Designer.
 
@@ -72,7 +72,7 @@ Conversation Designer предоставляет тесно интегриров
 * `entityName` использует сущности внутри карточки.
 * `responseTemplateName` использует шаблоны простых или условных ответов в карточке.
 
-Дополнительные сведения об адаптивных карточках см. здесь TODO: вставьте ссылку на документации по схеме адаптивных карточек-->
+Дополнительные сведения об адаптивных карточках см. здесь TODO: вставьте ссылку на документации по схеме адаптивных карточек -->
 
 ## <a name="sample-adaptive-card-payload"></a>Прием полезных данных адаптивной карточки
 

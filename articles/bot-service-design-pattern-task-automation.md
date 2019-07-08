@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 21324f68332be6a60f55e6ab55545fc6102bedb9
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d81a7e55ab7ac5e3b430ae051d1abbb4ca94b44d
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033017"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405834"
 ---
 # <a name="create-task-automation-bots"></a>Создание ботов с автоматизацией задач
 
@@ -85,7 +85,7 @@ ms.locfileid: "65033017"
 
 ## <a name="bot-app-or-website"></a>Бот, приложение или веб-сайт?
 
-У вас может возникнуть вопрос: если бот с автоматизацией задач напоминает приложение или веб-сайт, тогда почему бы просто не создать приложение или веб-сайт? В зависимости от конкретного сценария, создание приложения или веб-сайта вместо бота может быть вполне разумным выбором. Вы даже можете внедрить бот в приложение с помощью [API Direct Line для Bot Framework][directLineAPI] или <a href="https://aka.ms/BotFramework-WebChat" target="_blank">элемента управления "Веб-чат"</a>. Реализация бота в контексте приложения обеспечивает преимущества обоих компонентов: полнофункциональное приложение и возможность общения, "все в одном". 
+У вас может возникнуть вопрос: если бот с автоматизацией задач напоминает приложение или веб-сайт, тогда почему бы просто не создать приложение или веб-сайт? В зависимости от конкретного сценария, создание приложения или веб-сайта вместо бота может быть вполне разумным выбором. Вы даже можете внедрить бот в приложение с помощью [Direct Line API для Bot Framework][directLineAPI] или <a href="https://aka.ms/BotFramework-WebChat" target="_blank">элемента управления "Веб-чат"</a>. Реализация бота в контексте приложения обеспечивает преимущества обоих компонентов: полнофункциональное приложение и возможность общения, "все в одном". 
 
 Однако во многих случаях создание приложения или веб-сайта может быть сложнее и дороже, чем создание бота. Приложение или веб-сайт часто должны поддерживать несколько клиентов и платформ, их упаковка и развертывание может быть рутинным и длительным процессом, а возможность пользователя загрузить и установить приложение не обязательно является идеальным решением. По этим причинам бот может часто предоставлять гораздо более простой способ решения проблемы. 
 
@@ -106,4 +106,4 @@ For a complete sample that shows how to implement simple task automation using t
 - [Управление потоком беседы с помощью диалогов (.Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
 
 
-[directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle
+[directLineAPI]: https://docs.botframework.com/restapi/directline3/#navtitle

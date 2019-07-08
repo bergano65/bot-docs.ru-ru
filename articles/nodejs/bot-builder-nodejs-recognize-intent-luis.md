@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acdc6053f7d666c2f086dca554efafc93c8af769
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225289"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464798"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
 
@@ -34,8 +34,8 @@ ms.locfileid: "54225289"
 
 3. В колонке **Служба ботов** введите необходимые сведения и нажмите кнопку **Создать**. В Azure будут созданы и развернуты служба ботов и приложение LUIS. 
    * В поле **Имя приложения** укажите имя бота. При развертывании бота в облаке имя используется в качестве поддомена (например, mynotesbot.azurewebsites.net). Это имя также используется как имя приложения LUIS, связанного с ботом. Скопируйте его для последующего использования. Оно поможет найти приложение LUIS, связанное с ботом.
-   * Заполните поля "Подписка", [Группа ресурсов](/azure/azure-resource-manager/resource-group-overview), "План службы приложений" и [Расположение](https://azure.microsoft.com/en-us/regions/).
-   * В поле **Шаблон бота** выберите шаблон **Распознавание речи (Node.js)**.
+   * Заполните поля "Подписка", [Группа ресурсов](/azure/azure-resource-manager/resource-group-overview), "План службы приложений" и [Расположение](https://azure.microsoft.com/regions/).
+   * В поле **Шаблон бота** выберите шаблон **Распознавание речи (Node.js)** .
 
      ![Колонка "Служба ботов"](../media/bot-builder-nodejs-use-luis/bot-service-setting-callout-template.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "54225289"
 
 
 3.  Нажмите кнопку **Обучить** в правом верхнем углу, чтобы обучить приложение.
-4.  Нажмите кнопку **Опубликовать** на панели навигации вверху, чтобы открыть страницу **Публикация**. Нажмите кнопку **Опубликовать в рабочем слоте**. После успешной публикации приложение LUIS развертывается по URL-адресу, который указан в столбце **Конечная точка** и в строке, которая начинается с имени ресурса Starter_Key, на странице **Публикация приложения**. Формат URL-адреса похож на формат, используемый в следующем примере: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`. Идентификатор приложения и ключ подписки в этом URL-адресе соответствуют параметрам LuisAppId и LuisAPIKey в разделе ** Параметры службы приложений > Параметры приложения > Параметры приложения **
+4.  Нажмите кнопку **Опубликовать** на панели навигации вверху, чтобы открыть страницу **Публикация**. Нажмите кнопку **Опубликовать в рабочем слоте**. После успешной публикации приложение LUIS развертывается по URL-адресу, который указан в столбце **Конечная точка** и в строке, которая начинается с имени ресурса Starter_Key, на странице **Публикация приложения**. Формат URL-адреса похож на формат, используемый в следующем примере: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`. Идентификатор приложения и ключ подписки в этом URL-адресе соответствуют параметрам LuisAppId и LuisAPIKey в разделе **Параметры службы приложений > Параметры приложения > Параметры приложения**
 
 
 ## <a name="modify-the-bot-code"></a>Изменение кода бота
@@ -149,7 +149,7 @@ var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 bot.recognizer(recognizer);
 
 // Add a dialog for each intent that the LUIS app recognizes.
-// See https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
+// See https://docs.microsoft.com/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
 bot.dialog('GreetingDialog',
     (session) => {
         session.send('You reached the Greeting intent. You said \'%s\'.', session.message.text);
@@ -181,7 +181,7 @@ bot.dialog('CancelDialog',
 
 
 > [!TIP] 
-> Пример кода, описанный в этой статье, можно найти в разделе [Пример бота для работы с заметками][NotesSample].
+> Пример кода, описанный в этой статье, можно найти в статье [Recognize intents and entities with LUIS][NotesSample] (Распознавание намерений и сущностей с помощью LUIS).
 
 
 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-Любые сущности в высказывании передаются в диалоговое окно с помощью параметра `args`. На первом шаге [каскада][waterfall] вызывается метод [EntityRecognizer.findEntity][EntityRecognizer_findEntity], который получает заголовок заметки из любых сущностей `Note.Title` в ответе LUIS. Если приложение LUIS не обнаружило сущность `Note.Title`, бот запрашивает имя сущности у пользователя. На втором шаге каскада у пользователя запрашивается текст, включаемый в заметку. После того как бот получил текст заметки, на третьем шаге каскада вызывается метод [session.userData][session_userData], который сохраняет заметку в объекте `notes`, используя заголовок в качестве ключа. Дополнительные сведения о `session.UserData` см. в разделе [Управление данными состояния](./bot-builder-nodejs-state.md). 
+Любые сущности в высказывании передаются в диалоговое окно с помощью параметра `args`. На первом шаге [каскада][waterfall] вызывается метод EntityRecognizer.findEntity, который получает заголовок заметки из любых сущностей `Note.Title` в ответе LUIS. Если приложение LUIS не обнаружило сущность `Note.Title`, бот запрашивает имя сущности у пользователя. На втором шаге каскада у пользователя запрашивается текст, включаемый в заметку. После того как бот получил текст заметки, на третьем шаге каскада вызывается метод session.userData, который сохраняет заметку в объекте `notes`, используя заголовок в качестве ключа. Дополнительные сведения о `session.UserData` см. в разделе [Управление данными состояния](./bot-builder-nodejs-state.md). 
 
 
 
@@ -572,40 +572,40 @@ function noteCount(notes) {
 
 [LUIS]: https://www.luis.ai/
 
-[intentDialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
+[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
 
-[intentDialog_matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
+[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
 
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 
-[confirmPrompt]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
+[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
 
 [waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
 
-[session_userData]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
+[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 
-[EntityRecognizer_findEntity]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
+[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
-[matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
+[matches]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
 [LUISAzureDocs]: /azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
+[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
 
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
 
-[LuisRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 
-[LUISConcepts]: https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/
+[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
 
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
 
-[IDisambiguateRouteHandler]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
+[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
 
-[RegExpRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
+[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
 
 [AlarmBot]: https://aka.ms/v3-js-luisSample
 
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html

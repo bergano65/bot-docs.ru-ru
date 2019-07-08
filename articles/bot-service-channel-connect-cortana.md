@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: 6bb4945801ee127cfa954289792987a57eae7fd5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3df9d22b486e56547452cc5bce4add3946f670f5
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032986"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405935"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Подключение бота к Кортане
 
@@ -35,6 +35,8 @@ ms.locfileid: "65032986"
 | **Имя вызова** | Это имя, которое пользователи называют при вызове навыка. Оно должно состоять из трех слов максимум и легко произноситься. Сведения о выборе этого имени см. в статье [Invocation name guidelines][invocation] (Руководство по именам для вызова).|
 
 ![Параметры по умолчанию](~/media/channels/cortana-defaultsettings.png)
+
+>Примечание. Сейчас Кортана не поддерживает использование аутентификации учетной записи Azure Active Directory (AAD). Необходимо использовать учетную запись Майкрософт (MSA) для успешной публикации бота в Кортане.
 
 ## <a name="general-bot-information"></a>Общие сведения о боте
 
@@ -109,6 +111,6 @@ ms.locfileid: "65032986"
 * [Тестирование навыка Кортаны](bot-service-debug-cortana-skill.md)
 * [Publishing Cortana Skills][publish] (Публикация навыков Кортаны)
 
-[invocation]: https://docs.microsoft.com/en-us/cortana/skills/cortana-invocation-guidelines
-[publish]: https://docs.microsoft.com/en-us/cortana/skills/publish-skill
+[invocation]: https://docs.microsoft.com/cortana/skills/cortana-invocation-guidelines
+[publish]: https://docs.microsoft.com/cortana/skills/publish-skill
 [CortanaEntity]: https://aka.ms/lgvcto

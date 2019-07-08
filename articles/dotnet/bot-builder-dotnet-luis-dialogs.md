@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225379"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405666"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
 
@@ -34,8 +34,8 @@ ms.locfileid: "54225379"
 
 3. В колонке **Служба ботов** введите необходимые сведения и нажмите кнопку **Создать**. В Azure будут созданы и развернуты служба ботов и приложение LUIS. 
    * В поле **Имя приложения** укажите имя бота. При развертывании бота в облаке имя используется в качестве поддомена (например, mynotesbot.azurewebsites.net). Это имя также используется как имя приложения LUIS, связанного с ботом. Скопируйте его для последующего использования. Оно поможет найти приложение LUIS, связанное с ботом.
-   * Заполните поля "Подписка", [Группа ресурсов](/azure/azure-resource-manager/resource-group-overview), "План службы приложений" и [Расположение](https://azure.microsoft.com/en-us/regions/).
-   * В поле **Шаблон бота** выберите шаблон **Распознавание речи (C#)**.
+   * Заполните поля "Подписка", [Группа ресурсов](/azure/azure-resource-manager/resource-group-overview), "План службы приложений" и [Расположение](https://azure.microsoft.com/regions/).
+   * В поле **Шаблон бота** выберите шаблон **Распознавание речи (C#)** .
 
      ![Колонка "Служба ботов"](../media/bot-builder-dotnet-use-luis/bot-service-setting-callout-template.png)
 
@@ -386,7 +386,7 @@ using System.Collections.Generic;
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Диалоги](bot-builder-dotnet-dialogs.md)
-- [Управление потоком беседы с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
+- [Управление потоком общения с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5c8b164aa97ff4ea74acbd6765c72ea0c3f1ad3b
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: aff1440f739150181ddc2d65d9b749b4eeda5d79
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693647"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464688"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство по Использование QnA Maker в боте для ответов на вопросы.
 
@@ -53,7 +53,7 @@ ms.locfileid: "66693647"
 
 1. Клонируйте или скопируйте на компьютер репозиторий примеров.
 1. На портале QnA Maker выберите **Create a knowledge base** (Создать базу знаний).
-   1. Если потребуется, создайте службу QnA. (Можно использовать существующую службу QnA Maker или создать новую специально для работы с этим руководством.) Более подробные инструкции по QnA Maker см. в руководствах по [созданию службы QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure) и [созданию, подготовке и публикации базы знаний QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base).
+   1. Если потребуется, создайте службу QnA. (Можно использовать существующую службу QnA Maker или создать новую специально для работы с этим руководством.) Более подробные инструкции по QnA Maker см. в руководствах по [созданию службы QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure) и [созданию, подготовке и публикации базы знаний QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base).
    1. Подключите службу QnA к базе знаний.
    1. Присвойте имя базе знаний.
    1. Чтобы заполнить базу знаний, используйте файл **BotBuilder-Samples\samples\csharp_dotnetcore\11.qnamaker\CognitiveModels\smartLightFAQ.tsv** из репозитория примеров.
@@ -76,25 +76,25 @@ Authorization: EndpointKey <qna-maker-resource-key>
 Теперь база знаний готова для использования в боте.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Добавление сведений о базе знаний в бота
-Начиная с бот-платформы версии 4.3, файлы с расширением .bot больше не предоставляются в Azure для скачивания вместе с исходным кодом бота. Следуйте дальнейшим инструкциям, чтобы подключить своего бота на C# или JavaScript к базе знаний.
+Начиная с бот-платформы версии 4.3, файлы с расширением .bot больше не предоставляются в Azure для скачивания вместе с исходным кодом бота. Следуйте дальнейшим инструкциям, чтобы подключить свой бот на C# или JavaScript к базе знаний.
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Добавьте следующие значения в файл appsetting.json:
 
 ```json
 {
-   "MicrosoftAppId": "",
+  "MicrosoftAppId": "",
   "MicrosoftAppPassword": "",
   "ScmType": "None",
   
-  "QnAKnowledgebaseId": "<knowledge-base-id>",
-  "QnAAuthKey": "<qna-maker-resource-key>",
-  "QnAEndpointHostName": "<your-hostname>" // This is a URL ending in /qnamaker
+  "QnAKnowledgebaseId": "knowledge-base-id",
+  "QnAAuthKey": "qna-maker-resource-key",
+  "QnAEndpointHostName": "your-hostname" // This is a URL ending in /qnamaker
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте следующие значения в файл с расширением .env:
 
@@ -103,9 +103,9 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<qna-maker-resource-key>"
-QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
+QnAKnowledgebaseId="knowledge-base-id"
+QnAAuthKey="qna-maker-resource-key"
+QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ```
 
 ---
@@ -122,20 +122,33 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 
 Обновите код инициализации, чтобы загрузить данные службы для вашей базы знаний.
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 1. Добавьте в проект пакет NuGet **Microsoft.Bot.Builder.AI.QnA**.
+
+   Это можно сделать с помощью диспетчера пакетов NuGet или из командной строки:
+
+   ```cmd
+   dotnet add package Microsoft.Bot.Builder.AI.QnA
+   ```
+
+   Дополнительные сведения о NuGet см. в [документации по NuGet](https://docs.microsoft.com/nuget/#pivot=start&panel=start-all).
+
 1. Добавьте в проект пакет NuGet **Microsoft.Extensions.Configuration**.
+
 1. В файл **Startup.cs** добавьте эти ссылки на пространства имен.
 
    **Startup.cs.**
+
    ```csharp
    using Microsoft.Bot.Builder.AI.QnA;
    using Microsoft.Extensions.Configuration;
    ```
+
 1. Измените метод _ConfigureServices_. Он создает конечную точку QnAMakerEndpoint, подключающуюся к базе знаний, которая определена в файле **appsettings.json**.
 
    **Startup.cs.**
+
    ```csharp
    // Create QnAMaker endpoint as a singleton
    services.AddSingleton(new QnAMakerEndpoint
@@ -146,9 +159,11 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
     });
 
    ```
+
 1. В файл **EchoBot.cs** добавьте эти ссылки на пространство имен.
 
    **EchoBot.cs**
+
    ```csharp
    using System.Linq;
    using Microsoft.Bot.Builder.AI.QnA;
@@ -157,6 +172,7 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 1. Добавьте соединитель `EchoBotQnA` и инициализируйте его в конструкторе бота.
 
    **EchoBot.cs**
+
    ```csharp
    public QnAMaker EchoBotQnA { get; private set; }
    public EchoBot(QnAMakerEndpoint endpoint)
@@ -165,9 +181,11 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
       EchoBotQnA = new QnAMaker(endpoint);
    }
    ```
+
 1. После метода _OnMembersAddedAsync( )_ создайте метод _AccessQnAMaker( )_ , добавив следующий код.
 
    **EchoBot.cs**
+
    ```csharp
    private async Task AccessQnAMaker(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
    {
@@ -182,19 +200,21 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
       }
    }
    ```
+
 1. Теперь в методе _OnMessageActivityAsync( )_ вызовите новый метод _AccessQnAMaker( )_ следующим образом:
 
    **EchoBot.cs**
+
    ```csharp
    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
    {
-      // First send the user input to your QnA Maker knowledgebase
+      // First send the user input to your QnA Maker knowledge base
       await AccessQnAMaker(turnContext, cancellationToken);
       ...
    }
    ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 1. Откройте окно терминала или командную строку и перейдите к корневому каталогу проекта.
 1. Добавьте в проект пакет npm **botbuilder-ai**.
@@ -206,7 +226,7 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 
    **index.js**
    ```javascript
-   // Map knowledgebase endpoint values from .env file into the required format for `QnAMaker`.
+   // Map knowledge base endpoint values from .env file into the required format for `QnAMaker`.
    const configuration = {
       knowledgeBaseId: process.env.QnAKnowledgebaseId,
       endpointKey: process.env.QnAAuthKey,
@@ -242,24 +262,29 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
             this.qnaMaker = new QnAMaker(configuration, qnaOptions);
    ```
 
-1. Наконец, добавьте следующий код в вызов onMessage(), передающий запросы пользователей в базу знаний QnA Maker и возвращающий пользователям ответ QnA Maker, чтобы обратиться к вашим базам данных для получения ответа.
- 
-    **bot.js**
-    ```javascript
-   // send user input to QnA Maker.
-   const qnaResults = await this.qnaMaker.getAnswers(turnContext);
+1. Наконец обновите функцию `onMessage`, чтобы искать ответ в базе знаний. Передавайте каждый блок данных, введенных пользователем, в базу знаний QnA Maker и возвратите первый ответ QnA Maker пользователю.
 
-   // If an answer was received from QnA Maker, send the answer back to the user.
-   if (qnaResults[0]) {
-      await turnContext.sendActivity(`QnAMaker returned response: ' ${ qnaResults[0].answer}`);
-   } 
-   else { 
-      // If no answers were returned from QnA Maker, reply with help.
-      await turnContext.sendActivity('No QnA Maker response was returned.'
-           + 'This example uses a QnA Maker Knowledge Base that focuses on smart light bulbs. '
-           + `Ask the bot questions like "Why won't it turn on?" or "I need help."`);
-   }
-   ```
+    **bot.js**
+
+    ```javascript
+    this.onMessage(async (context, next) => {
+        // send user input to QnA Maker.
+        const qnaResults = await this.qnaMaker.getAnswers(context);
+
+        // If an answer was received from QnA Maker, send the answer back to the user.
+        if (qnaResults[0]) {
+            await context.sendActivity(`QnAMaker returned response: ' ${ qnaResults[0].answer}`);
+        }
+        else {
+            // If no answers were returned from QnA Maker, reply with help.
+            await context.sendActivity('No QnA Maker response was returned.'
+                + 'This example uses a QnA Maker Knowledge Base that focuses on smart light bulbs. '
+                + `Ask the bot questions like "Why won't it turn on?" or "I need help."`);
+        }
+        await next();
+    });
+    ```
+
 ---
 
 ### <a name="test-the-bot-locally"></a>Локальная проверка бота
@@ -281,12 +306,12 @@ QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 >
 > Если расположение корневой папки выбрано неверно, **бот не сможет запуститься на портале Azure**.
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ```cmd
-az webapp deployment source config-zip --resource-group <resource-group-name> --name <bot-name-in-azure> --src "c:\bot\mybot.zip"
+az webapp deployment source config-zip --resource-group "resource-group-name" --name "bot-name-in-azure" --src "c:\bot\mybot.zip"
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
 

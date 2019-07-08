@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07a66eb468bc456fb463c9c215a2c941e4fafe0a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 56a95023810bd7d66687c892f449fa31c9394dc8
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215335"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496682"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -441,7 +441,7 @@ var storage = new CosmosDbStorage({
 
 ![Страница создания учетной записи хранилища BLOB-объектов](./media/blob-storage-new-account.png)
 
-3. На странице **Создание учетной записи** введите **Имя учетной записи хранения**, выберите **Хранилище BLOB-объектов** в поле **Тип учетной записи**, а также укажите нужные сведения в полях **Расположение**, **Группа ресурсов** и **Подписка**.  
+3. На странице **Создание учетной записи** введите **имя учетной записи хранения**, выберите **Хранилище BLOB-объектов** в поле **Тип учетной записи**, а также укажите нужные сведения в полях **Расположение**, **Группа ресурсов** и **Подписка**.  
 4. Щелкните **Просмотреть и создать**.
 5. Проверив сведения, щелкните **Создать**.
 
@@ -671,7 +671,7 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 
 ```
 
-По ссылке ниже можно найти дополнительные сведения о [хранилище BLOB-объектов Azure с расшифровками](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore). 
+По ссылке ниже можно найти дополнительные сведения о [хранилище BLOB-объектов Azure с расшифровками](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore). 
 
 ## <a name="additional-information"></a>Дополнительная информация
 

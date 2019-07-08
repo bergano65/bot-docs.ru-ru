@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd74dedcb048a7872a518618f8a9382e0585dbb5
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693677"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464714"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
@@ -31,7 +31,7 @@ ms.locfileid: "66693677"
 
 Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Свойство `Attachments` объекта `Activity` содержит массив объектов `Attachment`, представляющих вложения в виде форматированных карточек и файлов мультимедиа. Чтобы добавить мультимедийное вложение в сообщение, создайте объект `Attachment` для действия `reply` (которое было создано из действия с помощью `CreateReply()`) и задайте свойства `ContentType`, `ContentUrl` и `Name`.
 
@@ -40,25 +40,24 @@ ms.locfileid: "66693677"
 Чтобы создать ответное сообщение, определите текст и настройте вложения. Присвоение вложений ответному сообщению выполняется одинаково для всех типов вложений, но настройка и определение разных вложений будут отличаться, как показано в следующих фрагментах. Ниже приведен код для настройки ответа со встроенным вложением:
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=105-106)]
 
 Далее мы рассмотрим разные типы вложений. Во-первых, это встроенные вложения:
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=167-178)]
 
 Во-вторых, отправленные вложения:
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
+[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=181-214)]
 
 И, в-третьих, вложения из Интернета:
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
+[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=217-226)]
 
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Представленный здесь исходный код основан на примере [обработки вложений на JS](https://aka.ms/bot-attachments-sample-code-js).
 
@@ -95,16 +94,16 @@ ms.locfileid: "66693677"
 
 Помимо изображений или видео, вы можете прикрепить **карточку для имиджевого баннера**, которая позволяет совмещать изображения и кнопки в один объект и отправлять их в таком виде пользователю. Markdown поддерживается для большинства текстовых полей, но особенности поддержки зависят от канала.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. 
 
 Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-attachments-sample-code).
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
+[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-58)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. 
 
@@ -137,7 +136,7 @@ ms.locfileid: "66693677"
 
 В следующем коде показаны примеры использования различных событий форматированных карточек.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Примеры для всех доступных типов карточек представлены [в этом примере на C#](https://aka.ms/bot-cards-sample-code).
 
@@ -147,7 +146,7 @@ ms.locfileid: "66693677"
 **Cards.cs**  
 [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Примеры для всех доступных типов карточек представлены [в этом примере на JavaScript](https://aka.ms/bot-cards-js-sample-code).
 
@@ -168,10 +167,13 @@ ms.locfileid: "66693677"
 
 Последние сведения о поддержке каналов адаптивных карточек см. на странице <a href="http://adaptivecards.io/designer/">конструктора адаптивных карточек</a>.
 
+Чтобы использовать адаптивные карточки, не забудьте добавить пакет NuGet `AdaptiveCards`. 
+
+
 > [!NOTE]
 > Вы должны протестировать эту функцию, выбрав каналы, которые будут использоваться ботом, чтобы определить, поддерживают ли они адаптивные карточки.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Чтобы использовать адаптивные карточки, обязательно добавьте пакет NuGet `AdaptiveCards`.
 
@@ -180,7 +182,7 @@ ms.locfileid: "66693677"
 **Cards.cs**  
 [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать адаптивные карточки, обязательно добавьте пакет npm `adaptivecards`.
 
@@ -202,7 +204,7 @@ ms.locfileid: "66693677"
 
 Сообщения также могут включать несколько вложений в макете карусели, где вложения помещаются одно за другим и пользователь может их прокручивать.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Представленный здесь исходный код основан на [примере карточек](https://aka.ms/bot-cards-sample-code):
 
@@ -214,14 +216,14 @@ ms.locfileid: "66693677"
 Затем добавьте вложения. Здесь мы добавляем их по одному, но вы можете управлять этим списком и добавлять в него карточки любым удобным методом.
 
 **Dialogs/MainDialog.cs**  
-[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=104-113)]
 
 Завершив добавление вложений, вы можете отправить этот ответ так же, как и любой другой.
 
 **Dialogs/MainDialog.cs**  
 [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Представленный здесь исходный код основан на [примере карточек на JS](https://aka.ms/bot-cards-js-sample-code):
 
@@ -247,6 +249,120 @@ ms.locfileid: "66693677"
 | Предлагаемые действия | [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp) | [Пример на языке JavaScript](https://aka.ms/SuggestedActionsJS) |
 
 Изучите репозиторий образцов для Bot Builder на [GitHub](https://aka.ms/bot-samples-readme), где есть дополнительные примеры.
+
+### <a name="code-sample-for-processing-adaptive-card-input"></a>Пример кода для обработки входных данных адаптивной карточки
+
+В этом примере кода показан один из способов использования входных данных адаптивной карточки в пределах класса диалога бота.
+Он расширяет текущий пример 06.using-cards с помощью проверки входных данных, полученных в текстовом поле отвечающего клиента.
+Сначала мы добавили функцию ввода текста и кнопку к имеющейся адаптивной карточке, добавив следующий код перед последней скобкой adaptiveCard.json в папке ресурсов:
+
+```json
+  ,
+  "actions": [
+    {
+      "type": "Action.ShowCard",
+      "title": "Text",
+      "card": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Input.Text",
+          "id": "text",
+          "isMultiline": true,
+          "placeholder": "Enter your comment"
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "OK"
+        }
+      ]
+    }
+  }
+]
+
+```
+
+Обратите внимание, что поле ввода называется "text", поэтому наша адаптивная карточка присоединит данные текста комментария как Value.[text.]
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Наш проверяющий элемент управления использует Newtonsoft.json, чтобы сначала преобразовать его в JObject, а затем создать обрезанную текстовую строку для сравнения. Поэтому добавьте:
+  ```csharp
+  using Newtonsoft.Json.Linq;
+  ```
+в MainDialog.cs и установите последнюю стабильную версию пакета nuget из Newtonsoft.Json.
+В коде проверяющего элемента управления мы добавили поток логики в комментариях в коде. Этот код ChoiceValidator() помещается в пример 06.using-cards, открытом для объявления MainDialog, сразу после закрытой фигурной скобки:
+
+```csharp
+private async Task ChoiceValidator(
+  PromptValidatorContext promptContext,
+  CancellationToken cancellationToken)
+  {
+    // Retrieves Adaptive Card comment text as JObject.
+    // looks for JObject field "text" and converts that input into a trimmed text string.
+    var jobject = promptContext.Context.Activity.Value as JObject;
+    var jtoken = jobject?["text"];
+    var text = jtoken?.Value().Trim();
+    // Logic: 1. if succeeded = true, just return promptContext
+    //        2. if false, see if JObject contained Adaptive Card input.
+    //               No = (bad input) return promptContext
+    //               Yes = update Value field with JObject text string, return "true".
+    if (!promptContext.Recognized.Succeeded && text != null)
+    {
+       var choice = promptContext.Options.Choices.FirstOrDefault(
+       c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
+       if (choice != null)
+       {
+           promptContext.Recognized.Value = new FoundChoice
+            {
+               Value = choice.Value,
+             };
+            return true;
+       }
+    }
+    return promptContext.Recognized.Succeeded;
+  }
+```
+
+Теперь выше в объявлении MainDialog измените:
+  ```csharp
+  // Define the main dialog and its related components.
+  AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
+  ```
+на:
+  ```csharp
+  // Define the main dialog and its related components.
+  AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
+  ```
+При этом будет вызван проверяющий элемент управления для поиска входных данных адаптивной карточки каждый раз, когда создается ChoicePrompt.
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+Откройте mainDialog.js и найдите метод Run _async run(turnContext, accessor)_ . Этот метод обрабатывает входящие действия.
+Сразу после вызова _dialogSet.add(this);_ добавьте следующий код:
+```JavaScript
+  // The following check looks for a non-existant text input
+  // plus Adaptive Card input in _activity.value.text
+  // If both conditions exist, the Activity Card text 
+  // is copied into the text input field.
+  if(turnContext._activity.text == null
+      && turnContext._activity.value.text != null)
+   {
+      this.logger.log('replacing null text with Activity Card text input');
+      turnContext._activity.text = turnContext._activity.value.text;
+   }
+```
+Если в ходе этой проверки будет найден несуществующий текстовый ввод из клиента, выполняется проверка того, существуют ли входные данные адаптивной карточки.
+Если входные данные адаптивной карточки уже существуют в \_activity.value.text, они копируются в обычное текстовое поле ввода.
+
+---
+
+Чтобы протестировать код, после отображения адаптивной карточки нажмите кнопку Text (Текст), введите допустимый вариант, например "Карточка имиджевого баннера", и нажмите кнопку OK.
+
+![Проверка адаптивной карточки](media/adaptive-card-input.png)
+
+1. Первые входные данные будут использоваться для запуска нового диалога.
+2. Снова нажмите кнопку OK, и эти входные данные будут использоваться для выбора новой карточки.
 
 ## <a name="next-steps"></a>Дополнительная информация
 

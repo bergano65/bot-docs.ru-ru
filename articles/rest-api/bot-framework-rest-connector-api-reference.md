@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: fd98b1bc8c3aa3b2c9fd716289dfd3ce75bec75b
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971544"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464795"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -126,14 +126,17 @@ Authorization: Bearer ACCESS_TOKEN
 
 | Операция | ОПИСАНИЕ |
 |----|----|
-| [Создать общение](#create-conversation) | Создает новое общение. | 
-| [Отправить в общение](#send-to-conversation) | Отправляет действие (сообщение) в конец указанного общения. | 
-| [Ответить на действие](#reply-to-activity) | Отправляет действие (сообщение) в указанное общение как ответ на указанное действие. | 
+| [Создать общение](#create-conversation) | Создает новое общение. |
+| [Отправить в общение](#send-to-conversation) | Отправляет действие (сообщение) в конец указанного общения. |
+| [Ответить на действие](#reply-to-activity) | Отправляет действие (сообщение) в указанное общение как ответ на указанное действие. |
+| [Получить диалоги](#get-conversations) | Получает список диалогов, в которых бот принимал участие. |
 | [Получить участников общения](#get-conversation-members) | Возвращает участников указанного общения. |
 | [Получение участников беседы по страницам](#get-conversation-paged-members) | Возвращает участников указанной беседы по одной странице за раз. |
-| [Получить участников действия](#get-activity-members) | Возвращает участников указанного действия в указанном общении. | 
-| [Обновить действие](#update-activity) | Обновляет существующее действие. | 
-| [Удалить действие](#delete-activity) | Удаляет существующее действие. | 
+| [Получить участников действия](#get-activity-members) | Возвращает участников указанного действия в указанном общении. |
+| [Обновить действие](#update-activity) | Обновляет существующее действие. |
+| [Удалить действие](#delete-activity) | Удаляет существующее действие. |
+| [Удалить участника диалога](#delete-conversation-member) | Удаляет участника из диалога. |
+| [Отправить журнал бесед](#send-conversation-history) | Отправляет расшифровку последних действий в диалог. |
 | [Отправить вложение на канал](#upload-attachment-to-channel) | Передает вложение непосредственно в хранилище BLOB-объектов канала. |
 
 ### <a name="create-conversation"></a>Создать общение
@@ -145,7 +148,7 @@ POST /v3/conversations
 | | |
 |----|----|
 | **Текст запроса** | Объект [Conversation](#conversation-object). |
-| **Возвращает** | Объект [ResourceResponse](#resourceresponse-object) | 
+| **Возвращает** | Объект [ConversationResourceResponse](#conversationresourceresponse-object) | 
 
 ### <a name="send-to-conversation"></a>Отправить в общение
 Отправляет действие (сообщение) в указанное общение. Действие будет добавлено в конец общения в соответствии с меткой времени или семантикой канала. Чтобы ответить на конкретное сообщение внутри общения, вместо этого используйте [Ответить на действие](#reply-to-activity).
@@ -169,6 +172,17 @@ POST /v3/conversations/{conversationId}/activities/{activityId}
 | **Текст запроса** | Объект [Activity](#activity-object) |
 | **Возвращает** | Объект [Identification](#identification-object) | 
 
+### <a name="get-conversations"></a>Получить диалоги
+Получает список диалогов, в которых бот принимал участие.
+```http
+GET /v3/conversations?continuationToken={continuationToken}
+```
+
+| | |
+|----|----|
+| **Текст запроса** | Недоступно |
+| **Возвращает** | Объект [ConversationsResult](#conversationsresult-object) | 
+
 ### <a name="get-conversation-members"></a>Получить участников общения
 Возвращает участников указанного общения.
 ```http
@@ -183,13 +197,13 @@ GET /v3/conversations/{conversationId}/members
 ### <a name="get-conversation-paged-members"></a>Получение участников беседы по страницам
 Возвращает участников указанной беседы по одной странице за раз.
 ```http
-GET /v3/conversations/{conversationId}/pagedmembers
+GET /v3/conversations/{conversationId}/pagedmembers?pageSize={pageSize}&continuationToken={continuationToken}
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Недоступно |
-| **Возвращает** | Массив объектов [ChannelAccount](#channelaccount-object) и маркер продолжения, с помощью которого можно получить другие значения.|
+| **Возвращает** | Массив объектов [ChannelAccount](#channelaccount-object) и маркер продолжения, с помощью которого можно получить другие значения. |
 
 ### <a name="get-activity-members"></a>Получить участников действия
 Возвращает участников указанного действия в указанном общении.
@@ -224,8 +238,30 @@ DELETE /v3/conversations/{conversationId}/activities/{activityId}
 | **Текст запроса** | Недоступно |
 | **Возвращает** | Код состояния HTTP, который указывает результат операции. В тексте ответа ничего не указано. | 
 
+### <a name="delete-conversation-member"></a>Удалить участника диалога
+Удаляет участника из диалога. Если этот участник был последним в диалоге, диалог также будет удален.
+```http
+DELETE /v3/conversations/{conversationId}/members/{memberId}
+```
+
+| | |
+|----|----|
+| **Текст запроса** | Недоступно |
+| **Возвращает** | Код состояния HTTP, который указывает результат операции. В тексте ответа ничего не указано. | 
+
+### <a name="send-conversation-history"></a>Отправить журнал бесед
+Отправляет расшифровку последних действий в диалог, поэтому клиент может преобразовать их для просмотра.
+```http
+POST /v3/conversations/{conversationId}/activities/history
+```
+
+| | |
+|----|----|
+| **Текст запроса** | Объект [Transcript](#transcript-object). |
+| **Возвращает** | Объект [ResourceResponse](#resourceresponse-object). | 
+
 ### <a name="upload-attachment-to-channel"></a>Отправить вложение на канал
-Передает вложение указанного общения непосредственно в хранилище BLOB-объектов канала. Это позволяет хранить данные в соответствующем хранилище. 
+Передает вложение указанного общения непосредственно в хранилище BLOB-объектов канала. Это позволяет хранить данные в соответствующем хранилище.
 ```http 
 POST /v3/conversations/{conversationId}/attachments
 ```
@@ -364,7 +400,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [Объект Activity](#activity-object) | Определяет сообщения, которыми обмениваются бот и пользователь. |
 | [Объект AnimationCard](#animationcard-object) | Определяет карту, которая может воспроизводить файлы GIF с анимацией или короткие видео. |
 | [Объект Attachment](#attachment-object) | Определяет дополнительные сведения для включения в сообщение. Вложение может быть файлом мультимедиа (например, аудио, видео, изображением, файлом) или форматированной карточкой. |
-| [Объект AttachmentData](#attachmentdata-object) |Описывает данные вложения. |
+| [Объект AttachmentData](#attachmentdata-object) | Описывает данные вложения. |
 | [Объект AttachmentInfo](#attachmentinfo-object) | Описывает вложение. |
 | [Объект AttachmentView](#attachmentview-object) | Определяет представление вложения. |
 | [Объект AttachmentUpload](#attachmentupload-object) | Определяет вложение для отправки. |
@@ -375,17 +411,19 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [Объект ChannelAccount](#channelaccount-object) | Определяет бота или учетную запись пользователя на канале. |
 | [Объект Conversation](#conversation-object) | Определяет общение, в том числе ботов и пользователей, которые в него включены. |
 | [Объект ConversationAccount](#conversationaccount-object) | Определяет общение на канале. |
+| [Объект ConversationMembers](#conversationmembers-object) | Определяет участников беседы. |
 | [Объект ConversationParameters](#conversationparameters-object) | Определяет параметры для создания нового общения. |
 | [Объект ConversationReference](#conversationreference-object) | Определяет конкретный момент в общении. |
-| [Объект ConversationResourceResponse](#conversationresourceresponse-object) | Ответ, содержащий ресурс. |
+| [Объект ConversationResourceResponse](#conversationresourceresponse-object) | Определяет ответ на операцию [Создать диалог](#create-conversation). |
+| Объект [ConversationsResult](#conversationsresult-object) | Определяет результат вызова операции [Получить диалоги](#get-conversations). |
 | [Объект Entity](#entity-object) | Определяет объект сущности. |
 | [Объект Error](#error-object) | Определяет ошибку. |
 | [Объект ErrorResponse](#errorresponse-object) | Определяет ответ API HTTP. |
 | [Объект Fact](#fact-object) | Определяет пару "ключ — значение", содержащую факт. |
-| [Объект Geocoordinates](#geocoordinates-object) | Определяет географическое расположение с помощью координат всемирной геодезической системы (WSG84). |
+| [Объект GeoСoordinates](#geocoordinates-object) | Определяет географическое расположение с помощью координат всемирной геодезической системы (WSG84). |
 | [Объект HeroCard](#herocard-object) | Определяет карту с большим изображением, заголовком, текстом и командной кнопкой. |
 | [Объект Identification](#identification-object) | Идентифицирует ресурс. |
-| [Объект MediaEventValue](#mediaeventvalue-object) |Дополнительный параметр для событий мультимедиа.|
+| [Объект MediaEventValue](#mediaeventvalue-object) | Дополнительный параметр для событий мультимедиа. |
 | [Объект MediaUrl](#mediaurl-object) | Определяет URL-адрес источника файла мультимедиа. |
 | [Объект Mention](#mention-object) | Определяет пользователя или бота, упомянутого в общении. |
 | [Объект MessageReaction](#messagereaction-object) | Определяет ответную реакцию на сообщение. |
@@ -393,12 +431,13 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [Объект ReceiptCard](#receiptcard-object) | Определяет карту, которая содержит квитанцию о покупке. |
 | [Объект ReceiptItem](#receiptitem-object) | Определяет элемент строки в квитанции. |
 | [Объект ResourceResponse](#resourceresponse-object) | Определяет ресурс. |
+| [Объект SemanticAction](#semanticaction-object) | Определяет ссылку на программное действие. |
 | [Объект SignInCard](#signincard-object) | Определяет карту, которая позволяет пользователю выполнить вход в службу. |
 | [Объект SuggestedActions](#suggestedactions-object) | Определяет варианты действий, из которых пользователь может выбирать. |
 | [Объект ThumbnailCard](#thumbnailcard-object) | Определяет карту с эскизом изображения, заголовком, текстом и командной кнопкой. |
 | [Объект ThumbnailUrl](#thumbnailurl-object) | Определяет URL-адрес источника изображения. |
+| Объект [Transcript](#transcript-object) | Коллекция действий, отправляемых с помощью операции [Отправить журнал бесед](#send-conversation-history). |
 | [Объект VideoCard](#videocard-object) | Определяет карту, которая может воспроизводить видео. |
-| [Объект SemanticAction](#semanticaction-object) | Определяет ссылку на программное действие. |
 
 ### <a name="activity-object"></a>Объект Activity
 Определяет сообщения, которыми обмениваются бот и пользователь.<br/><br/> 
@@ -426,7 +465,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **relatesTo** | [ConversationReference](#conversationreference-object) | Объект **ConversationReference**, который определяет конкретный момент в общении. |
 | **replyToId** | строка | Идентификатор сообщения, ответом на которое является это сообщение. Чтобы ответить на сообщение, отправленное пользователем, присвойте этому свойству значение идентификатора сообщения пользователя. Не все каналы поддерживают цепочки ответов. В этом случае канал игнорирует это свойство и использует упорядоченную по времени семантику (метку времени) для добавления сообщения в общение. | 
 | **serviceUrl** | строка | URL-адрес, указывающий конечную точку службы канала. Задается каналом. | 
-| **speak** | строка | Текст, который боту требуется произнести на канале с поддержкой речевых функций. Чтобы контролировать различные характеристики речи бота, такие как голос, скорость, громкость, произношение и тон, укажите это свойство в формате <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">языка разметки синтеза речи (SSML)</a>. |
+| **speak** | строка | Текст, который боту требуется произнести на канале с поддержкой речевых функций. Чтобы контролировать различные характеристики речи бота, такие как голос, скорость, громкость, произношение и тон, укажите это свойство в формате <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">языка разметки синтеза речи (SSML)</a>. |
 | **suggestedActions** | [SuggestedActions](#suggestedactions-object) | Объект **SuggestedActions**, определяющий варианты действий, из которых пользователь может выбирать. |
 | **summary** | строка | Сводка данных, которая содержит сообщение. Например, для сообщения, которое отправляется на канал электронной почты, это свойство может указывать первые 50 символов электронного сообщения. |
 | **text** | строка | Текст сообщения, отправляемого от пользователя к боту или от бота к пользователю. См. документацию канала по ограничениям, накладываемым на содержимое этого свойства. |
@@ -472,7 +511,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="attachmentdata-object"></a>Объект AttachmentData 
-Описывает данные вложения.
+Описывает данные вложения.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
@@ -480,6 +519,8 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **originalBase64** | строка | Содержимое вложения. |
 | **thumbnailBase64** | строка | Содержимое эскиза вложения. |
 | **type** | строка | Тип содержимого вложения. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="attachmentinfo-object"></a>Объект AttachmentInfo
 Описывает вложение.<br/><br/> 
@@ -607,8 +648,18 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
+### <a name="conversationmembers-object"></a>Объект ConversationMembers
+Определяет участников беседы.<br/><br/>
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **id** | строка | Идентификатор разговора. |
+| **members** | array | Массив объектов [ChannelAccount](#channelaccount-object). |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
 ### <a name="conversationparameters-object"></a>Объект ConversationParameters
-Определяет параметры для создания нового общения.
+Определяет параметры для создания диалога.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
@@ -618,6 +669,8 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **topicName** | строка | Заголовок раздела общения. Это свойство используется только в том случае, если канал его поддерживает. |
 | **activity** | [Действие](#activity-object) | (Необязательно.) Используйте это действие как начальное сообщение при создании нового общения. |
 | **channelData** | object | Полезные данные канала для создания общения. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="conversationreference-object"></a>Объект ConversationReference
 Определяет конкретный момент в общении.<br/><br/>
@@ -634,7 +687,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="conversationresourceresponse-object"></a>Объект ConversationResourceResponse
-Определяет ответ, содержащий ресурс.
+Определяет ответ на операцию [Создать диалог](#create-conversation).<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
@@ -642,8 +695,20 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **id** | строка | Идентификатор ресурса. |
 | **serviceUrl** | строка | Конечная точка службы. |
 
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
+### <a name="conversationsresult-object"></a>Объект ConversationsResult
+Определяет результат операции [Получить диалоги](#get-conversations).<br/><br/> 
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **continuationToken** | строка | Токен продолжения, который может использоваться в дальнейших вызовах операции [Получить диалоги](#get-conversations). |
+| **Беседы** | array | Массив объектов[ConversationMembers](#conversationmembers-object) |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
 ### <a name="error-object"></a>Объект Error
-Определяет ошибку.<br/><br/>
+Определяет ошибку.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
@@ -653,12 +718,13 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="entity-object"></a>Объект Entity
-Определяет объект сущности.
+Определяет объект сущности.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
 | **type** | строка | Тип сущности. Обычно содержит типы из schema.org. |
 
+<a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="errorresponse-object"></a>Объект ErrorResponse
 Определяет ответ API HTTP.<br/><br/> 
@@ -679,7 +745,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
-### <a name="geocoordinates-object"></a>Объект Geocoordinates
+### <a name="geocoordinates-object"></a>Объект GeoCoordinates
 Определяет географическое расположение с помощью координат всемирной геодезической системы (WSG84).<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
@@ -717,11 +783,13 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="mediaeventvalue-object"></a>Объект MediaEventValue 
-Дополнительный параметр для событий мультимедиа.
+Дополнительный параметр для событий мультимедиа.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
 | **cardValue** | object | Параметр обратного вызова, указанный в поле **Value** карты мультимедиа, являющийся источником этого события. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="mediaurl-object"></a>Объект MediaUrl
 Определяет URL-адрес источника файла мультимедиа.<br/><br/> 
@@ -747,11 +815,13 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="messagereaction-object"></a>Объект MessageReaction
-Определяет ответную реакцию на сообщение.
+Определяет ответную реакцию на сообщение.<br/><br/> 
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
 | **type** | строка | Тип реакции. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="place-object"></a>Объект Place
 Определяет место, упомянутое в общении.<br/><br/> 
@@ -800,10 +870,19 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 ### <a name="resourceresponse-object"></a>Объект ResourceResponse
 Определяет ответ, содержащий идентификатор ресурса.<br/><br/>
 
-
 |      Свойство       |  type  |                ОПИСАНИЕ                |
 |---------------------|--------|-------------------------------------------|
 | <strong>id</strong> | строка | Идентификатор, уникально идентифицирующий ресурс. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
+### <a name="semanticaction-object"></a>Объект SemanticAction
+Определяет ссылку на программное действие.<br/><br/>
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **id** | строка | Идентификатор этого действия |
+| **entities** | [Сущность](#entity-object) | Объекты, связанные с этим действием |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
@@ -851,6 +930,15 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
+### <a name="transcript-object"></a>Объект Transcript
+Коллекция действий, отправляемых с помощью операции [Отправить журнал бесед](#send-conversation-history).<br/><br/> 
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **действия** | array | Массив объектов [Activity](#activity-object). Необходимо, чтобы у них был уникальный идентификатор и метка времени. |
+
+<a href="#objects">Вернуться к таблице "Схема"</a>
+
 ### <a name="videocard-object"></a>Объект VideoCard
 Определяет карту, которая может воспроизводить видео.<br/><br/>
 
@@ -868,15 +956,5 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **text** | строка | Описание или запрос для отображения под заголовком или подзаголовком карты. |
 | **title** | строка | Заголовок карты. |
 | **значение** | object | Дополнительный параметр для этой карты.|
-
-<a href="#objects">Вернуться к таблице "Схема"</a>
-
-### <a name="semanticaction-object"></a>Объект SemanticAction
-Определяет ссылку на программное действие.<br/><br/>
-
-| Свойство | type | ОПИСАНИЕ |
-|----|----|----|
-| **id** | строка | Идентификатор этого действия |
-| **entities** | [Сущность](#entity-object) | Объекты, связанные с этим действием |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>

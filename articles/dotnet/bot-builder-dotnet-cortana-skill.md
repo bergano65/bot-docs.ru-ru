@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fd7d20b71c8f6c3013e7af5c7c80623089f0dce0
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 9dd84e9e5e39e1e1b801e08fbee101dbfa8b0c49
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032903"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405682"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -83,13 +83,13 @@ reply.InputHint = InputHints.ExpectingInput;
 
 | Тип карточки | ОПИСАНИЕ |
 |----|----|
-| [HeroCard][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
-| [ThumbnailCard][thumbnailCard] | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст. |
-| [ReceiptCard][receiptCard] | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог и общую сумму, а также другую информацию. |
+| [HeroCard][heroCard]; | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
+| [ThumbnailCard][thumbnailCard]. | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст. |
+| [ReceiptCard][receiptCard]; | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог, а также общую информацию и другой текст. |
 | [SignInCard][signinCard] | Карточка, в которой бот запрашивает вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
 
 
-Сведения о том, как эти карточки выглядят в Кортане, см. в разделе [Card design best practices][CardDesign] (Рекомендации по проектированию карточек для Кортаны). Пример того, как использовать функциональные карточки в боте, см. в разделе [Add rich card attachments to messages](bot-builder-dotnet-add-rich-card-attachments.md) (Добавление расширенных карточек во вложения сообщений). 
+Сведения о том, как эти карты выглядят в Кортане, см. в разделе [Principles of Cortana skills design][CardDesign] (Принципы проектирования навыков Кортаны). Пример того, как использовать функциональные карточки в боте, см. в разделе [Add rich card attachments to messages](bot-builder-dotnet-add-rich-card-attachments.md) (Добавление расширенных карточек во вложения сообщений). 
 
 <!--
 The following code demonstrates how to add the `Speak` and `InputHint` properties to a message containing a `HeroCard`.
@@ -99,7 +99,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 ## <a name="sample-rollerskill"></a>Пример: RollerSkill
 Код в следующих разделах относится к примеру навыка Кортаны, который предназначен для того, чтобы бросать кости. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/).
 
-Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] помощнику Кортане. После [подключения бота к каналу Кортаны][CortanaChannel] и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
+Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] Кортане. После подключения бота к каналу Кортаны и регистрации его в качестве навыка Кортана можно вызвать навык броска, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
 
 ### <a name="explore-the-code"></a>Обзор кода
 
@@ -333,7 +333,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 * [Speech Synthesis Markup Language (SSML) reference][SSMLRef] (Справочник по SSML)
 * [Voice design best practices for Cortana][VoiceDesign] (Рекомендации по проектированию речевых функций для Кортаны)
 * [Card design best practices for Cortana][CardDesign] (Рекомендации по проектированию карточек для Кортаны)
-* [Cortana Dev Center][CortanaDevCenter] (Центр разработки Кортаны)
+* [Центр разработки Кортаны][CortanaDevCenter]
 * [Testing and debugging best practices for Cortana][Cortana-TestBestPractice] (Рекомендации по тестированию и отладке для Кортаны)
 * <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
 
@@ -341,7 +341,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 [BFPortal]: https://dev.botframework.com/
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

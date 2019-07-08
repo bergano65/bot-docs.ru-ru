@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b6b4d30aea493180fddaee4a7f74bef72c1992ae
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7225387933630eb7343a57aa849581ff1cbfbb0c
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215277"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464703"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -88,7 +88,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     }
 ```
 
-См. подробнее о [добавлении Application Insights в приложение ASP.NET Core](https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
+См. подробнее о [добавлении Application Insights в приложение ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
 
 ### <a name="customize-your-telemetry-client"></a>Настройка клиента телеметрии
 

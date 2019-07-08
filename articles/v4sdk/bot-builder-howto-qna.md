@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 09b8261ea69e04345cb9fb2d80542ae754efdc25
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 15581daa570b9e51ff8f7bec93d16deebcd71d45
+ms.sourcegitcommit: 93508adfb79523f610a919b361fc34f5c8dd3eff
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215375"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67533382"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -29,7 +29,7 @@ QnA Maker создает слой вопросов и ответов для ди
 
 - Код в этой статье основан на примере QnA Maker. Вам потребуется копия примера для **[C#](https://aka.ms/cs-qna) или [JavaScript](https://aka.ms/js-qna-sample)** .
 - Учетная запись [QnA Maker](https://www.qnamaker.ai/)
-- Знания о [работе ботов](bot-builder-basics.md), [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) и [управлении ресурсами бота](bot-file-basics.md).
+- Знания о [работе ботов](bot-builder-basics.md), [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview) и [управлении ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -49,9 +49,9 @@ QnA Maker создает слой вопросов и ответов для ди
 Введенные пользователем данные передаются в эту базу знаний, а наиболее точный полученный ответ отображается пользователю.
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>Создание службы QnA Maker и публикация базы знаний
-Прежде всего создайте службу QnA Maker. Выполните действия, описанные в [документации по QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure), чтобы создать службу в Azure.
+Прежде всего создайте службу QnA Maker. Выполните действия, описанные в [документации по QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure), чтобы создать службу в Azure.
 
-После этого создайте базу знаний на основе файла `smartLightFAQ.tsv`, который расположен в папке CognitiveModels этого примера проекта. Действия по созданию, обучению и публикации [базы знаний](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker описаны в документации по QnA Maker. При выполнении этих действий присвойте базе знаний имя `qna` и выберите для ее заполнения файл `smartLightFAQ.tsv`.
+После этого создайте базу знаний на основе файла `smartLightFAQ.tsv`, который расположен в папке CognitiveModels этого примера проекта. Действия по созданию, обучению и публикации [базы знаний](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) QnA Maker описаны в документации по QnA Maker. При выполнении этих действий присвойте базе знаний имя `qna` и выберите для ее заполнения файл `smartLightFAQ.tsv`.
 
 > Примечание. Инструкции из этой статьи можно применить и для получения доступа к собственной базе знаний QnA Maker, разработанной пользователем.
 
@@ -83,9 +83,9 @@ QnA Maker создает слой вопросов и ответов для ди
   "MicrosoftAppId": "",
   "MicrosoftAppPassword": "",
   
-  "QnA-sample-qna-kbId": "<knowledge-base-id>",
-  "QnA-sample-qna-endpointKey": "<your-endpoint-key>",
-  "QnA-sample-qna-hostname": "<your-hostname>"
+  "QnAKnowledgebaseId": "<knowledge-base-id>",
+  "QnAAuthKey": "<your-endpoint-key>",
+  "QnAEndpointHostName": "<your-hostname>"
 }
 ```
 
@@ -114,7 +114,8 @@ QnAEndpointHostName="<your-hostname>"
 
 В методе `OnMessageActivityAsync` в файле **QnABot.cs** мы создадим экземпляр QnAMaker. Класс `QnABot` извлекает имена для сведений о подключении, сохраненные выше в `appsettings.json`. Если вы выбрали другие имена для сведений о подключении к базе знаний в файле параметров, обязательно обновите имена в этом методе, чтобы они соответствовали выбранным.
 
-**Bots/QnABot.cs** [!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-37)]
+**Bots/QnABot.cs**  
+[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-37)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -135,7 +136,8 @@ QnAEndpointHostName="<your-hostname>"
 
 Когда боту потребуется ответ от QnAMaker, вызовите из кода бота метод `GetAnswersAsync()`, чтобы получить ответ с учетом текущего контекста. Если вы обращаетесь к собственной базе знаний, измените представленное ниже _сообщение об отсутствии ответов_ на более информативное для пользователей.
 
-**QnABot.cs** [!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
+**QnABot.cs**  
+[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 

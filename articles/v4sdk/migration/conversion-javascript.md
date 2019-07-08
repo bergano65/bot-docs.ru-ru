@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
+ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215607"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67344591"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Перенос бота на основе пакета SDK для JavaScript версии 3 в версию 4
 
@@ -489,7 +489,7 @@ exports.FlightDialog = FlightDialog;
 
 Переименуйте файл **./bot.js** в **./bots/reservationBot.js** и измените его.
 
-1. Этот файл импортирует **ActivityHandler**, который предоставляет базовую реализацию бота.
+1. Этот файл импортирует `ActivityHandler`, который предоставляет базовую реализацию бота.
 
     ```javascript
     const { ActivityHandler } = require('botbuilder');
@@ -634,3 +634,5 @@ module.exports = {
 - [Отправка и получение текстовых сообщений](../bot-builder-howto-send-messages.md)
 - [Сохранение данных пользователя и диалога](../bot-builder-howto-v4-state.md)
 - [Реализация процесса общения](../bot-builder-dialog-manage-conversation-flow.md)
+- [Отладка с помощью эмулятора](../../bot-service-debug-emulator.md)
+- [Добавление данных телеметрии в бот](../bot-builder-telemetry.md)

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 211800211b422bb9c90c00705585be89737c77a9
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: e308445a43507db94fe54735432790dabdb88731
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225559"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404851"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Распознавание намерений пользователя из содержимого сообщения
 
@@ -36,14 +36,14 @@ ms.locfileid: "54225559"
 
 [!code-js[Add a regular expression recognizer (JavaScript)](../includes/code/node-regex-recognizer.js#addRegexRecognizer)]
 
-После добавления распознавателя боту присоедините [triggerAction][triggerAction] к диалоговому окну, чтобы бот активизировался тогда, когда распознаватель обнаружит намерение. Используйте параметр [matches][matches], чтобы указать имя намерений, как показано в следующем коде.
+После добавления распознавателя боту присоедините [triggerAction][triggerAction] к диалоговому окну, чтобы бот активизировался тогда, когда распознаватель обнаружит намерение. Используйте параметр matches, чтобы указать имя намерений, как показано в следующем коде.
 
 [!code-js[Map the CancelIntent recognizer to a cancel dialog (JavaScript)](../includes/code/node-regex-recognizer.js#bindCancelDialogToRegexRecognizer)]
 
 Распознаватели намерений являются глобальными. Поэтому распознаватель будет выполнять действие по каждому сообщению, полученному от пользователя. Если распознаватель обнаружит намерение, которое привязано к диалоговому окну с помощью действия `triggerAction`, он может активировать прерывание активного диалогового окна. Использование и обработка прерываний — гибкий механизм, учитывающий реальные действия пользователей.
 
 > [!TIP] 
-> Чтобы узнать, как работает `triggerAction` с диалоговыми окнами, см. раздел [Управление последовательностью общения](bot-builder-nodejs-manage-conversation-flow.md). Дополнительные сведения о различных действиях, которые можно связать с распознаваемым намерением, см. в разделе [Handle user actions](bot-builder-nodejs-dialog-actions.md) (Обработка действий пользователя).
+> Чтобы узнать, как работает `triggerAction` с диалогами, см. раздел об [управлении потоком общения с помощью диалогов](bot-builder-nodejs-manage-conversation-flow.md). Дополнительные сведения о различных действиях, которые можно связать с распознаваемым намерением, см. в разделе [Handle user actions](bot-builder-nodejs-dialog-actions.md) (Обработка действий пользователя).
 
 ## <a name="register-a-custom-intent-recognizer"></a>Регистрация настраиваемого распознавателя намерений
 Кроме того, можно реализовать настраиваемый распознаватель. В этом примере добавляется простой распознаватель, который говорит пользователю "help" или "goodbye". Можно легко добавить распознавателя, который выполняет более сложную обработку, например распознает, когда пользователь отправляет изображение. 
@@ -61,10 +61,10 @@ ms.locfileid: "54225559"
 
 По умолчанию распознаватели действуют одновременно, но можно задать команду recognizeOrder в [IIntentRecognizerSetOptions][IntentRecognizerSetOptions], чтобы процесс завершился, как только бот найдет оценку, равную 1,0.
 
-Пакет SDK Bot Framework включает [пример][DisambiguationSample], который показывает, как реализовать в боте пользовательскую логику устранения неоднозначности через [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
+Пакет SDK для Bot Builder включает [пример][DisambiguationSample], который показывает, как предоставить пользовательскую логику устранения неоднозначности боту путем реализации IDisambiguateRouteHandler.
 
 ## <a name="next-steps"></a>Дополнительная информация
-Логика использования регулярных выражений и проверки содержимого сообщения может усложниться, особенно в том случае, если последовательность общения бота является открытой. Чтобы помочь боту обрабатывать более широкий диапазон речи и текстовых входных данных от пользователей и чтобы добавить боту понимание естественного языка, можно использовать службу распознавания намерений, например [LUIS][LUIS].
+Логика использования регулярных выражений и проверки содержимого сообщения может усложниться, особенно в том случае, если поток общения бота является открытым. Чтобы помочь боту обрабатывать более широкий диапазон речи и текстовых входных данных от пользователей и добавить ему понимание естественного языка, можно использовать службу распознавания намерений, например [LUIS][LUIS].
 
 > [!div class="nextstepaction"]
 > [Распознавание намерений и сущностей с помощью LUIS](bot-builder-nodejs-recognize-intent-luis.md)
@@ -72,28 +72,28 @@ ms.locfileid: "54225559"
 
 [LUIS]: https://www.luis.ai/
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 
-[matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
+[matches]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
 [node-js-bot-how-to]: bot-builder-nodejs-recognize-intent-luis.md
 
 [LUISAzureDocs]: /azure/cognitive-services/LUIS/Home
 
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
 
-[LuisRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 
 [LUISSample]: https://aka.ms/v3-js-luisSample
 
-[LUISConcepts]: https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/
+[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
 
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
 
-[IDisambiguateRouteHandler]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
+[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
 
-[RegExpRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
+[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
 
 [AlarmBot]: https://aka.ms/v3-js-luisSample

@@ -6,14 +6,14 @@ author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/01/18
+ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acf4f73ea83646878e08d14e036d0d2d66686756
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7d07317afb6d89c2d22d6f4983f7b21c3a1a053c
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224959"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496668"
 ---
 # <a name="test-a-cortana-skill"></a>Тестирование навыка Кортаны
 
@@ -90,7 +90,7 @@ ms.locfileid: "54224959"
 [CortanaGetStarted]: /cortana/getstarted
 
 [BFPortal]: https://dev.botframework.com/
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

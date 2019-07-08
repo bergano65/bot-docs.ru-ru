@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: efd47cb1ae48c34d58d673eaea04feeb1869b640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a3cff9a77de098ee524334183ba891068f176b6e
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225449"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464785"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Основные концепции, которые используются в пакете SDK Bot Framework для Node.js.
 
@@ -27,13 +27,14 @@ ms.locfileid: "54225449"
 В этой статье раскрыты основные понятия, используемые при работе с пакетом SDK Bot Framework для Node.js. Общие сведения о Bot Framework см. в разделе [Обзор Bot Framework](../overview-introduction-bot-framework.md).
 
 ## <a name="connector"></a>Соединитель
+Соединитель Bot Framework Connector — это служба, которая подключает бот к нескольким *каналам*, включая такие клиенты, как [Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create), Skype, Facebook, Slack и SMS. 
 
-Соединитель Bot Framework Connector — это служба, которая подключает бот к нескольким *каналам*, включая такие клиенты, как Skype, Facebook, Slack и SMS. Соединитель обеспечивает обмен данными между ботом и пользователем, ретранслируя сообщения из бота в канал и из канала в бот. Логика бота размещается в качестве веб-службы, которая получает сообщения от пользователей через службу соединителя. Ответы бота отправляются в соединитель с помощью метода HTTPS POST. 
+Соединитель обеспечивает обмен данными между ботом и пользователем, ретранслируя сообщения из бота в канал и из канала в бот. Логика бота размещается в качестве веб-службы, которая получает сообщения от пользователей через службу соединителя. Ответы бота отправляются в соединитель с помощью метода HTTPS POST. 
 
-Пакет SDK Bot Framework для Node.js предоставляет классы [UniversalBot][UniversalBot] и [ChatConnector][ChatConnector] для настройки отправки и получения сообщений через соединитель Bot Framework. Класс `UniversalBot` — это центральный компонент логики бота. Он отвечает за управление всеми беседами бота с пользователем. Класс `ChatConnector` подключает бота к службе Bot Framework Connector.
+Пакет SDK Bot Framework для Node.js предоставляет классы [UniversalBot][UniversalBot]and [ChatConnector][ChatConnector] для настройки отправки и получения сообщений через соединитель Bot Framework. Класс `UniversalBot` — это центральный компонент логики бота. Он отвечает за управление всеми беседами бота с пользователем. Класс `ChatConnector` подключает бота к службе Bot Framework Connector.
 Пример, демонстрирующий использование этих классов, см. в разделе [Создание бота с помощью пакета SDK Bot Framework для Node.js](bot-builder-nodejs-quickstart.md).
 
-Соединитель также нормализует сообщения, отправляемые ботом в каналы, позволяя разрабатывать боты, независимые от платформы. Нормализация сообщения включает его преобразование из схемы Bot Framework в схему канала. Если канал не поддерживает все аспекты схемы платформы, соединитель будет пытаться преобразовать сообщение в формат, поддерживаемый каналом. Например, если бот отправляет сообщение, содержащее карточку с кнопками действий, в канал SMS, соединитель может обрабатывать карточку как изображение и включать действия как ссылки в тексте сообщения. [Инспектор каналов][ChannelInspector] — это веб-средство, которое показывает вам, как соединитель будет обрабатывать сообщения для различных каналов.
+Соединитель также нормализует сообщения, отправляемые ботом в каналы, позволяя разрабатывать боты, независимые от платформы. Нормализация сообщения включает его преобразование из схемы Bot Framework в схему канала. Если канал не поддерживает все аспекты схемы платформы, соединитель будет пытаться преобразовать сообщение в формат, поддерживаемый каналом. Например, если бот отправляет сообщение, содержащее карточку с кнопками действий, в канал SMS, соединитель может обрабатывать карточку как изображение и включать действия как ссылки в тексте сообщения. [Channel Inspector][ChannelInspector] — это веб-средство, которое показывает вам, как соединитель будет обрабатывать сообщения для различных каналов.
 
 Для `ChatConnector` требуется настроить конечную точку API в боте. С помощью пакета SDK для Node.js это можно сделать путем установки модуля Node.js `restify`. Боты также можно создавать для консоли с помощью [ConsoleConnector][ConsoleConnector], который не требует конечную точку API.
 
@@ -80,20 +81,20 @@ ms.locfileid: "54225449"
 
 
 
-[PersistConversationData]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iuniversalbotsettings.html#persistconversationdata
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-[ChatConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
-[ConsoleConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
+[PersistConversationData]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iuniversalbotsettings.html#persistconversationdata
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
+[ConsoleConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
 
-[Session]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html
-[SessionSend]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html
+[SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 [waterfall]: bot-builder-nodejs-prompts.md
 
 [RespondMessages]:bot-builder-nodejs-use-default-message-handler.md
 
-[LUISRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LUISRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 [LUISVideo]: https://vimeo.com/145499419

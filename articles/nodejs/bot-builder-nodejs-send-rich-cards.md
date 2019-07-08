@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e3bf4a6868702f24af08e69d5f07c036082ec3b6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cba67dc4da5a0b505b4f91f9cbf7fbc0a47b8974
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225239"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404803"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 
@@ -34,9 +34,9 @@ ms.locfileid: "54225239"
 | Тип карточки | ОПИСАНИЕ |
 |------|------|
 | <a href="/adaptive-cards/get-started/bots">Адаптивная карточка</a> | Настраиваемая карточка, которая может содержать любое сочетание текста, речи, изображений, кнопок и полей для ввода.  См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status). |
-| [Анимационная карточка][animationCard] | Карточка, который может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
+| [Анимационная карточка][animationCard] | Карточка, которая может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
 | [Карточка с аудио][audioCard] | Карточка, которая может воспроизводить звуковой файл. |
-| [Карточка для имиджевого баннера][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или нескольких кнопок и текст. |
+| [Карточка для имиджевого баннера][heroCard] | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
 | [Карточка с эскизом][thumbnailCard] | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст.|
 | [Карточка квитанции][receiptCard] | Карточка, с помощью которой бот выдает квитанцию пользователю. Обычно она содержит список элементов, включаемых в квитанцию, налог, а также общую информацию и другой текст. |
 | [Карточка для входа][signinCard] | Карточка, в которой бот запрашивает вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
@@ -149,7 +149,7 @@ bot.dialog('buyButtonClick', [
 To learn more about sending a typing indicator, see [How to send a typing indicator](bot-builder-nodejs-send-typing-indicator.md).
 -->
 
-Bot Framework реализует пакетную обработку, чтобы избежать нарушения порядка отображения нескольких сообщений, отправляемых ботом. <!-- Unfortunately, not all channels can guarantee this. --> Если бот отправляет пользователю несколько ответов, отдельные сообщения автоматически группируются в пакеты и передаются пользователю, чтобы сохранить исходный порядок сообщений. Автоматическое пакетирование по умолчанию ожидает 250 мс после каждого вызова **session.send()**, и лишь затем инициирует следующий вызов **send()**.
+Bot Framework реализует пакетную обработку, чтобы избежать нарушения порядка отображения нескольких сообщений, отправляемых ботом. <!-- Unfortunately, not all channels can guarantee this. --> Если бот отправляет пользователю несколько ответов, отдельные сообщения автоматически группируются в пакеты и передаются пользователю, чтобы сохранить исходный порядок сообщений. Автоматическое пакетирование по умолчанию ожидает 250 мс после каждого вызова **session.send()** , и лишь затем инициирует следующий вызов **send()** .
 
 Вы можете настроить задержку для пакетной обработки. Чтобы полностью отключить логику пакетной обработки, реализованную в пакете SDK, установите большое значение задержки и вручную вызовите **sendBatch()** с поддержкой обратного вызова после доставки пакета.
 
@@ -171,32 +171,32 @@ Bot Framework реализует пакетную обработку, чтобы
 
 * [Предварительный просмотр компонентов с помощью Channel Inspector][inspector]
 * <a href="http://adaptivecards.io" target="_blank">Адаптивные карточки</a>
-* [Анимационная карточка][animationCard]
-* [Аудиокарточка][audioCard]
-* [Имиджевая карточка][heroCard]
-* [Эскизная карточка][thumbnailCard]
-* [Карточка квитанции][receiptCard]
-* [Карточка входа в систему][signinCard]
-* [Видеокарточка][videoCard]
+* [AnimationCard][animationCard]
+* [AudioCard][audioCard]
+* [HeroCard][heroCard];
+* [ThumbnailCard][thumbnailCard].
+* [ReceiptCard][receiptCard];
+* [SigninCard][signinCard]
+* [VideoCard][videoCard]
 * [Сообщение][Message]
 * [Отправка вложений](bot-builder-nodejs-send-receive-attachments.md)
 
 [MessageOrder]: bot-builder-nodejs-manage-conversation-flow.md#message-ordering
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[Message]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
-[animationCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
+[animationCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
 
-[audioCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
+[audioCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
 
-[heroCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
+[heroCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
 
-[thumbnailCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
+[thumbnailCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
 
-[receiptCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
+[receiptCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
 
-[signinCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
+[signinCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
 
-[videoCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
+[videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
 [inspector]: ../bot-service-channel-inspector.md

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f93ab91281cf0f19be10898436dc41a6a1583c9a
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 94c0e7dd55e36c88066662ec7c9f3be1ce2dfd06
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032984"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405603"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -51,7 +51,7 @@ ms.locfileid: "65032984"
 
 ## <a id="ssml"></a> Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)
 
-Чтобы указать боту текст для голосового воспроизведения, ему можно присвоить строку в формате (SSML). SSML — это язык разметки на базе XML (следовательно, текст в этом формате должен соответствовать требованиям XML). Он позволяет контролировать различные характеристики речи бота, такие как голос, скорость, тон и др. Дополнительные сведения о SSML см. в <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">справочнике по языку разметки синтеза речи</a>.
+Чтобы указать боту текст для голосового воспроизведения, ему можно присвоить строку в формате (SSML). SSML — это язык разметки на базе XML (следовательно, текст в этом формате должен соответствовать требованиям XML). Он позволяет контролировать различные характеристики речи бота, такие как голос, скорость, тон и др. Дополнительные сведения о SSML см. в <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">справочнике по языку разметки синтеза речи</a>.
 
 После предоставления форматированной строки SSML внешний элемент программы-оболочки SSML можно проигнорировать.
 
@@ -67,9 +67,9 @@ ms.locfileid: "65032984"
 
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
 - [Добавление подсказок для ввода в сообщения](bot-builder-dotnet-add-input-hints.md)
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
+- <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-RollerSkill" target="_blank">Пример Roller Skill (GitHub)</a>
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">Интерфейс IMessageActivity</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.dialogcontext" target="_blank">Класс DialogContext</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.prompt-2" target="_blank">Класс Prompt</a>
