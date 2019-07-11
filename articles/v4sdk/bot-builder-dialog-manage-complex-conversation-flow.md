@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bc11e5a4a5dec1a9588254b3a9d28d56ad163fb4
-ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
+ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153058"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587476"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
@@ -27,8 +27,8 @@ ms.locfileid: "67153058"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
-- Копия примера сложного диалога на языке [**CSharp**][cs-sample] или [**JavaScript**][js-sample].
+- Понимание [основных принципов работы ботов][concept-basics], управления состоянием, , [managing state][concept-state][библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
+- Копия примера сложного диалога на [**C#** ][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -186,19 +186,21 @@ ms.locfileid: "67153058"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+<!-- **DialogExtensions.cs**
 
-В этом примере мы определили вспомогательный метод `Run`, который будет использоваться для создания контекста диалога и доступа к нему.
-Так как компонентный диалог определяет набор внутренних диалогов, нам следует создать внешний набор диалогов, доступный для кода обработчика сообщений, чтобы использовать его для создания контекста диалога.
+In this sample, we've defined a `Run` helper method that we will use to create and access the dialog context.
+Since component dialog defines an inner dialog set, we have to create an outer dialog set that's visible to the message handler code, and use that to create a dialog context.
 
-- `dialog` является основным компонентным диалогом бота.
-- `turnContext` содержит контекст текущей реплики бота.
+- `dialog` is the main component dialog for the bot.
+- `turnContext` is the current turn context for the bot.
 
 [!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
 
+-->
+
 **Bots\DialogBot.cs**
 
-Обработчик сообщений вызывает вспомогательный метод `Run` для управления диалогом, и мы переопределили обработчик реплик так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, выполненные в рамках текущей реплики. Базовый метод `OnTurnAsync` вызовет метод `OnMessageActivityAsync`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
+Обработчик сообщений вызывает метод `RunAsync` для управления диалогом. Мы переопределили обработчик шагов так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, происходящие на определенном шаге. Базовый метод `OnTurnAsync` вызовет метод `OnMessageActivityAsync`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
@@ -276,7 +278,7 @@ ms.locfileid: "67153058"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Общие сведения о создании диалогов можно получить в статье [о реализации последовательного процесса общения][simple-dialog]. В этом процессе на основе одного каскадного диалога и нескольких запросов создается простой пример взаимодействия, в котором пользователю задается несколько вопросов.
+Общие сведения о создании диалогов можно получить в статье [о реализации последовательного потока диалога][simple-dialog], в котором на основе одного каскадного диалога и нескольких запросов создается простой пример взаимодействия, который задает пользователю набор вопросов.
 
 Библиотека диалогов выполняет простую проверку запросов. Вы также можете добавить любую собственную проверку. Дополнительные сведения о сборе данных от пользователя с помощью запросов диалога см. в [этой статье][dialog-prompts].
 

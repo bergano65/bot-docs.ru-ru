@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1f9070b0fd3b4e88eb7d752f5a73c4374bfe8415
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215525"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587490"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -25,8 +25,8 @@ ms.locfileid: "66215525"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Опыт работы с [ботами][concept-basics], [библиотеками диалогов][concept-dialogs] и [управлением сообщениями][simple-flow].
-- Копия примера диалога с несколькими запросами для [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Опыт работы с [ботами][concept-basics], the [dialogs library][concept-dialogs] и [управлением сообщениями][simple-flow].
+- Копия примера диалога с несколькими шагами для [**C#** ][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-the-sample"></a>Сведения о примере
 
@@ -106,15 +106,9 @@ ms.locfileid: "66215525"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+**Bots\DialoBot.cs**
 
-В нашем примере для этого используется метод расширения `Run`, как показано ниже.
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
-
-**Bots\DialogBot.cs**
-
-Метод `Run` вызывается из метода `OnMessageActivityAsync` бота.
+В нашем примере это выполняется с помощью метода `RunAsync`, вызываемого из метода `OnMessageActivityAsync` бота.
 
 [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48)]
 
