@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 8484df6b140447d175805b396a81832c059c3b76
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405205"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230532"
 ---
 ### <a name="cortana"></a>Кортана
 Боты публикуются в Кортане с [панели мониторинга](https://aka.ms/cortana-publish) и используются для расширения ее навыков. При публикации бот отправляется на проверку. Навыки Кортаны можно развертывать для личного пользования, для небольшой группы или для всего мира.

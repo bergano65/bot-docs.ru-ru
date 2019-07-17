@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 0891b9652154f8ed086cc45ce6018aa0be1a67b8
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905176"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230576"
 ---
 Чтобы опубликовать локальный бот JavaScript снова в Azure, необходимо сначала вручную создать единый ZIP-файл, содержащий все файлы, использовавшиеся для локального создания и запуска бота. К ним относятся все библиотеки npm, скачанные в папку `node_modules`. При создании этого ZIP-файла _убедитесь, что используется тот корневой каталог, в котором находится файл index.js_.
 

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: faaf64ba35a31f239da68aa824a225fe93fcc5dc
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563934"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230743"
 ---
 При создании бота для Skype он может взаимодействовать с пользователями посредством голосового звонка. Голосовые звонки удобны в тех случаях, когда пользователь не желает или не может ввести данные с помощью клавиатуры, сенсорного экрана или манипулятора.  
 
