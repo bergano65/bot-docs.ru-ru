@@ -1,5 +1,6 @@
-<!--# [Migration overview](migratration-overview.md)-->
+# [Перенос решения в хранилище данных SQL](migration-overview.md)
 # [Различия между версиями 3 и 4 пакета SDK для .NET](migration-about.md)
+# [Различия между версиями 3 и 4 пакета SDK для JavaScript](migration-about-javascript.md)
 # [Краткий справочник по миграции для .NET](net-migration-quickreference.md)
 # [Краткий справочник по миграции для JavaScript](javascript-migration-quickreference.md)
 # [Перенос бота .NET версии 3 в бот .NET Framework версии 4](conversion-framework.md)
