@@ -44,7 +44,7 @@ Bot Framework предоставляет событие [conversationUpdate][con
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-Вы также можете указать, что происходит после активации действия, предоставив обработчик [onSelectAction][onSelectAction]. Для активируемых действий вы можете указать обработчик onInterrupted, чтобы перехватывать прерывание, прежде чем оно произойдет. Дополнительные сведения см. в статье об [обработке событий пользователя](bot-builder-nodejs-dialog-actions.md).
+Вы также можете указать, что происходит после активации действия, предоставив обработчик [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted]. Для активируемых действий вы можете указать обработчик onInterrupted, чтобы перехватывать прерывание, прежде чем оно произойдет. Дополнительные сведения см. в статье об [обработке событий пользователя](bot-builder-nodejs-dialog-actions.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

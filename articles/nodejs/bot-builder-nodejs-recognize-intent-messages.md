@@ -36,7 +36,7 @@ ms.locfileid: "67404851"
 
 [!code-js[Add a regular expression recognizer (JavaScript)](../includes/code/node-regex-recognizer.js#addRegexRecognizer)]
 
-После добавления распознавателя боту присоедините [triggerAction][triggerAction] к диалоговому окну, чтобы бот активизировался тогда, когда распознаватель обнаружит намерение. Используйте параметр matches, чтобы указать имя намерений, как показано в следующем коде.
+После добавления распознавателя боту присоедините [triggerAction][triggerAction] to the dialog that you want the bot to invoke when the recognizer detects the intent. Use the [matches][matches] к диалоговому окну, чтобы бот активизировался тогда, когда распознаватель обнаружит намерение. Используйте параметр matches, чтобы указать имя намерений, как показано в следующем коде.
 
 [!code-js[Map the CancelIntent recognizer to a cancel dialog (JavaScript)](../includes/code/node-regex-recognizer.js#bindCancelDialogToRegexRecognizer)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "67404851"
 
 По умолчанию распознаватели действуют одновременно, но можно задать команду recognizeOrder в [IIntentRecognizerSetOptions][IntentRecognizerSetOptions], чтобы процесс завершился, как только бот найдет оценку, равную 1,0.
 
-Пакет SDK для Bot Builder включает [пример][DisambiguationSample], который показывает, как предоставить пользовательскую логику устранения неоднозначности боту путем реализации IDisambiguateRouteHandler.
+Пакет SDK для Bot Builder включает [пример][DisambiguationSample] that demonstrates how to provide custom disambiguation logic in your bot by implementing [IDisambiguateRouteHandler][IDisambiguateRouteHandler], который показывает, как предоставить пользовательскую логику устранения неоднозначности боту путем реализации IDisambiguateRouteHandler.
 
 ## <a name="next-steps"></a>Дополнительная информация
 Логика использования регулярных выражений и проверки содержимого сообщения может усложниться, особенно в том случае, если поток общения бота является открытым. Чтобы помочь боту обрабатывать более широкий диапазон речи и текстовых входных данных от пользователей и добавить ему понимание естественного языка, можно использовать службу распознавания намерений, например [LUIS][LUIS].

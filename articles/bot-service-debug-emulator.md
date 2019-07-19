@@ -122,7 +122,7 @@ Open the **Emulator Settings**, enter the path to ngrok, select whether or not t
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Эмулятор Bot Framework — это решение с открытым исходным кодом. Вы можете [принять участие][EmulatorGithubContribute] в разработке, отправляя ошибки и предложения.
+Эмулятор Bot Framework — это решение с открытым исходным кодом. Вы можете [принять участие][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs] в разработке, отправляя ошибки и предложения.
 
 Подробные сведения см. в статье об [устранении общих проблем](bot-service-troubleshoot-bot-configuration.md) и других статья об устранении неполадок в этом разделе.
 
