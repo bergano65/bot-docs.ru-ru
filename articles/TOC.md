@@ -3,11 +3,10 @@
 ## [Общие сведения о службе Azure Bot](bot-service-overview-introduction.md)
 ## [Новые возможности](what-is-new.md)
 # Краткое руководство
-## [Создание бота с помощью службы Azure Bot](~/bot-service-quickstart.md)
-## Создание бота в локальной среде
-### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
-### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
-# Руководства
+## [Создание бота с помощью .NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
+## [Создание бота с помощью JavaScript](javascript/bot-builder-javascript-quickstart.md)
+## [Создание бота с помощью службы Azure Bot](v4sdk/abs-quickstart.md)
+# Учебники
 ## [1. Создание и развертывание простого бота](v4sdk/bot-builder-tutorial-basic-deploy.md)
 ## [2. Добавление QnA Maker и повторное развертывание бота](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [Добавление аутентификации в бот](bot-builder-tutorial-authentication.md)
@@ -55,6 +54,8 @@
 ### [Использование канала "Речь Direct Line" в боте](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
+## Тест
+### [Модульное тестирование ботов](v4sdk/unit-test-bots.md)
 ## [Отладка](debug/TOC.md)
 ## Развертывание
 ### [Развертывание бота в Azure](bot-builder-deploy-az-cli.md)
