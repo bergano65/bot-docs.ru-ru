@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 45830f099833c41c308b0f5a5e7b104986604e03
-ms.sourcegitcommit: 93508adfb79523f610a919b361fc34f5c8dd3eff
+ms.openlocfilehash: 519515a2174a7028af7bc170ca8a7c40f7d48c52
+ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67533395"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68336735"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>Перенос бота .NET версии 3 в бот .NET Framework версии 4
 
@@ -53,6 +53,10 @@ ms.locfileid: "67533395"
 1. Добавьте **Bot.Builder.Community.Dialogs.Formflow**.
 
     Это библиотека сообщества для сборки диалогов версии 4 из файлов определения Formflow версии 3. Одно из зависимостей для нее является **Microsoft.Bot.Builder.Dialogs**, поэтому она тоже автоматически устанавливается.
+
+> [!TIP]
+> Если ваш проект предназначен для .NET Framework 4.6, понадобится обновление до версии 4.6.1 или последующей, так как **Bot.Builder.Community.Dialogs.Formflow** является библиотекой .NET Standard 2.0.
+> Дополнительные сведения см. в разделе [Поддержка реализации .NET](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
 
 Если на этом этапе выполнить сборку, вы получите ошибки компилятора. На них можно не обращать внимания. Когда преобразование полностью завершится, код будет полностью рабочим.
 
@@ -279,7 +283,7 @@ ms.locfileid: "67533395"
 1. `ResumeAfterLocalAdminFormDialog` можно заменить вторым шагом каскадного диалога. Нам нужно получать возвращаемое значение из контекста шага, а не свойства экземпляра.  
     [!code-csharp[SaveResultAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=37-50)]
 
-1. `BuildLocalAdminForm` почти не изменяется, за исключением того, что теперь Formflow не будет обновлять свойство экземпляра.  
+1. `BuildLocalAdminForm` почти не изменяется, за исключением того, что теперь FormFlow не будет обновлять свойство экземпляра.  
     [!code-csharp[BuildLocalAdminForm](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=52-76)]
 
 ### <a name="update-the-reset-password-dialog"></a>Обновление диалога смены пароля
