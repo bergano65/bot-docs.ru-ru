@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: b3c0efb243cc5b039034f908a46557e960adb7b0
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 5ca0e9d036d5d3628fff9ae8b0bf5d9f4aa9d8b4
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464563"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671447"
 ---
 # <a name="about-azure-bot-service"></a>Общие сведения о службе Azure Bot
 
@@ -40,7 +40,7 @@ ms.locfileid: "67464563"
 
 ## <a name="building-a-bot"></a>Сборка бота 
 
-Службы Azure Bot и Bot Framework предлагают интегрированный набор средств и служб, позволяющих ускорить этот процесс. Выберите любую среду разработки или средства командной строки для создания бота. Существуют пакеты SDK для C#, JavaScript и Typescript. (Пакеты SDK для Java и Python находятся на стадии разработки.) Мы предоставляем средства, помогающие на разных этапах проектирования и разработки ботов.
+Службы Azure Bot и Bot Framework предлагают интегрированный набор средств и служб для ускорения этого процесса. Выберите любую среду разработки или средства командной строки для создания бота. Существуют пакеты SDK для C#, JavaScript и Typescript. (Пакеты SDK для Java и Python находятся на стадии разработки.) Мы предоставляем средства, помогающие на разных этапах проектирования и разработки ботов.
 
 ![Обзор бота](media/bot-service-overview.png) 
 

@@ -5,17 +5,17 @@ keywords: deploy bot, azure deploy bot, publish bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405977"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671385"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -178,9 +178,19 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | src  | Путь к созданному ранее ZIP-файлу. |
 
 ## <a name="3-test-in-web-chat"></a>3. Тестирование в веб-чате
-- На портале Azure перейдите к колонке веб-приложения бота.
-- В разделе **управления ботами** щелкните **Test in Web Chat** (Тестирование в веб-чате). Служба Azure Bot загрузит элемент управления "Веб-чат" и подключится к боту.
-- Подождите несколько секунд после успешного завершения развертывания. Можно также перезапустить веб-приложение, чтобы очистить все кэши. Вернитесь в колонку "Бот веб-приложения" и выполните тестирование с помощью веб-чата на портале Azure.
+
+1. В браузере перейдите на [портал Azure](https://ms.portal.azure.com).
+2. На панели слева щелкните **Группы ресурсов**.
+3. На панели справа найдите свою группу.
+4. Щелкните имя группы.
+5. Щелкните ссылку регистрации канала бота.
+6. В колонке *Регистрация канала бота* щелкните **Тестировать в веб-чате**.
+Или на панели справа щелкните поле "Тест".
+
+См. также о регистрации канала в руководстве по [регистрации бота с помощью службы Azure Bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+
+> [!NOTE]
+> Колонка — это область, в которой отображаются функции службы или элементы навигации.
 
 ## <a name="additional-information"></a>Дополнительная информация
 Развертывание бота в Azure подразумевает оплату за используемые службы. Руководство по [управлению счетами и расходами](https://docs.microsoft.com/azure/billing/) поможет вам понять, как расшифровывать счета Azure, отслеживать использование и расходы, а также управлять учетными записями и подписками.

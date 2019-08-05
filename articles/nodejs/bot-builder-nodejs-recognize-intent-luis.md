@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67464798"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-Любые сущности в высказывании передаются в диалоговое окно с помощью параметра `args`. На первом шаге [каскада][waterfall] calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData]вызывается метод EntityRecognizer.findEntity, который получает заголовок заметки из любых сущностей `Note.Title` в ответе LUIS. Если приложение LUIS не обнаружило сущность `Note.Title`, бот запрашивает имя сущности у пользователя. На втором шаге каскада у пользователя запрашивается текст, включаемый в заметку. После того как бот получил текст заметки, на третьем шаге каскада вызывается метод session.userData, который сохраняет заметку в объекте `notes`, используя заголовок в качестве ключа. Дополнительные сведения о `session.UserData` см. в разделе [Управление данными состояния](./bot-builder-nodejs-state.md). 
+Любые сущности в высказывании передаются в диалоговое окно с помощью параметра `args`. На первом шаге [каскада][waterfall] вызывается метод [EntityRecognizer.findEntity][EntityRecognizer_findEntity], который получает заголовок заметки из любых сущностей `Note.Title` в ответе LUIS. Если приложение LUIS не обнаружило сущность `Note.Title`, бот запрашивает имя сущности у пользователя. На втором шаге каскада у пользователя запрашивается текст, включаемый в заметку. Когда бот получит текст заметки, на третьем шаге каскада вызывается метод [session.userData][session_userData], который сохраняет заметку в объекте `notes`, используя заголовок в качестве ключа. Дополнительные сведения о `session.UserData` см. в разделе [Управление данными состояния](./bot-builder-nodejs-state.md). 
 
 
 

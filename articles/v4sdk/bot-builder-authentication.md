@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e708f6b556c832ed7f8858a893cc5fb0a8406ab2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
+ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404324"
+ms.lasthandoff: 07/27/2019
+ms.locfileid: "68591049"
 ---
 <!-- Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -98,21 +98,21 @@ ms.locfileid: "67404324"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Понимание [основных принципов работы ботов][concept-basics], управления состоянием, , [managing state][concept-state][библиотек диалогов][concept-dialogs], [реализации последовательного процесса общения][simple-dialog] и повторного использования диалогов.
+- Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs], [реализации последовательного процесса общения][simple-dialog], а также [повторного использования диалогов][component-dialogs].
 - Понимание процессов разработки для Azure и OAuth 2.0.
 - Visual Studio 2017 или более поздней версии, Node.js, npm и GIT.
 - Один из этих примеров.
 
 | Образец | Версия Bot Builder | Что демонстрирует |
 |:---|:---:|:---|
-| **Аутентификация ботов** на [**CSharp**][cs-auth-sample] or [**JavaScript**][js-auth-sample] | версия 4 | Поддержка OAuthCard |
-| **MSGraph для аутентификации бота** на [**C#** ][cs-msgraph-sample] or [**JavaScript**][js-msgraph-sample] | версия 4 |  Поддержка API Microsoft Graph с использованием OAuth 2 |
+| **Аутентификация бота** с использованием [**C#** ][cs-auth-sample] или [**JavaScript**][js-auth-sample] | версия 4 | Поддержка OAuthCard |
+| **Аутентификация бота (MSGraph)** с использованием [**C#** ][cs-msgraph-sample] или [**JavaScript**][js-msgraph-sample] | версия 4 |  Поддержка API Microsoft Graph с использованием OAuth 2 |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Создание ресурса бота в Azure
 
-Создайте **Bot Channels Registration** (Бот регистрации каналов) с помощью [портала Azure](https://portal.azure.com/).
+Создайте **ресурс бота** с помощью [портала Azure](https://portal.azure.com/).
 
-Запишите идентификатор и пароль приложения бота. См. подробнее о сборе этой информации в руководстве по [управлению ботом](../bot-service-manage-overview.md).
+См. также о [создании бота с помощью службы Azure Bot](./abs-quickstart.md).
 
 ## <a name="create-and-register-an-azure-ad-application"></a>Создание и регистрация приложения AAD
 
@@ -247,7 +247,7 @@ ms.locfileid: "67404324"
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. Клонируйте нужный пример из репозитория GitHub: [**Аутентификация бота**][cs-auth-sample] or [**Bot authentication MSGraph**][cs-msgraph-sample].
+1. Клонируйте нужный пример из репозитория GitHub: [**Аутентификация бота**][cs-auth-sample] или [**Аутентификация бота (MSGraph)** ][cs-msgraph-sample].
 1. Обновите файл **appsettings.json**:
 
     - параметру `ConnectionName` присвойте значение имени подключения OAuth, которое вы добавили в бот;
@@ -259,7 +259,7 @@ ms.locfileid: "67404324"
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. Клонируйте нужный пример из репозитория GitHub: [**Аутентификация бота**][js-auth-sample] or [**Bot authentication MSGraph**][js-msgraph-sample].
+1. Клонируйте нужный пример из репозитория GitHub: [**Аутентификация бота**][js-auth-sample] или [**Аутентификация бота (MSGraph)** ][js-msgraph-sample].
 1. Обновите файл с расширением **.env**:
 
     - параметру `connectionName` присвойте значение имени подключения OAuth, которое вы добавили в бот;

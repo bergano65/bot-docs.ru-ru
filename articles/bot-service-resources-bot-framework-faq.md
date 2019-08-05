@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
 ms.openlocfilehash: 57efc2f1d137988792d9484d7f1f857bd193ecfa
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67405785"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
@@ -73,7 +73,7 @@ ms.locfileid: "67405785"
 
 ### <a name="i-have-a-communication-channel-id-like-to-be-configurable-with-bot-framework-can-i-work-with-microsoft-to-do-that"></a>У меня есть коммуникационный канал, в который следует добавить возможность настройки с помощью Bot Framework. Могу ли я обратиться в корпорацию Майкрософт, чтобы сделать это?
 
-Мы не предусматриваем общий механизм добавления новых каналов в Bot Framework для разработчиков, но вы можете подключить бот к приложению с помощью [Direct Line API][DirectLineAPI]. If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you][Support].
+Мы не предоставляем общий механизм добавления новых каналов в Bot Framework для разработчиков, но вы можете подключить бот к приложению с помощью [Direct Line API][DirectLineAPI]. Если вы являетесь разработчиком коммуникационного канала и хотите работать с нами, чтобы включить свой канал в Bot Framework, [мы с радостью поможем вам][Support].
 
 ### <a name="if-i-want-to-create-a-bot-for-microsoft-teams-what-tools-and-services-should-i-use"></a>Если требуется создать бот для Microsoft Teams, какие инструменты и службы следует использовать?
 

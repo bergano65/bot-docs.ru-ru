@@ -5,17 +5,17 @@ keywords: bot framework, azure bot service
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bbea2f12af976a9d967e7c62baf416b8938f8aa
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: f7083c45e67d8731e25e14577f6b061732ffefd5
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336738"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671399"
 ---
 # <a name="whats-new-in-bot-framework-july-2019"></a>Новые возможности Bot Framework (июль 2019 г.)
 
@@ -57,7 +57,9 @@ ms.locfileid: "68336738"
 ## <a name="bot-framework-testing"></a>Тестирование в Bot Framework
 - [Модульное тестирование](http://aka.ms/bot-test-package) | [Документация](https://aka.ms/testing-framework) | [Пример C#](https://aka.ms/corebot-test) | [Пример JS](https://aka.ms/js-core-test-sample). Учитывая пожелания клиентов и разработчиков касательно более совершенных средств тестирования, в июльскую версию пакета SDK мы добавили новую функцию модульного тестирования. Пакет Microsoft.Bot.Builder.testing упрощает процесс модульного тестирования диалогов в боте. 
 
-- [Тестирование канала](https://github.com/Microsoft/BotFramework-Emulator/releases). Bot Inspector — это новая функция Bot Framework Emulator, презентация которой состоялась на конференции Microsoft Build 2019. Она позволяет отлаживать и тестировать ботов в таких каналах, как Microsoft Teams, Slack, Кортана и т. д. При использовании бота в определенном канале полученные ботом сообщения будут дублироваться в Bot Framework Emulator, где вы можете их просматривать. Кроме того, можно отобразить моментальный снимок состояния бота на любом шаге обмена данными между каналом и ботом.
+- [Тестирование канала](https://github.com/Microsoft/BotFramework-Emulator/releases) | [Документация](https://aka.ms/channel-testing). 
+
+Bot Inspector — это новая функция Bot Framework Emulator, презентация которой состоялась на конференции Microsoft Build 2019. Она позволяет отлаживать и тестировать ботов в таких каналах, как Microsoft Teams, Slack, Кортана и т. д. При использовании бота в определенном канале полученные ботом сообщения будут дублироваться в Bot Framework Emulator, где вы можете их просматривать. Кроме того, можно отобразить моментальный снимок состояния бота на любом шаге обмена данными между каналом и ботом.
 
 ## <a name="web-chat"></a>Веб-чат.
 - Учитывая пожелания корпоративных клиентов, мы добавили [пример веб-чата](https://github.com/microsoft/BotFramework-WebChat/tree/master/samples/19.a.single-sign-on-for-enterprise-apps#single-sign-on-demo-for-enterprise-apps-using-oauth), демонстрирующий, как обеспечить пользователю доступ к ресурсам корпоративного приложения с помощью бота. Взаимодействие OAuth с Microsoft Graph и API GitHub демонстрируется с использованием ресурсов двух типов.

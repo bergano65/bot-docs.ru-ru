@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e019d2d04d843cc0efd5a39135d65fe4cfc022f3
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 02e0f810293566b783dda563b377f1a96f4ed58f
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404503"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68484016"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -36,36 +36,38 @@ ms.locfileid: "67404503"
 После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `UserState` и `ConversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
 - Когда подключается новый пользователь, вызывается `OnMembersAddedAsync` и отображается приветственная карточка. 
-- `OnMessageActivityAsync` вызывается для каждого полученного блока данных, введенных пользователем. 
+- `OnMessageActivityAsync` вызывается для каждого полученного блока данных, введенных пользователем.
 
 ![Поток логических действий в примере LUIS](./media/how-to-luis/luis-logic-flow.png)
 
-Модуль `OnMessageActivityAsync` запускает соответствующий диалог с помощью метода расширения диалога `Run`. Этот главный диалог вызывает вспомогательный метод LUIS для поиска наиболее вероятного намерения пользователя. Если самым вероятным намерением является Book_Flight (бронирование авиабилетов), вспомогательный метод сохраняет полученные от LUIS данные пользователя и запускает `BookingDialog`, который собирает дополнительные сведения от пользователя, если они нужны, например:
+Модуль `OnMessageActivityAsync` запускает соответствующий диалог с помощью метода расширения диалога `Run`. Затем главный диалог вызывает вспомогательный метод LUIS для поиска самого вероятного намерения пользователя. Если таким намерением является BookFlight (бронирование авиабилетов), вспомогательный метод сохраняет полученные от LUIS данные пользователя. Затем он запускает `BookingDialog` для сбора требуемых дополнительных сведений от пользователя, например:
 
 - `Origin` — город вылета;
-- `TravelDate` — дата для бронирования авиабилетов; 
-- `Destination` — город прилета.
+- `TravelDate` — дата для бронирования авиабилетов;
+- `Destination` — город прилета;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 После каждой обработки введенных пользователем данных `dialogBot` сохраняет текущее состояние `userState` и `conversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
 - Когда подключается новый пользователь, вызывается `onMembersAdded` и отображается приветственная карточка. 
-- `OnMessage` вызывается для каждого полученного блока данных, введенных пользователем. 
+- `OnMessage` вызывается для каждого полученного блока данных, введенных пользователем.
 
 ![Поток логических действий в примере LUIS на JavaScript](./media/how-to-luis/luis-logic-flow-js.png)
 
-Модуль `onMessage` выполняет `mainDialog`, который отправляет в LUIS введенные пользователем данные. Получив ответ от LUIS, `mainDialog` сохраняет для пользователя информацию, возвращенную LUIS, и запускает `bookingDialog`. `bookingDialog` получает от пользователя дополнительные сведения по мере необходимости, например:
+Модуль `onMessage` выполняет `mainDialog` для сбора введенных пользователем данных.
+Затем главный диалог вызывает `FlightBookingRecognizer` вспомогательного метода LUIS для поиска самого вероятного намерения пользователя. Если таким намерением является BookFlight (бронирование авиабилетов), вспомогательный метод сохраняет полученные от LUIS данные пользователя.
+Получив ответ, `mainDialog` сохраняет для пользователя информацию, полученную от LUIS, и запускает `bookingDialog`. `bookingDialog` получает от пользователя дополнительные сведения по мере необходимости, например:
 
 - `destination` — город прилета;
 - `origin` — город вылета;
-- `travelDate` — дата для бронирования авиабилетов. 
+- `travelDate` — дата для бронирования авиабилетов.
 
 ---
 
-Дополнительные сведения о других аспектах этого примера, в том числе о диалогах и состоянии, можно получить в статьях [Сбор данных, которые вводит пользователь, с помощью диалогового окна](bot-builder-prompts.md) или [Сохранение данных пользователя и диалога](bot-builder-howto-v4-state.md). 
+Дополнительные сведения о других аспектах этого примера, в том числе о диалогах и состоянии, можно получить в статьях [Сбор данных, которые вводит пользователь, с помощью диалогового окна](bot-builder-prompts.md) или [Сохранение данных пользователя и диалога](bot-builder-howto-v4-state.md).
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>Создание приложения LUIS на портале LUIS
-Войдите на портал LUIS, чтобы создать собственную версию примера приложения LUIS. Создавать и администрировать приложения можно на странице **Мои приложения**. 
+Войдите на портал LUIS, чтобы создать собственную версию примера приложения LUIS. Создавать и администрировать приложения можно на странице **Мои приложения**.
 
 1. Выберите **Import new app** (Импортировать новое приложение). 
 1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON) 
@@ -96,14 +98,14 @@ ms.locfileid: "67404503"
 Добавьте в файл `appsettings.json` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
 **appsetting.json**  
-[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
+[!code-json[appsettings](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте в файл `.env` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
 Файл с расширением **.env**  
-[!code[env](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
+[!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 ---
 
@@ -113,22 +115,199 @@ ms.locfileid: "67404503"
 
 Убедитесь, что для вашего проекта установлен пакет NuGet **Microsoft.Bot.Builder.AI.Luis**.
 
-Для подключения к службе LUIS бот извлекает сведения, которые вы ранее добавили в файл appsetting.json. Код класса `LuisHelper` импортирует параметры из файла appsetting.json и отправляет запрос к службе LUIS, вызывая метод `RecognizeAsync`. Если самым вероятным намерением будет Book_Flight, он проверяет наличие сущностей с информацией об исходном, конечном пунктах и дате полета.
+Для подключения к службе LUIS бот извлекает сведения, которые вы ранее добавили в файл appsetting.json. Класс `FlightBookingRecognizer` содержит код с параметрами из файла appsetting.json и отправляет запрос к службе LUIS, вызывая метод `RecognizeAsync`.
 
-**LuisHelper.cs**  
-[!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
+**FlightBookingRecognizer.cs**  
+
+```csharp
+public class FlightBookingRecognizer : IRecognizer
+{
+    private readonly LuisRecognizer _recognizer;
+
+    public FlightBookingRecognizer(IConfiguration configuration)
+
+    {
+        var luisIsConfigured = !string.IsNullOrEmpty(configuration["LuisAppId"]) && !string.IsNullOrEmpty(configuration["LuisAPIKey"]) && !string.IsNullOrEmpty(configuration["LuisAPIHostName"]);
+
+        if (luisIsConfigured)
+        {
+            var luisApplication = new LuisApplication(
+
+                configuration["LuisAppId"],
+
+                configuration["LuisAPIKey"],
+
+                "https://" + configuration["LuisAPIHostName"]);
+
+            _recognizer = new LuisRecognizer(luisApplication);
+
+        }
+    }
+
+    // Returns true if luis is configured in the appsettings.json and initialized.
+
+    public virtual bool IsConfigured => _recognizer != null;
+
+    public virtual async Task<RecognizerResult> RecognizeAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+
+        => await _recognizer.RecognizeAsync(turnContext, cancellationToken);
+
+
+    public virtual async Task<T> RecognizeAsync<T>(ITurnContext turnContext, CancellationToken cancellationToken)
+
+        where T : IRecognizerConvert, new()
+
+        => await _recognizer.RecognizeAsync<T>(turnContext, cancellationToken);
+}
+
+```
+
+<!-- Direct reference
+[!code-csharp[luisHelper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/FlightBookingRecognizer.cs?range=12-39)]
+-->
+
+`FlightBookingEx.cs` содержит логику для извлечения *From*, *To* и *TravelDate*. Это расширение разделяемого класса `FlightBooking.cs`, используемого для хранения результатов LUIS при вызове `FlightBookingRecognizer.RecognizeAsync<FlightBooking>` из `MainDialog.cs`.
+
+**FlightBookingEx.cs**  
+
+```csharp
+public partial class FlightBooking
+{
+    public (string From, string Airport) FromEntities
+
+    {
+        get
+
+        {
+            var fromValue = Entities?._instance?.From?.FirstOrDefault()?.Text;
+
+            var fromAirportValue = Entities?.From?.FirstOrDefault()?.Airport?.FirstOrDefault()?.FirstOrDefault();
+
+            return (fromValue, fromAirportValue);
+        }
+    }
+
+    public (string To, string Airport) ToEntities
+
+    {
+        get
+
+        {
+            var toValue = Entities?._instance?.To?.FirstOrDefault()?.Text;
+
+            var toAirportValue = Entities?.To?.FirstOrDefault()?.Airport?.FirstOrDefault()?.FirstOrDefault();
+
+            return (toValue, toAirportValue);
+        }
+    }
+
+    // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+    // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+    public string TravelDate
+        => Entities.datetime?.FirstOrDefault()?.Expressions.FirstOrDefault()?.Split('T')[0];
+}
+
+```
+
+<!-- Direct reference
+[!code-csharp[luis helper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/CognitiveModels/FlightBookingEx.cs?range=8-35)]
+-->
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать LUIS, в проект следует установить пакет npm **botbuilder-ai**.
 
-Для подключения к службе LUIS бот извлекает сведения, которые вы ранее добавили в файл `.env`. Код класса `LuisHelper` импортирует параметры из файла `.env` и отправляет запрос к службе LUIS, вызывая метод `recognize()`. Если самым вероятным намерением будет Book_Flight, он проверяет наличие сущностей с информацией об исходном, конечном пунктах и дате полета.
+Для подключения к службе LUIS бот использует сведения, которые вы ранее добавили в файл `.env`. Класс `flightBookingRecognizer.js` содержит код, который импортирует параметры из файла `.env` и отправляет запрос к службе LUIS, вызывая метод `recognize()`.
 
-[!code-javascript[luis helper](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/luisHelper.js?range=6-65)]
+```javascript
+class FlightBookingRecognizer {
+
+    constructor(config) {
+
+        const luisIsConfigured = config && config.applicationId && config.endpointKey && config.endpoint;
+
+        if (luisIsConfigured) {
+
+            this.recognizer = new LuisRecognizer(config, {}, true);
+        }
+
+    }
+
+    get isConfigured() {
+        return (this.recognizer !== undefined);
+    }
+
+    /**
+     * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+     * @param {TurnContext} context
+     */
+    async executeLuisQuery(context) {
+        return await this.recognizer.recognize(context);
+    }
+
+    getFromEntities(result) {
+
+        let fromValue, fromAirportValue;
+
+        if (result.entities.$instance.From) {
+
+            fromValue = result.entities.$instance.From[0].text;
+        }
+
+        if (fromValue && result.entities.From[0].Airport) {
+
+            fromAirportValue = result.entities.From[0].Airport[0][0];
+        }
+
+        return { from: fromValue, airport: fromAirportValue };
+    }
+
+    getToEntities(result) {
+
+        let toValue, toAirportValue;
+
+        if (result.entities.$instance.To) {
+            toValue = result.entities.$instance.To[0].text;
+        }
+
+        if (toValue && result.entities.To[0].Airport) {
+            toAirportValue = result.entities.To[0].Airport[0][0];
+        }
+        return { to: toValue, airport: toAirportValue };
+    }
+
+    /**
+     * This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+     * TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+     */
+
+    getTravelDate(result) {
+
+        const datetimeEntity = result.entities['datetime'];
+
+        if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+
+        const timex = datetimeEntity[0]['timex'];
+
+        if (!timex || !timex[0]) return undefined;
+
+        const datetime = timex[0].split('T')[0];
+
+        return datetime;
+    }
+}
+
+```
+
+<!-- Direct reference
+[!code-javascript[luis helper](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/dialogs/flightBookingRecognizer.js?range=6-64)]
+-->
+
+Логика извлечения From, To и TravelDate реализуется в виде вспомогательных методов в `flightBookingRecognizer.js`. Эти методы используются после вызова `flightBookingRecognizer.executeLuisQuery()` из `mainDialog.js`
 
 ---
 
-Теперь служба LUIS для бота полностью настроена и подключена. 
+Теперь служба LUIS для бота полностью настроена и подключена.
 
 ## <a name="test-the-bot"></a>Тестирование бота
 

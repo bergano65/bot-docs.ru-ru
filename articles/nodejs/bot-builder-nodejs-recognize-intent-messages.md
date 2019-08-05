@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: e308445a43507db94fe54735432790dabdb88731
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67404851"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Распознавание намерений пользователя из содержимого сообщения
@@ -36,7 +36,7 @@ ms.locfileid: "67404851"
 
 [!code-js[Add a regular expression recognizer (JavaScript)](../includes/code/node-regex-recognizer.js#addRegexRecognizer)]
 
-После добавления распознавателя боту присоедините [triggerAction][triggerAction] to the dialog that you want the bot to invoke when the recognizer detects the intent. Use the [matches][matches] к диалоговому окну, чтобы бот активизировался тогда, когда распознаватель обнаружит намерение. Используйте параметр matches, чтобы указать имя намерений, как показано в следующем коде.
+После добавления распознавателя в бот свяжите [triggerAction][triggerAction] с диалоговым окном, чтобы бот активизировался, когда распознаватель обнаружит намерение. Используйте параметр [matches][matches], чтобы указать имя намерения, как показано в следующем коде.
 
 [!code-js[Map the CancelIntent recognizer to a cancel dialog (JavaScript)](../includes/code/node-regex-recognizer.js#bindCancelDialogToRegexRecognizer)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "67404851"
 
 По умолчанию распознаватели действуют одновременно, но можно задать команду recognizeOrder в [IIntentRecognizerSetOptions][IntentRecognizerSetOptions], чтобы процесс завершился, как только бот найдет оценку, равную 1,0.
 
-Пакет SDK для Bot Builder включает [пример][DisambiguationSample] that demonstrates how to provide custom disambiguation logic in your bot by implementing [IDisambiguateRouteHandler][IDisambiguateRouteHandler], который показывает, как предоставить пользовательскую логику устранения неоднозначности боту путем реализации IDisambiguateRouteHandler.
+Пакет SDK Bot Framework включает [пример][DisambiguationSample], который показывает, как реализовать в боте пользовательскую логику устранения неоднозначности с использованием [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
 
 ## <a name="next-steps"></a>Дополнительная информация
 Логика использования регулярных выражений и проверки содержимого сообщения может усложниться, особенно в том случае, если поток общения бота является открытым. Чтобы помочь боту обрабатывать более широкий диапазон речи и текстовых входных данных от пользователей и добавить ему понимание естественного языка, можно использовать службу распознавания намерений, например [LUIS][LUIS].

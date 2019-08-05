@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 4dab0a8f3dab2a87184a03fe25b2a9abeaff67a2
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 1d787d375fcd1ddade544724bb28dea9aaeb1dd6
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464656"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671411"
 ---
 # <a name="web-chat-overview"></a>Общие сведения о веб-чате
 
@@ -152,7 +152,7 @@ export default class extends React.Component {
 
 ### <a name="my-website-is-integrated-with-a-fork-of-web-chat-v3-i-have-implemented-a-lot-of-customization-in-my-version-of-web-chat-and-i-am-concerned-v4-is-not-compatible-with-my-needs"></a>Мой сайт интегрирован с разветвлением веб-чата версии 3. Я реализовал множество настроек в своей версии веб-чата. Будет ли версия 4 соответствовать моим требованиям?
 
-Преимуществом версии 4 является возможность добавлять настройки **без необходимости в разветвлении веб-чата**. Хотя это приведет к дополнительным накладным расходам для пользователей версии 3, которые ранее выполняли разветвление веб-чата, мы постараемся обеспечить поддержку таким клиентам. Попробуйте использовать рекомендации, приведенные ниже.
+Преимуществом версии 4 является возможность добавлять настройки **без необходимости в разветвлении веб-чата**. Хотя это приведет к дополнительным расходам для пользователей версии 3, которые ранее выполняли разветвление веб-чата, мы постараемся обеспечить поддержку таким клиентам. Попробуйте использовать рекомендации, приведенные ниже.
 
 -  Ознакомьтесь со сведениями о реализации примера [`01.c.getting-started-migration`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.c.getting-started-migration). Это отличная отправная точка для начала работы с веб-чатом.
 -  Затем просмотрите [список примеров](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples), чтобы сравнить свои требования к настройке с поддерживаемыми в веб-чате. Эти примеры состоят из часто запрашиваемых компонентов для веб-чата.

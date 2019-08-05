@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 2600b69fff24f6d952853c7b1ed764577b4cb270
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464795"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671496"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -140,15 +140,15 @@ Authorization: Bearer ACCESS_TOKEN
 | [Отправить вложение на канал](#upload-attachment-to-channel) | Передает вложение непосредственно в хранилище BLOB-объектов канала. |
 
 ### <a name="create-conversation"></a>Создать общение
-Создает новое общение. 
+Создает новое общение.
 ```http 
 POST /v3/conversations
 ```
 
 | | |
 |----|----|
-| **Текст запроса** | Объект [Conversation](#conversation-object). |
-| **Возвращает** | Объект [ConversationResourceResponse](#conversationresourceresponse-object) | 
+| **Текст запроса** | Объект [ConversationParameters](#conversationparameters-object) |
+| **Возвращает** | Объект [ConversationResourceResponse](#conversationresourceresponse-object) |
 
 ### <a name="send-to-conversation"></a>Отправить в общение
 Отправляет действие (сообщение) в указанное общение. Действие будет добавлено в конец общения в соответствии с меткой времени или семантикой канала. Чтобы ответить на конкретное сообщение внутри общения, вместо этого используйте [Ответить на действие](#reply-to-activity).
@@ -409,7 +409,6 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [Объект CardAction](#cardaction-object) | Определяет действие для выполнения. |
 | [Объект CardImage](#cardimage-object) | Определяет изображение для отображения на карте. |
 | [Объект ChannelAccount](#channelaccount-object) | Определяет бота или учетную запись пользователя на канале. |
-| [Объект Conversation](#conversation-object) | Определяет общение, в том числе ботов и пользователей, которые в него включены. |
 | [Объект ConversationAccount](#conversationaccount-object) | Определяет общение на канале. |
 | [Объект ConversationMembers](#conversationmembers-object) | Определяет участников беседы. |
 | [Объект ConversationParameters](#conversationparameters-object) | Определяет параметры для создания нового общения. |
@@ -617,22 +616,10 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **id** | строка | Идентификатор, однозначно определяющий бота или пользователя на канале. |
-| **name** | строка | Имя бота или пользователя. |
-
-<a href="#objects">Вернуться к таблице "Схема"</a>
-
-<!--TODO can't find-->
-### <a name="conversation-object"></a>Объект Conversation
-Определяет общение, в том числе ботов и пользователей, которые в него включены.<br/><br/> 
-
-| Свойство | type | ОПИСАНИЕ |
-|----|----|----|
-| **bot** | [ChannelAccount](#channelaccount-object) | Объект **ChannelAccount**, идентифицирующий бота. |
-| **isGroup** | Логическое | Флаг, указывающий, является ли этот общение групповым. Задайте значение **true**, если это групповой общение, в противном случае — **false**. Значение по умолчанию — **false**. Чтобы начать групповое общение, канал должен поддерживать групповые общения. |
-| **members** | [ChannelAccount](#channelaccount-object)[] | Массив объектов **ChannelAccount**, определяющий участников общения. Этот список должен содержать одного пользователя, если только **isGroup** не имеет значение **true**. Этот список может включать других ботов. |
-| **topicName** | строка | Заголовок общения. |
-| **activity** | [Действие](#activity-object) | В запросе [Создать общение](#create-conversation) объект **Activity**, определяющий первое сообщение, отправляемое в новое общение. |
+| **id** | строка | Уникальный идентификатор пользователя или бота в этом канале. |
+| **name** | строка | Понятное имя бота или пользователя. |
+| **aadObjectId** | строка | Идентификатор объекта этой учетной записи в Azure Active Directory. |
+| **role** | string enum | Роль сущности, которая находится за учетной записью. `user` или `bot`. |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
@@ -659,16 +646,17 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
 ### <a name="conversationparameters-object"></a>Объект ConversationParameters
-Определяет параметры для создания диалога.<br/><br/> 
+Определяет параметры для создания диалога.<br/><br/>
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **isGroup** | Логическое | Указывает, является ли это групповым общением. |
-| **bot** | [ChannelAccount](#channelaccount-object) | Адрес бота в общении. |
-| **members** | array | Список участников для добавления в общение. |
-| **topicName** | строка | Заголовок раздела общения. Это свойство используется только в том случае, если канал его поддерживает. |
-| **activity** | [Действие](#activity-object) | (Необязательно.) Используйте это действие как начальное сообщение при создании нового общения. |
-| **channelData** | object | Полезные данные канала для создания общения. |
+| **isGroup** | Логическое | Указывает, является ли диалог групповым. |
+| **bot** | [ChannelAccount](#channelaccount-object) | Сведения об учетной записи канала, требуемые для отправки сообщения в бот. |
+| **members** | Массив [ChannelAccount](#channelaccount-object) | Сведения об учетной записи канала, требуемые для отправки сообщения каждому пользователю. |
+| **topicName** | строка | (Необязательное.) Тема диалога. Это свойство используется только в том случае, если канал его поддерживает. |
+| **tennantId** | строка | (Необязательное.) Идентификатор клиента, в котором создается диалог. |
+| **activity** | [Действие](#activity-object) | (Необязательное.) Начальное сообщение, отправляемое в создаваемый диалог. |
+| **channelData** | object | Связанные с каналом полезные данные для создания диалога. |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 
@@ -691,9 +679,9 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **activityId** | строка | Идентификатор действия. |
+| **activityId** | строка | Идентификатор действия (при его отправке). |
 | **id** | строка | Идентификатор ресурса. |
-| **serviceUrl** | строка | Конечная точка службы. |
+| **serviceUrl** | строка | Конечная точка службы, в которой могут выполняться операции, связанные с диалогом. |
 
 <a href="#objects">Вернуться к таблице "Схема"</a>
 

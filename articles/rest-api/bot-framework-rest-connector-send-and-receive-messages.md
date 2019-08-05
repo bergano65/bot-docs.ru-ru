@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d0b7b3250a62a995113bc9c7e087e2e62af0f413
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 15ad5855fef9bc20f351e196941fe81822db5451
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997071"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671515"
 ---
 # <a name="send-and-receive-messages"></a>Отправка и получение сообщений
 
@@ -23,7 +23,7 @@ ms.locfileid: "49997071"
 
 ### <a name="create-a-reply"></a>Создание ответа 
 
-Когда пользователь отправляет боту сообщение, этот бот получает сообщение в виде объекта [Action][Activity] с типом **message**. Чтобы создать ответ на сообщение пользователя, создайте объект [Action][Activity] и присвойте ему следующие значения свойств:
+Когда пользователь отправляет боту сообщение, этот бот получает сообщение в виде объекта [Action][Activity] с типом **message**. Чтобы создать ответ на сообщение пользователя, создайте объект [Action][Activity] и задайте ему следующие свойства:
 
 | Свойство | Значение |
 |----|----|
@@ -106,7 +106,7 @@ POST /v3/conversations/{conversationId}/activities
 POST /v3/conversations
 ```
 
-В текст запроса поместите объект [Conversation][Conversation], содержащий сведения об учетной записи бота и учетной записи пользователя или пользователей, которых нужно включить в беседу.
+В текст запроса поместите объект [ConversationParameters][], содержащий сведения об учетной записи бота и учетной записи пользователя или пользователей, которых нужно включить в беседу.
 
 > [!NOTE]
 > Не все каналы поддерживают групповые беседы. Изучите документацию по используемому каналу, чтобы узнать о поддержке групповых бесед и ограничениях на число участников в них.
@@ -153,5 +153,5 @@ Content-Type: application/json
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [ConversationAccount]: bot-framework-rest-connector-api-reference.md#conversationaccount-object
-[Conversation]: bot-framework-rest-connector-api-reference.md#conversation-object
+[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object
 

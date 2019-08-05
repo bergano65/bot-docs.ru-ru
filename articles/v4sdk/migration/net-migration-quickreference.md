@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bbc598ac8cd43b17d2ddaaf0803318ed6121abc
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c878007731ecf6a2f4c3129ef411a8d18d080fef
+ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405991"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68508078"
 ---
 # <a name="net-migration-quick-reference"></a>Краткий справочник по миграции для .NET
 
@@ -563,3 +563,60 @@ services.AddSingleton(conversationState);
 ### <a name="v4"></a>версия 4
 
 [Bot.Builder.Community.Dialogs.Luis](https://www.nuget.org/packages/Bot.Builder.Community.Dialogs.Luis/) теперь представляет библиотеку Bot Builder Community.  Исходный код доступен в [репозитории](https://github.com/BotBuilderCommunity/botbuilder-community-dotnet/tree/develop/libraries/Bot.Builder.Community.Dialogs.Luis) сообщества.
+
+## <a name="to-use-qna-maker"></a>Использование QnA Maker
+
+### <a name="v3"></a>Версия 3
+
+```csharp
+[Serializable]
+[QnAMaker("QnAEndpointKey", "QnAKnowledgebaseId", <ScoreThreshold>, <TotalResults>, "QnAEndpointHostName")]
+public class SimpleQnADialog : QnAMakerDialog
+{
+}
+```
+
+### <a name="v4"></a>версия 4
+
+```csharp
+public class QnABot : ActivityHandler
+{
+  private readonly IConfiguration _configuration;
+  private readonly ILogger<QnABot> _logger;
+  private readonly IHttpClientFactory _httpClientFactory;
+
+  public QnABot(IConfiguration configuration, ILogger<QnABot> logger, IHttpClientFactory httpClientFactory)
+  {
+    _configuration = configuration;
+    _logger = logger;
+    _httpClientFactory = httpClientFactory;
+  }
+
+  protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+  {
+    var httpClient = _httpClientFactory.CreateClient();
+
+    var qnaMaker = new QnAMaker(new QnAMakerEndpoint
+    {
+      KnowledgeBaseId = _configuration["QnAKnowledgebaseId"],
+      EndpointKey = _configuration["QnAEndpointKey"],
+      Host = _configuration["QnAEndpointHostName"]
+    },
+    null,
+    httpClient);
+
+    _logger.LogInformation("Calling QnA Maker");
+
+    // The actual call to the QnA Maker service.
+    var response = await qnaMaker.GetAnswersAsync(turnContext);
+    if (response != null && response.Length > 0)
+    {
+      await turnContext.SendActivityAsync(MessageFactory.Text(response[0].Answer), cancellationToken);
+    }
+    else
+    {
+      await turnContext.SendActivityAsync(MessageFactory.Text("No QnA Maker answers were found."), cancellationToken);
+    }
+  }
+}
+```

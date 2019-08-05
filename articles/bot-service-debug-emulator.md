@@ -8,27 +8,63 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 0e548700e81fff5029031fd1e349cc75d9d0bc7a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464645"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68484041"
 ---
 # <a name="debug-with-the-emulator"></a>Отладка ботов с помощью эмулятора
 
 Эмулятор Bot Framework — это классическое приложение, которое позволяет разработчикам локально или удаленно тестировать и отлаживать боты. С помощью эмулятора вы можете общаться с ботом и проверять сообщения, которые он посылает и получает. Эмулятор отображает сообщения так, как они будут выглядеть в интерфейсе веб-чата, и регистрирует запросы и ответы JSON при обмене сообщениями с ботом. Перед развертыванием бота в облаке запустите его локально и протестируйте с помощью эмулятора. Вы можете протестировать бот с помощью эмулятора, даже если вы еще не [создали](./bot-service-quickstart.md) его в службе Azure Bot или не настроили для запуска во всех каналах.
 
 ## <a name="prerequisites"></a>Предварительные требования
-- Установите [эмулятор](https://aka.ms/Emulator-wiki-getting-started).
+- Установите [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+
+## <a name="run-a-bot-locally"></a>Локальный запуск бота
+Подключаемого к Bot Framework Emulator бота нужно сперва запустить локально. Это можно сделать с помощью Visual Studio, Visual Studio Code или командной строки. Чтобы запустить бота с помощью командной строки, сделайте следующее:
+
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+* В командной строке измените каталог на каталог проекта ботов.
+* Запустите бота, выполнив следующую команду: 
+    ```
+    dotnet run
+    ```
+* Скопируйте номер порта в строке перед текстом *Application started. Press CTRL+C to shut down.*
+
+    ![Номер порта — C#](media/bot-service-debug-emulator/csharp_port_number.png)
+
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+* В командной строке измените каталог на каталог проекта ботов.
+* Запустите бота, выполнив следующую команду:
+    ```
+    node index.js
+    ```
+* Скопируйте номер порта, который прослушивает restify.
+
+    ![Номер порта — JavaScript](media/bot-service-debug-emulator/js_port_number.png)
+---
+
+На этом этапе бот должен запуститься локально. 
+
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Подключение к боту, работающему на локальном узле
 
 ![Интерфейс эмулятора](media/emulator-v4/emulator-welcome.png)
 
-Чтобы подключиться к локально выполняемому боту, щелкните **Open bot** (Открыть бота) или выберите предварительно настроенный файл конфигурации (.bot). Файл конфигурации для подключения к боту не требуется, но при его наличии эмулятор будет с ним работать. Если бот выполняется с [учетными данными учетной записи Майкрософт (MSA)](#use-bot-credentials), введите эти учетные данные.
+Чтобы подключиться к запущенному локально боту, щелкните **Открыть бота**. Добавьте скопированный ранее номер порта в следующий URL-адрес и вставьте полученный URL-адрес в поле "URL-адрес бота":
 
-![Интерфейс эмулятора](media/emulator-v4/emulator-open-bot.png)
+*http://localhost:**номер_порта**/api/messages*
+
+![Интерфейс эмулятора](media/bot-service-debug-emulator/open_bot_emulator.png)
+
+Если бот выполняется с [учетными данными учетной записи Майкрософт (MSA)](#use-bot-credentials), введите эти учетные данные.
+
 
 ### <a name="use-bot-credentials"></a>Использование учетных данных бота
 
@@ -36,36 +72,43 @@ ms.locfileid: "67464645"
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>Просмотр действий с сообщениями с помощью инспектора
 
-Отправьте боту сообщение и получите от него ответ. Можно щелкнуть сообщение в окне беседы, чтобы просмотреть необработанные действия JSON с помощью функции **Инспектор** в правой части окна. При выборе сообщение станет желтым, и объект действия JSON будет отображаться слева от окна чата. Данные JSON включают метаданные ключа, в том числе channelID, тип действия, идентификатор беседы, текстовое сообщение, URL-адрес конечной точки и т. д. Можно проверить действия, отправленные пользователем, а также действия, с помощью которых бот отвечает. 
+Отправьте боту сообщение и получите от него ответ. Сообщение можно щелкнуть в окне беседы, чтобы просмотреть необработанные действия JSON с помощью **компонента для проверки** в правой части окна. При выборе сообщение станет желтым, и объект действия JSON будет отображаться слева от окна чата. Данные JSON включают метаданные ключа, в том числе идентификатор канала, тип действия, идентификатор беседы, текстовое сообщение, URL-адрес конечной точки и т. д. Можно проверить действия, отправленные пользователем, а также действия, с помощью которых бот отвечает.
 
 ![Действия с сообщениями эмулятора](media/emulator-v4/emulator-view-message-activity-03.png)
 
-## <a name="save-and-load-conversations-with-bot-transcripts"></a>Сохранение и загрузка бесед с расшифровками бота
+> [!TIP]
+> Вы можете отлаживать изменения состояния в подключенном к каналу боте, добавив в него [проверяющее ПО промежуточного слоя](bot-service-debug-inspection-middleware.md).
 
-Действия в эмуляторе можно сохранить в качестве расшифровок. В открытом окне интерактивного чата выберите **Save Transcript As** (Сохранить расшифровку как) для файла расшифровки. Нажав кнопку **Начать сначала**, можно в любое время очистить беседу и перезапустить подключение к боту.  
+<!--
+## Save and load conversations with bot transcripts
 
-![Эмулятор сохраняет расшифровки](media/emulator-v4/emulator-save-transcript.png)
+Activities in the emulator can be saved as transcripts. From an open live chat window, select **Save Transcript As** to the transcript file. The **Start Over** button can be used any time to clear a conversation and restart a connection to the bot.  
 
-Чтобы загрузить расшифровки, последовательно выберите **Файл > Open Tranascript File (Открыть файл расшифровки)** , а затем выберите расшифровку. Откроется новое окно расшифровки, и в окне вывода отобразятся действия с сообщениями. 
+![Emulator save transcripts](media/emulator-v4/emulator-save-transcript.png)
 
-![Эмулятор загружает расшифровки](media/emulator-v4/emulator-load-transcript.png)
+To load transcripts, simply select **File > Open Transcript File** and select the transcript. A new Transcript window will open and render the message activity to the output window. 
 
-## <a name="add-services"></a>Добавление служб 
+![Emulator load transcripts](media/emulator-v4/emulator-load-transcript.png)
+--->
+<!---
+## Add services 
 
-Приложение LUIS, базу знаний QnA или модель диспетчеризации можно зарегистрировать для бота напрямую из эмулятора. После загрузки бота нажмите кнопку служб на левом краю окна эмулятора. Вы увидите параметры для добавления LUIS, QnA Maker и средства Dispatch в меню **Службы**. 
+You can easily add a LUIS app, QnA knowledge base, or dispatch model to your bot directly from the emulator. When the bot is loaded, select the services button on the far left of the emulator window. You will see options under the **Services** menu to add LUIS, QnA Maker, and Dispatch. 
 
-Чтобы добавить приложение службы, просто щелкните кнопку **+** и выберите службу, которую хотите добавить. Вам будет предложено войти на портал Azure, чтобы добавить службу в BOT-файл и подключить ее к приложению бота. 
+To add a service app, simply click on the **+** button and select the service you want to add. You will be prompted to sign in to the Azure portal to add the service to the bot file, and connect the service to your bot application. 
 
 > [!IMPORTANT]
-> Добавление служб возможно только в том случае, если вы используете файл конфигурации `.bot`. Службы следует добавлять независимо друг от друга. Дополнительные сведения об этом см. в статье [об управлении ресурсами бота](v4sdk/bot-file-basics.md) или в статьях с руководствами по отдельным службам, которые вы намерены добавить.
+> Adding services only works if you're using a `.bot` configuration file. Services will need to be added independently. For details on that, see [Manage bot resources](v4sdk/bot-file-basics.md) or the individual how to articles for the service you're trying to add.
 >
-> Если вы не используете файл `.bot`, на панели слева не будут указаны службы (даже если бот их использует), а будет отображаться сообщение о том, что *службы недоступны*.
+> If you are not using a `.bot` file, the left pane won't have your services listed (even if your bot uses services) and will display *Services not available*.
 
-![Подключение к LUIS](media/emulator-v4/emulator-connect-luis-btn.png)
+![LUIS connect](media/emulator-v4/emulator-connect-luis-btn.png)
 
-Подключив любую из этих служб, можно вернуться в окно чата в реальном времени и убедиться, что службы подключены и работают. 
+When either service is connected, you can go back to a live chat window and verify that your services are connected and working. 
 
-![QnA подключен](media/emulator-v4/emulator-view-message-activity.png)
+![QnA connected](media/emulator-v4/emulator-view-message-activity.png)
+
+--->
 
 ## <a name="inspect-services"></a>Проверка служб
 
@@ -88,18 +131,16 @@ Open the **Emulator Settings**, enter the path to ngrok, select whether or not t
 ![ngrok path](media/emulator-v4/emulator-ngrok-path.png)
 -->
 
-## <a name="login-to-azure"></a>Вход в Azure
+<!---## Login to Azure
 
-Для входа в учетную запись Azure можно использовать Эмулятор. Это особенно полезно для добавления служб, от которых зависит ваш бот, и управления ими. В разделе [выше](#add-services) представлены дополнительные сведения о службах, которыми вы можете управлять с помощью Эмулятора.
+You can use Emulator to login in to your Azure account. This is particularly helpful for you to add and manage services your bot depends on. 
+See [above](#add-services) to learn more about services you can manage using the Emulator.
+-->
 
-### <a name="to-login"></a>Выполнение входа
-
-![Вход в Azure](media/emulator-v4/emulator-azure-login.png)
-
-Чтобы выполнить вход, сделайте следующее:
-- Щелкните File (Файл)-> Sign in with Azure (Вход с помощью Azure).
+### <a name="login-to-azure"></a>Вход в Azure
+Для входа в учетную запись Azure можно использовать Эмулятор. Это особенно полезно для добавления служб, от которых зависит ваш бот, и управления ими. Войдите в Azure, сделав следующее:
+- Щелкните "Файл" -> "Вход с помощью Azure". ![Вход в Azure](media/emulator-v4/emulator-azure-login.png)
 - На экране приветствия нажмите кнопку Sign in with your Azure account (Войти в систему, используя учетную запись Azure). Здесь вы также можете указать, что Эмулятор должен автоматически выполнять вход после перезагрузки приложения в Эмуляторе.
-
 ![Вход в Azure](media/emulator-v4/emulator-azure-login-success.png)
 
 ## <a name="disabling-data-collection"></a>Отключение сбора данных
@@ -128,10 +169,17 @@ Open the **Emulator Settings**, enter the path to ngrok, select whether or not t
 
 ## <a name="next-steps"></a>Дополнительная информация
 
-Сохранение расшифровки беседы в файл позволяет быстро подбирать и воспроизводить определенные наборы взаимодействий для целей отладки.
+Воспользуйтесь проверяющим ПО промежуточного слоя для отладки подключенного к каналу бота.
 
 > [!div class="nextstepaction"]
-> [Отладка бота с помощью файлов записей разговоров](~/v4sdk/bot-builder-debug-transcript.md)
+> [Отладка бота с помощью файлов записей разговоров](bot-service-debug-inspection-middleware.md)
+
+<!--
+Saving a conversation to a transcript file allows you to quickly draft and replay a certain set of interactions for debugging.
+
+> [!div class="nextstepaction"]
+> [Debug your bot using transcript files](~/v4sdk/bot-builder-debug-transcript.md)
+-->
 
 <!-- Footnote-style URLs -->
 
