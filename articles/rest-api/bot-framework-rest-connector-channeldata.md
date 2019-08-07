@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64564008"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757187"
 ---
 # <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
 
-Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только [текст сообщений и вложения](bot-framework-rest-connector-create-messages.md). Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство `channelData` объекта [Activity][Activity]. Например, с помощью свойства `channelData` бот может передать в Telegram команду отправки наклейки или потребовать, чтобы Office 365 отправил сообщение электронной почты.
+Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только [текст сообщений и вложения](bot-framework-rest-connector-create-messages.md). Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство `channelData` объекта `Activity`. Например, с помощью свойства `channelData` бот может передать в Telegram команду отправки наклейки или потребовать, чтобы Office 365 отправил сообщение электронной почты.
 
 В этой статье описано, как реализовать функции, связанные с каналами, на основе свойства `channelData` в действии сообщения.
 
@@ -27,14 +26,14 @@ ms.locfileid: "64564008"
 | Slack | Отправка сообщений Slack с полным контролем. |
 | Facebook | Отправка уведомлений Facebook из кода приложения. |
 | Telegram | Выполнение действий, реализованных в Telegram, таких как публикация голосового напоминания или наклейки. |
-| Kik | Отправка и получение сообщений Kik | 
+| Kik | Отправка и получение сообщений Kik. | 
 
 > [!NOTE]
-> Значение свойства `channelData` объекта [Activity][Activity] — это объект JSON. Структура этого объекта JSON будет разной в зависимости от канала и реализованных функций, как описано ниже. 
+> Значение свойства `channelData` объекта `Activity` — это объект JSON. Структура этого объекта JSON будет разной в зависимости от канала и реализованных функций, как описано ниже. 
 
 ## <a name="create-a-custom-email-message"></a>Создание пользовательского сообщения электронной почты
 
-Чтобы создать сообщение электронной почты, присвойте свойству `channelData` объекта [Action][Activity] объект JSON, содержащий следующие свойства:
+Чтобы создать сообщение электронной почты, присвойте свойству `channelData` объекта `Activity` объект JSON, содержащий следующие свойства.
 
 [!INCLUDE [Email channelData table](~/includes/snippet-channelData-email.md)]
 
@@ -52,7 +51,7 @@ ms.locfileid: "64564008"
 
 ## <a name="create-a-full-fidelity-slack-message"></a>Создание сообщение Slack с полным контролем
 
-Чтобы создать сообщение Slack с полным контролем, присвойте свойству `channelData` объекта [действия][Activity] объект JSON, который определяет <a href="https://api.slack.com/docs/messages" target="_blank">сообщения</a>, <a href="https://api.slack.com/docs/message-attachments" target="_blank">вложения</a> и (или) <a href="https://api.slack.com/docs/message-buttons" target="_blank">кнопки</a> Slack. 
+Чтобы создать сообщение Slack с полным контролем, присвойте свойству `channelData` объекта `Activity` объект JSON, который определяет <a href="https://api.slack.com/docs/messages" target="_blank">сообщения</a>, <a href="https://api.slack.com/docs/message-attachments" target="_blank">вложения</a> и (или) <a href="https://api.slack.com/docs/message-buttons" target="_blank">кнопки</a> Slack. 
 
 > [!NOTE]
 > Для включения поддержки кнопок в сообщениях Slack необходимо включить **интерактивные сообщения** при [подключении бота](../bot-service-manage-channels.md) к каналу Slack.
@@ -136,7 +135,7 @@ ms.locfileid: "64564008"
 
 ## <a name="create-a-facebook-notification"></a>Создание оповещения Facebook
 
-Чтобы создать оповещение Facebook, присвойте свойству `channelData` объекта [Action][Activity] объект JSON, содержащий следующие свойства: 
+Чтобы создать оповещение Facebook, присвойте свойству `channelData` объекта `Activity` объект JSON, содержащий следующие свойства. 
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
@@ -163,7 +162,7 @@ ms.locfileid: "64564008"
 
 ## <a name="create-a-telegram-message"></a>Создание сообщения Telegram
 
-Чтобы создать сообщение, которое реализует специальные действия Telegram, например предоставление в совместный доступ голосового напоминания или наклейки, присвойте свойству `channelData` объекта [Activity][Activity] объект JSON, который определяет следующие свойства: 
+Чтобы создать сообщение, которое реализует специальные действия Telegram, например предоставление в совместный доступ голосового напоминания или наклейки, присвойте свойству `channelData` объекта `Activity` объект JSON, который определяет следующие свойства. 
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
@@ -237,11 +236,11 @@ ms.locfileid: "64564008"
 
 ## <a name="create-a-native-kik-message"></a>Создание собственного сообщения Kik
 
-Чтобы создать собственное сообщение Kik, присвойте свойству `channelData` объекта [Action][Activity] объект JSON, содержащий следующие свойства: 
+Чтобы создать собственное сообщение Kik, присвойте свойству `channelData` объекта `Activity` объект JSON, содержащий следующие свойства. 
 
 | Свойство | ОПИСАНИЕ |
 |----|----|
-|  отправляемых из облака на устройство | Массив сообщений Kik. См. дополнительные сведения о <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">формате сообщений Kik</a>. |
+| отправляемых из облака на устройство | Массив сообщений Kik. См. дополнительные сведения о <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">формате сообщений Kik</a>. |
 
 В этом фрагменте кода демонстрируется свойство `channelData` для собственного сообщения Kik.
 
@@ -274,6 +273,5 @@ ms.locfileid: "64564008"
 - [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Предварительный просмотр компонентов с помощью Channel Inspector](../bot-service-channel-inspector.md)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

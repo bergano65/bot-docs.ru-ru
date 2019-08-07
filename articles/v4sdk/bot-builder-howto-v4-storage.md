@@ -3,19 +3,18 @@ title: Запись данных напрямую в хранилище | Док
 description: Сведения о том, как выполнять операции чтения и записи непосредственно в хранилище с помощью пакета SDK Bot Framework для .NET.
 keywords: хранилище, чтение и запись, хранилище в памяти, eTag
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 56a95023810bd7d66687c892f449fa31c9394dc8
-ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
+ms.openlocfilehash: 1213e7d0c03fd6faa3768fac85a59bf4c7b5b28a
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67496682"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756984"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
