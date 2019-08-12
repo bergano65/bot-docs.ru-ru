@@ -3,19 +3,18 @@ title: Развертывание бота | Документация Майкр
 description: Развертывание бота в облаке Azure.
 keywords: deploy bot, azure deploy bot, publish bot
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: a5ef32f16ae8424093cebd77ed137fb31ed53a22
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671385"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756793"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -43,6 +42,10 @@ ms.locfileid: "68671385"
 az login
 ```
 Она откроет окно браузера с интерфейсом для входа.
+
+> [!NOTE]
+> При развертывании бота в облаке, отличном от Azure, например US Gov, необходимо выполнить `az cloud set --name <name-of-cloud>` перед `az login`, где &lt;name-of-cloud> обозначает имя зарегистрированного облака, например `AzureUSGovernment`. Если вы хотите вернуться в общедоступное облако, можно запустить `az cloud set --name AzureCloud`. 
+
 
 ### <a name="set-the-subscription"></a>Настройка подписки
 Укажите подписку, которая будет использоваться по умолчанию.
@@ -123,7 +126,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 ### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Получение или создание файлов, необходимых для IIS либо Kudu
 
-**Для ботов на C#**
+### <a name="c-botstabcsharp"></a>[Боты на C#](#tab/csharp)
 
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
@@ -131,7 +134,7 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 
 Необходимо указать путь к CSPROJ-файлу относительно папки --code-dir. Для этого можно применить аргумент --proj-file-path. Эта команда разрешит аргументы --code-dir и --proj-file-path в значение ./MyBot.csproj.
 
-**Для ботов на JavaScript**
+### <a name="javascript-botstabjavascript"></a>[Боты на JavaScript](#tab/javascript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
@@ -139,13 +142,15 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 Эта команда получает файл web.config, который необходим для работы приложений Node.js со службами IIS в Службе приложений Azure. Убедитесь, что файл web.config сохранен в корневой каталог бота.
 
-**Для ботов на TypeScript**
+### <a name="typescript-botstabtypescript"></a>[Боты на TypeScript](#tab/typescript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
 ```
 
 Эта команда работает так же, как предложенный выше код JavaScript, но применяется для бота на Typescript.
+
+---
 
 ### <a name="zip-up-the-code-directory-manually"></a>Архивация каталога кода вручную
 

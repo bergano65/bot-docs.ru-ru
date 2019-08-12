@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 3fad5b66f5137cd4098087e1b01d1f2493800994
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 03facdff733787e95ca3bc68dfee15d747340453
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032599"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757091"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.locfileid: "65032599"
 
 ## <a name="add-a-media-attachment"></a>Добавление мультимедийного вложения  
 
-Чтобы добавить мультимедийное вложение в сообщение, создайте объект [Attachment][Attachment], задайте свойство `name`, задайте для свойства `contentUrl` URL-адрес файла мультимедиа, а для свойства `contentType` — соответствующий тип мультимедиа (например, **image/png**, **audio/wav**, **video/mp4**). Затем в объекте [Activity][Activity], представляющем сообщение, укажите объект [Attachment][Attachment] в массиве `attachments`. 
+Чтобы добавить мультимедийное вложение в сообщение, создайте объект `Attachment`, задайте свойство `name`, задайте для свойства `contentUrl` URL-адрес файла мультимедиа, а для свойства `contentType` — соответствующий тип мультимедиа (например, **image/png**, **audio/wav**, **video/mp4**). Затем в объекте `Activity`, представляющем сообщение, укажите объект `Attachment` в массиве `attachments`. 
 
 Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее текст и одно вложенное изображение. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -65,7 +64,7 @@ Content-Type: application/json
 }
 ```
 
-Для каналов, которые поддерживают встроенные двоичные файлы изображений, можно задать свойство `contentUrl` объекта `Attachment` как двоичный файл base64 изображения (например, **data:image/png;base64,iVBORw0KGgo…**). Канал будет отображать изображение или URL-адрес изображения рядом со строкой текста сообщения.
+Для каналов, которые поддерживают встроенные двоичные файлы изображений, можно задать свойство `contentUrl` объекта `Attachment` как двоичный файл base64 изображения (например, **data:image/png;base64,iVBORw0KGgo…** ). Канал будет отображать изображение или URL-адрес изображения рядом со строкой текста сообщения.
 
 ```json
 {
@@ -102,7 +101,7 @@ Content-Type: application/json
 
 ## <a name="add-an-audiocard-attachment"></a>Добавление вложения AudioCard
 
-Добавление вложения [AudioCard](bot-framework-rest-connector-api-reference.md#audiocard-object) или [VideoCard](bot-framework-rest-connector-api-reference.md#videocard-object) ничем не отличается от добавления вложения мультимедиа. Например, следующий пример кода JSON демонстрирует добавление карточки аудиофайла в мультимедийное вложение.
+Добавление вложения `AudioCard` или `VideoCard` ничем не отличается от добавления вложения мультимедиа. Например, следующий пример кода JSON демонстрирует добавление карточки аудиофайла в мультимедийное вложение.
 
 ```json
 {
@@ -176,7 +175,5 @@ Content-Type: application/json
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Принципы использования карточек в Bot Framework](https://aka.ms/botSpecs-cardSchema)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object

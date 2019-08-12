@@ -3,20 +3,19 @@ title: Обработка прерываний со стороны пользо�
 description: Узнайте, как обрабатывать прерывания со стороны пользователя и прямой поток беседы.
 keywords: interrupt, interruptions, switching topic, break
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 04/18/2019
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ba1bc99608558966f4cf45894b2e04b8f17c9a69
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483967"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757001"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
 
@@ -28,8 +27,8 @@ ms.locfileid: "68483967"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Понимание [основных принципов работы ботов][concept-basics], [managing state][concept-state], [библиотек диалогов][concept-dialogs] и [повторного использования диалогов][component-dialogs].
-- Копия этого примера на языке [**C#** ][cs-sample] or [**JavaScript**][js-sample].
+- Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [повторного использования диалогов][component-dialogs].
+- Вам потребуется копия этого примера на языке [**CSharp**][cs-sample] или [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -40,7 +39,7 @@ ms.locfileid: "68483967"
 
 ## <a name="define-and-implement-the-interruption-logic"></a>Определение и реализация логики прерывания
 
-Сначала нам нужно определить и реализовать прерывания по командам _help_ и _help_.
+Сначала нам нужно определить и реализовать прерывания по командам _help_ и _help_ .
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -52,7 +51,7 @@ ms.locfileid: "68483967"
 
 [!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
 
-В классе `CancelAndHelpDialog` методы `OnBeginDialogAsync` и `OnContinueDialogAsync` вызывают метод `InerruptAsync`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `InterruptAsync`.
+В классе `CancelAndHelpDialog` метод `OnContinueDialogAsync` вызывает метод `InerruptAsync`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `InterruptAsync`.
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
@@ -72,7 +71,7 @@ ms.locfileid: "68483967"
 
 [!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
-В классе `CancelAndHelpDialog` методы `onBeginDialog` и `onContinueDialog` вызывают метод `interrupt`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `interrupt`.
+В классе `CancelAndHelpDialog` метод `onContinueDialog` вызывает метод `interrupt`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `interrupt`.
 
 [!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 

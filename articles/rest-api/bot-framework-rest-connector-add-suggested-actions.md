@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 346c522a1e1cd3d5904b74ad6e6092a1457a001c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: e616c3e3b8d7ee82f5685fe1edc69059acffb1b1
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032587"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757070"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Добавление предлагаемых действий к сообщениям
 > [!div class="op_single_selector"]
@@ -25,7 +24,7 @@ ms.locfileid: "65032587"
 
 ## <a name="send-suggested-actions"></a>Отправка предлагаемых действий
 
-Чтобы добавить предлагаемые действия к сообщению, установите свойство `suggestedActions` для [Activity][Activity], чтобы указать список объектов [CardAction][CardAction], представляющих кнопки, которые будут показаны пользователю. 
+Чтобы добавить предлагаемые действия к сообщению, установите свойство `suggestedActions` для `Activity`, чтобы указать список объектов `CardAction`, представляющих кнопки, которые будут показаны пользователю. 
 
 Следующий запрос отправляет пользователю сообщение, которое предлагает три действия. В этом примере запроса `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -83,9 +82,3 @@ Content-Type: application/json
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 
 [channelInspector]: ../bot-service-channel-inspector.md
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-
-[CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
-
-[SuggestedAction]: bot-framework-rest-connector-api-reference.md#suggestedactions-object

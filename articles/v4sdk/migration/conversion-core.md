@@ -3,23 +3,22 @@ title: Перенос имеющегося чат-бота в новый про�
 description: Узнайте, как перенести имеющийся бот .NET версии 3 в пакет SDK версии 4 для нового проекта .NET Core.
 keywords: bot migration, formflow, dialogs, v3 bot
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d09b52760bf6ef15dac0205d9aef2d3906fcacfd
-ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
+ms.openlocfilehash: c5735b7ad47204dab42abc7b1dd7a15a407b0115
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67344739"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757212"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>Перенос бота .NET версии 3 в бот .NET Core версии 4
 
-В этой статье описывается, как преобразовать бот [ContosoHelpdeskChatBot версии 3](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3) в бот версии 4 _в новом проекте .NET Core_.
+В этой статье описывается, как преобразовать бот [ContosoHelpdeskChatBot версии 3](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3) в бот версии 4 _в новом проекте .NET Core_ .
 Преобразование включает в себя следующие действия:
 
 1. создание проекта на основе шаблона;
@@ -71,7 +70,8 @@ ms.locfileid: "67344739"
 
 В **Startup.cs**:
 
-1. Обновите инструкции `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)].
+1. Обновите инструкции `using`.  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)]
 
 1. Удалите этот конструктор:
     ```csharp
@@ -83,7 +83,8 @@ ms.locfileid: "67344739"
 
 1. Удалите свойство `Configuration`.
 
-1. Обновите метод `ConfigureServices` таким кодом: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=19-41)]
+1. Вместо метода `ConfigureServices` сохраните следующий код:  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=19-41)]
 
 Возможно, на этом этапе возникнут ошибки времени компиляции. Мы исправим их на следующих шагах. 
 
@@ -104,7 +105,8 @@ ms.locfileid: "67344739"
 
 1. Обновите файл **Bots\DialogBots.cs**.
 
-1. Обновите инструкции `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)].
+1. Обновите инструкции `using`.  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
 
 1. Обновите `DialogBot`, добавив универсальный параметр для диалога.
     [!code-csharp[Class definition](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=19)]
@@ -184,7 +186,8 @@ ms.locfileid: "67344739"
 
 В файле **Dialogs/RootDialog.cs** сделайте следующее:
 
-1. Обновите инструкции `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)].
+1. Обновите инструкции `using`.  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
 
 1. Нам нужно преобразовать варианты `HelpdeskOptions` из списка строк в список вариантов. Они будут применяться в строке запроса, которая в качестве допустимых входных данных принимает номер выбранного варианта в списке, значение любого из вариантов или его синоним.
     [!code-csharp[HelpDeskOptions](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=28-33)]
@@ -197,7 +200,7 @@ ms.locfileid: "67344739"
      - Затем он запускает дочерний диалог, связанный с выбранным вариантом.
      - И уже потом он перезапускает сам себя.
    - Каждый шаг каскадного диалога является делегатом. Мы реализуем их далее, по возможности сохраняя существующий код каждого исходного диалога.
-   - При запуске компонентного диалога будет запущен _начальный диалог_. По умолчанию это первый дочерний диалог, добавленный в компонентный диалог. Мы явным образом определим свойство `InitialDialogId`. Это значит, что нам не нужно добавлять основной каскадный диалог первым в набор диалогов. Например, вы можете сначала добавить запросы, и это не вызовет никаких проблем во время выполнения.
+   - При запуске компонентного диалога будет запущен _начальный диалог_ . По умолчанию это первый дочерний диалог, добавленный в компонентный диалог. Мы явным образом определим свойство `InitialDialogId`. Это значит, что нам не нужно добавлять основной каскадный диалог первым в набор диалогов. Например, вы можете сначала добавить запросы, и это не вызовет никаких проблем во время выполнения.
     [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=35-49)]
 
 1. Метод `StartAsync` можно удалить. При запуске компонентный диалог автоматически выполняет свой _начальный_ диалог. В нашем примере это тот каскадный диалог, который мы определяем в конструкторе. Он автоматически начинает выполнение с первого действия.
@@ -232,7 +235,8 @@ ms.locfileid: "67344739"
 
 В файле **Dialogs/InstallAppDialog.cs** сделайте следующее:
 
-1. Обновите инструкции `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)].
+1. Обновите инструкции `using`.  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
 
 1. Определите константу для ключа, чтобы отслеживать собранные сведения.
     [!code-csharp[Key ID](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=17-18)]
@@ -324,16 +328,20 @@ ms.locfileid: "67344739"
 
 В классах моделей необходимо обновить инструкции `using` как показано ниже.
 
-1. В **InstallApps.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/InstallApp.cs?range=4-5)]
+1. В **InstallApps.cs** измените их так:  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/InstallApp.cs?range=4-5)]
 
-1. В **LocalAdmin.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdmin.cs?range=4-5)]
+1. В **LocalAdmin.cs** измените их так:  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdmin.cs?range=4-5)]
 
-1. В **LocalAdminPrompt.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
+1. В **LocalAdminPrompt.cs** измените их так:  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
 
 1. В **ResetPassword.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
     Кроме того, удалите инструкции `using` в пространстве имен.
 
-1. В **ResetPasswordPrompt.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPasswordPrompt.cs?range=4-5)]
+1. В **ResetPasswordPrompt.cs** измените их так:  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPasswordPrompt.cs?range=4-5)]
 
 ### <a name="additional-changes"></a>Дополнительные изменения
 

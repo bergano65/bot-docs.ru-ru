@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997943"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757152"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Создание ботов с помощью службы Bot Connector
 > [!div class="op_single_selector"]
@@ -71,7 +70,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="receive-a-message-from-the-user"></a>Получение сообщения от пользователя
 
-Когда пользователь отправляет сообщение, Bot Framework Connector отсылает запрос POST к конечной точке, указанной вами при [регистрации](../bot-service-quickstart-registration.md) бота. Текст запроса — это объект [Activity][Activity]. В представленном ниже примере приведен текст запроса, который бот получает, когда пользователь отправляет ему простое сообщение. 
+Когда пользователь отправляет сообщение, Bot Framework Connector отсылает запрос POST к конечной точке, указанной вами при [регистрации](../bot-service-quickstart-registration.md) бота. Текст запроса — это объект `Activity`. В представленном ниже примере приведен текст запроса, который бот получает, когда пользователь отправляет ему простое сообщение. 
 
 ```json
 {
@@ -98,7 +97,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="reply-to-the-users-message"></a>Ответ на сообщение пользователя
 
-Когда конечная точка бота получит запрос `POST`, который представляет собой сообщение от пользователя (т. е. `type` = **message**), используйте сведения из этого запроса, чтобы создать объект [Activity][Activity] для ответа.
+Когда конечная точка бота получит запрос `POST`, который представляет собой сообщение от пользователя (т. е. `type` = **message**), используйте сведения из этого запроса, чтобы создать объект `Activity` для ответа.
 
 1. Задайте свойство **conversation** с учетом содержимого свойства **conversation** в сообщении пользователя.
 2. Укажите свойство **from** с учетом содержимого свойства **recipient** в сообщении пользователя.
@@ -107,7 +106,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 Используйте свойство `serviceUrl` во входящем запросе, чтобы [определить базовый URI](bot-framework-rest-connector-api-reference.md#base-uri), который бот будет применять для отправки ответа. 
 
-Чтобы отправить ответ, отправьте запрос `POST` с объектом [Activity][Activity] по адресу `/v3/conversations/{conversationId}/activities/{activityId}`, как показано в примере ниже. Текст этого запроса — это объект [Activity][Activity], в котором пользователю предлагается выбрать доступное время встречи.
+Чтобы отправить ответ, отправьте запрос `POST` с объектом `Activity` по адресу `/v3/conversations/{conversationId}/activities/{activityId}`, как показано в примере ниже. Текст этого запроса — это объект `Activity`, в котором пользователю предлагается выбрать доступное время встречи.
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/bf3cc9a2f5de... 
@@ -195,6 +194,3 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Дополнительная информация
 
 При работе с этим руководством вы получили маркер доступа от Bot Framework и использовали службу Bot Connector для обмена сообщениями с пользователем. Для тестирования и отладки бота можно использовать [Bot Framework Emulator](../bot-service-debug-emulator.md). Чтобы предоставить доступ к боту другим пользователям, нужно [настроить](../bot-service-manage-channels.md) его для работы с одним или несколькими каналами.
-
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

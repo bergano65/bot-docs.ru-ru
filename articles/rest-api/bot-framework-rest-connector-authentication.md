@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: cbe2a6e449ecc2920e3a2d1ecb04a63dcb489b66
-ms.sourcegitcommit: 8336a06941d09e1107b38f494d048dd785a13069
+ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68631562"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757049"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -181,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 В тексте ответа указан документ в [формате JWK](https://tools.ietf.org/html/rfc7517) и также содержатся дополнительные свойства для каждого ключа: `endorsements`. Список ключей относительно стабилен и может кэшироваться в течение длительного времени (по умолчанию — 5 дней в пакете SDK Bot Framework).
 
-Свойство `endorsements` в каждом ключе содержит одну или несколько строк подтверждения, которые можно использовать для аутентификации идентификатора канала, указанного в свойстве `channelId` в объекте [Activity][Activity] входящего запроса. Список идентификаторов каналов, требующих подтверждения, настраивается в каждом боте. По умолчанию в список будут входить все опубликованные идентификаторы каналов, однако разработчики ботов могут переопределить выбранные значения идентификаторов. 
+Свойство `endorsements` в каждом ключе содержит одну или несколько строк подтверждения, которые можно использовать для аутентификации идентификатора канала, указанного в свойстве `channelId` в объекте `Activity` входящего запроса. Список идентификаторов каналов, требующих подтверждения, настраивается в каждом боте. По умолчанию в список будут входить все опубликованные идентификаторы каналов, однако разработчики ботов могут переопределить выбранные значения идентификаторов. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
 
@@ -195,11 +194,11 @@ GET https://login.botframework.com/v1/.well-known/keys
 4. Маркер содержит утверждение "audience" со значением, соответствующим идентификатору приложения Майкрософт для бота.
 5. Маркер является действующим. Отраслевая разница в показаниях часов составляет 5 минут.
 6. Маркер имеет допустимую криптографическую подпись с ключом, приведенным в документе с ключами OpenID, который был получен на [шаге 3](#connector-to-bot-step-3), и алгоритмом подписи, который указан в свойстве `id_token_signing_alg_values_supported`документа метаданных OpenID, который был получен на [шаге 2](#openid-metadata-document).
-7. Маркер содержит утверждение serviceUrl со значением, которое соответствует свойству `servieUrl` в корне объекта [Activity][Activity] входящего запроса. 
+7. Маркер содержит утверждение serviceUrl со значением, которое соответствует свойству `servieUrl` в корне объекта `Activity` входящего запроса. 
 
 Если требуется подтверждение для идентификатора канала:
 
-- любой объект [Activity][Activity], отправляемый в бот, должен сопровождаться маркером JWT, который подписан с использованием подтверждения для этого канала; 
+- любой объект `Activity`, отправляемый в бот с этим идентификатором канала, должен сопровождаться маркером JWT, который подписан с использованием подтверждения для этого канала; 
 - если подтверждение отсутствует, бот должен отклонить запрос, возвратив код состояния **HTTP 403 (Запрещено)** .
 
 > [!IMPORTANT]
@@ -389,8 +388,7 @@ payload:
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Устранение неполадок проверки подлинности Bot Framework](../bot-service-troubleshoot-authentication-problems.md)
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [JSON Web Token (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [JSON Web Signature (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [Документ RFC 7517 для JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -11,10 +11,10 @@ ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "67587476"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
@@ -27,8 +27,8 @@ ms.locfileid: "67587476"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Понимание [основных принципов работы ботов][concept-basics], управления состоянием, , [managing state][concept-state][библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
-- Копия примера сложного диалога на [**C#** ][cs-sample] or [**JavaScript**][js-sample].
+- Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
+- Копия примера сложного диалога на языке [**CSharp**][cs-sample] или [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -41,7 +41,7 @@ ms.locfileid: "67587476"
 
 Диалоги здесь разделены на компоненты `MainDialog`, `TopLevelDialog` и `ReviewSelectionDialog`, которые вместе выполняют следующие действия.
 
-- В них запрашивается имя и возраст пользователя, и в зависимости от возраста пользователя выполняется _ветвление_.
+- В них запрашивается имя и возраст пользователя, и в зависимости от возраста пользователя выполняется _ветвление_ .
   - Если пользователь слишком молод, ему не предлагают оценивать компании.
   - Если пользователь достиг нужного возраста, начинается сбор предпочтений пользователя.
     - В диалогах предлагается пользователю выбрать компанию для оценки.
@@ -242,13 +242,13 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **Dialogs\TopLevelDialog.cs**
 
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
+Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_ .
 
 [!code-csharp[branching logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=68-80)]
 
 **Dialogs\ReviewSelectionDialog.cs**
 
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
+Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_ .
 
 [!code-csharp[looping logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=96-105)]
 
@@ -256,13 +256,13 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **dialogs/topLevelDialog.js**
 
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
+Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_ .
 
 [!code-javascript[branching logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=56-64)]
 
 **dialogs/reviewSelectionDialog.js**
 
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
+Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_ .
 
 [!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
 

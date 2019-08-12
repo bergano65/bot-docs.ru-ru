@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: db09888c5f782b065ff6bd108ce93379cd42527a
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 69c58e1e6bd9da4b07e21f8ca3eb029d2dec9e75
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317684"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757179"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
-Служба Bot Connector выполняет обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][Activity]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
+С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта `Activity`. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Типы действий в службе Bot Connector
 
@@ -25,14 +24,14 @@ ms.locfileid: "54317684"
 
 | тип действия; | ОПИСАНИЕ |
 |------|------|------|
-| Message | Представляет связь между ботом и пользователем. |
+| message | Представляет связь между ботом и пользователем. |
 | conversationUpdate | Указывает, что бот был добавлен в общение, другие участники были добавлены или удалены из него или метаданные общения изменились. |
 | contactRelationUpdate | Указывает, что бот был добавлен или удален из списка контактов пользователя. |
 | typing | Указывает, что пользователь или бот на другом конце общения составляет ответ. | 
 | deleteUserData | Указывает боту, что пользователь выполнил запрос на удаление любых пользовательских данных, которые бот мог сохранить. |
 | endOfConversation | Указывает на конец общения. |
 
-## <a name="message"></a>Message
+## <a name="message"></a>message
 
 Бот отправляет действия **message** для передачи сведений пользователям и получения действий **message** от пользователей. Некоторые сообщения состоят из обычного текста, а другие могут обладать расширенным содержимым, например [мультимедийное вложение](bot-framework-rest-connector-add-media-attachments.md), [кнопки и карты](bot-framework-rest-connector-add-rich-cards.md) или [данные определенных каналов](bot-framework-rest-connector-channeldata.md). Дополнительные сведения о часто используемых свойствах сообщения см. в статье [Создание сообщений](bot-framework-rest-connector-create-messages.md). Дополнительные сведения о часто используемых свойствах сообщения см. в статье [Send and receive messages](bot-framework-rest-connector-send-and-receive-messages.md) (Отправка и получение сообщений). 
 
@@ -65,5 +64,4 @@ ms.locfileid: "54317684"
 
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)

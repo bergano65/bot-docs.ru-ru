@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 15ad5855fef9bc20f351e196941fe81822db5451
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 8ffb3d0572eafccc89bcc2cf6487aeef475bd6b1
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671515"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757143"
 ---
 # <a name="send-and-receive-messages"></a>Отправка и получение сообщений
 
@@ -23,7 +22,7 @@ ms.locfileid: "68671515"
 
 ### <a name="create-a-reply"></a>Создание ответа 
 
-Когда пользователь отправляет боту сообщение, этот бот получает сообщение в виде объекта [Action][Activity] с типом **message**. Чтобы создать ответ на сообщение пользователя, создайте объект [Action][Activity] и задайте ему следующие свойства:
+Когда пользователь отправляет боту сообщение, этот бот получает сообщение в виде объекта `Activity` с типом **message**. Чтобы создать ответ на сообщение пользователя, создайте объект `Activity` и задайте ему следующие свойства:
 
 | Свойство | Значение |
 |----|----|
@@ -46,7 +45,7 @@ ms.locfileid: "68671515"
 POST /v3/conversations/{conversationId}/activities/{activityId}
 ```
 
-В URI этого запроса замените **{conversationId}** значением `id` из объекта `conversation` для действия (ответа), а также замените **{activityId}** значением свойства `replyToId` для действия (ответа). В текст запроса поместите объект [Action][Activity], созданный для представления ответа.
+В URI этого запроса замените **{conversationId}** значением `id` из объекта `conversation` для действия (ответа), а также замените **{activityId}** значением свойства `replyToId` для действия (ответа). В текст запроса поместите объект `Activity`, созданный для представления ответа.
 
 Следующий пример демонстрирует запрос, который отправляет простой текстовый ответ на сообщение пользователя. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -88,7 +87,7 @@ POST /v3/conversations/{conversationId}/activities
 
 В URI запроса замените **{conversationId}** значением идентификатора беседы. 
     
-В текст запроса поместите объект [Action][Activity], созданный для представления сообщения.
+В текст запроса поместите объект `Activity`, созданный для представления ответа.
 
 > [!NOTE]
 > Bot Framework не накладывает каких-либо ограничений на число сообщений, которые может отправлять бот. Тем не менее большинство каналов принудительно применяет ограничения регулирования, запрещая ботам отправлять большое число сообщений за короткий период времени. Кроме того, если бот отправляет несколько сообщений за короткий промежуток времени, канал не всегда может обрабатывать сообщения в правильной последовательности.
@@ -106,7 +105,7 @@ POST /v3/conversations/{conversationId}/activities
 POST /v3/conversations
 ```
 
-В текст запроса поместите объект [ConversationParameters][], содержащий сведения об учетной записи бота и учетной записи пользователя или пользователей, которых нужно включить в беседу.
+В текст запроса поместите объект `ConversationParameters`, содержащий сведения об учетной записи бота и учетной записи пользователя или пользователей, которых нужно включить в беседу.
 
 > [!NOTE]
 > Не все каналы поддерживают групповые беседы. Изучите документацию по используемому каналу, чтобы узнать о поддержке групповых бесед и ограничениях на число участников в них.
@@ -150,8 +149,4 @@ Content-Type: application/json
 
 - [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-[ConversationAccount]: bot-framework-rest-connector-api-reference.md#conversationaccount-object
-[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object
-
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)

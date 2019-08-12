@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 28074e7ad59249cabbd38436bd02dc48bcab5b88
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 522f4f133e6a7b4e5379a27c1ce1a02138402559
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904887"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756927"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -47,7 +46,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 | 204 | Запрос успешно выполнен, но содержимое не было возвращено. |
 | 400 | Запрос неправильный или имеет недопустимый формат. |
 | 401 | Клиент не авторизован для выполнения запроса. Часто этот код состояния возникает, когда заголовок `Authorization` отсутствует или имеет недопустимый формат. |
-| 403 | Клиенту запрещено выполнять запрошенную операцию. Если в запросе указан действительный маркер с истекшим сроком действия, свойство `code` в объекте [Error](bot-framework-rest-connector-api-reference.md#error-object), который возвращается в [ErrorResponse](bot-framework-rest-connector-api-reference.md#errorresponse-object), будет иметь значение `TokenExpired`. |
+| 403 | Клиенту запрещено выполнять запрошенную операцию. Если в запросе указан маркер с истекшим сроком действия, который без этого считался бы действительным, свойство `code` в объекте `Error`, который возвращается в `ErrorResponse`, будет иметь значение `TokenExpired`. |
 | 404 | Запрошенный ресурс не найден. Обычно этот код состояния обозначает, что в запросе указан недопустимый URI. |
 | 500 | Внутренняя ошибка сервера в службе Direct Line |
 | 502 | Бот недоступен или вернул ошибку. **Это обобщенный код ошибки.** |
@@ -57,7 +56,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 ### <a name="errors"></a>Errors
 
-Любой ответ, указывающий код состояния HTTP в диапазоне 4xx или 5xx, будет содержать в тексте ответа объект [ErrorResponse](bot-framework-rest-connector-api-reference.md#errorresponse-object), который предоставляет сведения об ошибке. Если вы получите сообщение об ошибке в диапазоне 4xx, проверьте объект **ErrorResponse**, чтобы определить причину ошибки и устранить проблему, прежде чем повторно отправлять запрос.
+Любой ответ, указывающий код состояния HTTP в диапазоне 4xx или 5xx, будет содержать в тексте ответа объект `ErrorResponse` с информацией об ошибке. Если вы получите сообщение об ошибке в диапазоне 4xx, проверьте объект **ErrorResponse**, чтобы определить причину ошибки и устранить проблему, прежде чем повторно отправлять запрос.
 
 > [!NOTE]
 > Коды состояния HTTP и значения в свойстве `code` в объекте **ErrorResponse** являются неизменными. Значения, указанные в свойстве `message` в объекте **ErrorResponse**, могут изменяться со временем.
@@ -168,8 +167,8 @@ POST /v3/directline/conversations/{conversationId}/activities
 
 | | |
 |----|----|
-| **Текст запроса** | Объект [Activity](bot-framework-rest-connector-api-reference.md#activity-object) |
-| **Возвращает** | Объект [ResourceResponse](bot-framework-rest-connector-api-reference.md#resourceresponse-object), который содержит свойство `id` с идентификатором действия, отправленного боту. | 
+| **Текст запроса** | Объект `Activity` |
+| **Возвращает** | Объект `ResourceResponse`, который содержит свойство `id` с идентификатором действия, отправленного боту. | 
 
 ### <a id="upload-send-files"></a> Загрузка и отправка файлов
 Загружает и отправляет файлы в виде вложений. Задайте параметр `userId` в URI запроса, чтобы указать идентификатор пользователя, отправляющего вложения.
@@ -179,22 +178,22 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 | | |
 |----|----|
-| **Текст запроса** | Для одного вложения заполните текст запроса содержимым файла. Для нескольких вложений создайте текст запроса из нескольких частей, по одной для каждого вложения, а также (необязательно) одну часть для объекта [Activity](bot-framework-rest-connector-api-reference.md#activity-object), которая будет служить контейнером для всех вложений. Дополнительные сведения см. в руководстве по [отправке действия боту](bot-framework-rest-direct-line-3-0-send-activity.md). |
-| **Возвращает** | Объект [ResourceResponse](bot-framework-rest-connector-api-reference.md#resourceresponse-object), который содержит свойство `id` с идентификатором действия, отправленного боту. | 
+| **Текст запроса** | Для одного вложения заполните текст запроса содержимым файла. Для нескольких вложений создайте текст составного запроса, содержащего одну часть для каждого вложения, а также (необязательно) одну часть для объекта `Activity`, который должен служить контейнером для указанного(ых) вложения(й). Дополнительные сведения см. в руководстве по [отправке действия боту](bot-framework-rest-direct-line-3-0-send-activity.md). |
+| **Возвращает** | Объект `ResourceResponse`, который содержит свойство `id` с идентификатором действия, отправленного боту. | 
 
 > [!NOTE]
 > Загруженные файлы удаляются через 24 часа.
 
 ## <a name="schema"></a>Схема
 
-Схема Direct Line 3.0 включает все объекты, которые определены в [схеме Bot Framework v3](bot-framework-rest-connector-api-reference.md#objects), а также объекты `ActivitySet` и `Conversation`.
+Схема Direct Line 3.0 включает все объекты, которые определены в [схеме действия Bot Framework](https://aka.ms/botSpecs-activitySchema), а также объекты `ActivitySet` и `Conversation`.
 
 ### <a name="activityset-object"></a>Объект ActivitySet 
 Определяет набор действий.<br/><br/>
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
-| **действия** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | Массив объектов **Activity**. |
+| **действия** | `Activity`[] | Массив объектов **Activity**. |
 | **watermark** | строка | Максимальное значение для водяного знака действий в наборе. Клиент может использовать значение `watermark`, чтобы указать последнее полученное им сообщение, при [получении новых действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) или при [создании нового URL-адреса потока WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
 
 ### <a name="conversation-object"></a>Объект Conversation
@@ -209,7 +208,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 ### <a name="activities"></a>Действия
 
-Для каждого объекта [Activity](bot-framework-rest-connector-api-reference.md#activity-object), полученного клиентом от бота через Direct Line, выполняется следующее:
+Для каждого объекта `Activity`, полученного клиентом от бота через Direct Line, выполняется следующее:
 
 - сохраняются карточки, включенные как вложения;
 - URL-адреса отправленных вложений подменяются частной ссылкой;
@@ -217,7 +216,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 Клиенты могут [получать](bot-framework-rest-direct-line-3-0-receive-activities.md) несколько действий от бота как набор действий ([ActivitySet](#activityset-object)). 
 
-Когда клиент отправляет объект [Activity](bot-framework-rest-connector-api-reference.md#activity-object) боту через Direct Line, происходит следующее:
+Когда клиент отправляет боту объект `Activity` через Direct Line, происходит следующее:
 
 - свойство `type` принимает тип отправленного действия (обычно это **message**);
 - свойство `from` заполняется идентификатором пользователя, выбранным клиентом;
@@ -226,3 +225,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 - Общий размер действия, сериализованного и зашифрованного в формате JSON, не должен превышать 256 тысяч символов. Поэтому рекомендуется, чтобы количество действий не превышало 150 тысяч. Если требуется больше данных, разбейте действие на несколько составных частей или рассмотрите возможность использования вложений.
 
 В каждом запросе клиент может [отправить](bot-framework-rest-direct-line-3-0-send-activity.md) только одно действие. 
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)

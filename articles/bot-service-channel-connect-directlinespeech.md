@@ -6,17 +6,16 @@ services: bot-service
 author: trrwilson
 manager: nitinme
 ms.service: bot-service
-ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 114274a66492d421a7b3d6294d77ee83d336d3ca
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: f38caad2a1b09e8f07e5fe8c7ea7bf7e2b2dfd6f
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405922"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756845"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>Подключение бота к каналу Direct Line Speech (предварительная версия)
 
@@ -32,7 +31,7 @@ ms.locfileid: "67405922"
 
 ## <a name="add-the-direct-line-speech-channel"></a>Добавление канала Direct Line Speech
 
-1. Чтобы добавить канал Direct Line Speech, откройте нужный бот на [портале Azure](https://portal.azure.com) и щелкните **Каналы** в колонке конфигурации.
+1. В браузере перейдите на [портал Azure](https://portal.azure.com). Выберите из списка ресурсов нужный ресурс **регистрации канала бота**. Щелкните элемент **Каналы** в разделе *Управление ботом* в колонке конфигурации.
 
     ![Выделенное расположение для выбора каналов для подключения](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-selectchannel.png "Selecting channels")
 
@@ -50,19 +49,17 @@ ms.locfileid: "67405922"
 
 Подключив канал Direct Line Speech к боту, следует включить поддержку протокола потоковой передачи Bot Framework, чтобы организовать оптимальное взаимодействие с низкой задержкой.
 
-1. Если вы этого еще не сделали, откройте колонку бота на [портале Azure](https://portal.azure.com). 
-
-1. Щелкните **Параметры** в категории **Bot Management** (Управление ботом) (расположена под элементом **Каналы**). Установите флажок **Enable Streaming Endpoint** (Включить конечную точку потоковой передачи).
+1. В колонке конфигурации ресурса **Регистрация канала бота** щелкните **Параметры** в категории **Управление ботом** (расположена под элементом **Каналы**). Установите флажок **Enable Streaming Endpoint** (Включить конечную точку потоковой передачи).
 
     ![Включение протокола потоковой передачи](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablestreamingsupport.png "Enable streaming extension support")
 
 1. В верхней части страницы нажмите кнопку **Сохранить**.
 
-1. В той же колонке в категории **Параметры службы приложений** щелкните **Конфигурация**.
+1. Выберите из списка ресурсов нужный ресурс **Службы приложений**. В открывшейся колонке щелкните в категории **Параметры** элемент **Конфигурация**.
 
     ![Переход к параметрам службы приложений](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-configureappservice.png "Configure the app service")
 
-1. Щелкните `General settings` и выберите параметр, включающий поддержку `Web socket`.
+1. Щелкните вкладку `General settings` и выберите параметр, включающий поддержку `Web socket`.
 
     ![Включение WebSocket для службы приложений](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablewebsockets.png "Enable websockets")
 
@@ -72,9 +69,17 @@ ms.locfileid: "67405922"
 
 ## <a name="manage-secret-keys"></a>Управление секретными ключами
 
-Клиентским приложениям нужен секрет канала, чтобы подключиться к боту через канал Direct Line Speech. Сохранив выбор канала, вы можете получить эти секретные ключи на странице **Configure Direct Line Speech** (Настройка Direct Line Speech) на портале Azure.
+Клиентским приложениям нужен секрет канала, чтобы подключиться к боту через канал Direct Line Speech. Сохранив выбор канала, вы можете получить эти секретные ключи, выполнив следующие действия.
 
-![Получение секретных ключей для канала Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "Getting secret keys for Direct Line Speech")
+1. Выберите из списка ресурсов нужный ресурс **регистрации канала бота**. Щелкните элемент **Каналы** в разделе *Управление ботом* в колонке конфигурации.
+1. Щелкните ссылку **Изменить** для канала Direct Line Speech.
+
+    ![Получение секретных ключей для канала Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys1.png "Getting secret keys for Direct Line Speech")
+
+    Отобразится следующее сообщение:
+
+    ![Получение секретных ключей для канала Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "Getting secret keys for Direct Line Speech")
+1. Откройте и скопируйте ключи для использования в приложении.
 
 ## <a name="adding-protocol-support-to-your-bot"></a>Добавление поддержки протокола в бот
 
