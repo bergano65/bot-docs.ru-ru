@@ -3,19 +3,18 @@ title: Добавление телеметрии в бот | Документа�
 description: Узнайте, как интегрировать новые функции телеметрии в бот.
 keywords: telemetry, appinsights, monitor bot
 author: WashingtonKayaker
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd2de7055baf6a37323ad49ccd206c11e8829d9d
-ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
+ms.openlocfilehash: 290a8525e6aadd3f6f9a126c98d55674c0dc306c
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/27/2019
-ms.locfileid: "68591035"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970688"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -387,6 +386,7 @@ There are three main components available for your bot to log telemetry, and eac
 - A  [Bot Framework Middleware component](#telemetry-middleware) (*TelemetryLoggerMiddleware*) that will log when messages are received, sent, updated or deleted. You can override for custom logging.
 - [*LuisRecognizer* class.](#telemetry-support-luis)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 - [*QnAMaker*  class.](#telemetry-qnamaker)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
+
 
 All components log using the `IBotTelemetryClient`  (or `BotTelemetryClient` in node.js) interface which can be overridden with a custom implementation.
 

@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/25/2018
-ms.openlocfilehash: f8f04c8b0cbd2b43f29676f0315739f4cc7716b3
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.date: 08/02/2019
+ms.openlocfilehash: 5a520c2fc5b9e94976e9a2618286aa184045bdeb
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757171"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866632"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -309,83 +309,6 @@ GET /v3/attachments/{attachmentId}/views/{viewId}
 | `Get Conversation Data` | Извлекает данные состояния, сохраненные ранее для конкретного общения на канале. |
 | `Get Private Conversation Data` | Извлекает данные состояния, сохраненные ранее для конкретного пользователя в контексте указанного общения на канале. |
 | `Delete State For User` | Удаляет данные состояния, сохраненные ранее для конкретного пользователя. |
-
-### <a name="set-user-data"></a>Задать данные пользователя
-Сохраняет данные состояния для конкретного пользователя на указанном канале.
-```http
-POST /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Объект `BotData` |
-| **Возвращает** | Объект `BotData` | 
-
-### <a name="set-conversation-data"></a>Установить данные общения
-Сохраняет данные состояния для указанного общения на указанном канале.
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Объект `BotData` |
-| **Возвращает** | Объект `BotData` | 
-
-### <a name="set-private-conversation-data"></a>Установить личные данные общения
-Сохраняет данные состояния для конкретного пользователя в контексте указанного общения на указанном канале.
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Объект `BotData` |
-| **Возвращает** | Объект `BotData` | 
-
-### <a name="get-user-data"></a>Получить данные пользователя
-Извлекает данные состояния, сохраненные ранее для конкретного пользователя во всех сеансах общения на указанном канале.
-```http
-GET /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Объект `BotData` | 
-
-### <a name="get-conversation-data"></a>Получить данные общения
-Извлекает данные состояния, сохраненные ранее для конкретного общения на указанном канале.
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Объект `BotData` | 
-
-### <a name="get-private-conversation-data"></a>Получить личные данные общения
-Извлекает данные состояния, сохраненные ранее для конкретного пользователя в контексте указанного общения на указанном канале.
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [`BotData` | 
-
-### <a name="delete-state-for-user"></a>Удалить состояние для пользователя
-Удаляет данные состояния, сохраненные ранее для конкретного пользователя на указанном канале, используя операцию [Установить данные пользователя](#set-user-data) или операцию [Установить личные данные общения](#set-private-conversation-data).
-```http
-DELETE /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Массив строк (идентификаторы) | 
 
 ## <a name="bot-framework-activity-schema"></a>Схема действия в Bot Framework
 

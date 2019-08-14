@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1213e7d0c03fd6faa3768fac85a59bf4c7b5b28a
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3743f798377de5bb1279e2af1b0124682a5575f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756984"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970697"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -390,8 +390,8 @@ const { CosmosDbStorage } = require("botbuilder-azure");
 **bot.js**
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 
 // Create local Memory Storage - commented out.
 // var storage = new MemoryStorage();
@@ -523,8 +523,8 @@ const { BlobStorage } = require("botbuilder-azure");
 
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 ```
 Теперь обновите код, чтобы связать _storage_ с существующей учетной записью хранилища BLOB-объектов, закомментировав предыдущие определения хранилища и добавив следующее.
 
