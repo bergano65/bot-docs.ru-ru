@@ -1,10 +1,8 @@
 # Виртуальный помощник
 ## [Обзор](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [Общие сведения о шаблонах](../v4sdk/bot-builder-virtual-assistant-template.md)
-## [Начало работы](../v4sdk/bot-builder-virtual-assistant-gettingstarted.md)
 # Навыки 
 ## [Обзор](../v4sdk/bot-builder-skills-overview.md)
-## [Начало работы](../v4sdk/bot-builder-skills-gettingstarted.md)
 # WebChat
 ## [Обзор](../v4sdk/bot-builder-webchat-overview.md)
 ## [Настройка](../v4sdk/bot-builder-webchat-customization.md)
