@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 1b3b11723cc93c32aef92250518d2ffc16435460
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 62fda46569c6134f798b4d253a0676a037fdfa0f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757786"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866460"
 ---
-## <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Создание клиента .NET для подключения к расширению Службы приложений Direct Line
+# <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Создание клиента .NET для подключения к расширению Службы приложений Direct Line
 
 В этой статье описано, как создать клиент .NET на языке C#, который подключается к расширению Службы приложений Direct Line.
 
-### <a name="gather-your-direct-line-extension-keys"></a>Сбор ключей расширения Direct Line
+## <a name="gather-your-direct-line-extension-keys"></a>Сбор ключей расширения Direct Line
 
 1. В браузере перейдите на [портал Azure](https://portal.azure.com/).
 1. На портале Azure найдите ресурс **службы Azure Bot**.
@@ -29,12 +29,12 @@ ms.locfileid: "68757786"
 1. Прокрутите вниз до раздела "Сайты". Обычно здесь отображается сайт по умолчанию, если вы его не удалили и не переименовали.
 1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, и скопируйте его значение.
 
-![Ключи расширения Службы приложений](./media/channels/direct-line-extension-extension-keys-net-client.png)
+    ![Ключи расширения Службы приложений](./media/channels/direct-line-extension-extension-keys-net-client.png)
 
 > [!NOTE]
 > Клиент Direct Line использует это значение секрета для подключения к расширению Службы приложений Direct Line. При желании вы можете создать дополнительные сайты и указать здесь их секреты.
 
-### <a name="add-the-preview-nuget-package-source"></a>Добавление источника предварительных версий пакета NuGet
+## <a name="add-the-preview-nuget-package-source"></a>Добавление источника предварительных версий пакета NuGet
 
 Пакеты NuGet предварительной версии, необходимые для создания клиента Direct Line на C#, можно получить из веб-канала NuGet.
 
@@ -46,7 +46,7 @@ ms.locfileid: "68757786"
 1. Чтобы сохранить новые значения, нажмите кнопку **Обновить**.
 1. Щелкните **ОК**, чтобы выйти из режима настройки источника пакетов.
 
-### <a name="create-a-c-direct-line-client"></a>Создание клиента Direct Line на C#
+## <a name="create-a-c-direct-line-client"></a>Создание клиента Direct Line на C#
 
 Взаимодействие с расширением службы приложений Direct существенно отличается от обычной работы с Direct Line, так как значительная часть взаимодействия выполняется через *WebSocket*. Обновленный клиент Direct Line содержит вспомогательные классы для открытия и закрытия *WebSocket*, отправки команд через WebSocket и получения действий от бота. В этом разделе описывается, как создать простой клиент C# для взаимодействия с ботом.
 

@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404907"
 ---
 # <a name="support-localization"></a>Поддержка локализации
@@ -134,7 +134,7 @@ var bot = new builder.UniversalBot(connector, [
 ]);
 ```
 
-На внутреннем уровне пакет SDK вызывает [`session.preferredLocale()`][preferredLocale] для получения предпочтительного языкового стандарта пользователя, а затем использует этот параметр в вызове [`session.localizer.gettext()`][GetText] для сопоставления идентификатора сообщения с локализованной текстовой строкой.  Бывают случаи, когда необходимо вручную вызвать локализатор. Например, значения перечисления, переданные в [`Prompts.choice()`][promptsChoice], автоматически не локализуются, поэтому может потребоваться вручную извлечь локализованный список перед вызовом запроса.
+На внутреннем уровне пакет SDK вызывает [`session.preferredLocale()`][preferredLocale], чтобы получить предпочтительный языковой стандарт пользователя, а затем использует этот параметр в вызове [`session.localizer.gettext()`][GetText], чтобы сопоставить идентификатор сообщения с локализованной текстовой строкой.  Бывают случаи, когда необходимо вручную вызвать локализатор. Например, значения перечисления, переданные в [`Prompts.choice()`][promptsChoice], автоматически не локализуются. Поэтому перед вызовом запроса может потребоваться вручную извлечь локализованный список.
 
 ```javascript
 var options = session.localizer.gettext(session.preferredLocale(), "choice_options");

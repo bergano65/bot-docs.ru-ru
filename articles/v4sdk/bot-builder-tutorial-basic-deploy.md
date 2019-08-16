@@ -3,19 +3,18 @@ title: Руководство по созданию и развертывани�
 description: Узнайте, как создать простой бот и развернуть его в Azure.
 keywords: echo bot, deploy, azure, tutorial
 author: Ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9f8b4ec1442d7647a69bd691ddca98f02e086850
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 45acff9701e7a99a6ed550091745d7323a730092
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671536"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970677"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство по Создание и развертывание простого бота
 
@@ -87,8 +86,10 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 
 Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
 
-# <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)](#tab/newrg)
-
+## <a name="deploy-via-arm-template-with-new-resource-group"></a>Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)
+<!--
+## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
+-->
 #### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
 Вы создадите новую группу ресурсов в Azure, а затем с помощью шаблона ARM создадите указанные в нем ресурсы. В нашем примере это план Службы приложений, веб-приложение и регистрация каналов бота.
@@ -104,7 +105,10 @@ az deployment create --name "name-of-deployment" --template-file "template-with-
 | location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
 | parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `botSku` обозначает ценовую категорию — F0 (Бесплатный) или S1 (Стандартный). `newAppServicePlanName` — имя плана Службы приложений. `newWebAppName` — имя веб-приложения, которое вы создаете. `groupName` — имя группы ресурсов Azure, которую вы создаете. `groupLocation` — расположение группы ресурсов Azure. `newAppServicePlanLocation` — расположение плана Службы приложений. |
 
-# <a name="deploy-via-arm-template-with-existing--resource-grouptaberg"></a>[Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)](#tab/erg)
+## <a name="deploy-via-arm-template-with-existing-resource-group"></a>Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)
+<!--
+## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
+-->
 
 #### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
@@ -117,7 +121,7 @@ az deployment create --name "name-of-deployment" --template-file "template-with-
 _Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
 
 ```cmd
-az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" newappServicePlanLocation="location"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 **Вариант 2. Новый план Службы приложений** 
@@ -141,7 +145,9 @@ az group deployment create --name "name-of-deployment" --resource-group "name-of
 #### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Получение или создание файлов, необходимых для IIS либо Kudu
 
 **Для ботов на C#**
-
+<!--
+### [C# bots](#tab/csharp)
+-->
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
 ```
@@ -149,7 +155,9 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 Необходимо указать путь к CSPROJ-файлу относительно папки --code-dir. Для этого можно применить аргумент --proj-file-path. Эта команда разрешит аргументы --code-dir и --proj-file-path в значение ./MyBot.csproj.
 
 **Для ботов на JavaScript**
-
+<!--
+### [Javascript bots](#tab/javascript)
+-->
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
 ```

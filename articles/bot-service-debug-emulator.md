@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
 ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68484041"
 ---
 # <a name="debug-with-the-emulator"></a>Отладка ботов с помощью эмулятора
@@ -163,7 +163,7 @@ See [above](#add-services) to learn more about services you can manage using the
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Эмулятор Bot Framework — это решение с открытым исходным кодом. Вы можете [принять участие][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs] в разработке, отправляя ошибки и предложения.
+Эмулятор Bot Framework — это решение с открытым исходным кодом. Вы можете [принять участие][EmulatorGithubContribute] в разработке, [отправляя сведения об ошибках и предложения][EmulatorGithubBugs].
 
 Подробные сведения см. в статье об [устранении общих проблем](bot-service-troubleshoot-bot-configuration.md) и других статья об устранении неполадок в этом разделе.
 

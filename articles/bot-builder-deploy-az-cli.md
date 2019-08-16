@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a5ef32f16ae8424093cebd77ed137fb31ed53a22
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e8ad6d3f365fefef3e2a6978802bfb02688d317c
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756793"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970574"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -57,6 +57,7 @@ az account set --subscription "<azure-subscription>"
 Если вы не уверены, какую подписку выбрать для развертывания бота, просмотрите список подписок в учетной записи с помощью команды `az account list`. Перейдите в папку бота.
 
 ### <a name="create-an-app-registration"></a>Регистрация приложения
+
 Регистрация приложения означает, что вы сможете использовать Azure AD для аутентификации пользователей и для запроса доступа к ресурсам пользователей. Боту нужно зарегистрированное в Azure приложение, которое предоставит боту доступ к службе Bot Framework для отправки и получения сообщений с проверкой подлинности. Чтобы зарегистрировать приложение с помощью Azure CLI, выполните следующую команду:
 
 ```cmd
@@ -71,10 +72,15 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 
 Приведенная выше команда выводит код JSON с ключом `appId`. Сохраните значение этого ключа для развертывания с помощью ARM, где этот ключ нужно указать в параметре `appId`. Предоставленный пароль будет использоваться в параметре `appSecret`.
 
-Вы можете развернуть бота в новой группе ресурсов или использовать существующую. Выберите любой вариант, который вам подходит.
+> [!NOTE] 
+> Если вы хотите использовать существующую регистрацию приложения, выполните следующую команду: az bot create --kind webapp --resource-group "имя_группы_ресурсов" --name "имя_веб_приложения" --appid "идентификатор_существующего_приложения" --password "пароль_существующего_приложения" --lang "JavaScript | C#"_
 
-# <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)](#tab/newrg)
+Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
 
+## <a name="deploy-via-arm-template-with-new-resource-group"></a>Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)
+<!--
+## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
+-->
 ### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
 Вы создадите новую группу ресурсов в Azure, а затем с помощью шаблона ARM создадите указанные в нем ресурсы. В нашем примере это план Службы приложений, веб-приложение и регистрация каналов бота.
@@ -90,7 +96,10 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 | location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
 | parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `botSku` обозначает ценовую категорию — F0 (Бесплатный) или S1 (Стандартный). `newAppServicePlanName` — имя плана Службы приложений. `newWebAppName` — имя веб-приложения, которое вы создаете. `groupName` — имя группы ресурсов Azure, которую вы создаете. `groupLocation` — расположение группы ресурсов Azure. `newAppServicePlanLocation` — расположение плана Службы приложений. |
 
-# <a name="deploy-via-arm-template-with-existing--resource-grouptaberg"></a>[Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)](#tab/erg)
+## <a name="deploy-via-arm-template-with-existing--resource-group"></a>Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)
+<!--
+## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
+-->
 
 ### <a name="create-azure-resources"></a>Создание ресурсов Azure
 
@@ -100,7 +109,8 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 
 В этом варианте мы используем существующий план Службы приложений, но создаем новое веб-приложение и новую регистрацию каналов бота. 
 
-_Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
+> [!NOTE]
+> Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения.
 
 ```cmd
 az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
@@ -126,7 +136,10 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 ### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Получение или создание файлов, необходимых для IIS либо Kudu
 
-### <a name="c-botstabcsharp"></a>[Боты на C#](#tab/csharp)
+### <a name="c-bots"></a>Боты C#
+<!--
+### [C# bots](#tab/csharp)
+-->
 
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
@@ -134,7 +147,11 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 
 Необходимо указать путь к CSPROJ-файлу относительно папки --code-dir. Для этого можно применить аргумент --proj-file-path. Эта команда разрешит аргументы --code-dir и --proj-file-path в значение ./MyBot.csproj.
 
-### <a name="javascript-botstabjavascript"></a>[Боты на JavaScript](#tab/javascript)
+
+### <a name="javascript-bots"></a>Боты JavaScript
+<!--
+### [Javascript bots](#tab/javascript)
+-->
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
@@ -142,7 +159,10 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 Эта команда получает файл web.config, который необходим для работы приложений Node.js со службами IIS в Службе приложений Azure. Убедитесь, что файл web.config сохранен в корневой каталог бота.
 
-### <a name="typescript-botstabtypescript"></a>[Боты на TypeScript](#tab/typescript)
+### <a name="typescript-bots"></a>Боты TypeScript
+<!--
+### [Typescript bots](#tab/typescript)
+-->
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
@@ -192,7 +212,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 6. В колонке *Регистрация канала бота* щелкните **Тестировать в веб-чате**.
 Или на панели справа щелкните поле "Тест".
 
-См. также о регистрации канала в руководстве по [регистрации бота с помощью службы Azure Bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+См. также о регистрации канала в руководстве по [регистрации бота с помощью службы Azure Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
 
 > [!NOTE]
 > Колонка — это область, в которой отображаются функции службы или элементы навигации.
@@ -202,4 +222,4 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 
 ## <a name="next-steps"></a>Дополнительная информация
 > [!div class="nextstepaction"]
-> [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)
+> [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)

@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404912"
 ---
 # <a name="handle-user-and-conversation-events"></a>Обработка событий пользователя и диалога
@@ -44,7 +44,7 @@ Bot Framework предоставляет событие [conversationUpdate][con
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-Вы также можете указать, что происходит после активации действия, предоставив обработчик [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted]. Для активируемых действий вы можете указать обработчик onInterrupted, чтобы перехватывать прерывание, прежде чем оно произойдет. Дополнительные сведения см. в статье об [обработке событий пользователя](bot-builder-nodejs-dialog-actions.md).
+Вы также можете указать, что происходит после активации действия, предоставив обработчик [onSelectAction][onSelectAction]. Для активируемых действий вы можете указать обработчик [onInterrupted][onInterrupted], чтобы перехватывать прерывание, прежде чем оно произойдет. Дополнительные сведения см. в статье об [обработке событий пользователя](bot-builder-nodejs-dialog-actions.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

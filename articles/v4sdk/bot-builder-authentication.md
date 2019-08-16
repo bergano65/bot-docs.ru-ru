@@ -2,21 +2,24 @@
 title: Добавление проверки подлинности к боту с помощью службы Azure Bot | Документация Майкрософт
 description: Сведения об использовании функции проверки подлинности службы Azure Bot для добавления боту функции единого входа.
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
-ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
+ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/27/2019
-ms.locfileid: "68591049"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991984"
 ---
-<!-- Related TODO:
+<!-- 
+
+ms.author: v-jofing
+
+Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
 - Check guidance in [DirectLine authentication](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
 -->
@@ -79,8 +82,6 @@ ms.locfileid: "68591049"
 - **Подготовка примера кода бота**
 
 Завершив этот процесс, вы получите локально выполняемый бот, который может отвечать на несколько простых действий с использованием приложения AAD, например проверять и отправлять электронную почту или отображать сведения о пользователе и его руководителе. Чтобы это сделать, бот будет использовать токен приложения Azure AD библиотеки Microsoft.Graph. Вам не обязательно публиковать бота, чтобы протестировать возможности OAuth для проверки подлинности, но боту потребуется допустимый идентификатор приложения Azure и пароль к нему.
-
-Эти функции проверки подлинности работают и с другими типами ботов. Но в этом руководстве рассматривается только бот регистрации.
 
 ### <a name="web-chat-and-direct-line-considerations"></a>Рекомендации по веб-чатам и Direct Line
 
@@ -406,6 +407,33 @@ ms.locfileid: "68591049"
 
 ---
 
+### <a name="adding-teams-authentication"></a>Добавление аутентификации Teams
+
+В контексте OAuth Teams работает несколько иначе, чем другие каналы. Чтобы правильно реализовать аутентификацию, нужно внести несколько изменений. Мы добавим код из примера бота аутентификации Teams ([C#][cs-teams-auth-sample]/[JavaScript][js-teams-auth-sample]).
+ 
+Одно из различий между другими каналами и Teams заключается в том, что Teams отправляет в бот действие *invoke*, а не действие *event*. 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+
+---
+
+При использовании *запроса OAuth* это действие invoke должно быть переадресовано в диалог. Это будет сделано в `TeamsActivityHandler`. Добавьте в файл основного диалога следующий код. 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+
+---
+Наконец, добавьте соответствующий файл `TeamsActivityHandler` (`TeamsActivityHandler.cs` для ботов C# `teamsActivityHandler.js` для ботов JavaScript) в папку бота самого верхнего уровня.
+
+`TeamsActivityHandler` также отправляет действия *message reaction*. Действие message reaction ссылается на исходное действие с помощью поля *reply to ID*. Это действие также должно отображаться в [веб-канале активности ][teams-activity-feed] в Microsoft Teams.
+
 ### <a name="further-reading"></a>Дополнительные материалы
 
 - [Дополнительные ресурсы Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help) содержат ряд ссылок с сопроводительной информацией.
@@ -429,3 +457,6 @@ ms.locfileid: "68591049"
 [js-auth-sample]: https://aka.ms/v4js-bot-auth-sample
 [cs-msgraph-sample]: https://aka.ms/v4cs-auth-msgraph-sample
 [js-msgraph-sample]: https://aka.ms/v4js-auth-msgraph-sample
+[cs-teams-auth-sample]:https://aka.ms/cs-teams-auth-sample
+[js-teams-auth-sample]:https://aka.ms/js-teams-auth-sample
+[teams-activity-feed]:[https://aka.ms/teams-activity-feed

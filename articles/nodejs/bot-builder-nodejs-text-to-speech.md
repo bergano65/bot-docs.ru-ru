@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404694"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866647"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -72,9 +71,9 @@ ms.locfileid: "67404694"
 
 ## <a name="sample-code"></a>Пример кода 
 
-Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">примере игрока</a> на сайте GitHub.
+См. <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">полный пример на сайте GitHub</a>, в котором показано, как создать бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для Node.js.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Пример игрока (GitHub)</a>
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">Пример игрока (GitHub)</a>

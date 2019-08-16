@@ -3,19 +3,18 @@ title: Обработка действий | Документация Майкр
 description: Сведения об обработке действий в пакете SDK для ботов.
 keywords: адаптер ботов, пользовательское ПО промежуточного слоя, укорачивание, резервирование, обработчики событий
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 315bebddeda21301d29fa003ce9c8f43e1677000
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404314"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970724"
 ---
 # <a name="activity-processing"></a>Обработка действий
 
@@ -23,7 +22,7 @@ ms.locfileid: "67404314"
 
 Боты и пользователи взаимодействуют и обмениваются данными с помощью действий. Каждое действие, получаемое приложением бота, передается адаптеру бота, который передает сведения о действиях в логику бота и в конечном счете отправляет ответы пользователю. Получение действия и последующая его обработка ботом называется репликовым шагом. Репликовый шаг представляет один полный цикл работы бота. Шаг завершается, когда выполнены все операции, действие полностью обработано и завершены все уровни бота.
 
-Действия, особенно те, которые [отправляет бот](#generating-responses) в рамках репликового шага, обрабатываются асинхронно. Это необходимая часть построения бота. Если нужно разобраться, как это работает, изучите в зависимости от выбора языка [средства асинхронного программирования для .NET](https://docs.microsoft.com/dotnet/csharp/async) или [средства асинхронного программирования для JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function).
+Действия, особенно те, которые [бот отправляет](#generating-responses) в рамках шага, обрабатываются асинхронно. Это необходимая часть построения бота. Если нужно разобраться, как это работает, изучите в зависимости от выбора языка [средства асинхронного программирования для .NET](https://docs.microsoft.com/dotnet/csharp/async) или [средства асинхронного программирования для JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function).
 
 ## <a name="the-bot-adapter"></a>Адаптер бота
 

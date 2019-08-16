@@ -8,14 +8,14 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 6b6e841e49ab800b239961cf5ae54dc2d5feab23
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757776"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970605"
 ---
-## <a name="net-bot-with-direct-line-app-service-extension"></a>Бот .NET с расширением Службы приложений Direct Line
+# <a name="configure-net-bot-for-extension"></a>Настройка бота .NET для использования расширения
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
@@ -24,6 +24,10 @@ ms.locfileid: "68757776"
 ## <a name="prerequisites"></a>Предварительные требования
 
 Чтобы выполнить описанные далее действия, вам потребуется ресурс **Службы приложений Azure** и связанная с ним **Служба приложений** в Azure.
+
+## <a name="enable-direct-line-app-service-extension"></a>Включение расширения Службы приложений Direct Line
+
+В этом разделе описывается, как включить расширение службы Direct Line с использованием ключей из конфигурации канала бота и ресурса **Службы приложений Azure**, в котором размещен ваш бот.
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Настройка бота .NET для использования расширения Службы приложений Direct Line
 
@@ -71,10 +75,6 @@ ms.locfileid: "68757776"
 
 1. **Опубликуйте** бота в Службе приложений Azure.
 1. В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`.
-
-## <a name="enable-direct-line-app-service-extension"></a>Включение расширения Службы приложений Direct Line
-
-В этом разделе описывается, как включить расширение службы Direct Line с использованием ключей из конфигурации канала бота и ресурса **Службы приложений Azure**, в котором размещен ваш бот.
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Сбор ключей расширения Direct Line
 
