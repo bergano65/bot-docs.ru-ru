@@ -43,7 +43,7 @@ ms.locfileid: "67464765"
 
 ## <a name="built-on-enterprise-grade-technology"></a>Встроенная технология корпоративного уровня
 
-В основе решения "Личный помощник" лежат такие службы, как Azure Bot, Language Understanding Cognitive Service, единая служба распознавания речи, а также множество вспомогательных компонентов Azure. Это означает, что вы можете использовать преимущества [глобальной инфраструктуры Azure](https://azure.microsoft.com/global-infrastructure/).
+В основе решения &quot;Личный помощник&quot; лежат такие службы, как Azure Bot, Language Understanding Cognitive Service, единая служба распознавания речи, а также множество вспомогательных компонентов Azure. Это означает, что вы можете использовать преимущества [глобальной инфраструктуры Azure](https://azure.microsoft.com/global-infrastructure/).
 
 Кроме того, поддержка функций распознавания речи обеспечивается службой LUIS Cognitive Service, которая поддерживает [ряд языков](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) предоставляет дополнительные возможности машинного перевода, расширяя возможности личного помощника.
 
