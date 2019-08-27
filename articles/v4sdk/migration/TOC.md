@@ -5,7 +5,10 @@
 # [Краткий справочник по миграции для JavaScript](javascript-migration-quickreference.md)
 # [Перенос бота .NET версии 3 в бот .NET Framework версии 4](conversion-framework.md)
 # [Перенос бота .NET версии 3 в бот .NET Core версии 4](conversion-core.md)
-# [Перенос бота JavaScript версии 3 в версию 4](conversion-javascript.md)
+# [Использование пользовательского состояния .NET версии 3 в боте версии 4](csharp-user-state-using.md)
+# [Перенос бота JavaScript версии 3 в бот версии 4](conversion-javascript.md)
+# [Использование пользовательского состояния JavaScript версии 3 в боте версии 4](javascript-user-state-using.md)
+
 
 <!-- Current target:
 _intro/overview_
