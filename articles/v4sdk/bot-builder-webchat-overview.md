@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757104"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037388"
 ---
 # <a name="web-chat-overview"></a>Общие сведения о веб-чате
 
@@ -27,7 +27,7 @@ ms.locfileid: "68757104"
 > Сведения о предыдущих версиях веб-чата (версия 3) см. [на сайте GitHub](https://github.com/Microsoft/BotFramework-WebChat/tree/v3).
 
 Сначала создайте бот с помощью [службы Azure Bot](https://azure.microsoft.com/services/bot-service/).
-После этого вам необходимо [получить секрет веб-чата бота](../bot-service-channel-connect-webchat.md#step-1) на портале Azure. Затем с помощью секрета [создайте маркер](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) и передайте его в свой веб-чат.
+После этого вам необходимо [получить секрет веб-чата бота](../bot-service-channel-connect-webchat.md#get-your-bot-secret-key) на портале Azure. Затем с помощью секрета [создайте маркер](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) и передайте его в свой веб-чат.
 
 Добавить элемент управления веб-чата на веб-сайт можно следующим образом:
 

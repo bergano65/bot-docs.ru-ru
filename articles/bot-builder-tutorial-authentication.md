@@ -1,20 +1,19 @@
 ---
 title: Добавление проверки подлинности к боту с помощью службы Azure Bot | Документация Майкрософт
 description: Сведения об использовании функции проверки подлинности службы Azure Bot для добавления боту функции единого входа.
-author: JonathanFingold
-ms.author: JonathanFingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d1b14d405b4df19db81269fc1f588305840485bd
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3bd411da4edd30b6045654884aeae5ae1cc4239f
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405963"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890527"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -225,7 +224,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
     </appSettings>
     ```
 
-    Если вы не знаете, как получить значения для **идентификатора приложения Майкрософт** и **пароля приложения Майкрософт**, вы можете создать новый пароль, как описано здесь: [Пароль службы "Регистрация каналов бота"](bot-service-quickstart-registration.md#bot-channels-registration-password) Или получите **идентификатор приложения Майкрософт** и **пароль приложения Майкрософт**, предоставляемые при **регистрации каналов бота**, из развертывания, как описано здесь: [Find Your Azure Bot’s AppID and AppSecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) (Поиск идентификатора и секрета приложения для бота Azure)
+    Если вы не знаете, как получить значения для **идентификатора приложения Майкрософт** и **пароля приложения Майкрософт**, вы можете создать новый пароль, как описано здесь: [Пароль службы "Регистрация каналов бота"](bot-service-quickstart-registration.md#get-registration-password) Или получите **идентификатор приложения Майкрософт** и **пароль приложения Майкрософт**, предоставляемые при **регистрации каналов бота**, из развертывания, как описано здесь: [Find Your Azure Bot’s AppID and AppSecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) (Поиск идентификатора и секрета приложения для бота Azure)
 
     > [!NOTE]
     > Теперь код бота можно опубликовать в подписке Azure (щелкните проект правой кнопкой мыши и выберите **Опубликовать**), но это действие необязательно для текущего руководства. Необходимо будет настроить конфигурацию публикации, которая использует план приложения и размещения, который использовался при настройке бота на портале Azure.

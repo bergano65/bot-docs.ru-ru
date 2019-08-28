@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8dfa76d02b2338916011040771a1c1b7e7cb7d76
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 0b9e2c406ee20535dfb065639beda8b66d0a2996
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756910"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037349"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Отправка действия боту
 
@@ -20,7 +20,7 @@ ms.locfileid: "68756910"
 
 ## <a name="send-an-activity"></a>Отправка действия
 
-Чтобы отправить действие боту, клиент должен создать объект `Activity` с определением действия, а затем выполнить запрос `POST` к `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, указав в теле этого запроса объект Activity.
+Чтобы отправить действие боту, клиент должен создать объект [Действие][] для определения действия, а затем выполнить запрос `POST` к `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, указав объект Activity в теле запроса.
 
 Ниже приведены примеры фрагментов кода для запроса отправки действия и соответствующего ответа.
 
@@ -75,11 +75,11 @@ HTTP/1.1 200 OK
 
 ## <a name="send-attachments-to-the-bot"></a>Отправка вложений боту
 
-В некоторых случаях клиенту может потребоваться отправить боту вложения, такие как изображения или документы. Отправка вложений осуществляется либо путем [указания URL-адресов](#send-by-url) вложений в объекте `Activity`, отправляемом клиентом с помощью `POST /v3/directline/conversations/{conversationId}/activities`, либо путем [передачи вложений](#upload-attachments) через `POST /v3/directline/conversations/{conversationId}/upload`.
+В некоторых случаях клиенту может потребоваться отправить боту вложения, такие как изображения или документы. Отправка вложений осуществляется либо путем [указания URL-адресов](#send-by-url) вложений в объекте [Действие][], отправляемом клиентом с помощью `POST /v3/directline/conversations/{conversationId}/activities`, либо путем [передачи вложений](#upload-attachments) с помощью `POST /v3/directline/conversations/{conversationId}/upload`.
 
 ## <a id="send-by-url"></a> Отправка вложений по URL-адресу
 
-Чтобы отправить одно или несколько вложений в составе объекта `Activity` с помощью `POST /v3/directline/conversations/{conversationId}/activities`, нужно просто включить один или несколько объектов `Attachment` в объект Activity и задать свойству `contentUrl` каждого объекта Attachment значения HTTP, HTTPS или URI `data` вложения.
+Чтобы отправить одно или несколько вложений в составе объекта [Действие][] с помощью `POST /v3/directline/conversations/{conversationId}/activities`, нужно просто включить один или несколько объектов [Вложение][] в объект Activity и задать свойству `contentUrl` каждого объекта Attachment значения HTTP, HTTPS или URI `data` вложения.
 
 ## <a id="upload-attachments"></a> Отправка вложений путем передачи
 
@@ -192,3 +192,6 @@ HTTP/1.1 200 OK
 - [Получение действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [Конец общения](bot-framework-rest-direct-line-3-0-end-conversation.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object
+[Вложение]: bot-framework-rest-connector-api-reference.md#attachment-object

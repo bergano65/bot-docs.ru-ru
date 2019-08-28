@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3cbc28bf228d8b8106bce40b5c39b5baf287a287
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e5d0ee3ffd97de190c4e009fe96568b1463c07ab
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757126"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037464"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "68757126"
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Указание текста, произносимого ботом
 
-Чтобы указать текст, который бот будет произносить по каналу с поддержкой речи, задайте свойство `speak` в объекте `Activity`, который представляет ваше сообщение. Можно установить свойство `speak` в текстовую строку или строку, которая отформатирована как <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Speech Synthesis Markup Language (SSML)</a> (Язык разметки синтеза речи) — язык разметки на основе XML, который позволяет управлять различными характеристиками речи бота, такими как голос, скорость, громкость, произношение, тон и другое. 
+Чтобы указать текст, который бот будет произносить по каналу с поддержкой речи, задайте свойство `speak` в объекте [Действие][], который представляет ваше сообщение. Можно установить свойство `speak` в текстовую строку или строку, которая отформатирована как <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Speech Synthesis Markup Language (SSML)</a> (Язык разметки синтеза речи) — язык разметки на основе XML, который позволяет управлять различными характеристиками речи бота, такими как голос, скорость, громкость, произношение, тон и другое. 
 
 В следующем примере запроса показана отправка сообщения, которое задает текст для отображения и текст для произнесения и указывает, что бот [принимает входные данные пользователя](bot-framework-rest-connector-add-input-hints.md). Он определяет свойство `speak`, используя формат <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a>, чтобы указать, что слово "sure" должно быть произнесено с умеренным количеством акцентов. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -67,3 +67,5 @@ Content-Type: application/json
 - [Добавление подсказок для ввода в сообщения](bot-framework-rest-connector-add-input-hints.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Язык разметки синтеза речи (Speech Synthesis Markup Language, SSML)</a>
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object

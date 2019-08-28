@@ -3,19 +3,18 @@ title: Отправка приветственного сообщения пол
 description: Сведения о том, как создать приветствие, которое бот отправляет пользователю.
 keywords: overview, develop, user experience, welcome, personalized experience, C#, JS, welcome message, bot, greet, greeting
 author: DanDev33
-ms.author: v-dashel
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 24009289f65d214663693aa9221f9e076ba93bc2
-ms.sourcegitcommit: d29d3d7ccef401aa1e84e19e623db33b5ff13e63
+ms.openlocfilehash: df1d0b7553958664c57147b5a45520b591a965f4
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67160630"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890628"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
@@ -60,7 +59,7 @@ ms.locfileid: "67160630"
 В момент запуска создается объект состояния пользователя, а в конструктор бота добавляются зависимости.
 
 **Startup.cs.**  
-[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
+[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=30-34)]
 
 **WelcomeUserBot.cs**  
 [!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
@@ -69,7 +68,7 @@ ms.locfileid: "67160630"
 Параметры хранилища в памяти и состояния пользователя на момент запуска определены в файле index.js.
 
 **Index.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,32-39)]
 
 ---
 
@@ -85,7 +84,9 @@ ms.locfileid: "67160630"
 Теперь мы создадим метод доступа к свойству, который будет выполнять роль дескриптора для свойства WelcomedUserProperty, хранимого в UserState.
 
 **WelcomeBot.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-9)]
+
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=17-22)]
 
 ---
 
@@ -101,7 +102,7 @@ ms.locfileid: "67160630"
 Этот код JavaScript отправляет начальное приветственное сообщение при добавлении пользователя. Для этого мы проверяем, является ли диалог активным и добавлен ли новый участник в диалог.
 
 **WelcomeBot.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-88)]
 
 ---
 

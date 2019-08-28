@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c5268a16f7dcff8e46d3a14f32409517eb98489
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: bb243e1530155819afb4ab4061da1e29908f58e4
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970712"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026352"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
@@ -81,7 +81,7 @@ ms.locfileid: "68970712"
 При каждом запросе страницы уведомления бота соответствующий контроллер извлекает из словаря ссылки на беседы.
 Этот контроллер выполняет методы `ContinueConversationAsync` и `BotCallback`, чтобы отправить упреждающее сообщение.
 
-[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-59&highlight=28,40-43)]
+[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-60&highlight=28,40-43)]
 
 Для отправки упреждающего сообщения адаптеру нужен идентификатор приложения бота. В рабочей среде для этого можно использовать реальный идентификатор приложения бота. В локальной тестовой среде подойдет любой произвольный идентификатор. Если боту еще не назначен идентификатор приложения, контроллер уведомления самостоятельно генерирует заполнитель и применяет его в вызове.
 
@@ -93,7 +93,7 @@ ms.locfileid: "68970712"
 Затем сервер выполняет метод `continueConversation`, чтобы отправить упреждающее сообщение.
 Параметр `continueConversation` является функцией, которая используется как обработчик шага бота для этого шага.
 
-[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=56-62&highlight=4-5)]
+[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=56-68&highlight=4-5)]
 
 ---
 

@@ -8,18 +8,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/18/2019
-ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757001"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026328"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
-
-<!-- Rebuild to link to published samples in the master branch -->
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
@@ -39,7 +36,7 @@ ms.locfileid: "68757001"
 
 ## <a name="define-and-implement-the-interruption-logic"></a>Определение и реализация логики прерывания
 
-Сначала нам нужно определить и реализовать прерывания по командам _help_ и _help_ .
+Сначала нам нужно определить и реализовать прерывания по командам _help_ и _help_.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -49,7 +46,7 @@ ms.locfileid: "68757001"
 
 Первым делом мы реализуем класс `CancelAndHelpDialog` для обработки прерываний со стороны пользователя.
 
-[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
 В классе `CancelAndHelpDialog` метод `OnContinueDialogAsync` вызывает метод `InerruptAsync`, чтобы проверить наличие прерываний со стороны пользователя. Если процесс прерывается, вызываются методы базового класса. В противном случае возвращается значение, полученное из `InterruptAsync`.
 
@@ -93,7 +90,7 @@ ms.locfileid: "68757001"
 
 При поступлении действия с новым сообщением бот выполняет `MainDialog`. В `MainDialog` у пользователя спрашивается, какая помощь тому требуется. Затем запускается `BookingDialog` в методе `MainDialog.ActStepAsync` с помощью вызова `BeginDialogAsync`, как показано ниже.
 
-[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=82-83)]
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=6,26)]
 
 После этого в методе `FinalStepAsync` класса `MainDialog` завершается диалог бронирования — оно считается завершенным или отмененным.
 
@@ -107,7 +104,7 @@ ms.locfileid: "68757001"
 
 При поступлении действия с новым сообщением бот выполняет `MainDialog`. В `MainDialog` у пользователя спрашивается, какая помощь тому требуется. Затем запускается `bookingDialog` в методе `MainDialog.actStep` с помощью вызова `beginDialog`, как показано ниже.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=90-97&highlight=96-97)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
 
 После этого в методе `finalStep` класса `MainDialog` завершается диалог бронирования — оно считается завершенным или отмененным.
 
@@ -147,7 +144,7 @@ ms.locfileid: "68757001"
 
 Наконец, в `Startup.cs` создается временный бот, то есть на каждом шаге создается новый экземпляр бота.
 
-[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=47-48)]
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=43-44)]
 
 Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 
@@ -161,7 +158,7 @@ ms.locfileid: "68757001"
 
 Наконец, в `index.js` создается бот.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=69-73)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
 
 Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 

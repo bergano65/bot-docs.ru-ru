@@ -3,31 +3,29 @@ title: Реализация процесса общения | Документа
 description: Сведения о том, как управлять простым процессом общения с помощью диалогов в пакете SDK Bot Framework.
 keywords: simple conversation flow, sequential conversation flow, dialogs, prompts, waterfalls, dialog set
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c3c116eec8222ce50cd7dde672cc86f9765a3f97
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 27d7e5ee6edd4cedfb9d59b318d9a3765e2f0ad8
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67587487"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890611"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Библиотека диалогов предоставляет полезные встроенные функции, такие как классы *запросов*, которые позволяют легко задавать вопросы и проверять ответ, чтобы убедиться в том, что он соответствует определенному типу данных или удовлетворяет пользовательские правила проверки. 
+Сбор данных путем размещения вопросов — это один из основных способов взаимодействия между ботом и пользователями. Библиотека диалогов предоставляет полезные встроенные функции, такие как классы *запросов*, которые позволяют легко задавать вопросы и проверять ответ, чтобы убедиться в том, что он соответствует определенному типу данных или удовлетворяет пользовательские правила проверки.
 
-С помощью библиотеки диалогов можно управлять простыми и сложными процессами общения. В самом простом сценарии взаимодействия бот выполняет фиксированную последовательность действий и завершает диалог. В общем случае диалог нужен для того, чтобы собрать для бота информацию от пользователя. В этом разделе подробно описано, как реализовать простой процесс общения путем создания запросов и их вызова из каскадного диалога. 
+С помощью библиотеки диалогов можно управлять простыми и сложными процессами общения. В самом простом сценарии взаимодействия бот выполняет фиксированную последовательность действий и завершает диалог. В общем случае диалог нужен для того, чтобы собрать для бота информацию от пользователя. В этом разделе подробно описано, как реализовать простой процесс общения путем создания запросов и их вызова из каскадного диалога.
 
 > [!TIP]
-> Примеры написания запросов без использования библиотеки диалогов см. в статье о [создании собственных запросов для сбора вводимых пользовательских данных](bot-builder-primitive-prompts.md). 
-
+> Примеры написания запросов без использования библиотеки диалогов см. в статье о [создании собственных запросов для сбора вводимых пользовательских данных](bot-builder-primitive-prompts.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -39,7 +37,7 @@ ms.locfileid: "67587487"
 В примере диалога с несколькими запросами мы применим каскадный диалог, несколько запросов и компонентный диалог для реализации простого взаимодействия, в рамках которого пользователю предлагается несколько вопросов. Код диалога циклически перебирает следующие действия:
 
 | Действия        | Тип запроса  |
-|:-------------|:-------------| 
+|:-------------|:-------------|
 | Запрос к пользователю о режиме транспортировки | Запрос выбора |
 | Запрос имени пользователя | Запрос текста |
 | Запрос к пользователю, готов ли он указать свой возраст | Запрос подтверждения |
@@ -67,8 +65,6 @@ ms.locfileid: "67587487"
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат на следующем шаге с помощью `stepContext.Result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
-
-
 
 Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `NameStepAsync` в каскадном диалоге.
 
@@ -104,17 +100,17 @@ ms.locfileid: "67587487"
 
 В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
 
-[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
+[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат из контекста шага на следующем шаге. Здесь для этого используется `step.result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
 
 Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `nameStep` в каскадном диалоге.
 
-[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=75-78)]
+[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=73-76)]
 
 В `ageStep` мы укажем строку повторного запроса для тех случаев, когда входные данные не пройдут проверку из-за неправильного формата для анализа или несоответствия критерию проверки, который указан выше в конструкторе, для конкретного запроса. Если строка повторного запроса не указана, в таких случаях пользователю будет повторно предоставляться исходный текст запроса для получения входных данных.
 
-[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=90-101&highlight=5)]
+[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=88-99&highlight=5)]
 
 **userProfile.js**
 
@@ -126,7 +122,7 @@ ms.locfileid: "67587487"
 
 На последнем шаге мы проверяем значение `step.result`, возвращенное диалогом, который мы вызвали на предыдущем каскадном шаге. Если возвращаемое значение равно TRUE, мы используем метод доступа для профиля пользователя, чтобы получить и обновить профиль пользователя. Чтобы получить профиль пользователя, мы вызовем метод `get`, а затем зададим новые значения свойств `userProfile.transport`, `userProfile.name` и `userProfile.age`. Наконец, мы сообщим пользователю сводку данных и вызовем метод `endDialog` для завершения диалога. Завершенный диалог удаляется из стека диалогов, а его результат (если есть) возвращается в родительский диалог. Родительским считается диалог или метод, в котором был запущен только что завершившийся диалог.
 
-[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
+[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=113-134&highlight=4-8,20-21)]
 
 **Создание метода расширения для запуска каскадного диалога**
 
@@ -136,7 +132,7 @@ ms.locfileid: "67587487"
 
 Контекст диалога позволяет начать диалог по идентификатору строки или продолжить текущий диалог (например, выполнить очередной шаг каскадного диалога). Контекст диалога передается через все диалоги и каскадные действия бота.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
 
 ---
 
@@ -154,7 +150,9 @@ ms.locfileid: "67587487"
 
 Обработчик `onMessage` использует вспомогательный метод, чтобы начать или продолжить диалог. В `onDialog` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. (Метод `onDialog` вызывается последним, после выполнения всех остальных определенных обработчиков, таких как `onMessage`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но раньше завершения самого шага.)
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-44)]
+**bots/dialogBot.js**
+
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
 
 ---
 
@@ -172,15 +170,15 @@ ms.locfileid: "67587487"
 
 В `Startup` мы регистрируем службы для бота. Эти службы доступны в других частях кода через механизм внедрения зависимостей.
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-41)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
-В `index.js` мы регистрируем службы для бота. 
+В `index.js` мы регистрируем службы для бота.
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-49)]
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-46)]
 
 ---
 
