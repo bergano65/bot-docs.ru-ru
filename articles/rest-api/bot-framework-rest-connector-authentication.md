@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757049"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037531"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -180,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 В тексте ответа указан документ в [формате JWK](https://tools.ietf.org/html/rfc7517) и также содержатся дополнительные свойства для каждого ключа: `endorsements`. Список ключей относительно стабилен и может кэшироваться в течение длительного времени (по умолчанию — 5 дней в пакете SDK Bot Framework).
 
-Свойство `endorsements` в каждом ключе содержит одну или несколько строк подтверждения, которые можно использовать для аутентификации идентификатора канала, указанного в свойстве `channelId` в объекте `Activity` входящего запроса. Список идентификаторов каналов, требующих подтверждения, настраивается в каждом боте. По умолчанию в список будут входить все опубликованные идентификаторы каналов, однако разработчики ботов могут переопределить выбранные значения идентификаторов. 
+Свойство `endorsements` в каждом ключе содержит одну или несколько строк подтверждения, которые можно использовать для аутентификации идентификатора канала, указанного в свойстве `channelId` в объекте [Действие][] входящего запроса. Список идентификаторов каналов, требующих подтверждения, настраивается в каждом боте. По умолчанию в список будут входить все опубликованные идентификаторы каналов, однако разработчики ботов могут переопределить выбранные значения идентификаторов. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Шаг 4. Проверка маркера JWT
 
@@ -194,7 +194,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 4. Маркер содержит утверждение "audience" со значением, соответствующим идентификатору приложения Майкрософт для бота.
 5. Маркер является действующим. Отраслевая разница в показаниях часов составляет 5 минут.
 6. Маркер имеет допустимую криптографическую подпись с ключом, приведенным в документе с ключами OpenID, который был получен на [шаге 3](#connector-to-bot-step-3), и алгоритмом подписи, который указан в свойстве `id_token_signing_alg_values_supported`документа метаданных OpenID, который был получен на [шаге 2](#openid-metadata-document).
-7. Маркер содержит утверждение serviceUrl со значением, которое соответствует свойству `servieUrl` в корне объекта `Activity` входящего запроса. 
+7. Маркер содержит утверждение serviceUrl со значением, которое соответствует свойству `servieUrl` в корне объекта [Действие][] входящего запроса. 
 
 Если требуется подтверждение для идентификатора канала:
 
@@ -392,3 +392,5 @@ payload:
 - [JSON Web Token (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [JSON Web Signature (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [Документ RFC 7517 для JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517)
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object
