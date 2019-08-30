@@ -2,25 +2,26 @@
 title: Создание бота с помощью службы Bot | Документация Майкрософт
 description: Узнайте, как создать бот с помощью службы Bot, интегрированной выделенной среды разработки ботов.
 keywords: Quickstart, create bot, bot service, web app bot
-author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
-ms.date: 07/19/2019
-ms.openlocfilehash: c4274df084fb0f25535aacb0173e19bc93f20ba1
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.date: 08/15/2019
+ms.openlocfilehash: b8307877bf08db170173486ec9df88fae4d27c29
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68484421"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890620"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Создание бота с помощью службы Azure Bot
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Служба Azure Bot предоставляет основные компоненты для создания ботов, включая пакет SDK Bot Framework для разработки ботов и службу ботов для подключения ботов к каналам. В этой статье вы сможете выбрать шаблон .NET или Node.js для создания бота с помощью пакета SDK Bot Framework версии 4.
+
+>[!NOTE] 
+> Созданный вами бот автоматически регистрируется в службе Azure Bot. Если у вас уже есть размещенный в другом месте бот и вы хотите зарегистрировать его, см. статью [Регистрация бота с помощью службы Bot](../bot-service-quickstart-registration.md).
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
 
@@ -57,7 +58,7 @@ ms.locfileid: "68484421"
 
 Убедитесь, что бот был развернут, проверив раздел **Уведомления**. Уведомление изменится с **Развертывание выполняется...** на **Развертывание выполнено**. Чтобы открыть колонку ресурсов бота, нажмите кнопку **Перейти к ресурсу**.
 
-После создания бота проверьте его в компоненте "Веб-чат". 
+После создания бота проверьте его в компоненте "Веб-чат".
 
 ## <a name="test-the-bot"></a>Тестирование бота
 В разделе **управления ботами** щелкните **Test in Web Chat** (Тестирование в веб-чате). Служба Azure Bot загрузит элемент управления "Веб-чат" и подключится к боту. 
@@ -65,6 +66,16 @@ ms.locfileid: "68484421"
 ![Тестирование с помощью элемента управления "Веб-чат" в Azure](../media/azure-bot-quickstarts/azure-webchat-test.png)
 
 Введите сообщение. Бот должен ответить.
+
+## <a name="manual-app-registration"></a>Регистрация приложений вручную
+
+Регистрацию вручную необходимо выполнять в таких ситуациях:
+
+- Вы не можете выполнить регистрацию в своей организации, и требуется третья сторона, чтобы создать идентификатор приложения для бота, сборка которого выполняется.
+- Вам нужно вручную создать свой идентификатор приложения (и пароль).
+
+Подробные сведения см. в разделе [Регистрация приложения](../bot-service-resources-bot-framework-faq.md#app-registration).
+
 
 ## <a name="download-code"></a>Скачать код
 Можно скачать код, чтобы работать с ним локально. 

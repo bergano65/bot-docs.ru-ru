@@ -2,22 +2,20 @@
 title: Перенос существующего бота JavaScript версии 3 в новый проект версии 4 | Документация Майкрософт
 description: Узнайте, как перенести существующий бот JavaScript версии 3 в пакет SDK версии 4, используя новый проект.
 keywords: JavaScript, bot migration, dialogs, v3 bot
-author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
-ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
+ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67344591"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026392"
 ---
-# <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Перенос бота на основе пакета SDK для JavaScript версии 3 в версию 4
+# <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Перенос бота JavaScript версии 3 в бот версии 4
 
 В этой статье описано, как перенести бота [core-MultiDialogs-v3](https://aka.ms/v3-js-core-multidialog-migration-sample) на основе пакета SDK для JavaScript версии 3 в новый бот JavaScript версии 4.
 Это преобразование включает следующие этапы:

@@ -3,19 +3,18 @@ title: Создание сложного потока беседы с испол
 description: Сведения о том, как управлять сложным потоком беседы с помощью диалогов из пакета SDK Bot Framework.
 keywords: complex conversation flow, repeat, loop, menu, dialogs, prompts, waterfalls, dialog set
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "67587476"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890638"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
@@ -41,7 +40,7 @@ ms.locfileid: "67587476"
 
 Диалоги здесь разделены на компоненты `MainDialog`, `TopLevelDialog` и `ReviewSelectionDialog`, которые вместе выполняют следующие действия.
 
-- В них запрашивается имя и возраст пользователя, и в зависимости от возраста пользователя выполняется _ветвление_ .
+- В них запрашивается имя и возраст пользователя, и в зависимости от возраста пользователя выполняется _ветвление_.
   - Если пользователь слишком молод, ему не предлагают оценивать компании.
   - Если пользователь достиг нужного возраста, начинается сбор предпочтений пользователя.
     - В диалогах предлагается пользователю выбрать компанию для оценки.
@@ -64,7 +63,7 @@ ms.locfileid: "67587476"
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Диалог, который будет использовать бот.
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-39)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -80,8 +79,7 @@ ms.locfileid: "67587476"
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Диалог, который будет использовать бот.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-38)]
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=43-45)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-55)]
 
 ---
 
@@ -206,7 +204,7 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **Bots\DialogAndWelcome.cs**
 
-`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к диалогу. Именно он вызывается из `Startup.cs`.
+`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `Startup.cs`.
 
 [!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
 
@@ -226,11 +224,11 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 Обработчик сообщений вызывает вспомогательный метод `run` для управления диалогом, и мы реализовали обработчик реплик так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, выполненные в рамках текущей реплики. Вызов `next` позволяет базовой реализации вызвать метод `onDialog`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
 
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=30-47)]
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
 
 **bots/dialogAndWelcomeBot.js**
 
-`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к диалогу. Именно он вызывается из `Startup.cs`.
+`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `index.js`.
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 
@@ -242,13 +240,13 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **Dialogs\TopLevelDialog.cs**
 
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_ .
+Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
 
 [!code-csharp[branching logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=68-80)]
 
 **Dialogs\ReviewSelectionDialog.cs**
 
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_ .
+Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
 
 [!code-csharp[looping logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=96-105)]
 
@@ -256,13 +254,13 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **dialogs/topLevelDialog.js**
 
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_ .
+Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
 
 [!code-javascript[branching logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=56-64)]
 
 **dialogs/reviewSelectionDialog.js**
 
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_ .
+Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
 
 [!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
 

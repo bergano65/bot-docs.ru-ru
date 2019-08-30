@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 26622b5757a2fb8e7297484c02d1d8ba1a2c1b04
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757202"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026336"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -73,7 +73,7 @@ ms.locfileid: "68757202"
 
 2. Нажмите кнопку _Choose app file_ (Выбрать файл приложения), перейдите к папке CognitiveModel с примером кода и выберите файл HomeAutomation.json. Оставьте пустым поле Optional Name (Имя (необязательно)). 
 
-3. Нажмите кнопку _Готово_ .
+3. Нажмите кнопку _Готово_.
 
 4. Когда служба LUIS откроет выбранное приложение для автоматизации дома, нажмите кнопку _Train_ (Обучение). В результате этого будет выполнено обучение приложения по импортированному ранее набору высказываний с помощью файла home-automation.json.
 
@@ -128,7 +128,7 @@ ms.locfileid: "68757202"
 
 1. Когда база знаний будет создана из переданного файла, выберите действие _Save and train_ (Сохранить и обучить), а когда оно будет выполнено, перейдите на вкладку _PUBLISH_ (Публикация) и опубликуйте приложение.
 
-1. После публикации приложения QnA Maker откройте вкладку _SETTINGS_ (Параметры) и прокрутите эту страницу вниз до раздела Deployment Details (Сведения о развертывании). Запишите следующие значения из примера HTTP-запроса _Postman_ .
+1. После публикации приложения QnA Maker откройте вкладку _SETTINGS_ (Параметры) и прокрутите эту страницу вниз до раздела Deployment Details (Сведения о развертывании). Запишите следующие значения из примера HTTP-запроса _Postman_.
 
     ```text
     POST /knowledge bases/<knowledge-base-id>/generateAnswer
@@ -271,6 +271,7 @@ npm install --save dotenv
 Добавьте сведения о подключении службы, как показано ниже:
 
 Файл с расширением **.env**
+
 ```file
 MicrosoftAppId=""
 MicrosoftAppPassword=""
@@ -282,8 +283,8 @@ QnAEndpointHostName="<your-hostname>"
 LuisAppId=<app-id-for-dispatch-app>
 LuisAPIKey=<your-luis-endpoint-key>
 LuisAPIHostName=<your-dispatch-app-region>
-
 ```
+
 Когда все изменения будут внесены, сохраните файл.
 
 ---
@@ -301,10 +302,10 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-В файле **dispatchBot.js** сведения из файла конфигурации _.env_ используются для подключения бота отправки к службам _LuisRecognizer(dispatch)_ и _QnAMaker_ . Конструкторы используют предоставленные значения для подключения к этим службам.
+В файле **dispatchBot.js** сведения из файла конфигурации _.env_ используются для подключения бота отправки к службам _LuisRecognizer(dispatch)_ и _QnAMaker_. Конструкторы используют предоставленные значения для подключения к этим службам.
 
-**dispatchBot.js**  
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
+**bots/dispatchBot.js**  
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
 
 ---
 
@@ -316,16 +317,16 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 В файле **DispatchBot.cs** при вызове метода `OnMessageActivityAsync` мы проверяем входящее сообщение пользователя с использованием модели отправки. Затем мы передаем `topIntent` и `recognizerResult` модели отправки в соответствующий метод, чтобы вызвать службу и получить результат.
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-В методе **dispatchBot.js** `onMessage` мы проверяем входящее сообщения пользователя с использованием модели отправки, а затем находим и передаем _topIntent_ путем вызова  _dispatchToTopIntentAsync_ .
+В методе **dispatchBot.js** `onMessage` мы проверяем входящее сообщения пользователя с использованием модели отправки, а затем находим и передаем _topIntent_ путем вызова  _dispatchToTopIntentAsync_.
 
-**dispatchBot.js**  
+**bots/dispatchBot.js**  
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=37-50)]
+[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
 
 ---
 
@@ -333,23 +334,23 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
-Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код нашего бота направляет запрос в соответствующую службу и обрабатывает полученный от нее ответ. Код использует _намерение_ , которое возвращает средство Dispatch, чтобы выполнить перенаправление в соответствующую модель LUIS или службу QnA.
+Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код нашего бота направляет запрос в соответствующую службу и обрабатывает полученный от нее ответ. Код использует _намерение_, которое возвращает средство Dispatch, чтобы выполнить перенаправление в соответствующую модель LUIS или службу QnA.
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
-Вызываемые методы `ProcessHomeAutomationAsync` или `ProcessWeatherAsync` передают результаты из модели отправки с использованием _luisResult.ConnectedServiceResult_ . Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
+Вызываемые методы `ProcessHomeAutomationAsync` или `ProcessWeatherAsync` передают результаты из модели отправки с использованием _luisResult.ConnectedServiceResult_. Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
 
 Вызываемый метод `q_sample-qna` использует введенные пользователем данные, содержащиеся в turnContext, для создания ответа из базы знаний и отображения результата пользователю.
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код в этом примере использует результат в _topIntent_ , демонстрируя, как перенаправить запрос в соответствующую службу.
+Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код в этом примере использует результат в _topIntent_, демонстрируя, как перенаправить запрос в соответствующую службу.
 
-**DispatchBot.cs**  
-[!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
+**bots/dispatchBot.js**  
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
 
-Вызываемые методы `processHomeAutomation` или `processWeather` передают результаты из модели отправки с использованием _recognizerResult.luisResult_ . Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
+Вызываемые методы `processHomeAutomation` или `processWeather` передают результаты из модели отправки с использованием _recognizerResult.luisResult_. Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
 
 Вызываемый метод `q_sample-qna` использует введенные пользователем данные, содержащиеся в turnContext, для создания ответа из базы знаний и отображения результата пользователю.
 
@@ -471,7 +472,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 Чтобы удалить ресурсы QnA Maker, сделайте следующее:
 
 1. Войдите на портал [qnamaker.ai](https://www.qnamaker.ai/).
-1. Перейдите к странице _Мои базы знаний_ .
+1. Перейдите к странице _Мои базы знаний_.
 1. Нажмите кнопку "Удалить" для базы знаний `Sample QnA`, затем щелкните _Удалить_ для подтверждения.
 
 ### <a name="best-practice"></a>Рекомендации

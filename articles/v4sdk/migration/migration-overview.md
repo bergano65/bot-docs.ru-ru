@@ -7,15 +7,14 @@ ms.author: v-mimiel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b1082e16933da1fb4c20f51d4764ec1774aabdb6
-ms.sourcegitcommit: 4f78e68507fa3594971bfcbb13231c5bfd2ba555
+ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68292194"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026409"
 ---
 # <a name="migration-overview"></a>Общие сведения о переносе
 
@@ -94,10 +93,12 @@ ms.locfileid: "68292194"
 
 ### <a name="migration-estimation-worksheet"></a>Список задач в рамках миграции
 
-Следующей список задач поможет оценить объем рабочей нагрузки для переноса. В столбце **Количество** замените *значение* своими фактическими числовыми значениями. В столбце **Размер** укажите такие значения, как *Небольшой*, *Средний*, *Большой*, руководствуясь своей оценкой.
+Следующие списки задач помогут оценить объем рабочей нагрузки для миграции. В столбце **Количество** замените *значение* своими фактическими числовыми значениями. В столбце **Размер** укажите такие значения, как *Небольшой*, *Средний*, *Большой*, руководствуясь своей оценкой.
 
-Шаг | V3 | Версия 4 | Вхождения | Сложность | Размер
--- | -- | -- | -- | -- | --
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+| Шаг | V3 | Версия 4 | Вхождения | Сложность | Размер |
+| -- | -- | -- | -- | -- | -- |
 Получение входящего действия | IDialogContext.Activity | ITurnContext.Activity | count | Малый  
 Создание действия и отправка его пользователю | activity.CreateReply("текст") IDialogContext.PostAsync | MessageFactory.Text("текст") ITurnContext.SendActivityAsync | count | Малый |
 Управление данными о состоянии | UserData, ConversationData и PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState и PrivateConversationState с методами доступа к свойствам | context.UserData.SetValue "значение" context.UserData.TryGetValue "значение" botDataStore.LoadAsyn "значение" | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
@@ -111,7 +112,26 @@ ms.locfileid: "68292194"
 Информирование о завершении текущего диалога | IDialogContext.Done | Возврат await метода EndDialogAsync контекста шага. | count | Средний |  
 Выход из диалога | IDialogContext.Fail | Создание исключения, которое будет зарегистрировано на другом уровне бота, и завершение шага с состоянием Cancelled, либо вызов шага или CancelAllDialogsAsync контекста диалога. | count | Малый |  
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+| Шаг | V3 | Версия 4 | Вхождения | Сложность | Размер |
+| -- | -- | -- | -- | -- | -- |
+Получение входящего действия | IMessage | TurnContext.activity | count | Малый  
+Создание действия и отправка его пользователю | Вызов Session.send('message') | Вызов TurnContext.sendActivity | count | Малый |
+Управление данными о состоянии | UserState и ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState и ConversationState с методами доступа к свойствам | count | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
+Обработка запуска диалога | Вызов session.beginDialog, передача идентификатора диалога | Вызов DialogContext.beginDialog | count | Малый |  
+Отправка действия | Вызов Session.send | Вызов TurnContext.sendActivity | count | Малый |  
+Ожидание ответа пользователя | Вызов запроса из каскадного шага, например builder.Prompts.text(сеанс, 'Please enter your destination'). Получите ответ на следующем шаге. | Возврат ожидания TurnContext.prompt для запуска диалога запроса. Затем получите результаты на следующем шаге каскадного диалога. | count | Средняя (в зависимости от потока) |  
+Обработка продолжения диалога | Автоматический | Добавление дополнительных шагов в каскадный диалог или реализация Dialog.continueDialog | count | большой |  
+Обозначение завершения обработки до следующего сообщения пользователя | Session.endDialog | Возврат Dialog.EndOfTurn | count | Средний |  
+Запуск дочернего диалога | Session.beginDialog | Возврат ожидания метода beginDialog для контекста шага. Если дочерний диалог вернет значение, оно будет доступно на следующем шаге каскадного диалога в свойстве Result. | count | Средний |  
+Замена текущего диалога новым | Session.replaceDialog | ITurnContext.replaceDialog | count | большой |  
+Информирование о завершении текущего диалога | Session.endDialog | Возврат ожидания метода endDialog для контекста шага. | count | Средний |  
+Выход из диалога | Session.pruneDialogStack | Создание исключения, которое будет зарегистрировано на другом уровне бота, и завершение шага с состоянием Cancelled, либо вызов шага или cancelAllDialogs контекста диалога. | count | Малый |  
+
+---
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Пакет SDK Bot Framework версии 4 использует тот же базовый REST API, что и пакет SDK версии 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами.
 
@@ -138,7 +158,7 @@ ms.locfileid: "68292194"
 
 Дополнительные сведения см. статье [Перенос бота .NET версии 3 в бот .NET Framework версии 4](conversion-core.md).
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 В пакете **SDK Bot Framework для Javascript версии 4** реализовано несколько важных изменений, связанных с процессом создания ботов. Эти изменения влияют на синтаксис для разработки ботов на Javascript. В особенности это касается создания объектов бота, определения диалогов и создания логики обработки событий. Пакет SDK Bot Framework версии 4 использует тот же базовый REST API, что и пакет SDK версии 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами, в частности:
 
