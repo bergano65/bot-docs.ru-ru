@@ -6,16 +6,15 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 04/10/2019
-ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 08/22/2019
+ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032637"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037448"
 ---
-# <a name="authentication"></a>Authentication
+# <a name="authentication"></a>Аутентификация
 
 Клиент может проверить подлинность запросов к API Direct Line версии 3.0 с помощью **секрета**, который [можно получить на странице конфигурации канала Direct Line](../bot-service-channel-connect-directline.md) на портале Bot Framework, или с помощью **маркера**, который можно получить во время выполнения. Секрет или маркер необходимо указать в заголовке `Authorization` каждого запроса, используя следующий формат: 
 
@@ -140,7 +139,132 @@ HTTP/1.1 200 OK
 }
 ```
 
+## <a name="azure-bot-service-authentication"></a>Проверка подлинности службы Azure Bot
+
+Сведения, представленные в этом разделе, основаны на инструкциях по [добавлению проверки подлинности к боту с помощью службы Azure Bot](../v4sdk/bot-builder-authentication.md).
+
+**Функция проверки подлинности службы Azure Bot** позволяет проверять подлинность пользователей и **получать маркеры доступа** от различных поставщиков удостоверений, например *Azure Active Directory*, *GitHub*, *Uber* и т. д. Кроме того, настроить проверку подлинности можно для пользовательского поставщика удостоверений **OAuth2**. Все это позволяет использовать только **один фрагмент кода проверки подлинности**, который будет работать для всех поддерживаемых поставщиков удостоверений и всех каналов. Чтобы использовать эти возможности, выполните следующие действия:
+
+1. Статически настройте `settings` в боте, который содержит сведения о регистрации приложения у поставщика удостоверений.
+2. Используйте `OAuthCard`, указав сведения о приложении, которые используются для входа пользователя и были указаны на предыдущем шаге.
+3. Получите маркеры доступа с помощью **API службы Azure Bot**.
+
+### <a name="security-considerations"></a>Вопросы безопасности
+
+<!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
+
+При использовании *проверки подлинности службы Azure Bot* для [Web Chat](../bot-service-channel-connect-webchat.md) важно учитывать несколько моментов, связанных с безопасностью.
+
+1. **Олицетворение**. Здесь олицетворение означает действие злоумышленника, в результате которого бот считает его другим пользователем. В Web Chat злоумышленник может олицетворять кого-то, изменив **идентификатор пользователя** в активном экземпляре канала. Чтобы избежать этого, разработчики должны сделать так, чтобы **идентификатор пользователя нельзя было угадать**. Если включить **расширенную проверку подлинности**, служба Azure Bot сможет обнаруживать и отклонять любые изменения идентификатора пользователя. Это означает, что идентификатор пользователя (`Activity.From.Id`) в сообщениях, отправляемых боту из Direct Line, всегда будет тем же, с которым вы инициализировали экземпляр Web Chat. Обратите внимание, что для использования этой функции идентификатор пользователя должен начинаться с `dl_`.
+1. **Удостоверения пользователей**. Необходимо учитывать, что при работе используется два удостоверения пользователей:
+
+    1. Удостоверение пользователя в канале.
+    1. Удостоверение пользователя в поставщике удостоверений для бота.
+  
+    Когда бот запрашивает у пользователя А в канале выполнить вход в поставщик удостоверений П, процесс входа должен гарантировать, что именно пользователь A выполняет вход в П. Если другому пользователю Б разрешено входить в систему, пользователь A сможет получить доступ к ресурсу пользователя Б через бота. Web Chat предоставляет два механизма, обеспечивающих надлежащий процесс входа, как описано далее.
+
+    1. Раньше по завершении входа пользователю предоставлялся сформированный случайным образом код из шести цифр (магический код). Пользователь должен был ввести этот код в диалоге, который инициировал завершение процесса входа. Как правило, такой механизм неудобно использовать. Кроме того, он обычно подвергается фишинговым атакам. Злоумышленник может обманным путем вынудить другого пользователя выполнить вход, чтобы получить магический код путем фишинга.
+
+    2. Из-за проблем с предыдущим подходом мы решили не использовать в службе Azure Bot магический код. Служба Azure Bot гарантирует, что процесс входа может выполняться только **в том же сеансе браузера**, в котором запущен экземпляр Web Chat. 
+    Чтобы включить такую защиту, разработчик бота должен запустить Web Chat с **маркером Direct Line**, содержащим **список доверенных доменов, которым разрешено размещать клиент Web Chat для бота**. Ранее этот токен можно получить, только передав незарегистрированный необязательный параметр в API Direct Line. Но теперь благодаря расширенным параметрам проверки подлинности можно настроить статический список доверенных доменов (источников) на странице настройки Direct Line.
+
+### <a name="code-examples"></a>Примеры кода
+
+Следующий контроллер .NET использует включенные расширенные параметры проверки подлинности и возвращает маркер Direct Line и идентификатор пользователя.
+
+```csharp
+public class HomeController : Controller
+{
+    public async Task<ActionResult> Index()
+    {
+        var secret = GetSecret();
+
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage request = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"https://directline.botframework.com/v3/directline/tokens/generate");
+
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", secret);
+
+        var userId = $"dl_{Guid.NewGuid()}";
+
+        request.Content = new StringContent(
+            JsonConvert.SerializeObject(
+                new { User = new { Id = userId } }),
+                Encoding.UTF8,
+                "application/json");
+
+        var response = await client.SendAsync(request);
+        string token = String.Empty;
+
+        if (response.IsSuccessStatusCode)
+        {
+            var body = await response.Content.ReadAsStringAsync();
+            token = JsonConvert.DeserializeObject<DirectLineToken>(body).token;
+        }
+
+        var config = new ChatConfig()
+        {
+            Token = token,
+            UserId = userId  
+        };
+
+        return View(config);
+    }
+}
+
+public class DirectLineToken
+{
+    public string conversationId { get; set; }
+    public string token { get; set; }
+    public int expires_in { get; set; }
+}
+public class ChatConfig
+{
+    public string Token { get; set; }
+    public string UserId { get; set; }
+}
+
+```
+
+Следующий контроллер JavaScript использует включенные расширенные параметры проверки подлинности и возвращает маркер Direct Line и идентификатор пользователя.
+
+```javascript
+var router = express.Router(); // get an instance of the express Router
+
+// Get a directline configuration (accessed at GET /api/config)
+const userId = "dl_" + createUniqueId();
+
+router.get('/config', function(req, res) {
+    const options = {
+        method: 'POST',
+        uri: 'https://directline.botframework.com/v3/directline/tokens/generate',
+        headers: {
+            'Authorization': 'Bearer ' + secret
+        },
+        json: {
+            User: { Id: userId }
+        }
+    };
+
+    request.post(options, (error, response, body) => {
+        if (!error && response.statusCode < 300) {
+            res.json({ 
+                    token: body.token,
+                    userId: userId
+                });
+        }
+        else {
+            res.status(500).send('Call to retrieve token from Direct Line failed');
+        } 
+    });
+});
+
+```
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Подключение бота к Direct Line](../bot-service-channel-connect-directline.md)
+- [Добавление аутентификации для бота с помощью службы Azure Bot](../bot-builder-tutorial-authentication.md)

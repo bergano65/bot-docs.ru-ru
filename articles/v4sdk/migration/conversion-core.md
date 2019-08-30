@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c5735b7ad47204dab42abc7b1dd7a15a407b0115
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 23646cf47b49e73eec9c3ce9a4deb1e053892fa1
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757212"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037266"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>Перенос бота .NET версии 3 в бот .NET Core версии 4
 
-В этой статье описывается, как преобразовать бот [ContosoHelpdeskChatBot версии 3](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3) в бот версии 4 _в новом проекте .NET Core_ .
+В этой статье описывается, как преобразовать бот [ContosoHelpdeskChatBot версии 3](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3) в бот версии 4 _в новом проекте .NET Core_.
 Преобразование включает в себя следующие действия:
 
 1. создание проекта на основе шаблона;
@@ -114,7 +114,9 @@ ms.locfileid: "68757212"
 1. Добавьте эти поля и конструктор для инициализации. В ASP.NET также используется внедрение зависимостей, чтобы получить значения параметров.
     [!code-csharp[Fields and constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=21-28)]
 
-1. Измените внедрение `OnMessageActivityAsync` так, чтобы оно вызывало главный диалог. (Мы определим метод расширения `Run` чуть позже.) [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=38-47)]
+1. Измените внедрение `OnMessageActivityAsync` так, чтобы оно вызывало главный диалог. (Мы определим метод расширения `Run` чуть позже.)
+
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=38-47)]
 
 1. Обновите `OnTurnAsync`, чтобы сохранять состояние беседы в конце шага. В версии 4 нам нужно сделать это явным образом, чтобы записать состояние на уровне сохраняемости. Метод `ActivityHandler.OnTurnAsync` вызывает методы конкретного обработчика действий с учетом типа полученного действия. Поэтому мы сохраним состояние после вызова базового метода.
     [!code-csharp[OnTurnAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=30-36)]
@@ -200,7 +202,7 @@ ms.locfileid: "68757212"
      - Затем он запускает дочерний диалог, связанный с выбранным вариантом.
      - И уже потом он перезапускает сам себя.
    - Каждый шаг каскадного диалога является делегатом. Мы реализуем их далее, по возможности сохраняя существующий код каждого исходного диалога.
-   - При запуске компонентного диалога будет запущен _начальный диалог_ . По умолчанию это первый дочерний диалог, добавленный в компонентный диалог. Мы явным образом определим свойство `InitialDialogId`. Это значит, что нам не нужно добавлять основной каскадный диалог первым в набор диалогов. Например, вы можете сначала добавить запросы, и это не вызовет никаких проблем во время выполнения.
+   - При запуске компонентного диалога будет запущен _начальный диалог_. По умолчанию это первый дочерний диалог, добавленный в компонентный диалог. Мы явным образом определим свойство `InitialDialogId`. Это значит, что нам не нужно добавлять основной каскадный диалог первым в набор диалогов. Например, вы можете сначала добавить запросы, и это не вызовет никаких проблем во время выполнения.
     [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=35-49)]
 
 1. Метод `StartAsync` можно удалить. При запуске компонентный диалог автоматически выполняет свой _начальный_ диалог. В нашем примере это тот каскадный диалог, который мы определяем в конструкторе. Он автоматически начинает выполнение с первого действия.
@@ -337,7 +339,9 @@ ms.locfileid: "68757212"
 1. В **LocalAdminPrompt.cs** измените их так:  
     [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
 
-1. В **ResetPassword.cs** измените их так: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
+1. В **ResetPassword.cs** измените их так:
+
+[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
     Кроме того, удалите инструкции `using` в пространстве имен.
 
 1. В **ResetPasswordPrompt.cs** измените их так:  
@@ -345,12 +349,16 @@ ms.locfileid: "68757212"
 
 ### <a name="additional-changes"></a>Дополнительные изменения
 
-В **ResetPassword.cs** измените тип возвращаемого значения `MobileNumber` так: [!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=17)]
+В **ResetPassword.cs** измените тип возвращаемого значения `MobileNumber` так:
+
+[!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=17)]
 
 ## <a name="final-porting-steps"></a>Конечный перенос данных 
 Чтобы завершить процесс переноса, сделайте следующее:
 
-1. Создайте класс `AdapterWithErrorHandler`, чтобы определить адаптер, что предусматривает обработчик ошибок, перехватывающий исключения в программном обеспечении промежуточного слоя и приложениях. Адаптер обрабатывает и направляет входящие действия через конвейер ПО промежуточного слоя бота в логику бота, а затем обратно. Используйте код ниже, чтобы создать класс: [!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/AdapterWithErrorHandler.cs?range=4-46)]
+1. Создайте класс `AdapterWithErrorHandler`, чтобы определить адаптер, что предусматривает обработчик ошибок, перехватывающий исключения в программном обеспечении промежуточного слоя и приложениях. Адаптер обрабатывает и направляет входящие действия через конвейер ПО промежуточного слоя бота в логику бота, а затем обратно. Используйте код ниже, чтобы создать класс:
+
+ [!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/AdapterWithErrorHandler.cs?range=4-46)]
 1. Измените страницу **wwwroot\default.htm** согласно требованиям.
 
 ## <a name="run-and-test-your-bot-in-the-emulator"></a>Запуск и тестирование бота в эмуляторе

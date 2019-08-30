@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: a2fa3f5e1363cb155504cdf903df2f6c25877af3
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 12a54d479f0222497589c2b14e017a4aa8d992fd
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756952"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037546"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -24,7 +24,7 @@ ms.locfileid: "68756952"
 
 ### <a name="activity"></a>Действие
 
-С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта `Activity`. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. Дополнительные сведения о действиях в службе Bot Connector см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md).
+С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. Дополнительные сведения о действиях в службе Bot Connector см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md).
 
 ## <a name="bot-state-service"></a>Служба Состояние бота
 
@@ -49,3 +49,5 @@ Bot Framework предоставляет клиентские библиотек
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 Узнайте больше о создании ботов с помощью службы Bot Connector, ознакомившись со статьями в этом разделе, начиная со статьи [Проверка подлинности](bot-framework-rest-connector-authentication.md). Если у вас возникли проблемы или есть предложения относительно службы Bot Connector, список доступных ресурсов находится в статье [Поддержка](../bot-service-resources-links-help.md). 
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object

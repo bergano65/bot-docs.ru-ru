@@ -1,19 +1,18 @@
 ---
 title: Добавление проверки подлинности к боту с помощью службы Azure Bot | Документация Майкрософт
 description: Сведения об использовании функции проверки подлинности службы Azure Bot для добавления боту функции единого входа.
-author: JonathanFingold
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 06/07/2019
+ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991984"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037524"
 ---
 <!-- 
 
@@ -87,15 +86,8 @@ Related TODO:
 
 <!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
-Если вы намерены применить проверку подлинности службы Azure Bot для веб-чата, важно учитывать несколько вопросов, связанных с безопасностью.
-
-1. Предотвращайте возможность олицетворения, когда злоумышленник выдает себя перед ботом за другое лицо. В веб-чате злоумышленник может олицетворять кого-то, изменив идентификатор пользователя в экземпляре веб-чата.
-
-    Чтобы избежать этого, идентификатор пользователя не должен быть угадываемым. Если вы включите в канале Direct Line расширенную проверку подлинности, служба Azure Bot сможет обнаруживать и отклонять любые изменения идентификатора пользователя. Идентификатор пользователя в сообщениях, отправляемых боту из Direct Line, всегда будет тем же, с которым вы инициализировали веб-чат. Обратите внимание, что для использования этой функции идентификатор пользователя должен начинаться с `dl_`.
-
-1. Следите за тем, чтобы вход выполняли только допустимые пользователи. У пользователя есть два удостоверения: учетные данные в канале и учетные данные от поставщика удостоверений. В веб-чате служба Azure Bot может гарантировать, что процесс входа выполняется в том же сеансе браузера, что и сам веб-чат.
-
-    Чтобы включить такую защиту, запустите веб-чат с маркером Direct Line, который содержит список доверенных доменов, которым разрешено размещать клиент веб-чата для бота. Затем настройте статический список доверенных доменов (источников) на странице настройки Direct Line.
+> [!IMPORTANT]
+> Учитывайте эти важные [вопросы, связанные с безопасностью](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -178,7 +170,7 @@ Related TODO:
 
 Следующим шагом является регистрация приложения Azure AD в созданном боте.
 
-# <a name="azure-ad-v1tabaadv1"></a>[Azure AD версии 1](#tab/aadv1)
+#### <a name="azure-ad-v1"></a>AAD версии 1
 
 1. На [портале Azure](http://portal.azure.com/) перейдите к странице ресурса бота.
 1. Щелкните **Параметры**.
@@ -191,7 +183,11 @@ Related TODO:
     1. В поле **Секрет клиента**, введите секрет, который вы создали для предоставления боту доступа к приложению Azure AD.
     1. В поле **Тип предоставления разрешения** введите `authorization_code`.
     1. В поле **URL-адрес входа** введите `https://login.microsoftonline.com`.
-    1. В поле **Идентификатор арендатора** введите идентификатор каталога (арендатора), который вы записали для приложения Azure AD.
+    1. В поле **Идентификатор клиента** введите **идентификатор каталога (клиент)** , записанный ранее для приложения AAD, или задайте значение **Общие** в зависимости от поддерживаемых типов учетных записей, выбранных при создании приложения ADD. Чтобы решить, какое значение следует задать, руководствуйтесь следующими критериями:
+
+        - Если при создании приложения AAD вы выбрали параметр *Учетные записи только в этом каталоге организации* (только Майкрософт — один клиент) или *Учетные записи в любом каталоге организации* (каталог Microsoft AAD — несколько клиентов), введите **идентификатор клиента**, который вы записали ранее для приложения AAD.
+
+        - Если же вы выбрали *Учетные записи в любом каталоге организации (любой каталог AAD — несколько клиентов) и личные учетные записи Майкрософт (например, Skype, Xbox, Outlook.com)* , введите слово **общие** вместо идентификатора клиента. В противном случае приложение AAD будет проверять клиент по выбранному для него идентификатору и исключать личные учетные записи Майкрософт.
 
        Данный клиент будет связан с пользователями, которые могут пройти проверку подлинности.
 
@@ -203,7 +199,7 @@ Related TODO:
 > [!NOTE]
 > Используя API Microsoft Graph, эти значения позволяют приложению получать доступ к данным Office 365.
 
-# <a name="azure-ad-v2tabaadv2"></a>[Azure AD версии 2](#tab/aadv2)
+#### <a name="azure-ad-v2"></a>AAD версии 2
 
 1. Перейдите к странице регистрации каналов бота на [портале Azure](http://portal.azure.com/).
 1. Щелкните **Параметры**.
@@ -214,7 +210,11 @@ Related TODO:
     1. В разделе **Поставщик службы** выберите **Azure Active Directory v2**. После выбора этого параметра появятся отдельные поля Azure AD.
     1. В поле **Идентификатор клиента** введите идентификатор приложения (клиента), который вы записали для приложения Azure AD версии 1.
     1. В поле **Секрет клиента**, введите секрет, который вы создали для предоставления боту доступа к приложению Azure AD.
-    1. В поле **Идентификатор арендатора** введите идентификатор каталога (арендатора), который вы записали для приложения Azure AD.
+    1. В поле **Идентификатор клиента** введите **идентификатор каталога (клиент)** , записанный ранее для приложения AAD, или задайте значение **Общие** в зависимости от поддерживаемых типов учетных записей, выбранных при создании приложения ADD. Чтобы решить, какое значение следует задать, руководствуйтесь следующими критериями:
+
+        - Если при создании приложения AAD вы выбрали параметр *Учетные записи только в этом каталоге организации* (только Майкрософт — один клиент) или *Учетные записи в любом каталоге организации* (каталог Microsoft AAD — несколько клиентов), введите **идентификатор клиента**, который вы записали ранее для приложения AAD.
+
+        - Если же вы выбрали *Учетные записи в любом каталоге организации (любой каталог AAD — несколько клиентов) и личные учетные записи Майкрософт (например, Skype, Xbox, Outlook.com)* , введите слово **общие** вместо идентификатора клиента. В противном случае приложение AAD будет проверять клиент по выбранному для него идентификатору и исключать личные учетные записи Майкрософт.
 
        Данный клиент будет связан с пользователями, которые могут пройти проверку подлинности.
 
@@ -227,8 +227,6 @@ Related TODO:
 
 > [!NOTE]
 > Используя API Microsoft Graph, эти значения позволяют приложению получать доступ к данным Office 365.
-
----
 
 ### <a name="test-your-connection"></a>Тестирование подключения
 
@@ -272,7 +270,7 @@ Related TODO:
 
 ---
 
-Если вы не знаете, как получить **идентификатор приложения (Майкрософт)** и **пароль приложения (Майкрософт)** , [создайте новый пароль](../bot-service-quickstart-registration.md#bot-channels-registration-password).
+Если вы не знаете, как получить **идентификатор приложения (Майкрософт)** и **пароль приложения (Майкрософт)** , [создайте новый пароль](../bot-service-quickstart-registration.md#get-registration-password).
 
 > [!NOTE]
 > Теперь код бота можно опубликовать в подписке Azure (щелкните проект правой кнопкой мыши и выберите **Опубликовать**), но для этой статьи это не требуется. Необходимо будет настроить конфигурацию публикации, которая использует план приложения и размещения, который использовался при настройке бота на портале Azure.
@@ -342,7 +340,7 @@ Related TODO:
 
 В следующем шаге диалога проверьте наличие маркера в результате, полученном от предыдущего шага. Если он не равен NULL, значит пользователь успешно выполнил вход.
 
-[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-58)]
+[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,7 +350,7 @@ Related TODO:
 
 Добавьте запрос OAuth в **MainDialog** с помощью конструктора. В этом примере значение имени подключения получено из файла с расширением **.env**.
 
-[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=23-28)]
+[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=24-29)]
 
 В шаге диалога укажите `beginDialog` для запуска командной строки OAuth, в которой пользователю будет предложено войти в систему.
 
@@ -363,7 +361,7 @@ Related TODO:
 
 В следующем шаге диалога проверьте наличие маркера в результате, полученном от предыдущего шага. Если он не равен NULL, значит пользователь успешно выполнил вход.
 
-[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=61-64)]
+[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
 ---
 
@@ -385,25 +383,25 @@ Related TODO:
 
 **AuthBot** наследуется от `ActivityHandler` и явным образом обрабатывает действия ответа маркера. Здесь мы продолжаем активный диалог, что позволяет командной строке OAuth обработать событие и получить маркер.
 
-[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=28-33)]
+[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
 ---
 
 ### <a name="log-the-user-out"></a>Выход пользователя
 
-Мы рекомендуем предоставлять пользователям возможность явно выйти из системы, не полагаясь на автоматический разрыв подключения при превышении времени ожидания.
+Мы рекомендуем предоставить пользователям возможность явно выходить из системы, не полагаясь на автоматический разрыв подключения при превышении времени ожидания.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **Dialogs\LogoutDialog.cs**
 
-[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=20-61&highlight=35)]
+[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/logoutDialog.js**
 
-[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=13-42&highlight=25)]
+[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
 ---
 
@@ -414,10 +412,10 @@ Related TODO:
 Одно из различий между другими каналами и Teams заключается в том, что Teams отправляет в бот действие *invoke*, а не действие *event*. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 

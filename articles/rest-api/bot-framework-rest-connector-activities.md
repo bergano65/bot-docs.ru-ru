@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 69c58e1e6bd9da4b07e21f8ca3eb029d2dec9e75
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 706568a5d2fa7ef815d7d169c74a2fa5061b3ab1
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757179"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037557"
 ---
 # <a name="activities-overview"></a>Общие сведения о действиях
 
-С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта `Activity`. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
+Служба Bot Connector выполняет обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Типы действий в службе Bot Connector
 
@@ -64,4 +64,5 @@ ms.locfileid: "68757179"
 
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object

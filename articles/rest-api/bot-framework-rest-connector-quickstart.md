@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757152"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037450"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Создание ботов с помощью службы Bot Connector
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="receive-a-message-from-the-user"></a>Получение сообщения от пользователя
 
-Когда пользователь отправляет сообщение, Bot Framework Connector отсылает запрос POST к конечной точке, указанной вами при [регистрации](../bot-service-quickstart-registration.md) бота. Текст запроса — это объект `Activity`. В представленном ниже примере приведен текст запроса, который бот получает, когда пользователь отправляет ему простое сообщение. 
+Когда пользователь отправляет сообщение, Bot Framework Connector отсылает запрос POST к конечной точке, указанной вами при [регистрации](../bot-service-quickstart-registration.md) бота. Текст запроса — это объект [Действие][]. В представленном ниже примере приведен текст запроса, который бот получает, когда пользователь отправляет ему простое сообщение. 
 
 ```json
 {
@@ -97,7 +97,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="reply-to-the-users-message"></a>Ответ на сообщение пользователя
 
-Когда конечная точка бота получит запрос `POST`, который представляет собой сообщение от пользователя (т. е. `type` = **message**), используйте сведения из этого запроса, чтобы создать объект `Activity` для ответа.
+Когда конечная точка бота получит запрос `POST`, который представляет собой сообщение от пользователя (т. е. `type` = **message**), используйте сведения из этого запроса, чтобы создать объект [Действие][] для ответа.
 
 1. Задайте свойство **conversation** с учетом содержимого свойства **conversation** в сообщении пользователя.
 2. Укажите свойство **from** с учетом содержимого свойства **recipient** в сообщении пользователя.
@@ -194,3 +194,5 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Дополнительная информация
 
 При работе с этим руководством вы получили маркер доступа от Bot Framework и использовали службу Bot Connector для обмена сообщениями с пользователем. Для тестирования и отладки бота можно использовать [Bot Framework Emulator](../bot-service-debug-emulator.md). Чтобы предоставить доступ к боту другим пользователям, нужно [настроить](../bot-service-manage-channels.md) его для работы с одним или несколькими каналами.
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object

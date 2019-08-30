@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757187"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037335"
 ---
 # <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
 
-Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только [текст сообщений и вложения](bot-framework-rest-connector-create-messages.md). Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство `channelData` объекта `Activity`. Например, с помощью свойства `channelData` бот может передать в Telegram команду отправки наклейки или потребовать, чтобы Office 365 отправил сообщение электронной почты.
+Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только [текст сообщений и вложения](bot-framework-rest-connector-create-messages.md). Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство `channelData` объекта [Activity[]]. Например, с помощью свойства `channelData` бот может передать в Telegram команду отправки наклейки или потребовать, чтобы Office 365 отправил сообщение электронной почты.
 
 В этой статье описано, как реализовать функции, связанные с каналами, на основе свойства `channelData` в действии сообщения.
 
@@ -275,3 +275,5 @@ ms.locfileid: "68757187"
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Предварительный просмотр компонентов с помощью Channel Inspector](../bot-service-channel-inspector.md)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

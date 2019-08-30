@@ -7,19 +7,18 @@ keywords: пакет SDK для Bot Framework, отладка бота, пров
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 7/9/2019
-ms.openlocfilehash: bdc88645b6747e5f38497c858c77cd79b21a6dd3
-ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
+ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68508030"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037513"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
-В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя — нового компонента Bot Framework версии 4. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы.
+В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
 
-Мы используем базовый echo-бот, созданный с помощью [Bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/02.echo-bot), чтобы показать, как добавить проверяющее ПО промежуточного слоя для отладки бота и проверки состояния его сообщений. Отладку бота также можно выполнять с помощью [IDE](./bot-service-debug-bot.md) или [Bot Framework Emulator](./bot-service-debug-emulator.md), но для отладки состояния в бота нужно добавить проверяющее ПО промежуточного слоя. Соответствующие примеры для бота доступны здесь: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) и [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
+Чтобы продемонстрировать, как выполнять отладку и проверку состояния сообщений бота, мы используем бот EchoBot, созданный локально с помощью Bot Framework версии 4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)). Отладку бота также можно выполнять с помощью [IDE](./bot-service-debug-bot.md) или [Bot Framework Emulator](./bot-service-debug-emulator.md), но для отладки состояния в бота нужно добавить проверяющее ПО промежуточного слоя. Соответствующие примеры для бота доступны здесь: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) и [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
@@ -35,6 +34,16 @@ ms.locfileid: "68508030"
 ![Текущая версия](./media/bot-debug-inspection-middleware/bot-debug-check-emulator-version.png) 
 
 ## <a name="update-your-bots-code"></a>Обновление кода бота
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Настройте состояние проверки в **загрузочном файле**. Добавьте проверяющее ПО промежуточного слоя в адаптер. Состояние проверки предоставляется путем внедрения зависимостей. См. обновление кода ниже или пример проверки: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
+
+**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+
+**AdapterWithInspection.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
+
+**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Прежде чем обновлять код бота, нужно обновить его пакеты до последних версий, выполнив в терминале следующую команду: 
@@ -55,16 +64,6 @@ npm install --save botbuilder@latest
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-Настройте состояние проверки в **загрузочном файле**. Добавьте проверяющее ПО промежуточного слоя в адаптер. Состояние проверки предоставляется путем внедрения зависимостей. См. обновление кода ниже или пример проверки: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
-
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
-
-**AdapterWithInspection.cs**  
-[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
-
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
-
 ---
 
 ## <a name="test-your-bot-locally"></a>Локальное тестирование бота 
@@ -72,17 +71,18 @@ npm install --save botbuilder@latest
 
 1. Перейдите к каталогу бота в терминале и выполните следующую команду, чтобы запустить бота локально: 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cmd
+dotnet run
+```
+
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```cmd
 npm start 
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```cmd
-dotnet run
-```
 ---
 
 2. Откройте эмулятор. Щелкните **Открыть бота**. Вставьте в поле "URL-адрес бота" http://localhost:3978/api/messages , а также значения **MicrosoftAppId** и **MicrosoftAppPassword**. Если вы используете бота на JavaScript, эти значения можно найти в файле **.env**. Если вы используете бота на C#, эти значения можно найти в файле **appsettings.json**. Щелкните **Подключить**. 
@@ -96,7 +96,7 @@ dotnet run
 
 5. Теперь вы можете отправить сообщения в окно чата первого эмулятора и проверить их в эмуляторе для отладки. Для этого щелкните **Состояние бота** в эмуляторе отладки и разверните блок **values** в окне **JSON** справа. Состояние бота будет выглядеть так: ![Состояние бота](./media/bot-debug-inspection-middleware/bot-debug-bot-state.png)
 
-## <a name="inspect-the-state-of-a-bot-configured-in-azure-connected-to-channels"></a>Проверка состояния бота, настроенного в Azure для подключения к каналам 
+## <a name="inspect-the-state-of-a-bot-configured-in-azure"></a>Проверка состояния бота, настроенного в Azure 
 Чтобы проверить состояние бота, настроенного в Azure и подключенного к каналам (например, Teams), необходимо установить и запустить[ngrok](https://ngrok.com/).
 
 ### <a name="run-ngrok"></a>Запуск ngrok

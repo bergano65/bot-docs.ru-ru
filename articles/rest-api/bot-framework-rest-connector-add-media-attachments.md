@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
-ms.openlocfilehash: 03facdff733787e95ca3bc68dfee15d747340453
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: be56700664e7626c247bb77899dc89f3cac32469
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757091"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037217"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68757091"
 
 ## <a name="add-a-media-attachment"></a>Добавление мультимедийного вложения  
 
-Чтобы добавить мультимедийное вложение в сообщение, создайте объект `Attachment`, задайте свойство `name`, задайте для свойства `contentUrl` URL-адрес файла мультимедиа, а для свойства `contentType` — соответствующий тип мультимедиа (например, **image/png**, **audio/wav**, **video/mp4**). Затем в объекте `Activity`, представляющем сообщение, укажите объект `Attachment` в массиве `attachments`. 
+Чтобы добавить мультимедийное вложение в сообщение, создайте объект [Вложение][], задайте свойство `name`, задайте для свойства `contentUrl` URL-адрес файла мультимедиа, а для свойства `contentType` — соответствующий тип мультимедиа (например, **image/png**, **audio/wav**, **video/mp4**). Затем в объекте [Действие][], представляющем сообщение, укажите объект `Attachment` в массиве `attachments`.
 
 Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее текст и одно вложенное изображение. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -101,7 +101,7 @@ Content-Type: application/json
 
 ## <a name="add-an-audiocard-attachment"></a>Добавление вложения AudioCard
 
-Добавление вложения `AudioCard` или `VideoCard` ничем не отличается от добавления вложения мультимедиа. Например, следующий пример кода JSON демонстрирует добавление карточки аудиофайла в мультимедийное вложение.
+Добавление вложения [AudioCard][] или [VideoCard][] ничем не отличается от добавления вложения мультимедиа. Например, следующий пример кода JSON демонстрирует добавление карточки аудиофайла в мультимедийное вложение.
 
 ```json
 {
@@ -177,3 +177,8 @@ Content-Type: application/json
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Принципы использования карточек в Bot Framework](https://aka.ms/botSpecs-cardSchema)
+
+[Действие]: bot-framework-rest-connector-api-reference.md#activity-object
+[Вложение]: bot-framework-rest-connector-api-reference.md#attachment-object
+[AudioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
+[VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
