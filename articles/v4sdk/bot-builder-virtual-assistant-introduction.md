@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2b238f4455fc031e1d8ac66f9b408e6d5d936ec9
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: dedd9c7eb8d562acd30e137cb1a99f618f79ff7e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991922"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167334"
 ---
 # <a name="virtual-assistant-overview"></a>Общие сведения о виртуальном помощнике
 
@@ -33,7 +33,7 @@ ms.locfileid: "68991922"
 
 ## <a name="getting-started"></a>Начало работы
 
-Изучите [документацию по виртуальному помощнику и навыкам](https://aka.ms/bfsolutionsdocs), чтобы получить дополнительные сведения.
+Изучите [документацию по виртуальному помощнику и навыкам](https://aka.ms/bf-solutions-docs), чтобы получить дополнительные сведения.
 
 ## <a name="whats-in-the-box"></a>Что включает в себя помощник 
 
@@ -106,4 +106,4 @@ ms.locfileid: "68991922"
 
 ## <a name="getting-started"></a>Начало работы
 
-См. о [создании и развертывании виртуального помощника](https://aka.ms/bfstutorials).
+См. о [создании и развертывании виртуального помощника](https://aka.ms/bfs-tutorials).

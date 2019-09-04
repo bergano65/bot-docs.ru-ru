@@ -2,18 +2,18 @@
 title: Обзор сценариев службы Azure Bot | Документация Майкрософт
 description: Узнайте о ключевых сценариях для мощных и успешных ботов, созданных с помощью службы Azure Bot.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405759"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167354"
 ---
 # <a name="bot-scenarios"></a>Сценарии для ботов
 
@@ -21,7 +21,7 @@ ms.locfileid: "67405759"
 
 В этом разделе рассматриваются основные сценарии для мощных и успешных ботов, созданных с помощью службы Azure Bot.
 
-Можно скачать или клонировать исходный код для всех примеров сценариев для ботов из репозитория [Примеры для распространенных сценариев Bot Framework](https://aka.ms/bot/scenarios).
+Можно скачать или клонировать исходный код для всех примеров сценариев для ботов из репозитория [Примеры для распространенных сценариев Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="commerce-bot-scenario"></a>Сценарий коммерческого бота
 В сценарии [коммерческого бота](bot-service-scenario-commerce.md) описывается бот, который заменяет традиционные услуги консьержа отеля, которыми обычно пользуются люди, отправляя сообщения по электронной почте или звоня по телефону. Этот бот использует Cognitive Services, чтобы лучше обрабатывать запросы клиентов через распознавание текста и голоса, используя контекст, собранный в результате интеграции с серверными службами.

@@ -2,18 +2,18 @@
 title: Сценарий бота для Интернета вещей | Документация Майкрософт
 description: Изучите сценарий бота для Интернета вещей с помощью Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0cdade289bc7474a3d2597ae54fd2c355a7969f9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 53a99c4313604d55da6554e927109f0f2f74104c
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997001"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167365"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>Сценарий бота для Интернета вещей
 
@@ -36,7 +36,7 @@ ms.locfileid: "49997001"
 ## <a name="sample-bot"></a>Пример бота
 Бот для Интернета вещей позволит вам быстро приступить к использованию команд чата из таких каналов, как Skype или Slack, для управления Hue. Для упрощения удаленного доступа вызовите приложения IFTTT, предопределенные для работы с Hue.
 
-Вы можете скачать или клонировать исходный код для этого примера бота из репозитория [примеров для распространенных сценариев Bot Framework](https://aka.ms/bot/scenarios).
+Вы можете скачать или клонировать исходный код для этого примера бота из репозитория [примеров для распространенных сценариев Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Компоненты, которые будут использоваться
 Бот для Интернета вещей использует следующие компоненты:

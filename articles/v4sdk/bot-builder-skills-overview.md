@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 59b5e340ee9f2eeb89eaf420a0cca031fcc7f2b1
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991932"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167122"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Обзор навыков (виртуальный помощник)
 
@@ -40,13 +40,13 @@ ms.locfileid: "68991932"
 
 | ИМЯ | ОПИСАНИЕ |
 | ---- | ----------- |
-|[Навык взаимодействия с календарем](https://aka.ms/bfcalendarskill)|Добавление возможностей календаря в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
-|[Навык взаимодействия с электронной почтой](https://aka.ms/bfemailskill)|Добавление возможностей электронной почты в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
-|[Навык взаимодействия со списком дел](https://aka.ms/bftodoskill)|Добавление возможностей управления заданиями в виртуальный помощник. Основан на платформе Microsoft Graph.|
-|[Навык взаимодействия с точками интереса](https://aka.ms/bfpoiskill)|Поиск достопримечательностей и маршрутов. Основан на платформе Azure Maps и FourSquare.|
-|[Навык взаимодействия с автомобилем](https://aka.ms/bfautoskill)|Отраслевой навык для демонстрации возможностей управления функциями автомобиля.|
-|[Экспериментальные навыки](https://aka.ms/bfexperimentalskills)|Новости, погода и заказ столиков в ресторанах.|
+|[Навык взаимодействия с календарем](https://aka.ms/bf-calendar-skill)|Добавление возможностей календаря в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
+|[Навык взаимодействия с электронной почтой](https://aka.ms/bf-email-skill)|Добавление возможностей электронной почты в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
+|[Навык взаимодействия со списком дел](https://aka.ms/bf-todo-skill)|Добавление возможностей управления заданиями в виртуальный помощник. Основан на платформе Microsoft Graph.|
+|[Навык взаимодействия с точками интереса](https://aka.ms/bf-poi-skill)|Поиск достопримечательностей и маршрутов. Основан на платформе Azure Maps и FourSquare.|
+|[Навык взаимодействия с автомобилем](https://aka.ms/bf-autos-kill)|Отраслевой навык для демонстрации возможностей управления функциями автомобиля.|
+|[Экспериментальные навыки](https://aka.ms/bf-experimental-skills)|Новости, погода и заказ столиков в ресторанах.|
 
 ## <a name="getting-started"></a>Начало работы
 
-См. об [использовании существующих навыков и самостоятельном создании новых](https://aka.ms/bfstutorials).
+См. об [использовании существующих навыков и самостоятельном создании новых](https://aka.ms/bfs-tutorials).

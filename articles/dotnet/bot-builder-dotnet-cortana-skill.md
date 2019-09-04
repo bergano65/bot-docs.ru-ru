@@ -4,17 +4,17 @@ description: Изучите основные понятия для создан�
 keywords: Bot Framework, навык Кортана, речь, .NET, пакет SDK, ключевые концепции, основные понятия
 author: DeniseMak
 manager: kamrani
+ms.author: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9dd84e9e5e39e1e1b801e08fbee101dbfa8b0c49
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: c0dd854cf2f8eb1f4cbe13c8d562425616e8cf40
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67405682"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167345"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -343,8 +343,8 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 [SSMLRef]: https://aka.ms/cortana-ssml
 [CortanaDevCenter]: https://developer.microsoft.com/cortana
 
-[CortanaSpecificEntities]: https://aka.ms/lgvcto
-[CortanaAuth]: https://aka.ms/vsdqcj
+[CortanaSpecificEntities]: https://aka.ms/cortana-channel-data
+[CortanaAuth]: https://aka.ms/add-auth-cortana-skill
 
 [InvocationNameGuidelines]: https://aka.ms/cortana-invocation-guidelines  
 [VoiceDesign]: https://aka.ms/cortana-design-voice

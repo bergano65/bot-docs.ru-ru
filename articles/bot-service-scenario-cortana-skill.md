@@ -2,19 +2,18 @@
 title: Сценарий бота навыков Кортаны | Документация Майкрософт
 description: Изучите сценарий бота навыков Кортаны с помощью Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7676b7bd75a45130b62c1a691499095d6ba07291
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d6ba5b414ff7e600fac1e5d4ebce27363340f42f
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000231"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167056"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Сценарий бота навыков Кортаны
 
@@ -38,7 +37,7 @@ ms.locfileid: "50000231"
 ## <a name="sample-bot"></a>Пример бота
 Для бота навыков Кортаны важен личный контекст. Используя Кортану, вы можете произнести вслух запрос на обслуживание вашего автомобиля с мобильного устройства у Боба в зависимости от своего расположения. С помощью личных сведений, предоставляемых в Кортане, бот может подтвердить ваше расположение в зависимости от того, где вы находитесь, произнося запрос для бота.
 
-Вы можете скачать или клонировать исходный код для этого примера бота из репозитория [примеров для распространенных сценариев Bot Framework](https://aka.ms/bot/scenarios).
+Вы можете скачать или клонировать исходный код для этого примера бота из репозитория [примеров для распространенных сценариев Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Компоненты, которые будут использоваться
 Бот Кортаны использует следующие компоненты:

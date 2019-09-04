@@ -7,15 +7,14 @@ ms.author: rstand
 manager: rstand
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/17/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3f9cd112397a66bffb8efd41cbeab6feca8c7d7f
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 7dbbe8492761360941eca5e724a7339e28968769
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464610"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167011"
 ---
 # <a name="cognitive-services"></a>Cognitive Services
 
@@ -68,9 +67,9 @@ Cognitive Services предоставляет четыре API знаний, к�
 Следующие ресурсы предоставляют дополнительную информацию о добавлении возможности распознавания речи боту.
 
 * [Видеообзор приложений для общения с ботом](https://channel9.msdn.com/events/Build/2017/P4114)
-* [Библиотека Microsoft.Bot.Client для приложений UWP или Xamarin](https://aka.ms/BotClient)
-* [Пример клиентской библиотеки бота](https://aka.ms/BotClientSample)
-* [Клиент WebChat с поддержкой речи](https://aka.ms/BFWebChat)
+* [Библиотека Microsoft.Bot.Client для приложений UWP или Xamarin](https://aka.ms/bot-client)
+* [Пример клиентской библиотеки бота](https://aka.ms/trivia-bot-speech-sample)
+* [Клиент WebChat с поддержкой речи](https://aka.ms/BotFramework-WebChat)
 
 Ознакомьтесь с дополнительными сведениями о [распознавании и преобразовании речи][speech] с помощью Microsoft Cognitive Services.
 

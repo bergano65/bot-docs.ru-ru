@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991945"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167066"
 ---
 # <a name="virtual-assistant---template-outline"></a>Виртуальный помощник — описание шаблона
 
@@ -80,7 +80,7 @@ StartOver    |*restart*|
 
 Компонент ПО промежуточного слоя в сочетании с классом-оболочкой QnA Maker и классами пакета SDK LuisRecognizer предоставляют удобный способ для сбора согласованного набора событий. Эти согласованные события затем могут использоваться средствами Application Insights, а также такими инструментами, как Power BI.
 
-Пример панели мониторинга Power BI включен в репозиторий решений Bot Framework на сайте GitHub. Его можно использовать с любым шаблоном виртуального помощника без дополнительной настройки. См. дополнительные сведения в разделе о [данных аналитики](https://aka.ms/bfsanalytics).
+Пример панели мониторинга Power BI включен в репозиторий решений Bot Framework на сайте GitHub. Его можно использовать с любым шаблоном виртуального помощника без дополнительной настройки. См. дополнительные сведения в разделе о [данных аналитики](https://aka.ms/bfs-analytics).
 
 ![Пример данных аналитики](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -120,8 +120,8 @@ StartOver    |*restart*|
 Также используется компонент ПО промежуточного слоя, который проверяет тексты и изображения с помощью ```TextModeratorResult``` в объекте TurnState.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-См. о [создании и развертывании виртуального помощника](https://aka.ms/bfstutorials). 
+См. о [создании и развертывании виртуального помощника](https://aka.ms/bfs-tutorials). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-Полный исходный код виртуального помощника можно найти на портале [GitHub](https://aka.ms/bfsolutions).
+Полный исходный код виртуального помощника можно найти на портале [GitHub](https://aka.ms/bf-solutions).
 
