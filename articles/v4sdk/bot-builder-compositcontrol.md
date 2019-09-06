@@ -3,19 +3,18 @@ title: Повторное использование диалогов | Доку
 description: Сведения о разделении логики бота с использованием компонентных диалогов в пакете SDK Bot Framework.
 keywords: составной элемент управления, модульная логика бота
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: bb359ec2493b1c29624f5fb0135478cae1dea0e0
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67587490"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167169"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -26,7 +25,7 @@ ms.locfileid: "67587490"
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Опыт работы с [ботами][concept-basics], [библиотеками диалогов][concept-dialogs] и [управлением сообщениями][simple-flow].
-- Копия примера диалога с несколькими шагами для [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Копия примера запроса с несколькими шагами на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
 
 ## <a name="about-the-sample"></a>Сведения о примере
 
@@ -44,7 +43,7 @@ ms.locfileid: "67587490"
 
 ## <a name="implement-the-component-dialog"></a>Реализация компонентного диалога
 
-В примере диалога с несколькими запросами мы применим _каскадный диалог_ , несколько _запросов_ и _компонентный диалог_ для создания простого взаимодействия, в рамках которого пользователю предлагается несколько вопросов.
+В примере диалога с несколькими запросами мы применим _каскадный диалог_, несколько _запросов_ и _компонентный диалог_ для создания простого взаимодействия, в рамках которого пользователю предлагается несколько вопросов.
 
 Компонентный диалог включает один или несколько диалогов. Компонентный диалог содержит внутренний набор диалогов, в котором все добавляемые к диалоги и запросы имеют собственные идентификаторы, доступные только для компонентного диалога.
 
@@ -58,7 +57,7 @@ ms.locfileid: "67587490"
 
 [!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=13)]
 
-В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_ .
+В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_.
 
 [!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17-42)]
 
@@ -78,7 +77,7 @@ ms.locfileid: "67587490"
 
 [!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=24)]
 
-В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_ .
+В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_.
 
 [!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
 

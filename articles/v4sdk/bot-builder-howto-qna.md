@@ -3,19 +3,18 @@ title: Использование QnA Maker для ответов на вопр�
 description: Узнайте, как использовать QnA Maker в боте.
 keywords: question and answer, QnA, FAQs, qna maker
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15581daa570b9e51ff8f7bec93d16deebcd71d45
-ms.sourcegitcommit: 93508adfb79523f610a919b361fc34f5c8dd3eff
+ms.openlocfilehash: dc11191e65d58f4fa038878da71cc0354cad4c64
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67533382"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167167"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -27,7 +26,7 @@ QnA Maker создает слой вопросов и ответов для ди
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Код в этой статье основан на примере QnA Maker. Вам потребуется копия примера для **[C#](https://aka.ms/cs-qna) или [JavaScript](https://aka.ms/js-qna-sample)** .
+- Код в этой статье основан на примере QnA Maker. Вам потребуется копия примера на **[C#](https://aka.ms/cs-qna) или [JavaScript](https://aka.ms/js-qna-sample)** .
 - Учетная запись [QnA Maker](https://www.qnamaker.ai/)
 - Знания о [работе ботов](bot-builder-basics.md), [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview) и [управлении ресурсами бота](bot-file-basics.md).
 

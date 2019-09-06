@@ -2,19 +2,18 @@
 title: Подключение бота к Teams | Документация Майкрософт
 description: Узнайте, как настроить бот для доступа через Teams.
 keywords: Teams, канал бота, настройка Teams
-author: kaiqb
+author: kamrani
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 07/05/2019
-ms.openlocfilehash: d2609e4294416691e156ba3dbd09eabc8e0d3423
-ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
+ms.date: 08/26/2019
+ms.openlocfilehash: 1ba0873c880bfb9b1e0f449039e98859e5571028
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592233"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076540"
 ---
 # <a name="connect-a-bot-to-teams"></a>Подключение бота к Teams
 
@@ -33,6 +32,10 @@ ms.locfileid: "67592233"
 - Скопируйте часть кода с _https_ в диалоговом окне **Get bot embed code** (Получение кода внедрения бота). Например, `https://teams.microsoft.com/l/chat/0/0?users=28:b8a22302e-9303-4e54-b348-343232`. 
 
 - В браузере вставьте этот адрес и выберите приложение Microsoft Teams (клиентское или веб-приложение), которое используется для добавления бота в Teams. Вы увидите бота как контакт, с которым вы можете обмениваться сообщениями в Microsoft Teams. 
+
+> [!IMPORTANT] 
+> Добавлять бота по GUID рекомендуется только для тестирования. В противном случае функциональность бота будет существенно ограничена. Боты, используемые в рабочей среде, следует добавлять в Teams как часть приложения. См. сведения о [создании бота](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create) и [тестировании и отладке бота Microsoft Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-test).
+
 
 ## <a name="additional-information"></a>Дополнительная информация
 См. подробнее о [Microsoft Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/overview). 

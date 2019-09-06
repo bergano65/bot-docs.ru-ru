@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb243e1530155819afb4ab4061da1e29908f58e4
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 2a1f36e548f92e9c057947f0c5a82e426a8d0d23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026352"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167379"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
@@ -34,7 +34,7 @@ ms.locfileid: "70026352"
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md).
-- Копия примера упреждающих сообщений для **[C#](https://aka.ms/proactive-sample-cs) или [JavaScript](https://aka.ms/proactive-sample-js)** . Этот пример используется в статье в качестве иллюстрации для упреждающего обмена сообщениями.
+- Копия примера упреждающих сообщений на **[C#](https://aka.ms/proactive-sample-cs) или [JavaScript](https://aka.ms/proactive-sample-js)** . Этот пример используется в статье в качестве иллюстрации для упреждающего обмена сообщениями.
 
 ## <a name="about-the-proactive-sample"></a>Сведения о примере с упреждающими сообщениями
 

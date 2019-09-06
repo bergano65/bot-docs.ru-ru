@@ -2,20 +2,19 @@
 title: Новые возможности | Документация Майкрософт
 description: Узнайте о новых возможностях Bot Framework.
 keywords: bot framework, azure bot service
-author: ivorb
-ms.author: v-ivorb
+author: kamrani
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f7083c45e67d8731e25e14577f6b061732ffefd5
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 708ad1fac166f312ad6ccf14a024f821f19eaaf2
+ms.sourcegitcommit: e573c586472c5328ce875114308d9d1b73651e62
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671399"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70224390"
 ---
 # <a name="whats-new-in-bot-framework-july-2019"></a>Новые возможности Bot Framework (июль 2019 г.)
 
@@ -55,7 +54,7 @@ ms.locfileid: "68671399"
 - [Пакет SDK Bot Framework для Python (предварительная версия 2)](https://github.com/microsoft/botbuilder-python) | [Примеры](https://github.com/Microsoft/botbuilder-python/tree/master/samples). Пакет SDK для Python теперь поддерживает OAuth, запросы, Cosmos DB, а также включает все основные функции пакета SDK 4.5. Также доступны примеры, которые познакомят вас с новыми возможностями пакета SDK.
 
 ## <a name="bot-framework-testing"></a>Тестирование в Bot Framework
-- [Модульное тестирование](http://aka.ms/bot-test-package) | [Документация](https://aka.ms/testing-framework) | [Пример C#](https://aka.ms/corebot-test) | [Пример JS](https://aka.ms/js-core-test-sample). Учитывая пожелания клиентов и разработчиков касательно более совершенных средств тестирования, в июльскую версию пакета SDK мы добавили новую функцию модульного тестирования. Пакет Microsoft.Bot.Builder.testing упрощает процесс модульного тестирования диалогов в боте. 
+- [Документация](https://aka.ms/testing-framework) | Пакеты модульного тестирования ([C#](https://aka.ms/nuget-botbuilder-testing)/ [JavaScript](https://aka.ms/npm-botbuilder-testing)) | [Пример C#](https://aka.ms/cs-core-test-sample) | [Пример JS](https://aka.ms/js-core-test-sample): Учитывая пожелания клиентов и разработчиков касательно более совершенных средств тестирования, в июльскую версию пакета SDK мы добавили новую функцию модульного тестирования. Пакет Microsoft.Bot.Builder.testing упрощает процесс модульного тестирования диалогов в боте.  
 
 - [Тестирование канала](https://github.com/Microsoft/BotFramework-Emulator/releases) | [Документация](https://aka.ms/channel-testing). 
 

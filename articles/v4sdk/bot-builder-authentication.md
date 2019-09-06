@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8b12068984396a015bfbb441f9b1e506acbb9154
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037524"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076577"
 ---
 <!-- 
 
@@ -431,6 +431,9 @@ Related TODO:
 Наконец, добавьте соответствующий файл `TeamsActivityHandler` (`TeamsActivityHandler.cs` для ботов C# `teamsActivityHandler.js` для ботов JavaScript) в папку бота самого верхнего уровня.
 
 `TeamsActivityHandler` также отправляет действия *message reaction*. Действие message reaction ссылается на исходное действие с помощью поля *reply to ID*. Это действие также должно отображаться в [веб-канале активности ][teams-activity-feed] в Microsoft Teams.
+
+> [!NOTE]
+> Вам нужно создать манифест и включить `token.botframework.com` в раздел `validDomains`. В противном случае при нажатии кнопки **входа** в OAuthCard окно проверки подлинности не будет открываться. Создайте манифест с помощью [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio).
 
 ### <a name="further-reading"></a>Дополнительные материалы
 

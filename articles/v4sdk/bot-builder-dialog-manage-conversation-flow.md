@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27d7e5ee6edd4cedfb9d59b318d9a3765e2f0ad8
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 4030a1498be321757b8a25bbd9b8bcde29bb9e5d
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890611"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167195"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
@@ -30,7 +30,7 @@ ms.locfileid: "69890611"
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state] и [библиотеки диалогов][concept-dialogs].
-- Копия примера **диалога с несколькими шагами** для [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Копия примера **запроса с несколькими шагами** на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 

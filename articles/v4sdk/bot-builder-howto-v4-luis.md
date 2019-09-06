@@ -9,22 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1641260f6673a810e7bc71ecaca1ada234286e42
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: b20670b85b876d7cf10dea7f031e4d24221071a8
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026318"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167153"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
-
 Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять поток общения. В этом разделе рассматривается добавление LUIS в приложение для бронирования авиабилетов, чтобы распознавать намерения и сущности в введенных пользователем данных. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Учетная запись [LUIS](https://www.luis.ai).
-- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на языке **[CSharp](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)** . 
+- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на **[C#](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)** . 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере

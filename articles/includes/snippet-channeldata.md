@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c19287b38a2c807e6675af2c3f7e1824eb7eab8e
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 0eab36869a986d15905cdfde5c317613276c844d
+ms.sourcegitcommit: e573c586472c5328ce875114308d9d1b73651e62
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230769"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70242747"
 ---
 Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только текст сообщений и вложения. Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство _данных канала_ для объекта действия. Например, используя свойство данных канала, бот может передать в Telegram команду отправки наклейки или потребовать, чтобы из Office 365 было отправлено сообщение электронной почты.
 
@@ -444,6 +444,49 @@ ms.locfileid: "68230769"
     } 
 }
 ```
+
+## <a name="adding-a-bot-to-teams"></a>Подключение бота к Teams
+
+Добавленный в группу бот становится участником группы, которого можно упоминать (`@mentioned`) в ходе диалога. Фактически, боты получают сообщения, только если они упоминаются (`@mentioned`), следовательно, другие диалоги в канале им не отправляются.
+См. сведения о [ведении бесед в групповых чатах и каналах с помощью бота Microsoft Teams](https://aka.ms/bots-con-channel).
+
+Так как боты в группе или канале отвечают, только если они упоминаются (`@botname`) в сообщении, каждое сообщение, полученное ботом в канале группы, содержит собственное имя, которое должно распознаваться при анализе. Кроме того, боты могут распознавать имена других упомянутых пользователей и в свою очередь упоминать их в своих сообщениях.
+
+### <a name="check-for-and-strip-bot-mention"></a>Проверка и удаление упоминания @bot
+
+```csharp
+
+Mention[] m = sourceMessage.GetMentions();
+var messageText = sourceMessage.Text;
+
+for (int i = 0;i < m.Length;i++)
+{
+    if (m[i].Mentioned.Id == sourceMessage.Recipient.Id)
+    {
+        //Bot is in the @mention list.
+        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included. Note that the Text object will contain the full bot name, if applicable.
+        if (m[i].Text != null)
+            messageText = messageText.Replace(m[i].Text, "");
+    }
+}
+```
+
+```javascript
+var text = message.text;
+if (message.entities) {
+    message.entities
+        .filter(entity => ((entity.type === "mention") && (entity.mentioned.id.toLowerCase() === botId)))
+        .forEach(entity => {
+            text = text.replace(entity.text, "");
+        });
+    text = text.trim();
+}
+
+```
+
+> [!IMPORTANT] 
+> Добавлять бота по GUID рекомендуется только для тестирования. В противном случае функциональность бота будет существенно ограничена. Боты, используемые в рабочей среде, следует добавлять в Teams как часть приложения. См. сведения о [создании бота](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create) и [тестировании и отладке бота Microsoft Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-test).
+
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

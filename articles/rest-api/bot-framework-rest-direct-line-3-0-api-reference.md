@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 25f6e30898101b87289af775e8386f941aa747a9
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 618b2ffe99114679aa5592b816adf6e1b82be83e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037371"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167184"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -36,7 +36,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 ## <a name="http-status-codes"></a>Коды состояния HTTP
 
-<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">Код состояния HTTP</a>, который возвращается с каждым ответом, указывает результат соответствующего запроса. 
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">Код состояния HTTP</a>, который возвращается с каждым ответом, указывает результат соответствующего запроса.
 
 | HTTP status code (Код состояния HTTP) | Значение |
 |----|----|
@@ -71,10 +71,12 @@ POST https://directline.botframework.com/v3/directline/conversations/abc123/acti
 ```
 
 #### <a name="response"></a>Ответ
+
 ```http
 HTTP/1.1 502 Bad Gateway
 [other headers]
 ```
+
 ```json
 {
     "error": {
@@ -84,112 +86,128 @@ HTTP/1.1 502 Bad Gateway
 }
 ```
 
-## <a name="token-operations"></a>Операции с токенами 
+## <a name="token-operations"></a>Операции с токенами
+
 Используйте эти операции для создания или обновления токена, который клиент может использовать для доступа к одному диалогу.
 
 | Операция | ОПИСАНИЕ |
 |----|----|
-| [Создание токена](#generate-token) | Создает токен для нового диалога. | 
-| [Обновление токена](#refresh-token) | Обновляет токен. | 
+| [Создание токена](#generate-token) | Создает токен для нового диалога. |
+| [Обновление токена](#refresh-token) | Обновляет токен. |
 
 ### <a name="generate-token"></a>Generate Token
-Создает токен, действующий для одного диалога. 
-```http 
+
+Создает токен, действующий для одного диалога.
+
+```http
 POST /v3/directline/tokens/generate
 ```
 
 | | |
 |----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [Conversation](#conversation-object). | 
+| **Текст запроса** | Объект [TokenParameters](#tokenparameters-object) |
+| **Возвращает** | Объект [Conversation](#conversation-object). |
 
 ### <a name="refresh-token"></a>Обновление токена
-Обновляет токен. 
-```http 
+
+Обновляет токен.
+
+```http
 POST /v3/directline/tokens/refresh
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [Conversation](#conversation-object). | 
+| **Возвращает** | Объект [Conversation](#conversation-object). |
 
-## <a name="conversation-operations"></a>Операции диалога 
+## <a name="conversation-operations"></a>Операции диалога
+
 Используйте эти операции, чтобы открыть диалог с ботом и обменяться сообщениями между клиентом и ботом.
 
 | Операция | ОПИСАНИЕ |
 |----|----|
-| [Начало диалога](#start-conversation) | Открывает новый диалог с ботом. | 
+| [Начало диалога](#start-conversation) | Открывает новый диалог с ботом. |
 | [Получение сведений о диалоге](#get-conversation-information) | Получает сведения о существующем диалоге. Эта операция создает URL-адрес потока WebSocket, который позволяет клиенту [повторно подключиться](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) к диалогу. |
 | [Получение действий](#get-activities) | Получает действия от бота. |
-| [Отправка действия](#send-an-activity) | Отправляет действие боту. | 
-| [Загрузка и отправка файлов](#upload-send-files) | Загружает и отправляет файлы в виде вложений. |
+| [Отправка действия](#send-an-activity) | Отправляет действие боту. |
+| [Загрузка и отправка файлов](#upload-and-send-files) | Загружает и отправляет файлы в виде вложений. |
 
 ### <a name="start-conversation"></a>Начало диалога
-Открывает новый диалог с ботом. 
-```http 
+
+Открывает новый диалог с ботом.
+
+```http
 POST /v3/directline/conversations
 ```
 
 | | |
 |----|----|
-| **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [Conversation](#conversation-object). | 
+| **Текст запроса** | Объект [TokenParameters](#tokenparameters-object) |
+| **Возвращает** | Объект [Conversation](#conversation-object). |
 
 ### <a name="get-conversation-information"></a>Получение сведений о диалоге
+
 Получает информацию о существующем диалоге и создает URL-адрес потока WebSocket, который позволяет клиенту [повторно подключиться](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) к диалогу. Вы можете включить необязательный параметр `watermark` в URI запроса, чтобы указать последнее сообщение, увиденное клиентом.
-```http 
+
+```http
 GET /v3/directline/conversations/{conversationId}?watermark={watermark_value}
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [Conversation](#conversation-object). | 
+| **Возвращает** | Объект [Conversation](#conversation-object). |
 
 ### <a name="get-activities"></a>Получение действий
-Получает действия от бота для указанного диалога. Вы можете включить необязательный параметр `watermark` в URI запроса, чтобы указать последнее сообщение, увиденное клиентом. 
 
-```http 
+Получает действия от бота для указанного диалога. Вы можете включить необязательный параметр `watermark` в URI запроса, чтобы указать последнее сообщение, увиденное клиентом.
+
+```http
 GET /v3/directline/conversations/{conversationId}/activities?watermark={watermark_value}
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Недоступно |
-| **Возвращает** | Объект [ActivitySet](#activityset-object). Ответ содержит `watermark` как свойство объекта `ActivitySet`. Клиенты должны постранично просмотреть доступные действия, переходя по значению `watermark`, пока действия не перестанут возвращаться. | 
+| **Возвращает** | Объект [ActivitySet](#activityset-object). Ответ содержит `watermark` как свойство объекта `ActivitySet`. Клиенты должны постранично просмотреть доступные действия, переходя по значению `watermark`, пока действия не перестанут возвращаться. |
 
 ### <a name="send-an-activity"></a>Отправка действия
-Отправляет действие боту. 
-```http 
+
+Отправляет действие боту.
+
+```http
 POST /v3/directline/conversations/{conversationId}/activities
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Объект [Действие][] |
-| **Возвращает** | Объект [ResourceResponse][], который содержит свойство `id` с идентификатором действия, отправленного боту. | 
+| **Возвращает** | Объект [ResourceResponse][], который содержит свойство `id` с идентификатором действия, отправленного боту. |
 
-### <a id="upload-send-files"></a> Загрузка и отправка файлов
+### <a name="upload-and-send-files"></a>Загрузка и отправка файлов
+
 Загружает и отправляет файлы в виде вложений. Задайте параметр `userId` в URI запроса, чтобы указать идентификатор пользователя, отправляющего вложения.
-```http 
+
+```http
 POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 ```
 
 | | |
 |----|----|
 | **Текст запроса** | Для одного вложения заполните текст запроса содержимым файла. Для нескольких вложений создайте текст запроса из нескольких частей, по одной для каждого вложения, а также (необязательно) одну часть для объекта [Действие][], которая будет служить контейнером для всех вложений. Дополнительные сведения см. в руководстве по [отправке действия боту](bot-framework-rest-direct-line-3-0-send-activity.md). |
-| **Возвращает** | Объект [ResourceResponse][], который содержит свойство `id` с идентификатором действия, отправленного боту. | 
+| **Возвращает** | Объект [ResourceResponse][], который содержит свойство `id` с идентификатором действия, отправленного боту. |
 
 > [!NOTE]
 > Загруженные файлы удаляются через 24 часа.
 
 ## <a name="schema"></a>Схема
 
-Схема Direct Line 3.0 включает все объекты, которые определены в [схеме действия Bot Framework](https://aka.ms/botSpecs-activitySchema), а также объекты `ActivitySet` и `Conversation`.
+Схема Direct Line 3.0 включает все объекты, которые определены в [схеме Bot Framework](bot-framework-rest-connector-api-reference.md#schema), а также объекты, которые связаны с Direct Line.
 
-### <a name="activityset-object"></a>Объект ActivitySet 
-Определяет набор действий.<br/><br/>
+### <a name="activityset-object"></a>Объект ActivitySet
+
+Определяет набор действий.
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
@@ -197,24 +215,37 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 | **watermark** | строка | Максимальное значение для водяного знака действий в наборе. Клиент может использовать значение `watermark`, чтобы указать последнее полученное им сообщение, при [получении новых действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) или при [создании нового URL-адреса потока WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
 
 ### <a name="conversation-object"></a>Объект Conversation
-Определяет диалог Direct Line.<br/><br/>
+
+Определяет диалог Direct Line.
 
 | Свойство | type | ОПИСАНИЕ |
 |----|----|----|
 | **conversationId** | строка | Идентификатор, который уникально идентифицирует диалог, для которого действует указанный токен. |
+| **eTag** | строка | ETag HTTP (тег сущности). |
 | **expires_in** | number | Число секунд до истечения срока действия токена. |
+| **referenceGrammarId** | строка | Идентификатор справочной грамматики для этого бота. |
 | **streamUrl** | строка | URL-адрес для потока сообщений диалога. |
 | **token** | строка | Токен, действующий для указанного диалога. |
 
-### <a name="activities"></a>Действия
+### <a name="tokenparameters-object"></a>Объект TokenParameters
+
+Параметры для создания токена.
+
+| Свойство | type | ОПИСАНИЕ |
+|----|----|----|
+| **eTag** | строка | ETag HTTP (тег сущности). |
+| **trustedOrigins** | string[] | Доверенные источники для внедрения в токен. |
+| **user** | [ChannelAccount][] | Учетная запись пользователя для внедрения в маркер. |
+
+## <a name="activities"></a>Действия
 
 Для каждого объекта [Действие][], полученного клиентом от бота через Direct Line, выполняется следующее:
 
 - сохраняются карточки, включенные как вложения;
 - URL-адреса отправленных вложений подменяются частной ссылкой;
-- свойство `channelData` сохраняется без изменений. 
+- свойство `channelData` сохраняется без изменений.
 
-Клиенты могут [получать](bot-framework-rest-direct-line-3-0-receive-activities.md) несколько действий от бота как набор действий ([ActivitySet](#activityset-object)). 
+Клиенты могут [получать](bot-framework-rest-direct-line-3-0-receive-activities.md) несколько действий от бота как набор действий ([ActivitySet](#activityset-object)).
 
 Когда клиент отправляет боту объект `Activity` через Direct Line, происходит следующее:
 
@@ -224,13 +255,14 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 - свойство `channelData` сохраняется без изменений.
 - Общий размер действия, сериализованного и зашифрованного в формате JSON, не должен превышать 256 тысяч символов. Поэтому рекомендуется, чтобы количество действий не превышало 150 тысяч. Если требуется больше данных, разбейте действие на несколько составных частей или рассмотрите возможность использования вложений.
 
-В каждом запросе клиент может [отправить](bot-framework-rest-direct-line-3-0-send-activity.md) только одно действие. 
+В каждом запросе клиент может [отправить](bot-framework-rest-direct-line-3-0-send-activity.md) только одно действие.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
+- [Спецификация по действиям Bot Framework](https://aka.ms/botSpecs-activitySchema)
 
 [Действие]: bot-framework-rest-connector-api-reference.md#activity-object
+[ChannelAccount]: bot-framework-rest-connector-api-reference.md#channelaccount-object
 [Ошибка]: bot-framework-rest-connector-api-reference.md#error-object
 [ErrorResponse]: bot-framework-rest-connector-api-reference.md#errorresponse-object
 [ResourceResponse]: bot-framework-rest-connector-api-reference.md#resourceresponse-object
