@@ -2,18 +2,17 @@
 title: Запросы Агента пользователя Bot Framework | Документация Майкрософт
 description: Основные сведения о запросах, отправленных Bot Framework в веб-сервер.
 author: JohnD-ms
-ms.author: v-jodemp
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: befd46cc13fa10a2d1a0f8cf2beed4cb041ab3bd
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f86e130fff83e8ad1604ec4ea531d58793fb8409
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998544"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297468"
 ---
 # <a name="bot-framework-user-agent-requests"></a>Запросы Агента пользователя Bot Framework
 

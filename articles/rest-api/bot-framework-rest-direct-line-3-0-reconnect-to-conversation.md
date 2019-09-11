@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 2/09/2019
-ms.openlocfilehash: 45675e612553e79f51edde60eaee6bf14df0e44d
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 3197b4f0e3d8d2cc07cea967f4ddf0738e3e27e9
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971404"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299554"
 ---
 # <a name="reconnect-to-a-conversation"></a>Повторное подключение к диалогу
 
@@ -65,5 +64,5 @@ HTTP/1.1 200 OK
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-- [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
+- [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Receive activities via WebSocket stream](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) (Получение действий через поток по протоколу WebSocket)

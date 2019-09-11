@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/13/2019
-ms.openlocfilehash: c99e7ce86415ee1291a92e2684b975fd03c822f7
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: 1e5c48dd3782100f9393c3498baa2b0a7c728cb3
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252694"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876142"
 ---
 # <a name="receive-activities-from-the-bot"></a>Получение действий от бота
 
@@ -25,7 +24,7 @@ ms.locfileid: "67252694"
 
 Служба позволяет только 1 подключение WebSocket для диалога. Direct Line может закрыть дополнительные подключения WebSocket со значением причины `collision`.
 
-Не все [типы действий](bot-framework-rest-connector-activities.md) доступны как через WebSocket, так и через запрос GET HTTP. В следующей таблице описана доступность различных типов действий для клиентов, использующих протокол Direct Line.
+Не все [типы действий](https://aka.ms/botSpecs-activitySchema) доступны как через WebSocket, так и через запрос GET HTTP. В следующей таблице описана доступность различных типов действий для клиентов, использующих протокол Direct Line.
 
 | тип действия; | Доступность | 
 |----|----|

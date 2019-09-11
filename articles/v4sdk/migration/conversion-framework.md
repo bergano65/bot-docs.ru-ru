@@ -3,19 +3,18 @@ title: Перенос существующего бота в пределах п
 description: Узнайте, как перенести имеющийся бот .NET версии 3 в пакет SDK .NET версии 4 в одном и том же проекте.
 keywords: bot migration, formflow, dialogs, v3 bot
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 519515a2174a7028af7bc170ca8a7c40f7d48c52
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: 0dfe98c13d74f2f7d13a3eece505dd901184c849
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336735"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299061"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>Перенос бота .NET версии 3 в бот .NET Framework версии 4
 
