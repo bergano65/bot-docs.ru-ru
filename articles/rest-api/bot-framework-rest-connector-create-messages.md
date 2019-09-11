@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f8badd90c3be5191e24556d5f7fde66cc72fd6b
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037361"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876156"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -55,7 +55,7 @@ ms.locfileid: "70037361"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Предварительный просмотр компонентов с помощью Channel Inspector][ChannelInspector]
-- [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
+- [Общие сведения о действиях](https://aka.ms/botSpecs-activitySchema)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)

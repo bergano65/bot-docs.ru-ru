@@ -2,19 +2,18 @@
 title: Отладка бота | Документация Майкрософт
 description: Отладка ботов, построенных с помощью службы Azure Bot.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 keywords: Пакет SDK Bot Framework, отладка бота, тестирование бота, эмулятор бота, эмулятор
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 2/26/2019
-ms.openlocfilehash: 18b5caf4c5bb4277704d6f01f86b299fc78d725b
-ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
+ms.openlocfilehash: 27af606506eb19b98a327e276a00201ac417c7e4
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68508126"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298184"
 ---
 # <a name="debug-a-bot"></a>Отладка бота
 

@@ -3,18 +3,17 @@ title: Настройка веб-чата | Документация Майкр
 description: Дополнительные сведения о настройке веб-чата Bot Framework.
 keywords: bot framework, webchat, chat, samples, react, reference
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 80d16cda7bb51aecdbe0406d4d2b07a6c6275182
-ms.sourcegitcommit: abd5b8c89e0928e03e5928b64c160c92cce03d70
+ms.openlocfilehash: 9e61e7e9d7bc6ba06d4c239cbf8b0dc0c4e7e16e
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313165"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299088"
 ---
 # <a name="web-chat-customization"></a>Настройка веб-чата
 

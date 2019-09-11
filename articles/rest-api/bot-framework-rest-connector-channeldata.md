@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037335"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876134"
 ---
 # <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
 
@@ -270,7 +270,6 @@ ms.locfileid: "70037335"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)

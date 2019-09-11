@@ -2,17 +2,17 @@
 title: Устранение неполадок с ботами | Документы Майкрософт
 description: Устранение общих проблем в процессе разработки ботов с помощью ответов на часто задаваемые технические вопросы.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 7a018855b11aa638cbad1b70b53505395ae7f5f9
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: c9c8ff04e7093cd0375e52c4ecd90b44af4f4798
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464586"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298562"
 ---
 # <a name="troubleshooting-general-problems"></a>Устранение общих проблем
 Ответы на эти часто задаваемые вопросы помогут вам устранить распространенные проблемы, связанные с разработкой или эксплуатацией ботов.
@@ -265,7 +265,7 @@ builder.Update(Conversation.Container);
 
 * [ES6 BotBuilder](https://github.com/brene/botbuilder-es6-template) — шаблон ES6 Bot Builder
 
-## <a name="why-do-i-get-an-authorizationrequestdenied-exception-when-creating-a-bot"></a>Почему при создании бота возникает исключение Authorization_RequestDenied?
+## <a name="why-do-i-get-an-authorization_requestdenied-exception-when-creating-a-bot"></a>Почему при создании бота возникает исключение Authorization_RequestDenied?
 
 Управление разрешениями на создание ботов службы ботов Azure осуществляется на портале Azure Active Directory (AAD). Если на [портале AAD](http://aad.portal.azure.com) неправильно настроены разрешения, при попытке создать службу бота пользователи будут получать исключение **Authorization_RequestDenied**.
 

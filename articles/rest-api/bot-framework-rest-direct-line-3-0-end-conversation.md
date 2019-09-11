@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 438558995f83ade38404856d61ba66ee77480a27
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: 3006672ba8459ebec7d754a7ec31679debdba4aa
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711938"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876170"
 ---
 # <a name="end-a-conversation"></a>Завершение диалога
 
-**EndOfConversation** — это [действие](bot-framework-rest-connector-activities.md) означает, что канал или бот завершили диалог. 
+**EndOfConversation** — это [действие](https://aka.ms/botSpecs-activitySchema) означает, что канал или бот завершили диалог. 
 
 > [!NOTE] 
 > Хотя событие **endOfConversation** отправляется несколькими каналами, канал Cortana — это единственный канал, который его принимает. Другие каналы, включая Direct Line, не реализуют эту функцию, отклоняя или пересылая вместо этого действие — каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.
@@ -63,5 +62,5 @@ HTTP/1.1 200 OK
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-- [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
+- [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)

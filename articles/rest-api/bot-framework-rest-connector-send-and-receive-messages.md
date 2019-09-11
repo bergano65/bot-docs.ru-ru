@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: d694f20985b6bf2875fe28f599ff603512b87757
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 5e0f35b7fe62c93f4f4e17b5343960fa2b617ef9
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037348"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876099"
 ---
 # <a name="send-and-receive-messages"></a>Отправка и получение сообщений
 
-Служба Bot Connector позволяет боту взаимодействовать через разные каналы связи, такие как Skype, электронная почта, Slack и т. д. Она обеспечивает обмен данными между ботом и пользователем, ретранслируя [действия](bot-framework-rest-connector-activities.md) между ботом и каналом в двустороннем порядке. Каждое действие содержит сведения, используемые для маршрутизации сообщения в соответствующее место назначения, а также сведения о создателе, контексте и получателе сообщения. В этой статье описывается, как использовать службу Bot Connector для обмена действиями **сообщений** между ботом и пользователем через канал. 
+Служба Bot Connector позволяет боту взаимодействовать через разные каналы связи, такие как Skype, электронная почта, Slack и т. д. Она обеспечивает обмен данными между ботом и пользователем, ретранслируя [действия](https://aka.ms/botSpecs-activitySchema) между ботом и каналом в двустороннем порядке. Каждое действие содержит сведения, используемые для маршрутизации сообщения в соответствующее место назначения, а также сведения о создателе, контексте и получателе сообщения. В этой статье описывается, как использовать службу Bot Connector для обмена действиями **сообщений** между ботом и пользователем через канал. 
 
 ## <a id="create-reply"></a> Ответ на сообщение
 
@@ -147,7 +147,6 @@ Content-Type: application/json
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 

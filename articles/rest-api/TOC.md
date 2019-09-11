@@ -4,8 +4,8 @@
 ## [Создание бота с помощью REST](~/rest-api/bot-framework-rest-connector-quickstart.md)
 ## [Справочник по API](bot-framework-rest-connector-api-reference.md)
 # Соединитель
-## [Проверка подлинности](bot-framework-rest-connector-authentication.md)
-## [Общие сведения о действиях](bot-framework-rest-connector-activities.md)
+## [Аутентификация](bot-framework-rest-connector-authentication.md)
+## [Общие сведения о действиях](https://aka.ms/botSpecs-activitySchema)
 ## [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 ## [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 ## [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md)
@@ -17,7 +17,7 @@
 ## [Управление данными о состоянии](bot-framework-rest-state.md)
 # API 3.0 для Direct Line
 ## [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
-## [Проверка подлинности](bot-framework-rest-direct-line-3-0-authentication.md)
+## [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 ## [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
 ## [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)
 ## [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)
@@ -27,7 +27,7 @@
 ## [Файл Swagger](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-protocol/directline-3.0.json)
 # API 1.1 для Direct Line
 ## [Основные понятия](bot-framework-rest-direct-line-1-1-concepts.md)
-## [Проверка подлинности](bot-framework-rest-direct-line-1-1-authentication.md)
+## [Аутентификация](bot-framework-rest-direct-line-1-1-authentication.md)
 ## [Начало общения](bot-framework-rest-direct-line-1-1-start-conversation.md)
 ## [Отправка сообщения боту](bot-framework-rest-direct-line-1-1-send-message.md)
 ## [Получение сообщений от бота](bot-framework-rest-direct-line-1-1-receive-messages.md)

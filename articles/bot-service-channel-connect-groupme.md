@@ -3,18 +3,17 @@ title: Подключение бота к GroupMe | Документы Майк
 description: Сведения о настройке подключения бота к GroupMe.
 keywords: канал бота, GroupMe, создание GroupMe, учетные данные
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a2004293ff10cfbc7132f58b7c0c834a2012cfd1
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 67bcd518f8c6ae7a1e383c611108c15b51bd0292
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563578"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298736"
 ---
 # <a name="connect-a-bot-to-groupme"></a>Подключение бота к веб-чату
 
@@ -36,7 +35,7 @@ ms.locfileid: "64563578"
 
 ## <a name="gather-credentials"></a>Получение учетных данных
 
-1. В поле **URL-адрес перенаправления** скопируйте значение параметра **client_id =**.
+1. В поле **URL-адрес перенаправления** скопируйте значение параметра **client_id =** .
 2. Скопируйте значение параметра **Маркер доступа**.
 
 ![Копирование идентификатора клиента и маркера доступа](~/media/channels/GM-StepClientId.png)
