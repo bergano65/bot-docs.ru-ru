@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ce7b82d6d3bffe57d758370525cdd7dcc6cddea6
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f1cfa6de6dbc0b1dc6ed0408f405a91493741a93
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999801"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297637"
 ---
 # <a name="bot-service-templates"></a>Шаблоны службы ботов
 
@@ -53,7 +52,7 @@ ms.locfileid: "49999801"
 |----|----|
 | Хранилище Azure | Используется для создания очереди. |
 | Приложение-функция Azure | Функция Azure `queueTrigger`, которая будет запускаться каждый раз при появлении сообщения в очереди. Она взаимодействует со службой ботов с помощью [Direct Line](https://docs.microsoft.com/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts). Эта функция использует привязку бота для отправки сообщения в составе полезных данных триггера. В нашем примере функции выполняется пересылка сообщения пользователя из очереди как есть.
-| Служба Bot Service | Ваш бот. Содержит логику, которая получает сообщения от пользователя, добавляет сообщение в очередь Azure, получает триггеры из функции Azure и отправляет полученные сообщения через полезные данные триггера. |
+| Служба Bot | Ваш бот. Содержит логику, которая получает сообщения от пользователя, добавляет сообщение в очередь Azure, получает триггеры из функции Azure и отправляет полученные сообщения через полезные данные триггера. |
 
 На следующей схеме показано, как работают события с триггерами при создании бота с помощью шаблона "Упреждающий".
 

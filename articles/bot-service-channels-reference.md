@@ -3,18 +3,17 @@ title: Справочник по каналам
 description: Справочник по каналам Bot Framework
 keywords: channels reference, bot builder channels, bot framework channels
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: tools
 ms.date: 03/01/2019
-ms.openlocfilehash: 28f284e4d69cbef7a1741d298b3ae9e6e127e9dd
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: ec160690fd76bfa921a3dea25eef598215787531
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "59541090"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297206"
 ---
 # <a name="categorized-activities-by-channel"></a>Разделенные на категории действия по каналам
 

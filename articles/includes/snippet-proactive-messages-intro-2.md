@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 4108f02a350d7e02d66db06cd7e65fa9c7a98e7d
-ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52953629"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297361"
 ---
 **Динамическое упреждающее сообщение** — это самый простой тип упреждающих сообщений.
 Бот просто вставляет сообщение в диалог каждый раз, когда он активируется (вне зависимости от участия пользователя в отдельном разделе диалога с ботом в данный момент), и не пытается изменить диалог каким-либо способом.

@@ -2,19 +2,18 @@
 title: Пакет SDK Bot Framework для Node.js | Документация Майкрософт
 description: Изучите пакет SDK Bot Framework для Node.js, который предоставляет мощную и простую в использовании платформу для создания ботов.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2e25237b616810f5ef10442fec41834568afcb59
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 20b0f852c4e5cddced42e9e710bb5d62663945a7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224747"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299783"
 ---
 # <a name="bot-framework-sdk-for-nodejs"></a>Пакет SDK Bot Framework для Node.js
 

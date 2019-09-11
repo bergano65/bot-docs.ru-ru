@@ -2,23 +2,22 @@
 title: Миграция ботов в Azure | Документы Майкрософт
 description: Узнайте, как перенести бот с устаревшего портала Bot Framework в службу ботов на портале Azure.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c6e91ebfe54857f11772bd4a926e3b5b2776c8cc
-ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.openlocfilehash: d0d2f6930dd9a686cff98b09ca3e863ec0980491
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58616940"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297519"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Миграция ботов в Azure
 
-Все боты **службы Azure Bot (предварительная версия)**, созданные на [портале Bot Framework](http://dev.botframework.com), необходимо перенести в новую службу Azure Bot. Служба стала общедоступной (GA) в декабре 2017 г. 
+Все боты **службы Azure Bot (предварительная версия)** , созданные на [портале Bot Framework](http://dev.botframework.com), необходимо перенести в новую службу Azure Bot. Служба стала общедоступной (GA) в декабре 2017 г. 
 
 Учтите, что перенос *не* требуется для ботов регистрации, подключенных только к следующим каналам: **Teams**, **Skype** или **Кортана**. Например, для бота регистрации, подключенного к **Facebook** и **Skype**, *требуется* миграция, однако для бота регистрации, подключенного к **Skype** и **Кортане**, миграция *не требуется*.
 

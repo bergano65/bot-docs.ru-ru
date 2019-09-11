@@ -2,19 +2,18 @@
 title: Определение шагов диалога с помощью каскадов | Документы Майкрософт
 description: Узнайте, как использовать каскады для определения шагов диалога с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225329"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299845"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Определение шагов диалога с помощью каскадов
 
@@ -166,7 +165,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endDialog`: Используйте этот метод для завершения каскада, если нет данных для передачи в вызывающий диалог.
 
-* `session.endDialogWithResult`: Используйте этот метод для завершения каскада, если есть данные для передачи в вызывающий диалог. Возвращаемый аргумент `response` может быть объектом JSON или любым примитивным типом данных JavaScript. Например: 
+* `session.endDialogWithResult`: Используйте этот метод для завершения каскада, если есть данные для передачи в вызывающий диалог. Возвращаемый аргумент `response` может быть объектом JSON или любым примитивным типом данных JavaScript. Например:
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
@@ -175,7 +174,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endConversation`: Используйте этот метод для завершения каскада, если конец каскада является концом диалога.
 
-В качестве альтернативы одному из этих трех методов для завершения каскада вы можете подключить к диалогу триггер `endConversationAction`. Например: 
+В качестве альтернативы одному из этих трех методов для завершения каскада вы можете подключить к диалогу триггер `endConversationAction`. Например:
 
 ```javascript
 bot.dialog('dinnerOrder', [

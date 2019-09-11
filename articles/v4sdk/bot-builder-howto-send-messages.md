@@ -3,19 +3,18 @@ title: Отправка и получение текстовых сообщен�
 description: Узнайте, как отправлять и принимать текстовые сообщения с помощью пакета SDK Bot Framework.
 keywords: sending message, message activities, simple text message, message, text message, receive message
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a72c103204384188d509777639c2c90e63431dd8
-ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
+ms.openlocfilehash: 002f2de104e61be3b0f7e543408c0c0d78018f9b
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67496696"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299254"
 ---
 # <a name="send-and-receive-text-message"></a>Отправка и получение текстовых сообщений
 

@@ -3,18 +3,17 @@ title: Подключение бота к Slack | Документация Ма�
 description: Сведения о настройке подключения бота к Slack.
 keywords: connect a bot, bot channel, Slack bot, Slack messaging app
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 01/09/2019
-ms.openlocfilehash: 58416147a057bce8947943521a1226e1d9acbdf1
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 9648d1aa9e2da6243f42a5e044451ae4d8fb9d71
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693597"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298301"
 ---
 # <a name="connect-a-bot-to-slack"></a>Подключение бота к Slack
 

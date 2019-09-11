@@ -3,18 +3,17 @@ title: Подключение бота к приложению Kik | Докум�
 description: Сведения о настройке подключения бота к Kik.
 keywords: подключение бота, канал ботов, бот Kik, учетные данные, настройка, телефон
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3072694307ace7c8821fd9e61fe8204acca97efb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9024de58fd40fc3ef9f3c064a23b5e0811c20a89
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996732"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298362"
 ---
 # <a name="connect-a-bot-to-kik"></a>Подключение бота к Kik
 

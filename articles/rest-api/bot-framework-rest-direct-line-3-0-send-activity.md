@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 0b9e2c406ee20535dfb065639beda8b66d0a2996
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037349"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70875991"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Отправка действия боту
 
-С помощью протокола Direct Line 3.0 клиенты и боты могут обмениваться различными типами [действий](bot-framework-rest-connector-activities.md), в том числе действиями **сообщений**, **ввода** и настраиваемыми действиями, которые поддерживает бот. В каждом запросе клиент может отправить одно действие. 
+С помощью протокола Direct Line 3.0 клиенты и боты могут обмениваться различными типами [действий](https://aka.ms/botSpecs-activitySchema), в том числе действиями **сообщений**, **ввода** и настраиваемыми действиями, которые поддерживает бот. В каждом запросе клиент может отправить одно действие. 
 
 ## <a name="send-an-activity"></a>Отправка действия
 

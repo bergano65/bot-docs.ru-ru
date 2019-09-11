@@ -3,18 +3,17 @@ title: Аналитические сведения бота | Документа
 description: Узнайте, как использовать сбор и анализ данных для оптимизации бота с помощью аналитики в Bot Framework.
 keywords: bot analytics, application insights, traffic, latency, integrations, AppInsights
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/04/2018
-ms.openlocfilehash: 2f7474500af4305f4c51193a2a5af264d419569b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 324050c625f5d9666811f63191d783643816104c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010519"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298693"
 ---
 # <a name="bot-analytics"></a>Аналитика бота
 
