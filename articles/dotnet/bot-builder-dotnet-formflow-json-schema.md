@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225859"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298802"
 ---
 # <a name="define-a-form-using-json-schema"></a>Определение формы с помощью схемы JSON
 
@@ -46,7 +45,7 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 | Свойство | Значение |
 |----|----|
 | OnCompletion | Сценарий C# с аргументами `(IDialogContext context, JObject state)` для заполнения формы. |
-| Ссылки | Ссылки, добавляемые в сценарий. Например, `[assemblyReference, ...]`. Пути должны быть абсолютными или относительными для текущего каталога. По умолчанию сценарий включает в себя `Microsoft.Bot.Builder.dll`. |
+| Справочники | Ссылки, добавляемые в сценарий. Например, `[assemblyReference, ...]`. Пути должны быть абсолютными или относительными для текущего каталога. По умолчанию сценарий включает в себя `Microsoft.Bot.Builder.dll`. |
 | Импорт | Элементы, импортируемые в сценарий. Например, `[import, ...]`. По умолчанию в сценарий добавляются элементы `Microsoft.Bot.Builder`, `Microsoft.Bot.Builder.Dialogs`, `Microsoft.Bot.Builder.FormFlow`, `Microsoft.Bot.Builder.FormFlow.Advanced`, `System.Collections.Generic` и пространства имен `System.Linq`. |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>Дополнительные свойства в корне схемы или свойства, аналогичные свойству type
@@ -66,17 +65,17 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 
 |   Свойство   |          Оглавление           |                                                   ОПИСАНИЕ                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
-|   Datetime   |            bool             |                                  Указывает, является ли поле полем `DateTime`.                                  |
-|   Describe   |      Строка или объект       |                  Описание поля, как описано в [DescribeAttribute][describeAttribute].                  |
+|   Дата и время   |            bool             |                                  Указывает, является ли поле полем `DateTime`.                                  |
+|   Describe   |      Строка или объект       |                  Определение поля, как описано в [DescribeAttribute][describeAttribute].                  |
 |    Термины     |       `[string,...]`        |                  Регулярные выражения для сопоставления значения поля, как описано в TermsAttribute.                  |
 |  MaxPhrase   |             int             |                  Обрабатывает ваши термины с помощью `Language.GenerateTerms(string, int)`, чтобы дополнить их.                   |
-|    Значения    | { string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}                                  |
+|    Значения    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
 |    Активна    |           script            | Сценарий C# с аргументами `(JObject state)->bool` для проверки, является ли поле, сообщение или подтверждение активным.  |
 |   Проверка   |           script            |      Сценарий C# с аргументами `(JObject state, object value)->ValidateResult` для проверки значения поля.      |
 |    Define    |           script            |        Сценарий C# с аргументами `(JObject state, Field<JObject> field)` для динамического определения поля.        |
 |     Далее     |           script            | Сценарий C# с аргументами `(object value, JObject state)` для определения следующего шага после заполнения поля. |
-|    До    |          [confirm          |                                                  message, ...]                                                  |
-|    после     |          [confirm          |                                                  message, ...]                                                  |
+|    До    |          `[confirm          |                                                  message, ...]`                                                  |
+|    после     |          `[confirm          |                                                  message, ...]`                                                  |
 | Зависимости |        [string, ...]        |                           Поля, от которых зависит это поле, сообщения или подтверждение.                           |
 
 Укажите `{Confirm:script|[string, ...], ...templateArgs}` в значении свойства **Before** или **After**, чтобы определить подтверждение с помощью сценария C# с аргументом `(JObject state)` или набора шаблонов, которые будут выбираться случайным образом и использоваться с необязательными аргументами шаблона.

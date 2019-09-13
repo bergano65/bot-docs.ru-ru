@@ -2,17 +2,17 @@
 title: Устранение неполадок проверки подлинности Bot Framework | Документация Майкрософт
 description: Сведения об устранении неполадок проверки подлинности с помощью бота.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033651"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297456"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Устранение неполадок проверки подлинности Bot Framework
 
@@ -224,8 +224,8 @@ Bot Framework требует, чтобы боты были доступны из
 * Воспользуйтесь инструкциями по [отладке бота](bot-service-debug-bot.md) и другими статьями об отладке в этом разделе.
 * [Выполните отладку бота в облаке](~/bot-service-debug-emulator.md) с помощью Bot Framework Emulator и ПО для туннелирования <a href="https://ngrok.com/" target="_blank">ngrok</a>. *ngrok не является продуктом корпорации Майкрософт*.
 * Используйте инструменты прокси, например [Fiddler](https://www.telerik.com/fiddler), для проверки трафика HTTPS через бот. *Fiddler не является продуктом корпорации Майкрософт.*
-* Чтобы узнать о технологиях аутентификации, которые использует Bot Framework, см. раздел [Authentication][BotConnectorAuthGuide] (Проверка подлинности).
-* Запросить помощь от других пользователей, используя [поддержку][Support] ресурсов Bot Framework. 
+* См. сведения о [технологиях аутентификации, которые использует Bot Framework][BotConnectorAuthGuide].
+* Получите помощь от других пользователей, используя [вспомогательные][Support] ресурсы Bot Framework. 
 
 [BotConnectorAuthGuide]: ~/rest-api/bot-framework-rest-connector-authentication.md
 [Support]: bot-service-resources-links-help.md

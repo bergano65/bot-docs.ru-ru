@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/02/2019
-ms.openlocfilehash: 68ba9f8b2b47d501ebf629e8a804e6a1479e1839
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 52902456903fb8c5c9fd2037150a55a05f66f31c
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167208"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876123"
 ---
 # <a name="api-reference"></a>Справочник по API
 
@@ -433,7 +433,7 @@ GET /v3/attachments/{attachmentId}/views/{viewId}
 | **textHighlights** | [TextHighlight](#texthighlight-object)[] | Коллекция фрагментов текста для выделения, если действие содержит значение **replyToId**. |
 | **Timestamp** | строка | Дата и время отправки сообщения в часовом поясе UTC, выраженные в формате [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | **topicName** | строка | Раздел общения, к которому относится действие. |
-| **type** | строка | Тип действия. Одно из следующих значений: **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Дополнительные сведения о типах действий см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md). |
+| **type** | строка | Тип действия. Одно из следующих значений: **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Дополнительные сведения о типах действий см. в статье [Общие сведения о действиях](https://aka.ms/botSpecs-activitySchema). |
 | **значение** | object | Открытое значение. |
 | **valueType** | строка | Тип объекта значения действия. |
 
@@ -451,7 +451,7 @@ GET /v3/attachments/{attachmentId}/views/{viewId}
 | **buttons** | [CardAction](#cardaction-object)[] | Массив объектов **CardAction**, позволяющий пользователю выполнять одно или несколько действий. Канал определяет количество кнопок, которые можно указать. |
 | **duration** | строка | Длина мультимедийных данных в [формате длительности ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Объект **ThumbnailUrl**, указывающий изображение, отображаемое на карте. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Массив объектов **MediaUrl**, указывающий список анимированных изображений GIF для воспроизведения. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Массив объектов **MediaUrl**. Если это поле содержит более одного URL-адреса, это значит, что каждый URL-адрес представляет альтернативный формат одного содержимого.|
 | **shareable** | Логическое | Флаг, указывающий, может ли анимации быть предоставлен общий доступ. Если анимация может находиться в общем доступе, присвойте этому свойству значение **true**, в противном случае — **false**. Значение по умолчанию — **true**. |
 | **subtitle** | строка | Подзаголовок для отображения под заголовком карты. |
 | **text** | строка | Описание или запрос для отображения под заголовком или подзаголовком карты. |
@@ -522,7 +522,7 @@ GET /v3/attachments/{attachmentId}/views/{viewId}
 | **buttons** | [CardAction](#cardaction-object)[] | Массив объектов **CardAction**, позволяющий пользователю выполнять одно или несколько действий. Канал определяет количество кнопок, которые можно указать. |
 | **duration** | строка | Длина мультимедийных данных в [формате длительности ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Объект **ThumbnailUrl**, указывающий изображение, отображаемое на карте. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Массив объектов **MediaUrl**, указывающий список аудиофайлов для воспроизведения. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Массив объектов **MediaUrl**.  Если это поле содержит более одного URL-адреса, это значит, что каждый URL-адрес представляет альтернативный формат одного содержимого. |
 | **shareable** | Логическое | Флаг, указывающий, может ли быть предоставлен общий доступ к аудиофайлам. Если аудиофайлы могут находиться в общем доступе, присвойте этому свойству значение **true**, в противном случае — **false**. Значение по умолчанию — **true**. |
 | **subtitle** | строка | Подзаголовок для отображения под заголовком карты. |
 | **text** | строка | Описание или запрос для отображения под заголовком или подзаголовком карты. |
@@ -940,7 +940,7 @@ GET /v3/attachments/{attachmentId}/views/{viewId}
 | **buttons** | [CardAction](#cardaction-object)[] | Массив объектов **CardAction**, позволяющий пользователю выполнять одно или несколько действий. Канал определяет количество кнопок, которые можно указать. |
 | **duration** | строка | Длина мультимедийных данных в [формате длительности ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Объект **ThumbnailUrl**, указывающий изображение, отображаемое на карте. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Массив объектов **MediaUrl**, указывающий список видео для воспроизведения. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Массив **MediaUrl**.  Если это поле содержит более одного URL-адреса, это значит, что каждый URL-адрес представляет альтернативный формат одного содержимого. |
 | **shareable** | Логическое | Флаг, указывающий, предоставлен ли видео общий доступ. Если видео могут находиться в общем доступе, присвойте этому свойству значение **true**, в противном случае — **false**. Значение по умолчанию — **true**. |
 | **subtitle** | строка | Подзаголовок для отображения под заголовком карты. |
 | **text** | строка | Описание или запрос для отображения под заголовком или подзаголовком карты. |

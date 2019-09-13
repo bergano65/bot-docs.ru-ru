@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 45acff9701e7a99a6ed550091745d7323a730092
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: e9a7158183171d45ba60cdb1507af9f717ecd51b
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970677"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386122"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство по Создание и развертывание простого бота
 
@@ -44,160 +44,40 @@ ms.locfileid: "68970677"
 ## <a name="deploy-your-bot"></a>Развертывание бота
 
 ### <a name="prerequisites"></a>Предварительные требования
-- Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/), прежде чем начинать работу.
-- Описанный выше бот, запущенный на локальном компьютере.
-- Последняя версия [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+[!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
-### <a name="1-prepare-for-deployment"></a>1. Подготовка к развертыванию
-Если бот создается на основе шаблонов Visual Studio или Yeoman, его исходный код содержит папку `deploymentTemplates` с шаблонами ARM. В описанном здесь процессе развертывания используется шаблон ARM для подготовки необходимых для бота ресурсов Azure с помощью Azure CLI. 
+### <a name="prepare-for-deployment"></a>Подготовка к развертыванию
+[!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
-#### <a name="login-to-azure"></a>Вход в Azure
+#### <a name="1-login-to-azure"></a>1. Вход в Azure
+[!INCLUDE [deploy az login](~/includes/deploy/snippet-az-login.md)]
 
-Итак, вы уже создали бот и протестировали его локально, а теперь хотите развернуть его в Azure. Откройте командную строку, чтобы войти на портал Azure.
+#### <a name="2-set-the-subscription"></a>2. Настройка подписки
+[!INCLUDE [deploy az subscription](~/includes/deploy/snippet-az-set-subscription.md)]
 
-```cmd
-az login
-```
-Она откроет окно браузера с интерфейсом для входа.
+#### <a name="3-create-an-app-registration"></a>3. Регистрация приложения
+[!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
 
-#### <a name="set-the-subscription"></a>Настройка подписки
-Укажите подписку, которая будет использоваться по умолчанию.
+#### <a name="4-deploy-via-arm-template"></a>4. Развертывание с использованием шаблона ARM
+Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит. 
+##### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Развертывание с помощью шаблона ARM в новой группе ресурсов**
+[!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
 
-```cmd
-az account set --subscription "azure-subscription"
-```
+##### <a name="deploy-via-arm-template-with-existing-resource-group"></a>**Развертывание с помощью шаблона ARM в существующей группе ресурсов**
+[!INCLUDE [ARM with existing resourece group](~/includes/deploy/snippet-ARM-existing-resource-group.md)]
 
-Если вы не уверены, какую подписку выбрать для развертывания бота, просмотрите список подписок в учетной записи с помощью команды `az account list`. Перейдите в папку бота.
+#### <a name="5-prepare-your-code-for-deployment"></a>5. Подготовка кода к развертыванию
+##### <a name="retrieve-or-create-necessary-iiskudu-files"></a>**Получение или создание файлов, необходимых для IIS или Kudu**
+[!INCLUDE [retrieve or create IIS/Kudu files](~/includes/deploy/snippet-IIS-Kudu-files.md)]
 
-#### <a name="create-an-app-registration"></a>Регистрация приложения
-Регистрация приложения означает, что вы сможете использовать Azure AD для аутентификации пользователей и для запроса доступа к ресурсам пользователей. Боту нужно зарегистрированное в Azure приложение, которое предоставит боту доступ к службе Bot Framework для отправки и получения сообщений с проверкой подлинности. Чтобы зарегистрировать приложение с помощью Azure CLI, выполните следующую команду:
+##### <a name="zip-up-the-code-directory-manually"></a>**Архивация каталога кода вручную**
+[!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
-```cmd
-az ad app create --display-name "displayName" --password "AtLeastSixteenCharacters_0" --available-to-other-tenants
-```
+### <a name="deploy-code-to-azure"></a>Развертывание кода в Azure
+[!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
 
-| Параметр   | ОПИСАНИЕ |
-|:---------|:------------|
-| display-name | Отображаемое имя приложения. |
-| password | Пароль приложения, также называемый "секрет клиента". Пароль должен содержать не менее 16 символов, среди которых есть хотя бы по одной букве в верхнем и нижнем регистрах и хотя бы один специальный символ. |
-| available-to-other-tenants| Приложение может использоваться из любого клиента Azure AD.  Допустимые значения: false, true. По умолчанию имеет значение TRUE. Это позволяет боту работать с каналами службы Azure Bot.|
-
-Приведенная выше команда выводит код JSON с ключом `appId`. Сохраните значение этого ключа для развертывания с помощью ARM, где этот ключ нужно указать в параметре `appId`. Предоставленный пароль будет использоваться в параметре `appSecret`.
-
-Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
-
-## <a name="deploy-via-arm-template-with-new-resource-group"></a>Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)
-<!--
-## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
--->
-#### <a name="create-azure-resources"></a>Создание ресурсов Azure
-
-Вы создадите новую группу ресурсов в Azure, а затем с помощью шаблона ARM создадите указанные в нем ресурсы. В нашем примере это план Службы приложений, веб-приложение и регистрация каналов бота.
-
-```cmd
-az deployment create --name "name-of-deployment" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" botSku=F0 newAppServicePlanName="name-of-app-service-plan" newWebAppName="name-of-web-app" groupName="new-group-name" groupLocation="location" newAppServicePlanLocation="location"
-```
-
-| Параметр   | ОПИСАНИЕ |
-|:---------|:------------|
-| name | Понятное имя развертывания. |
-| template-file | Путь к шаблону ARM. Вы можете использовать файл `template-with-new-rg.json` из папки проекта `deploymentTemplates`. |
-| location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
-| parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `botSku` обозначает ценовую категорию — F0 (Бесплатный) или S1 (Стандартный). `newAppServicePlanName` — имя плана Службы приложений. `newWebAppName` — имя веб-приложения, которое вы создаете. `groupName` — имя группы ресурсов Azure, которую вы создаете. `groupLocation` — расположение группы ресурсов Azure. `newAppServicePlanLocation` — расположение плана Службы приложений. |
-
-## <a name="deploy-via-arm-template-with-existing-resource-group"></a>Развертывание с помощью шаблона ARM (в **существующей** группе ресурсов)
-<!--
-## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
--->
-
-#### <a name="create-azure-resources"></a>Создание ресурсов Azure
-
-Если вы используете существующую группу ресурсов, можно выбрать существующий план Службы приложений или создать новый. Ниже описаны процедуры для обоих вариантов. 
-
-**Вариант 1. Существующий план Службы приложений** 
-
-В этом варианте мы используем существующий план Службы приложений, но создаем новое веб-приложение и новую регистрацию каналов бота. 
-
-_Примечание. Параметр botId должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота (displayName), которое допускает изменения._
-
-```cmd
-az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" appServicePlanLocation="location"
-```
-
-**Вариант 2. Новый план Службы приложений** 
-
-В этом варианте мы создаем план Службы приложений, веб-приложение и регистрацию каналов бота. 
-
-```cmd
-az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" newAppServicePlanName="name-of-app-service-plan" newappServicePlanLocation="location"
-```
-
-| Параметр   | ОПИСАНИЕ |
-|:---------|:------------|
-| name | Понятное имя развертывания. |
-| resource-group | Имя группы ресурсов Azure. |
-| template-file | Путь к шаблону ARM. Вы можете использовать файл `template-with-preexisting-rg.json` из папки проекта `deploymentTemplates`. |
-| location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
-| parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `newWebAppName` — имя веб-приложения, которое вы создаете. `newAppServicePlanName` — имя плана Службы приложений. `newAppServicePlanLocation` — расположение плана Службы приложений. |
-
----
-
-#### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Получение или создание файлов, необходимых для IIS либо Kudu
-
-**Для ботов на C#**
-<!--
-### [C# bots](#tab/csharp)
--->
-```cmd
-az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
-```
-
-Необходимо указать путь к CSPROJ-файлу относительно папки --code-dir. Для этого можно применить аргумент --proj-file-path. Эта команда разрешит аргументы --code-dir и --proj-file-path в значение ./MyBot.csproj.
-
-**Для ботов на JavaScript**
-<!--
-### [Javascript bots](#tab/javascript)
--->
-```cmd
-az bot prepare-deploy --code-dir "." --lang Javascript
-```
-
-Эта команда получает файл web.config, который необходим для работы приложений Node.js со службами IIS в Службе приложений Azure. Убедитесь, что файл web.config сохранен в корневой каталог бота.
-
-#### <a name="zip-up-the-code-directory-manually"></a>Архивация каталога кода вручную
-
-Если для развертывания кода бота используются ненастроенные интерфейсы [API развертывания ZIP-файлов](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url), Web App или Kudu демонстрирует следующее поведение.
-
-_Kudu по умолчанию предполагает, что развертывание из ZIP-файлов готово к выполнению и не требует дополнительных шагов сборки, таких как npm install или dotnet restore/dotnet publish._
-
-Поэтому важно включить весь код сборки и все необходимые зависимости в ZIP-файл, предназначенный для развертывания веб-приложения, иначе бот не будет работать должным образом.
-
-> [!IMPORTANT]
-> Прежде чем запаковать файлы проекта, убедитесь, что вы зашли _в_ нужную папку. 
-> - Для ботов на C# это папка, в которой расположен CSPROJ-файл. 
-> - Для ботов на JS это папка, в которой расположен файл app.js или index.js. 
->
-> Выберите все файлы и заархивируйте их, а затем выполните команду, **оставаясь в той же папке**.
->
-> Если расположение корневой папки выбрано неверно, **бот не сможет запуститься на портале Azure**.
-
-### <a name="2-deploy-code-to-azure"></a>2. Развертывание кода в Azure
-Теперь мы готовы развернуть код в виде веб-приложения Azure. Запустите следующую команду из командной строки, чтобы выполнить развертывание с помощью принудительного развертывания в Kudu из ZIP-файла веб-приложения.
-
-```cmd
-az webapp deployment source config-zip --resource-group "new-group-name" --name "name-of-web-app" --src "code.zip" 
-```
-
-| Параметр   | ОПИСАНИЕ |
-|:---------|:------------|
-| resource-group | Имя созданной ранее группы ресурсов Azure. |
-| name | Имя веб-приложения, которое вы использовали ранее. |
-| src  | Путь к созданному ранее ZIP-файлу. |
-
-### <a name="3-test-in-web-chat"></a>3. Тестирование в веб-чате
-- На портале Azure перейдите к колонке веб-приложения бота.
-- В разделе **управления ботами** щелкните **Test in Web Chat** (Тестирование в веб-чате). Служба Azure Bot загрузит элемент управления "Веб-чат" и подключится к боту.
-- Подождите несколько секунд после успешного завершения развертывания. Можно также перезапустить веб-приложение, чтобы очистить все кэши. Вернитесь в колонку "Бот веб-приложения" и выполните тестирование с помощью веб-чата на портале Azure.
+### <a name="test-in-web-chat"></a>Тестирование в веб-чате
+[!INCLUDE [test in web chat](~/includes/deploy/snippet-test-in-web-chat.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

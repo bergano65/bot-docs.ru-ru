@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a13358afca190606e235475a58f6aedd146fee5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b738296d3d796cdccd40e0d3bda503b9d6349bff
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225409"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297997"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Настройка формы с помощью FormBuilder
 
@@ -38,10 +37,10 @@ ms.locfileid: "54225409"
 
 [!code-csharp[Define value](../includes/code/dotnet-formflow-formbuilder.cs#defineValue)]
 
-В этом примере метод [Advanced.Field.SetType][setType] указывает тип поля (`null` представляет поле перечисления). Метод [Advanced.Field.SetActive][setActive] указывает, что поле должно быть включено, только если длина сандвича равна `Length.FootLong`. Наконец, метод [Advanced.Field.SetDefine][setDefine] указывает асинхронный делегат, который определяет это поле. Этот делегат передает текущий объект состояния и поле [Advanced.Field][field], которое определяется динамически. Делегат использует текучие методы поля для динамического определения значений. В этом примере значения являются строками, а методы `AddDescription` и `AddTerms` определяют описания и термины для каждого значения.
+В этом примере метод [Advanced.Field.SetType][setType] указывает тип поля (`null` представляет поле перечисления). Метод [Advanced.Field.SetActive][setActive] указывает, что поле должно быть включено, только если длина сандвича равна `Length.FootLong`. Наконец, метод [Advanced.Field.SetDefine][setDefine] указывает асинхронный делегат, который определяет это поле. Этот делегат передает текущий объект состояния и класс [Advanced.Field][field], который определяется динамически. Делегат использует текучие методы поля для динамического определения значений. В этом примере значения являются строками, а методы `AddDescription` и `AddTerms` определяют описания и термины для каждого значения.
 
 > [!NOTE]
-> Чтобы динамически определять значение поля, можно или самостоятельно реализовать [Advanced.IField][iField], или оптимизировать процесс, воспользовавшись классом [Advanced.FieldReflector][FieldReflector], как показано в приведенном выше примере. 
+> Чтобы динамически определять значение поля, вы можете самостоятельно реализовать [Advanced.IField][iField] или оптимизировать процесс с помощью класса [Advanced.FieldReflector][FieldReflector], как показано в примере выше. 
 
 ### <a name="dynamically-define-messages-and-confirmations"></a>Динамическое определение сообщений и подтверждений
 

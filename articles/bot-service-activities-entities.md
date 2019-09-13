@@ -3,18 +3,17 @@ title: Сущности и типы действий | Документация 
 description: Сущности и типы действий.
 keywords: Упоминание сущности. Типы действий. Использование сущностей
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: e38d9887e50455e66ac7fdcd5c4e7bb309a3e3e9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 4a37824ffc6eeeda69330a659d3d026bde5f0069
+ms.sourcegitcommit: 99fa595b81e6fabb1f4a93e0694e88bfbfab2dd4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405945"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808431"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -138,10 +137,10 @@ if (entity[0].type === "GeoCoordinates" && entity[0].latitude > 34) {
 ---
 
 ## <a name="activity-types"></a>Типы действий
+<!-- 
+This code example show how to process an activity of type **message**:
 
-В этом примере кода показано, как обрабатывать действие типа **message**:
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# [C#](#tab/cs)
 
 ```cs
 if (context.Activity.Type == ActivityTypes.Message){
@@ -149,7 +148,7 @@ if (context.Activity.Type == ActivityTypes.Message){
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# [JavaScript](#tab/js)
 
 ```js
 if(context.activity.type === 'message'){
@@ -157,9 +156,9 @@ if(context.activity.type === 'message'){
 }
 ```
 
----
+--- -->
 
-Действия могут быть разных типов. Самыми распространенными являются **сообщения**. См. подробнее на [странице схемы действий](https://aka.ms/botSpecs-activitySchema).
+Действия могут быть различных типов, самыми распространенными являются **сообщение**. Объяснения и дополнительные сведения о разных типах действий см. в [схеме действий Bot Framework](https://aka.ms/botSpecs-activitySchema).
 
 ::: moniker range="azure-bot-service-3.0"
 

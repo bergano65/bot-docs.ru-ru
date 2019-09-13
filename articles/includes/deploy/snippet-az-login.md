@@ -1,31 +1,17 @@
 ---
-ms.openlocfilehash: f8aad539a2d1e415833609f66cd5b398c88206f1
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c664749bc6ad63d1b0f60e001b2603898e58a9ea
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252665"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386016"
 ---
-Откройте командную строку, чтобы войти на портал Azure.
+Созданный и протестированный локально бот можно развернуть в Azure. Откройте командную строку, чтобы войти на портал Azure.
 
 ```cmd
 az login
 ```
-
 Она откроет окно браузера с интерфейсом для входа.
 
-### <a name="set-the-subscription"></a>Настройка подписки
-
-Укажите подписку, которая будет использоваться по умолчанию.
-
-```cmd
-az account set --subscription "<azure-subscription>"
-```
-
-Если вы не уверены, какую подписку выбрать для развертывания бота, просмотрите список `subscriptions` для учетной записи с помощью команды `az account list`.
-
-Перейдите в папку бота.
-
-```cmd
-cd <local-bot-folder>
-```
+> [!NOTE]
+> При развертывании бота в облаке, отличном от Azure, например US Gov, необходимо выполнить `az cloud set --name <name-of-cloud>` перед `az login`, где &lt;name-of-cloud> обозначает имя зарегистрированного облака, например `AzureUSGovernment`. Если вы хотите вернуться в общедоступное облако, можно запустить `az cloud set --name AzureCloud`. 

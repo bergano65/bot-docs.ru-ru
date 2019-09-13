@@ -3,19 +3,18 @@ title: Реализация приветственного диалога | До
 description: Используйте диалог для приветствия пользователя, когда он присоединяется к беседе.
 keywords: greeting, dialogs, conversation flow, dialog set
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82e6273b8d6dc984e29bef891f3e8f67b1c53eed
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 5ea41c8ea879d20ba9d031bf3345b0862171458d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215417"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299293"
 ---
 # <a name="implement-a-greeting-dialog"></a>Реализация приветственного диалога
 
@@ -23,12 +22,12 @@ ms.locfileid: "66215417"
 
 Вы можете создать диалог для приветствия пользователя, который присоединяется к беседе.
 
-См. подробнее об [отправке приветственных сообщений пользователям][send-welcome].
+См. сведения об [отправке приветственных сообщений пользователям][send-welcome].
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Опыт работы с [управлением состоянием][concept-state], [библиотеками диалогов][concept-dialogs], [управлением диалогами][simple-flow] и [сбором введенных пользователем данных с использованием приглашения к диалогу][prompting].
-- Копия примера ??? на языке [**CSharp**][cs-sample] или [**JavaScript**][js-sample].
+- Копия Пример на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
 
 ## <a name="task-as-in-to-do-x-do-these-things"></a>\<Задача> [чтобы сделать X, выполните следующее]
 

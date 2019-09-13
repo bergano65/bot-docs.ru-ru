@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225959"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298019"
 ---
 # <a name="advanced-features-of-formflow"></a>Дополнительные функции FormFlow
 
@@ -24,7 +23,7 @@ ms.locfileid: "54225959"
 
 ## <a name="specify-initial-form-state-and-entities"></a>Установка исходного состояния и сущностей формы
 
-Во время запуска [FormDialog][formDialog] при необходимости вы можете передать экземпляр состояния. Если вы передадите экземпляр своего состояния, то по умолчанию FormFlow пропустит шаги настройки для любых полей, которые уже содержат значения; пользователю не нужно будет настраивать эти поля. Чтобы форма отправляла пользователю запрос на настройку всех полей (включая те поля, которые уже содержат исходные значения), запуская `FormDialog`, перейдите в раздел [FormOptions.PromptFieldsWithValues][promptFieldsWithValues]. Если поле содержит исходное значение, запрос будет использовать это значение в качестве значения по умолчанию.
+Во время запуска [FormDialog][formDialog] при необходимости вы можете передать экземпляр состояния. Если вы передадите экземпляр своего состояния, то по умолчанию FormFlow пропустит шаги настройки для любых полей, которые уже содержат значения; пользователю не нужно будет настраивать эти поля. Чтобы форма отправляла пользователю запрос на настройку всех полей (включая те поля, которые уже содержат исходные значения), запуская `FormDialog` передайте метод [FormOptions.PromptFieldsWithValues][promptFieldsWithValues]. Если поле содержит исходное значение, запрос будет использовать это значение в качестве значения по умолчанию.
 
 Вы также можете передать сущности [LUIS](https://luis.ai/) для привязки к состоянию. Если `EntityRecommendation.Type` — это путь к полю в вашем классе C#, `EntityRecommendation.Entity` будет передаваться через распознаватель, чтобы привязываться к вашему полю. FormFlow пропустит шаги настройки любых полей, привязанных к сущности; пользователю не нужно будет настраивать эти поля. 
 
@@ -72,10 +71,10 @@ For sandwich toppings you have selected Avocado, Banana Peppers, Cucumbers, Gree
 |----|----| 
 | [Describe][describeAttribute] | Показывает, как изменить поле или значение в шаблоне или карточке |
 | [Numeric][numericAttribute] | Ограничивает принятые значения числового поля |
-| [Optional][optionalAttribute] | Отмечает поле как необязательное |
-| [Pattern][patternAttribute] | Определяет регулярное выражение для проверки строкового поля |
+| [Необязательно.][optionalAttribute] | Отмечает поле как необязательное |
+| [Шаблон][patternAttribute] | Определяет регулярное выражение для проверки строкового поля |
 | [Prompt][promptAttribute] | Определяет запрос для поля |
-| [Template][templateAttribute] | Определяет шаблон, с помощью которого будут создаваться запросы или значения в запросах |
+| [Шаблон][templateAttribute] | Определяет шаблон, с помощью которого будут создаваться запросы или значения в запросах |
 | [Terms][termsAttribute] | Определяет входные термины, соответствующие полю или значению |
 
 ## <a name="customize-prompts-using-the-prompt-attribute"></a>Настройка запросов с помощью атрибута Prompt

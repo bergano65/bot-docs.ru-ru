@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3607957cd5cb8738e8268ece6eba4417250bc596
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7db0ccb84b2c5172348eeac667f78f3abaf95f94
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997965"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299657"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Справочник по программному интерфейсу Direct Line API 1.1
 

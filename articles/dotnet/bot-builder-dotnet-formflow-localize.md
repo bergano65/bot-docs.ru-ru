@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ec3d12a7d35f65adca901395edff2db3ab71c66
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 795232b401284becd940daed6bf7da8642c12efd
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225589"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297953"
 ---
 # <a name="localize-form-content"></a>Локализация содержимого формы
 
@@ -37,7 +36,7 @@ ms.locfileid: "54225589"
 
 ### <a name="use-iformbuildersaveresources"></a>Использование IFormBuilder.SaveResources
 
-Чтобы создать файл ресурсов, можно вызвать для формы метод [IFormBuilder.SaveResources][saveResources], который сохраняет строки в RESX-файл.
+Чтобы создать файл ресурсов, можно вызвать для формы метод [IFormBuilder.SaveResources][saveResources], который сохраняет строки в RESX-файле.
 
 ### <a name="use-rview"></a>Использование RView
 

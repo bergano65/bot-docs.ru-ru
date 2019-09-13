@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e01473a06a0cdbef635de33e5734b02351e36cea
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563435"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298378"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Основные концепции, которые используются в пакете SDK Bot Framework для .NET.
 
@@ -30,7 +29,7 @@ ms.locfileid: "64563435"
 
 [Bot Framework Connector](bot-builder-dotnet-connector.md) предоставляет единый интерфейс REST API, позволяющий боту взаимодействовать через различные каналы связи, такие как Skype, электронная почта, Slack и т. д. Эта служба обеспечивает обмен данными между ботом и пользователем, ретранслируя сообщения из бота в канал и из канала в бот. 
 
-В пакете SDK Bot Framework для .NET библиотека [Connector][connectorLibrary] обеспечивает доступ к соединителю (Connector). 
+В пакете SDK Bot Framework для .NET библиотека [Connector][connectorLibrary] обеспечивает доступ к соединителю. 
 
 ## <a name="activity"></a>Действие
 
@@ -42,7 +41,7 @@ ms.locfileid: "64563435"
 
 Если вы создаете бот с помощью пакета SDK Bot Framework для .NET, для моделирования беседы и управления [ее потоком](../bot-service-design-conversation-flow.md#dialog-stack) можно использовать [диалоги](bot-builder-dotnet-dialogs.md). Диалог можно сочетать с другими диалогами для наиболее эффективного повторного использования. Кроме того, в контексте диалога сохраняется [стек диалогов](../bot-service-design-conversation-flow.md), которые активны в беседе в любой момент времени. Беседу, содержащую диалоги, можно переносить между компьютерами, что обеспечивает масштабирование реализуемого бота. 
 
-В пакет SDK Bot Framework для .NET входит библиотека [Builder][builderLibrary], которая позволяет управлять диалогами.
+В состав пакета SDK Bot Framework для .NET входит библиотека [Builder][builderLibrary], которая позволяет управлять диалогами.
 
 ## <a name="formflow"></a>FormFlow
 

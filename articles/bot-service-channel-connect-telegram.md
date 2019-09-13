@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: efe38392117fb871b2b98e3f1d8d798bfaef0c41
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: cdf9a98d77f876fb582432ab9b4704d2ac98d45f
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563762"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70385950"
 ---
 # <a name="connect-a-bot-to-telegram"></a>Подключение бота к Telegram
 
@@ -53,9 +52,17 @@ ms.locfileid: "64563762"
 
 ## <a name="enter-the-telegram-bots-access-token"></a>Ввод маркера доступа бота Telegram
 
-Вставьте ранее скопированный маркер в поле **Токен доступа** и нажмите кнопку **Отправить**.
+Перейдите к разделу **Каналы** бота на портале Azure и нажмите кнопку **Telegram**. 
 
-## <a name="enable-the-bot"></a>Включение бота
-Установите флажок **Enable this bot on Telegram** (Включить этот бот для Telegram). Затем щелкните **I'm done configuring Telegram** (Настройка Telegram завершена).
+> [!NOTE]
+>  Пользовательский интерфейс портала Azure будет выглядеть немного иначе, когда вы подключите бота к Telegram. 
 
-Как только вы выполните эти действия, ваш бот будет настроен для взаимодействия с пользователями с помощью Telegram.
+![Выбор Telegram в каналах](~/media/channels/tg-connectBot-Azure.png)
+
+Вставьте ранее скопированный маркер в поле **Маркер доступа** и нажмите кнопку **Сохранить**.
+
+![Маркер доступа Telegram](~/media/channels/tg-accessToken-Azure.png)
+
+Бот настроен для взаимодействия с пользователями в Telegram. 
+
+![Включение бота Telegram](~/media/channels/tg-botEnabled-Azure.png)

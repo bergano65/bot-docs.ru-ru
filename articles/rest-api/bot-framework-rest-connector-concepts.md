@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 12a54d479f0222497589c2b14e017a4aa8d992fd
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037546"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876087"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -24,7 +24,7 @@ ms.locfileid: "70037546"
 
 ### <a name="activity"></a>Действие
 
-С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. Дополнительные сведения о действиях в службе Bot Connector см. в статье [Общие сведения о действиях](bot-framework-rest-connector-activities.md).
+С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. См. сведения о [действиях в службе Bot Connector]https://aka.ms/botSpecs-activitySchema.
 
 ## <a name="bot-state-service"></a>Служба Состояние бота
 

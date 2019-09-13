@@ -2,19 +2,18 @@
 title: Создание взаимодействия на основе данных с помощью поиска Azure | Документы Майкрософт
 description: Узнайте, как создать взаимодействие на основе данных с помощью поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Framework для Node.js и Поиска Azure.
 author: matthewshim-ms
-ms.author: v-shimma
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 259f709ae460fde13cdf25ce6d7cbf5dd44a333d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224862"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299754"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -24,7 +23,7 @@ ms.locfileid: "57224862"
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
 
-Вы можете добавить в бот [поиск Azure][search], чтобы помочь пользователю ориентироваться в большом объеме материалов и создать взаимодействие на основе данных для пользователей вашего бота.
+Вы можете добавить в бота [Поиск Azure][search], чтобы упростить пользователю работу с большим объемом материалов и предоставить возможность взаимодействия на основе данных для пользователей вашего бота.
 
 Поиск Azure — это служба Azure, которая обеспечивает поиск по ключевым словам, встроенные лингвистические правила, настраиваемую оценку, фасетную навигацию и многое другое. Поиск Azure может индексировать содержимое из различных источников, включая базы данных SQL Azure, DocumentDB, хранилище BLOB-объектов и хранилище таблиц. Он поддерживает принудительное индексирование для других источников данных и может открывать PDF-файлы, документы Office и другие форматы, содержащие неструктурированные данные. После сбора содержимое переходит в индекс службы поиска Azure, которой бот может отправлять запросы.
 
@@ -155,7 +154,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Поиск Azure][search]
+* [Поиск Azure;][search]
 * [Служебная программа узла][NodeUtil]
 * [Диалоги](bot-builder-nodejs-dialog-manage-conversation.md)
 

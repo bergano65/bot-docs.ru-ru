@@ -3,19 +3,18 @@ title: Добавление мультимедиа в сообщения | До
 description: Сведения о добавлении мультимедиа в сообщения с помощью пакета SDK Bot Framework.
 keywords: media, messages, images, audio, video, files, MessageFactory, rich cards, messages, adaptive cards, hero card, suggested actions
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 4caa11221ed930a627b53d7f46107adb226a816d
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464714"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876179"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
@@ -23,7 +22,15 @@ ms.locfileid: "67464714"
 
 Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу.
 
-Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
+## <a name="prerequisites"></a>Предварительные требования
+- Базовые знания о [ботах](bot-builder-basics.md).
+- Код в этой статье основан на следующих примерах:
+
+  | Пример кода | C# | JS |
+  | :------ | :----- | :---|
+  | Карточки | [Пример на языке C#](https://aka.ms/bot-cards-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-cards-js-sample-code) |
+  | Вложения | [Пример на языке C#](https://aka.ms/bot-attachments-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-attachments-sample-code-js) |
+  | Предлагаемые действия | [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp) | [Пример на языке JavaScript](https://aka.ms/SuggestedActionsJS) |
 
 ## <a name="send-attachments"></a>Отправка вложений
 
@@ -241,14 +248,6 @@ ms.locfileid: "67464714"
 Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
 См. дополнительные сведения о [схеме карточек Bot Framework](https://aka.ms/botSpecs-cardSchema) и [действиях в беседах](https://aka.ms/botSpecs-activitySchema#message-activity).
-
-| Пример кода | C# | JS |
-| :------ | :----- | :---|
-| Карточки | [Пример на языке C#](https://aka.ms/bot-cards-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-cards-js-sample-code) |
-| Вложения | [Пример на языке C#](https://aka.ms/bot-attachments-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-attachments-sample-code-js) |
-| Предлагаемые действия | [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp) | [Пример на языке JavaScript](https://aka.ms/SuggestedActionsJS) |
-
-Изучите репозиторий образцов для Bot Builder на [GitHub](https://aka.ms/bot-samples-readme), где есть дополнительные примеры.
 
 ### <a name="code-sample-for-processing-adaptive-card-input"></a>Пример кода для обработки входных данных адаптивной карточки
 

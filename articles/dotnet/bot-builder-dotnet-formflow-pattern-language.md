@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225639"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297914"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Настройка взаимодействия с пользователем с помощью языка шаблонов
 
@@ -24,12 +23,12 @@ ms.locfileid: "54225639"
 
 ## <a name="prompts-and-templates"></a>Запросы и шаблоны
 
-[Запрос][promptAttribute] определяет сообщение, которое отправляется пользователю, чтобы запросить фрагмент информации или подтверждение. Запрос можно настроить явно с помощью атрибута [Prompt](bot-builder-dotnet-formflow-advanced.md#customize-prompts-using-the-prompt-attribute) или неявно с помощью [IFormBuilder<T>.Field][field]. 
+[Запрос][promptAttribute] определяет сообщение, которое отправляется пользователю для запроса фрагмента информации или подтверждения. Запрос можно настроить явно с помощью атрибута [Prompt](bot-builder-dotnet-formflow-advanced.md#customize-prompts-using-the-prompt-attribute) или неявно с помощью [IFormBuilder<T>.Field][field]. 
 
 Формы используют шаблоны, чтобы автоматически создавать запросы и другие элементы, например справку. Шаблон по умолчанию класса или поля можно переопределить с помощью атрибута [Template](bot-builder-dotnet-formflow-advanced.md#customize-prompts-using-the-template-attribute). 
 
 > [!TIP]
-> Класс [FormConfiguration.Templates][formConfiguration] определяет набор встроенных шаблонов, которые предоставляют хорошие примеры использования языка шаблонов.
+> Класс [FormConfiguration.Templates][formConfiguration] определяет набор встроенных шаблонов, которые демонстрируют способы использования языка шаблонов.
 
 ## <a name="elements-of-pattern-language"></a>Элементы языка шаблонов
 

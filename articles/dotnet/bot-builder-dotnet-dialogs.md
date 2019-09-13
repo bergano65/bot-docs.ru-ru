@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224999"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298372"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Диалоги в пакете SDK Bot Framework для .NET.
 
@@ -37,7 +36,7 @@ ms.locfileid: "54224999"
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
-В пакете SDK Bot Framework для .NET есть библиотека [Builder][builderLibrary], которая позволяет реализовать диалоги. Чтобы получить доступ к соответствующим классам, импортируйте пространство имен `Dialogs`.
+В пакете SDK Bot Framework для .NET доступна библиотека [Builder][builderLibrary], которая позволяет реализовать диалоги. Чтобы получить доступ к соответствующим классам, импортируйте пространство имен `Dialogs`.
 
 [!code-csharp[Using statement](../includes/code/dotnet-dialogs.cs#usingStatement)]
 
@@ -81,7 +80,7 @@ ms.locfileid: "54224999"
 
 ## <a name="dialog-context"></a>Контекст диалога
 
-Интерфейс `IDialogContext`, который передается в каждый метод диалога, предоставляет доступ к службам, необходимым диалоговому окну для сохранения состояния и взаимодействия с каналом. Интерфейс `IDialogContext` состоит из трех интерфейсов: [Internals.IBotData][iBotData], [Internals.IBotToUser][iBotToUser] и [ Internals.IDialogStack][iDialogStack]. 
+Интерфейс `IDialogContext`, который передается в каждый метод диалога, предоставляет доступ к службам, необходимым диалоговому окну для сохранения состояния и взаимодействия с каналом. Интерфейс `IDialogContext` состоит из трех интерфейсов: [Internals.IBotData][iBotData], [Internals.IBotToUser][iBotToUser] и [Internals.IDialogStack][iDialogStack]. 
 
 ### <a name="internalsibotdata"></a>Internals.IBotData
 
@@ -101,13 +100,13 @@ ms.locfileid: "54224999"
 
 [Методы Chain](#dialog-chains) предоставляют текучий интерфейс для диалоговых окон, который можно использовать в синтаксисе запросов LINQ. Скомпилированная форма синтаксиса запросов LINQ часто использует анонимные методы. Если эти анонимные методы не ссылаются на среду локальных переменных, такие методы не имеют состояния и сериализуются тривиально. Тем не менее, если анонимный метод записывает любую локальную переменную в среде, соответствующий объект замыкания (созданный компилятором) не помечается как сериализуемый. В этом случае построитель ботов вызывает исключение `ClosureCaptureException`, чтобы определить проблему.
 
-В целях использования отражения для сериализации классов, которые не помечены как сериализуемые, библиотека Builder включает суррогат сериализации на основе отражения, который можно применять для регистрации в [Autofac][autofac].
+Чтобы можно было использовать отражение для сериализации классов, которые не помечены как сериализуемые, библиотека Builder включает суррогат сериализации на основе отражения для регистрации в [Autofac][autofac].
 
 [!code-csharp[Serialization](../includes/code/dotnet-dialogs.cs#serialization)]
 
 ## <a id="dialog-chains"></a> Цепочки диалогов
 
-Хотя вы можете явно управлять стеком активных диалоговых окон с помощью `IDialogStack.Call<R>` и `IDialogStack.Done<R>`, таким стеком можно также управлять неявно с помощью этих текучих методов [Chain][chain].
+Хотя вы можете явно управлять стеком активных диалоговых окон с помощью `IDialogStack.Call<R>` и `IDialogStack.Done<R>`, также поддерживается неявное управление с помощью этих текучих методов [Chain][chain].
 
 
 |           Метод            |  type   |                                 Примечания                                  |

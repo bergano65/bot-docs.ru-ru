@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 10246fda94932feb96e5faa0cdd8ca489c98c855
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 3a4bf05a6c9b9eeca4a3cccef7aaf77c2f304048
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037455"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876185"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "70037455"
 
 | Тип карточки | ОПИСАНИЕ |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Настраиваемая карточка, которая содержит любое сочетание текста, речи, изображений, кнопок и полей ввода. См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status).  |
+| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Настраиваемая карточка, которая содержит любое сочетание текста, речи, изображений, кнопок и полей ввода. См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status). |
 | [AnimationCard][] | Карточка, которая может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
 | [AudioCard][] | Карточка, которая может воспроизводить звуковой файл. |
 | [HeroCard][]; | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
@@ -50,6 +50,9 @@ ms.locfileid: "70037455"
 
 | Свойство | type | ОПИСАНИЕ | 
 |----|----|----|
+| channelData | строка | Относящиеся к каналу данные, связанные с этим действием. |
+| displayText | строка | Текст, отображаемый в канале чата при нажатии кнопки. | 
+| text | строка | Текст для действия. | 
 | Тип | строка | тип действия (одно из значений, указанных в таблице ниже) |
 | title | строка | название кнопки |
 | image | строка | URL-адрес изображения для кнопки |
@@ -260,12 +263,10 @@ Content-Type: application/json
 - <a href="http://adaptivecards.io" target="_blank">Адаптивные карточки</a>
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
-
 [Действие]: bot-framework-rest-connector-api-reference.md#activity-object
 [Вложение]: bot-framework-rest-connector-api-reference.md#attachment-object
 [CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
-
-[AnnimationCard]: bot-framework-rest-connector-api-reference.md#annimationcard-object
+[AnimationCard]: bot-framework-rest-connector-api-reference.md#animationcard-object
 [AudioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
 [HeroCard]: bot-framework-rest-connector-api-reference.md#herocard-object;
 [ThumbnailCard]: bot-framework-rest-connector-api-reference.md#thumbnailcard-object.
