@@ -7,6 +7,8 @@
 # [Перенос бота .NET версии 3 в бот .NET Core версии 4](conversion-core.md)
 # [Использование пользовательского состояния .NET версии 3 в боте версии 4](csharp-user-state-using.md)
 # [Перенос бота JavaScript версии 3 в бот версии 4](conversion-javascript.md)
+# [Использование пользовательского состояния JavaScript версии 3 в боте версии 4](javascript-user-state-using.md)
+
 <!-- Remember to add JavaScript user state topic -->
 
 <!-- Current target:
