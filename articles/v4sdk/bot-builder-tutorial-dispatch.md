@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
+ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026336"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224783"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -91,7 +91,11 @@ ms.locfileid: "70026336"
 
 Первым шагом при настройке базы знаний службы QnA Maker является настройка службы QnA Maker в Azure. Чтобы сделать это, см. [пошаговые инструкции](https://aka.ms/create-qna-maker).
 
-Создав в Azure службу QnA Maker, запишите _ключ 1_ Cognitive Services, который предоставлен для вашей службы QnA Maker. Его нужно будет сохранить как \<azure-qna-service-key1> при добавлении приложения QnA Maker в приложение для отправки. Чтобы получить этот ключ, сделайте следующее:
+Создав в Azure службу QnA Maker, запишите _ключ 1_ Cognitive Services, который предоставлен для вашей службы QnA Maker. Его нужно будет сохранить как \<azure-qna-service-key1> при добавлении приложения QnA Maker в приложение для отправки. 
+
+См. дополнительные сведения о [двух типах ключей](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker), используемых с QnA Maker.
+
+Чтобы получить этот ключ, сделайте следующее:
     
 ![Выбор Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
@@ -152,6 +156,8 @@ ms.locfileid: "70026336"
 |QnA Maker| [Идентификатор приложения](https://http://qnamaker.ai) можно увидеть на портале **QnA Maker** на странице параметров, которая становится доступна после публикации приложения. Это идентификатор, расположенный в первой части команды POST после элемента knowledgebase. Например, `POST /knowledgebases/{APP-ID}/generateAnswer`.<br>**Ключ разработки** можно узнать на портале Azure для ресурса QnA Maker, в разделе **Ключи**. Вам потребуется только один ключ.|
 
 Ключ разработки не используется для получения оценки прогнозирования или достоверности из опубликованного приложения. Для этого действия нужны ключи конечных точек. Мы найдем и применим **[ключи конечной точки](#service-endpoint-keys)** далее в этом руководстве. 
+
+См. дополнительные сведения о [двух типах ключей](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker), используемых с QnA Maker.
 
 ## <a name="create-the-dispatch-model"></a>Создание модели отправки
 
