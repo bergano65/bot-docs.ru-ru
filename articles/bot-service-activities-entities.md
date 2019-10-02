@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
-ms.openlocfilehash: 4a37824ffc6eeeda69330a659d3d026bde5f0069
-ms.sourcegitcommit: 99fa595b81e6fabb1f4a93e0694e88bfbfab2dd4
+ms.openlocfilehash: e1eae45702a1eee94714f96425050948310c7520
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808431"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693119"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -84,7 +84,7 @@ entity = [mention];
 | type | Тип сущности (GeoCoordinates). |
 | ИМЯ | Название расположения. |
 | Долгота | Долгота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
-| Долгота | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
+| Широта | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
 | Elevation | Высота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 
 Данный пример кода показывает, как добавить упоминание сущности в коллекцию.

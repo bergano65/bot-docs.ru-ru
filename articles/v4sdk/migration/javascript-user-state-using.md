@@ -8,13 +8,15 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e0619a21b68ee98e112a15a863063d0d3ef802c
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 4697ecf47464114de68ec6c0d872b45ff1ee5e54
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026693"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278976"
 ---
+<!-- This article is on hold -->
+
 # <a name="using-javascript-v3-user-state-in-a-v4-bot"></a>Использование данных JavaScript о состоянии пользователя версии 3 в боте версии 4
 
 В этой статье описано, как бот версии 4 может выполнять с информацией о состоянии пользователя версии 3 операции чтения, записи и удаления.

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 7/9/2019
-ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037513"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693132"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
@@ -38,12 +38,14 @@ ms.locfileid: "70037513"
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Настройте состояние проверки в **загрузочном файле**. Добавьте проверяющее ПО промежуточного слоя в адаптер. Состояние проверки предоставляется путем внедрения зависимостей. См. обновление кода ниже или пример проверки: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
 
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+**Startup.cs.**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
 
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
+**EchoBot.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Прежде чем обновлять код бота, нужно обновить его пакеты до последних версий, выполнив в терминале следующую команду: 
