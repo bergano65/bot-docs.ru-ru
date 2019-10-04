@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 5ca0e9d036d5d3628fff9ae8b0bf5d9f4aa9d8b4
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 3ef81582c500a403080908e0d2c63de2ead5b9ab
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671447"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693144"
 ---
 # <a name="about-azure-bot-service"></a>Общие сведения о службе Azure Bot
 
@@ -72,6 +72,8 @@ ms.locfileid: "68671447"
 - Тестирование в локальной среде с помощью [эмулятора](bot-service-debug-emulator.md). Bot Framework Emulator — это автономное приложение с интерфейсом для чата, которое содержит дополнительные средства отладки и опроса, позволяющие обнаружить проблемы с ботом и выявить их причины.  Эмулятор можно запускать локально в той же системе, что и разрабатываемый бот. 
  
 - Проверка бота в [Интернете](bot-service-manage-test-webchat.md). Завершив настройку бота через портал Azure, вы сможете обратиться к нему через веб-интерфейс чата. Веб-интерфейс чата — это отличный способ предоставить доступ к боту инженерам-испытателям и другим заинтересованным лицам, у которых нет прямого доступа к исполняемому коду бота.
+
+- Выполните [модульное тестирование](https://docs.microsoft.com/en-us/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0) бота с помощью пакета SDK для Bot Framework с обновлением, вышедшем в июле.
 
 ### <a name="publish"></a>Публикация 
 Когда все будет готово для публикации бота, передайте его содержимое в [Azure](bot-builder-howto-deploy-azure.md) или в собственной веб-службе или центре обработки данных. Постоянный адрес в общедоступном сегменте Интернета будет первым шагом к активному использованию бота на вашем сайте или в специализированных каналах для чата.

@@ -10,16 +10,19 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f7f70804ce67adec386d1a6722ba7e87b6cb2a93
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ec0a4afb33c560a6b53ff6a02da9b1cfed07f16b
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167025"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278997"
 ---
-# <a name="connect-a-bot-to-direct-line-speech-preview"></a>Подключение бота к каналу Direct Line Speech (предварительная версия)
+# <a name="connect-a-bot-to-direct-line-speech-channel"></a>Подключение бота к каналу Direct Line Speech
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
+
+> [!WARNING]
+> Предоставляется общедоступная **предварительная версия** **канала Direct Line Speech**.  
 
 Вы можете настроить бот так, чтобы клиентские приложения могли взаимодействовать с ним через канал Direct Line Speech.
 
@@ -96,3 +99,8 @@ ms.locfileid: "70167025"
 1. Действия [conversationUpdate](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation-update-activity) и [endOfCoversation](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#end-of-conversation-activity), которые обозначают начало и окончание беседы и традиционно используются при формировании приветственных сообщений, будут изменены для согласованности с другими каналами.
 
 1. Этот канал пока не поддерживает [SigninCard](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0). 
+
+## <a name="next-steps"></a>Дальнейшие действия
+
+> [!div class="nextstepaction"]
+> [Использование канала "Речь Direct Line" в боте](./directline-speech-bot.md)

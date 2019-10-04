@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5a8a79139c7efa1141c79921836d778c6fae5c89
-ms.sourcegitcommit: 4ddaae622fffb2c3bcfd3bff3c97bcc8088f93e0
+ms.openlocfilehash: 8294ca4b58c2a50d55bdfd9a81cc2c6fb57f3922
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69448583"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279007"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>Использование канала Direct Line Speech в боте
 
@@ -26,8 +26,11 @@ Direct Line Speech использует новую возможность пот
 
 Для предварительной версии канала Direct Line Speech существуют дополнительные пакеты NuGet, которые нужно добавить в бота.
 
-- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 - **Microsoft.Bot.Builder.StreamingExtensions** 4.5.1-preview1
+
+При этом будет установлен такой пакет:
+
+- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 
 Если вы не найдете их, проверьте включение предварительных пакетов в область поиска.
 
@@ -40,10 +43,19 @@ public IActivity Speak(string message)
 {
     var activity = MessageFactory.Text(message);
     string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
-        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)'>" +
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>" +
         $"{message}" + "</voice></speak>";
     activity.Speak = body;
     return activity;
+}
+```
+
+В приведенном ниже фрагменте кода показано, как использовать предыдущую функцию *Speak*.
+
+```cs
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    await turnContext.SendActivityAsync(Speak($"Echo: {turnContext.Activity.Text}"), cancellationToken);
 }
 ```
 
@@ -174,9 +186,11 @@ public IActivity Speak(string message)
 
 ## <a name="additional-information"></a>Дополнительная информация
 
-См. о работе с действиями в руководствах по [использованию ботов](v4sdk/bot-builder-basics.md) и [отправке и получению текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md).
+- Полный пример создания и использования бота с поддержкой голосовых функций см. в [этом руководстве](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk).
+
+- См. о работе с действиями в руководствах по [использованию ботов](v4sdk/bot-builder-basics.md) и [отправке и получению текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
-> [Подключение бота к каналу Direct Line Speech (предварительная версия)](./bot-service-channel-connect-directlinespeech.md)
+> [Подключение бота к каналу Direct Line Speech](./bot-service-channel-connect-directlinespeech.md)
