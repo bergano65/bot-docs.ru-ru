@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da7c9f76c65a70acc8cbb4a12ee93fc8f99de53b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 953f52a7bc95c0b87435be70bb4052cf939b0a63
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299562"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039765"
 ---
 <!-- 
 
@@ -411,21 +411,25 @@ Related TODO:
  
 Одно из различий между другими каналами и Teams заключается в том, что Teams отправляет в бот действие *invoke*, а не действие *event*. 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/TeamsBot.cs**  
+[!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**bots/teamsBot.js**  
+[!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 
 При использовании *запроса OAuth* это действие invoke должно быть переадресовано в диалог. Это будет сделано в `TeamsActivityHandler`. Добавьте в файл основного диалога следующий код. 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/DialogBot.cs**  
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**Bots/dialogBot.js**  
+[!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
 
 ---
 Наконец, добавьте соответствующий файл `TeamsActivityHandler` (`TeamsActivityHandler.cs` для ботов C# `teamsActivityHandler.js` для ботов JavaScript) в папку бота самого верхнего уровня.

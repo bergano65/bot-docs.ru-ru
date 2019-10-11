@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 25adbcda6b1f33f5379f9231291c5a511e9c1d04
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876087"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039743"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -24,7 +24,7 @@ ms.locfileid: "70876087"
 
 ### <a name="activity"></a>Действие
 
-С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Действие][]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. См. сведения о [действиях в службе Bot Connector]https://aka.ms/botSpecs-activitySchema.
+С помощью службы Bot Connector происходит обмен данными между ботом и каналом (пользователем) путем передачи объекта [Activity][Activity]. Наиболее распространенным типом действия является **сообщение**, однако существуют другие типы действий, которые можно использовать для передачи данных различных типов в бот или канал. Дополнительные сведения о действиях в службе Bot Connector см. в статье [Общие сведения о действиях](https://aka.ms/botSpecs-activitySchema).
 
 ## <a name="bot-state-service"></a>Служба Состояние бота
 
@@ -50,4 +50,4 @@ Bot Framework предоставляет клиентские библиотек
 
 Узнайте больше о создании ботов с помощью службы Bot Connector, ознакомившись со статьями в этом разделе, начиная со статьи [Проверка подлинности](bot-framework-rest-connector-authentication.md). Если у вас возникли проблемы или есть предложения относительно службы Bot Connector, список доступных ресурсов находится в статье [Поддержка](../bot-service-resources-links-help.md). 
 
-[Действие]: bot-framework-rest-connector-api-reference.md#activity-object
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

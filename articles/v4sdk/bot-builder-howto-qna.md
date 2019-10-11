@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc11191e65d58f4fa038878da71cc0354cad4c64
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 81e5b029453223b89bed97f54891f6ccb2d15ac1
+ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167167"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236441"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 
@@ -124,7 +124,9 @@ QnAEndpointHostName="<your-hostname>"
 
 В файле **QnABot.js** мы используем сведения о подключении, предоставленные в файле .env, чтобы подключиться к службе QnA Maker: _this.qnaMaker_.
 
-**QnAMaker.js** [!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=19-23)]
+**QnAMaker.js**
+
+[!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=19-23)]
 
 
 ---
@@ -142,7 +144,9 @@ QnAEndpointHostName="<your-hostname>"
 
 В файле **QnABot.js** мы передадим введенные пользователем данные в метод `getAnswers` службы QnA Maker, чтобы получить ответы из базы знаний. Если QnA Maker возвращает ответ, он отображается для пользователя. В противном случае пользователь получает сообщение No QnA Maker answers were found (Ответы в QnA Maker не найдены). 
 
-**QnABot.js** [!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=43-59)]
+**QnABot.js**
+
+[!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=43-59)]
 
 ---
 

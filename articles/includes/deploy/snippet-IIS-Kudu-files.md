@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8073e5f635d20de457e1bf5880c1b5c4c564fab4
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: bbe74a9a82d3bd04593384d825d373bfab35e3db
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70385992"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039782"
 ---
 Перед развертыванием бота нужно подготовить файлы проекта. 
 <!-- **C# bots** -->
@@ -37,4 +37,5 @@ az bot prepare-deploy --code-dir "." --lang Typescript
 ---
 
 > [!NOTE]
-> Команда `az bot prepare-depoloy` создаст файл `.deployment` в папке проекта бота.
+>  Для ботов на C# и JavaScript с помощью команды `az bot prepare-depoloy` в папке проекта бота создается файл `.deployment`.
+> Для ботов на TypeScript с помощью этой команды создается два файла `web.config`. Один из них находится в папке проекта, а другой — в папке **src**, которая содержится в папке проекта. 
