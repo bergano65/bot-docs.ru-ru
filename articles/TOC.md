@@ -29,7 +29,7 @@
 ### [Информационный бот](bot-service-scenario-informational.md)
 ### [Бот для Интернета вещей](bot-service-scenario-internet-things.md)
 # Инструкции 
-## [Design](design/TOC.md) (Конструктор)
+## [Конструктор](design/TOC.md).
 ## Разработка
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [Отправка и получение текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
