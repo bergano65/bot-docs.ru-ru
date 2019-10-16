@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
+ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167122"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236426"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Обзор навыков (виртуальный помощник)
 
@@ -44,7 +44,7 @@ ms.locfileid: "70167122"
 |[Навык взаимодействия с электронной почтой](https://aka.ms/bf-email-skill)|Добавление возможностей электронной почты в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
 |[Навык взаимодействия со списком дел](https://aka.ms/bf-todo-skill)|Добавление возможностей управления заданиями в виртуальный помощник. Основан на платформе Microsoft Graph.|
 |[Навык взаимодействия с точками интереса](https://aka.ms/bf-poi-skill)|Поиск достопримечательностей и маршрутов. Основан на платформе Azure Maps и FourSquare.|
-|[Навык взаимодействия с автомобилем](https://aka.ms/bf-autos-kill)|Отраслевой навык для демонстрации возможностей управления функциями автомобиля.|
+|[Навык взаимодействия с автомобилем](https://aka.ms/bf-auto-skill)|Отраслевой навык для демонстрации возможностей управления функциями автомобиля.|
 |[Экспериментальные навыки](https://aka.ms/bf-experimental-skills)|Новости, погода и заказ столиков в ресторанах.|
 
 ## <a name="getting-started"></a>Начало работы
