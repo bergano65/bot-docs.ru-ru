@@ -29,7 +29,7 @@
 ### [Информационный бот](bot-service-scenario-informational.md)
 ### [Бот для Интернета вещей](bot-service-scenario-internet-things.md)
 # Инструкции 
-## [Конструктор](design/TOC.md).
+## [Конструктор](design/TOC.md)
 ## Разработка
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [Отправка и получение текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
@@ -59,7 +59,7 @@
 ## [Отладка](debug/TOC.md)
 ## Развертывание
 ### [Развертывание бота в Azure](bot-builder-deploy-az-cli.md)
-### [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
+### [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)
 ## [Управление](manage/TOC.md)
 ## [Миграция](v4sdk/migration/TOC.md)
 # Справочные материалы
