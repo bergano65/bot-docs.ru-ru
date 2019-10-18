@@ -19,7 +19,7 @@
 ## [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 ## [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 ## [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
-## [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)
+## [Повторное подключение к общению](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 ## [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)
 ## [Получение действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md)
 ## [Конец общения](bot-framework-rest-direct-line-3-0-end-conversation.md)
