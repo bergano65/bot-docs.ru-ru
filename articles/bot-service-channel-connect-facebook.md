@@ -6,13 +6,13 @@ manager: kamrani
 ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
-ms.date: 08/03/2019
-ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.date: 10/28/2019
+ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
+ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386109"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73031225"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Подключение бота к Facebook
 
@@ -22,6 +22,9 @@ ms.locfileid: "70386109"
 > Пользовательский интерфейс Facebook может выглядеть несколько иначе, в зависимости от используемой версии.
 
 ## <a name="connect-a-bot-to-facebook-messenger"></a>Подключение бота к Facebook Messenger
+
+> [!NOTE]
+> Начиная с 16 декабря 2019 г. в Workplace by Facebook изменится модель обеспечения безопасности для пользовательских интеграций.  Текущие интеграции, созданные с помощью Microsoft Bot Framework, нужно обновить для использования Bot Framework Adapter (доступного в JavaScript и Node.js) и развернуть с помощью веб-приложения в Azure.  Новые боты Workplace, разработанные с помощью Microsoft Bot Framework, также должны использовать адаптер Facebook для JavaScript. Узнайте больше об [использовании адаптера Facebook](https://aka.ms/botframework-workplace-adapter). Приведенные ниже инструкции будут актуальны только до 16 декабря 2019 г.
 
 Дополнительные сведения о разработке приложений для Facebook Messenger см. в [документации по платформе Messenger](https://developers.facebook.com/docs/messenger-platform). Вы можете просмотреть [инструкции перед запуском](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), [краткое руководство](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) и [руководство по настройке](https://developers.facebook.com/docs/messenger-platform/guides/setup) Facebook.
 
