@@ -19,6 +19,7 @@
 ## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
 ## [Проверка подлинности пользователей](v4sdk/bot-builder-concept-authentication.md)
 ## [Управление ресурсами бота](v4sdk/bot-file-basics.md)
+## [Принцип работы ботов для Microsoft Teams](v4sdk/bot-builder-basics-teams.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -56,6 +57,7 @@
 ### [Node.js](nodejs/TOC.md)
 ## Тест
 ### [Модульное тестирование ботов](v4sdk/unit-test-bots.md)
+### [Добавление действий трассировки в код бота](v4sdk/using-trace-activities.md)
 ## [Отладка](debug/TOC.md)
 ## Развертывание
 ### [Развертывание бота в Azure](bot-builder-deploy-az-cli.md)
@@ -68,5 +70,8 @@
 ## [REST](rest-api/TOC.md)
 ## [Пакет SDK версии 3 для .NET](https://aka.ms/botframework-v3-cs-sdk)
 ## [Пакет SDK версии 3 для Node.js](https://aka.ms/bot-jssdk-v3)
+## Справочные материалы по работе с инструментом командной строки BF
+### [Общие сведения об инструменте командной строки BF](v4sdk/bf-cli-overview.md)
+### [Справочник по инструменту командной строки BF](v4sdk/bf-cli-reference.md)
 ## [Сущности и типы действий](bot-service-activities-entities.md)
 # [Ресурсы](resources/TOC.md)
