@@ -7,13 +7,13 @@ keywords: пакет SDK для Bot Framework, отладка бота, пров
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 7/9/2019
-ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.date: 11/01/2019
+ms.openlocfilehash: 86521259b284694fcc35f27899953c9eea1b57d0
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693132"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592263"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
@@ -22,8 +22,8 @@ ms.locfileid: "71693132"
 
 ## <a name="prerequisites"></a>Предварительные требования
 - Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
-- Понимание принципов работы [промежуточного слоя](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) бота.
-- Понимание принципов [управления состоянием](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) бота.
+- Понимание принципов работы [промежуточного слоя](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) бота.
+- Понимание принципов [управления состоянием](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) бота.
 - Установленное средство [ngrok](https://ngrok.com/) (если вы хотите отладить бота, настроенного в Azure для использования дополнительных каналов).
 
 ## <a name="update-your-emulator-to-the-latest-version"></a>Обновление эмулятора до последней версии 
