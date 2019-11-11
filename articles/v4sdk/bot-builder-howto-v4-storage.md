@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a5a8f8eac9f0b20278b2506063c6e14e4d9fd5b
-ms.sourcegitcommit: 514a3c1ffe0ebe69e07565446ddde0370b35aeaa
+ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903664"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441562"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -253,13 +253,13 @@ module.exports.MyBot = MyBot;
 Начав использовать хранилище в памяти, мы изменим код, чтобы начать работу с Azure Cosmos DB. Cosmos DB — это глобально распределенная многомодельная база данных Майкрософт. Azure Cosmos DB позволяет гибко и независимо масштабировать пропускную способность и ресурсы хранилища в любом количестве регионов Azure. Она гарантирует пропускную способность, задержку, доступность и согласованность в соответствии с комплексными Соглашениями об уровне обслуживания (SLA). 
 
 ### <a name="set-up"></a>Настройка
-Для использования Cosmos DB в боте необходимо выполнить некоторое настройки, прежде чем приступать к написанию кода. См. подробнее о создании приложения и базы данных Cosmos DB для [dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) и [Node.js](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
+Чтобы использовать в боте Cosmos DB, необходимо создать ресурс базы данных, прежде чем приступать к написанию кода. См. подробнее о создании приложения и базы данных Cosmos DB для [dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) и [Node.js](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
 
 ### <a name="create-your-database-account"></a>Создание учетной записи базы данных
 
-1. В новом окне браузера войдите на [портал Azure](http://portal.azure.com).
+1. В новом окне браузера войдите на [портал Azure](https://portal.azure.com).
 
-![Создание базы данных Cosmos DB](./media/create-cosmosdb-database.png)
+![Создание учетной записи базы данных Cosmos DB](./media/create-cosmosdb-database.png)
 
 2. Выберите **Создать ресурс > Базы данных > Azure Cosmos DB**.
 
@@ -271,22 +271,31 @@ module.exports.MyBot = MyBot;
 
 Создание учетной записи займет несколько минут. Подождите, пока на портале не откроется страница с сообщением "Поздравляем! Ваша учетная запись Azure Cosmos DB создана".
 
-### <a name="add-a-collection"></a>Добавление коллекции
+### <a name="add-a-database"></a>Добавление базы данных
 
-![Добавление коллекции Cosmos DB](./media/add_database_collection.png)
+1. Перейдите на страницу **Обозреватель данных** для созданной учетной записи Cosmos DB, а затем выберите **Создать базу данных** в раскрывающемся списке рядом с кнопкой **Создать контейнер**. В правой части окна откроется панель, на которой можно ввести сведения о новом контейнере. 
 
-1. Выберите **Параметры > Создать коллекцию**. Справа отобразится область **Добавление коллекции** (вам может потребоваться прокрутить вправо, чтобы увидеть ее). Из-за последних обновлений Cosmos DB теперь обязательным является ключ секции: _/id_. Этот ключ позволит избежать ошибок запросов между секциями.
+![Cosmos DB](./media/create-cosmosdb-database-resource.png)
 
-![Cosmos DB](./media/cosmos-db-sql-database.png)
+2. Введите идентификатор для новой базы данных и задайте пропускную способность (необязательно, можно изменить позднее), а затем щелкните **ОК**, чтобы создать базу данных. Запишите идентификатор базы данных, чтобы использовать его позже для настройки бота.
 
-2. Имя новой базы данных — bot-cosmos-sql-db, а идентификатор коллекции — bot-storage. Эти значения будут использованы в примерах кода ниже.
+![Cosmos DB](./media/create-cosmosdb-database-resource-details.png)
+
+3. Завершив создание учетной записи Cosmos DB и базы данных, скопируйте некоторые значения для интеграции новой базы данных в бота.  Чтобы получить их, перейдите на вкладку **Ключи** в разделе параметров базы данных, которую вы создали в учетной записи Cosmos DB.  На этой странице вам потребуются значения конечной точки Cosmos DB (**URI**) и ключа авторизации (**PRIMARY KEY**).
 
 ![Ключи Cosmos DB](./media/comos-db-keys.png)
 
-3. Универсальный код ресурса (URI) и ключ конечной точки доступны на вкладке **Ключи** параметров базы данных. Эти значения понадобятся для настройки кода далее. 
+Теперь у вас есть учетная запись Cosmos DB с базой данных и перечисленные ниже сведения для настройки бота.
+
+- Конечная точка Cosmos DB
+- Ключ авторизации
+- Идентификатор базы данных
 
 ### <a name="add-configuration-information"></a>Добавление сведений о конфигурации
-Данные конфигурации, добавляемые в хранилище Cosmos DB, короткие и простые. По мере усложнения бота вы можете добавлять дополнительные параметры конфигурации, используя те же методы. В этом примере используются имена базы данных и коллекции Cosmos DB из примера выше.
+В этом примере мы используем короткий и простой фрагмент конфигурации, который добавляет хранилище Cosmos DB.  Используйте ранее сохраненные сведения, чтобы задать конечную точку, ключ авторизации и идентификатор базы данных.  Наконец, выберите подходящее имя для контейнера, который будет создан в базе данных для хранения состояния бота. В приведенном ниже примере этот контейнер будет называться bot-storage.
+
+> [!NOTE]
+> Не следует создавать контейнер самостоятельно. Ваш бот создаст его одновременно с внутренним клиентом Cosmos DB и правильно настроит для сохранения состояния бота.
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -295,9 +304,9 @@ module.exports.MyBot = MyBot;
 public class EchoBot : ActivityHandler
 {
    private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
-   private const string CosmosDBKey = "<your-cosmos-db-account-key>";
-   private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
-   private const string CosmosDBCollectionName = "bot-storage";
+   private const string CosmosDBKey = "<your-authorization-key>";
+   private const string CosmosDBDatabaseId = "<your-database-id>";
+   private const string CosmosDBContainerId = "bot-storage";
    ...
    
 }
@@ -309,10 +318,10 @@ public class EchoBot : ActivityHandler
 
 Файл с расширением **.env**
 ```javascript
-DB_SERVICE_ENDPOINT="<your-Cosmos-db-URI>"
-AUTH_KEY="<your-cosmos-db-account-key>"
-DATABASE="<bot-cosmos-sql-db>"
-COLLECTION="<bot-storage>"
+DB_SERVICE_ENDPOINT="<your-cosmos-db-URI>"
+AUTH_KEY="<your-authorization-key>"
+DATABASE_ID="<your-database-id>"
+CONTAINER="bot-storage"
 ```
 ---
 
@@ -343,6 +352,9 @@ npm install --save dotenv
 
 ### <a name="implementation"></a>Реализация 
 
+> [!NOTE]
+> В версии 4.6 появился новый поставщик хранилища Cosmos DB `CosmosDbPartitionedStorage`. Существующие боты, которые используют прежний поставщик `CosmosDbStorage`, должны и далее использовать `CosmosDbStorage`. Такие боты продолжат нормально работать. Для новых ботов следует использовать `CosmosDbPartitionedStorage`, так как секционирование повышает производительность.
+
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Следующий пример кода использует тот же код бота, что и в примере с [хранилищем в памяти](#memory-storage) выше.
@@ -361,12 +373,12 @@ public class EchoBot : ActivityHandler
    // private static readonly MemoryStorage _myStorage = new MemoryStorage();
 
    // Replaces Memory Storage with reference to Cosmos DB.
-   private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+   private static readonly CosmosDbStorage _myStorage = new CosmosDbPartitionedStorage(new CosmosDbPartitionedStorageOptions
    {
-      AuthKey = CosmosDBKey,
-      CollectionId = CosmosDBCollectionName,
-      CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
-      DatabaseId = CosmosDBDatabaseName,
+        CosmosDbEndpoint = CosmosServiceEndpoint,
+        AuthKey = CosmosDBKey,
+        DatabaseId = CosmosDBDatabaseId,
+        ContainerId = CosmosDBContainerId,
    });
    
    ...
@@ -397,11 +409,11 @@ require('dotenv').config({ path: ENV_FILE });
 // var storage = new MemoryStorage();
 
 // Create access to CosmosDb Storage - this replaces local Memory Storage.
-var storage = new CosmosDbStorage({
-    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+var storage = new CosmosDbPartitionedStorage({
+    cosmosDbEndpoint: process.env.DB_SERVICE_ENDPOINT, 
     authKey: process.env.AUTH_KEY, 
-    databaseId: process.env.DATABASE,
-    collectionId: process.env.COLLECTION
+    databaseId: process.env.DATABASE_ID,
+    containerId: process.env.CONTAINER
 })
 
 ```
@@ -432,7 +444,7 @@ var storage = new CosmosDbStorage({
 
 ### <a name="create-your-blob-storage-account"></a>Создание учетной записи хранилища BLOB-объектов
 Для использования хранилища BLOB-объектов в боте необходимо выполнить некоторые настройки, прежде чем приступать к написанию кода.
-1. В новом окне браузера войдите на [портал Azure](http://portal.azure.com).
+1. В новом окне браузера войдите на [портал Azure](https://portal.azure.com).
 
 ![Создание хранилища BLOB-объектов](./media/create-blob-storage.png)
 

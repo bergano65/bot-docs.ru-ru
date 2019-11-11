@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 17e9925cf8e34eb4d31964b9cebac367abaec58c
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094441"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441512"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -22,6 +22,8 @@ ms.locfileid: "71094441"
 
 
 В версии 4.2 пакета SDK для Bot Framework теперь можно вести журнал телеметрии.  Так приложения ботов смогут отправлять данные о событиях в службы телеметрии, например [Application Insights](https://aka.ms/appinsights-overview). Данные телеметрии включают полезные сведения о боте (например о том, какие функции используются чаще всего), помогают обнаруживать нежелательное поведение и предоставляют сведения о доступности, производительности и использовании.
+
+***Примечание. В версии 4.6 стандартный метод реализации телеметрии в ботах был обновлен для обеспечения правильной записи телеметрии с пользовательским адаптером. Эта статья была обновлена с учетом этого обновления метода. Изменения сохраняют обратную совместимость, и боты с прежним методом будут и далее правильно вести журнал телеметрии.***
 
 
 В этой статье приведены инструкции по реализации телеметрии в боте с помощью Application Insights:
@@ -74,46 +76,33 @@ ms.locfileid: "71094441"
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-
         // Create the Bot Framework Adapter with error handling enabled.
         services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
         // Add Application Insights services into service collection
         services.AddApplicationInsightsTelemetry();
 
-        // Create the telemetry client.
+        // Add the standard telemetry client
         services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
 
-        // Add ASP middleware to store the http body mapped with bot activity key in the httpcontext.items. This will be picked by the TelemetryBotIdInitializer
-        services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+        // Create the telemetry middleware to track conversation events
+        services.AddSingleton<TelemetryLoggerMiddleware>();
 
-        // Add telemetry initializer that will set the correlation context for all telemetry items.
+        // Add the telemetry initializer middleware
+        services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>();
+
+        // Add telemetry initializer that will set the correlation context for all telemetry items
         services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
 
-        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties such as activity ID)
+        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties, such as activity ID)
         services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
-
-        // Create the telemetry middleware to track conversation events
-        services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
-
         ...
     }
     ```
     
     Примечание. Выполняя эти инструкции, чтобы обновить пример кода CoreBot, вы заметите, что `services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();` уже существует. 
 
-5. Добавьте вызов метода `UseBotApplicationInsights()` в метод `Configure()` в `Startup.cs`. Так бот сможет хранить требуемые свойства в контексте HTTP, чтобы их можно было извлечь с помощью инициализатора телеметрии при отслеживании события:
-
-    ```csharp
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        ...
-
-        app.UseBotApplicationInsights();
-    }
-    ```
-6. Настройте адаптер на использование кода ПО промежуточного слоя, который был добавлен в метод `ConfigureServices()`. Это можно сделать в `AdapterWithErrorHandler.cs` с помощью параметра IMiddleware ПО промежуточного слоя в списке параметров конструкторов и инструкции `Use(middleware);` в конструкторе, как показано здесь:
+5. Настройте адаптер на использование кода ПО промежуточного слоя, который был добавлен в метод `ConfigureServices()`. Это можно сделать в `AdapterWithErrorHandler.cs` с помощью параметра IMiddleware ПО промежуточного слоя в списке параметров конструкторов и инструкции `Use(middleware);` в конструкторе, как показано здесь:
     ```csharp
     public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
             : base(credentialProvider)
@@ -123,6 +112,7 @@ ms.locfileid: "71094441"
         Use(middleware);
     }
     ```
+
 7. Добавьте ключ инструментирования Application Insights в файл `appsettings.json`. Файл `appsettings.json` содержит метаданные о внешних службах, которые использует бот во время работы. Например, здесь хранятся сведения о подключении и метаданные для служб CosmosDB, Application Insights и LUIS (Распознавание речи). Формат добавляемого в файл `appsettings.json` ключа должен быть таким:
 
     ```json
@@ -137,6 +127,45 @@ ms.locfileid: "71094441"
     Примечание. Сведения о _ключе инструментирования Application_ см. в статье о [ключах Application Insights](../bot-service-resources-app-insights-keys.md).
 
 На этом этапе вы уже включили телеметрию с помощью Application Insights.  Вы можете запустить бота локально с помощью эмулятора бота, а затем перейти к Application Insights, чтобы просмотреть журнал, в который регистрируются сведения о времени отклика, а также общей работоспособности приложения и выполнении. 
+
+## <a name="enabling--disabling-activity-event-and-personal-information-logging"></a>Включение и отключение ведения журнала событий действий и персональных данных
+
+### <a name="enabling-or-disabling-activity-logging"></a>Включение или отключение ведения журнала действий
+
+По умолчанию `TelemetryInitializerMiddleware` будет использовать `TelemetryLoggerMiddleware` для сохранения данных телеметрии, когда бот отправляет или получает действия. Ведение журнала действий создает пользовательские журналы событий в ресурсе Application Insights.  При желании вы можете отключить журнал событий действий, установив значение False для `logActivityTelemetry` в `TelemetryInitializerMiddleware`, прежде чем регистрировать его в **Startup.cs**.
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>(sp =>
+            {
+                var httpContextAccessor = sp.GetService<IHttpContextAccessor>();
+                var loggerMiddleware = sp.GetService<TelemetryLoggerMiddleware>();
+                return new TelemetryInitializerMiddleware(httpContextAccessor, loggerMiddleware, logActivityTelemetry: false);
+            });
+    ...
+}
+```
+
+### <a name="enable-or-disable-logging-personal-information"></a>Включение или отключение сохранения персональных данных в журнал
+
+По умолчанию, если включено ведение журнала действий, некоторые свойства входящих или исходящих действий исключаются из журнала, так как они могут содержать персональные данные, например имя пользователя и текст действия. Вы можете включить сохранение этих свойств в журнал, внеся следующие изменения в **Startup.cs** при регистрации `TelemetryLoggerMiddleware`.
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<TelemetryLoggerMiddleware>(sp =>
+            {
+                var telemetryClient = sp.GetService<IBotTelemetryClient>();
+                return new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
+            });
+    ...
+}
+```
 
 Теперь нам нужно включить функцию телеметрии в диалоги. Так вы сможете получать дополнительные сведения о запущенных диалогах, а также собирать статистику по каждому из них.
 

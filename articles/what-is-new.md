@@ -7,68 +7,76 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 07/17/2019
+ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 708ad1fac166f312ad6ccf14a024f821f19eaaf2
-ms.sourcegitcommit: e573c586472c5328ce875114308d9d1b73651e62
+ms.openlocfilehash: 8cb03814a9fbb7fdbbfb457400eca3cf6a67ec17
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70224390"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592242"
 ---
-# <a name="whats-new-in-bot-framework-july-2019"></a>Новые возможности Bot Framework (июль 2019 г.)
+# <a name="whats-new-november-2019-ignite"></a>Отчет о новых возможностях за ноябрь 2019 г. (Ignite)
 
 [!INCLUDE[applies-to](includes/applies-to.md)]
 
-Пакет SDK Bot Framework версии 4 — это [пакет SDK с открытым кодом][1a], позволяющий разработчикам моделировать и создавать сложные диалоги с использованием популярных языков программирования.
+Пакет SDK Bot Framework версии 4 — это [пакет SDK с открытым кодом](https://github.com/microsoft/botframework-sdk/#readme), позволяющий разработчикам моделировать и создавать сложные диалоги с использованием популярных языков программирования.
 
 В этой статье перечислены новые ключевые возможности и улучшения Bot Framework и службы Azure Bot.
 
-|   | C#  | JS  | Python |   
-|---|:---:|:---:|:------:|
-|SDK |[4.5][1] | [4.5][2] | [4.4.0b2 (предварительная версия)][3] | 
-|Docs | [docs][5] |[docs][5] |  | |
-|Примеры |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
 
-[1a]:https://github.com/microsoft/botframework-sdk/#readme
+|   | C#  | JS  | Python |  Java | 
+|---|:---:|:---:|:------:|:-----:|
+|Release |[4.6 (общедоступная версия)][1] | [4.6 (общедоступная версия)][2] | [4 (бета-версия)][3] | [3 (предварительная версия)][3a]|
+|Docs | [docs][5] |[docs][5] |  | |
+|Примеры |[.NET Core][6], [WebAPI][10] |[Node.js][7], [TypeScript][8], [ES6][9]  | | | 
+
+
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
 [2]:https://github.com/Microsoft/botbuilder-js#packages
 [3]:https://github.com/Microsoft/botbuilder-python#packages
+[3a]:https://github.com/Microsoft/botbuilder-java#packages
 [5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
 [6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
 [7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
-[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_typescript
+[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/typescript_nodejs
 [9]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_es6
 [10]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi
-[111]:https://github.com/Microsoft/botbuilder-python/tree/master/samples
+
+#### <a name="bot-framework-sdk-for-microsoft-teams-ga"></a>Пакет SDK Bot Framework для Microsoft Teams (общедоступная версия)
+В пакете SDK для Bot Framework версии 4.6 реализована функция создания ботов для Teams, что позволяет использовать их в каналах и групповых беседах. Если вы добавите бота в группу или чат, функции бота будут доступны всем пользователям этой беседы непосредственно в ходе беседы.  [[Документация](https://docs.microsoft.com/azure/bot-service/bot-builder-basics-teams)]
+
+#### <a name="bot-framework-for-power-virtual-agent-preview"></a>Bot Framework для Power Virtual Agent (предварительная версия)
+
+Служба Power Virtual Agent позволяет создавать ботов с помощью пользовательского интерфейса в формате SaaS без необходимости создания кода и управления отдельными службами искусственного интеллекта. Power Virtual Agent можно расширить с помощью Microsoft Bot Framework, что позволит разработчикам и пользователям совместно разрабатывать ботов для своих организаций. [[Документация](https://docs.microsoft.com/dynamics365/ai/customer-service-virtual-agent/overview)]
 
 
-## <a name="bot-framework-channels"></a>Каналы Bot Framework
-- [Direct Line Speech (общедоступная предварительная версия)](https://aka.ms/streaming-extensions) | [Документация](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0). Bot Framework и Службы речи Майкрософт предоставляют канал, который поддерживает двунаправленную потоковую передачу речи и текста между клиентом и приложением бота по протоколам WebSocket.  
+#### <a name="bot-framework-sdk-for-skills-preview"></a>Пакет SDK Bot Framework для Skills (предварительная версия)
 
-- [Расширение Службы приложений Direct Line (общедоступная предварительная версия)](https://portal.azure.com) | [Документация](https://aka.ms/directline-ase). Версия Direct Line, которая позволяет клиентам напрямую подключаться к ботам с помощью Direct Line API. Это обеспечивает множество преимуществ, в том числе повышение производительности и большую степень изоляции. Расширение Службы приложений Direct Line доступно во всех Службах приложений Azure, включая размещенные в Среде службы приложений Azure. Среда службы приложений Azure обеспечивает изоляцию и идеально подходит для работы в виртуальной сети. Виртуальная сеть позволяет создать личное пространство в Azure и является критически важной для вашей облачной сети, так как она обеспечивает изоляцию, сегментацию и другие ключевые преимущества. 
+- **Skills для ботов**. Создавайте повторно используемые навыки ведения беседы, чтобы расширить возможности бота. Используйте готовые навыки, такие как календарь, электронная почта, задача, точка интереса, транспорт, погода и новости. Навыки — это языковые модели, диалоги, вопросы и ответы, а также код интеграции. Их можно настраивать и расширять под определенные потребности. [[Документация](https://microsoft.github.io/botframework-solutions/overview/skills/)]
 
-## <a name="bot-framework-sdk"></a>Пакет SDK Bot Framework
-- [Adaptive Dialog (пакет SDK 4.6, предварительная версия)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme) | [Документация](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs) | [Примеры C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore). Средство Adaptive Dialog теперь позволяет разработчикам динамически обновлять поток беседы на основе контекста и событий. Это особенно полезно при переключениях контекста беседы и паузах в ней. 
-  
-- [Пакет SDK Bot Framework для Python (предварительная версия 2)](https://github.com/microsoft/botbuilder-python) | [Примеры](https://github.com/Microsoft/botbuilder-python/tree/master/samples). Пакет SDK для Python теперь поддерживает OAuth, запросы, Cosmos DB, а также включает все основные функции пакета SDK 4.5. Также доступны примеры, которые познакомят вас с новыми возможностями пакета SDK.
+- **Навыки для Power Virtual Agent (выход ожидается)** . Для ботов с поддержкой Power Virtual Agent вы можете создавать новые навыки на основе Bot Framework и Azure Cognitive Services, не разрабатывая бота с нуля. 
 
-## <a name="bot-framework-testing"></a>Тестирование в Bot Framework
-- [Документация](https://aka.ms/testing-framework) | Пакеты модульного тестирования ([C#](https://aka.ms/nuget-botbuilder-testing)/ [JavaScript](https://aka.ms/npm-botbuilder-testing)) | [Пример C#](https://aka.ms/cs-core-test-sample) | [Пример JS](https://aka.ms/js-core-test-sample): Учитывая пожелания клиентов и разработчиков касательно более совершенных средств тестирования, в июльскую версию пакета SDK мы добавили новую функцию модульного тестирования. Пакет Microsoft.Bot.Builder.testing упрощает процесс модульного тестирования диалогов в боте.  
+#### <a name="adaptive-dialogs-preview"></a>Адаптивные диалоги (предварительная версия)
+Адаптивные диалоги позволяют разработчикам динамически обновлять поток беседы на основе контекста и событий. Это особенно удобно при переключениях контекста беседы и паузах в ней. [[Документация][48] | [Примеры для C#][49]] 
 
-- [Тестирование канала](https://github.com/Microsoft/BotFramework-Emulator/releases) | [Документация](https://aka.ms/channel-testing). 
+#### <a name="language-generation-preview"></a>Создание текста (предварительная версия)
+Функция создания текста позволяет разработчикам выделить логику, используемую для создания ответов бота, включая возможность определять несколько вариантов фраз, выполнять простые выражения на основе контекста и обращаться к сохраненным данным беседы. [[Документация][44] | [Примеры для C#][45]]
 
-Bot Inspector — это новая функция Bot Framework Emulator, презентация которой состоялась на конференции Microsoft Build 2019. Она позволяет отлаживать и тестировать ботов в таких каналах, как Microsoft Teams, Slack, Кортана и т. д. При использовании бота в определенном канале полученные ботом сообщения будут дублироваться в Bot Framework Emulator, где вы можете их просматривать. Кроме того, можно отобразить моментальный снимок состояния бота на любом шаге обмена данными между каналом и ботом.
+#### <a name="common-expression-language-preview"></a>Язык общих выражений (предварительная версия)
+Язык общих выражений позволяет оценивать работу логики на основе условий во время выполнения. Общий язык можно использовать в пакетах SDK для Bot Framework и в компонентах искусственного интеллекта для бесед, таких как адаптивные диалоговые окна и создание текста. [[документация][40] | [API][41]]
 
-## <a name="web-chat"></a>Веб-чат.
-- Учитывая пожелания корпоративных клиентов, мы добавили [пример веб-чата](https://github.com/microsoft/BotFramework-WebChat/tree/master/samples/19.a.single-sign-on-for-enterprise-apps#single-sign-on-demo-for-enterprise-apps-using-oauth), демонстрирующий, как обеспечить пользователю доступ к ресурсам корпоративного приложения с помощью бота. Взаимодействие OAuth с Microsoft Graph и API GitHub демонстрируется с использованием ресурсов двух типов.
 
-## <a name="solutions"></a>Решения
-- [Акселератор решений виртуального помощника](https://github.com/Microsoft/botframework-solutions#readme). Доступен набор шаблонов, акселераторы решений и навыки для создания сложных диалогов. Новый клиент приложений Android для виртуального помощника, который интегрируется с Direct Line Speech и виртуальным помощником, демонстрирует, как клиент на устройстве может взаимодействовать с вашим виртуальным помощником и отображать адаптивные карточки. Обновления также включают поддержку Direct Line Speech и Microsoft Teams.
-  
-- [Виртуальный агент Dynamics 365 для обслуживания клиентов (общедоступная предварительная версия)](https://dynamics.microsoft.com/en-us/ai/virtual-agent-for-customer-service/). Общедоступная предварительная версия позволяет качественно обслуживать клиентов с помощью интеллектуальных и адаптируемых виртуальных агентов. Специалисты по обслуживанию клиентов могут легко создавать и улучшать ботов, используя аналитические сведения на основе ИИ.
-  
-- [Chat for Dynamics 365](https://www.powerobjects.com/powerpacks/powerchat/). Решение Chat for Dynamics 365 предлагает несколько возможностей, обеспечивающих эффективное взаимодействие агентов поддержки с пользователями и их высокую производительность. Доступны возможности интерактивного чата и отслеживания диалогов с посетителями вашего веб-сайта, размещенного в Microsoft Dynamics 365.
+[40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
+[41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
+[43]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation#readme
+[44]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/docs
+[45]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/csharp_dotnetcore
+[46]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/javascript_nodejs/13.core-bot
+[47]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme
+[48]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs
+[49]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore
+[50]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/declarative
 
 ## <a name="additional-information"></a>Дополнительная информация
 - См. [предыдущие объявления о новых возможностях](what-is-new-archive.md).
