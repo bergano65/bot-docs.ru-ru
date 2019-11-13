@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441512"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933714"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -171,7 +171,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enabling-telemetry-in-your-bots-dialogs"></a>Включение телеметрии в диалогах бота
 
-Чтобы получить встроенные данные телеметрии о диалогах, вам нужно добавить клиент телеметрии в каждый диалог. Чтобы обновить код CoreBot, сделайте следующее:
+ Чтобы обновить код CoreBot, сделайте следующее:
 
 1.  В файле `MainDialog.cs` добавьте новое поле TelemetryClient в класс `MainDialog` и обновите список параметров конструкторов, чтобы включить параметр `AddDialog()`, а затем передайте его каждому вызову метода `IBotTelemetryClient`.
 

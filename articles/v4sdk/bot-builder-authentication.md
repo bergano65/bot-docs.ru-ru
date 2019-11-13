@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c55e14f10bf6a5f4032033472c07401bde82a334
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 165eac6ac134a5807119c7a067b77fb7bc6e3282
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592273"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933698"
 ---
 <!-- 
 
@@ -273,30 +273,36 @@ Related TODO:
 > [!NOTE]
 > Теперь код бота можно опубликовать в подписке Azure (щелкните проект правой кнопкой мыши и выберите **Опубликовать**), но для этой статьи это не требуется. Необходимо будет настроить конфигурацию публикации, которая использует план приложения и размещения, который использовался при настройке бота на портале Azure.
 
-## <a name="test-the-bot"></a>Тестирование бота
+## <a name="test-the-bot-using-the-emulator"></a>Тестирование бота с помощью эмулятора
 
-1. Установите [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme), если вы этого еще не сделали.
-1. Выполните этот пример на локальном компьютере.
-1. Запустите эмулятор, подключитесь к боту и отправьте несколько сообщений.
+Установите [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme), если вы этого еще не сделали. Также см. статью об [отладке ботов с помощью эмулятора](../bot-service-debug-emulator.md).
 
-    - При подключении к боту необходимо указать идентификатор приложения бота и пароль.
+<!-- auth config steps -->
+Чтобы функция входа работала в примере бота, настройте эмулятор для аутентификации, как показано в [этом разделе](../bot-service-debug-emulator.md#configure-the-emulator-for-authentication).
 
-        - Вы также можете экранировать пароль (XML) в коде бота.
+### <a name="testing"></a>Тестирование
 
-    - Чтобы просмотреть список доступных команд для бота и проверить функции проверки подлинности, введите `help`.
-    - После выполнения входа и до момента выхода не требуется повторно предоставлять учетные данные.
-    - Чтобы выйти и отменить проверку подлинности, введите `logout`.
+Когда вы настроите механизм аутентификации, можно протестировать пример бота.  
+
+1. Запустите пример бота на локальном компьютере.
+1. Запустите эмулятор.
+1. При подключении к боту необходимо указать идентификатор приложения бота и пароль.
+    - Идентификатор приложения и пароль можно получить в области регистрации приложений Azure. Это те же значения, которые вы назначили боту в файле `appsettings.json` или `.env`. В эмуляторе эти значения присваиваются в файле конфигурации или при первом подключении к боту.
+    - Вы также можете экранировать пароль (XML) в коде бота.
+1. Чтобы просмотреть список доступных команд для бота и проверить функции проверки подлинности, введите `help`.
+1. После выполнения входа и до момента выхода не требуется повторно предоставлять учетные данные.
+1. Чтобы выйти и отменить проверку подлинности, введите `logout`.
 
 > [!NOTE]
 > Для использования проверки подлинности бота требуется служба Bot Connector. Эта служба использует сведения о регистрации каналов бота.
 
-# <a name="bot-authenticationtabbot-oauth"></a>[Аутентификация бота](#tab/bot-oauth)
+## <a name="bot-authentication-example"></a>Пример аутентификация бота
 
 В примере **Аутентификация бота** диалог получает маркер пользователя после входа пользователя в систему.
 
 ![Пример выходных данных](media/how-to-auth/auth-bot-test.png)
 
-# <a name="bot-authentication-msgraphtabbot-msgraph-auth"></a>[Аутентификация бота MSGraph](#tab/bot-msgraph-auth)
+## <a name="bot-authentication-msgraph-example"></a>Пример MSGraph для аутентификации бота
 
 В примере **Аутентификация бота MSGraph** диалог принимает ограниченный набор команд после входа пользователя в систему.
 
@@ -423,7 +429,7 @@ Related TODO:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)  
 **Bots/DialogBot.cs**  
-[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
 **Bots/dialogBot.js**  

@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 3ed589bff5c3740dddcfb62226714006313ae330
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970605"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933680"
 ---
 # <a name="configure-net-bot-for-extension"></a>Настройка бота .NET для использования расширения
 
@@ -74,7 +74,13 @@ ms.locfileid: "68970605"
     Это значения **appid** и **appSecret**, связанные с группой регистрации службы.
 
 1. **Опубликуйте** бота в Службе приложений Azure.
-1. В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`.
+1. В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. В этих данных, которые указывают на то, что **все работает правильно**:
+
+    - **k** определяет, может ли расширение Службы приложений (ASE) Direct Line считывать ключ расширения из своей конфигурации. 
+    - **initialized** определяет, может ли ASE Direct Line с помощью ключа расширения скачивать метаданные бота из службы Azure Bot.
+    - **ib** определяет, может ли ASE Direct Line устанавливать входящее соединение с ботом.
+    - **ob** определяет, может ли ASE Direct Line устанавливать исходящее соединение с ботом. 
+
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Сбор ключей расширения Direct Line
 

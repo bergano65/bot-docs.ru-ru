@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/31/2019
+  ms.date: 11/11/2019
   ms.author: ivorb
 abstract:
   description: 'Служба Azure Bot предоставляет интегрированную среду, предназначенную для разработки ботов, которая позволяет создавать, подключать, тестировать, развертывать и администрировать интеллектуальные боты из единого центра. В службе Azure Bot используется пакет SDK для Bot Framework с поддержкой C# и JavaScript. Узнайте, как использовать службу Bot, изучив краткие инструкции, примеры и руководства.'
@@ -21,8 +21,8 @@ abstract:
       height: 110
       src: media/video/satya-video.png
       width: 250
-    title: "Сатья Наделла (Satya Nadella)\_— выступление на Build 2019 (1:25:09)"
-    href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
+    title: "Сатья Наделла (Satya Nadella)\_— выступление на Ignite\_2019. (1:52)"
+    href: 'https://myignite.techcommunity.microsoft.com/sessions/77831?source=sessions'
     width: 250
 sections:
   - items:
@@ -65,7 +65,7 @@ sections:
               src: media/index/azure_portal.png
             text: Портал Azure
             href: 'https://docs.microsoft.com/azure/bot-service/bot-service-quickstart'
-  - title: Пошаговые руководства
+  - title: Пошаговые инструкции
     items:
       - type: paragraph
         text: 'Узнайте, как создавать и развертывать боты в Azure.'

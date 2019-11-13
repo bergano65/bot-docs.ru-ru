@@ -7,24 +7,49 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
-ms.openlocfilehash: d8e5151e7b5432b8ec90087647380757e101c447
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8804ee573f3bf16a831e58221e27d2c8557bd20f
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298095"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933546"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
 В этой статье приведены ответы на некоторые часто задаваемые вопросы о Bot Framework.
 
 ## <a name="background-and-availability"></a>Общие сведения и доступность
+
 ### <a name="why-did-microsoft-develop-the-bot-framework"></a>Почему корпорация Майкрософт разработала Bot Framework?
 
 Хотя мы имеем Conversation User Interface (CUI), на данном этапе немногие разработчики обладают опытом и средствами, необходимыми для создания возможностей общения или внедрения диалоговых интерфейсов в имеющиеся приложения и службы, которым пользователи могут воспользоваться. Мы создали Bot Framework, чтобы разработчикам было проще создавать и подключать полезные боты для пользователей везде, где они взаимодействуют, в том числе на главных каналах Майкрософт.
 
 ### <a name="what-is-the-v4-sdk"></a>Что такое пакет SDK версии 4?
 Пакет SDK Bot Framework версии 4 создавался с учетом отзывов и результатов использования предыдущих пакетов SDK Bot Framework. В нем представлен необходимый уровень абстракции. Кроме того, он обеспечивает широкие возможности компонентизации элементов бота. Вы можете начать с простого бота и усложнять его с помощью модульной расширяемой платформы. [Часто задаваемые вопросы о](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) пакете SDK можно найти на сайте GitHub.
+
+### <a name="running-a-bot-offline"></a>Запуск бота в автономном режиме
+
+<!-- WIP -->
+Прежде чем перейти к использованию бота в автономном режиме (что означает, что бот развернут не в Azure или других службах узла, а в локальной среде), давайте проясним некоторые моменты.
+
+- Бот — это веб-служба без пользовательского интерфейса. Поэтому пользователь взаимодействует с ним с помощью других средств. Это каналы, которые используют [службы соединителя Azure](rest-api/bot-framework-rest-connector-concepts.md#bot-connector-service). Соединитель работает в качестве *прокси-сервера* для ретрансляции сообщений между клиентом и ботом.
+- **Соединитель** — это глобальное приложение, размещенное в узлах Azure и распределенное географически для обеспечения доступности и масштабируемости. 
+- Зарегистрируйте бота для работы с соединителем с помощью колонки [регистрации канала бота](bot-service-quickstart-registration.md).
+    >[!NOTE]
+    > Конечная точка бота должна быть общедоступной для соединителя.
+
+Вы можете запустить бота в автономном режиме с ограниченными возможностями. Например, если вы хотите использовать бота в автономном режиме с возможностью LUIS, создайте контейнер для бота, а также необходимые инструменты и контейнер для LUIS. Оба контейнера подключены через промежуточную сеть Docker Compose.
+
+Это частично автономное решение, так как контейнеру Cognitive Services периодически требуется подключение к сети.
+
+> [!NOTE]
+> При работе в автономном режиме бот не поддерживает службу QnA.
+
+Дополнительные сведения можно найти в разделе
+
+- [Deploy the Language Understanding (LUIS) container to Azure Container Instances](https://docs.microsoft.com/azure/cognitive-services/luis/deploy-luis-on-container-instances) (Развертывание контейнера Распознавания речи (LUIS) в службе "Экземпляры контейнеров Azure")
+- [Container support in Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support) (Поддержка контейнеров в Azure Cognitive Services)
+
 
 ## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Поддержка пакета SDK Bot Framework версии 3 на все время существования 
 Боты на основе SDK версии 3 будут и далее работать и поддерживаться службой Azure Bot.  С момента выпуска пакета SDK Bot Framework версии 4, как и для других платформ, мы сохраняем для пакета SDK версии 3 полную поддержку обновлений безопасности, приоритетного исправления ошибок и обновления на уровнях соединителя и протокола.  Клиенты могут рассчитывать на поддержку версии 3 в течение всего 2019 года.
@@ -57,7 +82,7 @@ ms.locfileid: "70298095"
 
 ### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>Какой пакет SDK лучше использовать для создания новых ботов — версии 3 или 4?
 - Мы рекомендуем для всех новых проектов начинать разработку сразу с пакетом SDK для Bot Framework версии 4.
-- Если вы уже знакомы с пакетом SDK для Bot Framework версии 3, уделите немного времени изучению возможностей и особенностей нового [пакета SDK для Bot Framework версии 4](http://aka.ms/botframeowrkoverview).
+- Если вы уже знакомы с пакетом SDK для Bot Framework версии 3, уделите немного времени изучению возможностей и особенностей нового [пакета SDK для Bot Framework версии 4](https://aka.ms/botframeowrkoverview).
 - Если вы сейчас разрабатываете новые боты на основе пакета SDK для Bot Framework версии 3, можете не беспокоиться: в обозримом будущем они будут продолжать работать.
 - Вы можете создавать боты на основе пакета SDK для Bot Framework версии 4 и более старой версии 3 как на портале Azure, так и с помощью командной строки Azure. 
 
@@ -105,7 +130,7 @@ services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>();
 ```csharp
 options.ChannelProvider = new ConfigurationChannelProvider();
 ```
-Дополнительные сведения, касающиеся государственных служб, см. [здесь](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service).
+Дополнительные сведения, касающиеся государственных служб, см. [здесь](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service).
 
 ## <a name="security-and-privacy"></a>Безопасность и конфиденциальность
 ### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Собирают ли боты, зарегистрированные в Bot Framework, личную информацию? Если да, то как можно убедиться в том, что данные сохранены надежно и безопасно? Как насчет конфиденциальности?
@@ -162,7 +187,7 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 ## <a name="related-services"></a>Связанные службы
 ### <a name="how-does-the-bot-framework-relate-to-cognitive-services"></a>Как Bot Framework связан с Cognitive Services?
 
-Bot Framework и [Cognitive Services](http://www.microsoft.com/cognitive) — это новые возможности, представленные на [Microsoft Build 2016](http://build.microsoft.com). Они также будут интегрированы в общедоступную версию Cortana Intelligence Suite. Обе эти службы построены на основе многолетних исследований и используются в популярных продуктах корпорации Майкрософт. Эти возможности в сочетании с Cortana Intelligence позволяют каждой организации использовать преимущества данных, облака и аналитики для создания собственных интеллектуальных систем, которые открывают новые возможности, ускоряют развитие бизнеса и лидируют в сферах, в которых организации обслуживают своих клиентов.
+Bot Framework и [Cognitive Services](https://www.microsoft.com/cognitive) — это новые возможности, представленные на [Microsoft Build 2016](https://build.microsoft.com). Они также будут интегрированы в общедоступную версию Cortana Intelligence Suite. Обе эти службы построены на основе многолетних исследований и используются в популярных продуктах корпорации Майкрософт. Эти возможности в сочетании с Cortana Intelligence позволяют каждой организации использовать преимущества данных, облака и аналитики для создания собственных интеллектуальных систем, которые открывают новые возможности, ускоряют развитие бизнеса и лидируют в сферах, в которых организации обслуживают своих клиентов.
 
 ### <a name="what-is-cortana-intelligence"></a>Что такое Cortana Intelligence?
 
