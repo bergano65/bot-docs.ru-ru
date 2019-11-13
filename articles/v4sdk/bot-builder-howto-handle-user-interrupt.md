@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/18/2019
+ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 1c75349605e7b142035112c84c2b8684fe78ca85
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026328"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933558"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
 
@@ -56,7 +56,7 @@ ms.locfileid: "70026328"
 
 Если пользователь вводит cancel, то вызывается метод `CancelAllDialogsAsync` в контексте внутреннего диалога. Это действие очищает стек диалогов и приводит к выходу из диалога с состоянием отмены и без результирующего значения. С точки зрения `MainDialog` (см. далее) все будет выглядеть так, как будто диалог бронирования завершился и вернул значение NULL. Этот равнозначно ситуации, когда пользователь отказался подтвердить бронирование.
 
-[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56&highlight=43-45,49-51)]
+[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -76,7 +76,7 @@ ms.locfileid: "70026328"
 
 Если пользователь вводит cancel, то вызывается метод `cancelAllDialogs` в контексте внутреннего диалога. Это действие очищает стек диалогов и приводит к выходу из диалога с состоянием отмены и без результирующего значения. С точки зрения `MainDialog` (см. далее) все будет выглядеть так, как будто диалог бронирования завершился и вернул значение NULL. Этот равнозначно ситуации, когда пользователь отказался подтвердить бронирование.
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-37&highlight=27-29,32-34)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
 
 ---
 
@@ -104,11 +104,11 @@ ms.locfileid: "70026328"
 
 При поступлении действия с новым сообщением бот выполняет `MainDialog`. В `MainDialog` у пользователя спрашивается, какая помощь тому требуется. Затем запускается `bookingDialog` в методе `MainDialog.actStep` с помощью вызова `beginDialog`, как показано ниже.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-115&highlight=6,27)]
 
 После этого в методе `finalStep` класса `MainDialog` завершается диалог бронирования — оно считается завершенным или отмененным.
 
-[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=135-139)]
+[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=142-159)]
 
 Код в `BookingDialog` здесь не показан, так как он не имеет прямого отношения к обработке прерывания. Он используется, чтобы запросить у пользователя сведения о бронировании. Вы можете найти этот код в файле **dialogs/bookingDialogs.js**.
 
@@ -124,7 +124,7 @@ ms.locfileid: "70026328"
 
 В нашем примере обработчик `OnTurnError` в адаптере получает все исключения, создаваемые в соответствии с логикой шага в боте. Если создано исключение, обработчик удаляет состояние текущей беседы, чтобы бот не застрял в цикле ошибки из-за неправильного состояния.
 
-[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=13-45)]
+[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=19-50)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -132,7 +132,7 @@ ms.locfileid: "70026328"
 
 В нашем примере обработчик `onTurnError` в адаптере получает все исключения, создаваемые в соответствии с логикой шага в боте. Если создано исключение, обработчик удаляет состояние текущей беседы, чтобы бот не застрял в цикле ошибки из-за неправильного состояния.
 
-[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=34-44)]
+[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57)]
 
 ---
 
@@ -158,7 +158,7 @@ ms.locfileid: "70026328"
 
 Наконец, в `index.js` создается бот.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=75-78)]
 
 Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 

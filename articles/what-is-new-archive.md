@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6d73ad7bc0226874253dfe37a00b09ab22677b92
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: a57e5bd2b17cb2ac7553e71ac66f2bdfe97f3b35
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441647"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933751"
 ---
 # <a name="whats-new-july-2019"></a>Что нового (июль 2019 г.)
 
@@ -70,7 +70,7 @@ Bot Inspector — это новая функция Bot Framework Emulator, пр
   
 - [Chat for Dynamics 365](https://www.powerobjects.com/powerpacks/powerchat/). Решение Chat for Dynamics 365 предлагает несколько возможностей, обеспечивающих эффективное взаимодействие агентов поддержки с пользователями и их высокую производительность. Доступны возможности интерактивного чата и отслеживания диалогов с посетителями вашего веб-сайта, размещенного в Microsoft Dynamics 365.
 
-# <a name="whats-new-may-2019"></a>Что нового (май 2019 г.)
+## <a name="whats-new-may-2019"></a>Что нового (май 2019 г.)
 
 |   | C#  | JS  | Python |  Java | 
 |---|:---:|:---:|:------:|:-----:|

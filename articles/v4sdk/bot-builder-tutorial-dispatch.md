@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/23/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c9303962c992ef9b0801d0bdaabf08886755777d
-ms.sourcegitcommit: 33b67191b3a1c5744e1b93b0c02345536db41a54
+ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72561360"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933762"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -310,7 +310,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=16-31)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -318,7 +318,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 **bots/dispatchBot.js**
 
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
 ---
 
@@ -343,7 +343,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 **bots/dispatchBot.js**
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
 
 ---
 
@@ -366,7 +366,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код в этом примере использует результат в _topIntent_, демонстрируя, как перенаправить запрос в соответствующую службу.
 
 **bots/dispatchBot.js**  
-[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
 
 Вызываемые методы `processHomeAutomation` или `processWeather` передают результаты из модели отправки с использованием _recognizerResult.luisResult_. Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
 

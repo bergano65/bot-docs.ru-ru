@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/05/2019
+ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb359ec2493b1c29624f5fb0135478cae1dea0e0
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6ef79b62aecbc79ed277f3962606d5ed5d9ceeb3
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167169"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933575"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -79,11 +79,11 @@ ms.locfileid: "70167169"
 
 В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_.
 
-[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
+[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
 
 Это реализация первого шага каскадного диалога.
 
-[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=66-73)]
+[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=64-71)]
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -117,13 +117,13 @@ ms.locfileid: "70167169"
 
 В этом примере мы добавили метод `run` в диалог профиля пользователя.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
 
 **bots/dialogBot.js**
 
 Метод `run` вызывается из метода `onMessage` бота.
 
-[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-37)]
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
 
 ---
 
