@@ -2,18 +2,18 @@
 title: Подключение бота к электронной почте Office 365 | Документация Майкрософт
 description: Сведения о настройке бота для отправки и приема электронной почты в Office 365.
 keywords: Office 365, каналы бота, электронная почта, учетные данные электронной почты, портал Azure, пользовательская электронная почта
-author: RobStand
+author: kamrani
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/08/2019
-ms.openlocfilehash: ca88c2d023505401d9e31a58bfe7313565a2350c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/15/2019
+ms.openlocfilehash: 3ad7829af9dc24ca9e10ebab352b4513b3bcad28
+ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298584"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464289"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Подключение бота к электронной почте Office 365
 
@@ -21,6 +21,9 @@ ms.locfileid: "70298584"
 
 > [!WARNING]
 > Нарушением [Соглашения по интерактивным службам](https://www.botframework.com/Content/Microsoft-Bot-Framework-Preview-Online-Services-Agreement.htm) в Bot Framework является создание "спам-ботов", в том числе ботов, которые отправляют ненужные или нежелательные сообщения электронной почты.
+
+> [!NOTE]
+> Если вы используете Microsoft Exchange Server, перед настройкой канала электронной почты убедитесь, что [автообнаружение](https://docs.microsoft.com/exchange/client-developer/exchange-web-services/autodiscover-for-exchange) включено. 
 
 ## <a name="configure-email-credentials"></a>Настройка учетных данных электронной почты
 

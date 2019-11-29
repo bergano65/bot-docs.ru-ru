@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279870"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410442"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -52,12 +52,12 @@ Authorization: Bearer ACCESS_TOKEN
 
 ![Проверка подлинности в службе входа MSA и затем в боте](../media/connector/auth_bot_to_bot_connector.png)
 
-> [!IMPORTANT]
-> Если это еще не сделано, [зарегистрируйте бот](../bot-service-quickstart-registration.md) в Bot Framework, чтобы получить идентификатор приложения и пароль. Они потребуются для запроса маркера доступа.
-
 ### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Шаг 1. Запрос маркера доступа из службы входа в учетную запись Azure AD версии 2
 
-Чтобы запросить маркер доступа из службы входа, выполните приведенный ниже запрос, заменив **MICROSOFT-APP-ID** и **MICROSOFT-APP-PASSWORD** идентификатором приложения и паролем, полученными при [регистрации](../bot-service-quickstart-registration.md) бота в Bot Framework.
+> [!IMPORTANT]
+> Если это еще не сделано, [зарегистрируйте бот](../bot-service-quickstart-registration.md) в Bot Framework, чтобы получить идентификатор приложения и пароль. Идентификатор приложения и пароль бота потребуются для запроса маркера доступа.
+
+Чтобы запросить маркер доступа из службы входа, выполните приведенный ниже запрос, заменив **MICROSOFT-APP-ID** и **MICROSOFT-APP-PASSWORD** идентификатором приложения и паролем бота, которые вы получили при [регистрации](../bot-service-quickstart-registration.md) бота в Bot Framework.
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token

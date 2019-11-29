@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bc13f06e4cfd36afea65a344503fa48fe05f08e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 422c1285d6f668b6f5c39617f5d25419b2874eea
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299212"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410480"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство по Использование QnA Maker в боте для ответов на вопросы.
 
@@ -55,12 +55,12 @@ ms.locfileid: "70299212"
    1. Если потребуется, создайте службу QnA. (Можно использовать существующую службу QnA Maker или создать новую специально для работы с этим руководством.) Более подробные инструкции по QnA Maker см. в руководствах по [созданию службы QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure) и [созданию, подготовке и публикации базы знаний QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base).
    1. Подключите службу QnA к базе знаний.
    1. Присвойте имя базе знаний.
-   1. Чтобы заполнить базу знаний, используйте файл **BotBuilder-Samples\samples\csharp_dotnetcore\11.qnamaker\CognitiveModels\smartLightFAQ.tsv** из репозитория примеров.
+   1. Чтобы заполнить базу знаний, используйте файл `BotBuilder-Samples\samples\csharp_dotnetcore\11.qnamaker\CognitiveModels\smartLightFAQ.tsv` из репозитория примеров. Если вы уже скачали примеры, отправьте файл *smartLightFAQ.tsv* со своего компьютера.
    1. Щелкните **Create your KB** (Создать базу знаний).
 1. Выполните для базы знаний действие **Save and train** (Сохранить и обучить).
 1. Щелкните **Publish** (Опубликовать).
 
-После публикации приложения QnA Maker откройте вкладку _SETTINGS_ (Параметры) и прокрутите эту страницу вниз до раздела Deployment Details (Сведения о развертывании). Запишите следующие значения из примера HTTP-запроса _Postman_.
+После публикации приложения QnA Maker откройте вкладку **SETTINGS** (Параметры) и прокрутите страницу вниз до раздела *Deployment Details* (Сведения о развертывании). Скопируйте следующие значения из примера HTTP-запроса *Postman*.
 
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
@@ -111,9 +111,9 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 
 | Поле | Значение |
 |:----|:----|
-| QnAKnowledgebaseId | Идентификатор базы знаний, автоматически созданный на портале QnA Maker. |
-| QnAAuthKey | Ключ конечной точки, автоматически созданный на портале QnA Maker. |
-| QnAEndpointHostName | URL-адрес узла, созданный на портале QnA Maker. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полная строка URL-адреса будет выглядеть так: https://< >.azure.net/qnamaker. |
+| QnAKnowledgebaseId | Значение `knowledge-base-id` из примера HTTP-запроса *Postman*.|
+| QnAAuthKey | Значение `qna-maker-resource-key` из примера HTTP-запроса *Postman*. |
+| QnAEndpointHostName | Значение `your-hostname` из примера HTTP-запроса *Postman*. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полный URL-адрес должен выглядеть так: `https://<your knowledge base name>.azurewebsites.net/qnamaker`. |
 
 Сохраните изменения.
 
@@ -207,9 +207,9 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
    ```csharp
    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
    {
-      // First send the user input to your QnA Maker knowledge base
+      await turnContext.SendActivityAsync(MessageFactory.Text($"Echo: {turnContext.Activity.Text}"), cancellationToken);
+
       await AccessQnAMaker(turnContext, cancellationToken);
-      ...
    }
    ```
 
@@ -293,28 +293,33 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ![Тестирование примера QnA](./media/qna-test-bot.png)
 
 ## <a name="republish-your-bot"></a>Повторная публикация бота
+Теперь можно повторно опубликовать бота в Azure. Для этого необходимо заархивировать папку проекта и выполнить команду развертывания. Дополнительные сведения см. в статье [о развертывании бота](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp). 
 
-Теперь можно повторно опубликовать бота.
+### <a name="zip-your-project-folder"></a>Архивация папки проекта 
+[!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
-> [!IMPORTANT]
-> Прежде чем создавать архив с файлами проекта, убедитесь, что вы перешли _в нужную папку_. 
-> - Для ботов на C# это папка, в которой расположен CSPROJ-файл. 
-> - Для ботов на JS это папка, в которой расположен файл app.js или index.js. 
+<!-- > [!IMPORTANT]
+> Before creating a zip of your project files, make sure that you are _in_ the correct folder. 
+> - For C# bots, it is the folder that has the .csproj file. 
+> - For JS bots, it is the folder that has the app.js or index.js file. 
 >
-> Выберите все файлы и заархивируйте их, а затем выполните команду, оставаясь в той же папке.
+> Select all the files and zip them up while in that folder, then run the command while still in that folder.
 >
-> Если расположение корневой папки выбрано неверно, **бот не сможет запуститься на портале Azure**.
+> If your root folder location is incorrect, the **bot will fail to run in the Azure portal**. -->
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="deploy-your-code-to-azure"></a>Развертывание кода в Azure
+[!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
+
+<!-- # [C#](#tab/csharp)
 ```cmd
 az webapp deployment source config-zip --resource-group "resource-group-name" --name "bot-name-in-azure" --src "c:\bot\mybot.zip"
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# [JavaScript](#tab/javascript)
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
 
----
+--- -->
 
 ### <a name="test-the-published-bot"></a>Тестирование опубликованного бота
 
@@ -330,8 +335,8 @@ az webapp deployment source config-zip --resource-group "resource-group-name" --
 Если вы не собираетесь использовать это приложение в дальнейшем, удалите все связанные ресурсы, выполнив следующие действия.
 
 1. На портале Azure откройте группу ресурсов бота.
-1. Щелкните **Удалить группу ресурсов**. Одновременно с группой ресурсов удаляются все содержащиеся в ней ресурсы.
-1. На панели подтверждения введите имя группы ресурсов и щелкните **Удалить**.
+2. Щелкните **Удалить группу ресурсов**. Одновременно с группой ресурсов удаляются все содержащиеся в ней ресурсы.
+3. На панели подтверждения введите имя группы ресурсов и щелкните **Удалить**.
 
 ## <a name="next-steps"></a>Дополнительная информация
 

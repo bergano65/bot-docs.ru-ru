@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0570ec6a44c9fe1b007c1fd1b8c335288baa63cb
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 9c86001a51914f359163e7d755aa57e1c54127f8
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230675"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74414477"
 ---
 ## <a name="prerequisites"></a>Предварительные требования
 - [Visual Studio 2017 или более поздней версии](https://www.visualstudio.com/downloads)
@@ -13,14 +13,14 @@ ms.locfileid: "68230675"
 - Опыт работы с [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) и асинхронного программирования в [C#](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/index).
 
 ## <a name="create-a-bot"></a>Создание бота
-Установите шаблон BotBuilderVSIX.vsix, скачанный при выполнении предварительных требований.
+Установите [шаблон BotBuilderVSIX.vsix](https://aka.ms/bot-vsix), который вы скачали при выполнении предварительных требований.
 
-В Visual Studio создайте проект бота с использованием шаблона **эхо-бота для Bot Framework версии 4**.
+В Visual Studio создайте проект бота с использованием шаблона **эхо-бота для Bot Framework версии 4**. Введите в поле поиска _Bot Framework v4_, чтобы отображались только шаблоны ботов.
 
-![Проект Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
+![В Visual Studio создайте новый диалог проекта.](../media/azure-bot-quickstarts/bot-builder-dotnet-project-vs2019.png)
 
 > [!TIP] 
-> При необходимости укажите для проекта тип сборки ``.Net Core 2.1``. Также, если потребуется, обновите [пакеты NuGet](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio) `Microsoft.Bot.Builder`.
+> Если вы используете Visual Studio 2017, проект должен иметь тип сборки ``.Net Core 2.1`` или более поздней версии. Также, если потребуется, обновите [пакеты NuGet](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio) `Microsoft.Bot.Builder`.
 
 Благодаря шаблону проект содержит весь код, необходимый для создания бота в рамках этого краткого руководства. Теперь нет необходимости писать дополнительный код.
 

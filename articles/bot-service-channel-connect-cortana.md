@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2018
-ms.openlocfilehash: caa7c71bc0b12ff6defb72f75dcb6d12ce512806
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.date: 11/22/2019
+ms.openlocfilehash: 912f913f5fa09d971ba1e87e31736292f707adc2
+ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167006"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464272"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Подключение бота к Кортане
 
@@ -103,6 +103,8 @@ ms.locfileid: "70167006"
 Когда вы закончите заполнять регистрационную форму для навыка Cortana, щелкните **Deploy on Cortana** (Развернуть на Cortana), чтобы завершить подключение. Вы вернетесь к колонке каналов бота, где сможете проверить, подключен ли он теперь к Кортане.
 
 На этом этапе ваш бот уже развернут в вашей учетной записи как навык Cortana.
+
+Теперь вам нужно включить и авторизовать навык бота для подключения к учетной записи. В приложении Кортаны произнесите или введите команду "ask *имя вызова*", где "имя вызова" имеет значение, указанное для канала Кортаны на портале Azure. Кортана предложит вам разрешить подключаться к навыку бота. Если вы дадите разрешение, навык начнет работать и появится в списке навыков Кортаны.
 
 ## <a name="next-steps"></a>Дополнительная информация
 

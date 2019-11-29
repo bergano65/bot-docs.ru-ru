@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: a023fd97bfb7b8d55ad01d118075a6441e426575
+ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933714"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74510758"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -113,7 +113,7 @@ ms.locfileid: "73933714"
     }
     ```
 
-7. Добавьте ключ инструментирования Application Insights в файл `appsettings.json`. Файл `appsettings.json` содержит метаданные о внешних службах, которые использует бот во время работы. Например, здесь хранятся сведения о подключении и метаданные для служб CosmosDB, Application Insights и LUIS (Распознавание речи). Формат добавляемого в файл `appsettings.json` ключа должен быть таким:
+6. Добавьте ключ инструментирования Application Insights в файл `appsettings.json`. Файл `appsettings.json` содержит метаданные о внешних службах, которые использует бот во время работы. Например, здесь хранятся сведения о подключении и метаданные для служб CosmosDB, Application Insights и LUIS (Распознавание речи). Формат добавляемого в файл `appsettings.json` ключа должен быть таким:
 
     ```json
     {
@@ -251,7 +251,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>Настройка телеметрии для сбора данных об использовании из других служб, например LUIS и QnA Maker
 
-Теперь вы реализуете функции телеметрии в службе LUIS. Служба LUIS имеет встроенную функцию ведения журнала телеметрии, поэтому настроить получение данных телеметрии из LUIS очень просто.  
+Теперь вы реализуете функции телеметрии в службе LUIS. Служба LUIS имеет встроенную функцию ведения журнала телеметрии, поэтому настроить получение данных телеметрии из LUIS очень просто.  Если вы хотите включить телеметрию в боте с поддержкой QnA Maker, выполните инструкции из [этой статьи](bot-builder-telemetry-QnAMaker.md).
 
 В этом примере нам нужно просто предоставить клиент телеметрии так же, как и для диалогов. 
 
@@ -337,6 +337,8 @@ Application Insights отслеживает доступность, произв
 
 ## <a name="additional-information"></a>Дополнительная информация
 
+* [Добавление данных телеметрии в бота QnAMaker](bot-builder-telemetry-qnamaker.md)
+
 * [Что такое Azure Application Insights?](https://aka.ms/appinsights-overview)
 
 * [Поиск в Application Insights](https://aka.ms/search-in-application-insights)
@@ -372,14 +374,6 @@ The easiest way to test is by creating a dashboard using [Azure portal's templat
 ```
 -->
 
-
-
-
-
-
-
-
-
 <!--
 ## Additional information
 
@@ -414,9 +408,7 @@ There are three main components available for your bot to log telemetry, and eac
 - [*LuisRecognizer* class.](#telemetry-support-luis)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 - [*QnAMaker*  class.](#telemetry-qnamaker)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 
-
 All components log using the `IBotTelemetryClient`  (or `BotTelemetryClient` in node.js) interface which can be overridden with a custom implementation.
-
 
 #### Telemetry Middleware
 
@@ -735,6 +727,7 @@ When logging events into Application Insights, the events generated contain defa
 
 > [!NOTE]
 > Custom telemetry clients will not be provided these values.
+
 
 Property |Type | Details
 --- | --- | ---

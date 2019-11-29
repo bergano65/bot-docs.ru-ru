@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 8b98610c649f145aed975ed1d4b8eb0281d26016
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933762"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479523"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -88,7 +88,7 @@ ms.locfileid: "73933762"
 
 7. Когда новое приложение LUIS будет опубликовано, выберите вкладку _MANAGE_ (Управление). На странице Application Information (Сведения о приложении) укажите для `Application ID` и `Display name` значения _app-id-for-app_ и _name-of-app_ соответственно. На странице Key and Endpoints (Ключ и конечные точки) укажите для `Authoring Key` и `Region` значения _your-luis-authoring-key_ и _your-region_ соответственно. Эти значения будут потом использоваться в файле appsetting.json.
 
-8. Завершив эти действия, _обучите_ и _опубликуйте_ приложение LUIS с **прогнозом погоды** и приложение LUIS **для отправки**, повторив описанные выше шаги с файлом weather.json.
+8. Завершив эти действия, _обучите_ и _опубликуйте_ приложение LUIS **домашней автоматизации** и приложение LUIS **прогноза погоды**, повторив описанные выше шаги с файлом weather.json.
 
 ### <a name="create-qna-maker-knowledge-base"></a>Создание базы знаний QnA Maker
 
@@ -475,6 +475,16 @@ Either of the above two actions will reduce the number of times that your bot re
 ### <a name="to-update-or-create-a-new-luis-model"></a>Обновление или создание модели LUIS
 
 этот пример основан на предварительно настроенной модели LUIS. Сведения, которые вам потребуются для обновления этой модели или создания новой модели LUIS, вы найдете [здесь](https://aka.ms/create-luis-model#updating-your-cognitive-models).
+
+После обновления базовых моделей (QnA или LUIS) запустите `dispatch refresh`, чтобы обновить приложение LUIS для отправки. По сути `dispatch refresh` отличается от `dispatch create` только тем, что не создает новый идентификатор приложения LUIS. 
+
+Обратите внимание, что добавленные непосредственно в LUIS речевые фрагменты не будут сохранены при выполнении `dispatch refresh`. Чтобы сохранить эти дополнительные речевые фрагменты в приложении отправки, добавьте их в текстовый файл (по одному фрагменту в строке), а затем добавьте этот файл в приложение с помощью следующей команды:
+
+```powershell
+dispatch add -t file -f <file path> --intentName <target intent name, ie l_General>
+```
+
+Когда вы добавите файл с дополнительными речевыми фрагментами в приложение отправки, фрагменты будут сохраняться нетронутыми после каждого обновления.
 
 ### <a name="to-delete-resources"></a>Удаление ресурсов
 
