@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: c0feda708be8ac384c458289884fddf6ee798790
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.openlocfilehash: 4c8a70e4b82e2bc4a5c10d4cf73abf51f5f904ea
+ms.sourcegitcommit: 91a393e885b9ef7e08ceb978ce2f567ea38e7f48
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479500"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74564404"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
@@ -84,8 +84,7 @@ ms.locfileid: "74479500"
 2.  Разработка пакетов SDK и средств будет выполняться исключительно для версии 4. Для версии 3 никаких работ не предусмотрено.
 3.  Вы можете продолжить пользоваться устаревшими средства для управления ботами версии 3. 
 
-
-### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Как перенести службу Azure Bot из одного региона в другой?
+## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Как перенести службу Azure Bot из одного региона в другой?
 
 Служба Azure Bot не поддерживает перемещение между регионами. Это глобальная служба, не привязанная ни к одному конкретному региону.
 
