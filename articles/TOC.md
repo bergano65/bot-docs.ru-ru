@@ -5,6 +5,7 @@
 # Краткое руководство
 ## [Создание бота с помощью .NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ## [Создание бота с помощью JavaScript](javascript/bot-builder-javascript-quickstart.md)
+## [Создание бота с помощью Python](python/bot-builder-python-quickstart.md)
 ## [Создание бота с помощью службы Azure Bot](v4sdk/abs-quickstart.md)
 # Учебники
 ## [1. Создание и развертывание простого бота](v4sdk/bot-builder-tutorial-basic-deploy.md)
@@ -64,8 +65,8 @@
 ### [Развертывание бота в Azure](bot-builder-deploy-az-cli.md)
 ### [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)
 ## [Управление](manage/TOC.md)
-## [Миграция](v4sdk/migration/TOC.md)
-# Справочные материалы
+## [анализа](v4sdk/migration/TOC.md)
+# Справочник
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/botframework-v4-cs-sdk)
 ## [Пакет SDK версии 4 для JavaScript](https://aka.ms/bot-jssdk-v4)
 ## [REST](rest-api/TOC.md)
