@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 002f2de104e61be3b0f7e543408c0c0d78018f9b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: d8aa120e37d13cc5710915d2362fdeed5b9d10bf
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491483"
 ---
 # <a name="send-and-receive-text-message"></a>Отправка и получение текстовых сообщений
 
@@ -45,6 +45,15 @@ await turnContext.SendActivityAsync($"Welcome!");
 ```javascript
 await context.sendActivity("Welcome!");
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+В обработчиках действий бота используйте метод `send_activity` для объекта контекста шага, чтобы отправить ответ в виде одного сообщения.
+
+```python
+await turn_context.send_activity("Welcome!")
+```
+
 ---
 ## <a name="receive-a-text-message"></a>Получение текстового сообщения
 
@@ -66,6 +75,14 @@ var responseMessage = turnContext.Activity.Text;
 let text = turnContext.activity.text;
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+В обработчиках действий бота используйте следующий код для получения сообщения.
+
+```python
+response = context.activity.text
+```
+
 ---
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
@@ -73,7 +90,7 @@ let text = turnContext.activity.text;
 - Дополнительные сведения об обработке действий в целом см. в разделе [Обработка действий](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack).
 - См. дополнительные сведения о схеме действий Bot Framework и [действиях в беседах](https://aka.ms/botSpecs-activitySchema#message-activity).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Добавление мультимедиа в сообщения](./bot-builder-howto-add-media-attachments.md)

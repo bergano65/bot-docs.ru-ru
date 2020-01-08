@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 7c565d77879641d92a3e331852ff38ea21fdaf9e
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 839fd125976fd70cb78817078ff7cf4709974a8a
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491263"
 ---
 # <a name="use-direct-line-app-service-extension-within-a-vnet"></a>Использование расширения Службы приложений Direct Line в виртуальной сети
 
@@ -22,8 +22,8 @@ ms.locfileid: "68866447"
 ## <a name="create-an-app-service-environment-and-other-azure-resources"></a>Создание Среды службы приложений Azure и других ресурсов Azure
 
 1. Расширение Службы приложений Direct Line доступно во всех **Службах приложений Azure**, включая размещенные в **Среде службы приложений Azure**. Среда службы приложений Azure обеспечивает изоляцию и идеально подходит для работы в виртуальной сети.
-    - Инструкции по созданию внешней Среды службы приложений вы можете найти в [этой статье](https://docs.microsoft.com/en-us/azure/app-service/environment/create-external-ase).
-    - Инструкции по созданию внутренней Среды службы приложений вы можете найти в [этой статье](https://docs.microsoft.com/en-us/azure/app-service/environment/create-ilb-ase).
+    - Инструкции по созданию внешней Среды службы приложений вы можете найти в [этой статье](https://docs.microsoft.com/azure/app-service/environment/create-external-ase).
+    - Инструкции по созданию внутренней Среды службы приложений вы можете найти в [этой статье](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
 1. После создания Среды службы приложений следует добавить в нее план Службы приложений, в котором вы сможете развернуть ботов (что приведет к запуску расширения Службы приложений Direct Line). Для этого:
     - Перейдите на сайт https://portal.azure.com/.
     - Создайте новый ресурс "План службы приложений".
@@ -37,11 +37,11 @@ ms.locfileid: "68866447"
 |Источник|Любой|
 |---|---|
 |Исходный порт|*|
-|Место назначения|IP-адреса|
+|Назначение|IP-адреса|
 |IP-адреса назначения|20.38.80.64, 40.82.248.64|
 |Диапазоны портов назначения|443|
 |Протокол|Любой|
-|Действие|РАЗРЕШИТЬ|
+|Действие|Allow|
 
 
 ![Архитектура расширения Direct Line](./media/channels/direct-line-extension-vnet.png)

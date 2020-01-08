@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 25c7fcb994e0fae348014c1eba393451dc0d9e15
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491394"
 ---
 # <a name="migration-overview"></a>Общие сведения о переносе
 
@@ -27,7 +27,7 @@ ms.locfileid: "70026409"
 
 ## <a name="what-happens-to-bots-built-using-sdk-v3"></a>Что будет с ботами, созданными с помощью пакета SDK версии 3
 
-Пакет SDK Bot Framework версии 3 станет недоступным для работы, но существующие рабочие нагрузки ботов версии 3 продолжат работу. Дополнительные сведения можно найти в разделе  [Поддержка пакета SDK Bot Framework версии 3 на все время существования](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support).
+Пакет SDK Bot Framework версии 3 станет недоступным для работы, но существующие рабочие нагрузки ботов версии 3 продолжат работу. Дополнительные сведения см. в разделе: [Поддержка пакета SDK Bot Framework версии 3 на все время существования](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support).
 
 Настоятельно рекомендуем начать перенос ботов с версии 3 в версию 4. Чтобы упростить перенос, мы подготовили соответствующую документацию и окажем расширенную поддержку инициативам по переносу по стандартным каналам.
 
@@ -69,7 +69,7 @@ ms.locfileid: "70026409"
 
 ## <a name="whats-changed"></a>Изменения
 
-Пакет SDK Bot Framework версии 4 поддерживает ту же базовую службу Bot Framework, что и версия 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и уровня контроля над процессом создания ботов. В их состав входят:
+Пакет SDK Bot Framework версии 4 поддерживает ту же базовую службу Bot Framework, что и версия 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и уровня контроля над процессом создания ботов. Это включает следующие действия.
 
 - Добавлен адаптера бота.
   - Адаптер — это компонент стека обработки действий.
@@ -101,7 +101,7 @@ ms.locfileid: "70026409"
 | -- | -- | -- | -- | -- | -- |
 Получение входящего действия | IDialogContext.Activity | ITurnContext.Activity | count | Малый  
 Создание действия и отправка его пользователю | activity.CreateReply("текст") IDialogContext.PostAsync | MessageFactory.Text("текст") ITurnContext.SendActivityAsync | count | Малый |
-Управление данными о состоянии | UserData, ConversationData и PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState и PrivateConversationState с методами доступа к свойствам | context.UserData.SetValue "значение" context.UserData.TryGetValue "значение" botDataStore.LoadAsyn "значение" | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
+Управление данными о состоянии | UserData, ConversationData и PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState и PrivateConversationState с методами доступа к свойствам | context.UserData.SetValue "значение" context.UserData.TryGetValue "значение" botDataStore.LoadAsyn "значение" | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
 Обработка запуска диалога | Реализация IDialog.StartAsync | Сделайте этот шаг первым в каскадном диалоге. | count | Малый |  
 Отправка действия | IDialogContext.PostAsync. | Вызов ITurnContext.SendActivityAsync. | count | Малый |  
 Ожидание ответа пользователя | Вызов IDialogContext.Wait с помощью параметра IAwaitable<IMessageActivity> | Возврат await ITurnContext.PromptAsync для начала диалога запроса. Затем получите результаты на следующем шаге каскадного диалога. | count | Средняя (в зависимости от потока) |  
@@ -118,11 +118,11 @@ ms.locfileid: "70026409"
 | -- | -- | -- | -- | -- | -- |
 Получение входящего действия | IMessage | TurnContext.activity | count | Малый  
 Создание действия и отправка его пользователю | Вызов Session.send('message') | Вызов TurnContext.sendActivity | count | Малый |
-Управление данными о состоянии | UserState и ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState и ConversationState с методами доступа к свойствам | count | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
+Управление данными о состоянии | UserState и ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState и ConversationState с методами доступа к свойствам | count | Средняя–высокая (см. раздел[Управление данными о состоянии](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)) |
 Обработка запуска диалога | Вызов session.beginDialog, передача идентификатора диалога | Вызов DialogContext.beginDialog | count | Малый |  
 Отправка действия | Вызов Session.send | Вызов TurnContext.sendActivity | count | Малый |  
 Ожидание ответа пользователя | Вызов запроса из каскадного шага, например builder.Prompts.text(сеанс, 'Please enter your destination'). Получите ответ на следующем шаге. | Возврат ожидания TurnContext.prompt для запуска диалога запроса. Затем получите результаты на следующем шаге каскадного диалога. | count | Средняя (в зависимости от потока) |  
-Обработка продолжения диалога | Автоматический | Добавление дополнительных шагов в каскадный диалог или реализация Dialog.continueDialog | count | большой |  
+Обработка продолжения диалога | Автоматически | Добавление дополнительных шагов в каскадный диалог или реализация Dialog.continueDialog | count | большой |  
 Обозначение завершения обработки до следующего сообщения пользователя | Session.endDialog | Возврат Dialog.EndOfTurn | count | Средний |  
 Запуск дочернего диалога | Session.beginDialog | Возврат ожидания метода beginDialog для контекста шага. Если дочерний диалог вернет значение, оно будет доступно на следующем шаге каскадного диалога в свойстве Result. | count | Средний |  
 Замена текущего диалога новым | Session.replaceDialog | ITurnContext.replaceDialog | count | большой |  
@@ -142,7 +142,7 @@ ms.locfileid: "70026409"
 #### <a name="net-framework"></a>.NET Framework
 
 - Обновление и установка пакетов NuGet
-- Обновление файла global.asax.cs.
+- Обновление файла global.asax.cs
 - Обновление класса MessagesController.
 - Преобразование диалогов.
 
@@ -187,7 +187,7 @@ ms.locfileid: "70026409"
 <!-- _Mini-TOC with explainer for .NET topics_ -->
 В следующих разделах описаны различия между пакетами SDK Bot Framework для .NET версий 3 и 4, критические изменения в обеих версиях, а также приведены пошаговые инструкции по переходу с версии 3 на версию 4.
 
-| Раздел | ОПИСАНИЕ |
+| Раздел | Description |
 | :--- | :--- |
 | [Различия между версиями 3 и 4 пакета SDK для .NET](migration-about.md) |Различия между версиями 3 и 4 пакета SDK |
 | [Краткий справочник по миграции для .NET](net-migration-quickreference.md) |Критические изменения в версиях 3 и 4 пакета SDK |
@@ -199,7 +199,7 @@ ms.locfileid: "70026409"
 <!-- _Mini-TOC with explainer for JavaScript topics_ -->
 В следующих разделах описаны различия в пакетах SDK Bot Framework для JavaScript версий 3 и 4, критические изменения в обеих версиях, а также приведены пошаговые инструкции по переходу с версии 3 на версию 4.
 
-| Раздел | ОПИСАНИЕ |
+| Раздел | Description |
 | :--- | :--- |
 | [Различия между версиями 3 и 4 пакета SDK для JavaScript](migration-about-javascript.md) | Различия между версиями 3 и 4 пакета SDK |
 | [Краткий справочник по миграции для JavaScript](javascript-migration-quickreference.md)| Критические изменения в версиях 3 и 4 пакета SDK|
@@ -211,7 +211,7 @@ ms.locfileid: "70026409"
 
 Ниже приведены примеры кода, которые позволяют ознакомиться с пакетом SDK Bot Framework версии 4 или приступить к новому проекту.
 
-| Примеры | ОПИСАНИЕ |
+| Примеры | Description |
 | :--- | :--- |
 | [Примеры переноса бота из пакета SDK Bot Framework версии 3 в версию 4](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4) <img width="200">| Примеры миграции из пакета SDK Bot Framework версии 3 в версию 4 |
 | [Примеры Bot Builder для .NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore) | Примеры Bot Builder для C# и .NET Core |
@@ -222,15 +222,15 @@ ms.locfileid: "70026409"
 
 Указанные ниже ресурсы содержат дополнительные сведения и могут помочь с разработкой ботов.
 
-[Дополнительные ресурсы по Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
+[Дополнительные ресурсы по Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
 
-### <a name="references"></a>Справочники
+### <a name="references"></a>Ссылки
 
 Указанные ниже ресурсы содержат дополнительные и справочные сведения.
 
-| Раздел | ОПИСАНИЕ |
+| Раздел | Description |
 | :--- | :--- |
-| [Новые возможности Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Основные возможности и усовершенствования Bot Framework и Azure Bot|
+| [Новые возможности Bot Framework](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Основные возможности и усовершенствования Bot Framework и Azure Bot|
 |[Принципы работы бота](../bot-builder-basics.md)|Внутренний механизм бота|
 |[Управление состоянием](../bot-builder-concept-state.md)|Абстракции, упрощающие управление состоянием|
 |[Библиотека диалогов](../bot-builder-concept-dialog.md)| Основные концепции управления диалогом|

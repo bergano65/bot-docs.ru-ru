@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: d71cfc604484b521450465c483201952d4672fcd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491602"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Устранение неполадок, связанных с конфигурацией бота
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298617"
 
 ## <a name="test-in-web-chat"></a>Тестирование в веб-чате
 
-1. Откройте ресурс бота на [портале Azure](http://portal.azure.com/).
+1. Откройте ресурс бота на [портале Azure](https://portal.azure.com/).
 1. Откройте панель **Test in Web Chat** (Тестирование в веб-чате).
 1. Отправьте боту сообщение.
 

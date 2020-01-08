@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: 4c8a70e4b82e2bc4a5c10d4cf73abf51f5f904ea
-ms.sourcegitcommit: 91a393e885b9ef7e08ceb978ce2f567ea38e7f48
+ms.openlocfilehash: 9d23c1497fa5ab58ef6eba4725035c4c0929586f
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74564404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491368"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
@@ -45,7 +45,7 @@ ms.locfileid: "74564404"
 > [!NOTE]
 > При работе в автономном режиме бот не поддерживает службу QnA.
 
-Дополнительные сведения можно найти в разделе
+Дополнительные сведения см. в разделе:
 
 - [Deploy the Language Understanding (LUIS) container to Azure Container Instances](https://docs.microsoft.com/azure/cognitive-services/luis/deploy-luis-on-container-instances) (Развертывание контейнера Распознавания речи (LUIS) в службе "Экземпляры контейнеров Azure")
 - [Container support in Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support) (Поддержка контейнеров в Azure Cognitive Services)
@@ -79,10 +79,10 @@ ms.locfileid: "74564404"
 3.  Создание новых ботов версии 3 на портале теперь невозможно, но опытные пользователи смогут развернуть бот версии 3 в другом расположении за пределами Azure Bot (например, в качестве службы веб-приложения).
 
 #### <a name="sdk-and-tools"></a>Пакет SDK и средства
-
 1.  Мы прекращаем развитие пакета SDK версии 3. В обозримом будущем для ветвей пакета SDK появятся лишь критические исправления безопасности (с одним исключением: мы планируем добавить соединитель навыков, чтобы боты версии 4 могли взаимодействовать с ботам версии 3).
 2.  Разработка пакетов SDK и средств будет выполняться исключительно для версии 4. Для версии 3 никаких работ не предусмотрено.
 3.  Вы можете продолжить пользоваться устаревшими средства для управления ботами версии 3. 
+
 
 ## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Как перенести службу Azure Bot из одного региона в другой?
 
@@ -155,7 +155,7 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 - *.botFramework.com (каналы).
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Можно ли заблокировать весь трафик, перенаправляемый в бот, кроме трафика от службы Bot Connector?
-№ Такое добавление IP-адресов или DNS в список разрешений непрактично. Служба Bot Framework Connector размещена в центрах обработки данных Azure по всему миру, и список IP-адресов Azure постоянно меняется. Добавление в список разрешений определенных IP-адресов будет эффективно только на один день, так как IP-адреса Azure меняются.
+Нет. Такое добавление IP-адресов или DNS в список разрешений непрактично. Служба Bot Framework Connector размещена в центрах обработки данных Azure по всему миру, и список IP-адресов Azure постоянно меняется. Добавление в список разрешений определенных IP-адресов будет эффективно только на один день, так как IP-адреса Azure меняются.
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>Какие есть способы защиты от клиентов, олицетворяющих службы Bot Framework Connector?
 1. Маркер безопасности, который указан в каждом запросе к боту содержит закодированный URL-адрес службы (ServiceUrl). Это означает, что даже если злоумышленник получит доступ к маркеру, он не сможет перенаправить диалог на новый URL-адрес службы. Это реализовано во всех пакетах SDK и описано в наших [справочных материалах по аутентификации](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector).

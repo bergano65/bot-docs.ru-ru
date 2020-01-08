@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: a11870dfa728621d346a7376363c7e31ddb1596c
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 35772bd4e31cad4787f6ef8b50a56503bfbef55c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491221"
 ---
 # <a name="use-webchat-with-the-direct-line-app-service-extension"></a>Применение WebChat с расширением Службы приложений Direct Line
 
@@ -32,7 +32,7 @@ ms.locfileid: "68866423"
 URL-адрес Direct Line для бота будет иметь вид `https://<your_app_service>.azurewebsites.net/.bot/`, где расширение `/.bot/` является **конечной точкой** Direct Line в Службе приложений.
 Даже если вы настроите собственное доменное имя, к нему необходимо добавить путь `/.bot/` для обращения к интерфейсам REST API Direct Line.
 
-1. Обменяйте секрет на маркер, выполнив инструкции из [статьи об аутентификации](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0). Но вместо расположения `https://directline.botframework.com/v3/directline/tokens/generate` вы будете использовать для получения маркера непосредственно расширение Службы приложений Direct Line из расположения `https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate`.  
+1. Обменяйте секрет на маркер, выполнив инструкции из [статьи об аутентификации](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0). Но вместо расположения `https://directline.botframework.com/v3/directline/tokens/generate` вы будете использовать для получения маркера непосредственно расширение Службы приложений Direct Line из расположения `https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate`.  
 
 1. Получив маркер, вы можете внести следующие изменения в веб-страницу, на которой используется WebChat:
 

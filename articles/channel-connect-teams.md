@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/26/2019
-ms.openlocfilehash: 1ba0873c880bfb9b1e0f449039e98859e5571028
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: fbe91d7ee3941a0cde4e59c91857fbff72f634a3
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491604"
 ---
 # <a name="connect-a-bot-to-teams"></a>Подключение бота к Teams
 
@@ -37,5 +37,5 @@ ms.locfileid: "70076540"
 > Добавлять бота по GUID рекомендуется только для тестирования. В противном случае функциональность бота будет существенно ограничена. Боты, используемые в рабочей среде, следует добавлять в Teams как часть приложения. См. сведения о [создании бота](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create) и [тестировании и отладке бота Microsoft Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-test).
 
 
-## <a name="additional-information"></a>Дополнительная информация
-См. подробнее о [Microsoft Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/overview). 
+## <a name="additional-information"></a>Дополнительные сведения
+См. подробнее о [Microsoft Teams](https://docs.microsoft.com/microsoftteams/platform/overview). 

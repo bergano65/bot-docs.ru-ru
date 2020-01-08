@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7197cf4716369b00a8ccdff0f0e289bd3a0fdd16
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 699b4cfc1acc47757b7adc06dfeae577b09fba2e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491876"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Реализация пользовательского хранилища для бота
 
@@ -25,8 +25,8 @@ ms.locfileid: "70299385"
 ![Диаграмма горизонтального масштабирования](../media/scale-out/scale-out-interaction.png)
 
 
-## <a name="prerequisites"></a>Предварительные требования
-- Полный пример кода, используемый в этой статье можно найти здесь: [Пример C#](http://aka.ms/scale-out).
+## <a name="prerequisites"></a>предварительные требования
+- Полный пример кода, используемый в этой статье можно найти здесь: [Пример C#](https://aka.ms/scale-out).
 
 В этой статье мы изучим семантику взаимодействий бота со службой Azure Bot и хранилищем.
 
@@ -145,6 +145,6 @@ Bot Framework включает реализацию по умолчанию, к�
 **RefAccessor.cs**  
 [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
-## <a name="additional-information"></a>Дополнительная информация
-Исходный код примеров для этой статьи на языке [C#](http://aka.ms/scale-out) можно найти на сайте GitHub.
+## <a name="additional-information"></a>Дополнительные сведения
+Исходный код примеров для этой статьи на языке [C#](https://aka.ms/scale-out) можно найти на сайте GitHub.
 
