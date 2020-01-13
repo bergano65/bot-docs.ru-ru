@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4390ddbbe9c75852cb9d7cad19cb50d0f8f04f8b
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: d3c369772736bddc96cab8b9e15e4005bd05bc3c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491697"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
@@ -22,10 +22,10 @@ ms.locfileid: "73933720"
 
 Основная цель создания любого бота — ведение осмысленного диалога с пользователем. Лучший способ достичь этой цели — сделать так, чтобы с момента присоединения к диалогу пользователь понимал основное назначение вашего бота, его возможности и причины создания. В этой статье представлены примеры кода, которые помогут создать приветствие, отправляемое ботом пользователю.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md).
-- Копия **примера с приветствием пользователя** для [C#](https://aka.ms/welcome-user-mvc) и [JavaScript](https://aka.ms/bot-welcome-sample-js). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
+- Копия **примера с приветствием пользователя** для [C#](https://aka.ms/welcome-user-mvc), [JavaScript](https://aka.ms/bot-welcome-sample-js) или [Python](https://aka.ms/bot-welcome-python-sample-code). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
 
 ## <a name="about-this-sample-code"></a>Сведения о примере кода
 
@@ -33,7 +33,7 @@ ms.locfileid: "73933720"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Два основных событиях, отслеживаемых ботом:
+Два основных события, отслеживаемые ботом:
 
 - `OnMembersAddedAsync` вызывается каждый раз, когда к боту подключается новый пользователь;
 - `OnMessageActivityAsync` вызывается каждый раз, когда принимаются данные от нового пользователя.
@@ -45,7 +45,7 @@ ms.locfileid: "73933720"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Два основных событиях, отслеживаемых ботом:
+Два основных события, отслеживаемые ботом:
 
 - `onMembersAdded` вызывается каждый раз, когда к боту подключается новый пользователь;
 - `onMessage` вызывается каждый раз, когда принимаются данные от нового пользователя.
@@ -54,14 +54,28 @@ ms.locfileid: "73933720"
 
 Каждый раз, когда подключается новый пользователь, бот предоставляет ему `welcomeMessage`, `infoMessage` и `patternMessage`.
 При получении данных от нового пользователя бот проверяет `welcomedUserProperty` и выясняет, имеет ли `didBotWelcomeUser` значение _TRUE_. Если это не так, он возвращает новому пользователю сообщение с приветствием.
-
----
-
- Если DidBotWelcomeUser имеет значение _true_, оцениваются введенные пользователем данные. В зависимости от содержания этих данных бот выполняет одно из следующих действий:
+Если `DidBotWelcomeUser` имеет значение _true_, входные данные пользователя оцениваются. В зависимости от содержания этих данных бот выполняет одно из следующих действий:
 
 - возвращает приветствие, полученное от пользователя;
 - отображает карту для имиджевого баннера с информацией о ботах;
 - повторно отправляет `WelcomeMessage`, где описаны ожидаемые входные данные для этого бота.
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Два основных события, отслеживаемые ботом:
+
+- `on_members_added_activity` вызывается каждый раз, когда к боту подключается новый пользователь;
+- `on_message_activity` вызывается каждый раз, когда принимаются данные от нового пользователя.
+
+![Поток логики для приветствия пользователя](media/welcome-user-flow-python.png)
+
+При каждом подключении нового пользователя бот выводит *приветственное сообщение*, *информационное сообщение* и *сообщение-шаблон*.
+При получении данных от нового пользователя бот проверяет свойство `welcome_user_state.did_welcome_user` и выясняет, имеет ли оно значение *true*. Если это не так, он возвращает новому пользователю сообщение с приветствием. Если свойство имеет значение *true*, в зависимости от содержания этих данных бот выполняет одно из следующих действий:
+
+- возвращает приветствие, полученное от пользователя; 
+- отображает карту для имиджевого баннера с информацией о ботах;
+
+---
 
 ## <a name="create-user-object"></a>Создание объекта пользователя
 
@@ -77,11 +91,17 @@ ms.locfileid: "73933720"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Параметры хранилища в памяти и состояния пользователя на момент запуска определены в файле index.js.
+Параметры хранилища в памяти и состояния пользователя на момент запуска определены в файле `index.js`.
 
 **Index.js**  
 [!code-javascript[Import statement](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10)]
 [!code-javascript[Create objects](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=51-55)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Состояние пользователя на момент запуска и приветственное сообщение определены в файле `welcome-user-bot.py`.
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-37)]
 
 ---
 
@@ -104,6 +124,11 @@ ms.locfileid: "73933720"
 [!code-javascript[Define welcome property key](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-8)]
 [!code-javascript[Create welcome property accessor](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=16-22)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Создайте метод доступа к свойствам `user_state_accessor`, чтобы предоставить дескриптор для `WelcomeUserState` в `on_message_activity`.
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
 ---
 
 ## <a name="detect-and-greet-newly-connected-users"></a>Обнаружение и приветствие новых подключенных пользователей
@@ -123,6 +148,12 @@ ms.locfileid: "73933720"
 **WelcomeBot.js**  
 [!code-javascript[Send messages](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-88)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+`on_members_added_activity` проверяет, добавлен ли новый пользователь, а затем отправляет три начальных приветственных сообщения: *приветственное сообщение*, *информационное сообщение* и *сообщение-шаблон*.
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=55-74)]
+
 ---
 
 ## <a name="welcome-new-user-and-discard-initial-input"></a>Приветствие нового пользователя и удаление первого входящего сообщения
@@ -136,16 +167,22 @@ ms.locfileid: "73933720"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Важно помнить о том, что введенные пользователем данные могут содержать ценную информацию и что в разных каналах взаимодействие может происходить по-разному. Чтобы облегчить пользователю работу со всеми возможными каналами, нам нужно проверить свойство didBotWelcomeUser. Если оно не существует, мы присваиваем ему значение false и не обрабатываем начальное сообщение, введенное пользователем. Вместо этого мы предоставляем пользователю начальное приветственное сообщение. Затем для _didBotWelcomeUser_ устанавливается значение true, и наш код обрабатывает введенные пользователем данные от всех дополнительных действий сообщения.
+Важно помнить о том, что введенные пользователем данные могут содержать ценную информацию и что в разных каналах взаимодействие может происходить по-разному. Чтобы облегчить пользователю работу со всеми возможными каналами, нам нужно проверить свойство didBotWelcomeUser. Если оно не существует, мы присваиваем ему значение false и не обрабатываем начальное сообщение, введенное пользователем. Вместо этого мы предоставляем пользователю начальное приветственное сообщение. Затем для didBotWelcomeUser устанавливается значение true, и наш код обрабатывает введенные пользователем данные от всех дополнительных действий сообщения.
 
 **WelcomeBot.js**  
 [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Важно помнить о том, что введенные пользователем данные могут содержать ценную информацию и что в разных каналах взаимодействие может происходить по-разному. Чтобы обеспечить оптимальную работу пользователя на всех возможных каналах, `on_message_activity` проверяет свойство `did_welcome_user`. В первый раз для свойства задается значение *false* и введенные пользователем данные не обрабатываются. Вместо этого пользователю предоставляется начальное приветственное сообщение. Затем для `did_welcome_user` устанавливается значение *true* и обрабатываются введенные пользователем данные из всех дополнительных действий с сообщениями.
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
 
 ---
 
 ## <a name="process-additional-input"></a>Обработка дополнительных входных данных
 
-Когда новый пользователь получает приветственное сообщение, введенные им данные оцениваются на каждом шаге диалога, и бот предоставляет ответы на основе контекста этих входных данных. Следующий код демонстрирует логику принятия решений, которая используется для создания ответа. 
+Когда новый пользователь получает приветственное сообщение, введенные им данные оцениваются на каждом шаге диалога, и бот предоставляет ответы на основе контекста этих входных данных. Следующий код демонстрирует логику принятия решений, которая используется для создания ответа.
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -161,11 +198,17 @@ ms.locfileid: "73933720"
 **WelcomeBot.js**  
 [!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+При введении пользователем команды *intro* или *help* бот вызывает команду `__send_intro_card`, предоставляющую пользователю вводную адаптивную карту.
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=103-104)]
+
 ---
 
 ## <a name="using-hero-card-greeting"></a>Использование карты для имиджевого баннера с приветствием
 
-Как упоминалось выше, в ответ на некоторые введенные пользователем данные создается _карта для имиджевого баннера_. См. подробнее в руководстве по [отправке карты с вводными сведениями](./bot-builder-howto-add-media-attachments.md). Ниже представлен код, который предоставляет ответ с картой для имиджевого баннера этого бота.
+Как упоминалось выше, в ответ на некоторые введенные пользователем данные создается *карта для имиджевого баннера*. См. подробнее в руководстве по [отправке карты с вводными сведениями](./bot-builder-howto-add-media-attachments.md). Ниже представлен код, который предоставляет ответ с картой для имиджевого баннера этого бота.
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -176,6 +219,10 @@ ms.locfileid: "73933720"
 
 **WelcomeBot.js**  
 [!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
 
 ---
 
@@ -196,7 +243,7 @@ ms.locfileid: "73933720"
 
 См. подробнее о [добавлении мультимедиа в сообщения](./bot-builder-howto-add-media-attachments.md).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Сбор вводимых пользователем данных](bot-builder-prompts.md)
