@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 774738186127bff1e680d905d208b69097402d8e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 24435d186569d29165760cf1d7d41ee50e665d06
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933584"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491477"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
@@ -31,10 +31,10 @@ ms.locfileid: "73933584"
 
 Чтобы улучшить обработку уведомлений, рассмотрите другие варианты их интеграции в поток общения, например указав флаг в состоянии диалога или добавив уведомление в очередь.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md).
-- Копия примера упреждающих сообщений на **[C#](https://aka.ms/proactive-sample-cs) или [JavaScript](https://aka.ms/proactive-sample-js)** . Этот пример используется в статье в качестве иллюстрации для упреждающего обмена сообщениями.
+- Копия примера упреждающих сообщений для [**C#** ](https://aka.ms/proactive-sample-cs), [**JavaScript**](https://aka.ms/proactive-sample-js) и [**Python**](https://aka.ms/bot-proactive-python-sample-code). Этот пример используется в статье в качестве иллюстрации упреждающего обмена сообщениями.
 
 ## <a name="about-the-proactive-sample"></a>Сведения о примере с упреждающими сообщениями
 
@@ -59,6 +59,12 @@ ms.locfileid: "73933584"
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=13-17&highlight=2)]
 
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=41-44&highlight=2-3)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
+
+[!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
 
 ---
 
@@ -95,6 +101,14 @@ ms.locfileid: "73933584"
 
 [!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+При каждом запросе страницы уведомлений бота этот сервер извлекает из словаря ссылки на беседы.
+Затем сервер использует `_send_proactive_message`, чтобы отправить упреждающее сообщение.
+
+**app.py** [!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=104-110&highlight=3-7)]
+
 ---
 
 ## <a name="test-your-bot"></a>Тестирование бота
@@ -104,13 +118,13 @@ ms.locfileid: "73933584"
 1. Запустите эмулятор и подключите его к боту.
 1. Загрузите страницу бота api/notify. Это действие создает в эмуляторе упреждающее сообщение.
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 Кроме примера, который используется в этой статье, на [GitHub](https://github.com/Microsoft/BotBuilder-Samples/) есть и другие примеры для C# и JavaScript.
 
 ### <a name="avoiding-401-unauthorized-errors"></a>Предотвращение ошибки 401 Unauthorized (не авторизовано) 
 
-По умолчанию пакет SDK BotBuilder добавляет `serviceUrl` в список имен доверенных узлов, если входящий запрос прошел проверку BotAuthentication. Эти данные сохраняются в кэше в памяти. При перезапуске бота все пользователи, ожидающие упреждающих сообщений, не смогут их получить, если не отправляли боту новые сообщения после перезапуска. 
+По умолчанию пакет SDK BotBuilder добавляет `serviceUrl` в список имен доверенных узлов, если входящий запрос прошел проверку BotAuthentication. Эти данные сохраняются в кэше в памяти. При перезапуске бота все пользователи, ожидающие упреждающих сообщений, не смогут их получить, если не отправляли боту новые сообщения после перезапуска.
 
 Чтобы избежать этого, следует вручную добавить `serviceUrl` в список имен доверенных узлов, выполнив следующие действия. 
 
@@ -134,9 +148,19 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 Добавьте приведенный выше код прямо перед кодом, который отправляет упреждающее сообщение. В [примере упреждающих сообщений](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) это нужно сделать в `index.js` прямо перед `await turnContext.sendActivity('proactive hello');`.
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+MicrosoftAppCredentials.trustServiceUrl(serviceUrl)
+```
+
+Для упреждающего обмена сообщениями `serviceUrl` используется как URL-адрес канала, с которым взаимодействует получатель упреждающего сообщения. Его можно найти в `activity.serviceUrl`.
+
+Добавьте приведенный выше код прямо перед кодом, который отправляет упреждающее сообщение. В [примере упреждающих сообщений](https://aka.ms/bot-proactive-python-sample-code) добавьте его в `app.py` перед отправкой *упреждающего приветственного сообщения*.
+
 ---
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Реализация процесса общения](bot-builder-dialog-manage-conversation-flow.md)

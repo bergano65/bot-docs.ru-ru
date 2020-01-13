@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 3de06fb5aa3ae09f4730cf7b0d4e0a587d568b8c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491705"
 ---
 # <a name="write-directly-to-storage"></a>Запись данных напрямую в хранилище
 
@@ -22,10 +22,10 @@ ms.locfileid: "73441562"
 
 Вы можете выполнять операции записи и чтения непосредственно в объекте хранилища, не используя ПО промежуточного слоя или объект контекста. Это может требоваться для данных, которые бот использует для сохранения беседы, или данных, которые поступают из источника за пределами потока общения бота. В рамках этой модели хранилища данные считываются непосредственно из хранилища без использования диспетчера состояний. Примеры кода в этой статье демонстрируют, как выполнять операции записи и чтения в хранилище с использованием **хранилища в памяти**, **Cosmos DB**, **хранилища BLOB-объектов** и **хранилища расшифровок в BLOB-объектах Azure**. 
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 - Если у вас еще нет подписки Azure, создайте [бесплатную](https://azure.microsoft.com/free/) учетную запись Azure, прежде чем начинать работу.
-- Ознакомьтесь с руководством по локальному созданию бота для [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart) или [NodeJs](https://aka.ms/bot-framework-www-node-js-quickstart).
-- Шаблон для пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix) или [NodeJS](https://nodejs.org) и [Yeoman](http://yeoman.io).
+- Ознакомьтесь с руководством по локальному созданию бота для [C#](https://aka.ms/bot-framework-www-c-sharp-quickstart), [Node.js](https://aka.ms/bot-framework-www-node-js-quickstart) или [Python](https://aka.ms/bot-framework-www-node-python-quickstart).
+- Шаблон для пакета SDK Bot Framework версии 4 для [C#](https://aka.ms/bot-vsix) или [Node.JS](https://nodejs.org) и [Yeoman](http://yeoman.io).
 
 ## <a name="about-this-sample"></a>Об этом примере
 Пример кода в этой статье определяет структуру базового эхо-бота. Добавив дополнительный код (см. ниже), вы сможете расширить функции этого бота. Этот расширенный код создает список для хранения вводимых пользователем данных по мере получения. На каждом шаге полный список этих данных возвращается пользователю. Структура данных, содержащая этот список, записывается в хранилище в конце соответствующего шага. Мы рассмотрим разные типы хранилищ по мере добавления расширенных функций в пример кода.
@@ -36,7 +36,7 @@ ms.locfileid: "73441562"
 
 #### <a name="build-a-basic-bot"></a>Создание базового бота
 
-Остальная часть этой статьи описывает использование эхо-бота. Пример кода эхо-бота можно создать локально для [C#](https://aka.ms/bot-framework-www-c-sharp-quickstart) или [JS](https://aka.ms/bot-framework-www-node-js-quickstart).
+Остальная часть этой статьи описывает использование эхо-бота. Пример кода Echo Bot можно создать локально для [C#](https://aka.ms/bot-framework-www-c-sharp-quickstart), [JS](https://aka.ms/bot-framework-www-node-js-quickstart) и [Python](https://aka.ms/bot-framework-www-node-python-quickstart).
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -233,6 +233,64 @@ async function logMessageText(storage, turnContext) {
 module.exports.MyBot = MyBot;
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bot.py**
+```py
+from botbuilder.core import ActivityHandler, TurnContext, StoreItem, MemoryStorage
+
+
+class UtteranceLog(StoreItem):
+    """
+    Class for storing a log of utterances (text of messages) as a list.
+    """
+
+    def __init__(self):
+        super(UtteranceLog, self).__init__()
+        self.utterance_list = []
+        self.turn_number = 0
+        self.e_tag = "*"
+
+
+class MyBot(ActivityHandler):
+    """
+    Represents a bot saves and echoes back user input.
+    """
+
+    def __init__(self):
+        self.storage = MemoryStorage()
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        utterance = turn_context.activity.text
+
+        # read the state object
+        store_items = await self.storage.read(["UtteranceLog"])
+
+        if "UtteranceLog" not in store_items:
+            # add the utterance to a new state object.
+            utterance_log = UtteranceLog()
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = 1
+        else:
+            # add new message to list of messages existing state object.
+            utterance_log: UtteranceLog = store_items["UtteranceLog"]
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = utterance_log.turn_number + 1
+
+        # Show user list of utterances.
+        await turn_context.send_activity(f"{utterance_log.turn_number}: "
+                                         f"The list is now: {','.join(utterance_log.utterance_list)}")
+
+        try:
+            # Save the user message to your Storage.
+            changes = {"UtteranceLog": utterance_log}
+            await self.storage.write(changes)
+        except Exception as exception:
+            # Inform the user an error occurred.
+            await turn_context.send_activity("Sorry, something went wrong storing your message!")
+```
+
 ---
 
 ### <a name="start-your-bot"></a>Запуск бота
@@ -323,6 +381,18 @@ AUTH_KEY="<your-authorization-key>"
 DATABASE_ID="<your-database-id>"
 CONTAINER="bot-storage"
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Добавьте следующие сведения в файл `bot.py`.
+
+```javascript
+COSMOSDB_SERVICE_ENDPOINT = "<your-cosmos-db-URI>"
+COSMOSDB_KEY = "<your-authorization-key>"
+COSMOSDB_DATABASE_ID = "<your-database-id>"
+COSMOSDB_CONTAINER_ID = "bot-storage"
+```
+
 ---
 
 #### <a name="installing-packages"></a>Установка пакетов
@@ -348,6 +418,15 @@ npm install --save botbuilder-azure
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Вы можете добавить ссылки на пакет botbuilder-azure в свой проект с помощью pip.
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>Реализация 
@@ -390,12 +469,12 @@ public class EchoBot : ActivityHandler
 
 Следующий пример кода соответствует примеру с [хранилищем в памяти](#memory-storage), но имеет некоторые отличия.
 
-Импортируйте `CosmosDbStorage` из `botbuilder-azure` и настройте dotenv для чтения файла `.env`.
+Импортируйте `CosmosDbPartitionedStorage` из `botbuilder-azure` и настройте dotenv для чтения файла `.env`.
 
 **bot.js**
 
 ```javascript
-const { CosmosDbStorage } = require("botbuilder-azure");
+const { CosmosDbPartitionedStorage } = require("botbuilder-azure");
 ```
 Закомментируйте хранилище в памяти, заменив ссылкой на Cosmos DB.
 
@@ -417,6 +496,33 @@ var storage = new CosmosDbPartitionedStorage({
 })
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Следующий пример кода соответствует примеру с [хранилищем в памяти](#memory-storage), но имеет некоторые отличия.
+
+Запросите `CosmosDbStorage` из `botbuilder-azure` и создайте объект CosmosDBStorage.
+
+**bot.py**
+
+```py
+from botbuilder.azure import CosmosDbStorage, CosmosDbConfig
+```
+
+Закомментируйте хранилище в памяти в `__init__`, заменив ссылкой на Cosmos DB.  Используйте конечную точку, ключ аутентификации, а также идентификаторы базы данных и контейнера, с которыми вы работали выше.
+
+**bot.py**
+```py
+def __init__(self):
+    cosmos_config = CosmosDbConfig(
+        endpoint=COSMOSDB_SERVICE_ENDPOINT,
+        masterkey=COSMOSDB_KEY,
+        database=COSMOSDB_DATABASE_ID,
+        container=COSMOSDB_CONTAINER_ID
+    )
+    self.storage = CosmosDbStorage(cosmos_config)
+```
+
 ---
 
 ## <a name="start-your-bot"></a>Запуск бота
@@ -497,6 +603,15 @@ npm install --save botbuilder-azure
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Вы можете добавить ссылки на пакет botbuilder-azure в свой проект с помощью pip.
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>Реализация 
@@ -547,6 +662,33 @@ var storage = new BlobStorage({
     storageAccountOrConnectionString: process.env.BLOB_STRING
 });
 ```
+
+
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Следующий пример кода соответствует примеру с [хранилищем в памяти](#memory-storage), но имеет некоторые отличия.
+
+Запросите `BlobStorage` из `botbuilder-azure` и создайте объект CosmosDBStorage.
+
+**bot.py**
+
+```py
+from botbuilder.azure import BlobStorage, BlobStorageSettings
+```
+
+Закомментируйте хранилище в памяти в `__init__`, заменив ссылкой на Cosmos DB.  Используйте имя контейнера и строку подключения, с которыми вы работали выше.
+
+**bot.py**
+```py
+def __init__(self):
+    blob_settings = BlobStorageSettings(
+        container_name="<your_container_name>",
+        connection_string="<your_connection_string>"
+    )
+    self.storage = BlobStorage(blob_settings)
+```
+
 ---
 
 Когда вы свяжете storage с учетной записью хранилища BLOB-объектов, бот сможет сохранять данные в это хранилище и извлекать их оттуда.
@@ -571,8 +713,11 @@ var storage = new BlobStorage({
 ## <a name="blob-transcript-storage"></a>Хранилище расшифровок разговоров в BLOB-объектах
 Хранилище расшифровок в BLOB-объектах Azure — это специализированное хранилище, которое позволяет легко сохранять и получать разговоры пользователей в виде записей расшифровок. Использовать хранилище расшифровок разговоров в больших двоичных объектах Azure особенно удобно для автоматической записи данных, вводимых пользователями, и дальнейшего их анализа при отладке бота.
 
+**ПРИМЕЧАНИЕ. JavaScript и Python сейчас не поддерживают AzureBlobTranscriptStore.  Инструкции ниже предназначены только для C#.**
+
 ### <a name="set-up"></a>Настройка
 Хранилище расшифровок разговоров в BLOB-объектах Azure использует ту же учетную запись хранилища BLOB-объектов, которая описана в разделах _Создание учетной записи хранилища BLOB-объектов_ и _Добавление сведений о конфигурации_ выше. Теперь добавьте контейнер для хранения расшифровок.
+
 
 ![Создание контейнера для расшифровок](./media/create-blob-transcript-container.png)
 
@@ -684,7 +829,7 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 
 По ссылке ниже можно найти дополнительные сведения о [хранилище BLOB-объектов Azure с расшифровками](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore). 
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 ### <a name="manage-concurrency-using-etags"></a>Управление параллелизмом с помощью тегов eTag
 В нашем примере кода бота мы установили свойство `eTag` каждого экземпляра `IStoreItem` равным `*`. Член `eTag` (тег сущности) объекта хранилища используется в Cosmos DB для управления параллелизмом. `eTag` указывает базе данных, что делать, если другой экземпляр бота изменил объект в том же хранилище, в которое записывает данные ваш бот. 
@@ -835,11 +980,49 @@ await updateSampleNote(storage, turnContext);
 
 Если примечание обновлено в хранилище другим пользователем перед попыткой выполнить обратную запись изменений, значение `eTag` не будет больше соответствовать, и при вызове `write` возникнет исключение.
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Во-первых, создайте класс, который реализует `StoreItem`.
+
+**bot.py**
+```py
+class Note(StoreItem):
+    def __init__(self, name: str, contents: str, e_tag="*"):
+        super(Note, self).__init__()
+        self.name = name
+        self.contents = contents
+        self.e_tag = e_tag
+```
+
+Затем создайте начальную заметку, создав объект хранилища и добавив объект в это хранилище.
+
+**bot.py**
+```py
+# create a note for the first time, with a non-null, non-* ETag.
+changes = {"Note": Note(name="Shopping List", contents="eggs", e_tag="x")}
+
+await self.storage.write(changes)
+```
+
+Впоследствии обновите заметку, сохранив значение `eTag`, прочитанное из хранилища.
+
+**bot.py**
+```py
+store_items = await self.storage.read(["Note"])
+    note = store_items["Note"]
+    note.contents = note.contents + ", bread"
+
+    changes = {"Note": note}
+    await self.storage.write(changes)
+```
+
+Если заметка в хранилище была изменена перед записью ваших изменений, то при вызове `write` возникнет исключение.
+
 ---
 
 Для поддержания параллелизма всегда считывайте значение свойства из хранилища, затем изменяйте прочитанное свойство, чтобы сохранить `eTag`. При считывании сведений о пользователях из хранилища ответ будет содержать свойство eTag. Если вы изменили данные и записываете обновленные данные в хранилище, ваш запрос должен включать свойство eTag, содержащее то же значение, которое было прочитано ранее. Однако при записи объекта со свойством `eTag`, имеющим значение `*`, будет разрешена перезапись любых других изменений.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда вы знаете, как напрямую считывать данные из хранилища и записывать данные в хранилища, посмотрим, как сделать это с помощью диспетчера состояний.
 
 > [!div class="nextstepaction"]

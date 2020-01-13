@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4030a1498be321757b8a25bbd9b8bcde29bb9e5d
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: f1e186140c146a87c1186bccb3329604b615468c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491860"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
@@ -27,21 +27,22 @@ ms.locfileid: "70167195"
 > [!TIP]
 > Примеры написания запросов без использования библиотеки диалогов см. в статье о [создании собственных запросов для сбора вводимых пользовательских данных](bot-builder-primitive-prompts.md).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state] и [библиотеки диалогов][concept-dialogs].
-- Копия примера **запроса с несколькими шагами** на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Копия примера **запроса с несколькими шагами** для [**C#** ][cs-sample], [**JavaScript**][js-sample] и [**Python**][python-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
 В примере диалога с несколькими запросами мы применим каскадный диалог, несколько запросов и компонентный диалог для реализации простого взаимодействия, в рамках которого пользователю предлагается несколько вопросов. Код диалога циклически перебирает следующие действия:
 
-| Действия        | Тип запроса  |
+| Шаги        | Тип запроса  |
 |:-------------|:-------------|
 | Запрос к пользователю о режиме транспортировки | Запрос выбора |
 | Запрос имени пользователя | Запрос текста |
 | Запрос к пользователю, готов ли он указать свой возраст | Запрос подтверждения |
-| Если получен положительный ответ, запрос возраста пользователя  | Запрос числа с проверкой, при которой принимается возраст только в диапазоне от 0 до 150. |
+| Если получен положительный ответ, запрос возраста пользователя | Запрос числа с проверкой того, что принимается возраст только в диапазоне от 0 до 150 |
+| Если пользователь не использует Microsoft Teams, запрашивается изображение профиля | Запрос вложения с проверкой того, разрешено ли отсутствующее вложение |
 | Запрос на подтверждение собранной информации | Повторный запрос подтверждения |
 
 И наконец, если получен положительный ответ, отображается вся собранная информация. В противном случае пользователь получает сообщение о том, что данные не будут сохранены.
@@ -58,33 +59,33 @@ ms.locfileid: "70167195"
 
 **Dialogs\UserProfileDialog.cs**
 
-Для начала мы создадим `UserProfileDialog`, наследуемый от класса `ComponentDialog`, в котором будет шесть шагов.
+Для начала мы создадим `UserProfileDialog` с наследованием от класса `ComponentDialog` и семью шагами.
 
 В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
 
-[!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
+[!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат на следующем шаге с помощью `stepContext.Result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
 
 Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `NameStepAsync` в каскадном диалоге.
 
-[!code-csharp[Name step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=56-61)]
+[!code-csharp[Name step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=62-67)]
 
 В `AgeStepAsync` мы укажем строку повторного запроса для тех случаев, когда входные данные не пройдут проверку из-за неправильного формата для анализа или несоответствия критерию проверки для конкретного запроса. Если строка повторного запроса не указана, в таких случаях пользователю будет повторно предоставляться исходный текст запроса для получения входных данных.
 
-[!code-csharp[Age step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=74-93&highlight=10)]
+[!code-csharp[Age step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=80-99&highlight=10)]
 
 **UserProfile.cs**
 
 Режим транспортировки, имя и возраст пользователя сохраняются в экземпляре класса `UserProfile`.
 
-[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/UserProfile.cs?range=9-16)]
+[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/UserProfile.cs?range=11-20)]
 
 **Dialogs\UserProfileDialog.cs**
 
 На последнем шаге мы проверяем значение `stepContext.Result`, возвращенное диалогом, который мы вызвали на предыдущем каскадном шаге. Если возвращаемое значение равно TRUE, мы используем метод доступа для профиля пользователя, чтобы получить и обновить профиль пользователя. Чтобы получить профиль пользователя, мы вызовем метод `GetAsync`, а затем зададим новые значения свойств `userProfile.Transport`, `userProfile.Name` и `userProfile.Age`. Наконец, мы сообщим пользователю сводку данных и вызовем метод `EndDialogAsync` для завершения диалога. Завершенный диалог удаляется из стека диалогов, а его результат (если есть) возвращается в родительский диалог. Родительским считается диалог или метод, в котором был запущен только что завершившийся диалог.
 
-[!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=108-134&highlight=5-10,25-26)]
+[!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=137-179&highlight=5-11,41-42)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -94,35 +95,35 @@ ms.locfileid: "70167195"
 
 ![Диалог о профиле пользователя](media/user-profile-dialog-js.png)
 
-**dialogs\userProfileDialog.js**
+**dialogs/userProfileDialog.js**
 
-Для начала мы создадим `UserProfileDialog`, наследуемый от класса `ComponentDialog`, в котором будет шесть шагов.
+Для начала мы создадим `UserProfileDialog` с наследованием от класса `ComponentDialog` и семью шагами.
 
 В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
 
-[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
+[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=29-51)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат из контекста шага на следующем шаге. Здесь для этого используется `step.result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
 
 Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `nameStep` в каскадном диалоге.
 
-[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=73-76)]
+[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=79-82)]
 
 В `ageStep` мы укажем строку повторного запроса для тех случаев, когда входные данные не пройдут проверку из-за неправильного формата для анализа или несоответствия критерию проверки, который указан выше в конструкторе, для конкретного запроса. Если строка повторного запроса не указана, в таких случаях пользователю будет повторно предоставляться исходный текст запроса для получения входных данных.
 
-[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=88-99&highlight=5)]
+[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=94-105&highlight=5)]
 
 **userProfile.js**
 
 Режим транспортировки, имя и возраст пользователя сохраняются в экземпляре класса `UserProfile`.
 
-[!code-javascript[user profile](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/userProfile.js?range=4-10)]
+[!code-javascript[user profile](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/userProfile.js?range=4-11)]
 
-**dialogs\userProfileDialog.js**
+**dialogs/userProfileDialog.js**
 
 На последнем шаге мы проверяем значение `step.result`, возвращенное диалогом, который мы вызвали на предыдущем каскадном шаге. Если возвращаемое значение равно TRUE, мы используем метод доступа для профиля пользователя, чтобы получить и обновить профиль пользователя. Чтобы получить профиль пользователя, мы вызовем метод `get`, а затем зададим новые значения свойств `userProfile.transport`, `userProfile.name` и `userProfile.age`. Наконец, мы сообщим пользователю сводку данных и вызовем метод `endDialog` для завершения диалога. Завершенный диалог удаляется из стека диалогов, а его результат (если есть) возвращается в родительский диалог. Родительским считается диалог или метод, в котором был запущен только что завершившийся диалог.
 
-[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=113-134&highlight=4-8,20-21)]
+[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=137-167&highlight=3-9,29-30)]
 
 **Создание метода расширения для запуска каскадного диалога**
 
@@ -132,7 +133,55 @@ ms.locfileid: "70167195"
 
 Контекст диалога позволяет начать диалог по идентификатору строки или продолжить текущий диалог (например, выполнить очередной шаг каскадного диалога). Контекст диалога передается через все диалоги и каскадные действия бота.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=59-68)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Чтобы использовать диалоги, установите пакеты pypi **botbuilder-dialogs** and **botbuilder-ai**, запустив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
+
+Бот взаимодействует с пользователем через `UserProfileDialog`. Когда мы создаем класс `DialogBot` в боте, мы назначаем `UserProfileDialog` главным диалогом. Затем бот применяет вспомогательный метод `run_dialog` для доступа к этому диалогу.
+
+![Диалог о профиле пользователя](media/user-profile-dialog-python.png)
+
+**dialogs\user_profile_dialog.py**
+
+Для начала мы создадим `UserProfileDialog` с наследованием от класса `ComponentDialog` и семью шагами.
+
+В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
+
+[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+
+Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат на следующем шаге с помощью `step_context.result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
+
+Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `name_step` в каскадном диалоге.
+
+[!code-python[name step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=73-79)]
+
+В `age_step` мы укажем строку повторного запроса для тех случаев, когда входные данные не пройдут проверку из-за неправильного формата для анализа или несоответствия критерию проверки, который указан выше в конструкторе, для конкретного запроса. Если строка повторного запроса не указана, пользователю будет повторно предоставляться исходный текст запроса для получения входных данных.
+
+[!code-python[age step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=100-116)]
+
+**data_models\user_profile.py**
+
+Режим транспортировки, имя и возраст пользователя сохраняются в экземпляре класса `UserProfile`.
+
+[!code-python[user profile](~/../botbuilder-python/samples/python/05.multi-turn-prompt/data_models/user_profile.py?range=7-16)]
+
+**dialogs\user_profile_dialog.py**
+
+На последнем шаге мы проверяем значение `step_context.result`, возвращенное диалогом, который мы вызвали на предыдущем каскадном шаге. Если возвращаемое значение равно TRUE, мы используем метод доступа для профиля пользователя, чтобы получить и обновить профиль пользователя. Чтобы получить профиль пользователя, мы вызовем метод `get`, а затем зададим новые значения свойств `user_profile.transport`, `user_profile.name` и `user_profile.age`. Наконец, мы сообщим пользователю сводку данных и вызовем метод `end_dialog` для завершения диалога. Завершенный диалог удаляется из стека диалогов, а его результат (если есть) возвращается в родительский диалог. Родительским считается диалог или метод, в котором был запущен только что завершившийся диалог.
+
+[!code-python[summary step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=166-204)]
+
+**Создание метода расширения для запуска каскадного диалога**
+
+В файле **helpers\dialog_helper.py** мы определили вспомогательный метод `run_dialog()`, который будет использоваться для создания контекста диалога и доступа к нему. Здесь `accessor` является методом доступа к свойству состояния для диалога, а `dialog` — это компонентный диалог для профиля пользователя. Так как компонентные диалоги определяют набор внутренних диалогов, нам следует создать внешний набор диалогов, доступный для кода обработчика сообщений, чтобы использовать его для создания контекста диалога.
+
+Контекст диалога создается путем вызова метода `create_context` и используется для взаимодействия с набором диалогов в обработчике шагов бота. Контекст диалога содержит сведения о текущем шаге, о родительском диалоге, а также состояние диалога для сохранения данных в ходе диалога.
+
+Контекст диалога позволяет начать диалог по идентификатору строки или продолжить текущий диалог (например, выполнить очередной шаг каскадного диалога). Контекст диалога передается через все диалоги и каскадные действия бота.
+
+[!code-python[run method](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 ---
 
@@ -142,17 +191,23 @@ ms.locfileid: "70167195"
 
 **Bots\DialogBot.cs**
 
-Обработчик `OnMessageActivityAsync` использует метод `RunAsync`, чтобы начать или продолжить диалог. В `OnTurnAsync` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. (Метод `ActivityHandler.OnTurnAsync` вызывает разные методы обработки действий, например `OnMessageActivityAsync`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но раньше завершения самого шага.)
+Обработчик `OnMessageActivityAsync` использует метод `RunAsync`, чтобы начать или продолжить диалог. В `OnTurnAsync` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. Метод `ActivityHandler.OnTurnAsync` вызывает разные методы обработки действий, например `OnMessageActivityAsync`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Обработчик `onMessage` использует вспомогательный метод, чтобы начать или продолжить диалог. В `onDialog` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. (Метод `onDialog` вызывается последним, после выполнения всех остальных определенных обработчиков, таких как `onMessage`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но раньше завершения самого шага.)
+Обработчик `onMessage` использует вспомогательный метод, чтобы начать или продолжить диалог. В `onDialog` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. Метод `onDialog` вызывается последним после выполнения всех остальных определенных обработчиков, таких как `onMessage`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
 
 **bots/dialogBot.js**
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Обработчик `on_message_activity` использует вспомогательный метод, чтобы начать или продолжить диалог. В `on_turn` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. Метод `on_message_activity` вызывается последним, после выполнения всех остальных определенных обработчиков, таких как `on_turn`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
+
+**bots\dialog_bot.py** [!code-python[overrides](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=39-51&highlight=4-6)]
 
 ---
 
@@ -178,7 +233,14 @@ ms.locfileid: "70167195"
 
 В `index.js` мы регистрируем службы для бота.
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-46)]
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=19-59)]
+
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+В `app.py` мы регистрируем службы для бота.
+
+[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-75)]
 
 ---
 
@@ -194,7 +256,7 @@ ms.locfileid: "70167195"
 
 ![Тестовый запуск диалога с несколькими запросами](../media/emulator-v4/multi-turn-prompt.png)
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 ### <a name="about-dialog-and-bot-state"></a>Сведения о диалоге и состоянии бота
 
@@ -212,7 +274,7 @@ ms.locfileid: "70167195"
 - Выполните метод end dialog, чтобы передать собранные данные в виде возвращаемого значения обратно в контекст родительского элемента. Это может быть обработчик шагов бота или предыдущий активный диалог из стека диалогов. Именно так разрабатываются классы запросов.
 - Создайте запрос к соответствующей службе. Это может быть хорошим вариантом, если бот выступает в роли интерфейса для более крупной службы.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Добавление возможности распознавания естественного языка в функционал бота](bot-builder-howto-v4-luis.md)
@@ -228,3 +290,4 @@ ms.locfileid: "70167195"
 
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
+[python-sample]: https://aka.ms/python-multi-prompts-sample

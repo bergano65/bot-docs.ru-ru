@@ -8,19 +8,19 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 0e59c6d3548e273a8fb164526ddeb6ba66f48e3e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933517"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75736826"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
 
-Чтобы продемонстрировать, как выполнять отладку и проверку состояния сообщений бота, мы используем бот EchoBot, созданный локально с помощью Bot Framework версии 4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)). Отладку бота также можно выполнять с помощью [IDE](./bot-service-debug-bot.md) или [Bot Framework Emulator](./bot-service-debug-emulator.md), но для отладки состояния в бота нужно добавить проверяющее ПО промежуточного слоя. Соответствующие примеры для бота доступны здесь: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) и [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
+Чтобы продемонстрировать, как выполнять отладку и проверку состояния сообщений бота, мы используем бот EchoBot, созданный локально с помощью Bot Framework версии 4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0) | [Python](https://docs.microsoft.com/azure/bot-service/python/bot-builder-python-quickstart?view=azure-bot-service-4.0)) Отладку бота также можно выполнять с помощью [IDE](./bot-service-debug-bot.md) или [Bot Framework Emulator](./bot-service-debug-emulator.md), но для отладки состояния в бота нужно добавить проверяющее ПО промежуточного слоя. Соответствующие примеры для бота доступны здесь: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection), [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) и [Python](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/python/47.inspection). 
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 - Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Понимание принципов работы [промежуточного слоя](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) бота.
 - Понимание принципов [управления состоянием](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) бота.
@@ -66,6 +66,24 @@ npm install --save botbuilder@latest
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+Прежде чем обновлять код бота, установите требуемые пакеты pypi, выполнив следующие команды в терминале:
+```cmd
+pip install aiohttp
+pip install botbuilder-core>=4.7.0
+```
+Настройте состояние проверки в файле **app.py**, добавив ПО промежуточного слоя в адаптер.
+
+**app.py**
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/app.py?range=74-86)]
+
+Обновите класс бота в файле **echo_bot.py**.
+
+**bots/echo_bot.py** 
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/bots/echo_bot.py?range=16-64)]
+
 ---
 
 ## <a name="test-your-bot-locally"></a>Локальное тестирование бота 
@@ -85,9 +103,14 @@ dotnet run
 npm start 
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+```cmd
+python app.py
+```
+
 ---
 
-2. Откройте эмулятор. Щелкните **Открыть бота**. Вставьте в поле "URL-адрес бота" http://localhost:3978/api/messages , а также значения **MicrosoftAppId** и **MicrosoftAppPassword**. Если вы используете бота на JavaScript, эти значения можно найти в файле **.env**. Если вы используете бота на C#, эти значения можно найти в файле **appsettings.json**. Щелкните **Подключить**. 
+2. Откройте эмулятор. Щелкните **Открыть бота**. Вставьте в поле "URL-адрес бота" http://localhost:3978/api/messages , а также значения **MicrosoftAppId** и **MicrosoftAppPassword**. Если вы используете бота на JavaScript, эти значения можно найти в файле **.env**. Если вы используете бота на C#, эти значения можно найти в файле **appsettings.json**. Нажмите кнопку **Соединить**. 
 
 3. Теперь откройте другой эмулятор. Второй эмулятор будет работать в качестве отладчика. Следуйте инструкциям, описанным выше. Установите флажок **Открыть в режиме отладки** и щелкните **Подключить**. 
 
@@ -132,7 +155,7 @@ ngrok http 3978
 4. Теперь запущенный бот подключен к Регистрации каналов бота в Azure. Чтобы протестировать веб-чат, щелкните **Тестировать в веб-чате** и отправьте сообщения в поле чата. 
 ![Тестирование веб-чата](./media/bot-debug-inspection-middleware/bot-debug-test-webchat.png)
 
-5. Теперь давайте активируем режим отладки в эмуляторе. В эмуляторе выберите **Отладка** -> **Начать отладку**. Введите IP-адрес ngrok (не забудьте добавить **/api/messages**) в поле **URL-адрес бота** (например, https://e58549b6.ngrok.io/api/messages) ). Вставьте в поля **Идентификатор приложения Майкрософт** и **Пароль приложения Майкрософт** значения **appId** и **appSecret**. Также убедитесь, что флажок **Открыть в режиме отладки** установлен. Щелкните **Подключить**. 
+5. Теперь давайте активируем режим отладки в эмуляторе. В эмуляторе выберите **Отладка** -> **Начать отладку**. Введите IP-адрес ngrok (не забудьте добавить **/api/messages**) в поле **URL-адрес бота** (например, https://e58549b6.ngrok.io/api/messages) ). Вставьте в поля **Идентификатор приложения Майкрософт** и **Пароль приложения Майкрософт** значения **appId** и **appSecret**. Также убедитесь, что флажок **Открыть в режиме отладки** установлен. Нажмите кнопку **Соединить**. 
 
 6. UUID создается в эмуляторе при включении режима отладки. UUID — это уникальный идентификатор, создаваемый при каждом запуске режима отладки в эмуляторе. Скопируйте и вставьте UUID в поле чата **Тестировать в веб-чате** или в поле чата канала. В поле чата вы увидите сообщение Attached to session, all traffic is being replicated for inspection (Подключение к сеансу; весь трафик реплицируется для проверки). 
 

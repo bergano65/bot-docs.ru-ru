@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 603b6d6fe9fed99cb31649539e518651c135241a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: b121a60b72551dd473a880d47868a61763e5afa0
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491501"
 ---
 # <a name="use-button-for-input"></a>Использование кнопки для ввода данных
 
@@ -38,13 +38,24 @@ ms.locfileid: "70299307"
 
 [!code-javascript[suggested actions](~/../botbuilder-samples/samples/javascript_nodejs/08.suggested-actions/bots/suggestedActionsBot.js?range=61-64)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Представленный здесь исходный код основан на примере [предложенных действий](https://aka.ms/SuggestActionsPython).
+
+[!code-python[suggested actions](~/../botbuilder-python/samples/python/08.suggested-actions/bots/suggested_actions_bot.py?range=63-81)]
+
+
 ---
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Используемый здесь исходный код [C#](https://aka.ms/SuggestedActionsCSharp) или [JavaScript](https://aka.ms/SuggestActionsJS) можно получить на сайте GitHub.
+Вы можете получить полный исходный код:
+- [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp)
+- [Пример на языке JavaScript](https://aka.ms/SuggestActionsJS)
+- [Пример для Python](https://aka.ms/SuggestActionsPython)
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Сохранение данных пользователя и диалога](./bot-builder-howto-v4-state.md)

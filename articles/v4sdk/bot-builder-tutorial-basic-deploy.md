@@ -9,20 +9,20 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c48d71c21d5e482b497cd38095af377ce2d04f6d
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: d1d086f11838f7e0fc658cce586216110ff205f1
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491745"
 ---
-# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство по Создание и развертывание простого бота
+# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство. Создание и развертывание простого бота
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 В этом руководстве описано, как создать простой бот на основе пакета SDK Bot Framework и развернуть его в Azure. Если вы уже создали бот и запустили его локально, сразу переходите к разделу [Развертывание бота](#deploy-your-bot).
 
-Из этого руководства вы узнаете, как выполнять следующие задачи:
+В этом руководстве описано следующее.
 
 > [!div class="checklist"]
 > * Создание простого бота Echo
@@ -39,11 +39,15 @@ ms.locfileid: "71694545"
 
 [!INCLUDE [javascript quickstart](~/includes/quickstart-javascript.md)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[!INCLUDE [python quickstart](~/includes/quickstart-python.md)]
+
 ---
 
 ## <a name="deploy-your-bot"></a>Развертывание бота
 
-### <a name="prerequisites"></a>Предварительные требования
+### <a name="prerequisites"></a>предварительные требования
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
 ### <a name="prepare-for-deployment"></a>Подготовка к развертыванию
@@ -59,7 +63,12 @@ ms.locfileid: "71694545"
 [!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
 
 #### <a name="4-deploy-via-arm-template"></a>4. Развертывание с использованием шаблона ARM
-Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит. 
+Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
+
+> [!NOTE]
+> Боты Python нельзя развертывать в группе ресурсов, содержащей службы или боты Windows.  Хотя в одной группе ресурсов можно развернуть несколько ботов Python, другие службы (LUIS, QnA и пр.) следует создавать в другой группе ресурсов.
+>
+
 ##### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Развертывание с помощью шаблона ARM в новой группе ресурсов**
 [!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
 
@@ -83,6 +92,6 @@ ms.locfileid: "71694545"
 
 [!INCLUDE [additional resources snippet](~/includes/deploy/snippet-additional-resources.md)]
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 > [!div class="nextstepaction"]
 > [Использование QnA Maker в боте для ответов на вопросы.](bot-builder-tutorial-add-qna.md)

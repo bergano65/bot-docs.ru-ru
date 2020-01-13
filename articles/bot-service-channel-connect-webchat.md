@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: b6174f20be47d40287cedd2a94b2d4e87c29bc2f
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491279"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Подключение бота к веб-чату
 
@@ -32,7 +32,7 @@ ms.locfileid: "70037497"
 
 ## <a name="get-your-bot-secret-key"></a>Получение секретного ключа бота
 
-1. Откройте бот на [портале Azure](http://portal.azure.com) и выберите колонку **Каналы**.
+1. Откройте бот на [портале Azure](https://portal.azure.com) и выберите колонку **Каналы**.
 
 2. Щелкните **Изменить** для канала **Веб-чат**.  
 ![Канал "Веб-чат"](./media/bot-service-channel-webchat/bot-service-channel-list.png)
@@ -58,7 +58,7 @@ ms.locfileid: "70037497"
 
 2. Ответ на ваш запрос **GET** будет содержать токен (в кавычках), который можно использовать, чтобы начать общение путем рендеринга элемента управления "Веб-чат" в пределах **iframe**. Токен действителен только для одного диалога. Чтобы запустить другой диалог, необходимо создать токен.
 
-3. В **коде внедрения** `iframe`, скопированном из канала "Веб-чат" портала Bot Framework (как описано в разделе [Получение секретного ключа бота](#get-your-bot-secret-key) выше), измените параметр `s=` на `t=` и замените YOUR_SECRET_HERE своим токеном.
+3. В **коде внедрения** `iframe`, скопированном в канале Web Chat на портале Bot Framework (см. сведения о [получении секретного ключа бота](#get-your-bot-secret-key) выше), измените параметр `s=` на `t=` и замените YOUR_SECRET_HERE своим токеном.
 
 > [!NOTE]
 > Токены будут автоматически продлены до истечения срока действия. 
@@ -117,7 +117,7 @@ Authorization: BotConnector YOUR_SECRET_HERE
 
 Чтобы внедрить бот на вашем веб-сайте, указав секрет в теге `iframe`, сделайте следующее:
 
-1. Скопируйте **код внедрения** `iframe` из канала "Веб-чат" портала Bot Framework (как описано в разделе [Получение секретного ключа бота](#get-your-bot-secret-key) выше).
+1. Скопируйте **код внедрения** `iframe` в канале Web Chat на портале Bot Framework (см. сведения о [получении секретного ключа бота](#get-your-bot-secret-key) выше).
 
 2. В этом **коде внедрения** замените YOUR_SECRET_HERE значением **секретного ключа**, скопированным с той же страницы.
 
@@ -129,7 +129,7 @@ Authorization: BotConnector YOUR_SECRET_HERE
 
 ## <a name="style-the-web-chat-control"></a>Стилизация элемента управления "Веб-чат"
 
-Вы можете изменить размер элемента управления "Веб-чат" с помощью атрибута `style` `iframe`, чтобы указать `height` и `width`.
+Вы можете изменить размер элемента управления "Веб-чат" с помощью атрибута `style``iframe`, чтобы указать `height` и `width`.
 
 ```html
 <iframe style="height:480px; width:402px" src="... SEE ABOVE ..."></iframe>

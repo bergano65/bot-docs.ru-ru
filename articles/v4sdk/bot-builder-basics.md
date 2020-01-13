@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc2c222866796f584bcad950a6e0afc40ab43a90
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 97f8318b6f9035e3ac3be1983b0691f627240242
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491542"
 ---
 # <a name="how-bots-work"></a>Принципы работы бота
 
@@ -84,6 +84,16 @@ ms.locfileid: "73441623"
 
 В некоторых ситуациях не требуется переопределять основной обработчик шагов, поэтому делайте это с осторожностью. Для таких действий, как [сохранение состояния](bot-builder-concept-state.md), которые должны выполняться в конце шага, существует специальный обработчик, который называется `onDialog`. Обработчик `onDialog` выполняется в конце шага после выполнения остальных обработчиков. Он не привязан к определенным типам действий. Как и для всех упомянутых выше обработчиков, обязательно вызовите `next()`, чтобы закончить завершающую часть процесса.
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Например, если бот получает действие сообщения, обработчик шагов оценивает это входящее действие, а затем отправляет его в обработчик действий `on_message_activity`. 
+
+У созданного бота логика обработки сообщений и реагирования на них будет связываться с этим обработчиком `on_message_activity`. Аналогичным образом, логика обработки участников, добавляемых в диалог, будет связываться с вашим обработчиком `on_members_added`, который вызывается при каждом добавлении участника в диалог.
+
+Чтобы реализовать логику для этих обработчиков, вам нужно переопределить эти методы в боте, как описано в разделе [Логика ботов](#bot-logic) ниже. Базовой реализации для каждого из этих обработчиков нет, поэтому просто добавляйте логику, используемую при переопределении.
+
+В некоторых ситуациях требуется переопределить основной обработчик шагов, например, для [сохранения состояния](bot-builder-concept-state.md) в конце шага. Перед этим обязательно вызовите `await super().on_turn(turnContext);`, чтобы убедиться, что базовая реализация `on_turn` выполняется перед дополнительным кодом. Эта базовая реализация, помимо прочего, отвечает за вызов остальных обработчиков действий, таких как `on_message_activity`.
+
 ---
 
 ## <a name="middleware"></a>ПО промежуточного слоя
@@ -126,6 +136,18 @@ ms.locfileid: "73441623"
 
 `npm install dotenv`
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="requirementstxt"></a>requirements.txt
+
+В файле **requirements.txt** указываются зависимости и их связанные версии для бота.  Все это определяется системой и шаблоном.
+
+Зависимости следует устанавливать с помощью `pip install -r requirements.txt`.
+
+### <a name="configpy"></a>config.py
+
+В файле **config.py** указываются сведения о конфигурации для вашего бота, включая номер порта, идентификатор приложения и пароль. Если вы применяете некоторые технологии или используете этот бот в рабочей среде, нужно добавить в эту конфигурацию определенные ключи или URL-адрес. Сейчас для Echo Bot не нужно добавлять такие сведения. Можете не указывать идентификатор приложения и пароль на этом этапе.
+
 ---
 
 ### <a name="bot-logic"></a>Логика бота
@@ -138,7 +160,7 @@ ms.locfileid: "73441623"
 
 Ниже описаны обработчики, определенные в `ActivityHandler`:
 
-| Событие | Обработчик | ОПИСАНИЕ |
+| Событие | Обработчик | Description |
 | :-- | :-- | :-- |
 | Любой тип полученного действия | `OnTurnAsync` | Вызывает один из других обработчиков на основе типа полученного действия. |
 | Полученное действие сообщения | `OnMessageActivityAsync` | Переопределите для обработки действия `message`. |
@@ -186,7 +208,7 @@ public class MyBot : ActivityHandler
 
 Ниже описаны обработчики, определенные в `ActivityHandler`:
 
-| Событие | Обработчик | ОПИСАНИЕ |
+| Событие | Обработчик | Description |
 | :-- | :-- | :-- |
 | Любой тип полученного действия | `onTurn` | Вызывается при получении любого действия. |
 | Полученное действие сообщения | `onMessage` | Вызывается при получении действия `message`. |
@@ -226,6 +248,51 @@ class MyBot extends ActivityHandler {
 }
 
 module.exports.MyBot = MyBot;
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Основная логика бота определяется в коде бота. Здесь это `bots/echo_bot.py`. `EchoBot` является производным от `ActivityHandler` (является производным от интерфейса `Bot`). `ActivityHandler` определяет различные обработчики для разных типов действий, например указанных здесь `on_message_activity` и `on_members_added`. Эти методы являются защищенными, но могут быть перезаписаны с учетом наследования от `ActivityHandler`.
+
+Ниже описаны обработчики, определенные в `ActivityHandler`:
+
+| Событие | Обработчик | Description |
+| :-- | :-- | :-- |
+| Любой тип полученного действия | `on_turn` | Вызывает один из других обработчиков на основе типа полученного действия. |
+| Полученное действие сообщения | `on_message_activity` | Переопределите для обработки действия `message`. |
+| Полученное действие обновления диалога | `on_conversation_update_activity` | В действии `conversationUpdate` вызывает обработчик, если участники не добавлены в бота или покидают беседу. |
+| Не добавленные в бота участники, которые присоединяются к беседе | `on_members_added_activity` | Переопределите для обработки участников, присоединяющихся к беседе. |
+| Не добавленные в бота участники, которые покидают беседу | `on_members_removed_activity` | Переопределите для обработки участников, покидающих беседу. |
+| Полученное действие события | `on_event_activity` | В действии `event` вызывает обработчик для события определенного типа. |
+| Полученное действие события ответа маркера | `on_token_response_event` | Переопределите для обработки событий ответа маркера. |
+| Полученное действие события другого ответа | `on_event_activity` | Переопределите для обработки событий других типов. |
+| Получение действия реакции на сообщение | `on_message_reaction_activity` | При получении действия `messageReaction` вызывает обработчик, если в сообщении были добавлены или удалены одна или несколько реакций. |
+| Добавление реакции на сообщение в сообщение | `on_reactions_added` | Переопределите, чтобы обрабатывать добавление реакций в сообщение. |
+| Удаление реакции на сообщение из сообщения | `on_reactions_removed` | Переопределите, чтобы обрабатывать удаление реакций из сообщения. |
+| Другой тип полученного действия | `on_unrecognized_activity_type` | Переопределите для обработки действия любого типа, которое иначе не будет обработано. |
+
+Эти разные обработчики используют `turn_context` для получения сведений о входящем действии, которое соответствует входящему HTTP-запросу. Действия могут быть разных типов, поэтому каждый обработчик предоставляет действием со строгой типизацией в параметре контекста шага. В большинстве случаев `on_message_activity` является наиболее распространенным и всегда обрабатывается.
+
+Как и в предыдущих версиях 4.x этой платформы, в этой версии также можно реализовать открытый метод `on_turn`. Сейчас базовая реализация этого метода выполняет проверку ошибок, а затем вызывает каждый из определенных обработчиков (например те два, которые мы определяем в этом примере) в зависимости от типа входящего действия. В большинстве случаев можно не изменять этот метод и использовать отдельные обработчики. Но при необходимости вы также можете работать с пользовательской реализацией `on_turn`.
+
+> [!IMPORTANT]
+> При переопределении метода `on_turn` вам нужно вызвать `super().on_turn`, чтобы получить базовую реализацию для вызова всех остальных обработчиков `on_<activity>`. Но вы также можете вызвать эти обработчики самостоятельно. В противном случае эти обработчики не будут вызваны и код не будет выполняться.
+
+В этом примере мы приветствуем нового пользователя или возвращаем сообщение пользователя, отправленное с помощью вызова `send_activity`. Исходящее действие соответствует исходящему HTTP-запросу.
+
+```py
+class MyBot(ActivityHandler):
+    async def on_members_added_activity(
+        self, members_added: [ChannelAccount], turn_context: TurnContext
+    ):
+        for member in members_added:
+            if member.id != turn_context.activity.recipient.id:
+                await turn_context.send_activity("Hello and welcome!")
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        return await turn_context.send_activity(
+            f"Echo: {turn_context.activity.text}"
+        )
 ```
 
 ---
@@ -366,6 +433,98 @@ server.post('/api/messages', (req, res) => {
         await myBot.run(context);
     });
 });
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+#### <a name="apppy"></a>app.py
+
+`app.py` настраивает бота и службы размещения, которые будут пересылать действия в логику бота.
+
+#### <a name="required-libraries"></a>Обязательные библиотеки
+
+В начале файла `app.py` вы найдете набор обязательных модулей или библиотек. Эти модули предоставляют доступ к набору функций, которые, возможно, потребуется добавить в приложение.
+
+```py
+from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, BotFrameworkAdapter
+from botbuilder.schema import Activity, ActivityTypes
+
+from bots import MyBot
+
+# Create the loop and Flask app
+LOOP = asyncio.get_event_loop()
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object("config.DefaultConfig")
+```
+
+#### <a name="set-up-services"></a>Настройка служб
+
+На следующем этапе выполняется настройка сервера и адаптера, которые позволят боту общаться с пользователем и отправлять ответы. Сервер будет ожидать передачи данных на порту, указанном в файле конфигурации, или вернется к порту _3978_, чтобы установить подключение к эмулятору. Адаптер будет выступать в качестве проводника для вашего бота, управлять входящими и исходящими сообщениями, аутентификацией и т. д.
+
+```py
+# Create adapter.
+# See https://aka.ms/about-bot-adapter to learn more about how bots work.
+SETTINGS = BotFrameworkAdapterSettings(app.config["APP_ID"], app.config["APP_PASSWORD"])
+ADAPTER = BotFrameworkAdapter(SETTINGS)
+
+# Catch-all for errors.
+async def on_error(context: TurnContext, error: Exception):
+    # This check writes out errors to console log .vs. app insights.
+    # NOTE: In production environment, you should consider logging this to Azure
+    #       application insights.
+    print(f"\n [on_turn_error] unhandled error: {error}", file=sys.stderr)
+
+    # Send a message to the user
+    await context.send_activity("The bot encountered an error or bug.")
+    await context.send_activity("To continue to run this bot, please fix the bot source code.")
+    # Send a trace activity if we're talking to the Bot Framework Emulator
+    if context.activity.channel_id == 'emulator':
+        # Create a trace activity that contains the error object
+        trace_activity = Activity(
+            label="TurnError",
+            name="on_turn_error Trace",
+            timestamp=datetime.utcnow(),
+            type=ActivityTypes.trace,
+            value=f"{error}",
+            value_type="https://www.botframework.com/schemas/error"
+        )
+        # Send a trace activity, which will be displayed in Bot Framework Emulator
+        await context.send_activity(trace_activity)
+
+ADAPTER.on_turn_error = on_error
+
+# Create the Bot
+BOT = MyBot()
+```
+
+#### <a name="forwarding-requests-to-the-bot-logic"></a>Переадресация запросов в логику бота
+
+Метод адаптера `process_activity` отправляет входящие действия в логику бота.
+Третий параметр в `process_activity` представляет собой обработчик функций. Он вызывается для выполнения логики бота после того, как адаптер и ПО промежуточного слоя выполнят для полученного [действия](#the-activity-processing-stack) все этапы предварительной обработки. Переменную контекста шага, которая передается обработчику функций в виде аргумента, можно использовать для предоставления сведений о входящем действии, отправителе и получателе, канале, беседе и т.д. Для обработки действие передается в метод `on_turn` бота. `on_turn` определяется в `ActivityHandler`. При этом выполняется проверка ошибок с последующим вызовом обработчиков событий бота на основе типа полученного действия.
+
+```py
+# Listen for incoming requests on /api/messages
+@app.route("/api/messages", methods=["POST"])
+def messages():
+    # Main bot message handler.
+    if "application/json" in request.headers["Content-Type"]:
+        body = request.json
+    else:
+        return Response(status=415)
+
+    activity = Activity().deserialize(body)
+    auth_header = (
+        request.headers["Authorization"] if "Authorization" in request.headers else ""
+    )
+
+    try:
+        task = LOOP.create_task(
+            ADAPTER.process_activity(activity, auth_header, BOT.on_turn)
+        )
+        LOOP.run_until_complete(task)
+        return Response(status=201)
+    except Exception as exception:
+        raise exception
 ```
 
 ---

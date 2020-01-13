@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ROBOTS: NOINDEX
-ms.date: 10/04/2018
+ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3bd411da4edd30b6045654884aeae5ae1cc4239f
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 2d36a1465fd1a81b0c5f30bab52824a6130c215e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491206"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -38,7 +38,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 Чтобы добавить к существующему боту следующие функции, можно экстраполировать шаги, описанные в этой статье. Далее приведены примеры ботов, которые демонстрируют новые функции проверки подлинности.
 
-| Образец | Версия Bot Builder | ОПИСАНИЕ |
+| Образец | Версия Bot Builder | Description |
 |:---|:---:|:---|
 | [AadV1Bot](https://aka.ms/AadV1Bot) | Версия 3 | Реализована поддержка OAuthCard в пакете SDK версии 3 для C# с помощью конечной точки Azure AD версии 1 |
 | [AadV2Bot](https://aka.ms/AadV2Bot) | Версия 3 |  Реализована поддержка OAuthCard в пакете SDK версии 3 для C# с помощью конечной точки Azure AD версии 2 |
@@ -109,7 +109,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
    1. В разделе **Секреты клиента** щелкните **New client secret** (Новый секрет клиента).
    1. Добавьте описание, чтобы отличать этот секрет от других секретов, которые могут вам понадобиться для создания этого приложения, включая `bot login`.
    1. Задайте для параметра **Срок действия истекает** значение **Никогда**.
-   1. Щелкните **Добавить**.
+   1. Нажмите кнопку **Добавить**.
    1. Перед закрытием этой страницы запишите секрет. Это значение вам нужно будет ввести позднее в поле _Секрет клиента_ при регистрации приложения AAD в боте.
 
 1. В области навигации щелкните **Разрешения API**, чтобы открыть панель **Разрешения API**. Рекомендуется явно задать разрешения API для приложения.
@@ -142,7 +142,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 # <a name="azure-ad-v1tabaadv1"></a>[Azure AD версии 1](#tab/aadv1)
 
-1. На [портале Azure](http://portal.azure.com/) перейдите к странице ресурса бота.
+1. На [портале Azure](https://portal.azure.com/) перейдите к странице ресурса бота.
 1. Щелкните **Параметры**.
 1. В разделе **OAuth Connection Settings** (Параметры подключения OAuth), который находится в нижней части страницы, щелкните **Добавить настройку**.
 1. Заполните форму следующим образом.
@@ -167,7 +167,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 # <a name="azure-ad-v2tabaadv2"></a>[Azure AD версии 2](#tab/aadv2)
 
-1. Перейдите к странице регистрации каналов бота на [портале Azure](http://portal.azure.com/).
+1. Перейдите к странице регистрации каналов бота на [портале Azure](https://portal.azure.com/).
 1. Щелкните **Параметры**.
 1. В разделе **OAuth Connection Settings** (Параметры подключения OAuth), который находится в нижней части страницы, щелкните **Добавить настройку**.
 1. Заполните форму следующим образом.
@@ -290,7 +290,7 @@ else
 
 - Измените `ContentType` на `OAuthCard.ContentType`.
 - Замените значение свойства `ConnectionName` на имя требуемого подключения.
-- Включите одну кнопку с действием `CardAction` `Type` `ActionTypes.Signin`. Обратите внимание, что для ссылки входа не требуется указывать какие-либо значения.
+- Включите одну кнопку с действием `CardAction` (`Type` `ActionTypes.Signin`). Обратите внимание, что для ссылки для входа не требуется указывать какие-либо значения.
 
 В конце вызова боту требуется подождать на "возвращение токена". Ожидание происходит в основной ленте активности, потому что для входа в систему может потребоваться много времени.
 

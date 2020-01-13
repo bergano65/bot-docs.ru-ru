@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 444aa96366fbacac30ff135b43947847fab5dac1
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 4ae38a7b4f6a7769f8839fb44a82b3600abc6318
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491425"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -25,9 +25,9 @@ ms.locfileid: "73933733"
 > [!TIP]
 > Библиотека диалогов содержит встроенные запросы, которые предоставляют пользователям дополнительные функциональные возможности. Примеры таких запросов можно найти в статье [о реализации последовательного потока беседы](bot-builder-dialog-manage-conversation-flow.md).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
-- Код в этой статье основан на примере запроса на ввод данных пользователем. Вам потребуется копия примера **[для C#](https://aka.ms/cs-primitive-prompt-sample) или [для JavaScript](https://aka.ms/js-primitive-prompt-sample)** .
+- Код в этой статье основан на примере запроса на ввод данных пользователем. Вам потребуется копия примера для **[C#](https://aka.ms/cs-primitive-prompt-sample), [JavaScript](https://aka.ms/js-primitive-prompt-sample) или [Python](https://aka.ms/python-primitive-prompt-sample)** .
 - Понимание принципов [управления состоянием](bot-builder-concept-state.md) и [сохранения данных пользователя и диалога](bot-builder-howto-v4-state.md).
 
 ## <a name="about-the-sample-code"></a>Сведения о примере кода
@@ -47,6 +47,13 @@ ms.locfileid: "73933733"
 - Класс `userProfile` для хранения собранных ботом сведений о пользователе.
 - Класс `conversationFlow` для управления состоянием беседы при сборе сведений о пользователе.
 - Внутреннее перечисление `conversationFlow.question` для отслеживания текущего положения в беседе.
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+![custom-prompts](media/CustomPromptBotSample-Python-Overview.png)
+
+- Класс `UserProfile` для хранения собранных ботом сведений о пользователе.
+- Класс `ConversationFlow` для управления состоянием беседы при сборе сведений о пользователе.
+- Внутреннее перечисление `ConversationFlow.Question` для отслеживания текущего положения в беседе.
 
 ---
 
@@ -75,6 +82,14 @@ ms.locfileid: "73933733"
 
 [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=63-69)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+В файле **app.py**создайте свойства состояния и бота.
+
+[!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/app.py?range=66-72)]
+
+[!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/app.py?range=75-76)]
+
 ---
 
 ## <a name="create-property-accessors"></a>Создание методов доступа к свойствам
@@ -101,6 +116,15 @@ ms.locfileid: "73933733"
 
 [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+В конструкторе мы создадим методы доступа к свойствам состояния и настроим объекты управления состоянием (созданные выше) для нашей беседы.
+
+**bots/custom_prompt_bot.py** [!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=40-44)]
+
+Затем сохраните данные с помощью метода `save_changes()`.
+[!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=53-55)]
+
 ---
 
 ## <a name="the-bots-message-turn-handler"></a>Обработчик шагов бота для сообщений
@@ -118,6 +142,12 @@ ms.locfileid: "73933733"
 
 **bots/customPromptBot.js**  
 [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+Для обработки действий сообщений мы зададим данные для беседы и пользователя, а затем вызовем вспомогательный метод `_fill_out_user_profile`. Ниже приведен полный код для обработчика шагов.
+
+**bots/custom_prompt_bot.py** [!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-55)]
+
 ---
 
 ## <a name="filling-out-the-user-profile"></a>Заполнение профиля пользователя
@@ -139,6 +169,10 @@ ms.locfileid: "73933733"
 
 **bots/customPromptBot.js**  
 [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/custom_prompt_bot.py** [!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=57-126)]
 
 ---
 
@@ -168,12 +202,15 @@ ms.locfileid: "73933733"
 **bots/customPromptBot.cs**  
 [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/custom_prompt_bot.py** [!code-python[custom prompt bot](~/../botbuilder-python/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=127-189)]
 ---
 
 ## <a name="test-the-bot-locally"></a>Локальная проверка бота
 Скачайте и установите [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) для локального тестирования бота.
 
-1. Выполните этот пример на локальном компьютере. Если потребуются дополнительные инструкции, в файле README можно найти [пример кода на C#](https://aka.ms/cs-primitive-prompt-sample) или [пример кода на JS](https://aka.ms/js-primitive-prompt-sample).
+1. Выполните этот пример на локальном компьютере. Дополнительные инструкции, включая примеры для [C#](https://aka.ms/cs-primitive-prompt-sample), [JS](https://aka.ms/js-primitive-prompt-sample) и [Python](https://aka.ms/python-primitive-prompt-sample), см. в файле README.
 1. Выполните тестирование в эмуляторе, как показано ниже.
 
 ![primitive-prompts](media/primitive-prompts.png)
@@ -182,7 +219,7 @@ ms.locfileid: "73933733"
 
 [Библиотека Dialogs](bot-builder-concept-dialog.md) предоставляет классы, которые автоматизируют многие аспекты управления беседами. 
 
-## <a name="next-step"></a>Дальнейшие действия
+## <a name="next-step"></a>Следующий шаг
 
 > [!div class="nextstepaction"]
 > [Реализация процесса общения](bot-builder-dialog-manage-conversation-flow.md)

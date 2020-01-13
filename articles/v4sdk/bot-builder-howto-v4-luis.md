@@ -9,21 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: daf1091bc33b160affaefcd8aef0ed5797581fbc
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491722"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять поток общения. В этом разделе рассматривается добавление LUIS в приложение для бронирования авиабилетов, чтобы распознавать намерения и сущности в введенных пользователем данных. 
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 - Учетная запись [LUIS](https://www.luis.ai).
-- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на **[C#](https://aka.ms/cs-core-sample) или [JavaScript](https://aka.ms/js-core-sample)** . 
+- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на **[C#](https://aka.ms/cs-core-sample)** , **[JavaScript](https://aka.ms/js-core-sample)** или **[Python](https://aka.ms/python-core-sample)** . 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере
@@ -38,7 +38,7 @@ ms.locfileid: "74415164"
 
 ![Поток логических действий в примере LUIS](./media/how-to-luis/luis-logic-flow.png)
 
-Модуль `OnMessageActivityAsync` запускает соответствующий диалог с помощью метода расширения диалога `Run`. Затем главный диалог вызывает вспомогательный метод LUIS для поиска самого вероятного намерения пользователя. Если таким намерением является BookFlight (бронирование авиабилетов), вспомогательный метод сохраняет полученные от LUIS данные пользователя. Затем он запускает `BookingDialog` для сбора требуемых дополнительных сведений от пользователя, например:
+Модуль `OnMessageActivityAsync` запускает соответствующий диалог с помощью метода расширения диалога `Run`. Затем главный диалог вызывает вспомогательный метод LUIS для поиска самого вероятного намерения пользователя. Если таким намерением является BookFlight (бронирование авиабилетов), вспомогательный метод сохраняет полученные от LUIS данные пользователя. Затем главный диалог запускает `BookingDialog` для сбора требуемых дополнительных сведений от пользователя, например:
 
 - `Origin` — город вылета;
 - `TravelDate` — дата для бронирования авиабилетов;
@@ -58,7 +58,21 @@ ms.locfileid: "74415164"
 
 - `destination` — город прилета;
 - `origin` — город вылета;
-- `travelDate` — дата для бронирования авиабилетов.
+- `travelDate` — дата для бронирования авиабилетов;
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `user_state` и `conversation_state`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
+
+- Когда подключается новый пользователь, вызывается `on_members_added_activity` и отображается приветственная карточка. 
+- `on_message_activity` вызывается для каждого полученного блока данных, введенных пользователем.
+
+![Поток логических действий в примере LUIS для Python](./media/how-to-luis/luis-logic-flow-python.png)
+
+Модуль `on_message_activity` запускает соответствующий диалог с помощью метода расширения диалога `run_dialog`. Затем главный диалог вызывает `LuisHelper` для поиска самого вероятного намерения пользователя. Если таким намерением является BookFlight (бронирование авиабилетов), вспомогательная функция сохраняет полученные от LUIS данные пользователя. Затем главный диалог запускает `BookingDialog` для сбора требуемых дополнительных сведений от пользователя, например:
+
+- `destination` — город прилета;
+- `origin` — город вылета;
+- `travel_date` — дата для бронирования авиабилетов;
 
 ---
 
@@ -105,6 +119,12 @@ ms.locfileid: "74415164"
 Файл с расширением **.env**  
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Добавьте в файл `config.py` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
+
+**config.py** [!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/config.py?range=14-19)]
+
 ---
 
 ## <a name="configure-your-bot-to-use-your-luis-app"></a>Настройка бота для работы с приложением LUIS
@@ -137,6 +157,20 @@ ms.locfileid: "74415164"
 
 Логика извлечения From, To и TravelDate реализуется в виде вспомогательных методов в `flightBookingRecognizer.js`. Эти методы используются после вызова `flightBookingRecognizer.executeLuisQuery()` из `mainDialog.js`
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Убедитесь, что для проекта установлен пакет pypi **botbuilder-ai**.
+
+Для подключения к службе LUIS бот использует сведения, которые вы ранее добавили в файл `config.py`. Класс `FlightBookingRecognizer` содержит код, который импортирует параметры из файла `config.py` и отправляет запрос к службе LUIS, вызывая метод `recognize()`.
+
+**flight_booking_recognizer.py**
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=8-32)]
+
+Логика извлечения *From*, *To* и *travel_date* реализуется в виде вспомогательных методов из класс `LuisHelper` в `luis_helper.py`. Эти методы используются после вызова `LuisHelper.execute_luis_query()` из `main_dialog.py`
+
+**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-python/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+
 ---
 
 Теперь служба LUIS для бота полностью настроена и подключена.
@@ -145,7 +179,7 @@ ms.locfileid: "74415164"
 
 Скачайте и установите последнюю версию [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 
-1. Выполните этот пример на локальном компьютере. Если потребуются дополнительные инструкции, в файле README можно найти [пример кода на C#](https://aka.ms/cs-core-sample) или [пример кода на JS](https://aka.ms/js-core-sample).
+1. Выполните этот пример на локальном компьютере. Дополнительные инструкции, включая примеры для [C#](https://aka.ms/cs-core-sample), [JS](https://aka.ms/js-core-sample) или [Python](https://aka.ms/python-core-sample), см. в файле README.
 
 1. Введите в эмуляторе сообщение, например "travel to paris" (лететь в Париж) или "going from paris to berlin" (направляюсь из Парижа в Берлин). Используйте все речевые фрагменты, включенные в файл FlightBooking.json, для обучения намерения Book flight (Бронирование авиабилетов).
 
@@ -157,7 +191,7 @@ ms.locfileid: "74415164"
 
 На этом этапе логика кода обнуляет состояние бота, и вы можете создать новое резервирование. 
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Использование QnA Maker для ответов на вопросы](./bot-builder-howto-qna.md)

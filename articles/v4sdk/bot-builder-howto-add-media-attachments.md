@@ -9,28 +9,42 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4caa11221ed930a627b53d7f46107adb226a816d
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 202b6c3fa96d6bbc6902387d55599f4b91f9da0d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491824"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
+<!-- To be done when samples repo location is final:
+
+1) Assure to fix the .openpublishing.publish.config.json following entry:
+    {
+             "path_to_root":"botbuilder-python",
+             "url":"https://github.com/microsoft/botbuilder-python",
+             "branch":"master",
+             "branch_mapping":{}
+    }
+2) Assure that the references to Python code snippets reflect the samples repo location is correct. 
+3) Create aka links to GitHub samples.
+
+-->
+
 Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 - Базовые знания о [ботах](bot-builder-basics.md).
 - Код в этой статье основан на следующих примерах:
 
-  | Пример кода | C# | JS |
-  | :------ | :----- | :---|
-  | Карточки | [Пример на языке C#](https://aka.ms/bot-cards-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-cards-js-sample-code) |
-  | Вложения | [Пример на языке C#](https://aka.ms/bot-attachments-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-attachments-sample-code-js) |
-  | Предлагаемые действия | [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp) | [Пример на языке JavaScript](https://aka.ms/SuggestedActionsJS) |
+  | Образец кода | C# | JS | Python |
+  | :------ | :----- | :---| :---|
+  | Карточки | [Пример на языке C#](https://aka.ms/bot-cards-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-cards-js-sample-code) |[Пример для Python](https://aka.ms/bot-cards-python-sample-code) |
+  | Вложения | [Пример на языке C#](https://aka.ms/bot-attachments-sample-code) | [Пример на языке JavaScript](https://aka.ms/bot-attachments-sample-code-js) | [Пример для Python](https://aka.ms/bot-media-attachments-python-sample-code) |
+  | Предлагаемые действия | [Пример на языке C#](https://aka.ms/SuggestedActionsCSharp) | [Пример на языке JavaScript](https://aka.ms/SuggestedActionsJS) | [Пример для Python](https://aka.ms/SuggestedActionsPython) |
 
 ## <a name="send-attachments"></a>Отправка вложений
 
@@ -93,9 +107,32 @@ ms.locfileid: "70876179"
 **bots/attachmentsBot.js**  
 [!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Чтобы создать ответное сообщение, определите текст и настройте вложения. Присвоение вложений ответному сообщению выполняется одинаково для всех типов вложений, но настройка и определение разных вложений будут отличаться, как показано в следующих фрагментах. 
+
+Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-media-attachments-python-sample-code).
+
+Ниже приведен код для настройки ответа со встроенным вложением:
+
+**bots/attachments_bot.py**  
+[!code-python[attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=112-113)]
+
+У вас есть несколько разных методов для отправки пользователю мультимедийного содержимого (например, изображения или видео). Во-первых, это встроенные вложения:
+
+**bots/attachments_bot.py** [!code-python[inline attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=153-170)]
+
+Во-вторых, отправленные вложения:
+
+**bots/attachments_bot.py** [!code-python[upload attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=172-207)]
+
+И представленные URL-адресом вложения из Интернета:
+
+**bots/attachments_bot.py** [!code-python[internet attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=209-218)]
+
 ---
 
-Если вложение представляет собой изображение, аудиофайл или видео, служба соединителя будет передавать данные вложения каналу так, чтобы позволить [каналу](bot-builder-channeldata.md) обрабатывать это вложение в диалоге. Если вложение представляет собой файл, URL-адрес файла будет отображаться в беседе как гиперссылка.
+Если вложение представляет собой изображение, аудиофайл или видео, служба соединителя будет передавать данные вложения каналу так, чтобы позволить [каналу](bot-builder-channeldata.md) обрабатывать это вложение в диалоге. Если вложение представляет собой файл, URL-адрес файла будет отображаться в диалоге как гиперссылка.
 
 ## <a name="send-a-hero-card"></a>Отправка карточки для имиджевого баннера
 
@@ -117,7 +154,15 @@ ms.locfileid: "70876179"
 Представленный здесь исходный код основан на примере [обработки вложений на JS](https://aka.ms/bot-attachments-sample-code-js).
 
 **bots/attachmentsBot.js**  
-[!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=148-164)]
+[!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=147-165)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
+
+Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-media-attachments-python-sample-code).
+
+**bots/attachments_bot.py** [!code-python[hero card](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=125-148)]
 
 ---
 
@@ -127,7 +172,7 @@ ms.locfileid: "70876179"
 
 Во избежание ошибок следует назначить тип действия для каждого активного элемента карточки. В этой таблице перечислены и описаны доступные типы действий и требуемый формат для связанного свойства.
 
-| type | ОПИСАНИЕ | Значение |
+| Тип | Description | Значение |
 | :---- | :---- | :---- |
 | openUrl | Открывает URL-адрес в окне встроенного браузера. | URL-адрес, который нужно открыть. |
 | imBack | Отправляет боту сообщение и отображает полученный ответ в чате. | Текст отправляемого сообщения. |
@@ -158,10 +203,59 @@ ms.locfileid: "70876179"
 Примеры для всех доступных типов карточек представлены [в этом примере на JavaScript](https://aka.ms/bot-cards-js-sample-code).
 
 **dialogs/mainDialog.js**  
-[!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=213-225)]
+[!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=206-218)]
 
 **dialogs/mainDialog.js**  
-[!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=266-272)]
+[!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=259-265)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Примеры всех доступных типов карт представлены в [этом примере для Python](https://aka.ms/bot-cards-python-sample-code).
+
+**dialogs/main_dialog.py**
+
+<!-- replaced with this when it works: 
+[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=163-179)] -->
+
+```python
+def create_hero_card(self) -> Attachment:
+  card = HeroCard(
+      title="",
+      images=[
+          CardImage(
+              url="https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg"
+          )
+      ],
+      buttons=[
+          CardAction(
+              type=ActionTypes.open_url,
+              title="Get Started",
+              value="https://docs.microsoft.com/en-us/azure/bot-service/",
+          )
+      ],
+  )
+  return CardFactory.hero_card(card)
+```
+
+**dialogs/main_dialog.py**
+
+<!-- replaced with this when it works: 
+  [!code-python[sign in cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=245-256)] -->
+
+```python
+def create_signin_card(self) -> Attachment:
+  card = SigninCard(
+      text="BotFramework Sign-in Card",
+      buttons=[
+          CardAction(
+              type=ActionTypes.signin,
+              title="Sign-in",
+              value="https://login.microsoftonline.com",
+          )
+      ],
+  )
+  return CardFactory.signin_card(card)
+```
 
 ---
 
@@ -184,7 +278,7 @@ ms.locfileid: "70876179"
 
 Чтобы использовать адаптивные карточки, обязательно добавьте пакет NuGet `AdaptiveCards`.
 
-Представленный здесь исходный код основан на примере [использования карточек](https://aka.ms/bot-cards-sample-code):
+Представленный здесь исходный код основан на примере [использования карточек](https://aka.ms/bot-cards-sample-code).
 
 **Cards.cs**  
 [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
@@ -200,10 +294,31 @@ ms.locfileid: "70876179"
 **resources/adaptiveCard.json**  
 [!code-json[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/resources/adaptiveCard.json)]
 
-Здесь карточка создается с помощью CardFactory:
+Карта создается следующим образом:
 
 **dialogs/mainDialog.js**  
-[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=177-179)]
+
+[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
+
+[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=170-172)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Представленный здесь исходный код основан на примере [использования карточек](https://aka.ms/bot-cards-python-sample-code).
+
+**dialogs/resources/adaptive_card_example.py** [!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/resources/adaptive_card_example.py)]
+
+Карта создается следующим образом:
+
+**bots/main_dialog.py**
+
+<!-- replaced with this when it works:  
+[!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=127-128)] -->
+
+```python
+def create_adaptive_card(self) -> Attachment:
+  return CardFactory.adaptive_card(ADAPTIVE_CARD_CONTENT)
+```
 
 ---
 
@@ -237,7 +352,44 @@ ms.locfileid: "70876179"
 Чтобы отправить карусель карточек, создайте ответ с вложениями в виде массива и типом макета `Carousel`:
 
 **dialogs/mainDialog.js**  
-[!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=104-116)]
+[!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=97-108)]
+
+[!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=113-116)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Представленный здесь исходный код основан на [примере карт для Python](https://aka.ms/bot-cards-python-sample-code).
+
+Сначала создайте вложения.
+
+**dialogs/main_dialog.py**
+
+<!-- replaced with this when it works:  
+[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=104-112)] -->
+
+```python
+reply.attachment_layout = AttachmentLayoutTypes.carousel
+reply.attachments.append(self.create_adaptive_card())
+reply.attachments.append(self.create_animation_card())
+reply.attachments.append(self.create_audio_card())
+reply.attachments.append(self.create_hero_card())
+reply.attachments.append(self.create_receipt_card())
+reply.attachments.append(self.create_signin_card())
+reply.attachments.append(self.create_thumbnail_card())
+reply.attachments.append(self.create_video_card())
+```
+
+Завершив добавление вложений, вы можете отправить этот ответ.
+
+**dialogs/main_dialog.py**
+
+<!-- replaced with this when it works:  
+[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=114-115)] -->
+
+```python
+# Send the card(s) to the user as an attachment to the activity
+  await step_context.context.send_activity(reply)
+```
 
 ---
 
@@ -252,11 +404,11 @@ ms.locfileid: "70876179"
 ### <a name="code-sample-for-processing-adaptive-card-input"></a>Пример кода для обработки входных данных адаптивной карточки
 
 В этом примере кода показан один из способов использования входных данных адаптивной карточки в пределах класса диалога бота.
-Он расширяет текущий пример 06.using-cards с помощью проверки входных данных, полученных в текстовом поле отвечающего клиента.
+Он расширяет текущий пример 06.using-cards, включая проверку входных данных, полученных в текстовом поле отвечающего клиента.
 Сначала мы добавили функцию ввода текста и кнопку к имеющейся адаптивной карточке, добавив следующий код перед последней скобкой adaptiveCard.json в папке ресурсов:
 
 ```json
-  ,
+...
   "actions": [
     {
       "type": "Action.ShowCard",
@@ -354,6 +506,47 @@ private async Task ChoiceValidator(
 Если в ходе этой проверки будет найден несуществующий текстовый ввод из клиента, выполняется проверка того, существуют ли входные данные адаптивной карточки.
 Если входные данные адаптивной карточки уже существуют в \_activity.value.text, они копируются в обычное текстовое поле ввода.
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Представленный здесь исходный код основан на примере [предложенных действий](https://aka.ms/SuggestedActionsPython).
+
+Создание и отправка действия с предлагаемыми действиями пользователю.
+
+Этот код choice_validator() включается в пример 06.using-cards, открытом для объявления MainDialog, сразу после закрытой фигурной скобки:
+
+```python
+@staticmethod
+async def choice_validator(prompt_context: PromptValidatorContext) -> bool:
+    if prompt_context.context.activity.value:
+        text = prompt_context.context.activity.value["text"].lower()
+        if not prompt_context.recognized.succeeded and text:
+            matching_choices = [choice for choice in prompt_context.options.choices if choice.value.lower() == text]
+            if matching_choices:
+                choice = matching_choices[0]
+                prompt_context.recognized.value = FoundChoice(
+                    value=choice.value,
+                    index=0,
+                    score=1.0
+                )
+                return True
+
+    return prompt_context.recognized.succeeded
+```
+
+Теперь выше в объявлении MainDialog измените:
+
+```python
+self.add_dialog(ChoicePrompt(CARD_PROMPT))
+```
+
+на:
+
+```python
+self.add_dialog(ChoicePrompt(CARD_PROMPT, MainDialog.choice_validator))
+```
+
+При этом будет вызван проверяющий элемент управления для поиска входных данных адаптивной карточки каждый раз, когда создается ChoicePrompt.
+
 ---
 
 Чтобы протестировать код, после отображения адаптивной карточки нажмите кнопку Text (Текст), введите допустимый вариант, например "Карточка имиджевого баннера", и нажмите кнопку OK.
@@ -363,7 +556,7 @@ private async Task ChoiceValidator(
 1. Первые входные данные будут использоваться для запуска нового диалога.
 2. Снова нажмите кнопку OK, и эти входные данные будут использоваться для выбора новой карточки.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Добавление кнопок для управления действиями пользователя](./bot-builder-howto-add-suggested-actions.md)

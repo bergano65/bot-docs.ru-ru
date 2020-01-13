@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ec56a36feb747160e1a82f9831aa323074d46801
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 51a77c9f95bdf8d77f87d081704284c5f7584df3
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491503"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
@@ -24,10 +24,10 @@ ms.locfileid: "73933621"
 В этой статье мы покажем, как управлять сложными беседами с ветвлениями и циклами.
 Мы также продемонстрируем передачу аргументов между разными частями диалога.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
-- Копия примера сложного диалога на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Копия примера сложного диалога для [**C#** ][cs-sample], [**JavaScript**][js-sample] и [**Python**][python-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
@@ -73,13 +73,29 @@ ms.locfileid: "73933621"
 
 **index.js**
 
+Мы создаем следующие требуемые службы для бота.
+
+- Основные службы: адаптер и реализация бота.
+- Управление состоянием: хранилище, состояние пользователя и состояние беседы.
+- Диалоги: робот использует их для управления беседами.
+
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+![Сложный процесс общения в боте](./media/complex-conversation-flow-python.png)
+
+Чтобы использовать диалоги, в проект следует установить пакет pypi **botbuilder-dialogs**, выполнив `pip install botbuilder-dialogs`.
+
+**app.py**
+
 Мы создаем службы для бота, которые нужны в других частях кода.
 
 - Основные службы бота: адаптер и реализация бота.
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Диалог, который будет использовать бот.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=28-75)]
 
 ---
 
@@ -100,6 +116,13 @@ ms.locfileid: "73933621"
 **userProfile.js**
 
 [!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**data_models/user_profile.py**
+
+[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+
 
 ---
 
@@ -169,6 +192,38 @@ ms.locfileid: "73933621"
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\main_dialog.py**
+
+Мы определили компонентный диалог `MainDialog`, который содержит несколько основных шагов и управляет другими диалогами и запросами. На первом шаге здесь вызывается метод `TopLevelDialog`, который описан ниже.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50&highlight=4)]
+
+**dialogs\top_level_dialog.py**
+
+Исходный диалог верхнего уровня состоит из четырех шагов:
+
+1. запрос имени пользователя;
+1. запрос возраста пользователя;
+1. ветвление в зависимости от возраста пользователя;
+1. отправка пользователю благодарности за участие и возвращение собранных сведений.
+
+На первом шаге мы очищаем профиль пользователя, чтобы диалог каждый раз запускался с пустым профилем. Так как последний шаг при завершении будет возвращать сведения, `acknowledgementStep` следует завершить с сохранением состояния пользователя и передачей этих сведений в главный диалог для использования на последнем шаге.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=2-3,43-44,52)]
+
+**dialogs/review_selection_dialog.py**
+
+Диалог review-selection запускается из диалога верхнего уровня `startSelectionStep`, и состоит из двух шагов:
+
+1. предложение пользователю выбрать компанию для оценки или ввести `done`, чтобы завершить процесс;
+1. повтор того же диалога или выход, в зависимости от некоторых условий.
+
+В такой конфигурации диалог верхнего уровня всегда находится в стеке выше, чем диалог review-selection, то есть его можно считать дочерним элементом диалога верхнего уровня.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99)]
+
 ---
 
 ## <a name="implement-the-code-to-manage-the-dialog"></a>Реализация кода для управления диалогом
@@ -232,6 +287,20 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/dialog_bot.py**
+
+Обработчик сообщений вызывает метод `run_dialog` для управления диалогом. Мы переопределили обработчик шагов так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, происходящие на определенном шаге. Базовый метод `on_turn` вызовет метод `on_message_activity`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
+
+[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=32-34)]
+
+**bots/dialog_and_welcome_bot.py**
+
+`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `config.py`.
+
+[!code-python[on_members_added](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_and_welcome_bot.py?range=28-39)]
+
 ---
 
 ## <a name="branch-and-loop"></a>Ветвление и цикл
@@ -264,6 +333,20 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/top_level_dialog.py**
+
+Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
+
+[!code-python[branching logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=71-80)]
+
+**dialogs/review_selection_dialog.py**
+
+Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
+
+[!code-python[looping logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=93-98)]
+
 ---
 
 ## <a name="to-test-the-bot"></a>Тестирование бота
@@ -283,7 +366,7 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 Чтобы упростить код диалога и использовать его повторно в нескольких ботах, следует определить компоненты набора диалогов в отдельном классе.
 Подробнее об этом см. в статье [о повторном использовании диалогов][component-dialogs].
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Повторное использование диалогов](bot-builder-compositcontrol.md)
@@ -300,3 +383,4 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [cs-sample]: https://aka.ms/cs-complex-dialog-sample
 [js-sample]: https://aka.ms/js-complex-dialog-sample
+[python-sample]: https://aka.ms/python-complex-dialog-sample

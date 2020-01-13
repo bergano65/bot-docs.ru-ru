@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1e5c2068fe9b4fdc13641d098eb1579c01dd24c2
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 7faa7091198202058c00ddca4aee79fe87d700e9
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491156"
 ---
 # <a name="deploy-your-bot"></a>Развертывание бота
 
@@ -22,7 +22,7 @@ ms.locfileid: "70386025"
 
 В этой статье описано, как развернуть простого бота в Azure. Мы объясним, как подготовить бота к развертыванию, развернуть его в Azure и протестировать в Web Chat. Эту статью полезно изучить до выполнения описанных действий, чтобы ознакомиться со всеми процессами, связанными с развертыванием бота.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 <!-- - A subscription to [Microsoft Azure](https://azure.microsoft.com/free/)
 - A C#, JavaScript, or TypeScript bot that you have developed on your local machine
@@ -82,7 +82,11 @@ The above command outputs JSON with the key `appId`, save the value of this key 
 > ``` -->
 
 ### <a name="4-deploy-via-arm-template"></a>4. Развертывание с использованием шаблона ARM
-Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит. 
+Вы можете развернуть бот в новой группе ресурсов или использовать имеющуюся. Выберите любой вариант, который вам подходит.
+
+> [!NOTE]
+> Боты Python нельзя развертывать в группе ресурсов, содержащей службы или боты Windows.  Хотя в одной группе ресурсов можно развернуть несколько ботов Python, другие службы (LUIS, QnA и пр.) следует создавать в другой группе ресурсов.
+>
 
 #### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Развертывание с помощью шаблона ARM (в **новой** группе ресурсов)**
 <!-- ##### Create Azure resources -->
@@ -213,9 +217,9 @@ For more information about channel registration, see [Register a bot with Bot Se
 > [!NOTE]
 > A blade is the surface on which service functions or navigation elements appear when selected. -->
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 Развертывание бота в Azure подразумевает оплату за используемые службы. Руководство по [управлению счетами и расходами](https://docs.microsoft.com/azure/billing/) поможет вам понять, как расшифровывать счета Azure, отслеживать использование и расходы, а также управлять учетными записями и подписками.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 > [!div class="nextstepaction"]
-> [Set up continuous deployment](bot-service-build-continuous-deployment.md) (Настройка непрерывного развертывания)
+> [Настройка непрерывного развертывания](bot-service-build-continuous-deployment.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ef79b62aecbc79ed277f3962606d5ed5d9ceeb3
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: c273b0c157abd40dd139739411b19656565fa7c7
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491528"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -22,16 +22,16 @@ ms.locfileid: "73933575"
 
 Компонентные диалоги позволяют создавать независимые диалоги для обработки определенных сценариев, разбивая большие наборы диалогов на более управляемые фрагменты. Каждый из этих компонентов имеет отдельный набор диалогов, что позволяет избежать конфликтов имен с внешними наборами диалогов.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Опыт работы с [ботами][concept-basics], [библиотеками диалогов][concept-dialogs] и [управлением сообщениями][simple-flow].
-- Копия примера запроса с несколькими шагами на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
+- Копия примера запроса с несколькими шагами для [**C#** ][cs-sample], [**JavaScript**][js-sample] или [**Python**][python-sample].
 
 ## <a name="about-the-sample"></a>Сведения о примере
 
 В примере диалога с несколькими запросами мы применим каскадный диалог, несколько запросов и компонентный диалог для реализации простого взаимодействия, в рамках которого пользователю предлагается несколько вопросов. Код диалога циклически перебирает следующие действия:
 
-| Действия        | Тип запроса  |
+| Шаги        | Тип запроса  |
 |:-------------|:-------------|
 | Запрос к пользователю о режиме транспортировки | Запрос выбора |
 | Запрос имени пользователя | Запрос текста |
@@ -55,15 +55,15 @@ ms.locfileid: "73933575"
 
 Класс `UserProfileDialog` является производным от класса `ComponentDialog`.
 
-[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=13)]
+[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17)]
 
 В конструкторе метод `AddDialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `InitialDialogId`. При запуске компонентного диалога будет запущен _начальный диалог_.
 
-[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17-42)]
+[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
 
 Это реализация первого шага каскадного диалога.
 
-[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=44-54)]
+[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=50-60)]
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -87,6 +87,26 @@ ms.locfileid: "73933575"
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Чтобы использовать диалоги, установите пакеты pypi **botbuilder-dialogs** and **botbuilder-ai**, запустив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
+
+**dialogs/user_profile_dialog.py**
+
+Класс `UserProfileDialog` является расширением `ComponentDialog`.
+
+[!code-python[Class](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25)]
+
+В конструкторе метод `add_dialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `initial_dialog_id`. При запуске компонентного диалога будет запущен _начальный диалог_.
+
+[!code-python[Constructor](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+
+Это реализация первого шага каскадного диалога.
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=59-71)]
+
+См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
+
 ---
 
 Во время выполнения компонентный диалог поддерживает собственный стек диалогов. При запуске компонентного диалога происходит следующее:
@@ -105,7 +125,7 @@ ms.locfileid: "73933575"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**Bots\DialoBot.cs**
+**Bots\DialogBot.cs**
 
 В нашем примере это выполняется с помощью метода `RunAsync`, вызываемого из метода `OnMessageActivityAsync` бота.
 
@@ -125,6 +145,18 @@ ms.locfileid: "73933575"
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**helpers/dialog_helper.py**
+
+В этом примере мы добавили метод `run_dialog` в диалог профиля пользователя.
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+
+Метод `run_dialog` вызывается из метода `on_message_activity` бота.
+
+**bots/dialog_bot.py** [!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51)]
+
 ---
 
 ## <a name="to-test-the-bot"></a>Тестирование бота
@@ -135,7 +167,7 @@ ms.locfileid: "73933575"
 
 ![Тестовый запуск диалога с несколькими запросами](../media/emulator-v4/multi-turn-prompt.png)
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 ### <a name="how-cancellation-works-for-component-dialogs"></a>Как работает отмена для компонентных диалогов
 
@@ -145,7 +177,7 @@ ms.locfileid: "73933575"
 
 Не забывайте об этом, организуя управление вложенными компонентными диалогами в боте.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Вы можете добавить в бот реакцию на другие входящие запросы, которая будет прерывать обычный поток беседы, например для получения справки или отмены действия.
 
@@ -164,3 +196,4 @@ ms.locfileid: "73933575"
 
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
+[python-sample]: https://aka.ms/python-multi-prompts-sample
