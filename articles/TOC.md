@@ -54,6 +54,7 @@
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
 ### [Добавление данных телеметрии в бот](v4sdk/bot-builder-telemetry.md)
 ### [Добавление данных телеметрии в код чат-бота для ответов на вопросы](v4sdk/bot-builder-telemetry-QnAMaker.md)
+### [Анализ данных телеметрии бота](v4sdk/bot-builder-telemetry-analytics-queries.md)
 ### [Использование канала "Речь Direct Line" в боте](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
