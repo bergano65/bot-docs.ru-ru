@@ -1,5 +1,5 @@
 ---
-title: Настройка подготовки речи | Документация Майкрософт
+title: Настройка подготовки речи — Служба Azure Bot
 description: Сведения о настройке подготовки речи для службы ботов с помощью портала Azure.
 keywords: speech priming, speech recognition, LUIS
 author: v-royhar
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 5cb993392c57db63074fd5354ff85616d5004133
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: d66bdfbfed9ec40acca0a34b269ca9cc1a43f88e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298033"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794247"
 ---
 # <a name="configure-speech-priming"></a>Настройка подготовки речи
 
@@ -37,7 +37,7 @@ ms.locfileid: "70298033"
 1. В колонке службы ботов щелкните **Speech priming** (Подготовка речи). Появится список доступных приложений LUIS.
 2. Выберите приложения LUIS, которые должна использовать служба "Распознавание речи Bing".
  
-    a. Чтобы выбрать приложение LUIS в списке, наведите указатель мыши на модель LUIS. Появится флажок. Установите его.
+    а. Чтобы выбрать приложение LUIS в списке, наведите указатель мыши на модель LUIS. Появится флажок. Установите его.
      
     b. Чтобы выбрать приложение LUIS, которого нет в списке, прокрутите список вниз и введите GUID приложения LUIS в текстовое поле.
      

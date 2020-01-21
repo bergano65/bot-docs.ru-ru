@@ -1,5 +1,5 @@
 ---
-title: Внедрение бота в приложение | Документация Майкрософт
+title: Внедрение бота в приложение — Служба Azure Bot
 description: Узнайте о том, как разработать бот, который будет внедрен в приложение.
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/15/2018
-ms.openlocfilehash: 3e6a659667dca6089cb094a6b4eccda338219996
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a8f6b4f70ca51e4b4c607dcf116c78030e28506d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298684"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793620"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Внедрение бота в приложение
 

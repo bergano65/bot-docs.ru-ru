@@ -1,5 +1,5 @@
 ---
-title: Запрос платежей | Документация Майкрософт
+title: Запрос платежа (C# версии 3 ) — Служба Azure Bot
 description: Сведения об отправке запроса платежей с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ee7711ab15da9fbbb42d857b216a6099e44880e4
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 026b6ad3b6b9037a09b2727838e7499562b83fba
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094433"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797999"
 ---
 # <a name="request-payment"></a>Запрос платежей
 
@@ -26,7 +26,7 @@ ms.locfileid: "71094433"
 
 Если бот позволяет пользователям приобретать элементы, он делает запрос платежей, включая специальный тип кнопки в [форматированной карточке](bot-builder-dotnet-add-rich-card-attachments.md). Эта статья описывает отправку запроса платежей с помощью пакета SDK Bot Framework для .NET.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Чтобы отправлять запросы платежей с помощью пакета SDK Bot Framework для .NET, необходимо выполнить обязательные предварительные задачи.
 
@@ -35,7 +35,7 @@ ms.locfileid: "71094433"
 Обновите файл **Web.config** бота, чтобы установить значения `MicrosoftAppId` и `MicrosoftAppPassword` для идентификатора приложения и пароля, которые были созданы для бота в процессе [регистрации](~/bot-service-quickstart-registration.md). 
 
 > [!NOTE]
-> Сведения о том, как найти значения **AppID** и **AppPassword** бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
+> Сведения о том, как найти значения **AppID** и **AppPassword** для бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
 ### <a name="create-and-configure-merchant-account"></a>Создание и настройка учетной записи продавца
 
@@ -124,7 +124,7 @@ ms.locfileid: "71094433"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">Пример бота для оплаты</a>
-- [Activities overview](bot-builder-dotnet-activities.md) (Общие сведения о действиях)
+- [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
 - <a href="http://www.w3.org/Payments/" target="_blank">Web Payments at W3C</a> (Веб-платежи в W3C) 
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>

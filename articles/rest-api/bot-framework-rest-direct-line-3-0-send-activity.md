@@ -1,5 +1,5 @@
 ---
-title: Отправка действия боту | Документы Майкрософт
+title: Отправка действия боту — Служба Azure Bot
 description: Сведения об отправке действия боту с помощью API Direct Line версии 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 90eeb3157cf53f1ee87d1ac08313c6d659e6c1d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875991"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789321"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Отправка действия боту
 
@@ -65,7 +65,7 @@ HTTP/1.1 200 OK
 
 ### <a name="total-time-for-the-send-activity-requestresponse"></a>Общее время запроса и ответа отправки действия
 
-Общее время для отправки запроса POST в диалог Direct Line является суммой следующих значений:
+Общее время для отправки запроса POST в общение Direct Line является суммой следующих значений:
 
 - транзитное время передачи HTTP-запроса с клиента в службу Direct Line;
 - время внутренней обработки в Direct Line (обычно меньше 120 мс);
@@ -188,7 +188,7 @@ HTTP/1.1 200 OK
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
-- [Повторное подключение к диалогу](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
+- [Повторное подключение к общению](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [Получение действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [Конец общения](bot-framework-rest-direct-line-3-0-end-conversation.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)

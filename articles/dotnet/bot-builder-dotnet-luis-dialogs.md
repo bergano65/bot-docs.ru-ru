@@ -1,5 +1,5 @@
 ---
-title: Распознавание намерений и сущностей с помощью LUIS | Документы Майкрософт
+title: Распознавание намерений и сущностей с помощью LUIS (C# версии 3) — Служба Azure Bot
 description: Узнайте, как "научить" бот понимать естественный язык с помощью диалогов LUIS из пакета SDK Bot Framework для .NET.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7e7eb36d0cb3cdbf18037f05b4960b240cb70d8d
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: f34fd8a868f8de68b016b5f12c6cc1569a46d951
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167405"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788891"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Распознавание намерений и сущностей с помощью LUIS 
 
@@ -76,7 +76,7 @@ ms.locfileid: "70167405"
    * Note.ReadAloud
    * Note.Create
    * Note.Delete
-   * Нет
+   * None
    * Справка
    * Greeting
    * Отмена 
@@ -375,7 +375,7 @@ using System.Collections.Generic;
 > * Вы выполнили [сборку бота](./bot-builder-dotnet-luis-dialogs.md#build-the-bot).
 > * К коде бота определен обработчик для каждого намерения в приложении LUIS.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Опробовав бот, можно увидеть, как намерение LUIS вызывает задачи. Тем не менее в этом простом примере не допускается прерывание активного диалога. Использование и обработка прерываний (например, для вывода справки или отмены действия) — гибкий механизм, учитывающий реальные действия пользователей. Узнайте больше об использовании диалогов с возможностью оценки, позволяющих обрабатывать прерывания.
 

@@ -1,5 +1,5 @@
 ---
-title: Создание ботов с помощью службы Bot Connector | Документация Майкрософт
+title: Создание ботов с помощью службы Bot Connector — Служба Azure Bot
 description: Создание ботов с помощью службы Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: f517385fd6d194772004b44b2d8407f2515dc17d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037450"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789906"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Создание ботов с помощью службы Bot Connector
 > [!div class="op_single_selector"]
@@ -134,7 +134,7 @@ Content-Type: application/json
 }
 ```
 
-В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri). 
+В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri). 
 
 > [!IMPORTANT]
 > Как показано в этом примере, заголовок `Authorization` каждого отправляемого вами запроса API, должен содержать слово **Bearer**, после которого указывается маркер доступа, [полученный от Bot Framework](#get-token).
@@ -191,7 +191,7 @@ Content-Type: application/json
 }
 ```   
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 При работе с этим руководством вы получили маркер доступа от Bot Framework и использовали службу Bot Connector для обмена сообщениями с пользователем. Для тестирования и отладки бота можно использовать [Bot Framework Emulator](../bot-service-debug-emulator.md). Чтобы предоставить доступ к боту другим пользователям, нужно [настроить](../bot-service-manage-channels.md) его для работы с одним или несколькими каналами.
 

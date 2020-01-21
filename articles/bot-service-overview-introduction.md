@@ -1,5 +1,5 @@
 ---
-title: Общие сведения о службе Azure Bot | Документация Майкрософт
+title: Общие сведения — Служба Azure Bot
 description: Сведения о службе Azure Bot, службе для сборки, подключения, тестирования, развертывания, мониторинга и управления ботами.
 keywords: обзор, введение, пакет SDK, структура
 author: Kaiqb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/15/2019
-ms.openlocfilehash: 6bdb6381c31045563963b4640faa31708be47ba4
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 52b39c8f0d524785a0ef81d262dd1b7380b0b6e2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490763"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794719"
 ---
 # <a name="about-azure-bot-service"></a>Общие сведения о службе Azure Bot
 

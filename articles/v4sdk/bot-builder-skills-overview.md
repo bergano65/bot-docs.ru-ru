@@ -1,5 +1,5 @@
 ---
-title: Общие сведения о навыках Bot Framework | Документация Майкрософт
+title: Общие сведения о навыках Bot Framework — Служба Azure Bot
 description: Сведения о навыках Bot Framework
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
-ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
+ms.openlocfilehash: 7d7c4271fd03100c24ba7dd774dea93909bdd8a0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72236426"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791236"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Обзор навыков (виртуальный помощник)
 
@@ -38,7 +38,7 @@ ms.locfileid: "72236426"
 
 ![Сценарии навыков](./media/enterprise-template/skills-at-build.png)
 
-| ИМЯ | ОПИСАНИЕ |
+| Имя | Description |
 | ---- | ----------- |
 |[Навык взаимодействия с календарем](https://aka.ms/bf-calendar-skill)|Добавление возможностей календаря в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
 |[Навык взаимодействия с электронной почтой](https://aka.ms/bf-email-skill)|Добавление возможностей электронной почты в виртуальный помощник. Основан на платформах Microsoft Graph и Google.|
@@ -47,6 +47,6 @@ ms.locfileid: "72236426"
 |[Навык взаимодействия с автомобилем](https://aka.ms/bf-auto-skill)|Отраслевой навык для демонстрации возможностей управления функциями автомобиля.|
 |[Экспериментальные навыки](https://aka.ms/bf-experimental-skills)|Новости, погода и заказ столиков в ресторанах.|
 
-## <a name="getting-started"></a>Начало работы
+## <a name="getting-started"></a>Приступая к работе
 
 См. об [использовании существующих навыков и самостоятельном создании новых](https://aka.ms/bfs-tutorials).

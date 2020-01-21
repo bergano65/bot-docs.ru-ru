@@ -1,5 +1,5 @@
 ---
-title: Осуществление голосовых вызовов через Skype | Документы Майкрософт
+title: Осуществление голосовых вызовов через Skype — Служба Azure Bot
 description: Узнайте, как совершать голосовые вызовы в Skype с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4a6d634f1b199358830674042cc289742c7efc10
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3d21bcbea0fb6d164b1eafad855f1db854df1876
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298425"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793630"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Осуществление голосовых вызовов через Skype
 
@@ -166,7 +166,7 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 }
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Полный пример реализации поддержки голосовых вызовов через Skype с помощью пакета SDK Bot Framework для .NET см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">примере бота для вызовов Skype</a> на сайте GitHub.
 

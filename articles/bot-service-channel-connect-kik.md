@@ -1,5 +1,5 @@
 ---
-title: Подключение бота к приложению Kik | Документация Майкрософт
+title: Подключение бота к Kik — Служба Azure Bot
 description: Сведения о настройке подключения бота к Kik.
 keywords: подключение бота, канал ботов, бот Kik, учетные данные, настройка, телефон
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 9024de58fd40fc3ef9f3c064a23b5e0811c20a89
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 640c430786bbba6ec78d6ce3b1c02d8955a54b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298362"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791990"
 ---
 # <a name="connect-a-bot-to-kik"></a>Подключение бота к Kik
 

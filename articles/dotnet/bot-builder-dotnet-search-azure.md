@@ -1,5 +1,5 @@
 ---
-title: Создание взаимодействия на основе данных с помощью Поиска Azure | Документация Майкрософт
+title: Создание взаимодействия на основе данных с помощью Поиска Azure (C# версии 3) — Служба Azure Bot
 description: Узнайте, как создать взаимодействие на основе данных с помощью Поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Framework для .NET и Поиска Azure.
 author: matthewshim-ms
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2328357c372cabc186e589ccbf65f36517d4789c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 2cdf73fcb5152768d3613cf78f209ebf79ca1edc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297816"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798548"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -27,7 +27,7 @@ ms.locfileid: "70297816"
 
 Поиск Azure — это служба Azure, которая обеспечивает поиск по ключевым словам, встроенные лингвистические правила, настраиваемую оценку, фасетную навигацию и многое другое. Поиск Azure может индексировать содержимое из различных источников, включая базы данных SQL Azure, DocumentDB, хранилище BLOB-объектов и хранилище таблиц. Он поддерживает принудительное индексирование для других источников данных и может открывать PDF-файлы, документы Office и другие форматы, содержащие неструктурированные данные. После сбора содержимое переходит в индекс службы поиска Azure, которой бот может отправлять запросы.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Установите пакет Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) в проект бота.
 

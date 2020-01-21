@@ -1,5 +1,5 @@
 ---
-title: Создание сообщений | Документация Майкрософт
+title: Создание сообщений — Служба Azure Bot
 description: Узнайте, как создавать сообщения с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7e2f48a3450154de9e2465f9d0d992ace4f3996f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1837b302b8d0b1d05e16d4d979b5807fa3e2d268
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299800"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790849"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -77,7 +77,7 @@ session.send(customMessage);
 
 Для установки и получения свойств сообщения используются методы объекта. В следующей таблице приведен список методов, которые можно вызывать для установки и получения различных свойств **Message**.
 
-| Метод | ОПИСАНИЕ |
+| Метод | Description |
 | ---- | ---- | 
 | [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | Добавляет вложение в сообщение.|
 | [`addEntity(obj:Object)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | Добавляет сущность в сообщение. |
@@ -100,7 +100,7 @@ session.send(customMessage);
 | [`composePrompt(session:Session, prompts:string[], args?:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#composeprompt-1) | Объединяет массив запросов в единый локализованный запрос и затем, при необходимости, заполняет слоты шаблона запросов переданными аргументами. |
 | [`randomPrompt(prompts:TextType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#randomprompt) | Получает случайный запрос из переданного массива **prompts*. |
 
-## <a name="next-step"></a>Дальнейшие действия
+## <a name="next-step"></a>Следующий шаг
 
 > [!div class="nextstepaction"]
 > [Отправка и получение вложений](bot-builder-nodejs-send-receive-attachments.md)

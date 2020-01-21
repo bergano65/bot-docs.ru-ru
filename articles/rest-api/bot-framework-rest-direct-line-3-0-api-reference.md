@@ -1,5 +1,5 @@
 ---
-title: Справочник по программному интерфейсу Direct Line API 3.0 | Документация Майкрософт
+title: Справочник по программному интерфейсу Direct Line API 3.0 — Служба Azure Bot
 description: Узнайте о заголовках, кодах состояния HTTP, схеме, операциях и объектах в Direct Line API 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 618b2ffe99114679aa5592b816adf6e1b82be83e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 24dfb2e1ef95dcc53e037fc3c30c4a7c74b114ad
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167184"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789585"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Справочник по программному интерфейсу Direct Line API 3.0
 
@@ -54,7 +54,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 > [!NOTE]
 > Также в пути подключения WebSocket используется код состояния HTTP 101, но, вероятно, его уже обрабатывает ваш клиент WebSocket.
 
-### <a name="errors"></a>Errors
+### <a name="errors"></a>ошибки
 
 Любой ответ, указывающий код состояния HTTP в диапазоне 4xx или 5xx, будет содержать в тексте ответа объект [ErrorResponse][], который предоставляет сведения об ошибке. Если вы получите сообщение об ошибке в диапазоне 4xx, проверьте объект **ErrorResponse**, чтобы определить причину ошибки и устранить проблему, прежде чем повторно отправлять запрос.
 
@@ -90,7 +90,7 @@ HTTP/1.1 502 Bad Gateway
 
 Используйте эти операции для создания или обновления токена, который клиент может использовать для доступа к одному диалогу.
 
-| Операция | ОПИСАНИЕ |
+| Операция | Description |
 |----|----|
 | [Создание токена](#generate-token) | Создает токен для нового диалога. |
 | [Обновление токена](#refresh-token) | Обновляет токен. |
@@ -108,7 +108,7 @@ POST /v3/directline/tokens/generate
 | **Текст запроса** | Объект [TokenParameters](#tokenparameters-object) |
 | **Возвращает** | Объект [Conversation](#conversation-object). |
 
-### <a name="refresh-token"></a>Обновление токена
+### <a name="refresh-token"></a>Refresh Token
 
 Обновляет токен.
 
@@ -125,7 +125,7 @@ POST /v3/directline/tokens/refresh
 
 Используйте эти операции, чтобы открыть диалог с ботом и обменяться сообщениями между клиентом и ботом.
 
-| Операция | ОПИСАНИЕ |
+| Операция | Description |
 |----|----|
 | [Начало диалога](#start-conversation) | Открывает новый диалог с ботом. |
 | [Получение сведений о диалоге](#get-conversation-information) | Получает сведения о существующем диалоге. Эта операция создает URL-адрес потока WebSocket, который позволяет клиенту [повторно подключиться](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) к диалогу. |
@@ -201,7 +201,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 > [!NOTE]
 > Загруженные файлы удаляются через 24 часа.
 
-## <a name="schema"></a>Схема
+## <a name="schema"></a>схема
 
 Схема Direct Line 3.0 включает все объекты, которые определены в [схеме Bot Framework](bot-framework-rest-connector-api-reference.md#schema), а также объекты, которые связаны с Direct Line.
 
@@ -209,7 +209,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 Определяет набор действий.
 
-| Свойство | type | ОПИСАНИЕ |
+| Свойство | Тип | Description |
 |----|----|----|
 | **действия** | [Действие][][] | Массив объектов **Activity**. |
 | **watermark** | строка | Максимальное значение для водяного знака действий в наборе. Клиент может использовать значение `watermark`, чтобы указать последнее полученное им сообщение, при [получении новых действий от бота](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) или при [создании нового URL-адреса потока WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
@@ -218,7 +218,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 Определяет диалог Direct Line.
 
-| Свойство | type | ОПИСАНИЕ |
+| Свойство | Тип | Description |
 |----|----|----|
 | **conversationId** | строка | Идентификатор, который уникально идентифицирует диалог, для которого действует указанный токен. |
 | **eTag** | строка | ETag HTTP (тег сущности). |
@@ -231,7 +231,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 Параметры для создания токена.
 
-| Свойство | type | ОПИСАНИЕ |
+| Свойство | Тип | Description |
 |----|----|----|
 | **eTag** | строка | ETag HTTP (тег сущности). |
 | **trustedOrigins** | string[] | Доверенные источники для внедрения в токен. |

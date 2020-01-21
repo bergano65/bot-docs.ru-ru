@@ -1,5 +1,5 @@
 ---
-title: Повторное подключение к диалогу | Документация Майкрософт
+title: Повторное подключение к общению — Служба Azure Bot
 description: Сведения о повторном подключении к диалогу с помощью API Direct Line версии 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/09/2019
-ms.openlocfilehash: 3197b4f0e3d8d2cc07cea967f4ddf0738e3e27e9
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c3bca14fe3c909417d016c01a9c48f9ec41c8ba4
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299554"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789331"
 ---
 # <a name="reconnect-to-a-conversation"></a>Повторное подключение к диалогу
 

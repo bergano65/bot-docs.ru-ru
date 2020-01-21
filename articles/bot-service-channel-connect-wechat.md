@@ -1,5 +1,5 @@
 ---
-title: Подключение бота к WeChat | Документация Майкрософт
+title: Подключение бота к WeChat — Служба Azure Bot
 description: Сведения о настройке подключения бота к WeChat.
 keywords: WeChat, Tencent, канал бота, приложение WeChat, бот WeChat, идентификатор приложения, секрет приложения, учетные данные
 author: seaen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: egorn
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: aee02ba1707f08fbcb4479b37edd065fd28efd8f
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 9abba3093ce819f7ebc07bb03e342da797971f25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443092"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791795"
 ---
 # <a name="connect-a-bot-to-wechat"></a>Подключение бота к WeChat
 
@@ -48,7 +48,7 @@ WeChat для Microsoft Bot Framework представляет собой ада
 
 Проект Bot представляет собой обычный проект на основе пакета SDK для Bot Framework версии 4. Прежде чем открывать проект, необходимо попробовать запустить бота. Скачайте [адаптер WeChat для Bot Framework](https://github.com/microsoft/BotFramework-WeChat/).
 
-### <a name="prerequisites"></a>Предварительные требования
+### <a name="prerequisites"></a>предварительные требования
 
     .NET Core SDK (version 2.2.x)
 

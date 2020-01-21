@@ -1,5 +1,5 @@
 ---
-title: Руководство по использованию идентификаторов в Bot Framework | Документы Майкрософт
+title: Руководство по использованию идентификаторов в Bot Framework — Служба Azure Bot
 description: В этом руководстве описываются характеристики полей идентификаторов в протоколе Bot Framework версии 3.
 keywords: идентификатор, боты, протокол
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 8a9fa38a579bbe083f960caf5f600a1c5842045e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1e32c47c394a3dafe4d49d2b23107a46610df14f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298629"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788746"
 ---
 # <a name="id-fields-in-the-bot-framework"></a>Поля идентификаторов в Bot Framework
 

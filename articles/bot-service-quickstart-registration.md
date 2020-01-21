@@ -1,5 +1,5 @@
 ---
-title: Создание службы "Регистрация каналов бота" с помощью службы Bot | Документация Майкрософт
+title: Создание службы "Регистрация каналов бота" с помощью службы Bot — Служба Azure Bot
 description: Узнайте, как зарегистрировать имеющийся бот с помощью службы Bot.
 ms.author: kamrani
 manager: kamrani
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 78de3676332561aafd4b24f755962b614cb9a27d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 4471507ff64e69ca2d438d55ccf8ba7e08fbcdfd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491563"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794729"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>Регистрация бота с помощью службы Azure Bot
 

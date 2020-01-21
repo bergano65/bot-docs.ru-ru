@@ -1,5 +1,5 @@
 ---
-title: Управление данными о состоянии пользователя с помощью Azure Cosmos DB | Документация Майкрософт
+title: Управление данными о состоянии пользователя с помощью Azure Cosmos DB (JS версии 3) — Служба Azure Bot
 description: Узнайте, как сохранять и извлекать данные о состоянии в Azure Cosmos DB с помощью пакета SDK Bot Framework для Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dcf4b4cbeb9e0827f0baa4d1a799355bd422a9de
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e878972dab75813f7a977244d4bce06f3d6a72a2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299692"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790369"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Управление данными о состоянии пользователя с помощью Azure Cosmos DB для Node.js
 
@@ -28,7 +28,7 @@ ms.locfileid: "70299692"
 - базы данных с данными о состоянии не используются совместно с другими ботами;
 - возможность хранения более 32 КБ.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - [Node.js](https://nodejs.org/en/).
 - [Bot Framework Emulator](~/bot-service-debug-emulator.md).
@@ -73,14 +73,14 @@ npm install --save botbuilder-azure
    ```
    Значения `host` и `masterKey` можно найти в меню **Ключи** базы данных. Если записи `database` и `collection` в базе данных Azure не существуют, они будут созданы автоматически.
 
-3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к базе данных Azure. Во-первых, создайте экземпляр `DocumentDBClient`, который передается в параметры конфигурации подключения (определяется как `documentDbOptions` сверху). Затем создайте экземпляр `AzureBotStorage`, который передается в объект `DocumentDBClient`. Например:
+3. С помощью модуля `botbuilder-azure` создайте два новых объекта для подключения к базе данных Azure. Во-первых, создайте экземпляр `DocumentDBClient`, который передается в параметры конфигурации подключения (определяется как `documentDbOptions` сверху). Затем создайте экземпляр `AzureBotStorage`, который передается в объект `DocumentDBClient`. Пример:
    ```javascript
    var docDbClient = new azure.DocumentDbClient(documentDbOptions);
 
    var cosmosStorage = new azure.AzureBotStorage({ gzipData: false }, docDbClient);
    ```
 
-4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранилища в памяти. Например:
+4. Укажите, что вы хотите использовать пользовательскую базу данных вместо хранилища в памяти. Пример:
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {
@@ -104,14 +104,14 @@ node app.js
 На этом этапе бот выполняется локально. Запустите эмулятор, а затем подключитесь к боту из эмулятора.
 
 1. Введите <strong>http://localhost:port-number/api/messages</strong> в адресную строку эмулятора. Номер порта должен соответствовать номеру, указанному в браузере, где выполняется приложение. Поля <strong>Идентификатор приложения Microsoft</strong> и <strong>Пароль приложения Microsoft</strong> пока можно не заполнять. Вы получите эти сведения позже, когда выполните [регистрацию бота](~/bot-service-quickstart-registration.md).
-2. Щелкните **Подключить**.
+2. Нажмите кнопку **Соединить**.
 3. Протестируйте бот, отправив ему сообщение. Общайтесь с ботом обычным образом. Когда закончите, перейдите к **Обозревателю службы хранилища** и просмотрите сохраненные данные о состоянии.
 
 ## <a name="view-state-data-on-azure-portal"></a>Просмотр данных о состоянии на портале Azure
 
 Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)** , чтобы убедиться, что сохраняются сведения о состоянии от бота.
 
-## <a name="next-step"></a>Дальнейшие действия
+## <a name="next-step"></a>Следующий шаг
 
 Теперь, когда имеется полный контроль над данными о состоянии бота, узнайте, как можно использовать их для более эффективного управления потоком общения.
 

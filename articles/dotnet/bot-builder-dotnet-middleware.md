@@ -1,5 +1,5 @@
 ---
-title: Перехват сообщений | Документация Майкрософт
+title: Перехват сообщений (C# версии 3) — Служба Azure Bot
 description: Узнайте, как перехватывать сообщения между пользователем и ботом с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc2dd7b26f4c13b28d58a10c4dde103ce3f1c558
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bf7794a4f79a623b51d089334f259af4e994beb6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297381"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788871"
 ---
 # <a name="intercept-messages"></a>Перехват сообщений
 
@@ -59,7 +59,7 @@ public class DebugActivityLogger : IActivityLogger
 
 Несмотря на то что в этом примере просто выводятся некоторые сведения о каждом сообщении, можно обновить метод `LogAsync`, чтобы указать действия, которые необходимо выполнить над каждым сообщением. 
 
-## <a name="sample-code"></a>Пример кода 
+## <a name="sample-code"></a>Образец кода 
 
 Полный пример, в котором показано, как перехватывать сообщения и записывать их в журнал с помощью пакета SDK Bot Framework для .NET, см. в примере <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-Middleware" target="_blank">Middleware Bot Sample</a> (Пример бота ПО промежуточного слоя) на сайте GitHub. 
 

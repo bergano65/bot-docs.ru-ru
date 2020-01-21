@@ -1,5 +1,5 @@
 ---
-title: Сущности и типы действий | Документация Майкрософт
+title: Сущности и типы действий — Служба Azure Bot
 description: Сущности и типы действий.
 keywords: Упоминание сущности. Типы действий. Использование сущностей
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
-ms.openlocfilehash: e1eae45702a1eee94714f96425050948310c7520
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: cd11cc1fbbacb7e555da4e00337d6fd4b79a4df6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693119"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789081"
 ---
 # <a name="entities-and-activity-types"></a>Сущности и типы действий
 
@@ -31,9 +31,9 @@ ms.locfileid: "71693119"
 Чтобы упомянуть пользователя в сообщении, заполните свойство сущностей сообщения *упомянутым* объектом.
 Объект mention содержит следующие свойства.
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
-| type | Тип сущности (Mention). |
+| Тип | Тип сущности (Mention). |
 | Mentioned | Объект учетной записи канала, который показывает, какой пользователь был упомянут. | 
 | текст | Текст внутри свойства *activity.text* представляет собой само упоминание (может быть пустым или иметь значение NULL). |
 
@@ -69,23 +69,23 @@ entity = [mention];
 
 Объект place содержит следующие свойства.
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
-| type | Тип сущности (Place). |
+| Тип | Тип сущности (Place). |
 | Адрес | Описание или почтовый адрес объекта (будущее) |
 | Географические | GeoCoordinates |
 | HasMap | URL-адрес карты или объект map (будущее) |
-| ИМЯ | Название расположения. |
+| Имя | Название расположения. |
 
 Объект geoCoordinates содержит следующие свойства.
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
-| type | Тип сущности (GeoCoordinates). |
-| ИМЯ | Название расположения. |
+| Тип | Тип сущности (GeoCoordinates). |
+| Имя | Название расположения. |
 | Долгота | Долгота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
 | Широта | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
-| Elevation | Высота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
+| Elevation | Высота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). |
 
 Данный пример кода показывает, как добавить упоминание сущности в коллекцию.
 

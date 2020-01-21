@@ -1,5 +1,5 @@
 ---
-title: Как работает служба Azure Bot | Документация Майкрософт
+title: Как работает служба Azure Bot — Служба Azure Bot
 description: Узнайте о функциях и возможностях службы Azure Bot.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 1a49b9c3653af1a9fa56724a1562d34eb1834f43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405809"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794631"
 ---
 # <a name="how-bot-service-works"></a>Как работает служба Azure Bot
 
@@ -58,7 +58,7 @@ ms.locfileid: "67405809"
 
 Во время создания бота с помощью службы Azure Bot укажите имя боту, настройте ему план размещения, выберите ценовую категорию и настройте другие параметры. После создания бота, можно изменить его параметры, настроить его для запуска на одном или нескольких каналах и протестировать в веб-чате. 
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Create a bot with Bot Service](bot-service-quickstart.md) (Создание бота с помощью службы Azure Bot)

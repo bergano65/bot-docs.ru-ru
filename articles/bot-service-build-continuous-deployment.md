@@ -1,5 +1,5 @@
 ---
-title: Настройка непрерывного развертывания для службы Bot | Документация Майкрософт
+title: Настройка непрерывного развертывания для службы Bot — Служба Azure Bot
 description: Узнайте, как настроить непрерывное развертывание из системы управления версиями для службы Bot.
 keywords: continuous deployment, publish, deploy, azure portal
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ef5901f778d34983e5725e983d39f14b6fa0014
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 7662e5e2d933d7a4500da8eadc0d914f9978800d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491297"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789196"
 ---
 # <a name="set-up-continuous-deployment"></a>Непрерывное развертывание с использованием GIT в службе приложений Azure
 

@@ -1,5 +1,5 @@
 ---
-title: Создание взаимодействия на основе данных с помощью поиска Azure | Документы Майкрософт
+title: Создание взаимодействия на основе данных с помощью Поиска Azure (JS версии 3) — Служба Azure Bot
 description: Узнайте, как создать взаимодействие на основе данных с помощью поиска Azure и помочь пользователям ориентироваться в большом объеме материалов в боте с помощью пакета SDK Bot Framework для Node.js и Поиска Azure.
 author: matthewshim-ms
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 44d84cf84362105bfd1f97a7993d4b18d73d7eae
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299754"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790643"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Создание взаимодействия на основе данных с помощью Поиска Azure 
 
@@ -35,7 +35,7 @@ ms.locfileid: "70299754"
 * [lodash](https://www.npmjs.com/package/lodash)
 * [request](https://www.npmjs.com/package/request)
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Ниже перечислены **обязательные компоненты**: 
 - Подписка Azure и первичный ключ поиска Azure. Его значение можно найти на портале Azure.
@@ -148,7 +148,7 @@ function searchHitAsCard(showSave, searchHit) {
 }
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Два полноценных примера ботов с поддержкой Поиска Azure, основанных на пакете SDK Bot Framework для Node.js, вы найдете в [примере бота для недвижимости](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/RealEstateBot) и [примере бота для вакансий](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-Search/JobListingBot), размещенных в репозитории GitHub. 
 

@@ -1,5 +1,5 @@
 ---
-title: Основные понятия Direct Line API 3.0 в Bot Framework | Документация Майкрософт
+title: Основные понятия Direct Line API 3.0 в Bot Framework для службы Bot
 description: Обзор основных понятий Direct Line API 3.0 в Bot Framework.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 83273ade9aa79266c20287682ea3c151b1b0f8a5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299597"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789446"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Основные понятия Direct Line API 3.0
 
@@ -46,11 +46,11 @@ Bot Framework предоставляет клиентские библиотек
 
 ::: moniker range="azure-bot-service-3.0"
 
-### <a name="sample-code"></a>Пример кода
+### <a name="sample-code"></a>Образец кода
 
 Репозиторий GitHub <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> содержит несколько примеров, в которых показано, как с помощью C# и Node.js. использовать Direct Line API 3.0.
 
-| Образец | Язык | ОПИСАНИЕ |
+| Образец | Язык | Description |
 |----|----|----|
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Пример бота Direct Line</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Пример бота Direct Line (использующего клиент WebSockets)</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |

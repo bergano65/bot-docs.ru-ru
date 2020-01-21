@@ -1,5 +1,5 @@
 ---
-title: Подключение бота к каналу "Веб-чат" | Документация Майкрософт
+title: Подключение бота к каналу "Веб-чат" — Служба Azure Bot
 description: Узнайте, как использовать элемент управления "Веб-чат" на веб-странице для бота, подключенного к каналу "Веб-чат".
 keywords: web chat, bot channel, web page, secret key, iframe, HTML
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: a77f621d46b9ce69d92b83a9f6ada0c9fbf6286e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491279"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791755"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Подключение бота к веб-чату
 

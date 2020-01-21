@@ -1,5 +1,5 @@
 ---
-title: Создание собственных запросов на сбор данных, вводимых пользователем | Документация Майкрософт
+title: Создание собственных запросов на сбор данных, вводимых пользователем — Служба Azure Bot
 description: Сведения о том, как управлять потоком общения с помощью простых запросов из пакета SDK Bot Framework.
 keywords: conversation flow, prompts, conversation state, user state, custom prompts
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4ae38a7b4f6a7769f8839fb44a82b3600abc6318
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 8c0572c7c92abfc99ab01c1d734d5ed0dcc463bb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491425"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791303"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 

@@ -1,5 +1,5 @@
 ---
-title: Управление ботом | Документы Майкрософт
+title: Управление службой ботов — Служба Azure Bot
 description: Сведения об управлении ботами на портале службы ботов.
 keywords: портал azure, управление ботами, тестирование в веб-чате, MicrosoftAppID, MicrosoftAppPassword, параметры приложения
 author: v-ducvo
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 8/13/2019
-ms.openlocfilehash: 2aea5c5feb144f5e9b1cb7f2947f409f827fb009
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 9a62a6d2bc1d47862d8ab25250dd3839d3e21d56
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890496"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794159"
 ---
 # <a name="manage-a-bot"></a>Управление ботом
 
@@ -33,7 +33,7 @@ ms.locfileid: "69890496"
 
 ![Управление ботом](~/media/azure-manage-a-bot/bot-management.png)
 
-| Параметр |  ОПИСАНИЕ |
+| Параметр |  Description |
 | ---- | ---- |
 | **Сборка** | На вкладке "Сборка" содержатся параметры для внесения изменений в бот. Эти параметры недоступны для **бота регистрации**. |
 | **Тестирование в веб-чате** | Используйте интегрированный элемент управления веб-чата для быстрого тестирования бота. |
@@ -56,7 +56,7 @@ ms.locfileid: "69890496"
 > [!NOTE]
 > Служба бота **Регистрация каналов бота** поставляется с идентификатором *MicrosoftAppID*, но поскольку с ней не связана ни одна служба приложений, для нее нет колонки **Параметры приложения**, где вы можете найти значение *MicrosoftAppPassword*. Чтобы получить пароль, его необходимо создать. Сведения о создании пароля для службы **Регистрация каналов бота** см. в разделе [Пароль регистрации каналов бота](bot-service-quickstart-registration.md#get-registration-password).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда вы ознакомились с колонкой службы ботов на портале Azure, узнайте, как использовать сетевой редактор кода для настройки вашего бота.
 > [!div class="nextstepaction"]
 > [Использование сетевого редактора кода](bot-service-build-online-code-editor.md)

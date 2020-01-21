@@ -1,5 +1,5 @@
 ---
-title: Управление потоком общения с помощью диалогов | Документация Майкрософт
+title: Управление потоком общения с помощью диалогов — Служба Azure Bot
 description: Узнайте, как моделировать общение и управлять потоком общения с помощью диалогов и пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e183c375e16a951ed77819ab982790944ac0c13
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 16c0835216fc32e3a62241ebc19ffb616227ce43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298827"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788861"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Управление потоком общения с помощью диалогов
 
@@ -126,13 +126,13 @@ private async Task NameDialogResumeAfter(IDialogContext context, IAwaitable<stri
 }
 ```
 
-## <a name="sample-code"></a>Пример кода 
+## <a name="sample-code"></a>Образец кода 
 
 Полный пример, в котором показано, как управлять общением с помощью диалогов из пакета SDK Bot Framework для .NET, приведен в [примере Basic Multi-Dialog](https://aka.ms/v3cs-MultiDialog-Sample) на сайте GitHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Диалоги](bot-builder-dotnet-dialogs.md)
-- [Проектирование потока беседы и управление им](../bot-service-design-conversation-flow.md)
+- [Проектирование потока диалога и управление им](../bot-service-design-conversation-flow.md)
 - [Простой пример с несколькими диалогами (GitHub)](https://aka.ms/v3cs-MultiDialog-Sample)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>

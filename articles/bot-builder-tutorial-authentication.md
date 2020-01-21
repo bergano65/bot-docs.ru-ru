@@ -1,5 +1,5 @@
 ---
-title: Добавление проверки подлинности к боту с помощью службы Azure Bot | Документация Майкрософт
+title: Включение проверки подлинности для бота с помощью службы Azure Bot — Служба Azure Bot
 description: Сведения об использовании функции проверки подлинности службы Azure Bot для добавления боту функции единого входа.
 ms.author: kamrani
 manager: kamrani
@@ -8,12 +8,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2d36a1465fd1a81b0c5f30bab52824a6130c215e
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: e5b04a9b0d5d4c4974b5aaf051d7a01bdb9302f6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491206"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788881"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 

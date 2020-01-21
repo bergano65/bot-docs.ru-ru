@@ -1,5 +1,5 @@
 ---
-title: Управление состоянием | Документация Майкрософт
+title: Управление состоянием — Служба Azure Bot
 description: Использование сведений о состоянии с помощью пакета SDK для Bot Framework.
 keywords: state, bot state, conversation state, user state
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 23a7c4e0e0009631ebb9485f1f565c3a98d362ca
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 05e06f65203566fd9176303b8680b5196368f7d3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299414"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798729"
 ---
 # <a name="managing-state"></a>Управление состоянием
 

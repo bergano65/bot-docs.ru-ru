@@ -1,5 +1,5 @@
 ---
-title: Аналитические сведения бота | Документация Майкрософт
+title: Аналитика бота — Служба Azure Bot
 description: Узнайте, как использовать сбор и анализ данных для оптимизации бота с помощью аналитики в Bot Framework.
 keywords: bot analytics, application insights, traffic, latency, integrations, AppInsights
 author: JonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/04/2018
-ms.openlocfilehash: 324050c625f5d9666811f63191d783643816104c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 88f8c629bd907bf6f9af3ef189bfb6e329b36b02
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298693"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793610"
 ---
 # <a name="bot-analytics"></a>Аналитика бота
 

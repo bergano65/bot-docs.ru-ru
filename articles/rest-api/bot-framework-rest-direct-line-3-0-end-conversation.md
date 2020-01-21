@@ -1,5 +1,5 @@
 ---
-title: Завершение диалога | Документы Майкрософт
+title: Завершение диалога в службе Bot
 description: Узнайте, как завершить диалог с помощью API Direct Line версии 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3006672ba8459ebec7d754a7ec31679debdba4aa
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4b8a3046ee53d90fe2abdc97a3c931a4f67c051f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876170"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789436"
 ---
 # <a name="end-a-conversation"></a>Завершение диалога
 
-**EndOfConversation** — это [действие](https://aka.ms/botSpecs-activitySchema) означает, что канал или бот завершили диалог. 
+**EndOfConversation** — это [действие](https://aka.ms/botSpecs-activitySchema), означающее что канал или бот завершил диалог. 
 
 > [!NOTE] 
 > Хотя событие **endOfConversation** отправляется несколькими каналами, канал Cortana — это единственный канал, который его принимает. Другие каналы, включая Direct Line, не реализуют эту функцию, отклоняя или пересылая вместо этого действие — каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.

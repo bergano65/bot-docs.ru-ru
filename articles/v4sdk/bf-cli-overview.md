@@ -1,5 +1,5 @@
 ---
-title: Общие сведения об интерфейсе командной строки (CLI) Azure Bot Framework | Документация Майкрософт
+title: Общие сведения об интерфейсе командной строки (CLI) Azure Bot Framework — Служба Azure Bot
 description: Сведения об интерфейсе командной строки (CLI) в Bot Framework.
 keywords: Интерфейс командной строки Bot Framework, Bot Framework CLI
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4780d5258af7d2c93fafece361326fd2b0f8df77
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 8b885b19ed22c4d91163b59abe4e253018531b59
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443192"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791431"
 ---
 <!--TODO:
 - [?] Add to TOC: Reference/Bot Framework CLI/Reference
@@ -26,7 +26,7 @@ ms.locfileid: "73443192"
 
 Интерфейс командной строки (CLI) Bot Framework представляет собой кроссплатформенное средство, с помощью которого можно управлять ботами и связанными с ними службами. Он заменяет коллекцию старых автономных средств CLI, объединяя их в единый инструмент. 
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [Node.js](https://nodejs.org/) версии 10.14.1 или более поздней.
 
@@ -42,7 +42,7 @@ npm i -g @microsoft/botframework-cli
 
 В настоящее время поддерживаются следующие команды.
 
-| Ранее использовавшийся инструмент | Набор команд Bot Framework | ОПИСАНИЕ |
+| Ранее использовавшийся инструмент | Набор команд Bot Framework | Description |
 | :--- | :--- | :--- |
 | ChatDown | [`bf chatdown`](bf-cli-reference.md#bf-chatdown) | Команды для работы с файлами диалога чата ( **.chat**). |
 | Нет | [`bf config`](bf-cli-reference.md#bf-config) | Настраивает разные параметры в интерфейсе командной строки. |
@@ -89,5 +89,5 @@ Bot Framework CLI содержит средства инструментиров
 - Сообщить о проблеме или направить запрос о реализации функции можно [здесь](https://github.com/microsoft/botframework-cli/issues).
 - Известные проблемы описаны [здесь](https://github.com/microsoft/botframework-cli/labels/known-issues).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 - [Справочник по интерфейсу командной строки Bot Framework](bf-cli-reference.md)

@@ -1,5 +1,5 @@
 ---
-title: Проверка подлинности запросов | Документы Майкрософт
+title: Запросы проверки подлинности — Служба Azure Bot
 description: Сведения о проверке подлинности запросов API в API службы Bot Connector и API службы "Состояние бота".
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 60a246d60f3b74b037f793a306d58df1a5398141
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410442"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790792"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -31,7 +31,7 @@ ms.locfileid: "74410442"
 
 Для установления доверительных отношений между ботом и службой Bot Connector используются следующие четыре технологии проверки подлинности.
 
-| Технология | ОПИСАНИЕ |
+| Технология | Description |
 |----|----|
 | **SSL/TLS** | SSL/TLS используется для всех подключений между службами. Сертификаты `X.509v3` используются для идентификации всех служб HTTPS. **Клиенты всегда должны проверять сертификаты службы, чтобы убедиться в их надежности и допустимости.** (В рамках этой схемы сертификаты клиента не используются.) |
 | **OAuth 2.0** | OAuth 2.0 создает маркер безопасности с использованием службы входа в учетную запись Azure Active Directory (Azure AD) версии 2 для. С помощью этого маркера которого бот может отправлять сообщения. Этот маркер работает между службами. Вход пользователя не требуется. |
@@ -146,7 +146,7 @@ payload:
 
 ![Проверка подлинности вызовов из службы Bot Connector к боту](../media/connector/auth_bot_connector_to_bot.png)
 
-### <a id="openid-metadata-document"></a> Шаг 2. Получение документа метаданных OpenID
+### <a id="openid-metadata-document"></a> Шаг 2. Получение документа метаданных OpenID
 
 Документ метаданных OpenID указывает расположение второго документа, в котором приведены допустимые ключи подписи службы Bot Connector. Чтобы получить документ метаданных OpenID, выполните следующий запрос по протоколу HTTPS:
 
@@ -173,9 +173,9 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 }
 ```
 
-### <a id="connector-to-bot-step-3"></a> Шаг 3. Получение списка допустимых ключей подписи
+### <a id="connector-to-bot-step-3"></a> Шаг 3. Получение списка допустимых ключей подписи
 
-Чтобы получить список допустимых ключей подписи, отправьте запрос `GET` по протоколу HTTPS на URL-адрес, указанный в свойстве `jwks_uri` в документе метаданных OpenID. Например:
+Чтобы получить список допустимых ключей подписи, отправьте запрос `GET` по протоколу HTTPS на URL-адрес, указанный в свойстве `jwks_uri` в документе метаданных OpenID. Пример:
 
 ```http
 GET https://login.botframework.com/v1/.well-known/keys
@@ -266,9 +266,9 @@ GET https://login.microsoftonline.com/botframework.com/v2.0/.well-known/openid-c
 }
 ```
 
-### <a id="emulator-to-bot-step-3"></a> Шаг 3. Получение списка допустимых ключей подписи
+### <a id="emulator-to-bot-step-3"></a> Шаг 3. Получение списка допустимых ключей подписи
 
-Чтобы получить список допустимых ключей подписи, отправьте запрос `GET` по протоколу HTTPS на URL-адрес, указанный в свойстве `jwks_uri` в документе метаданных OpenID. Например:
+Чтобы получить список допустимых ключей подписи, отправьте запрос `GET` по протоколу HTTPS на URL-адрес, указанный в свойстве `jwks_uri` в документе метаданных OpenID. Пример:
 
 ```http
 GET https://login.microsoftonline.com/common/discovery/v2.0/keys 

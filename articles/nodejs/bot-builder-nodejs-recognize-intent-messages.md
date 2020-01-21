@@ -1,5 +1,5 @@
 ---
-title: Распознавание намерения из содержимого сообщений | Документация Майкрософт
+title: Распознавание намерений из содержимого сообщения — Служба Azure Bot
 description: Узнайте, как распознавать намерение пользователя с помощью регулярных выражений или на основе содержимого сообщения.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 370ba1fc756ecea8fd745067109fdb13b6e825a9
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: cab45fa2eca7fad94ce8a66e2a17495a529935c3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026311"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790687"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Распознавание намерений пользователя из содержимого сообщения
 
@@ -62,7 +62,7 @@ ms.locfileid: "70026311"
 
 Пакет SDK Bot Framework включает [пример][DisambiguationSample], который показывает, как реализовать в боте пользовательскую логику устранения неоднозначности с использованием [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Логика использования регулярных выражений и проверки содержимого сообщения может усложниться, особенно в том случае, если поток общения бота является открытым. Чтобы помочь боту обрабатывать более широкий диапазон речи и текстовых входных данных от пользователей и добавить ему понимание естественного языка, можно использовать службу распознавания намерений, например [LUIS][LUIS].
 

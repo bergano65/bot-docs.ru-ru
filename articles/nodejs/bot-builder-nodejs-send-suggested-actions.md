@@ -1,5 +1,5 @@
 ---
-title: Добавление предлагаемых действий к сообщениям | Документация Майкрософт
+title: Добавление предлагаемых действий в сообщения (JS версии 3) — Служба Azure Bot
 description: Сведения о добавлении предлагаемых действий в сообщения с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 384256e23500911b807658b56cb3225bf4cee65f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ebad14abfdef2e274562b17ca1945d709a2c8d54
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299735"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790389"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Добавление предлагаемых действий к сообщениям
 
@@ -34,7 +34,7 @@ ms.locfileid: "70299735"
 
 [!code-javascript[Send suggested actions](../includes/code/node-send-suggested-actions.js#sendSuggestedActions)]
 
-Когда пользователь выбирает одно из предложенных действий, бот получает сообщение от пользователя, которое содержит значение `value` соответствующих действий.
+Когда пользователь выбирает одно из предложенных действий, бот получает сообщение от пользователя, которое содержит значение `value` соответствующего действия.
 
 Учтите, что метод `imBack` отправит `value` в окно чата используемого канала. Если это нежелательное поведение, можно использовать метод `postBack`, который отправит выбор в бот, не отображая этот выбор в окне чата. Некоторые каналы не поддерживают `postBack`, но и в этих случаях метод будет работать как `imBack`.
 

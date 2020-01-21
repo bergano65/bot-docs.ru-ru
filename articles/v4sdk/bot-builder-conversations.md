@@ -1,5 +1,5 @@
 ---
-title: Беседы в пакете SDK Bot Framework | Документация Майкрософт
+title: Беседы в пакете SDK Bot Framework — Служба Azure Bot
 description: Концепция беседы в пакете SDK Bot Framework.
 keywords: conversation flow, recognize intent, single turn, multiple turn, bot conversation
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea5cf37ec788f68e8eea32ee6610f59ec286193c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e4c4f11999b9ab4b932e373db7eb27c6547cb537
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299397"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798685"
 ---
 # <a name="conversation-flow"></a>Поток общения
 [!INCLUDE[applies-to](../includes/applies-to.md)]
@@ -87,7 +87,7 @@ A bot communicates with a user on a channel by receiving activities from, and se
 
 Когда бот становится более сложным, можно просмотреть распределение последовательности потоков общения. Например, бот вызывает новую последовательность заказа, а затем вызовет последовательность поиска продукта. Затем пользователь выберет продукт и подтвердит завершение поиска продукта и завершит заказ.
 
-Но диалог редко строится так просто и логично. Пользователи не взаимодействуют в "стеках", они часто их меняют. Рассмотрим следующий пример.
+Но диалог редко строится так просто и логично. Пользователи не взаимодействуют в "стеках", они часто их меняют. Рассмотрим следующий пример:
 
 ![Пользователь говорит что-то непредвиденное.](./media/concept-conversation/interruption.png)
 
@@ -95,7 +95,7 @@ A bot communicates with a user on a channel by receiving activities from, and se
 
 * Пользователю сначала нужно ответить на вопрос.
 * Не обращайте внимания на все, что сделал пользователь ранее, сбросьте весь стек потоков и начните с самого начала, пытаясь ответить на вопрос пользователя.
-* Попытайтесь ответить на вопрос пользователя, а затем вернуться к вопросу с ответом "Да" или"Нет" и продолжить работу с того момента.
+* Попытаться ответить на вопрос пользователя, а затем вернуться к вопросу с ответом "Да" или"Нет" и продолжить работу с того момента.
 
 Нет единого правильного ответа на этот вопрос, лучшее решение будет зависеть от особенностей сценария и ожидания пользователя на ответ от бота. Дополнительные сведения об управлении потоком общения см. в статьях об [использовании диалогов](bot-builder-dialog-manage-conversation-flow.md) и [обработке прерываний](bot-builder-howto-handle-user-interrupt.md).
 
@@ -124,7 +124,7 @@ A bot communicates with a user on a channel by receiving activities from, and se
 * Бот не может начать общение. Тем не менее если он имеет идентификатор общения, то можно возобновить это общение.
 * Не все каналы поддерживают групповые беседы.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Управление простым процессом общения с помощью диалогов](bot-builder-dialog-manage-conversation-flow.md)

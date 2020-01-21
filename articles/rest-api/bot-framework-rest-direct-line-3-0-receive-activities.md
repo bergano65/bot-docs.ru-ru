@@ -1,5 +1,5 @@
 ---
-title: Получение действий от бота | Документация Майкрософт
+title: Получение действий от бота — Служба Azure Bot
 description: Узнайте, как получать действия от бота с помощью Direct Line API 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/13/2019
-ms.openlocfilehash: 1e5c48dd3782100f9393c3498baa2b0a7c728cb3
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: bfe40a33747dfd6724f6a5efe2104ffde01781bc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876142"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789375"
 ---
 # <a name="receive-activities-from-the-bot"></a>Получение действий от бота
 
@@ -173,6 +173,6 @@ HTTP/1.1 200 OK
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Начало общения](bot-framework-rest-direct-line-3-0-start-conversation.md)
-- [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)
+- [Повторное подключение к общению](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [Отправка действий боту](bot-framework-rest-direct-line-3-0-send-activity.md)
 - [Конец общения](bot-framework-rest-direct-line-3-0-end-conversation.md)

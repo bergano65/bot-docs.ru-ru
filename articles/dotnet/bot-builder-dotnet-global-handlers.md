@@ -1,5 +1,5 @@
 ---
-title: Реализация глобальных обработчиков сообщений | Документация Майкрософт
+title: Реализация глобальных обработчиков сообщений — Служба Azure Bot
 description: Сведения о том, как включить бот для прослушивания и обработки введенных пользователем данных, содержащих определенные ключевые слова, с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8e997b33e48964b5723d6cd1fef0b1e6542b4ba3
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5097c2c9e82932f118e77af64d7fadab92a56b17
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297234"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788834"
 ---
 # <a name="implement-global-message-handlers"></a>Реализация глобальных обработчиков сообщений
 
@@ -89,12 +89,12 @@ protected override async Task PostAsync(IActivity item, string state, Cancellati
 }
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
-Полный пример, в котором показано, как реализовывать глобальные обработчики сообщений с помощью пакета SDK Bot Framework для .NET, см. в примере <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers Sample</a> (Пример глобальных обработчиков сообщений) на портале GitHub.
+Полный пример, в котором показано, как реализовывать глобальные обработчики сообщений с помощью пакета SDK Bot Framework для .NET, см. в примере <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers Sample</a> (Пример глобальных обработчиков сообщений) на портале GitHub. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Проектирование потока диалога и управление им](../bot-service-design-conversation-flow.md)
 - <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Справочная информация по пакету SDK Bot Framework для .NET</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers Sample (GitHub)</a> (Пример глобальных обработчиков сообщений (GitHub))
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers Sample (GitHub)</a> (Пример глобальных обработчиков сообщений (GitHub))

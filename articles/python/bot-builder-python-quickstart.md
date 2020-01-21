@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4305a38a917c7e2bb1b7cd92f3bd007c1ed77d49
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 3df1e44b5643f0dae98e659d76b8e30224081782
+ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736836"
+ms.locfileid: "75756372"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Создание бота с помощью пакета SDK Bot Framework для Python
 
@@ -42,7 +42,7 @@ ms.locfileid: "75736836"
 cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Templates/echo.zip
 ```
 
-Эта команда создает Echo Bot на основе [этого шаблона](https://github.com/microsoft/botbuilder-python/tree/master/generators/app/templates/echo) на Python.
+Эта команда создает бот Echo на основе [этого шаблона](https://github.com/microsoft/botbuilder-python/tree/master/generators/app/templates/echo) на Python.
 
 3. После этого вам будет предложено ввести *имя* и *описание* бота. Присвойте боту имя `echo-bot` и задайте для него описание `A bot that echoes back user response.`, как показано ниже:
 

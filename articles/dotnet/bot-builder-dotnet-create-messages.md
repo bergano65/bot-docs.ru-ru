@@ -1,5 +1,5 @@
 ---
-title: Создание сообщений с помощью пакета SDK Bot Framework для .NET | Документация Майкрософт
+title: Создание сообщений с помощью пакета SDK Bot Framework для .NET в службе Bot
 description: Сведения о типичных свойствах сообщений в пакете SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bb75e49e50a479e0141000ef49d75559148fe43a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8f043afc1b4faad3f7edc66c7ef1d788c42d8403
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297302"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794675"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Бот будет отправлять [действия](bot-builder-dotnet-activities.md) **Message** для передачи информации пользователям, а также будет получать действия **Message** от пользователей. Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](bot-builder-dotnet-text-to-speech.md), [предлагаемые действия](bot-builder-dotnet-add-suggested-actions.md), [мультимедийные вложения](bot-builder-dotnet-add-media-attachments.md), [форматированные карточки](bot-builder-dotnet-add-rich-card-attachments.md) и [данные по каналу](bot-builder-dotnet-channeldata.md). 
+Бот будет отправлять [действия](bot-builder-dotnet-activities.md) **message** для передачи информации пользователям, а также будет получать действия **message** от пользователей. Некоторые сообщения могут состоять из простого текста, в то время как другие могут содержать более богатое содержимое, такое как [произносимый текст](bot-builder-dotnet-text-to-speech.md), [предлагаемые действия](bot-builder-dotnet-add-suggested-actions.md), [мультимедийные вложения](bot-builder-dotnet-add-media-attachments.md), [форматированные карточки](bot-builder-dotnet-add-rich-card-attachments.md) и [данные по каналу](bot-builder-dotnet-channeldata.md). 
 
 В этой статье описаны некоторые из наиболее часто используемых свойств сообщений.
 
@@ -45,9 +45,9 @@ ms.locfileid: "70297302"
 
 Многие каналы поддерживают способность бота или пользователя "упоминать" кого-то в контексте общения. Чтобы упомянуть пользователя в сообщении, заполните свойство `Entities` сообщения объектом `Mention`. Объект `Mention` содержит следующие свойства. 
 
-| Свойство | ОПИСАНИЕ | 
+| Свойство | Description | 
 |----|----|
-| type | Тип сущности (Mention). | 
+| Тип | Тип сущности (Mention). | 
 | Mentioned | Объект `ChannelAccount`, который показывает, какой пользователь был упомянут. | 
 | текст | Текст внутри свойства `Activity.Text` представляет собой само упоминание (может быть пустым или иметь значение NULL). |
 
@@ -64,20 +64,20 @@ ms.locfileid: "70297302"
 
 Объект `Place` содержит следующие свойства.
 
-| Свойство | ОПИСАНИЕ | 
+| Свойство | Description | 
 |----|----|
-| type | Тип сущности (Place). |
+| Тип | Тип сущности (Place). |
 | Адрес | Описание или `PostalAddress` объект (будущее). | 
 | Географические | GeoCoordinates | 
 | HasMap | URL-адрес карты или объект `Map` (будущее). |
-| ИМЯ | Название расположения. |
+| Имя | Название расположения. |
 
 Объект `GeoCoordinates` содержит следующие свойства.
 
-| Свойство | ОПИСАНИЕ | 
+| Свойство | Description | 
 |----|----|
-| type | Тип сущности (GeoCoordinates). |
-| ИМЯ | Название расположения. |
+| Тип | Тип сущности (GeoCoordinates). |
+| Имя | Название расположения. |
 | Долгота | Долгота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). | 
 | Широта | Широта расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). | 
 | Elevation | Высота расположения (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>). | 
@@ -110,7 +110,7 @@ ms.locfileid: "70297302"
 
 Свойство `SuggestedActions` действия Message может использоваться для представления кнопок, которых пользователь может коснуться для ввода входных данных. В отличие от кнопок, которые появляются в функциональных карточках (и которые остаются видимыми и доступными для пользователя даже после касания), кнопки, отображаемые в области предлагаемых действий, исчезнут, как только будет сделан выбор. Дополнительные сведения см. в разделе [Добавление предлагаемых действий к сообщениям](bot-builder-dotnet-add-suggested-actions.md).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Бот и пользователь могут отправлять друг другу сообщения. Если сообщение более сложное, бот может отправить в сообщении пользователю форматированную карточку. Форматированные карточки охватывают множество сценариев представления и взаимодействия, часто требуемые в большинстве ботов.
 

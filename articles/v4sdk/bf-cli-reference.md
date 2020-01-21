@@ -1,5 +1,5 @@
 ---
-title: Справочник по интерфейсу командной строки (CLI) Azure Bot Framework | Документация Майкрософт
+title: Справочные материалы об интерфейсе командной строки (CLI) Azure Bot Framework — Служба Azure Bot
 description: Сведения об интерфейсе командной строки (CLI) в Bot Framework.
 keywords: Интерфейс командной строки Bot Framework, Bot Framework CLI
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5123b61859c2fb00886458e462941cb5e6e1f896
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 6ae0edc8e2717d7e96ae8681cd832f7cb6cde66c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410463"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791350"
 ---
 # <a name="bot-framework-cli-reference"></a>Справочник по Bot Framework CLI
 

@@ -1,5 +1,5 @@
 ---
-title: Реализация приветственного диалога | Документация Майкрософт
+title: Реализация приветственного диалога — Служба Azure Bot
 description: Используйте диалог для приветствия пользователя, когда он присоединяется к беседе.
 keywords: greeting, dialogs, conversation flow, dialog set
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ea41c8ea879d20ba9d031bf3345b0862171458d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: b57e88dfc5133029a2a847a211c11cb187d9492a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299293"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798503"
 ---
 # <a name="implement-a-greeting-dialog"></a>Реализация приветственного диалога
 
@@ -24,7 +24,7 @@ ms.locfileid: "70299293"
 
 См. сведения об [отправке приветственных сообщений пользователям][send-welcome].
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Опыт работы с [управлением состоянием][concept-state], [библиотеками диалогов][concept-dialogs], [управлением диалогами][simple-flow] и [сбором введенных пользователем данных с использованием приглашения к диалогу][prompting].
 - Копия Пример на [**C#** ][cs-sample] или [**JavaScript**][js-sample].
@@ -68,7 +68,7 @@ TODO: сделать новый снимок экрана.
 
 - Ссылка на целевую страницу со сведениями о боте и общим примером (для статей о базовом боте).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Обработка прерываний диалога пользователем](bot-builder-howto-handle-user-interrupt.md)

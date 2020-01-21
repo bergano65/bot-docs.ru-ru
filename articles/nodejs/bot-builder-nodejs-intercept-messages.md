@@ -1,5 +1,5 @@
 ---
-title: Перехват сообщений | Документация Майкрософт
+title: Перехват сообщений (JS версии 3) — Служба Azure Bot
 description: Сведения о том, как создавать журналы и другие записи путем перехвата и обработки передаваемой информации с помощью пакета SDK Bot Framework.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2ca85c598d5515e8a785326ba12fd872ffce741f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 32934a8cb857b9ff3f2b4f2058a58fcce12cfc3d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299826"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790886"
 ---
 # <a name="intercept-messages"></a>Перехват сообщений
 
@@ -62,6 +62,6 @@ module.exports = {
 Теперь при поступлении каждого входящего сообщения (от пользователя к боту) будет запущено `logIncomingMessage`, а при поступлении каждого исходящего сообщения (от бота к пользователю) будет запущено `logOutgoingMessage`.
 В этом примере бот просто выводит некоторые сведения о каждом сообщении. При необходимости вы можете изменить `logIncomingMessage` и `logOutgoingMessage`, чтобы определить действия, которые должны быть выполнены с каждым сообщением. 
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Полный пример, в котором показано, как перехватывать сообщения и записывать их в журнал с помощью пакета SDK Bot Framework для Node.js, см. в <a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">примере использования ПО промежуточного слоя и записи в журнал</a> на сайте GitHub.

@@ -1,5 +1,5 @@
 ---
-title: Проверка подлинности пользователей в службе Azure Bot | Документация Майкрософт
+title: Проверка подлинности пользователей в службе Azure Bot — Служба Azure Bot
 description: Узнайте о функциях проверки подлинности пользователей в службе Azure Bot.
 keywords: azure bot service, authentication, bot framework token service
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4b71f7679ad6eea283437acb5a8293855219cf2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 30e04ad9e2b4b896cf941cdb440279ad9865837e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299499"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798800"
 ---
 # <a name="user-authentication-within-a-conversation"></a>Проверка подлинности пользователей в диалоге
 

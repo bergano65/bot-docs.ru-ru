@@ -1,5 +1,5 @@
 ---
-title: Использование QnA Maker для ответов на вопросы | Документация Майкрософт
+title: Использование QnA Maker для ответов на вопросы — Служба Azure Bot
 description: Узнайте, как использовать QnA Maker в боте.
 keywords: question and answer, QnA, FAQs, qna maker
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fc22235e53307e5b1dde737930c6cd06c2e9df8a
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 9671365cddb9653584974d6063fea9cf38b2e571
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491817"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798334"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Использование QnA Maker для ответов на вопросы
 

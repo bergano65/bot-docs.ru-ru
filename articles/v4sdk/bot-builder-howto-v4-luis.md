@@ -1,5 +1,5 @@
 ---
-title: Добавление возможности распознавания естественного языка в функционал бота | Документация Майкрософт
+title: Добавление возможности распознавания естественного языка в функционал бота — Служба Azure Bot
 description: Сведения об использовании LUIS для распознавания естественного языка с пакетом SDK Bot Framework.
 keywords: Распознавание речи, LUIS, намерение, распознаватель, сущности, ПО промежуточного слоя
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: eda82d8b929282fe322c0b28cc4683396ae26dbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491722"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798209"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 

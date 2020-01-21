@@ -1,5 +1,5 @@
 ---
-title: Добавление форматированных карточек как вложений в сообщения | Документация Майкрософт
+title: Добавление вложений в виде форматированных карточек в сообщения (JS версии 3) — Служба Azure Bot
 description: Узнайте, как отправить привлекательные интерактивные функциональные карточки с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9b56539146909be1231611319703c3e9cf2ef5c2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 246052bc971be3198fb5f3cd04f7d94e39c6b5d1
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299717"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790467"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 
@@ -28,9 +28,9 @@ ms.locfileid: "70299717"
 Некоторые каналы, например Skype и Facebook, поддерживают отправку пользователям функциональных графических карточек, которые содержат интерактивные кнопки для запуска определенных действий. Пакет SDK предоставляет несколько классов для создания и отправки карточек, прикрепленных к сообщениям. Служба соединителя Azure Bot Framework подготавливает эти карточки к просмотру, используя схему для конкретного канала, позволяя организовать обмен данными между разными платформами. В канале, который не поддерживает карточки (например, в текстовых сообщениях) Bot Framework по возможности отобразит требуемое содержимое пользователям. 
 
 ## <a name="types-of-rich-cards"></a>Типы функциональных карточек 
-Сейчас Bot Framework поддерживает восемь типов функциональных карточек. 
+Сейчас Bot Framework поддерживает восемь типов форматированных карточек. 
 
-| Тип карточки | ОПИСАНИЕ |
+| Тип карточки | Description |
 |------|------|
 | <a href="/adaptive-cards/get-started/bots">Адаптивная карточка</a> | Настраиваемая карточка, которая может содержать любое сочетание текста, речи, изображений, кнопок и полей для ввода.  См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status). |
 | [Анимационная карточка][animationCard] | Карточка, которая может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
@@ -168,7 +168,7 @@ Bot Framework реализует пакетную обработку, чтобы
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Предварительный просмотр компонентов с помощью Channel Inspector][inspector]
+* [Справочник по каналам][inspector]
 * <a href="http://adaptivecards.io" target="_blank">Адаптивные карточки</a>
 * [AnimationCard][animationCard]
 * [AudioCard][audioCard]
@@ -198,4 +198,4 @@ Bot Framework реализует пакетную обработку, чтобы
 
 [videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

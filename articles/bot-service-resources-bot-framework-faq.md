@@ -1,5 +1,5 @@
 ---
-title: Часто задаваемые вопросы о службе Bot | Документация Майкрософт
+title: Часто задаваемые вопросы о службе Bot
 description: Список часто задаваемых вопросов об элементах Bot Framework, а также информация о том, когда будут доступны новые функции.
 author: scheyal
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d23c1497fa5ab58ef6eba4725035c4c0929586f
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 96dfd465c34580dfd41f50c6a9be4d91be9e7b77
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491368"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794783"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
@@ -154,6 +154,9 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 - cortanabfchannelwestus.azurewebsites.net (канал Кортаны);
 - *.botFramework.com (каналы).
 
+> [!NOTE] 
+> Если вы не хотите добавлять URL-адрес в список разрешений с помощью звездочки, используйте `<channel>.botframework.com`. `<channel>` равен любому каналу, используемому вашим ботом, например `directline.botframework.com`, `webchat.botframework.com` и `slack.botframework.com`. Кроме того, при тестировании бота важно наблюдать за трафиком, поступающим в брандмауэр, проверяя, чтобы ничего лишнего не было заблокировано.
+
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Можно ли заблокировать весь трафик, перенаправляемый в бот, кроме трафика от службы Bot Connector?
 Нет. Такое добавление IP-адресов или DNS в список разрешений непрактично. Служба Bot Framework Connector размещена в центрах обработки данных Azure по всему миру, и список IP-адресов Azure постоянно меняется. Добавление в список разрешений определенных IP-адресов будет эффективно только на один день, так как IP-адреса Azure меняются.
  
@@ -232,7 +235,7 @@ Direct Line подходит для:
 3. Введите отображаемое имя для регистрации приложения в поле *Имя* и выберите тип среди поддерживаемых типов учетных записей. Это имя не должно совпадать с идентификатором бота.
 
     > [!IMPORTANT]
-    > В разделе *Поддерживаемые типы учетных записей* установите переключатель *Учетные записи в любом каталоге организации и личные учетные записи Майкрософт (например, Skype, Xbox, Outlook.com)* . Если выбрать любой другой вариант, **произойдет ошибка создания бота**.
+    > В разделе *Поддерживаемые типы учетных записей* установите переключатель *Учетные записи в любом каталоге организации и личные учетные записи Майкрософт (например, Skype, Xbox, Outlook.com)* . Если выбрать любой другой вариант, **бот станет непригодным для использования**.
 
     ![настройки регистрации](media/app-registration/registration-details.png)
 

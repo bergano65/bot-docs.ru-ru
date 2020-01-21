@@ -1,5 +1,5 @@
 ---
-title: Пакет SDK Bot Framework для Node.js | Документация Майкрософт
+title: Пакет SDK Bot Framework для Node.js — Служба Azure Bot
 description: Изучите пакет SDK Bot Framework для Node.js, который предоставляет мощную и простую в использовании платформу для создания ботов.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 20b0f852c4e5cddced42e9e710bb5d62663945a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 047293c00e8ade5445f75218be6d4dfbe332934c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299783"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790829"
 ---
 # <a name="bot-framework-sdk-for-nodejs"></a>Пакет SDK Bot Framework для Node.js
 
@@ -48,7 +48,7 @@ ms.locfileid: "70299783"
 
 В [примерах для пакета SDK Bot Framework для Node.js](bot-builder-nodejs-samples.md) демонстрируются ориентированные на задачи боты, которые используют функции пакета SDK Bot Framework для Node.js. С помощью этих примеров можно быстро приступить к созданию отличных ботов с широкими возможностями.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 > [!div class="nextstepaction"]
 > [Основные понятия](bot-builder-nodejs-concepts.md)
 

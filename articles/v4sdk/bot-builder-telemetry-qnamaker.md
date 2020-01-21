@@ -1,5 +1,5 @@
 ---
-title: Добавление телеметрии в бота QnA | Документация Майкрософт
+title: Добавление телеметрии в бот QnA — Служба Azure Bot
 description: Узнайте, как интегрировать новые функции телеметрии в бота с поддержкой QnA Maker.
 keywords: телеметрия, AppInsights, Application Insights, мониторинг бота, QnA Maker
 author: WashingtonKayaker
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27ce4315af7703e23b9a63308abb47300d9a29bd
-ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
+ms.openlocfilehash: d73bd8c26dde8826b145108268417a24840ed83e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528564"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791246"
 ---
 # <a name="add-telemetry-to-your-qnamaker-bot"></a>Добавление данных телеметрии в бота QnAMaker
 
@@ -34,7 +34,7 @@ ms.locfileid: "74528564"
 * Процедуру изменения или расширения стандартных свойств событий, предоставляемых пакетом SDK, для широкого спектра задач отчетности.
 
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [Пример кода для QnA Maker](https://aka.ms/cs-qna).
 
@@ -382,7 +382,7 @@ public class MyQnAMaker : QnAMaker
 Здесь вы увидите некоторые стандартные сведения о производительности бота и дополнительные запросы, которые вы закрепили на панели мониторинга.
 
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 * [Добавление данных телеметрии в бот](bot-builder-telemetry.md)
 

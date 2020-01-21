@@ -1,5 +1,5 @@
 ---
-title: Модульное тестирование ботов | Документация Майкрософт
+title: Модульное тестирование ботов — Служба Azure Bot
 description: Из этой статьи вы узнаете, как выполнять модульное тестирование ботов с помощью платформ тестирования.
 keywords: бот, тестирование ботов, платформа для тестирования ботов
 author: gabog
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1e9d079b46c1cc4cc8c49e234b58540aeb4b2e7c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: da99aa82c235bc8f530c9c2ad8d3ea1fa592b001
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298986"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798131"
 ---
 # <a name="how-to-unit-test-bots"></a>Как выполнять модульное тестирование ботов
 
@@ -28,7 +28,7 @@ ms.locfileid: "70298986"
 - создание разных типов тестов, управляемых данными;
 - создание макетов объектов для разных зависимостей диалогов (распознавателей LUIS и т. д.).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -239,7 +239,7 @@ async destinationStep(stepContext) {
 
 Некоторые диалоги, например `BookingDialog` или `DateResolverDialog`, возвращают значение в вызывающий диалог. Объект `DialogTestClient` предоставляет свойство `DialogTurnResult` для анализа и утверждения результатов, возвращаемых диалогом.
 
-Например:
+Пример:
 
 ```csharp
 var sut = new BookingDialog();
@@ -262,7 +262,7 @@ Assert.Equal("2019-06-21", bookingResults?.TravelDate);
 
 Некоторые диалоги, например `BookingDialog` или `DateResolverDialog`, возвращают значение в вызывающий диалог. Объект `DialogTestClient` предоставляет свойство `dialogTurnResult` для анализа и утверждения результатов, возвращаемых диалогом.
 
-Например:
+Пример:
 
 ```javascript
 const sut = new BookingDialog();
@@ -919,7 +919,7 @@ const mockRecognizer = new MockFlightBookingRecognizer(mockLuisResult);
 
 ---
 
-Но результаты LUIS могут быть сложными. В таком случае проще записать желаемый результат в JSON-файл, добавить его в проект в качестве ресурса и десериализовать в результат LUIS. Вот пример:
+Но результаты LUIS могут быть сложными. В таком случае проще записать желаемый результат в JSON-файл, добавить его в проект в качестве ресурса и десериализовать в результат LUIS. Например:
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -948,7 +948,7 @@ const mockRecognizer = new MockFlightBookingRecognizer(mockLuisResult);
 
 ---
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 - [Пример теста CoreBot Test (C#)](https://aka.ms/cs-core-test-sample)
 - [Пример теста CoreBot Test (JavaScript)](https://aka.ms/js-core-test-sample)

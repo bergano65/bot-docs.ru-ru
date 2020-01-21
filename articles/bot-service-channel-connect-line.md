@@ -1,5 +1,5 @@
 ---
-title: Подключение бота к LINE | Документация Майкрософт
+title: Подключение бота к LINE — Служба Azure Bot
 description: Сведения о настройке подключения бота к LINE.
 keywords: connect a bot, bot channel, LINE bot, credentials, configure, phone
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 1/7/2019
-ms.openlocfilehash: 8be0c7f89595e3222e5170fc7f11d052f9cb6851
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 092a8327f4a4828642a413201dc0c9483b779345
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298468"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791953"
 ---
 # <a name="connect-a-bot-to-line"></a>Подключение бота к LINE
 

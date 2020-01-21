@@ -1,5 +1,5 @@
 ---
-title: Начало общения | Документация Майкрософт
+title: Начало диалога — Служба Azure Bot
 description: Сведения о том, как начать общение с помощью Direct Line API 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7cc77133b6b2a212b7fde2e0b9d8c854e2bbab9c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bc3679c48f67ffc5fadfbc387ee41c69ad96884f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299545"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789294"
 ---
 # <a name="start-a-conversation"></a>Начало общения
 
@@ -61,7 +61,7 @@ HTTP/1.1 201 Created
 
 ## <a name="start-conversation-versus-generate-token"></a>Сравнение операций "Начало общения" и "Создать маркер"
 
-Операция "создать общение" (`POST /v3/directline/conversations`) аналогична операции [создать маркер Direct Line](bot-framework-rest-direct-line-3-0-authentication.md#generate-token) (`POST /v3/directline/tokens/generate`) в том, что обе операции возвращают `token`, который можно использовать для доступа к одному общению. Тем не менее операция "Начало общения" также начинает общение, контактирует с ботом и создает URL-адрес потока протокола WebSocket, тогда как операция "создание маркера" не поддерживает ни одно из вышеупомянутых действий. 
+Операция начала диалога (`POST /v3/directline/conversations`) аналогична операции [создания маркера](bot-framework-rest-direct-line-3-0-authentication.md#generate-token) (`POST /v3/directline/tokens/generate`) в том смысле, что обе операции возвращают маркер `token`, который можно использовать для доступа к одному диалогу. Тем не менее операция "Начало общения" также начинает общение, контактирует с ботом и создает URL-адрес потока протокола WebSocket, тогда как операция "создание маркера" не поддерживает ни одно из вышеупомянутых действий. 
 
 Если требуется немедленно начать общение, используйте операцию "Начало общения". Если требуется распространить маркер среди клиентов, а также заставить их начать общение, используйте операцию [создание маркера Direct Line](bot-framework-rest-direct-line-3-0-authentication.md#generate-token). 
 
@@ -70,4 +70,4 @@ HTTP/1.1 201 Created
 - [Основные понятия](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Аутентификация](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Receive activities via WebSocket stream](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) (Получение действий через поток по протоколу WebSocket)
-- [Reconnect to a conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) (Повторное подключение к общению)
+- [Повторное подключение к общению](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)

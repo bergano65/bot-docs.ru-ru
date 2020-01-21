@@ -1,5 +1,5 @@
 ---
-title: Обработка действий | Документация Майкрософт
+title: Обработка действий — Служба Azure Bot
 description: Сведения об обработке действий в пакете SDK для ботов.
 keywords: адаптер ботов, пользовательское ПО промежуточного слоя, укорачивание, резервирование, обработчики событий
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 315bebddeda21301d29fa003ce9c8f43e1677000
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 2896dcf1d99ace250ec73f5ecfc2b3857afb0c83
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970724"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798827"
 ---
 # <a name="activity-processing"></a>Обработка действий
 
@@ -80,7 +80,7 @@ ms.locfileid: "68970724"
 
 Адаптер управляет обработчиками, зарегистрированными в объекте контекста, почти так же, как [конвейером ПО промежуточного слоя](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline). А именно, обработчики вызываются в том порядке, в котором добавлены, и при команде _Далее_ делегат передает управление следующему зарегистрированному обработчику событий. Если обработчик не вызывает следующий делегат, последующие обработчики событий не вызываются, происходит [сокращение канала](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting) для события и адаптер не отправляет ответ в канал.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [ПО промежуточного слоя](~/v4sdk/bot-builder-concept-middleware.md)
