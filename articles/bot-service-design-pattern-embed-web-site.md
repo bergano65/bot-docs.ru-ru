@@ -1,5 +1,5 @@
 ---
-title: Внедрение бота на веб-сайте | Документация Майкрософт
+title: Внедрение бота на веб-сайт — Служба Azure Bot
 description: Узнайте о том, как разработать бот, внедренный на веб-сайте.
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 96ccbe453574f15ceda8ae8b4ec1eb44492de738
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 48b483ad16a5af837869879c5f87d0e249f0788d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298171"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792196"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Внедрение бота на веб-сайт
 
@@ -44,7 +44,7 @@ ms.locfileid: "70298171"
 
 [!INCLUDE [Introduction to backchannel mechanism](~/includes/snippet-backchannel.md)]
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 <a href="https://aka.ms/BotFramework-WebChat" target="_blank">Элемент управления веб-чатом с открытым кодом</a> доступен на сайте GitHub. Дополнительные сведения о том, как можно реализовать механизм обратного канала с помощью элемента управления веб-чатом с открытым кодом и пакета SDK Bot Framework для Node.js, см. в статье [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Использование механизма обратного канала).
 

@@ -1,5 +1,5 @@
 ---
-title: Ключевые понятия службы Bot Connector и службы Состояние бота | Документация Майкрософт
+title: Ключевые понятия служб Bot Connector и "Состояние бота" — Служба Azure Bot
 description: Понимание ключевых понятий службы Bot Connector и службы Состояние бота платформы Bot Framework.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 25adbcda6b1f33f5379f9231291c5a511e9c1d04
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: 3290c12c35cd2095c6436b6a6239d9a7e3f5628b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039743"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789950"
 ---
 # <a name="key-concepts"></a>Основные понятия
 

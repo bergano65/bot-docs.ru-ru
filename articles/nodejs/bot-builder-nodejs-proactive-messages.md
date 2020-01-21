@@ -1,5 +1,5 @@
 ---
-title: Отправка упреждающих сообщений | Документация Майкрософт
+title: Отправка упреждающих сообщений (JS версии 3) — Служба Azure Bot
 description: Узнайте, как прервать текущий поток общения упреждающим сообщением, используя пакет SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58a6678561d048d0257dc81d37d4db4cbca9b382
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e23d74c5f1dfb36625db99fc906185159d3362a9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299789"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790839"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -119,7 +119,7 @@ bot.dialog('survey', function (session, args, next) {
 });
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для Node.js, приведен в <a href="https://aka.ms/js-proactivemessages-sample-v3" target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://aka.ms/js-simplesendmessage-sample-v3" target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://aka.ms/js-startnewdialog-sample-v3" target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога.
 

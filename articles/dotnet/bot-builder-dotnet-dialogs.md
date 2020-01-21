@@ -1,5 +1,5 @@
 ---
-title: Общие сведения о диалогах | Документация Майкрософт
+title: Общие сведения о диалоговых окнах (C# версии 3) — Служба Azure Bot
 description: Сведения об использовании диалогов в пакете SDK Bot Framework для .NET для моделирования бесед и управления потоком общения.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e7c852245bdf09ada446a873bd1c974b85417672
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298372"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793407"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Диалоги в пакете SDK Bot Framework для .NET.
 
@@ -109,7 +109,7 @@ ms.locfileid: "70298372"
 Хотя вы можете явно управлять стеком активных диалоговых окон с помощью `IDialogStack.Call<R>` и `IDialogStack.Done<R>`, также поддерживается неявное управление с помощью этих текучих методов [Chain][chain].
 
 
-|           Метод            |  type   |                                 Примечания                                  |
+|           Метод            |  Тип   |                                 Примечания                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           Поддерживает select и let в синтаксисе запросов LINQ.            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            Поддерживает последовательные from в синтаксисе запросов LINQ.            |
@@ -149,12 +149,12 @@ ms.locfileid: "70298372"
 
 [!code-csharp[Chain.Switch](../includes/code/dotnet-dialogs.cs#chain5)]
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Диалоговые окна управляют потоком беседы между ботом и пользователем. Диалоговое окно определяет способ взаимодействия с пользователем. Бот может использовать несколько диалогов, организованных в стеки, для ведения беседы с пользователем. В следующем разделе показано, как стек диалогов увеличивается и уменьшается по мере создания и удаления диалогов в стеке.
 
 > [!div class="nextstepaction"]
-> [Управление потоком беседы с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
+> [Управление потоком общения с помощью диалогов](bot-builder-dotnet-manage-conversation-flow.md)
 
 
 [builderLibrary]: /dotnet/api/microsoft.bot.builder.dialogs

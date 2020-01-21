@@ -1,5 +1,5 @@
 ---
-title: Основные функции FormFlow | Документация Майкрософт
+title: Основные функции FormFlow — Служба Azure Bot
 description: Узнайте об управлении потоками беседы с помощью FormFlow из пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bf22566229d9a502b42a8b516138a1427b5d6845
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297859"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797203"
 ---
 # <a name="basic-features-of-formflow"></a>Основные функции FormFlow
 
@@ -31,9 +31,9 @@ FormFlow автоматически генерирует диалоговые о
 
 - Целочисленный (sbyte, byte, short, ushort, int, uint, long, ulong).
 - Число с плавающей запятой (float, double).
-- Строка,
+- String
 - Дата и время
-- Перечисление.
+- Перечисление
 - Список перечислений.
 
 Любой из типов данных может допускать значение NULL, которое можно использовать для моделирования того, что поле не имеет значения. Если поле формы имеет свойство перечисления, не допускающее значение NULL, значение **0** в перечислении представляет **NULL** (т. е. указывает, что поле не имеет значения), то вам следует начать со значения перечислений **1**. FormFlow игнорирует все другие типы свойств и методов.
@@ -305,11 +305,11 @@ Is this your selection?
 
 Несмотря на то что в некоторых случаях достаточно основного функционала FormFlow, рассмотрите потенциальные преимущества внедрения в бот более сложных функций FormFlow. Дополнительные сведения см. в статьях [Расширенные функции FormFlow](bot-builder-dotnet-formflow-advanced.md) и [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Настройка формы с помощью FormBuilder).
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 [!INCLUDE [Sample code](../includes/snippet-dotnet-formflow-samples.md)]
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 FormFlow упрощает разработку диалогового окна. Дополнительные функции FormFlow позволяют настраивать поведение объекта FormFlow.
 

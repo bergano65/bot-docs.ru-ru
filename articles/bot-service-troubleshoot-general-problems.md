@@ -1,5 +1,5 @@
 ---
-title: Устранение неполадок с ботами | Документы Майкрософт
+title: Устранение неполадок — Служба Azure Bot
 description: Устранение общих проблем в процессе разработки ботов с помощью ответов на часто задаваемые технические вопросы.
 author: DeniseMak
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/17/2019
-ms.openlocfilehash: d958f2a9f85af4a42dab241264115050f1972d4d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 255c0d5761460a631542e671976c13e61b45da23
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490851"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795733"
 ---
 # <a name="troubleshooting-general-problems"></a>Устранение общих проблем
 Ответы на эти часто задаваемые вопросы помогут вам устранить распространенные проблемы, связанные с разработкой или эксплуатацией ботов.

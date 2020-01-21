@@ -1,5 +1,5 @@
 ---
-title: Аутентификация | Документация Майкрософт
+title: Проверка подлинности Direct Line API 1.1 — Служба Azure Bot
 description: Сведения об аутентификации для запросов к API версии 1.1 для Direct Line.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 555cb3298114c3eb8ba8a4e1c41b5515e929fd91
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 27da3fbe5b122e23e0284c8396f75a5ac73da13b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299643"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789764"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -23,12 +23,12 @@ ms.locfileid: "70299643"
 
 Секрет или маркер нужно указать в заголовке `Authorization` каждого запроса с помощью схемы Bearer или BotConnector. 
 
-**Схема Bearer**:
+**Схема Bearer**
 ```http
 Authorization: Bearer SECRET_OR_TOKEN
 ```
 
-**Схема BotConnector**:
+**Схема BotConnector**
 ```http
 Authorization: BotConnector SECRET_OR_TOKEN
 ```

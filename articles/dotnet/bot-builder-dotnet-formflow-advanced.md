@@ -1,5 +1,5 @@
 ---
-title: Дополнительные функции FormFlow | Документация Майкрософт
+title: Дополнительные функции FormFlow — Служба Azure Bot
 description: Сведения о настройке взаимодействия с пользователем с помощью FormFlow и пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5620fd3a0e26cf7b56772e6bc8f47b8ceac596cd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298019"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796673"
 ---
 # <a name="advanced-features-of-formflow"></a>Дополнительные функции FormFlow
 
@@ -67,11 +67,11 @@ For sandwich toppings you have selected Avocado, Banana Peppers, Cucumbers, Gree
 
 Вы можете добавить эти атрибуты C# в свой класс, чтобы настроить поведение диалогового окна FormFlow.
 
-| Атрибут | Назначение |
+| attribute | Назначение |
 |----|----| 
 | [Describe][describeAttribute] | Показывает, как изменить поле или значение в шаблоне или карточке |
 | [Numeric][numericAttribute] | Ограничивает принятые значения числового поля |
-| [Необязательно.][optionalAttribute] | Отмечает поле как необязательное |
+| [Необязательно][optionalAttribute] | Отмечает поле как необязательное |
 | [Шаблон][patternAttribute] | Определяет регулярное выражение для проверки строкового поля |
 | [Prompt][promptAttribute] | Определяет запрос для поля |
 | [Шаблон][templateAttribute] | Определяет шаблон, с помощью которого будут создаваться запросы или значения в запросах |
@@ -265,14 +265,14 @@ For sandwich I understood Rotisserie Style Chicken. "checkin" is not an option.
 
 В этой статье описывается, как настроить взаимодействие с пользователем с помощью FormFlow, указав начальное состояние формы, добавив бизнес-логику для управления взаимозависимостью между полями и обработкой входных данных с помощью атрибутов для настройки запросов, переопределения шаблонов, назначения необязательных полей, сопоставления и проверки входных данных пользователя ввод. Сведения о дополнительных способах настройки взаимодействия с пользователем с помощью FormFlow см. в статье [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Настройка формы с помощью FormBuilder).
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 [!INCLUDE [Sample code](../includes/snippet-dotnet-formflow-samples.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Основные функции FormFlow](bot-builder-dotnet-formflow.md)
-- [Customize a form using FormBuilder](bot-builder-dotnet-formflow-formbuilder.md) (Настройка формы с помощью FormBuilder)
+- [Настройка формы с помощью FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Локализация содержимого формы](bot-builder-dotnet-formflow-localize.md)
 - [Определение формы с помощью схемы JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Customize user experience with pattern language](bot-builder-dotnet-formflow-pattern-language.md) (Настройка взаимодействия с помощью языка шаблонов)

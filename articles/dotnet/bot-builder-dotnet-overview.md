@@ -1,5 +1,5 @@
 ---
-title: Использование пакета SDK Bot Framework для .NET | Документация Майкрософт
+title: Пакет SDK Bot Framework для .NET — Служба Azure Bot
 description: Начало работы с пакетом SDK Bot Framework для .NET, который предоставляет простую и мощную платформу для создания ботов.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f9f15903bf3b004e64fbe737f25d6cb34cdfe7fe
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ffd8b9381ba0e7624706a020f654ac6cc9d5b6eb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297840"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797297"
 ---
 # <a name="bot-framework-sdk-for-net"></a>Пакет SDK Bot Framework для .NET
 
@@ -53,7 +53,7 @@ ms.locfileid: "70297840"
 
 Этот пакет SDK содержит [пример исходного кода](bot-builder-dotnet-samples.md), в котором используются компоненты пакета SDK Bot Framework для .NET.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Узнайте больше о создании ботов с помощью пакета SDK Bot Framework для .NET, ознакомившись со статьями в этом разделе в следующем порядке:
 

@@ -1,5 +1,5 @@
 ---
-title: Управление данными о состоянии | Документация Майкрософт
+title: Управление данными состояния (JS версии 3) — Служба Azure Bot
 description: Узнайте, как сохранять и извлекать данные о состоянии с помощью пакета SDK Bot Framework для Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4c93ba1b37166c784d6cdf687e926026f474de85
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 40293ff3756687f270847dd9045a04a19363ad1b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299679"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790329"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -41,7 +41,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
                     .set('storage', inMemoryStorage); // Register in-memory storage 
 ```
 
-Этот метод можно использовать для задания пользовательского хранилища данных или использования любого из *расширений Azure*.
+Этот метод можно использовать для настройки пользовательского хранилища данных или использования любого из *расширений Azure*.
 
 ## <a name="manage-custom-data-storage"></a>Управление пользовательским хранилищем данных
 
@@ -49,7 +49,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 1. [управление данными о состоянии с помощью Cosmos DB](bot-builder-nodejs-state-azure-cosmosdb.md);
 
-2. [Управление данными о состоянии с помощью хранилища таблиц](bot-builder-nodejs-state-azure-table-storage.md)
+2. [управление данными о состоянии с помощью хранилища таблиц](bot-builder-nodejs-state-azure-table-storage.md).
 
 При выборе любого из этих [расширений Azure](https://www.npmjs.com/package/botbuilder-azure) механизм установки и сохранения данных с помощью пакета SDK Bot Framework для Node.js остается тем же, что для хранилища данных в памяти.
 
@@ -57,7 +57,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 В пакете SDK Bot Framework для Node.js объект `session` предоставляет следующие свойства для хранения данных о состоянии.
 
-| Свойство | Область действия | ОПИСАНИЕ |
+| Свойство | Область действия | Description |
 | ---- | ---- | ---- |
 | [`userData`][userDataURL] | Пользователь | Содержит данные, которые сохраняются для пользователя в указанном канале. Эти данные будут сохраняться между несколькими беседами. |
 | [`privateConversationData`][privateConversationDataURL] | Беседа | Содержит данные, которые сохраняются для пользователя в указанном канале в контексте конкретной беседы. Эти данные являются частными для конкретного пользователя и будут сохраняться только для текущей беседы. Свойство очищается, когда беседа завершается или когда `endConversation` вызывается явным образом. |
@@ -192,7 +192,7 @@ session.dialogData = {};
 
 Не задавайте для контейнера данных значение `null` и не удаляйте его из объекта `session`, так как это вызовет ошибку при следующей попытке доступа к контейнеру. Кроме того, возможно, потребуется вручную вызвать `session.save();` после того, как вы вручную удалили контейнер в памяти, чтобы очистить все соответствующие данные, которые были сохранены ранее.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Теперь, когда вы ознакомились с механизмами управления данными о состоянии, давайте разберемся, как можно их использовать для более эффективного управления потоком беседы.
 

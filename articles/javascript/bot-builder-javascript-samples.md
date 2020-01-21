@@ -1,5 +1,5 @@
 ---
-title: Примеры ботов на основе пакета SDK Bot Framework для JavaScript | Документация Майкрософт
+title: Примеры ботов на основе пакета SDK Bot Framework для JavaScript — Служба Azure Bot
 description: Изучите большой набор примеров ботов, которые помогут повысить эффективность разработки ботов с помощью пакета SDK Bot Framework для JavaScript.
 author: jonathanfingold
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 12a5c31ea77c6cbcf7297a8d21226654a2028e95
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 90726b4407f18d08a36ec384ab14f3bd34dd3d33
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298848"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797324"
 ---
 # <a name="javascript-samples-for-bot-framework-sdk"></a>Примеры JavaScript для пакета SDK Bot Framework
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]

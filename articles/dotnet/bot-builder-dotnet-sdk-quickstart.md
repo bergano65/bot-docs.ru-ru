@@ -1,5 +1,5 @@
 ---
-title: Создание бота с помощью пакета SDK Bot Framework для .NET | Документация Майкрософт
+title: Создание бота с помощью пакета SDK Bot Framework для .NET — Служба Azure Bot
 description: Создание бота с помощью пакета SDK Bot Framework для .NET, который предоставляет мощную платформу для разработки ботов.
 keywords: Пакет SDK Bot Framework, создание бота, краткое руководство, .NET, начало работы, бот на C#
 author: kamrani
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: efc4293ff5de5982a425557a0d7e70296ca6c5e5
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 7b5bb7e7d09bad3736bfd69647a85c30c6772d52
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298859"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797989"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-net"></a>Создание бота с помощью пакета SDK Bot Framework для .NET
 
@@ -30,7 +30,7 @@ ms.locfileid: "70298859"
 
 Подключение к удаленно размещенном боту описано в документации по [туннелированию (ngrok)](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-(ngrok)).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Развертывание бота в Azure](../bot-builder-deploy-az-cli.md)

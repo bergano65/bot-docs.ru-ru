@@ -1,5 +1,5 @@
 ---
-title: Добавление мультимедийных вложений в сообщения | Документы Майкрософт
+title: Добавление мультимедийных вложений в сообщения (C# версии 3) — Служба Azure Bot
 description: Сведения о добавлении мультимедийных вложений в сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19f3db74aef7aeffcd754e0bea753fa73b7ea285
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ad6a1228b8fc54f8f626c07c7ed43375c249c456
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298446"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796022"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 
@@ -41,13 +41,12 @@ ms.locfileid: "70298446"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Предварительный просмотр компонентов с помощью Channel Inspector][inspector]
+- [Справочник по каналам][inspector]
 - [Общие сведения о действиях](bot-builder-dotnet-activities.md)
 - [Создание сообщений](bot-builder-dotnet-create-messages.md)
-- [Add Rich Cards to Messages](bot-builder-dotnet-add-rich-card-attachments.md) (Добавление функциональных карточек в сообщения)
+- [Добавление вложений в виде форматированных карточек в сообщения](bot-builder-dotnet-add-rich-card-attachments.md)
 - <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Класс Activity</a>
 - <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment class</a> (Класс Attachment)
 
-[inspector]: ../bot-service-channel-inspector.md
-
+[inspector]: ../bot-service-channels-reference.md
 

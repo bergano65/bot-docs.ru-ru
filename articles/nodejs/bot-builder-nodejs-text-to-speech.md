@@ -1,5 +1,5 @@
 ---
-title: Добавление речи в сообщения | Документы Майкрософт
+title: Добавление речи в сообщения (v3 JS) — Служба Azure Bot
 description: Сведения о добавлении речи в сообщения с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: a5e97aa859f8b200fecb6df213bce1f9d9c1f912
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866647"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790359"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -42,7 +42,7 @@ ms.locfileid: "68866647"
 
 `session.say(displayText: string, speechText: string, options?: object)`
 
-| Параметр | ОПИСАНИЕ |
+| Параметр | Description |
 |----|----|
 | `displayText` | Отображаемый текст. |
 | `speechText` | Произносимый текст (в виде обычного текста или в формате <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>). |
@@ -69,7 +69,7 @@ ms.locfileid: "68866647"
 
 При отправке сообщения по каналу с поддержкой речевых функций можно попытаться оказать влияние на состояние микрофона клиента, включив подсказку для ввода, указывающую, как бот реагирует на ввод данных пользователем — принимает, ожидает или игнорирует. Дополнительные сведения см. в статье [Добавление подсказок для ввода в сообщения](bot-builder-nodejs-send-input-hints.md).
 
-## <a name="sample-code"></a>Пример кода 
+## <a name="sample-code"></a>Образец кода 
 
 См. <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">полный пример на сайте GitHub</a>, в котором показано, как создать бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для Node.js.
 

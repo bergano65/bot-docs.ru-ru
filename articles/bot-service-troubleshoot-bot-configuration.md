@@ -1,5 +1,5 @@
 ---
-title: Устранение неполадок, связанных с конфигурацией бота | Документация Майкрософт
+title: Устранение неполадок, связанных с конфигурацией бота, в службе Bot
 description: Устранение неполадок с конфигурацией для развернутого бота.
 keywords: troubleshoot, configuration, web chat, problems.
 author: jonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 6d5cb95c529a9a49f07681678f11a54c8f9e55b3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491602"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795723"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Устранение неполадок, связанных с конфигурацией бота
 
@@ -46,9 +46,14 @@ ms.locfileid: "75491602"
 
 Если бот успешно работает веб-чате, но не может работать в каких-либо других каналах, проверьте следующие возможные причины.
 
-- [Проблемы с конфигурацией канала](#channel-configuration-issues)
-- [Особое поведение для канала](#channel-specific-behavior)
-- [Сбой канала](#channel-outage)
+- [Устранение неполадок, связанных с конфигурацией бота](#troubleshoot-bot-configuration-issues)
+  - [Тестирование в веб-чате](#test-in-web-chat)
+  - [Бот не работает в веб-чате](#bot-does-not-work-in-web-chat).
+  - [Бот работает в веб-чате, но не работает в других каналах](#bot-works-in-web-chat-but-not-in-other-channels).
+    - [Проблемы с конфигурацией канала](#channel-configuration-issues)
+    - [Особое поведение для канала](#channel-specific-behavior)
+    - [Сбой канала](#channel-outage)
+  - [Дополнительные ресурсы](#additional-resources)
 
 ### <a name="channel-configuration-issues"></a>Проблемы с конфигурацией канала
 
@@ -71,7 +76,7 @@ ms.locfileid: "75491602"
 
 ### <a name="channel-specific-behavior"></a>Особое поведение для канала
 
-Возможно, в реализации разных каналов различаются некоторые функции. Например, сейчас не все каналы поддерживают адаптивные карточки. Большинство каналов поддерживают кнопки, но отображают их по-разному. Если вы заметите различия в поведении определенных типов сообщений в разных каналах, см. [справочник по использованию каналов](bot-service-channels-reference.md).
+Возможно, в реализации разных каналов различаются некоторые функции. Например, сейчас не все каналы поддерживают адаптивные карточки. Большинство каналов поддерживают кнопки, но отображают их по-разному. Заметив различия в поведении определенных типов сообщений в разных каналах, ознакомьтесь со сведениями в статье [Разделенные на категории действия по каналам](bot-service-channels-reference.md).
 
 Ниже приведены некоторые ссылки с дополнительной информацией по отдельным каналам.
 

@@ -1,5 +1,5 @@
 ---
-title: Краткий справочник по миграции из версии 3 в версию 4 для JavaScript | Документация Майкрософт
+title: Краткий справочник по миграции из версии 3 в версию 4 для JavaScript — Служба Azure Bot
 description: Описание основных различий между пакетами SDK Bot Framework для JavaScript версий 3 и 4.
 keywords: JavaScript, bot migration, dialogs, v3 bot
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2935c187b9c9687d4fbf207c2d78a135d3c8959f
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: ea71cfa7adb9ba4f38b3f0ec79641cf28b0f64f3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933782"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791076"
 ---
 # <a name="javascript-migration-quick-reference"></a>Краткий справочник по миграции для JavaScript
 

@@ -1,5 +1,5 @@
 ---
-title: Замена диалогов | Документация Майкрософт
+title: Замена диалогов — Служба Azure Bot
 description: Узнайте, как заменить диалоги, чтобы повторно запросить входные данные и управлять потоком беседы, используя пакет SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92782463a4f7d0de6d0fa30693542eea051366bd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 79083626f60564d8fa6a500cf7c45805e4488e22
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299829"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790908"
 ---
 # <a name="replace-dialogs"></a>Замена диалогов
 
@@ -332,7 +332,7 @@ bot.dialog("addDinnerItem", [
 
 Используя метод `session.cancelDialog` таким образом, вы можете реализовать любой поток диалога, который требует бот.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Как видите, чтобы выполнить задачу с заменой диалогов в стеке, используются различные виды **действий**. Действия обеспечивают отличную гибкость при управлении потоком диалога. Давайте более подробно рассмотрим **действия** и лучший способ обработки действий пользователя.
 

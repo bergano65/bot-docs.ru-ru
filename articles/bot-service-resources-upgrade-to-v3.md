@@ -1,5 +1,5 @@
 ---
-title: Обновление бота до API Bot Framework версии 3 | Документы Майкрософт
+title: Обновление бота до API Bot Framework версии 3 — Служба Azure Bot
 description: Сведения об обновлении бота до API Bot Framework версии 3.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: a9fa1fe134f8ac7716796f4e9090acb60915afe8
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f08da5acbf8ac050d5dbf6a1a0290c3e6288013
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298595"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790996"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Обновление бота до API Bot Framework версии 3.
 
@@ -66,7 +66,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> Шаг 2. Обновление кода бота до версии 4.0
+## <a id="update-code"></a> Шаг 2. Обновление кода бота до версии 4.0
 
 Боты версии 1 больше не поддерживаются. Чтобы обновить бота, необходимо создать нового бота версии 3. Если вы хотите сохранить какой либо старый код, его потребуется перенести вручную.
 
@@ -119,9 +119,9 @@ The following sections describe the key differences between API v1 and API v3. A
 
 |Поле версии API 1 | Поле версии API 3|
 |--------|--------|
-| Объект `From` | Объект `From` |
-| Объект `To` | Объект `Recipient` |
-| Свойство `ChannelConversationID` | Объект `Conversation`|
+| Объект `From`. | Объект `From`. |
+| Объект `To`. | Объект `Recipient`. |
+| Свойство `ChannelConversationID` | Объект `Conversation`.|
 | Свойство `ChannelId` | Свойство `ChannelId` |
 
 Дополнительные сведения об адресации сообщений см. в разделе [Отправка и получение действий](~/dotnet/bot-builder-dotnet-connector.md).
@@ -148,7 +148,7 @@ The following sections describe the key differences between API v1 and API v3. A
 В API Bot Framework версии 1 API для управления данными состояния бота был свернут в API обмена сообщениями. В API Bot Framework версии 3 эти API-интерфейсы разделены. Теперь для получения данных о состоянии необходимо использовать службу состояния бота (не полагаясь на то, что они включены в объект `Message`) и сохранять данные о состоянии (вместо того чтобы передавать их как часть объекта `Message`). Сведения об управлении данными состояния бота с помощью службы состояния бота см. в разделе [Управление данными о состоянии](~/dotnet/bot-builder-dotnet-state.md).
 
 > [!IMPORTANT]
-> API службы состояния Bot Framework не рекомендуется использовать для рабочей среды. Он может считаться устаревшим в будущем выпуске. Рекомендуется обновить код бота для использования хранилища в памяти в целях тестирования или использовать одно из **расширений Azure** для ботов в рабочей среде. Дополнительные сведения см. в разделе **Управление данными состояния** в документации по реализации [.NET](~/dotnet/bot-builder-dotnet-state.md) или [Node](~/nodejs/bot-builder-nodejs-state.md).
+> API службы состояния Bot Framework не рекомендуется использовать для рабочей среды. Он может считаться устаревшим в будущем выпуске. Рекомендуется обновить код бота для использования хранилища в памяти в целях тестирования или использовать одно из **расширений Azure** для ботов в рабочей среде. Дополнительные сведения см. в разделе **Управление данными состояния** для реализации [.NET](~/dotnet/bot-builder-dotnet-state.md) или [Node.js](~/nodejs/bot-builder-nodejs-state.md).
 
 ### <a name="webconfig-changes"></a>Изменения в Web.config
 
@@ -162,7 +162,7 @@ The following sections describe the key differences between API v1 and API v3. A
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Шаг 3. Развертывание обновленного бота в Azure.
+## <a id="step-3"></a> Шаг 3. Развертывание обновленного бота в Azure.
 
 Обновив код бота до API версии 3, просто разверните бот в Azure, следуя этим [инструкциям](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Так как версия 1 больше не поддерживается, все боты будут автоматически использовать API версии 3 при развертывании в службах Azure.
 

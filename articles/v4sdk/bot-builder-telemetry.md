@@ -1,5 +1,5 @@
 ---
-title: Добавление телеметрии в бот | Документация Майкрософт
+title: Добавление телеметрии к возможностям бота (служба Azure Bot)
 description: Узнайте, как интегрировать новые функции телеметрии в бот.
 keywords: telemetry, appinsights, monitor bot
 author: WashingtonKayaker
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a023fd97bfb7b8d55ad01d118075a6441e426575
-ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
+ms.openlocfilehash: f8835ba339edf233f41ee64a68d523065aab5bd5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74510758"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791226"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -34,9 +34,9 @@ ms.locfileid: "74510758"
 
 * настройка телеметрии для сбора данных об использовании из других служб, например [LUIS](bot-builder-howto-v4-luis.md) и [QnA Maker.](bot-builder-howto-qna.md);
 
-* отображение данных телеметрии в Application Insights.
+* Отображение данных телеметрии в Application Insights
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * [Пример кода CoreBot](https://aka.ms/cs-core-sample).
 
@@ -76,44 +76,45 @@ ms.locfileid: "74510758"
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-        // Create the Bot Framework Adapter with error handling enabled.
-        services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
+            // Create the Bot Framework Adapter with error handling enabled.
+            services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
-        // Add Application Insights services into service collection
-        services.AddApplicationInsightsTelemetry();
+            // Add Application Insights services into service collection
+            services.AddApplicationInsightsTelemetry();
 
-        // Add the standard telemetry client
-        services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
+            // Create the telemetry client.
+            services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
 
-        // Create the telemetry middleware to track conversation events
-        services.AddSingleton<TelemetryLoggerMiddleware>();
+            // Add telemetry initializer that will set the correlation context for all telemetry items.
+            services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
 
-        // Add the telemetry initializer middleware
-        services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>();
+            // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties such as activity ID)
+            services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
 
-        // Add telemetry initializer that will set the correlation context for all telemetry items
-        services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
+            // Create the telemetry middleware to initialize telemetry gathering
+            services.AddSingleton<TelemetryInitializerMiddleware>();
 
-        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties, such as activity ID)
-        services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
+            // Create the telemetry middleware (used by the telemetry initializer) to track conversation events
+            services.AddSingleton<TelemetryLoggerMiddleware>();
         ...
     }
     ```
-    
+
     Примечание. Выполняя эти инструкции, чтобы обновить пример кода CoreBot, вы заметите, что `services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();` уже существует. 
 
-5. Настройте адаптер на использование кода ПО промежуточного слоя, который был добавлен в метод `ConfigureServices()`. Это можно сделать в `AdapterWithErrorHandler.cs` с помощью параметра IMiddleware ПО промежуточного слоя в списке параметров конструкторов и инструкции `Use(middleware);` в конструкторе, как показано здесь:
+5. Настройте адаптер на использование кода ПО промежуточного слоя, который был добавлен в метод `ConfigureServices()`. Это можно сделать в `AdapterWithErrorHandler.cs` с помощью параметра TelemetryInitializerMiddleware telemetryInitializerMiddleware в списке параметров конструкторов и инструкции `Use(telemetryInitializerMiddleware);` в конструкторе, как показано здесь:
     ```csharp
-    public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
-            : base(credentialProvider)
+        public AdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger, TelemetryInitializerMiddleware telemetryInitializerMiddleware, ConversationState conversationState = null)
+            : base(configuration, logger)
     {
         ...
-
-        Use(middleware);
+        Use(telemetryInitializerMiddleware);
     }
     ```
 
-6. Добавьте ключ инструментирования Application Insights в файл `appsettings.json`. Файл `appsettings.json` содержит метаданные о внешних службах, которые использует бот во время работы. Например, здесь хранятся сведения о подключении и метаданные для служб CosmosDB, Application Insights и LUIS (Распознавание речи). Формат добавляемого в файл `appsettings.json` ключа должен быть таким:
+6. Кроме того, необходимо добавить `Microsoft.Bot.Builder.Integration.ApplicationInsights.Core` в список инструкций using в `AdapterWithErrorHandler.cs`.
+
+7. Добавьте ключ инструментирования Application Insights в файл `appsettings.json`. Файл `appsettings.json` содержит метаданные о внешних службах, которые использует бот во время работы. Например, здесь хранятся сведения о подключении и метаданные для служб CosmosDB, Application Insights и LUIS (Распознавание речи). Формат добавляемого в файл `appsettings.json` ключа должен быть таким:
 
     ```json
     {
@@ -132,14 +133,14 @@ ms.locfileid: "74510758"
 
 ### <a name="enabling-or-disabling-activity-logging"></a>Включение или отключение ведения журнала действий
 
-По умолчанию `TelemetryInitializerMiddleware` будет использовать `TelemetryLoggerMiddleware` для сохранения данных телеметрии, когда бот отправляет или получает действия. Ведение журнала действий создает пользовательские журналы событий в ресурсе Application Insights.  При желании вы можете отключить журнал событий действий, установив значение False для `logActivityTelemetry` в `TelemetryInitializerMiddleware`, прежде чем регистрировать его в **Startup.cs**.
+По умолчанию `TelemetryInitializerMiddleware` будет использовать `TelemetryLoggerMiddleware` для регистрации данных телеметрии, когда бот отправляет или получает действия. Ведение журнала действий создает пользовательские журналы событий в ресурсе Application Insights.  При желании вы можете отключить ведение журнала событий действий, установив значение False для `logActivityTelemetry` в `TelemetryInitializerMiddleware` при его регистрации в **Startup.cs**.
 
 ```cs
 public void ConfigureServices(IServiceCollection services)
 {
     ...
     // Add the telemetry initializer middleware
-    services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>(sp =>
+    services.AddSingleton<TelemetryInitializerMiddleware>(sp =>
             {
                 var httpContextAccessor = sp.GetService<IHttpContextAccessor>();
                 var loggerMiddleware = sp.GetService<TelemetryLoggerMiddleware>();
@@ -147,6 +148,12 @@ public void ConfigureServices(IServiceCollection services)
             });
     ...
 }
+```
+
+Кроме того, для добавления `IHttpContextAccessor` потребуется ссылка на библиотеку Microsoft HTTP ASPNetCore, которую можно добавить с помощью такой инструкции using:
+
+```cs
+using Microsoft.AspNetCore.Http; 
 ```
 
 ### <a name="enable-or-disable-logging-personal-information"></a>Включение или отключение сохранения персональных данных в журнал
@@ -171,112 +178,59 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enabling-telemetry-in-your-bots-dialogs"></a>Включение телеметрии в диалогах бота
 
+При добавлении нового диалога в любой класс ComponentDialog он наследует Microsoft.Bot.Builder.IBotTelemetryClient из родительского диалога.  Например, в примере приложения CoreBot все диалоги добавляются в класс MainDialog, который имеет тип ComponentDialog.  После установки свойства TelemetryClient в MainDialog все добавленные в него диалоги будут автоматически наследовать от него значение telemetryClient, и вам не придется явным образом указывать его при добавлении диалогов.
+ 
  Чтобы обновить код CoreBot, сделайте следующее:
 
-1.  В файле `MainDialog.cs` добавьте новое поле TelemetryClient в класс `MainDialog` и обновите список параметров конструкторов, чтобы включить параметр `AddDialog()`, а затем передайте его каждому вызову метода `IBotTelemetryClient`.
-
-
-    * Добавьте параметр `IBotTelemetryClient telemetryClient` в конструктор класса MainDialog, а затем назначьте его полю `TelemetryClient`:
-
-        ```csharp
-        public MainDialog(IConfiguration configuration, ILogger<MainDialog> logger, IBotTelemetryClient telemetryClient)
-            : base(nameof(MainDialog))
-        {
-            TelemetryClient = telemetryClient;
-
-            ...
-
-        }
-        ```
-
-    * При добавлении каждого диалога с помощью метода `AddDialog` задайте значение `TelemetryClient`:
-
-        ```cs
-        public MainDialog(IConfiguration configuration, ILogger<MainDialog> logger, IBotTelemetryClient telemetryClient)
-            : base(nameof(MainDialog))
-        {
-            ...
-
-            AddDialog(new TextPrompt(nameof(TextPrompt))
-            {
-                TelemetryClient = telemetryClient,
-            });
-
-            ...
-        }
-        ```
-
-    * Каскадные диалоги создают события независимо от других диалогов. Задайте свойство `TelemetryClient` после списка каскадных шагов:
-
-        ```csharp
-        // The IBotTelemetryClient to the WaterfallDialog
-        AddDialog(new WaterfallDialog(
-            nameof(WaterfallDialog),
-            new WaterfallStep[]
-        {
-            IntroStepAsync,
-            ActStepAsync,
-            FinalStepAsync,
-        })
-        {
-            TelemetryClient = telemetryClient,
-        });
-
-        ```
-
-2. В `DialogExtensions.cs` задайте свойство `TelemetryClient` объекта `dialogSet` в методе `Run()`:
-
+1.  Обновите список параметров конструктора в `MainDialog.cs`, включив в него параметр `IBotTelemetryClient`, а затем в MainDialog установите для свойства TelemetryClient это же значение, как показано в следующем фрагменте кода:
 
     ```csharp
-    public static async Task Run(this Dialog dialog, ITurnContext turnContext, IStatePropertyAccessor<DialogState> accessor, CancellationToken cancellationToken = default(CancellationToken))
+    public MainDialog(IConfiguration configuration, ILogger<MainDialog> logger, IBotTelemetryClient telemetryClient)
+        : base(nameof(MainDialog))
     {
+        // Set the telemetry client for this and all child dialogs.
+        this.TelemetryClient = telemetryClient;
         ...
-
-        dialogSet.TelemetryClient = dialog.TelemetryClient;
-
-        ...
-        
     }
-
-    ```
-
-3. В `BookingDialog.cs` выполните те же инструкции, что и при изменении `MainDialog.cs` для включения телеметрии в четырех диалогах в этом файле. Добавьте поле `TelemetryClient` в класс BookingDialog и параметр `IBotTelemetryClient telemetryClient` в конструктор BookingDialog.
-
+        ```
 
 > [!TIP] 
-> Если у вас возникли проблемы при изменении примера кода CoreBot, см. [пример кода Application Insights](https://aka.ms/csharp-corebot-app-insights-sample).
+> If you are following along and updating the CoreBot sample code, you can refer to the [Application Insights sample code](https://aka.ms/csharp-corebot-app-insights-sample) if you run into any problems.
 
-Мы добавили телеметрию в диалоги бота. При его запуске вы увидите сведения, регистрируемые в журнале Application Insights. Но если вы используете такие интегрированные технологии, как LUIS и QnA Maker, вам также нужно добавить `TelemetryClient` в этот код.
+That's all there is to adding telemetry to your bots dialogs, at this point if you ran your bot you should see things being logged in Application Insights, however if you have any integrated technology such as LUIS and QnA Maker you will need to add the `TelemetryClient` to that code as well.
 
 
-## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>Настройка телеметрии для сбора данных об использовании из других служб, например LUIS и QnA Maker
+## Enabling telemetry to capture usage data from other services like LUIS and QnA Maker
 
-Теперь вы реализуете функции телеметрии в службе LUIS. Служба LUIS имеет встроенную функцию ведения журнала телеметрии, поэтому настроить получение данных телеметрии из LUIS очень просто.  Если вы хотите включить телеметрию в боте с поддержкой QnA Maker, выполните инструкции из [этой статьи](bot-builder-telemetry-QnAMaker.md).
+We will next implement telemetry functionality in your LUIS service. The LUIS service has built-in telemetry logging available so there is very little you need to do to start getting telemetry data from LUIS.  If you are interested in enabling telemetry in a QnA Maker enabled bot, see [Add telemetry to your QnAMaker bot](bot-builder-telemetry-QnAMaker.md)
 
-В этом примере нам нужно просто предоставить клиент телеметрии так же, как и для диалогов. 
-
-1. Параметр _`IBotTelemetryClient telemetryClient`_ является обязательным в методе `ExecuteLuisQuery()` в `LuisHelper.cs`:
+1. The _`IBotTelemetryClient telemetryClient`_ parameter is required in the `FlightBookingRecognizer` constructor in `FlightBookingRecognizer.cs`:
 
     ```cs
-    public static async Task<BookingDetails> ExecuteLuisQuery(IBotTelemetryClient telemetryClient, IConfiguration configuration, ILogger logger, ITurnContext turnContext, CancellationToken cancellationToken)
+    public FlightBookingRecognizer(IConfiguration configuration, IBotTelemetryClient telemetryClient)
     ```
 
-2. Класс `LuisPredictionOptions` поддерживает необязательные параметры для запроса на прогнозирование LUIS.  Чтобы включить телеметрию, задайте параметр `TelemetryClient` при создании объекта `luisPredictionOptions` в `LuisHelper.cs`:
+2. Далее потребуется включить `telemetryClient` при создании `LuisRecognizer` в конструкторе `FlightBookingRecognizer`. Для этого добавьте `telemetryClient` в качестве нового класса _LuisPredictionOption_:
 
     ```cs
-    var luisPredictionOptions = new LuisPredictionOptions()
+    if (luisIsConfigured)
     {
-        TelemetryClient = telemetryClient,
-    };
+        var luisApplication = new LuisApplication(
+            configuration["LuisAppId"],
+            configuration["LuisAPIKey"],
+            "https://" + configuration["LuisAPIHostName"]);
 
-    var recognizer = new LuisRecognizer(luisApplication, luisPredictionOptions);
+        // Set the recognizer options depending on which endpoint version you want to use.
+        // More details can be found in https://docs.microsoft.com/en-gb/azure/cognitive-services/luis/luis-migration-api-v3
+        var recognizerOptions = new LuisRecognizerOptionsV3(luisApplication)
+        {
+            TelemetryClient = telemetryClient,
+        };
+        _recognizer = new LuisRecognizer(recognizerOptions);
+    }
     ```
 
-3. Наконец, передайте клиент телеметрии в вызов `ExecuteLuisQuery` в методе `ActStepAsync()` в `MainDialog.cs`:
-
-    ```cs
-    await LuisHelper.ExecuteLuisQuery(TelemetryClient, Configuration, Logger, stepContext.Context, cancellationToken)
-    ```
+3. Вам понадобится собственная служба LUIS. 
 
 Теперь у вас есть функциональный бот, который записывает данные телеметрии в Application Insights. Запустить бота локально можно с помощью [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme). Вы не увидите изменений в поведении бота, но данные будут регистрироваться в Application Insights. Отправьте боту несколько сообщений. В следующем разделе описано, как просматривать результаты телеметрии в Application Insights.
 
@@ -335,7 +289,7 @@ Application Insights отслеживает доступность, произв
 
 
 
-## <a name="additional-information"></a>Дополнительная информация
+## <a name="additional-information"></a>Дополнительные сведения
 
 * [Добавление данных телеметрии в бота QnAMaker](bot-builder-telemetry-qnamaker.md)
 

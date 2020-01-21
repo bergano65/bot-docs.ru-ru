@@ -1,5 +1,5 @@
 ---
-title: Определение формы с помощью схемы JSON и FormFlow | Документация Майкрософт
+title: Определение формы с помощью схемы JSON и FormFlow — Служба Azure Bot
 description: Узнайте, как определить форму с помощью схемы JSON и FormFlow, используя пакет SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cd884c49507b4d7edc84f4bbd79396fe36073a82
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298802"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796507"
 ---
 # <a name="define-a-form-using-json-schema"></a>Определение формы с помощью схемы JSON
 
@@ -27,9 +27,9 @@ ms.locfileid: "70298802"
 
 FormFlow поддерживает приведенные ниже ключевые слова стандартной <a href="http://json-schema.org/documentation.html" target="_blank">схемы JSON</a>.
 
-| Ключевое слово | ОПИСАНИЕ | 
+| Ключевое слово | Description | 
 |----|----|
-| Тип | Определяет тип данных в поле. |
+| type | Определяет тип данных в поле. |
 | enum | Определяет допустимые значения для поля. |
 | minimum | Определяет минимальное числовое значение поля (как описано в [NumericAttribute][numericAttribute]). |
 | maximum | Определяет максимальное числовое значение поля (как описано в [NumericAttribute][numericAttribute]). |
@@ -45,7 +45,7 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 | Свойство | Значение |
 |----|----|
 | OnCompletion | Сценарий C# с аргументами `(IDialogContext context, JObject state)` для заполнения формы. |
-| Справочники | Ссылки, добавляемые в сценарий. Например, `[assemblyReference, ...]`. Пути должны быть абсолютными или относительными для текущего каталога. По умолчанию сценарий включает в себя `Microsoft.Bot.Builder.dll`. |
+| Ссылки | Ссылки, добавляемые в сценарий. Например, `[assemblyReference, ...]`. Пути должны быть абсолютными или относительными для текущего каталога. По умолчанию сценарий включает в себя `Microsoft.Bot.Builder.dll`. |
 | Импорт | Элементы, импортируемые в сценарий. Например, `[import, ...]`. По умолчанию в сценарий добавляются элементы `Microsoft.Bot.Builder`, `Microsoft.Bot.Builder.Dialogs`, `Microsoft.Bot.Builder.FormFlow`, `Microsoft.Bot.Builder.FormFlow.Advanced`, `System.Collections.Generic` и пространства имен `System.Linq`. |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>Дополнительные свойства в корне схемы или свойства, аналогичные свойству type
@@ -63,19 +63,19 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 
 ### <a name="additional-properties-as-peers-of-the-type-property"></a>Дополнительные свойства, аналогичные свойству type
 
-|   Свойство   |          Оглавление           |                                                   ОПИСАНИЕ                                                    |
+|   Свойство   |          Содержимое           |                                                   Description                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
 |   Дата и время   |            bool             |                                  Указывает, является ли поле полем `DateTime`.                                  |
 |   Describe   |      Строка или объект       |                  Определение поля, как описано в [DescribeAttribute][describeAttribute].                  |
 |    Термины     |       `[string,...]`        |                  Регулярные выражения для сопоставления значения поля, как описано в TermsAttribute.                  |
-|  MaxPhrase   |             int             |                  Обрабатывает ваши термины с помощью `Language.GenerateTerms(string, int)`, чтобы дополнить их.                   |
+|  MaxPhrase   |             INT             |                  Обрабатывает ваши термины с помощью `Language.GenerateTerms(string, int)`, чтобы дополнить их.                   |
 |    Значения    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
-|    Активна    |           script            | Сценарий C# с аргументами `(JObject state)->bool` для проверки, является ли поле, сообщение или подтверждение активным.  |
-|   Проверка   |           script            |      Сценарий C# с аргументами `(JObject state, object value)->ValidateResult` для проверки значения поля.      |
-|    Define    |           script            |        Сценарий C# с аргументами `(JObject state, Field<JObject> field)` для динамического определения поля.        |
-|     Далее     |           script            | Сценарий C# с аргументами `(object value, JObject state)` для определения следующего шага после заполнения поля. |
-|    До    |          `[confirm          |                                                  message, ...]`                                                  |
-|    после     |          `[confirm          |                                                  message, ...]`                                                  |
+|    Активна    |           скрипт            | Сценарий C# с аргументами `(JObject state)->bool` для проверки, является ли поле, сообщение или подтверждение активным.  |
+|   Проверить   |           скрипт            |      Сценарий C# с аргументами `(JObject state, object value)->ValidateResult` для проверки значения поля.      |
+|    Определение    |           скрипт            |        Сценарий C# с аргументами `(JObject state, Field<JObject> field)` для динамического определения поля.        |
+|     Дальше     |           скрипт            | Сценарий C# с аргументами `(object value, JObject state)` для определения следующего шага после заполнения поля. |
+|    Перед    |          `[confirm          |                                                  message, ...]`                                                  |
+|    После     |          `[confirm          |                                                  message, ...]`                                                  |
 | Зависимости |        [string, ...]        |                           Поля, от которых зависит это поле, сообщения или подтверждение.                           |
 
 Укажите `{Confirm:script|[string, ...], ...templateArgs}` в значении свойства **Before** или **After**, чтобы определить подтверждение с помощью сценария C# с аргументом `(JObject state)` или набора шаблонов, которые будут выбираться случайным образом и использоваться с необязательными аргументами шаблона.
@@ -86,14 +86,14 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 
 Некоторые из свойств, описанных выше, содержат сценарий в качестве значения. Сценарием может быть любой фрагмент кода C#, который обычно может быть определен в методе. Можно добавить ссылки с помощью свойства **References** и (или) свойства **Imports**. Ниже перечислены специальные глобальные переменные.
 
-| Переменная | ОПИСАНИЕ |
+| Переменная | Description |
 |----|----|
 | choice | Внутренняя диспетчеризации для выполнения сценария. |
 | state | Состояние формы `JObject` для всех сценариев. |
 | ifield | Объект `IField<JObject>`, разрешающий обоснование по текущему полю для всех сценариев, за исключением построителей запросов сообщения и подтверждения. |
 | value | Проверяемое значение свойства **Validate**. |
 | поле | Объект `Field<JObject>`, разрешающий динамическое обновление поля в свойстве **Define**. |
-| context | Контекст `IDialogContext`, разрешающий отправку результатов в **OnCompletion**. |
+| контекст | Контекст `IDialogContext`, разрешающий отправку результатов в **OnCompletion**. |
 
 Поля, определенные с помощью схемы JSON, обеспечивают те же возможности программного расширения и переопределения определений, как и любое другое поле. Они локализуется таким же образом.
 
@@ -305,7 +305,7 @@ FormFlow расширяет стандартную <a href="http://json-schema.o
 
 [!code-csharp[Use JSON schema](../includes/code/dotnet-formflow-json-schema.cs#useSchema)]
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 [!INCLUDE [Sample code](../includes/snippet-dotnet-formflow-samples.md)]
 

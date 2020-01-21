@@ -1,5 +1,5 @@
 ---
-title: Создание навыка Кортаны с помощью .NET | Документация Майкрософт
+title: Создание навыка Кортаны с помощью .NET — Служба Azure Bot
 description: Изучите основные понятия для создания навыка Кортаны, представленные в пакете SDK Bot Framework для .NET.
 keywords: Bot Framework, навык Кортана, речь, .NET, пакет SDK, ключевые концепции, основные понятия
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c0dd854cf2f8eb1f4cbe13c8d562425616e8cf40
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ecdbf3e573c091893d0f2da8d2c7acb0c6348810
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167345"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796693"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Создание бота с поддержкой речи с навыками Кортаны
 
@@ -59,15 +59,15 @@ reply.Speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesi
 Свойство **InputHint** позволяет указать помощнику Кортана, ожидает ли бот входные данные. По умолчанию используются значения **ExpectingInput** для запросов и **AcceptingInput** для других типов ответов.
 
 
-| Значение | ОПИСАНИЕ |
+| Значение | Description |
 |------|------|
 | **AcceptingInput** | Бот пассивно готов к вводу, но не ожидает ответа. Кортана принимает входные данные от пользователя, если пользователь удерживает кнопку микрофона.|
 | **ExpectingInput** | Указывает на то, что бот активно ожидает ответа от пользователя. Кортана слушает, что пользователь говорит в микрофон.  |
-| **IgnoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку при активной обработке запроса, и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет выполнен.  |
+| **IgnoringInput** | Кортана игнорирует входные данные. Бот может отправить эту подсказку, если он активно обрабатывает запрос и будет игнорировать входные данные от пользователей до тех пор, пока запрос не будет завершен.  |
 
 <!-- TODO: tip about time limit and batching -->
 
-В этом примере показано, как сообщить Кортане, что ожидается ввод данных пользователем. Микрофон останется открытым.
+В этом примере показано, как сообщить Кортане, что ожидается ввод данных пользователем. Микрофон остается открытым.
 ```cs
 // Add an InputHint to let Cortana know to expect user input
 Activity reply = activity.CreateReply("This is the text that will be displayed."); 
@@ -79,9 +79,9 @@ reply.InputHint = InputHints.ExpectingInput;
 
 ## <a name="display-cards-in-cortana"></a>Отображение карточек в Кортане
 
-Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие функциональные карточки:
+Помимо произношения ответов, Кортана также может отображать вложения карточек. Кортана поддерживает следующие форматированные карточки:
 
-| Тип карточки | ОПИСАНИЕ |
+| Тип карточки | Description |
 |----|----|
 | [HeroCard][heroCard]; | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
 | [ThumbnailCard][thumbnailCard]. | Карточка, которая обычно содержит один эскиз, одну или несколько кнопок и текст. |
@@ -96,7 +96,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 -->
 
 
-## <a name="sample-rollerskill"></a>Пример: RollerSkill
+## <a name="sample-rollerskill"></a>Образец. RollerSkill
 Код в следующих разделах относится к примеру навыка Кортаны, который предназначен для того, чтобы бросать кости. Скачайте полный код для бота из [репозитория BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/).
 
 Можно вызвать навык, назвав [имя вызова][InvocationNameGuidelines] Кортане. После [подключения бота к каналу Кортаны][CortanaChannel] и регистрации его в качестве навыка Кортана можно вызвать навык Roller Skill, сказав Кортане: "Ask Roller" (Вызвать навык броска) или "Ask Roller to Roll Dice" (Вызвать навык броска и бросить кости).
@@ -322,7 +322,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
         }
     }
 ```
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Если бот запущен на локальном устройстве или развернут в облаке, можно вызвать его с помощью Кортаны. Сведения о действиях, необходимых для проверки навыка Кортаны, см. в разделе [Test a Cortana skill](../bot-service-debug-cortana-skill.md) (Тестирование навыка Кортаны).
 

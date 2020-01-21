@@ -1,5 +1,5 @@
 ---
-title: События, создаваемые телеметрией службы Bot Framework | Документация Майкрософт
+title: События, создаваемые телеметрией службы Bot Framework — Служба Azure Bot
 description: Узнайте, какие события активируются в новых функциях телеметрии.
 keywords: telemetry, appinsights, monitor bot
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dbb58a6a287124d0b393a4fc5a617e89840d1542
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: f4de4c0f6e4c90461a46d471806cb290b183935e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299162"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792034"
 ---
 # <a name="events-generated-by-the-bot-framework-service-telemetry"></a>События, создаваемые телеметрией службы Bot Framework
 
@@ -146,7 +146,7 @@ ms.locfileid: "70299162"
   - Соответствует [источнику действия](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from), как определено протоколом Bot Framework.
   - В журнал записывается имя свойства `fromName`.
 
-- Языковой стандарт
+- Локаль
   - Соответствует [источнику действия](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from), как определено протоколом Bot Framework.
   - В журнал записывается имя свойства `fromName`.
 
@@ -163,7 +163,7 @@ ms.locfileid: "70299162"
 - ReplyToID
 - RecipientId
 - ConversationName
-- Языковой стандарт
+- Локаль
 - RecipientName (необязательно для персональных данных)
 - Text (необязательно для персональных данных)
 - Speak (необязательно для персональных данных)
@@ -179,7 +179,7 @@ ms.locfileid: "70299162"
 - RecipientId
 - ConversationId
 - ConversationName
-- Языковой стандарт
+- Локаль
 - Text (необязательно для персональных данных)
 
 
@@ -205,7 +205,7 @@ ms.locfileid: "70299162"
 - Channel ([из инициализатора телеметрии](https://aka.ms/telemetry-initializer))
 - ActivityType ([из инициализатора телеметрии](https://aka.ms/telemetry-initializer))
 - ApplicationId
-- Намерение
+- Блокировка с намерением
 - IntentScore
 - Intent2 
 - IntentScore2 

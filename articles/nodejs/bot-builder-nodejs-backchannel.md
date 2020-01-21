@@ -1,5 +1,5 @@
 ---
-title: Обмен данными с помощью веб-элемента управления | Документация Майкрософт
+title: Обмен данными с помощью веб-элемента управления — Служба Azure Bot
 description: Сведения о том, как реализовать обмен данными между ботом и веб-страницей, используя пакет SDK Bot Framework для Node.js.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 52f57cba5824deb01b176363880084760a95a41b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1b4548b02f714ce3948acb3eaed25fcf916a2d9f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790976"
 ---
 # <a name="use-the-backchannel-mechanism"></a>Использование механизма обратного канала
 
@@ -27,7 +27,7 @@ ms.locfileid: "70299925"
 
 ![Обратный канал](../media/designing-bots/patterns/back-channel.png)
 
-### <a name="sample-code"></a>Пример кода 
+### <a name="sample-code"></a>Образец кода 
 
 В этом примере бот и веб-страница будут использовать механизм обратного канала для обмена данными, невидимыми для пользователя. Бот отправляет веб-странице запрос на изменение цвета фона, а веб-страница отправит боту уведомление, когда пользователь нажмет кнопку на странице. 
 

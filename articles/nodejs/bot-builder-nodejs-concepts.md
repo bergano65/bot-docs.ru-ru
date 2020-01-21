@@ -1,5 +1,5 @@
 ---
-title: Основные понятия, используемые при работе с пакетом SDK Bot Framework для Node.js | Документация Майкрософт
+title: Основные концепции, которые используются в пакете SDK Bot Framework для Node.js — Служба Azure Bot
 description: Обзор основных понятий, используемых при работе с пакетом SDK Bot Framework для Node.js, и предоставляемых в нем инструментов для создания и развертывания чат-ботов.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 81a4f184f2011e6a09c645e61e1d8c3dfabdebaa
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: d88fa567d25358dba33b776082da69b675f93892
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415151"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790966"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Основные концепции, которые используются в пакете SDK Bot Framework для Node.js.
 
@@ -33,7 +33,9 @@ ms.locfileid: "74415151"
 Пакет SDK Bot Framework для Node.js предоставляет классы [UniversalBot][UniversalBot] и [ChatConnector][ChatConnector], чтобы настроить бот отправлять и получать сообщения через соединитель Bot Framework. Класс `UniversalBot` — это центральный компонент логики бота. Он отвечает за управление всеми беседами бота с пользователем. Класс `ChatConnector` подключает бота к службе Bot Framework Connector.
 Пример, демонстрирующий использование этих классов, см. в разделе [Создание бота с помощью пакета SDK Bot Framework для Node.js](bot-builder-nodejs-quickstart.md).
 
-Соединитель также нормализует сообщения, отправляемые ботом в каналы, позволяя разрабатывать боты, независимые от платформы. Нормализация сообщения включает его преобразование из схемы Bot Framework в схему канала. Если канал не поддерживает все аспекты схемы платформы, соединитель будет пытаться преобразовать сообщение в формат, поддерживаемый каналом. Например, если бот отправляет сообщение, содержащее карточку с кнопками действий, в канал SMS, соединитель может обрабатывать карточку как изображение и включать действия как ссылки в тексте сообщения. [Channel Inspector][ChannelInspector] — это веб-средство, которое показывает вам, как соединитель будет обрабатывать сообщения для различных каналов.
+Соединитель также нормализует сообщения, отправляемые ботом в каналы, позволяя разрабатывать боты, независимые от платформы. Нормализация сообщения включает его преобразование из схемы Bot Framework в схему канала. Если канал не поддерживает все аспекты схемы платформы, соединитель будет пытаться преобразовать сообщение в формат, поддерживаемый каналом. Например, если бот отправляет сообщение, содержащее карточку с кнопками действий, в канал SMS, соединитель может обрабатывать карточку как изображение и включать действия как ссылки в тексте сообщения. 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 Для `ChatConnector` требуется настроить конечную точку API в боте. С помощью пакета SDK для Node.js это можно сделать путем установки модуля Node.js `restify`. Боты также можно создавать для консоли с помощью [ConsoleConnector][ConsoleConnector], который не требует конечную точку API.
 
@@ -43,7 +45,7 @@ ms.locfileid: "74415151"
 
 Пример, демонстрирующий способ отправки форматированной графической карточки, содержащей интерактивные кнопки, которые пользователь нажимает для запуска действий, см. в разделе [Добавление форматированных карточек в сообщения](bot-builder-nodejs-send-rich-cards.md). Пример, в котором показано, как отправлять и получать вложения, см. в разделе [Отправка вложений](bot-builder-nodejs-send-receive-attachments.md). Пример, в котором показано, как отправить сообщение с текстом, который должен произнести бот, в канал с поддержкой речевых функций см. в разделе [Добавление речи в сообщения](bot-builder-nodejs-text-to-speech.md). Пример, демонстрирующий отправку предлагаемых действий, см. в разделе [Отправка предлагаемых действий](bot-builder-nodejs-send-suggested-actions.md).
 
-## <a name="dialogs"></a>Диалоги
+## <a name="dialogs"></a>Диалоговые окна
 Диалоги помогают организовать естественную логику в боте и играют решающую роль в [конструировании потока беседы](../bot-service-design-conversation-flow.md). Общие сведения о диалогах см. в разделе [Управление беседой с помощью диалогов](bot-builder-nodejs-dialog-manage-conversation.md).
 
 ## <a name="actions"></a>Действия
@@ -74,7 +76,7 @@ ms.locfileid: "74415151"
 
 * [Руководство по Microsoft LUIS][LUISVideo] (видео)
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 > [!div class="nextstepaction"]
 > [Диалоги в пакете SDK построителя ботов для .NET](bot-builder-nodejs-dialog-overview.md)
 
@@ -85,7 +87,7 @@ ms.locfileid: "74415151"
 [ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
 [ConsoleConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 
 [Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html
 [SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send

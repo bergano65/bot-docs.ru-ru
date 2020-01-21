@@ -1,5 +1,5 @@
 ---
-title: Отладка бота с помощью проверяющего ПО промежуточного слоя | Документация Майкрософт
+title: Отладка бота с помощью проверяющего ПО промежуточного слоя — Служба Azure Bot
 description: Из этой статьи вы узнаете, как отлаживать бота с помощью проверяющего ПО промежуточного слоя
 author: zxyanliu
 ms.author: v-liyan
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 9218ed5019294d2fc18d63b0fe4abe853af83e2b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736826"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792606"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 

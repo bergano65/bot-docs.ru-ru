@@ -1,5 +1,5 @@
 ---
-title: Краткий справочник по миграции из версии 3 в версию 4 для .NET | Документация Майкрософт
+title: Краткий справочник по миграции из версии 3 в версию 4 для .NET — Служба Azure Bot
 description: Описание основных различий между пакетами SDK Bot Framework для .NET версий 3 и 4.
 keywords: .net, bot migration, dialogs, v3 bot
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ff072cd3a16c3a58099cf91c1de962837994075b
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: f8569aa3d4e2e227e7b348675429e5f347b13329
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441498"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791026"
 ---
 # <a name="net-migration-quick-reference"></a>Краткий справочник по миграции для .NET
 
@@ -142,7 +142,7 @@ protected override async Task OnMessageActivityAsync(
 context.Call(new NextDialog(), this.ResumeAfterNextDialog);
 ```
 
-или
+или диспетчер конфигурации служб
 
 ```cs
 await context.Forward(new NextDialog(), this.ResumeAfterNextDialog, message);
@@ -154,7 +154,7 @@ await context.Forward(new NextDialog(), this.ResumeAfterNextDialog, message);
 dialogContext.BeginDialogAsync("<child-dialog-id>", options);
 ```
 
-или
+или диспетчер конфигурации служб
 
 ```cs
 dialogContext.ReplaceDialogAsync("<child-dialog-id>", options);

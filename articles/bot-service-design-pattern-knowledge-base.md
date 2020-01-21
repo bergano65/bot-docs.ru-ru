@@ -1,5 +1,5 @@
 ---
-title: Проектирование ботов базы знаний | Документация Майкрософт
+title: Проектирование ботов базы знаний — Служба Azure Bot
 description: Сведения о различных способах создания бота базы знаний, который находит и возвращает информацию в ответ на входные данные или запрос пользователя.
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: c263876dc06229c4716cc1ddc3d83d0d0c6b11a4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 988bf816d66bfb6d4140b6be4a708ae6082e1077
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298675"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792105"
 ---
 # <a name="design-knowledge-bots"></a>Проектирование ботов базы знаний
 
@@ -26,15 +26,15 @@ ms.locfileid: "70298675"
 
 Во-первых, "нечеткий поиск" позволяет боту предоставлять информацию, которая может иметь отношение к вопросу пользователя, не требуя, чтобы пользователь вводил точные входные данные. Например, если пользователь запрашивает у бота музыкальной базы знаний информацию об "impala" (вместо "Tame Impala"), бот может посылать информацию, которая, скорее всего, будет иметь отношение к этим входным данным.
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/fuzzySearch2.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/fuzzySearch2.png)
 
 Оценки поиска показывают уровень надежности результатов конкретного поиска, позволяя боту соответственно упорядочить результаты или даже настроить их связь на основе уровня надежности. Например, если уровень надежности высокий, бот может ответить "Here is the event that best matches your search".
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/searchScore2.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/searchScore2.png)
 
 Если уровень надежности низкий, бот может ответить "Hmm... were you looking for any of these events?"
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/searchScore1.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/searchScore1.png)
 
 ### <a name="using-search-to-guide-a-conversation"></a>Использование поиска для ведения общения
 
@@ -42,13 +42,13 @@ ms.locfileid: "70298675"
 
 Боты базы знаний, как правило, наиболее эффективны, если они предназначены для ведения общения. Общение состоит из обмена информацией между ботом и пользователем, который предоставляет боту возможность задавать уточняющие вопросы, предлагать варианты и проверять результаты таким образом, каким не способен выполнить базовый поиск. Например, следующий бот направляет пользователя в общении, ограничивая и фильтруя набор данных, пока не найдет информацию, которую ищет пользователь.
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/guidedConvo1.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/guidedConvo1.png)
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/guidedConvo2.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/guidedConvo2.png)
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/guidedConvo3.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/guidedConvo3.png)
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/guidedConvo4.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/guidedConvo4.png)
 
 Обработав входные данные пользователя на каждом шаге и представив соответствующие параметры, бот направляет пользователям информацию, которую они ищут. Когда бот предоставит эту информацию, он может даже дать рекомендации относительно более эффективных способов поиска подобной информации в будущем. 
 
@@ -58,13 +58,13 @@ ms.locfileid: "70298675"
 
 Используя <a href="https://azure.microsoft.com/services/search/" target="_blank">Поиск Azure</a>, можно создать эффективный индекс поиска, с помощью которого бот может легко искать, ограничивать и фильтровать информацию. Рассмотрим индекс поиска, созданный с помощью портала Azure.
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/search3.PNG)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/search3.PNG)
 
 Если необходимо иметь доступ ко всем свойствам хранилища данных, установите каждое свойство как "retrievable". Если необходимо найти музыкантов по имени, установите свойство **Имя** как "searchable". Наконец, если необходимо иметь возможность ограничиваемого фильтра над эпохами музыкантов, установите свойство **Эпохи** как "facetable" и "filterable". 
 
 Ограничение определяет значения, существующие в хранилище данных для данного свойства, а также величину каждого значения. Например, этот снимок экрана показывает, что в хранилище данных существует 5 различных эпох.
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/facet.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/facet.png)
 
 Фильтрация, в свою очередь, выбирает только указанные экземпляры определенного свойства. Например, можно отфильтровать результаты выше, чтобы содержались только те элементы, где **Эпоха** равна "Romantic". 
 
@@ -81,11 +81,11 @@ ms.locfileid: "70298675"
 
 Используя веб-интерфейс службы QnA Maker, можно настроить базу знаний с тремя парами вопросов и ответов. 
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/KnowledgeBaseConfig.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/KnowledgeBaseConfig.png)
 
 Затем можно проверить ее, задав ряд вопросов. 
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/exampleQnAConvo.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/exampleQnAConvo.png)
 
 Бот правильно отвечает на вопросы, которые непосредственно сопоставляются с теми, которые были настроены в базе знаний. Однако он неправильно отвечает на вопрос "can I bring my tea?", потому что этот вопрос наиболее похож по структуре на вопрос "can I bring my vodka?". Причина, по которой служба QnA Maker дает неверный ответ, заключается в том, что она не распознает смысл слова. Она не знает, что "tea" — это тип безалкогольного напитка. Поэтому она отвечает: "Alcohol is not allowed".
 
@@ -114,7 +114,7 @@ ms.locfileid: "70298675"
 
 При тестировании этой модели с новыми высказываниями типа "what kind of music do the beatles play?", LUIS успешно определяет намерение "answerGenre" и идентифицирует сущность "beatles". Однако, если задать более длинный вопрос, например "what kind of music does the devil makes three play?", LUIS идентифицирует "the devil" как сущность.
 
-![Структура диалогового окна](~/media/bot-service-design-pattern-knowledge-base/devilMakesThreeScore.png)
+![Структура диалога](~/media/bot-service-design-pattern-knowledge-base/devilMakesThreeScore.png)
 
 Обучая модель примерам сущностей, которые представляют собой базовый набор данных, можно повысить точность распознавания языка бота. 
 
@@ -134,7 +134,7 @@ ms.locfileid: "70298675"
 > [!TIP]
 > При реализации комбинации LUIS, QnA Maker и/или Поиск Azure введите тестовые входные данные в каждое из средств, чтобы определить пороговое значение для каждой из моделей. Каждая из служб (LUIS, QnA Maker и Поиск Azure) генерирует значение, используя разные критерии оценки, поэтому оценки, полученные в этих средствах, не сопоставляются напрямую. Кроме того, LUIS и QnA Maker нормализуют оценки. Определенную оценку можно считать "хорошей" в одной модели LUIS, но "не очень" в другой модели. 
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 - Пример, в котором показано, как создать базовый бот базы знаний с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://aka.ms/qna-with-appinsights" target="_blank">примере бота базы знаний</a> в репозитории GitHub. 
 <!-- TODO: Do not have a current bot sample to work with this

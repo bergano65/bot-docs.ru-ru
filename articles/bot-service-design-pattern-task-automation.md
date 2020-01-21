@@ -1,5 +1,5 @@
 ---
-title: Создание ботов с автоматизацией задач | Документация Майкрософт
+title: Создание ботов с автоматизацией задач — Служба Azure Bot
 description: Узнайте, как разработать боты, которые выполняют задачи без дальнейшего вмешательства человека.
 author: matvelloso
 ms.author: mateusv
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8bad1459dfce89f79906dec0f4c03cb50a242449
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 0a6643ab0445e569d26a2f3c6b49532e7746a3c2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70166952"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793346"
 ---
 # <a name="create-task-automation-bots"></a>Создание ботов с автоматизацией задач
 
@@ -41,7 +41,7 @@ ms.locfileid: "70166952"
 > [!IMPORTANT]
 > Разработка бота, описанная в этой статье, используется только в качестве примера. В сценариях из реальной жизни бот для сброса пароля, скорее всего, будет реализовать более надежный процесс проверки личности.
 
-### <a name="dialogs"></a>Диалоги
+### <a name="dialogs"></a>Диалоговые окна
 
 Далее спецификация описывает вид и функциональные возможности каждого диалога. 
 

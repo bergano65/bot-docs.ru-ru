@@ -1,5 +1,5 @@
 ---
-title: Отправка сообщения боту | Документация Майкрософт
+title: Отправка сообщения боту — Служба Azure Bot
 description: Узнайте, как отправлять сообщения боту, используя Direct Line API 1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 461ea04e0865991c3a6d643db7511e58d516ec41
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e6504c1d6cd8cbcf3eab4fadaa62485deba14efa
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299608"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789720"
 ---
 # <a name="send-a-message-to-the-bot"></a>Отправка сообщения боту
 
 > [!IMPORTANT]
-> В этой статье описывается отправка сообщения боту с помощью Direct Line API 1.1. При создании подключения между клиентским приложением и ботом используйте вместо этого [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-send-activity.md).
+> В этой статье описывается отправка сообщения боту с помощью Direct Line API 1.1. При создании подключения между клиентским приложением и ботом используйте [API версии 3.0 для Direct Line](bot-framework-rest-direct-line-3-0-send-activity.md).
 
 С помощью протокола Direct Line 1.1 клиенты могут обмениваться сообщениями с ботами. Эти сообщения преобразовываются в схему, поддерживаемую ботом (Bot Framework версии 1 или 3). В каждом запросе клиент может отправить одно сообщение. 
 

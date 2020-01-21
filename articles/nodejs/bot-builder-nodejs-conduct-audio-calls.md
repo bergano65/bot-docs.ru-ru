@@ -1,5 +1,5 @@
 ---
-title: Голосовые вызовы | Документация Майкрософт
+title: Осуществление голосовых вызовов — Служба Azure Bot
 description: Узнайте, как выполнять голосовые вызовы из бота через Skype с помощью Node.js
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3934450f8fe2f971dc18d5a62cbcc74a97bd5869
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 25f1941c732363f849f1d82c149d80094c16860f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299905"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790956"
 ---
 # <a name="support-audio-calls-with-skype"></a>Поддержка голосовых вызовов через Skype
 

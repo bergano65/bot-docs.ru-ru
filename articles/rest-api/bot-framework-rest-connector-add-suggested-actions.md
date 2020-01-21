@@ -1,5 +1,5 @@
 ---
-title: Добавление предлагаемых действий к сообщениям | Документация Майкрософт
+title: Добавление предлагаемых действий в сообщения — Служба Azure Bot
 description: Сведения о добавлении предлагаемых действий к сообщениям с помощью службы Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: b8b0eb454b77332a8b19104af78d9553582ab854
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ea8c76df736678754db95d7306605f5ef10b6a11
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037146"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790085"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Добавление предлагаемых действий к сообщениям
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "70037146"
 
 Чтобы добавить предлагаемые действия к сообщению, задайте свойство `suggestedActions` для объекта [Действие][], чтобы указать список объектов [CardAction][], представляющих кнопки, которые будут показаны пользователю. 
 
-Следующий запрос отправляет пользователю сообщение, которое предлагает три действия. В этом примере запроса `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
+Следующий запрос отправляет пользователю сообщение, которое предлагает три действия. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723

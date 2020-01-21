@@ -1,5 +1,5 @@
 ---
-title: Основные понятия API 1.1 для Direct Line в Bot Framework | Документация Майкрософт
+title: Основные понятия Direct Line API 1.1 в Bot Framework — Служба Azure Bot
 description: Обзор основных понятий API 1.1. для Direct Line в Bot Framework.
 author: RobStand
 ms.author: kamrani
@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 63475546472d2305ef665fd4ab29c6f2df2b08eb
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 165079f862a11fc8d226a54bede7d497885a104a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299631"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789710"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Основные понятия API 1.1 для Direct Line
 
-C помощью API для Direct Line вы сможете реализовать обмен данными между ботом и своим клиентским приложением. 
+C помощью API для Direct Line вы можете реализовать обмен данными между ботом и своим клиентским приложением. 
 
 > [!IMPORTANT]
 > В этой статье раскрыты основные понятия API 1.1 для Direct Line и приведены сведения о соответствующих ресурсах для разработчиков. При создании подключения между клиентским приложением и ботом используйте [API версии 3.0 для Direct Line](bot-framework-rest-direct-line-3-0-concepts.md).
@@ -41,10 +41,10 @@ C помощью API для Direct Line вы сможете реализоват
 
 ### <a name="client-library"></a>Клиентская библиотека
 
-Bot Framework предоставляет клиентскую библиотеку, которая позволяет легко получить доступ к API для 1.1 Direct Line с помощью C#. Чтобы использовать клиентскую библиотеку в проекте Visual Studio, установите <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">пакет NuGet версии 1.х</a> `Microsoft.Bot.Connector.DirectLine`. 
+Bot Framework предоставляет клиентскую библиотеку, которая позволяет легко получить доступ к API для 1.1 Direct Line с помощью C#. Чтобы использовать клиентскую библиотеку в проекте Visual Studio, установите `Microsoft.Bot.Connector.DirectLine` <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">пакет NuGet версии 1.х</a>. 
 
 Вместо клиентской библиотеки C# вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://docs.botframework.com/restapi/directline/swagger.json" target="_blank">файл Swagger для API 1.1 для Direct Line</a>.
 
-### <a name="web-chat-control"></a>Элемент управления "Веб-чат" 
+### <a name="web-chat-control"></a>Элемент управления веб-чата 
 
 Bot Framework предоставляет элемент управления, который позволяет внедрить бот, использующий Direct Line, в клиентское приложение. Дополнительные сведения см. в статье о <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat control</a> (Элемент управления WebChat в Microsoft Bot Framework).

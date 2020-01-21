@@ -1,5 +1,5 @@
 ---
-title: Создание сообщений с помощью API службы Bot Connector | Документация Майкрософт
+title: Создание сообщений с помощью API службы Bot Connector — Служба Azure Bot
 description: Узнайте о часто используемых свойствах сообщений в API службы Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: f3f084f65c1fb4fc84a6c8c75ce36b56487ebd0d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876156"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789969"
 ---
 # <a name="create-messages"></a>Создание сообщений
 
@@ -20,7 +20,9 @@ ms.locfileid: "70876156"
 
 ## <a name="message-text-and-formatting"></a>Текст сообщения и форматирование
 
-Текст сообщения можно форматировать с помощью **plain**, **markdown** или **xml**. Формат по умолчанию для свойства `textFormat` — **markdown**, который интерпретирует текст с использованием стандартов форматирования Markdown. Уровень поддержки формата текста меняется в зависимости от каналов. Чтобы узнать, поддерживается ли функция, которую вы хотите использовать, на целевом канале, просмотрите функцию с помощью [Channel Inspector][ChannelInspector]. 
+Текст сообщения можно форматировать с помощью **plain**, **markdown** или **xml**. Формат по умолчанию для свойства `textFormat` — **markdown**, который интерпретирует текст с использованием стандартов форматирования Markdown. Уровень поддержки формата текста меняется в зависимости от каналов. 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 Свойство `textFormat` объекта [Действие][] может использоваться для указания формата текста. Например, чтобы создать простое сообщение, которое содержит только обычный текст, задайте для свойства `textFormat` объекта `Activity` значение **plain**, для свойства `text` — значение содержимого сообщения, а для свойства `locale` — языковой стандарт отправителя. 
 
@@ -54,17 +56,17 @@ ms.locfileid: "70876156"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Предварительный просмотр компонентов с помощью Channel Inspector][ChannelInspector]
+- [Справочник по каналам][ChannelInspector]
 - [Общие сведения о действиях](https://aka.ms/botSpecs-activitySchema)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md)
 - [Добавление вложений в виде форматированных карточек в сообщения](bot-framework-rest-connector-add-rich-cards.md)
 - [Добавление речи в сообщения](bot-framework-rest-connector-text-to-speech.md)
-- [Добавление подсказок ввода к сообщениям](bot-framework-rest-connector-add-input-hints.md)
-- [Добавление предлагаемых действий к сообщениям](bot-framework-rest-connector-add-suggested-actions.md)
+- [Добавление подсказок для ввода в сообщения](bot-framework-rest-connector-add-input-hints.md)
+- [Добавление предлагаемых действий в сообщения](bot-framework-rest-connector-add-suggested-actions.md)
 - [Реализация возможностей для определенных каналов](bot-framework-rest-connector-channeldata.md)
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 [textFormating]: ../bot-service-channel-inspector.md#text-formatting
 
 [Действие]: bot-framework-rest-connector-api-reference.md#activity-object

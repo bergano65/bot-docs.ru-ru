@@ -1,5 +1,5 @@
 ---
-title: Добавление речи в сообщения | Документы Майкрософт
+title: Добавление речи в сообщения (C# версии 3) — Служба Azure Bot
 description: Сведения о добавлении речи в сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d47fe41821b0ea8a61555b8139f2969f204d8dd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a03d1c58bc91cd7966b59e2b62eb1c6ac46c094f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297316"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797891"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 
@@ -28,7 +28,7 @@ ms.locfileid: "70297316"
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Указание текста, произносимого ботом
 
-С помощью пакета SDK Bot Framework для .NET можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `Speak` [сообщения][IMessageActivity], вызвать метод `IDialogContext.SayAsync()` или указать параметры запроса `speak` и `retrySpeak` при отправке сообщения с помощью встроенного запроса.
+С помощью пакета SDK Bot Framework для .NET можно несколькими способами указать текст, произносимый ботом по каналу с поддержкой речевых функций. Можно задать свойство `Speak`[сообщения][IMessageActivity], вызвать метод `IDialogContext.SayAsync()` или указать параметры запроса `speak` и `retrySpeak` при отправке сообщения с помощью встроенного запроса.
 
 ### <a id="message-speak"></a> IMessageActivity.Speak
 
@@ -58,7 +58,7 @@ ms.locfileid: "70297316"
 
 При отправке сообщения по каналу с поддержкой речевых функций можно попытаться оказать влияние на состояние микрофона клиента, включив подсказку для ввода, указывающую, как бот реагирует на ввод данных пользователем — принимает, ожидает или игнорирует. Дополнительные сведения см. в статье [Добавление подсказок для ввода в сообщения](bot-builder-dotnet-add-input-hints.md).
 
-## <a name="sample-code"></a>Пример кода 
+## <a name="sample-code"></a>Образец кода 
 
 Полный пример, в котором показано создание бота с поддержкой речевых функций с помощью пакета SDK Bot Framework для .NET, см. в <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">примере Roller Skill</a> на сайте GitHub.
 

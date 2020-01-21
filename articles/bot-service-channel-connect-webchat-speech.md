@@ -1,5 +1,5 @@
 ---
-title: Включение распознавания речи в веб-чате | Документация Майкрософт
+title: Включение распознавания речи в веб-чате — Служба Azure Bot
 description: Узнайте, как включить распознавание речи в элементе управления "Веб-чат" для бота, подключенного к каналу "Веб-чат".
 keywords: speech, web chat, voice, microphone, audio
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b83dff7969c58451e5752938f74b682b2163c49d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 72a247fe0e8373323626a5d01360d2a923b09b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298203"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793251"
 ---
 # <a name="enable-speech-in-web-chat"></a>Включение распознавания речи в веб-чате
 Вы можете включить голосовой интерфейс в элементе управления "Веб-чат". Пользователи взаимодействуют с голосовым интерфейсом, используя микрофон в элементе управления "Веб-чат".
@@ -23,7 +23,7 @@ ms.locfileid: "70298203"
 
 Если пользователь печатает, вместо того чтобы говорить, веб-чат отключает функции распознавания речи и бот предоставляет только текстовый ответ, вместо того чтобы говорить вслух. Чтобы снова включить устный ответ, пользователь может при следующем ответе боту использовать микрофон. Если микрофон принимает входные данные, его значок отображается как темный или заполненный. Если он выделен серым, значит пользователь щелкнул, чтобы отключить его.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
   Перед запуском образца необходимо иметь секрет Direct Line или токен для бота, который вы хотите запустить с помощью элемента управления "Веб-чат". 
   * Сведения о том, как получить секрет Direct Line, связанный с вашим ботом, см. в статье [Connect a bot to Direct Line](bot-service-channel-connect-directline.md) (Подключение бота к Direct Line).
@@ -49,16 +49,16 @@ ms.locfileid: "70298203"
      ```
 4. В браузере перейдите к странице `http://localhost:8000/samples?parameters`. Например, `http://localhost:8000/samples?s=YOURDIRECTLINESECRET` вызывает бот с помощью секрета Direct Line. В следующей таблице описаны параметры, которые можно задать в строке запроса:
 
-   | Параметр | ОПИСАНИЕ |
+   | Параметр | Description |
    |-----------|-------------|
    | s | Секрет Direct Line. Сведения о том, как получить секрет Direct Line, см. в статье [Connect a bot to Direct Line](bot-service-channel-connect-directline.md) (Подключение бота к Direct Line). |
    | t | Токен Direct Line. Сведения о создании этого токена см. в статье [Authentication](rest-api/bot-framework-rest-direct-line-3-0-authentication.md) (Проверка подлинности). |
-   | Домен | Необязательный элемент. URL-адрес альтернативной конечной точки Direct Line.  |
-   | webSocket | Необязательный элемент. Установите значение true, чтобы использовать WebSocket для получения сообщений. Значение по умолчанию — `false`. |
-   | userid | Необязательный элемент. Идентификатор пользователя бота.  |
-   | Имя пользователя | Необязательный элемент. Имя пользователя бота.  |
-   | botid | Необязательный элемент. Идентификатор бота. |
-   | botname | Необязательный элемент. Имя бота. |
+   | домен | Необязательный параметр. URL-адрес альтернативной конечной точки Direct Line.  |
+   | webSocket | Необязательный параметр. Установите значение true, чтобы использовать WebSocket для получения сообщений. Значение по умолчанию — `false`. |
+   | userid | Необязательный параметр. Идентификатор пользователя бота.  |
+   | username | Необязательный параметр. Имя пользователя бота.  |
+   | botid | Необязательный параметр. Идентификатор бота. |
+   | botname | Необязательный параметр. Имя бота. |
 
 
 ## <a name="enable-speech-services"></a>Включение служб речи
@@ -108,7 +108,7 @@ The following example code shows how the token fetch is done from a secure back 
 
 [!code-js[Pass speech options to Web Chat (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#PassSpeechOptionsToWebChat)]
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда вы можете включить голосовое взаимодействие с веб-чатом, узнайте, как ваш бот создает голосовые сообщения и изменяет состояние микрофона.
 * [Добавление речи в сообщение (C#)](dotnet/bot-builder-dotnet-text-to-speech.md)
 * [Добавление речи в сообщение (Node.js)](nodejs/bot-builder-nodejs-text-to-speech.md)

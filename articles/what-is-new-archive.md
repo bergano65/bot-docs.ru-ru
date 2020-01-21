@@ -1,5 +1,5 @@
 ---
-title: Новые возможности | Документация Майкрософт
+title: Новые возможности (архив) — Служба Azure Bot
 description: Узнайте о новых возможностях Bot Framework.
 keywords: bot framework, azure bot service
 author: kamrani
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a6a957a636d82e0e4f0bf755d4215893d99bb07d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 91a0ba8d2e13d8f17213ac9669eca374e27e3863
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491390"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791056"
 ---
 # <a name="whats-new-november-2019"></a>Отчет о новых возможностях за ноябрь 2019 г.
 

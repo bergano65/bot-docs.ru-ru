@@ -1,5 +1,5 @@
 ---
-title: Реализации функций, связанных с каналами | Документация Майкрософт
+title: Реализации функций, связанных с каналами с помощью REST API — Служба Azure Bot
 description: Сведения о том, как реализовать функции, связанные с каналами, с помощью API Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,20 +7,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4716ff913940b09fa24f199492de9e19cf009b71
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876134"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790014"
 ---
-# <a name="implement-channel-specific-functionality"></a>Реализация функций, связанных с каналами
+# <a name="implement-channel-specific-functionality"></a>Реализация возможностей для определенных каналов
 
 Некоторые каналы предоставляют функции, которые невозможно реализовать, используя только [текст сообщений и вложения](bot-framework-rest-connector-create-messages.md). Чтобы реализовать функции, связанные с каналами, вы можете передать в канал собственные метаданные через свойство `channelData` объекта [Activity[]]. Например, с помощью свойства `channelData` бот может передать в Telegram команду отправки наклейки или потребовать, чтобы Office 365 отправил сообщение электронной почты.
 
 В этой статье описано, как реализовать функции, связанные с каналами, на основе свойства `channelData` в действии сообщения.
 
-| Канал | Функции |
+| Channel | Функциональность |
 |----|----|
 | Email | Отправка и получение сообщений электронной почты, которые содержат текст, тему и метаданные о важности. |
 | Slack | Отправка сообщений Slack с полным контролем. |
@@ -137,7 +137,7 @@ ms.locfileid: "70876134"
 
 Чтобы создать оповещение Facebook, присвойте свойству `channelData` объекта `Activity` объект JSON, содержащий следующие свойства. 
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
 | notification_type | Тип уведомления (например, **REGULAR**, **SILENT_PUSH**, **NO_PUSH**).
 | attachment | Вложение, которое содержит изображение, видео или другой тип мультимедиа, уведомление или другое шаблонное вложение, например квитанция. |
@@ -164,10 +164,10 @@ ms.locfileid: "70876134"
 
 Чтобы создать сообщение, которое реализует специальные действия Telegram, например предоставление в совместный доступ голосового напоминания или наклейки, присвойте свойству `channelData` объекта `Activity` объект JSON, который определяет следующие свойства. 
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
 | method | Вызываемый метод API Telegram Bot. |
-| parameters | Параметры указанного метода. |
+| параметры | Параметры указанного метода. |
 
 Поддерживаются следующие методы Telegram: 
 
@@ -238,7 +238,7 @@ ms.locfileid: "70876134"
 
 Чтобы создать собственное сообщение Kik, присвойте свойству `channelData` объекта `Activity` объект JSON, содержащий следующие свойства. 
 
-| Свойство | ОПИСАНИЕ |
+| Свойство | Description |
 |----|----|
 | отправляемых из облака на устройство | Массив сообщений Kik. См. дополнительные сведения о <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">формате сообщений Kik</a>. |
 
@@ -273,6 +273,6 @@ ms.locfileid: "70876134"
 - [Создание сообщений](bot-framework-rest-connector-create-messages.md)
 - [Отправка и получение сообщений](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
-- [Предварительный просмотр компонентов с помощью Channel Inspector](../bot-service-channel-inspector.md)
+- [Справочник по каналам](../bot-service-channels-reference.md)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -1,5 +1,5 @@
 ---
-title: Добавление подсказок для ввода в сообщения | Документы Майкрософт
+title: Добавление подсказок для ввода в сообщения (C# версии 3) — Служба Azure Bot
 description: Сведения о добавлении подсказок для ввода в сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d9d98c217afcf3eb1759284bcb0d46d9001bf383
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 27d8ed5255eee04603ea1f9da3786930c05329e9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298462"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795251"
 ---
 # <a name="add-input-hints-to-messages"></a>Добавление подсказок для ввода в сообщения
 

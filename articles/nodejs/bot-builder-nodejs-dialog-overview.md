@@ -1,5 +1,5 @@
 ---
-title: Общие сведения о диалогах | Документация Майкрософт
+title: Общие сведения о диалогах (JS версии 3) — Служба Azure Bot
 description: Сведения об использовании диалогов в пакете SDK Bot Framework для Node.js для моделирования бесед и управления потоком общения.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9ec846c5d464821538902dd726e8b9ee68d4bae1
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: be983482273eaaa5be79f7c4100dcd4741f62469
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299872"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790926"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Диалоги в пакете SDK Bot Framework для Node.js.
 
@@ -92,7 +92,7 @@ bot.dialog('greetings', [
 
 Когда бот заканчивает каскад, не заканчивая диалог, следующее сообщение пользователя перезапустит диалог с первого этапа каскада. Это может привести к неудобствам, так как пользователь оказывается в замкнутом круге. Чтобы избежать такой ситуации, когда беседа или диалог подошел к концу, рекомендуется явный вызов `endDialog`, `endDialogWithResult` или `endConversation`.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Чтобы глубже изучить диалоги, важно понять, как работает каскадный шаблон и как его использовать, чтобы направлять пользователей через процесс.
 

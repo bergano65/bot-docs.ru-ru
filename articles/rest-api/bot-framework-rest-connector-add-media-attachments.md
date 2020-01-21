@@ -1,5 +1,5 @@
 ---
-title: Добавление мультимедийных вложений в сообщения | Документы Майкрософт
+title: Добавление мультимедийных вложений в сообщения — Служба Azure Bot
 description: Сведения о добавлении мультимедийных вложений в сообщения с помощью службы соединителя ботов.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
-ms.openlocfilehash: be56700664e7626c247bb77899dc89f3cac32469
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 35a4a1846aadddb7505015872f830132cf625841
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037217"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790173"
 ---
 # <a name="add-media-attachments-to-messages"></a>Добавление мультимедийных вложений в сообщения
 > [!div class="op_single_selector"]
@@ -22,14 +22,13 @@ ms.locfileid: "70037217"
 
 Боты и каналы обычно обмениваются текстовыми строками, но некоторые каналы также поддерживают обмен вложениями, что позволяет боту отправлять пользователям сообщения с более широким набором возможностей. Например, бот может отправлять вложения мультимедиа (такие как изображения, видео, звук и файлы) и [форматированные карточки](bot-framework-rest-connector-add-rich-cards.md). В этой статье описывается добавление вложений мультимедиа в сообщения с помощью службы соединителя ботов.
 
-> [!TIP]
-> Сведения о том, как определить тип и число вложений, поддерживаемые каналом, и способ их обработки каналом, см. в статье [Channel Inspector][ChannelInspector].
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a name="add-a-media-attachment"></a>Добавление мультимедийного вложения  
 
 Чтобы добавить мультимедийное вложение в сообщение, создайте объект [Вложение][], задайте свойство `name`, задайте для свойства `contentUrl` URL-адрес файла мультимедиа, а для свойства `contentType` — соответствующий тип мультимедиа (например, **image/png**, **audio/wav**, **video/mp4**). Затем в объекте [Действие][], представляющем сообщение, укажите объект `Attachment` в массиве `attachments`.
 
-Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее текст и одно вложенное изображение. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в [справочнике по API](bot-framework-rest-connector-api-reference.md#base-uri).
+Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее текст и одно вложенное изображение. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723
@@ -161,7 +160,7 @@ Content-Type: application/json
 
 Имя события мультимедиа **media/pause** появится в поле `activity.name`. Список всех имен событий мультимедиа см. в таблице ниже.
 
-| Событие | ОПИСАНИЕ |
+| Событие | Description |
 | ---- | ---- |
 | **media/next** | Клиент перешел к следующему файлу мультимедиа. |
 | **media/pause** | Клиент приостановил воспроизведение мультимедиа. |

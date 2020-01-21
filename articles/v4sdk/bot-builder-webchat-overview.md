@@ -1,5 +1,5 @@
 ---
-title: Общие сведения о веб-чате | Документация Майкрософт
+title: Общие сведения о веб-чате — Служба Azure Bot
 description: Сведения о настройке веб-чата Bot Framework.
 keywords: bot framework, webchat, chat, samples, react, reference
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: e04ba2abe8d92246149cb6b7bfa185826448d71e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791156"
 ---
 # <a name="web-chat-overview"></a>Общие сведения о веб-чате
 
@@ -169,7 +169,7 @@ export default class extends React.Component {
 
 ## <a name="samples-list"></a>Список примеров
 
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Название&nbsp;примера&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | ОПИСАНИЕ                                                                                                                                                                                                                         | Ссылка                                                                                                                                |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Название&nbsp;примера&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description                                                                                                                                                                                                                         | Ссылка                                                                                                                                |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [`01.a.getting-started-full-bundle`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.a.getting-started-full-bundle)                                                                                       | Содержит сведения о веб-чате, встроенном из сети CDN, и демонстрирует простой полнофункциональный веб-чат. К функциям относятся адаптивные карточки, Cognitive Services и зависимости Markdown-It.                                                            | [Демонстрация полного пакета](https://microsoft.github.io/BotFramework-WebChat/01.a.getting-started-full-bundle)                               |
 | [`01.b.getting-started-es5-bundle`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.b.getting-started-es5-bundle)                                                                                         | Содержит сведения о полнофункциональном веб-чате со встроенной обратной совместимостью для браузеров ES5 с использованием полизаполнения ES5 веб-чата.                                                                                                                | [Демонстрация пакета ES5](https://microsoft.github.io/BotFramework-WebChat/01.b.getting-started-es5-bundle)                                 |
@@ -214,7 +214,7 @@ export default class extends React.Component {
 
 Существует несколько свойств, которые можно передать в компонент React веб-чата (`<ReactWebChat>`) или метод `renderWebChat()`. Изучите исходный код, начав с [`packages/component/src/Composer.js`](https://github.com/Microsoft/BotFramework-WebChat/blob/master/packages/component/src/Composer.js#L378). Ниже приведено краткое описание доступных свойств.
 
-| Свойство                   | ОПИСАНИЕ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Свойство                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `activityMiddleware`       | Цепочка ПО промежуточного слоя, смоделированная на основе [ПО промежуточного слоя Redux](https://medium.com/@jacobp100/you-arent-using-redux-middleware-enough-94ffe991e6), позволяет разработчику добавлять компоненты новой модели DOM в имеющуюся модель DOM действий. Подпись ПО промежуточного слоя выглядит следующим образом: `options => next => card => children => next(card)(children)`.                                                                                                                                                                                                                                           |
 | `activityRenderer`         | "Плоская" версия `activityMiddleware`, аналогичная концепции [средства улучшения хранилища](https://github.com/reduxjs/redux/blob/master/docs/Glossary.md#store-enhancer) в Redux.                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -279,7 +279,7 @@ export default class extends React.Component {
 
 Подробные сведения о создании проекта и рекомендации репозитория по запросам на вытягивание см. на [этой странице](https://github.com/Microsoft/BotFramework-WebChat/tree/master/.github/CONTRIBUTING.md).
 
-Этот проект соответствует [правилам поведения Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/).
+В рамках этого проекта действуют [правила поведения в отношении продуктов с открытым исходным кодом Майкрософт](https://opensource.microsoft.com/codeofconduct/).
 Дополнительные сведения:[вопросы и ответы по правилам поведения](https://opensource.microsoft.com/codeofconduct/faq/). С любыми другими вопросами или комментариями обращайтесь по адресу[opencode@microsoft.com](mailto:opencode@microsoft.com).
 
 ## <a name="reporting-security-issues"></a>Сообщение о проблемах с безопасностью

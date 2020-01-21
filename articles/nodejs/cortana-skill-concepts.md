@@ -1,5 +1,5 @@
 ---
-title: Создание навыка Кортаны с помощью Node.js | Документация Майкрософт
+title: Создание навыка Кортаны с помощью Node.js — Служба Azure Bot
 description: Изучите основные понятия для создания навыка Кортаны, представленные в пакете SDK Bot Framework для Node.js.
 keywords: Bot Framework, навык Кортаны, речь, .NET, Bot Builder, пакет SDK, ключевые понятия, основные понятия
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6aca29556fe877866d4beee8487ce0f1537334e6
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 477b20b090ae20ee9c4d723710a9fa11fff356fd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866745"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790339"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Ключевые понятия для создания бота для навыков Кортаны с помощью Node.js
  
@@ -41,13 +41,13 @@ ms.locfileid: "68866745"
 Пользователь запутается, если система не сможет подтверждать его высказывания. Например, ниже приведен сеанс общения, в котором не вполне понятно, что делать, когда бот спрашивает "What's next?" (Что же дальше?)
 
 > **Кортана**: Did you want to review some more of your profile? (Хотите просмотреть другие данные профиля?)  
-> **User**: №  
-> **Кортана**: Что дальше?
+> **Пользователь**. Нет.  
+> **Кортана**: Дальнейшие действия
 
 Если бот будет добавлять "Okay" (ОК) в качестве подтверждения, это будет понятнее для пользователя.
 
 > **Кортана**: Did you want to review some more of your profile? (Хотите просмотреть другие данные профиля?)  
-> **User**: №  
+> **Пользователь**. Нет.  
 > **Кортана**: **Okay**, what's next? (Хорошо. Что дальше?)
 
 Степени подтверждения в порядке усиления:
@@ -60,16 +60,16 @@ ms.locfileid: "68866745"
 
 ### <a name="acknowledgement-and-next-relevant-contribution"></a>Подтверждение и последующее вовлечение
 
-> **User**: "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
+> **Пользователь**. "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
 > **Кортана**: **Okay**. (Хорошо.) What day in May did you want to travel? (В какой день мая вы хотите кое-куда слетать?)  
-> **User**: Well, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
+> **Пользователь**. Well, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
 > **Кортана**: **Okay**. (Хорошо.) What city are you flying into ? (В какой город вы летите?)  
 
 ### <a name="grounding-by-demonstration"></a>Подтверждение с помощью демонстрации
 
-> **User**: "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
+> **Пользователь**. "I need to travel in May" (Мне нужно слетать кое-куда в мае).  
 > **Кортана**: **And**, what day in May did you want to travel?" (А в какой день мая вы хотите кое-куда слетать?)  
-> **User**: Okay, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
+> **Пользователь**. Okay, I need to be there from the 12th to the 15th? (Мне нужно быть там с 12-го по 15-е.)  
 > **Кортана**: **And** you're flying into what city? (А в какой город вы летите?)  
     
 ### <a name="closure"></a>Завершение

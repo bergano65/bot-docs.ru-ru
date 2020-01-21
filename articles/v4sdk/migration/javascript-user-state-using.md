@@ -1,5 +1,5 @@
 ---
-title: Использование данных JavaScript о состоянии пользователя версии 3 в боте версии 4 | Документация Майкрософт
+title: Использование данных JavaScript о состоянии пользователя версии 3 в боте версии 4 — Служба Azure Bot
 description: Использование данных о состоянии пользователя версии 3 в боте версии 4
 keywords: JavaScript, миграция бота, бот версии 3
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4697ecf47464114de68ec6c0d872b45ff1ee5e54
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: ad3f9a1cc9ce3f06bad71615e244a791025904d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278976"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791066"
 ---
 <!-- This article is on hold -->
 
@@ -26,7 +26,7 @@ ms.locfileid: "71278976"
 > [!NOTE]
 > Бот поддерживает **состояние беседы** для ее отслеживания, управления ее ходом и отправки вопросов пользователю. Он поддерживает **состояние пользователя** для отслеживания ответов пользователя.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Средство npm версии 6.9.0 или выше (поддерживает присвоение псевдонимов пакетам).
 

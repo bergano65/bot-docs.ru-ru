@@ -1,5 +1,5 @@
 ---
-title: Управление данными о состоянии пользователя с помощью Azure Cosmos DB | Документация Майкрософт
+title: Управление данными о состоянии пользователя с помощью Azure Cosmos DB (C# версии 3) — Служба Azure Bot
 description: Узнайте, как сохранять и извлекать данные о состоянии в Azure Cosmos DB с помощью пакета SDK Bot Framework для .NET.
 author: kamrani
 ms.author: kamrani
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2495e0506072609e47f4014f1027ed5033fb4bf7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5057b05d598e8ff985a1d0daf5d18fef6c0ffc95
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297775"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797945"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Управление данными о пользовательских состояниях с помощью Azure Cosmos DB
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-В этой статье вы реализуете Azure Cosmos DB для хранения данных о состоянии вашего бота и управления ими. Служба состояния соединителя, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище пользовательских состояний:
+В этой статье вы реализуете Azure Cosmos DB для хранения данных о состоянии вашего бота и управления ими. Служба Connector State Service, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище состояния пользователя:
  - более высокая пропускная способность API состояния (больше контроля над производительностью);
  - меньше задержка для географического распределения;
  - управление местом хранения данных;
  - доступ к данным о фактическом состоянии;
  - возможность хранения более 32 КБ данных.
  
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 Что вам понадобится:
- - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/).
+ - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 или более поздней версии](https://www.visualstudio.com/).
  - [Пакет Azure NuGet для Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/).
  - [Пакет NuGet Autofac.WebApi2](https://www.nuget.org/packages/Autofac.WebApi2/).
@@ -110,13 +110,13 @@ namespace SampleApp
 ## <a name="connect-your-bot-to-the-emulator"></a>Подключение бота к эмулятору
 На этом этапе бот выполняется локально. После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 1. Введите http://localhost:port-number/api/messages в адресной строке, где значение port-number должно соответствовать номеру порта, указанному в браузере, где выполняется приложение. Поля <strong>Идентификатор приложения Microsoft</strong> и <strong>Пароль приложения Microsoft</strong> пока можно не заполнять. Вы получите эти сведения позже, когда выполните [регистрацию бота](~/bot-service-quickstart-registration.md).
-2. Щелкните **Подключить**. 
+2. Нажмите кнопку **Соединить**. 
 3. Протестируйте бот, введя несколько сообщений в эмуляторе. 
 
-## <a name="view-state-data-on-azure-portal"></a>Просмотр данных о состоянии на портале Azure.
+## <a name="view-state-data-on-azure-portal"></a>Просмотр данных о состоянии на портале Azure
 Чтобы просмотреть данные о состоянии, войдите на портал Azure и перейдите к базе данных. Щелкните **Обозреватель данных (предварительная версия)** , чтобы убедиться, что сведения о состоянии из бота сохраняются. 
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 В этой статье вы использовали Cosmos DB для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать поток общения с помощью диалогов.
 
 > [!div class="nextstepaction"]

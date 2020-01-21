@@ -1,5 +1,5 @@
 ---
-title: Создание клиента .NET для подключения к расширению Службы приложений Direct Line
+title: Создание клиента .NET для расширения Службы приложений Direct Line
 titleSuffix: Bot Service
 description: Клиент .NET на C# для подключения к расширению Службы приложений Direct Line
 services: bot-service
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 62fda46569c6134f798b4d253a0676a037fdfa0f
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 0ed4bbeb9a882bcf8e4dd75364211f1a3538479b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866460"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793224"
 ---
 # <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Создание клиента .NET для подключения к расширению Службы приложений Direct Line
 

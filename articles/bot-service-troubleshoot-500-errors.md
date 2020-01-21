@@ -1,5 +1,5 @@
 ---
-title: Устранение в ботах неполадок, приводящих к ошибкам HTTP 500 | Документация Майкрософт
+title: Устранение в ботах неполадок, приводящих к ошибкам HTTP 500 — Служба Azure Bot
 description: Устранение неполадок при возникновении ошибок HTTP 500 в развернутом боте.
 keywords: troubleshoot, HTTP 500, problems.
 author: jonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/19/2019
-ms.openlocfilehash: bed93200a7ea79f5d5fd8c4e698445b3f431e56e
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 23d11a6199b6e031e93f6a2025f30247bb3e625d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491580"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795364"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Устранение неполадок при ошибках HTTP 500
 

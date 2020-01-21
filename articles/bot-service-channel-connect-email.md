@@ -1,5 +1,5 @@
 ---
-title: Подключение бота к электронной почте Office 365 | Документация Майкрософт
+title: Подключение бота к электронной почте Office 365 в службе Bot
 description: Сведения о настройке бота для отправки и приема электронной почты в Office 365.
 keywords: Office 365, каналы бота, электронная почта, учетные данные электронной почты, портал Azure, пользовательская электронная почта
 author: kamrani
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/15/2019
-ms.openlocfilehash: 3ad7829af9dc24ca9e10ebab352b4513b3bcad28
-ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
+ms.openlocfilehash: 8ca2735dac838982af3ba97221e07d80155153b7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464289"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792095"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Подключение бота к электронной почте Office 365
 
@@ -73,9 +73,12 @@ ms.locfileid: "74464289"
 Дополнительные сведения об использовании `channelData` см. в статье [Реализация возможностей для определенных каналов](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
 
-## <a name="other-considerations"></a>Дополнительные рекомендации
+## <a name="other-considerations"></a>Другие замечания
 
 Если ваш бот не возвращает код состояния HTTP 200 ОК в течение 15 секунд в ответ на входящие сообщения электронной почты, канал электронной почты попытается повторно отправить сообщение, и бот может получить это же действие сообщения электронной почты еще раз. Дополнительные сведения см. в руководствах по [использованию HTTP](v4sdk/bot-builder-basics.md#http-details) со **ботами** и [устранении ошибок времени ожидания](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md).
+
+> [!NOTE]
+> При использовании учетной записи Office 365 с поддержкой многофакторной проверки подлинности (MFA) перед настройкой указанной учетной записи для канала электронной почты обязательно отключите MFA. В противном случае подключение завершится ошибкой. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
@@ -83,10 +86,11 @@ ms.locfileid: "74464289"
 ::: moniker range="azure-bot-service-3.0"
 * Подключение бота к [каналам](~/bot-service-manage-channels.md).
 * [Реализация функциональных возможностей канала](dotnet/bot-builder-dotnet-channeldata.md) с помощью пакета SDK Bot Framework для .NET.
-* Использование [Channel Inspector](bot-service-channel-inspector.md) для просмотра того, как канал отображает определенную функцию вашего приложения бота.
+* Дополнительные сведения о функциях, поддерживаемых в каждом канале, см. в статье [Разделенные на категории действия по каналам](bot-service-channels-reference.md).
 ::: moniker-end
 ::: moniker range="azure-bot-service-4.0"
 * Подключение бота к [каналам](~/bot-service-manage-channels.md).
 * [Реализация функциональных возможностей канала](~/v4sdk/bot-builder-channeldata.md) с помощью пакета SDK Bot Framework для .NET.
-* Использование [Channel Inspector](bot-service-channel-inspector.md) для просмотра того, как канал отображает определенную функцию вашего приложения бота.
+* Дополнительные сведения о функциях, поддерживаемых в каждом канале, см. в статье [Разделенные на категории действия по каналам](bot-service-channels-reference.md).
 ::: moniker-end
+

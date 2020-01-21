@@ -1,5 +1,5 @@
 ---
-title: Перенос существующего бота JavaScript версии 3 в новый проект версии 4 | Документация Майкрософт
+title: Перенос существующего бота JavaScript версии 3 в новый проект версии 4 — Служба Azure Bot
 description: Узнайте, как перенести существующий бот JavaScript версии 3 в пакет SDK версии 4, используя новый проект.
 keywords: JavaScript, bot migration, dialogs, v3 bot
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: f377aacbd809b79ecb0d558384a10da8eca5a772
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026392"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791086"
 ---
 # <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Перенос бота JavaScript версии 3 в бот версии 4
 
@@ -42,7 +42,7 @@ For more information about specific changes, see [differences between the v3 and
 > [!NOTE]
 > Изменяя процесс миграции, мы также убрали часть кода. Но здесь мы расскажем только о тех изменениях, которые связаны с изменением логики по сравнению с версией 3.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 - Node.js
 - Visual Studio Code
@@ -161,7 +161,7 @@ module.exports = {
 
 Создайте описанные ниже файлы.
 
-| Имя файла | ОПИСАНИЕ |
+| Имя файла | Description |
 |:---|:---|
 | **./dialogs/flights.js** | Здесь будет содержаться логика диалога `hotels`, перенесенная из прежней версии. |
 | **./dialogs/hotels.js** | Здесь будет содержаться логика диалога `flights`, перенесенная из прежней версии. |

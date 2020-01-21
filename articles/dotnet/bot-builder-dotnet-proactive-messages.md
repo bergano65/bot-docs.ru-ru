@@ -1,5 +1,5 @@
 ---
-title: Отправка упреждающих сообщений | Документация Майкрософт
+title: Отправка упреждающих сообщений (C# версии 3) — Служба Azure Bot
 description: Узнайте, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c601db171f253b83bfa2d354f79018f03287bcf6
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a6dd39b76d12262097013095be67b8e401846cbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297344"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795475"
 ---
 # <a name="send-proactive-messages"></a>Отправка упреждающих сообщений
 
@@ -174,7 +174,7 @@ public class SurveyDialog : IDialog<object>
 }
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Полный пример, в котором показано, как отправлять упреждающие сообщения с помощью пакета SDK Bot Framework для .NET, приведен в <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">примере Proactive Messages</a> на сайте GitHub. В примере proactiveMessages <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> показывает, как отправить нерегламентированное упреждающее сообщение, а <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> показывает, как отправить упреждающее сообщение на основе диалога. 
 

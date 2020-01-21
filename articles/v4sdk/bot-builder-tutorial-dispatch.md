@@ -1,5 +1,5 @@
 ---
-title: Использование нескольких моделей LUIS и QnA | Документация Майкрософт
+title: Использование нескольких моделей LUIS и QnA — Служба Azure Bot
 description: Сведения об использовании служб LUIS и QnA Maker в боте.
 keywords: Luis, QnA, Dispatch tool, multiple services, route intents
 author: diberry
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c0e07dfa828854e44b2236aff2e1e17e60d69bfa
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 0d57ff8bf62625ceef6fc2c0f75c492b32dd2014
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491673"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791196"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 

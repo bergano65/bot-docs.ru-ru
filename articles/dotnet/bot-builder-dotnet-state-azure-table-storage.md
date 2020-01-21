@@ -1,5 +1,5 @@
 ---
-title: Управление данными пользовательских состояний с помощью хранилища таблиц Azure | Документы Майкрософт
+title: Управление данными пользовательских состояний с помощью Хранилища таблиц Azure (C# версии 3) — Служба Azure Bot
 description: Узнайте, как сохранять и извлекать данные о состоянии в хранилище таблиц Azure с помощью пакета SDK Bot Framework для .NET.
 author: kamrani
 ms.author: kamrani
@@ -8,32 +8,32 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 31679c478684366c106fc01a8e8804966f55e32e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5fcce457e5365cd54be77812f0b9fd70382a813b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298761"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797935"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Управление данными пользовательских состояний с помощью Хранилища таблиц Azure для .NET
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-В этой статье вы реализуете Хранилище таблиц Azure для хранения данных о состоянии вашего бота и управления ими. Служба состояния соединителя, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище пользовательских состояний:
+В этой статье вы реализуете Хранилище таблиц Azure для хранения данных о состоянии вашего бота и управления ими. Служба Connector State Service, используемая ботами по умолчанию, не предназначена для рабочей среды. Следует или использовать [расширения Azure](https://github.com/Microsoft/BotBuilder-Azure) с веб-сайта GitHub, или реализовывать клиент состояния пользователя с помощью любой платформы хранилища данных. Ниже приведены причины, по которым следует использовать хранилище состояния пользователя:
  - более высокая пропускная способность API состояния (больше контроля над производительностью);
  - меньше задержка для географического распределения;
  - управление местом хранения данных;
  - доступ к данным о фактическом состоянии;
  - возможность хранения более 32 КБ данных.
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 Что вам понадобится:
- - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/).
+ - [Учетная запись Microsoft Azure](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 или более поздней версии](https://www.visualstudio.com/).
  - [Пакет Azure NuGet для Bot Builder](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/).
  - [Пакет NuGet Autofac.WebApi2](https://www.nuget.org/packages/Autofac.WebApi2/).
  - [Bot Framework Emulator](https://emulator.botframework.com/).
- - [Azure Storage Explorer;](http://storageexplorer.com/)
+ - [Обозреватель службы хранилища Azure](http://storageexplorer.com/)
  
 ## <a name="create-azure-account"></a>Создание учетной записи Azure
 Если у вас нет учетной записи Azure, нажмите [здесь](https://azure.microsoft.com/free/), чтобы зарегистрировать бесплатную учетную запись.
@@ -102,13 +102,13 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 ## <a name="connect-your-bot-to-the-emulator"></a>Подключение бота к эмулятору
 На этом этапе бот выполняется локально. После этого запустите эмулятор и подключитесь к боту в эмуляторе.
 1. Введите http://localhost:port-number/api/messages в адресной строке, где значение port-number должно соответствовать номеру порта, указанному в браузере, где выполняется приложение. Поля <strong>Идентификатор приложения Microsoft</strong> и <strong>Пароль приложения Microsoft</strong> пока можно не заполнять. Вы получите эти сведения позже, когда выполните [регистрацию бота](~/bot-service-quickstart-registration.md).
-2. Щелкните **Подключить**. 
+2. Нажмите кнопку **Соединить**. 
 3. Протестируйте бот, введя несколько сообщений в эмуляторе. 
 
 ## <a name="view-data-in-azure-table-storage"></a>Просмотр данных в Хранилище таблиц Azure
 Чтобы просмотреть данные о состоянии, откройте **Обозреватель службы хранилища** и подключитесь к Azure с помощью своих учетных данных для портала Azure или подключитесь напрямую к таблице с помощью имени хранилища и ключа к хранилищу, затем перейдите к нужной таблице.  
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 В этой статье было реализовано Хранилище таблиц Azure для сохранения данных бота и управления ими. Далее вы можете узнать, как моделировать поток общения с помощью диалогов.
 
 > [!div class="nextstepaction"]

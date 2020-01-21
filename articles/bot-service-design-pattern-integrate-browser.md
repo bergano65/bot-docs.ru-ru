@@ -1,5 +1,5 @@
 ---
-title: Интеграция бота с веб-браузером | Документация Майкрософт
+title: Интеграция бота с веб-браузером — Служба Azure Bot
 description: Узнайте, как проектировать удобный переход пользователя от бота к веб-браузеру и обратно.
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4b510647e56f259474f17f2e7927342cee87d821
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8570873a63a539b4f7c96053aec2ab1a1f615eb9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298164"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792132"
 ---
 # <a name="integrate-your-bot-with-a-web-browser"></a>Интеграция бота с веб-браузером
 
@@ -74,7 +74,7 @@ ms.locfileid: "70298164"
 
 Когда бот [создает гиперссылку](#generate-hyperlink), которую пользователь выбирает для инициации потока веб-сайта, она включает информацию в параметрах строки запроса в целевом URL-адресе о контексте текущего диалога, например ИД беседы, идентификатор канала и идентификатор пользователя в канале. Эти сведения впоследствии могут использоваться веб-сайтом для чтения и записи переменных состояния этого пользователя или диалога с помощью пакета SDK Bot Framework или REST API. Пример того, как веб-сайт "сигнализирует" боту о завершении потока веб-сайта, смотрите на [шаге 6](#signal-to-bot) выше.
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 Как описано в этой статье, библиотека <a href="https://github.com/MicrosoftDX/botauth" target="_blank">BotAuth</a> позволяет потокам OAuth быть привязанными к ботам, которые создаются с помощью .NET и Node в Microsoft Bot Framework.
 

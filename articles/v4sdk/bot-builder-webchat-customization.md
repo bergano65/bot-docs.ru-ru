@@ -1,5 +1,5 @@
 ---
-title: Настройка веб-чата | Документация Майкрософт
+title: Настройка веб-чата — Служба Azure Bot
 description: Дополнительные сведения о настройке веб-чата Bot Framework.
 keywords: bot framework, webchat, chat, samples, react, reference
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 9310bdf8cab253cd379b7b49daa18deed79f27ae
-ms.sourcegitcommit: 96d26f6b0576747fa62767710af922ace0ff0e3b
+ms.openlocfilehash: 5016c5810d2c3623d8e8556b0a96d717ee83000d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71060346"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791166"
 ---
 # <a name="web-chat-customization"></a>Настройка веб-чата
 
@@ -67,7 +67,7 @@ ms.locfileid: "71060346"
 …
 ```
 
-Вот что мы получим:
+Результат:
 
 <img alt="Web Chat with root height and root width set" src="https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/rootHeightWidth.png" width="600"/>
 

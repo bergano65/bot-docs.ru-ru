@@ -1,5 +1,5 @@
 ---
-title: Рекомендации по отладке | Документация Майкрософт
+title: Рекомендации по отладке — Служба Azure Bot
 description: Узнайте, как выполнять отладку бота.
 keywords: debugging bots, botframework debugging
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a04e1acc37c488fcd7530b7df2dd8668d4cfdcc2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: d10f60bb4291cbd53eb526423e5bdcd711afa8f2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299194"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791186"
 ---
 # <a name="debugging-guidelines"></a>Рекомендации по отладке
 
@@ -77,7 +77,7 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 Использование _действия отправки_ и его обработчиков сопряжено с одной проблемой. Обычный вызов _действия отправки_ из обработчика _действий при отправке_ приводит к бесконечному разветвлению потоков. Вы можете решить эту проблему, добавив дополнительные сообщения в исходящие данные или записав выходные данные в другое расположение (например, консоль или файл), чтобы избежать сбоя бота.
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 > [!div class="nextstepaction"]
 > [Как выполнять модульное тестирование ботов](unit-test-bots.md)

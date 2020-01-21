@@ -1,5 +1,5 @@
 ---
-title: Руководство по созданию и развертыванию простого бота | Документация Майкрософт
+title: Руководство по созданию и развертыванию простого бота — Служба Azure Bot
 description: Узнайте, как создать простой бот и развернуть его в Azure.
 keywords: echo bot, deploy, azure, tutorial
 author: Ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d1d086f11838f7e0fc658cce586216110ff205f1
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: fadc7410925d337a518129736c9374035fe2114d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491745"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791216"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство. Создание и развертывание простого бота
 

@@ -1,5 +1,5 @@
 ---
-title: Получение сообщения от бота | Документация Майкрософт
+title: Получение сообщений от бота — Служба Azure Bot
 description: Узнайте, как получать сообщение от бота с помощью Direct Line API 1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6f9a132b538a278b0990271864a70e77ea7dc56c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c88d3f363bf4bcc40fa7a21aa1fcdd0b764abe1e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299626"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789700"
 ---
 # <a name="receive-messages-from-the-bot"></a>Получение сообщений от бота
 
 > [!IMPORTANT]
-> В этой статье описывается получения сообщения ботом с помощью Direct Line API 1.1. При создании подключения между клиентским приложением и ботом используйте вместо этого [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-receive-activities.md).
+> В этой статье описывается получения сообщения ботом с помощью Direct Line API 1.1. При создании подключения между клиентским приложением и ботом используйте [API версии 3.0 для Direct Line](bot-framework-rest-direct-line-3-0-receive-activities.md).
 
 Чтобы использовать протокол Direct Line 1.1 для получения сообщений, клиенты должны взаимодействовать через интерфейс `HTTP GET`. 
 

@@ -1,5 +1,5 @@
 ---
-title: Разработка бота DirectLine Speech | Документация Майкрософт
+title: Разработка бота DirectLine Speech — Служба Azure Bot
 description: Разработка бота DirectLine Speech
 keywords: develop Direct Line speech bot, speech bot
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc2eb84751f64a1ca1493515ccb231a0a78bbd4
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 2aaafb7c46097a178761b356299612d874b1a823
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592249"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795967"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>Использование канала Direct Line Speech в боте
 
@@ -162,7 +162,7 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 } 
 ``` 
 
-## <a name="additional-information"></a>Дополнительная информация 
+## <a name="additional-information"></a>Дополнительные сведения 
 
 - Полный пример создания и использования бота с поддержкой голосовых функций см. в  [этом руководстве](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk). 
 

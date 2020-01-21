@@ -1,5 +1,5 @@
 ---
-title: Определение шагов диалога с помощью каскадов | Документы Майкрософт
+title: Определение шагов диалога с помощью каскадов — Служба Azure Bot
 description: Узнайте, как использовать каскады для определения шагов диалога с помощью пакета SDK Bot Framework для Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3445c9d092c11952eb3c7a21e471d453653237a4
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299845"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790916"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Определение шагов диалога с помощью каскадов
 
@@ -79,7 +79,7 @@ var bot = new builder.UniversalBot(connector, [
 
 На следующем снимке экрана показаны результаты выполнения этого бота в [эмуляторе Bot Framework](~/bot-service-debug-emulator.md).
 
-![Управление потоком беседы с помощью каскада](~/media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
+![Управление потоком общения с помощью каскада](~/media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
 
 ## <a name="create-a-conversation-with-multiple-waterfalls"></a>Создание диалога с помощью нескольких каскадов
 
@@ -165,7 +165,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endDialog`: Используйте этот метод для завершения каскада, если нет данных для передачи в вызывающий диалог.
 
-* `session.endDialogWithResult`: Используйте этот метод для завершения каскада, если есть данные для передачи в вызывающий диалог. Возвращаемый аргумент `response` может быть объектом JSON или любым примитивным типом данных JavaScript. Например:
+* `session.endDialogWithResult`: Используйте этот метод для завершения каскада, если есть данные для передачи в вызывающий диалог. Возвращаемый аргумент `response` может быть объектом JSON или любым примитивным типом данных JavaScript. Пример:
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
@@ -174,7 +174,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endConversation`: Используйте этот метод для завершения каскада, если конец каскада является концом диалога.
 
-В качестве альтернативы одному из этих трех методов для завершения каскада вы можете подключить к диалогу триггер `endConversationAction`. Например:
+В качестве альтернативы одному из этих трех методов для завершения каскада вы можете подключить к диалогу триггер `endConversationAction`. Пример:
 
 ```javascript
 bot.dialog('dinnerOrder', [
@@ -197,9 +197,9 @@ bot.dialog('dinnerOrder', [
 );
 ```
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Используя каскад, вы можете собирать сведения от пользователя с помощью *запросов*. Давайте рассмотрим подробнее, как можно запросить у пользователя данные.
 
 > [!div class="nextstepaction"]
-> [Запрос на ввод данных пользователем](bot-builder-nodejs-dialog-prompt.md)
+> [Запрос пользователю на ввод данных](bot-builder-nodejs-dialog-prompt.md)

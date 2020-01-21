@@ -1,5 +1,5 @@
 ---
-title: Перенос имеющегося чат-бота в новый проект .NET Core | Документация Майкрософт
+title: Перенос имеющегося чат-бота в новый проект .NET Core — Служба Azure Bot
 description: Узнайте, как перенести имеющийся бот .NET версии 3 в пакет SDK версии 4 для нового проекта .NET Core.
 keywords: bot migration, formflow, dialogs, v3 bot
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 23646cf47b49e73eec9c3ce9a4deb1e053892fa1
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 776ba2013e7f66abc36cbf4810a7520a8da8e496
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037266"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791106"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>Перенос бота .NET версии 3 в бот .NET Core версии 4
 

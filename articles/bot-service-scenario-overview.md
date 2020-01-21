@@ -1,5 +1,5 @@
 ---
-title: Обзор сценариев службы Azure Bot | Документация Майкрософт
+title: Обзор сценариев службы Azure Bot — Служба Azure Bot
 description: Узнайте о ключевых сценариях для мощных и успешных ботов, созданных с помощью службы Azure Bot.
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6786a25d56bbf37262760ca5285e32aa860c5959
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167354"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793451"
 ---
 # <a name="bot-scenarios"></a>Сценарии для ботов
 
@@ -46,8 +46,8 @@ ms.locfileid: "70167354"
 
 С помощью этого простого бота можно управлять лампочками Philips Hue в сочетании с бесплатной услугой "If This Then That" (IFTTT). Philips Hue, как устройством Интернета вещей, можно управлять локально через открытый API. Однако этот API не предоставляется для общего доступа за пределами локальной сети. Тем не менее, IFTTT является [Friend of Hue](http://www2.meethue.com/friends-of-hue/ifttt/) и таким образом предоставляет несколько команд управления, которые можно задать (например, включение и выключение лампочек, изменение цвета или интенсивности света).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда вы ознакомились со сценариями, погрузитесь глубже в каждый из них.
 
 > [!div class="nextstepaction"]
-> [Commerce bot](bot-service-scenario-commerce.md) (Сценарий коммерческого бота)
+> [Бот для коммерческих операций](bot-service-scenario-commerce.md)

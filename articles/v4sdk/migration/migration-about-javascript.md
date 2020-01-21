@@ -1,5 +1,5 @@
 ---
-title: Различия между версиями 3 и 4 пакета SDK для Node.js | Документация Майкрософт
+title: Различия между версиями 3 и 4 пакета SDK для NodeJS — Служба Azure Bot
 description: Здесь описаны различия между версиями 3 и 4 пакета SDK для Node.js.
 keywords: переход на новую версию SDK Bot Framework, диалоги, состояние
 author: mmiele
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f97d8a2467572ed596cc5033ad0f76435200e4
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 5d614fc34f3daa9deddb2ccedbe58bdef2ba067a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491406"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791046"
 ---
 # <a name="differences-between-the-v3-and-v4-javascript-sdk"></a>Различия между версиями 3 и 4 пакета SDK для JavaScript
 

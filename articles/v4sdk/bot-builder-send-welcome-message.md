@@ -1,5 +1,5 @@
 ---
-title: Отправка приветственного сообщения пользователям | Документация Майкрософт
+title: Отправка приветственного сообщения пользователям в службе Bot
 description: Сведения о том, как создать приветствие, которое бот отправляет пользователю.
 keywords: overview, develop, user experience, welcome, personalized experience, C#, JS, welcome message, bot, greet, greeting
 author: DanDev33
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d3c369772736bddc96cab8b9e15e4005bd05bc3c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: b9e863e261aa8a5dab0eafeff1e9e39fe97659cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491697"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791283"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
 
@@ -109,10 +109,10 @@ ms.locfileid: "75491697"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Сейчас мы создадим метод доступа к свойству, который будет выполнять роль дескриптора для WelcomeUserState внутри метода OnMessageActivityAsync.
-Затем мы вызовем метод GetAsync, чтобы получить ключ с правильной областью действия. Мы будем сохранять данные о состоянии пользователя после каждого цикла обработки введенных пользователем данных с помощью метода `SaveChangesAsync`.
+Теперь мы создадим метод доступа к свойству, предоставляющий обработчик `WelcomeUserState` в методе `OnMessageActivityAsync`.
+Затем мы вызовем метод `GetAsync`, чтобы получить ключ с правильной областью действия. Мы будем сохранять данные о состоянии пользователя после каждого цикла обработки введенных пользователем данных с помощью метода `SaveChangesAsync`.
 
-**WelcomeUserBot.cs**  
+**Bots\WelcomeUserBot.cs**  
 [!code-csharp[Get state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71)]
 [!code-csharp[Save state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range= 103-105)]
 

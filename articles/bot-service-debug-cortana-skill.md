@@ -1,5 +1,5 @@
 ---
-title: Тестирование навыка Кортаны | Документация Майкрософт
+title: Тестирование навыка Кортаны — Служба Azure Bot
 description: Узнайте, как тестировать бот Кортаны путем вызова навыка Кортаны.
 keywords: Пакет SDK Bot Framework, регистрация бота, Кортана
 author: v-ducvo
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 996063bef2e139292187f125318f63745373e7bb
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 62ed0fb7cb05072024617d65266cf457c554d4c7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70166946"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792773"
 ---
 # <a name="test-a-cortana-skill"></a>Тестирование навыка Кортаны
 
@@ -54,7 +54,7 @@ ms.locfileid: "70166946"
 Для тестирования бота с помощью [эмулятора](~/bot-service-debug-emulator.md) выполните следующие действия:
 
 1. Запустите бот.
-2. Откройте эмулятор и заполните необходимые сведения. Сведения о том, как найти значения **AppID** и **AppPassword** вашего бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword). 
+2. Откройте эмулятор и заполните необходимые сведения. Сведения о том, как найти значения **AppID** и **AppPassword** для бота, см. в разделе [MicrosoftAppID и MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword). 
 3. Щелкните **Подключиться** для подключения эмулятора к боту.
 4. Введите сообщение, чтобы убедиться, что ваш бот работает.
 
@@ -70,7 +70,7 @@ ms.locfileid: "70166946"
 
 3. Если Кортана распознает фразу вызова, то бот запускается на холсте Кортаны. 
 
-## <a name="troubleshoot"></a>Устранение неполадок
+## <a name="troubleshoot"></a>Диагностика
 
 Если не удается запустить навык Кортаны, проверьте следующее:
 * Убедитесь, что вы вошли в Кортану, используя ту же учетную запись Майкрософт, которая использовалась для регистрации бота на портале Bot Framework.
@@ -81,7 +81,7 @@ ms.locfileid: "70166946"
 Дополнительные советы по устранению неполадок и сведения о том, как включить отладку навыков на панели мониторинга Кортаны, см. [здесь][Cortana-TestBestPractice]. 
 
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Протестировав навык Кортаны и убедившись, что все работает именно так, как нужно, разверните его для группы тест-инженеров или сделайте его общедоступным. Дополнительные сведения см. в статье [Publishing Cortana Skills][Cortana-Publish] (Публикация навыков Кортаны).
 

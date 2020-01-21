@@ -1,5 +1,5 @@
 ---
-title: Отладка бота | Документация Майкрософт
+title: Отладка бота — Служба Azure Bot
 description: Отладка ботов, построенных с помощью службы Azure Bot.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: dcc8ae71be76d2629681a058ea43e280aebad795
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 835ff68dced16ccba2535e378b0b02e0de21e1fb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736805"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792912"
 ---
 # <a name="debug-a-bot"></a>Отладка бота
 

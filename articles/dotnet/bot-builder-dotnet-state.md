@@ -1,5 +1,5 @@
 ---
-title: Управление данными о состоянии | Документация Майкрософт
+title: Управление данными состояния (C# версии 3) — Служба Azure Bot
 description: Узнайте, как сохранять и извлекать данные о состоянии с помощью пакета SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9dc2519e74147d1147e2d5f2cb7fba883bd1269c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 0856805c285f47f1f219e49d36daf4892af2dcc7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298792"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797864"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
@@ -83,9 +83,9 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 | `GetConversationData` | Беседа | Получение данных о состоянии, ранее сохраненных для беседы в указанном канале |
 | `GetPrivateConversationData` | Пользователь и беседа | Получение данных о состоянии, ранее сохраненных для пользователя в определенной беседе в указанном канале |
 | `SetUserData` | Пользователь | Сохранение данных о состоянии для пользователя в указанном канале |
-| `SetConversationData` | Беседа | Сохранение данных о состоянии для беседы в указанном канале <br/><br/>**Примечание**. Так как метод `DeleteStateForUser` не удаляет данных, сохраненные ранее с помощью метода `SetConversationData`, НЕ ИСПОЛЬЗУЙТЕ этот метод для хранения персональных данных пользователя. |
+| `SetConversationData` | Беседа | Сохранение данных о состоянии для беседы в указанном канале <br/><br/>**Примечание.** Так как метод `DeleteStateForUser` не удаляет данных, сохраненные ранее с помощью метода `SetConversationData`, НЕ ИСПОЛЬЗУЙТЕ этот метод для хранения персональных данных пользователя. |
 | `SetPrivateConversationData` | Пользователь и беседа | Сохранение данных о состоянии для пользователя в определенной беседе в указанном канале |
-| `DeleteStateForUser` | Пользователь | Удаление данных о состоянии, ранее сохраненных для пользователя с помощью методов `SetUserData` и (или) `SetPrivateConversationData`. <br/><br/>**Примечание**. Бот должен выполнять этот метод каждый раз, когда он получает действие типа [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) или [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate), свидетельствующее об удалении бота из списка контактов пользователя. |
+| `DeleteStateForUser` | Пользователь | Удаление данных о состоянии, ранее сохраненных для пользователя с помощью методов `SetUserData` и (или) `SetPrivateConversationData`. <br/><br/>**Примечание.** Бот должен выполнять этот метод каждый раз, когда он получает действие типа [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) или [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate), свидетельствующее об удалении бота из списка контактов пользователя. |
 
 Если бот сохранит данные о состоянии с помощью любого из методов **Set...Data**, эти данные будут включены во все будущие сообщения в том же контексте, и бот сможет получить их с помощью соответствующего метода **Get...Data**.
 
@@ -93,7 +93,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 Каждый объект [Activity][Activity] содержит свойства, которые вы можете использовать для управления данными о состоянии.
 
-| Свойство | ОПИСАНИЕ | Вариант использования |
+| Свойство | Description | Вариант использования |
 |----|----|----|
 | `From` | Уникальный идентификатор пользователя в канале | Сохранение и извлечение данных о состоянии, связанных с определенным пользователем |
 | `Conversation` | Уникальный идентификатор беседы | Сохранение и извлечение данных о состояния, связанных с определенной беседой |

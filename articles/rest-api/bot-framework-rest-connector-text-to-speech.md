@@ -1,5 +1,5 @@
 ---
-title: Добавление речи в сообщения | Документация Майкрософт
+title: Добавление речи в сообщения — Служба Azure Bot
 description: Сведения о добавлении речи в сообщения с помощью службы Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7b649f0ae434df79ebb5ad715e0917c470b66c60
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 6cab3dbff6d2d7a4ba79edb88b138ae77beee956
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415123"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789835"
 ---
 # <a name="add-speech-to-messages"></a>Добавление речи в сообщения
 > [!div class="op_single_selector"]

@@ -1,5 +1,5 @@
 ---
-title: Добавление форматированных карточек как вложений в сообщения | Документация Майкрософт
+title: Добавление вложений в виде форматированных карточек в сообщения в службе Bot
 description: Сведения о добавлении форматированных карточек в сообщения с помощью службы Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3a4bf05a6c9b9eeca4a3cccef7aaf77c2f304048
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 64df798d363318c2368ea20f57a502c8cd26918c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876185"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790095"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Добавление вложений в виде форматированных карточек в сообщения
 > [!div class="op_single_selector"]
@@ -25,14 +25,14 @@ ms.locfileid: "70876185"
 > [!NOTE]
 > Сведения о добавлении вложений мультимедиа в сообщения см. в статье [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md).
 
-## <a id="types-of-cards"></a> Типы форматированных карточек
+## <a name="types-of-rich-cards"></a>Типы функциональных карточек
 
 Форматированная карточка содержит название, описание, ссылку и изображения. Сообщение может содержать несколько форматированных карточек, которые отображаются в виде списка или карусели.
 Сейчас Bot Framework поддерживает восемь типов форматированных карточек. 
 
-| Тип карточки | ОПИСАНИЕ |
+| Тип карточки | Description |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Настраиваемая карточка, которая содержит любое сочетание текста, речи, изображений, кнопок и полей ввода. См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status). |
+| [AdaptiveCard](/adaptive-cards/get-started/bots) | Настраиваемая карточка, которая может содержать любое сочетание текста, речи, изображений, кнопок и полей для ввода. См. описание [поддержки для каждого канала](/adaptive-cards/get-started/bots#channel-status). |
 | [AnimationCard][] | Карточка, которая может воспроизводить GIF-файлы с анимацией или короткие видеоролики. |
 | [AudioCard][] | Карточка, которая может воспроизводить звуковой файл. |
 | [HeroCard][]; | Карточка, которая обычно содержит одно большое изображение, одну или несколько кнопок и текст. |
@@ -41,29 +41,28 @@ ms.locfileid: "70876185"
 | [SignInCard][] | Карточка, в которой бот запрашивает вход пользователя. Обычно она содержит текст и одну или несколько кнопок, которые можно нажать, чтобы начать процесс входа. |
 | [VideoCard][] | Карточка, которая может воспроизводить видео. |
 
-> [!TIP]
-> Сведения о том, как определить тип форматированной карточки, поддерживаемый каналом, и способ ее обработки каналом см. в разделе [Инспектор каналов][ChannelInspector]. Сведения об ограничениях содержимого карточек (например, максимальное количество кнопок или максимальная длина названия) см. в документации канала.
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a name="process-events-within-rich-cards"></a>Обработка событий в форматированных карточках
 
 Для обработки событий в форматированных карточках используйте объекты [CardAction][], чтобы указать, что должно происходить, когда пользователь нажимает кнопку или касается сегмента карточки. Каждый объект `CardAction` содержит следующие свойства.
 
-| Свойство | type | ОПИСАНИЕ | 
+| Свойство | Тип | Description | 
 |----|----|----|
 | channelData | строка | Относящиеся к каналу данные, связанные с этим действием. |
 | displayText | строка | Текст, отображаемый в канале чата при нажатии кнопки. | 
 | text | строка | Текст для действия. | 
-| Тип | строка | тип действия (одно из значений, указанных в таблице ниже) |
+| type | строка | тип действия (одно из значений, указанных в таблице ниже) |
 | title | строка | название кнопки |
 | image | строка | URL-адрес изображения для кнопки |
 | value | строка | значение, необходимое для выполнения указанного типа действия |
 
 > [!NOTE]
-> Для создания кнопок в адаптивных карточках используются не объекты `CardAction`, а схема, которая определяется <a href="http://adaptivecards.io" target="_blank">адаптивными карточками</a>. О том, как добавить кнопку в адаптивную карточку, см. в разделе [Добавление адаптивной карточки в сообщение](#adaptive-card).
+> Для создания кнопок в адаптивных карточках используются не объекты `CardAction`, а схема, которая определяется адаптивными карточками. О том, как добавить кнопку в адаптивную карточку, см. в разделе [Добавление адаптивной карточки в сообщение](#add-an-adaptive-card-to-a-message).
 
 В этой таблице перечислены допустимые значения для свойства `type` объекта `CardAction` и описано ожидаемое содержимое свойства `value` для каждого типа.
 
-| Тип | value | 
+| type | value | 
 |----|----|
 | openUrl | URL-адрес, который будет открыт во встроенном браузере |
 | imBack | Текст сообщения для отправки боту (от пользователя, который нажал кнопку или коснулся карты). Это сообщение (от пользователя к боту) увидят все участники общения через клиентское приложение, в котором ведется общение. |
@@ -77,7 +76,7 @@ ms.locfileid: "70876185"
 
 ## <a name="add-a-hero-card-to-a-message"></a>Добавление имиджевой карточки в сообщение
 
-Чтобы добавить вложение в виде форматированной карточки в сообщение, создайте объект, который соответствует [типу карточки](#types-of-cards), которую необходимо добавить. Затем создайте объект [Вложение][], задайте свойству `contentType` тип мультимедиа карты, а свойству `content` — объект, который был создан для представления карты. Укажите объект `Attachment` в массиве `attachments` сообщения.
+Чтобы добавить вложение в виде форматированной карточки в сообщение, создайте объект, который соответствует [типу карточки](#types-of-rich-cards), которую необходимо добавить. Затем создайте объект [Вложение][], задайте свойству `contentType` тип мультимедиа карты, а свойству `content` — объект, который был создан для представления карты. Укажите объект `Attachment` в массиве `attachments` сообщения.
 
 > [!TIP]
 > Сообщения, содержащие вложения в виде форматированных карточек, обычно не указывают `text`.
@@ -87,7 +86,7 @@ ms.locfileid: "70876185"
 > [!TIP]
 > Чтобы отобразить несколько форматированных карточек в виде списка, задайте свойству `attachmentLayout` объекта [Действие][] значение list. Чтобы отобразить несколько форматированных карточек в виде карусели, задайте свойству `attachmentLayout` объекта `Activity` значение carousel. Если канал не поддерживает формат карусели, форматированные карточки будут отображены в виде списка, даже если свойству `attachmentLayout` задано значение carousel.
 
-Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее одно вложение имиджевой карточки. В этом примере запроса `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
+Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее одно вложение имиджевой карточки. В этом примере запрос `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
@@ -147,108 +146,130 @@ Content-Type: application/json
 }
 ```
 
-## <a id="adaptive-card"></a> Добавление адаптивной карточки в сообщение
+## <a name="add-an-adaptive-card-to-a-message"></a>Добавление адаптивной карточки в сообщение
 
-Адаптивная карточка может содержать любое сочетание текста, речи, изображений, кнопок и полей ввода. Адаптивные карточки создаются в формате JSON, указанном на веб-сайте <a href="http://adaptivecards.io" target="_blank">адаптивных карточек</a>, что позволяет получить полный контроль над содержимым и форматом карточки. 
+Адаптивная карточка может содержать любое сочетание текста, речи, изображений, кнопок и полей для ввода. Адаптивные карточки создаются в формате JSON (см. [здесь](http://adaptivecards.io)), что позволяет получить больший контроль над содержимым и форматом карточек. 
 
-Ознакомьтесь со сведениями на веб-сайте <a href="http://adaptivecards.io" target="_blank">адаптивных карточек</a>, чтобы получить представление о схеме адаптивных карточек, изучить элементы адаптивных карточек и просмотреть примеры JSON, которые можно использовать для создания карточек различного состава и уровня сложности. Кроме того, воспользовавшись интерактивным визуализатором, можно разрабатывать полезные нагрузки для адаптивных карточек и просматривать выходные данные карточек.
-
-Следующий пример демонстрирует запрос, который отправляет сообщение, содержащее одну адаптивную карточку для напоминания календаря. В этом примере запроса `https://smba.trafficmanager.net/apis` представляет базовый URI. Базовый URI для запросов, отправляемых вашим ботом, может отличаться. Дополнительные сведения о настройке базового URI см. в статье [Справочник по API](bot-framework-rest-connector-api-reference.md#base-uri).
-
-```http
-POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
-Authorization: Bearer ACCESS_TOKEN
-Content-Type: application/json
-```
+Ознакомьтесь со сведениями на веб-сайте [адаптивных карточек](http://adaptivecards.io), чтобы получить представление о схеме адаптивных карточек, изучить элементы адаптивных карточек и просмотреть примеры JSON, которые можно использовать для создания карточек различного состава и уровня сложности. А воспользовавшись интерактивным визуализатором, вы сможете разрабатывать соответствующие полезные нагрузки и просматривать выходные данные карточки. Ниже приведен пример одной адаптивной карточки для назначения задания.
 
 ```json
 {
-    "type": "message",
-    "from": {
-        "id": "12345678",
-        "name": "sender's name"
-    },
-    "conversation": {
-        "id": "abcd1234",
-        "name": "conversation's name"
-    },
-    "recipient": {
-        "id": "1234abcd",
-        "name": "recipient's name"
-    },
-    "attachments": [
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
         {
-            "contentType": "application/vnd.microsoft.card.adaptive",
-            "content": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Adaptive Card design session",
-                        "size": "large",
-                        "weight": "bolder"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "Conf Room 112/3377 (10)"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "12:30 PM - 1:30 PM"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "Snooze for"
-                    },
-                    {
-                        "type": "Input.ChoiceSet",
-                        "id": "snooze",
-                        "style": "compact",
-                        "choices": [
-                            {
-                                "title": "5 minutes",
-                                "value": "5",
-                                "isSelected": true
-                            },
-                            {
-                                "title": "15 minutes",
-                                "value": "15"
-                            },
-                            {
-                                "title": "30 minutes",
-                                "value": "30"
-                            }
-                        ]
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "Snooze"
-                    },
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "I'll be late"
-                    },
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "Dismiss"
-                    }
-                ]
+          "type": "TextBlock",
+          "text": "Publish Adaptive Card schema",
+          "weight": "bolder",
+          "size": "medium"
+        },
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
+                  "size": "small",
+                  "style": "person"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Matt Hidinger",
+                  "weight": "bolder",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "spacing": "none",
+                  "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                  "isSubtle": true,
+                  "wrap": true
+                }
+              ]
             }
+          ]
         }
-    ],
-    "replyToId": "5d5cdc723"
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+          "wrap": true
+        },
+        {
+          "type": "FactSet",
+          "facts": [
+            {
+              "title": "Board:",
+              "value": "Adaptive Card"
+            },
+            {
+              "title": "List:",
+              "value": "Backlog"
+            },
+            {
+              "title": "Assigned to:",
+              "value": "Matt Hidinger"
+            },
+            {
+              "title": "Due date:",
+              "value": "Not set"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.ShowCard",
+      "title": "Comment",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "comment",
+            "isMultiline": true,
+            "placeholder": "Enter your comment"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "OK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View",
+      "url": "https://adaptivecards.io"
+    }
+  ]
 }
+
 ```
 
-Итоговая карточка содержит три блока текста, поле ввода (список значений) и три кнопки.
+Результирующая карточка содержит заголовок, сведения о пользователе, создавшем карточку (имя и аватар), время создания карточки, описание назначения задания и сведения, связанные с назначением. Кроме того, доступны две кнопки, позволяющие просмотреть назначение задания или добавить комментарий.
 
 ![Адаптивная карточка с напоминанием календаря](../media/adaptive-card-reminder.png)
 
@@ -260,9 +281,8 @@ Content-Type: application/json
 - [Добавление мультимедийных вложений в сообщения](bot-framework-rest-connector-add-media-attachments.md)
 - [Принципы использования действий в Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Channel Inspector][ChannelInspector]
-- <a href="http://adaptivecards.io" target="_blank">Адаптивные карточки</a>
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 [Действие]: bot-framework-rest-connector-api-reference.md#activity-object
 [Вложение]: bot-framework-rest-connector-api-reference.md#attachment-object
 [CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
@@ -273,3 +293,4 @@ Content-Type: application/json
 [ReceiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object;
 [SigninCard]: bot-framework-rest-connector-api-reference.md#signincard-object
 [VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
+

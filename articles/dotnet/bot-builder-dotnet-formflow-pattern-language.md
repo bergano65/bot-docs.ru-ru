@@ -1,5 +1,5 @@
 ---
-title: Настройка взаимодействия с пользователем с помощью языка шаблонов | Документация Майкрософт
+title: Настройка взаимодействия с помощью языка шаблонов — Служба Azure Bot
 description: Узнайте, как настроить запросы FormFlow и переопределить шаблоны FormFlow, используя язык шаблонов и пакет SDK Bot Framework для .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 43ae6504dcd58c221d0dfe2678c2363323ac63cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297914"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796822"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Настройка взаимодействия с пользователем с помощью языка шаблонов
 
@@ -34,7 +34,7 @@ ms.locfileid: "70297914"
 
 В языке шаблонов используются фигурные скобки (`{}`) для определения элементов, которые во время выполнения будут заменены фактическими значениями. В таблице ниже перечислены элементы языка шаблонов.
 
-| Элемент | ОПИСАНИЕ |
+| Элемент | Description |
 |----|----|
 | `{<format>}` | Отображает значение текущего поля (поля, к которому применяется атрибут). |
 | `{&}` | Отображает описание текущего поля (если не указано иное, это имя поля). |
@@ -89,7 +89,7 @@ What kind of sandwich would you like?
 
 Запросы и шаблоны поддерживают следующие параметры форматирования.
 
-| Использование | ОПИСАНИЕ |
+| Использование | Description |
 |----|----|
 | `AllowDefault` | Применяется к элементам шаблона <code>{&#124;&#124;}</code>. Определяет, должна ли форма показывать текущее значение поля для выбора. Если указано значение `true`, то текущее значение поля отображается как возможное значение. Значение по умолчанию — `true`. |
 | `ChoiceCase` | Применяется к элементам шаблона <code>{&#124;&#124;}</code>. Определяет, нормализуется ли текст каждого из возможных значений (например, начинается ли каждое слово с прописной буквы). Значение по умолчанию — `CaseNormalization.None`. Возможные значения приведены в описании [CaseNormalization][caseNormalization]. |
@@ -132,7 +132,7 @@ What kind of sandwich would you like?
 >
 ```
 
-## <a name="sample-code"></a>Пример кода
+## <a name="sample-code"></a>Образец кода
 
 [!INCLUDE [Sample code](../includes/snippet-dotnet-formflow-samples.md)]
 

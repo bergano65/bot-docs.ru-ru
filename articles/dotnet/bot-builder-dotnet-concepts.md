@@ -1,5 +1,5 @@
 ---
-title: Основные понятия, используемые при работе с пакетом SDK Bot Framework для .NET | Документация Майкрософт
+title: Основные концепции, которые используются в пакете SDK Bot Framework для .NET — Служба Azure Bot
 description: Обзор основных понятий, используемых при работе с пакетом SDK Bot Framework для .NET, и предоставляемых в нем инструментов для создания и развертывания чат-ботов.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 027006f2ad3d6aff1094142a41d791ba0e5d8922
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298378"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789825"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Основные концепции, которые используются в пакете SDK Bot Framework для .NET.
 
@@ -47,7 +47,7 @@ ms.locfileid: "70298378"
 
 Чтобы упростить создание бота, который собирает сведения от пользователя, вы можете использовать [FormFlow](bot-builder-dotnet-formflow.md) в пакете SDK Bot Framework для .NET. Например бот, который принимает заказы на сэндвичи должен собирать несколько фрагментов данных от пользователя, такие как тип хлеба, выбор начинки, размер и т. д. Учитывая основные рекомендации, FormFlow может автоматически создавать диалоги, необходимые для управления такой интерактивной беседой.
 
-## <a name="state"></a>Состояние
+## <a name="state"></a>Штат
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 
@@ -57,11 +57,11 @@ ms.locfileid: "70298378"
 
 В библиотеке пакета SDK Bot Framework для .NET используется строго типизированное соглашения об именовании в стиле Pascal. Но в сообщениях JSON, которые передаются по сети, применяется соглашения об именовании, согласно которому используется нижний регистр. Например, в сообщении JSON, передаваемом по сети, свойство **ReplyToId** в C# сериализуется как **replyToId**.
 
-## <a name="security"></a>Безопасность
+## <a name="security"></a>безопасность
 
 Убедитесь, что конечную точку бота может вызывать только служба Bot Framework Connector. Дополнительные сведения об этом см. в статье [о защите бота](bot-builder-dotnet-security.md).
 
-## <a name="next-steps"></a>Дополнительная информация
+## <a name="next-steps"></a>Дальнейшие действия
 
 Вы ознакомились с принципами работы каждого бота. Теперь вы можете быстро [создать бот в Visual Studio](bot-builder-dotnet-quickstart.md) с помощью шаблона. Далее переходите к изучению отдельных основных понятий, начиная с диалогов.
 
