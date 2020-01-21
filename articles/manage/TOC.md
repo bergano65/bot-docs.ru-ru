@@ -10,6 +10,7 @@
 ### [Подключение к каналу "Речь Direct Line"](../bot-service-channel-connect-directlinespeech.md)
 ### [Расширение Службы приложений Direct Line](../bot-service-channel-directline-extension.md)
 #### [Использование бота .NET с расширением](../bot-service-channel-directline-extension-net-bot.md)
+#### [Настройка бота Node.js для использования расширения](../bot-service-channel-directline-extension-node-bot.md)
 #### [Создание клиента .NET с использованием расширения](../bot-service-channel-directline-extension-net-client.md)
 #### [Использование WebChat с расширением](../bot-service-channel-directline-extension-webchat-client.md)
 #### [Использование расширения в виртуальной сети](../bot-service-channel-directline-extension-vnet.md)
