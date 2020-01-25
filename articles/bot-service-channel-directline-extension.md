@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/09/2019
-ms.openlocfilehash: c4c54e50450ae81098992c880e23a049229fa09f
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: 2145709c9cc458ec5dd9f4fbf1145ddbad893a04
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039755"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76256007"
 ---
 # <a name="direct-line-app-service-extension"></a>Расширение Службы приложений Direct Line
 
@@ -34,11 +34,12 @@ ms.locfileid: "72039755"
 Расширение Службы приложений Direct Line предварительно установлено во всех экземплярах Служб приложений Azure в каждом центре обработки данных по всему миру. Оно поддерживается и управляется корпорацией Майкрософт, и клиентам не нужно выполнять никаких действий для его развертывания. По умолчанию оно отключен в Службах приложений Azure, но его можно легко включить и настроить для подключения к размещенному боту.
 
 
-## <a name="see-also"></a>См. также
+## <a name="see-also"></a>См. также:
 
-|ИМЯ|ОПИСАНИЕ|
+|Имя|Описание|
 |---|---|
-|[Использование бота .NET с расширением](bot-service-channel-directline-extension-net-bot.md)|Включите в бота поддержку работы с **именованными каналами** и включите расширение службы Direct Line в ресурсе **Службы приложений Azure**, в котором размещен этот бот.  |
+|[Использование бота .NET с расширением](bot-service-channel-directline-extension-net-bot.md)|Реализуйте в боте .NET поддержку работы с **именованными каналами** и включите расширение Direct Line Службы приложений в ресурсе **Службы приложений Azure** с размещенным ботом.  |
+|[Настройка бота Node.js для использования расширения](bot-service-channel-directline-extension-node-bot.md)|Реализуйте в боте Node.js поддержку работы с **именованными каналами** и включите расширение Direct Line Службы приложений в ресурсе **Службы приложений Azure** с размещенным ботом.  |
 |[Создание клиента .NET с использованием расширения](bot-service-channel-directline-extension-net-client.md)|Создание клиента .NET на C#, который подключается к расширению Службы приложений Direct Line|
 |[Использование WebChat с расширением](bot-service-channel-directline-extension-webchat-client.md)|Применение WebChat с расширением Службы приложений Direct Line|
 |[Использование расширения в виртуальной сети](bot-service-channel-directline-extension-vnet.md)|Использование расширения Службы приложений Direct Line в виртуальной сети Azure (VNET)|
