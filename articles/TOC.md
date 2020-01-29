@@ -21,6 +21,7 @@
 ## [Проверка подлинности пользователей](v4sdk/bot-builder-concept-authentication.md)
 ## [Управление ресурсами бота](v4sdk/bot-file-basics.md)
 ## [Принцип работы ботов для Microsoft Teams](v4sdk/bot-builder-basics-teams.md)
+## [Сведения о навыках](v4sdk/skills-conceptual.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Шаблоны службы Bot](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -52,6 +53,13 @@
 ### [Непосредственная запись в хранилище](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
+### Навыки
+#### [Реализация навыка](v4sdk/skill-implement-skill.md)
+#### [Реализация потребителя навыков](v4sdk/skill-implement-consumer.md)
+<!--
+#### [Add claims validation](v4sdk/skill-add-claims-validation.md)
+#### [Manage multiple skills](#)
+-->
 ### [Добавление данных телеметрии в бот](v4sdk/bot-builder-telemetry.md)
 ### [Добавление данных телеметрии в код чат-бота для ответов на вопросы](v4sdk/bot-builder-telemetry-QnAMaker.md)
 ### [Анализ данных телеметрии бота](v4sdk/bot-builder-telemetry-analytics-queries.md)
