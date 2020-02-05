@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 701eea560d46acc9d3917716366c509e1032e30f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f1d4acd6b39ce4e7b1a3b72aee2bc12f0b60ee84
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798560"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895763"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
@@ -24,7 +24,7 @@ ms.locfileid: "75798560"
 В этой статье мы покажем, как управлять сложными беседами с ветвлениями и циклами.
 Мы также продемонстрируем передачу аргументов между разными частями диалога.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
 - Копия примера сложного диалога для [**C#** ][cs-sample], [**JavaScript**][js-sample] и [**Python**][python-sample].
@@ -95,7 +95,7 @@ ms.locfileid: "75798560"
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Диалог, который будет использовать бот.
 
-[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=28-75)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-94)]
 
 ---
 

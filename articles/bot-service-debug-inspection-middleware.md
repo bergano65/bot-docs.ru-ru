@@ -8,19 +8,19 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 9218ed5019294d2fc18d63b0fe4abe853af83e2b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 0c5c4b9062fedd0ce8235a533fcb3014cbe16725
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792606"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895810"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
 
 Чтобы продемонстрировать, как выполнять отладку и проверку состояния сообщений бота, мы используем бот EchoBot, созданный локально с помощью Bot Framework версии 4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0) | [Python](https://docs.microsoft.com/azure/bot-service/python/bot-builder-python-quickstart?view=azure-bot-service-4.0)) Отладку бота также можно выполнять с помощью [IDE](./bot-service-debug-bot.md) или [Bot Framework Emulator](./bot-service-debug-emulator.md), но для отладки состояния в бота нужно добавить проверяющее ПО промежуточного слоя. Соответствующие примеры для бота доступны здесь: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection), [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) и [Python](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/python/47.inspection). 
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 - Установленное приложение [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Понимание принципов работы [промежуточного слоя](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) бота.
 - Понимание принципов [управления состоянием](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) бота.
@@ -76,7 +76,7 @@ pip install botbuilder-core>=4.7.0
 
 **app.py**
 
-[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/app.py?range=74-86)]
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/app.py?range=75-84)]
 
 Обновите класс бота в файле **echo_bot.py**.
 

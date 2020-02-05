@@ -7,33 +7,35 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: eda82d8b929282fe322c0b28cc4683396ae26dbc
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 8d681d8ce30ed5f5bce0a424ffb0b1ecfe865155
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798209"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895771"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
-Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять поток общения. В этом разделе рассматривается добавление LUIS в приложение для бронирования авиабилетов, чтобы распознавать намерения и сущности в введенных пользователем данных. 
+Возможность понимать, что пользователь хочет сказать и какой вкладывает контекст, может быть сложной задачей, но также может способствовать более естественной беседе с ботом. API распознавания речи, так же называемое LUIS, позволяет делать так, чтобы бот мог распознавать намерения пользовательских сообщений, использовать более естественный язык пользователя и лучше направлять поток общения. В этом разделе рассматривается добавление LUIS в приложение для бронирования авиабилетов, чтобы распознавать намерения и сущности в введенных пользователем данных.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
+
 - Учетная запись [LUIS](https://www.luis.ai).
-- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на **[C#](https://aka.ms/cs-core-sample)** , **[JavaScript](https://aka.ms/js-core-sample)** или **[Python](https://aka.ms/python-core-sample)** . 
+- Код в этой статье основан на примере **Core Bot**. Вам потребуется копия этого примера на **[C#](https://aka.ms/cs-core-sample)** , **[JavaScript](https://aka.ms/js-core-sample)** или **[Python](https://aka.ms/python-core-sample)** .
 - Понимание [основных принципов работы ботов](bot-builder-basics.md), [обработки естественного языка](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) и [управления ресурсами бота](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Об этом примере
 
-Этот пример кода для простейшего бота реализует логику приложения для бронирования авиабилетов. С помощью службы LUIS он распознает пользовательский ввод и возвращает наиболее вероятное из обнаруженных LUIS намерений. 
+Этот пример кода для простейшего бота реализует логику приложения для бронирования авиабилетов. С помощью службы LUIS он распознает пользовательский ввод и возвращает наиболее вероятное из обнаруженных LUIS намерений.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `UserState` и `ConversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
-- Когда подключается новый пользователь, вызывается `OnMembersAddedAsync` и отображается приветственная карточка. 
+- Когда подключается новый пользователь, вызывается `OnMembersAddedAsync` и отображается приветственная карточка.
 - `OnMessageActivityAsync` вызывается для каждого полученного блока данных, введенных пользователем.
 
 ![Поток логических действий в примере LUIS](./media/how-to-luis/luis-logic-flow.png)
@@ -45,9 +47,10 @@ ms.locfileid: "75798209"
 - `Destination` — город прилета;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 После каждой обработки введенных пользователем данных `dialogBot` сохраняет текущее состояние `userState` и `conversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
-- Когда подключается новый пользователь, вызывается `onMembersAdded` и отображается приветственная карточка. 
+- Когда подключается новый пользователь, вызывается `onMembersAdded` и отображается приветственная карточка.
 - `OnMessage` вызывается для каждого полученного блока данных, введенных пользователем.
 
 ![Поток логических действий в примере LUIS на JavaScript](./media/how-to-luis/luis-logic-flow-js.png)
@@ -61,9 +64,10 @@ ms.locfileid: "75798209"
 - `travelDate` — дата для бронирования авиабилетов;
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
+
 После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `user_state` и `conversation_state`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
-- Когда подключается новый пользователь, вызывается `on_members_added_activity` и отображается приветственная карточка. 
+- Когда подключается новый пользователь, вызывается `on_members_added_activity` и отображается приветственная карточка.
 - `on_message_activity` вызывается для каждого полученного блока данных, введенных пользователем.
 
 ![Поток логических действий в примере LUIS для Python](./media/how-to-luis/luis-logic-flow-python.png)
@@ -79,24 +83,29 @@ ms.locfileid: "75798209"
 Дополнительные сведения о других аспектах этого примера, в том числе о диалогах и состоянии, можно получить в статьях [Сбор данных, которые вводит пользователь, с помощью диалогового окна](bot-builder-prompts.md) или [Сохранение данных пользователя и диалога](bot-builder-howto-v4-state.md).
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>Создание приложения LUIS на портале LUIS
+
 Войдите на портал LUIS, чтобы создать собственную версию примера приложения LUIS. Создавать и администрировать приложения можно на странице **Мои приложения**.
 
-1. Выберите **Import new app** (Импортировать новое приложение). 
-1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON) 
+1. Выберите **Import new app** (Импортировать новое приложение).
+1. Щелкните **Choose App file (JSON format)…** (Выберите файл приложения в формате JSON)
 1. Выберите файл `FlightBooking.json`, расположенный в папке `CognitiveModels` примера. В поле **Optional Name** (Необязательное имя) введите значение **FlightBooking**. Этот файл содержит три намерения: Book Flight, Cancel и None. Мы будем использовать эти намерения для распознавания желаний пользователя в полученном от него сообщении.
 1. [Обучите](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train) приложение.
 1. [Опубликуйте](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp) приложение в *рабочей* среде.
 
 ### <a name="why-use-entities"></a>Для чего нужны сущности
+
 Сущности LUIS позволяют боту лучше понимать некоторые факты или события, которые отличаются от стандартных намерений. Это позволяет получить от пользователя дополнительную информацию, которая позволит боту точнее реагировать на действия пользователя или пропустить некоторые вопросы, в которых от пользователя запрашивается уже полученная информация. В файле FlightBooking.json определены не только три намерения LUIS (Book Flight, Cancel и None), но и набор дополнительных сущностей, таких как From.Airport и To.Airport. Эти сущности позволяют LUIS обнаруживать и возвращать дополнительные сведения из данных, которые пользователь предоставляет при запросе нового бронирования.
 
 См. подробнее об отображении сведений о сущности в результате LUIS в руководстве по [извлечению данных из речевых фрагментов с намерениями и сущностями](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction).
 
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>Получение значений для подключения к приложению LUIS
+
 После публикации приложения LUIS ваш бот сможет обратиться к нему. Для доступа к приложению LUIS из кода бота потребуется записать несколько значений. Нужные сведения можно получить с помощью портала LUIS.
 
 ### <a name="retrieve-application-information-from-the-luisai-portal"></a>Получение сведений о приложении на портале LUIS.ai
-Файл параметров (`appsettings.json` или `.env`) используется для того, чтобы собрать в одном расположении ссылки на все службы. Полученные данные будут добавлены в этот файл в следующем разделе. 
+
+Файл параметров (`appsettings.json` или `.env`) используется для того, чтобы собрать в одном расположении ссылки на все службы. Полученные данные будут добавлены в этот файл в следующем разделе.
+
 1. Выберите опубликованное приложение LUIS на сайте [luis.ai](https://www.luis.ai).
 1. Открыв опубликованное приложение LUIS, выберите в нем вкладку **MANAGE** (Управление). ![Управление приложением LUIS](./media/how-to-luis/manage-luis-app.png)
 1. Выберите слева вкладку **Application Information** (Сведения о приложении) и сохраните значение из поля _Application ID_ (Идентификатор приложения) в параметр <YOUR_APP_ID>.
@@ -135,13 +144,13 @@ ms.locfileid: "75798209"
 
 Для подключения к службе LUIS бот извлекает сведения, которые вы ранее добавили в файл appsetting.json. Класс `FlightBookingRecognizer` содержит код с параметрами из файла appsetting.json и отправляет запрос к службе LUIS, вызывая метод `RecognizeAsync`.
 
-**FlightBookingRecognizer.cs**  
+**FlightBookingRecognizer.cs**
 
-[!code-csharp[luisHelper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/FlightBookingRecognizer.cs?range=12-39)]
+[!code-csharp[luisHelper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/FlightBookingRecognizer.cs?range=12-48)]
 
 `FlightBookingEx.cs` содержит логику для извлечения *From*, *To* и *TravelDate*. Это расширение разделяемого класса `FlightBooking.cs`, используемого для хранения результатов LUIS при вызове `FlightBookingRecognizer.RecognizeAsync<FlightBooking>` из `MainDialog.cs`.
 
-**CognitiveModels\FlightBookingEx.cs**  
+**CognitiveModels\FlightBookingEx.cs**
 
 [!code-csharp[luis helper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/CognitiveModels/FlightBookingEx.cs?range=8-35)]
 
@@ -153,7 +162,7 @@ ms.locfileid: "75798209"
 
 **dialogs/flightBookingRecognizer.js**
 
-[!code-javascript[luis helper](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/dialogs/flightBookingRecognizer.js?range=6-64)]
+[!code-javascript[luis helper](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/dialogs/flightBookingRecognizer.js?range=6-70)]
 
 Логика извлечения From, To и TravelDate реализуется в виде вспомогательных методов в `flightBookingRecognizer.js`. Эти методы используются после вызова `flightBookingRecognizer.executeLuisQuery()` из `mainDialog.js`
 
@@ -165,7 +174,7 @@ ms.locfileid: "75798209"
 
 **flight_booking_recognizer.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=8-32)]
+[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
 
 Логика извлечения *From*, *To* и *travel_date* реализуется в виде вспомогательных методов из класс `LuisHelper` в `luis_helper.py`. Эти методы используются после вызова `LuisHelper.execute_luis_query()` из `main_dialog.py`
 
@@ -185,7 +194,7 @@ ms.locfileid: "75798209"
 
 ![Входные данные LUIS для бронирования](./media/how-to-luis/luis-user-travel-input.png)
 
-Если наиболее вероятное намерение LUIS соответствует элементу Book flight (Бронирование авиабилетов), бот будет задавать дополнительные вопросы, пока не получит достаточно сохраненных сведений для создания бронирования. После этого он возвращает всю собранную информацию о бронировании пользователю. 
+Если наиболее вероятное намерение LUIS соответствует элементу Book flight (Бронирование авиабилетов), бот будет задавать дополнительные вопросы, пока не получит достаточно сохраненных сведений для создания бронирования. После этого он возвращает всю собранную информацию о бронировании пользователю.
 
 ![Результат LUIS для бронирования](./media/how-to-luis/luis-travel-result.png)
 
