@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fca68b09632c89cd027d012a92fe99e186324f70
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 14ce46852e31d347572cbc979fdcd76087452290
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798378"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895720"
 ---
 # <a name="handle-user-interruptions"></a>Обработка прерываний со стороны пользователя
 
@@ -22,7 +22,7 @@ ms.locfileid: "75798378"
 
 Обработка прерываний является важным аспектом для создания надежного бота. Пользователи не всегда будут строго соблюдать определенный вами процесс общения. Они могут задать вопрос в середине процесса или отменить процесс вместо завершения. В этом разделе рассматривается несколько распространенных способов обработки прерываний со стороны пользователя.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [повторного использования диалогов][component-dialogs].
 - Копия примера бота на языке [**CSharp**][cs-sample], [**JavaScript**][js-sample] или [**Python**][python-sample].
@@ -31,7 +31,7 @@ ms.locfileid: "75798378"
 
 Пример в этой статье моделирует работу бота для бронирования авиабилетов, который использует диалоги для получения от пользователя информации о нужном рейсе. В любой момент общения с ботом пользователь может выдать команду _help_ (помощь) или _cancel_ (отмена), что должно вызвать прерывание. Здесь мы будем использовать два вида прерываний.
 
-- **На уровне шага**. Обработка на уровне шага отменяется, но сам диалог сохраняется в стеке вместе с предоставленной информацией. Следующий шаг будет продолжен с того же места, где мы остановились. 
+- **На уровне шага**. Обработка на уровне шага отменяется, но сам диалог сохраняется в стеке вместе с предоставленной информацией. Следующий шаг будет продолжен с того же места, где мы остановились.
 - **На уровне диалога**. Полная отмена обработки, позволяющая боту начать работу сначала.
 
 ## <a name="define-and-implement-the-interruption-logic"></a>Определение и реализация логики прерывания
@@ -76,12 +76,12 @@ ms.locfileid: "75798378"
 
 Если пользователь вводит cancel, то вызывается метод `cancelAllDialogs` в контексте внутреннего диалога. Это действие очищает стек диалогов и приводит к выходу из диалога с состоянием отмены и без результирующего значения. С точки зрения `MainDialog` (см. далее) все будет выглядеть так, как будто диалог бронирования завершился и вернул значение NULL. Этот равнозначно ситуации, когда пользователь отказался подтвердить бронирование.
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js??range=20-39)]
-
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-Чтобы использовать диалоги, установите пакет `botbuilder-dialogs` и убедитесь, что пример файла `requirements.txt` содержит соответствующую ссылку, например `botbuilder-dialogs>=4.5.0`. Дополнительные сведения об установке пакетов см. в [файле сведений](https://github.com/microsoft/botbuilder-python) в репозитории примеров.
+Чтобы использовать диалоги, установите пакет `botbuilder-dialogs` и убедитесь, что пример файла `requirements.txt` содержит соответствующую ссылку, например `botbuilder-dialogs>=4.5.0`.
+Дополнительные сведения об установке пакетов см. в [файле сведений](https://github.com/microsoft/botbuilder-python) в репозитории примеров.
 > [!NOTE]
 > При выполнении команды `pip install botbuilder-dialogs` также установятся пакеты `botbuilder-core`, `botbulder-connector` и `botbuilder-schema`.
 
@@ -175,7 +175,7 @@ ms.locfileid: "75798378"
 
 В нашем примере обработчик `on_error` в адаптере получает все исключения, создаваемые в соответствии с логикой шага в боте. Если создано исключение, обработчик удаляет состояние текущей беседы, чтобы бот не застрял в цикле ошибки из-за неправильного состояния.
 
-[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=15-54)]
+[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=16-56)]
 
 ---
 
@@ -201,7 +201,7 @@ ms.locfileid: "75798378"
 
 Наконец, в `index.js` создается бот.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=75-78)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=78-81)]
 
 Для справки ниже приведены определения классов, которые используются в описанном выше вызове для создания бота.
 
@@ -213,7 +213,7 @@ ms.locfileid: "75798378"
 
 **app.py** Наконец, в `app.py` создается бот.
 
-[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=44-48)]
+[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=45-49)]
 
 Для справки ниже приведены определения классов, которые используются в вызове для создания бота.
 

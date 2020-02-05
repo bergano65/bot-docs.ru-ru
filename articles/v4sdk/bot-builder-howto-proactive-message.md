@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 12863035f0fbe361d75d12021a5bdca5f740b1aa
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 77222da10d69e6ad9a029a3548da66bd1a1806a2
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798388"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895675"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
@@ -31,7 +31,7 @@ ms.locfileid: "75798388"
 
 Чтобы улучшить обработку уведомлений, рассмотрите другие варианты их интеграции в поток общения, например указав флаг в состоянии диалога или добавив уведомление в очередь.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md).
 - Копия примера упреждающих сообщений для [**C#** ](https://aka.ms/proactive-sample-cs), [**JavaScript**](https://aka.ms/proactive-sample-js) и [**Python**](https://aka.ms/bot-proactive-python-sample-code). Этот пример используется в статье в качестве иллюстрации упреждающего обмена сообщениями.
@@ -87,7 +87,7 @@ ms.locfileid: "75798388"
 При каждом запросе страницы уведомления бота соответствующий контроллер извлекает из словаря ссылки на беседы.
 Этот контроллер выполняет методы `ContinueConversationAsync` и `BotCallback`, чтобы отправить упреждающее сообщение.
 
-[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-60&highlight=28,40-43)]
+[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-62&highlight=28,40-44)]
 
 Для отправки упреждающего сообщения адаптеру нужен идентификатор приложения бота. В рабочей среде для этого можно использовать реальный идентификатор приложения бота. В локальной тестовой среде подойдет любой произвольный идентификатор. Если боту еще не назначен идентификатор приложения, контроллер уведомления самостоятельно генерирует заполнитель и применяет его в вызове.
 
@@ -99,15 +99,14 @@ ms.locfileid: "75798388"
 Затем сервер выполняет метод `continueConversation`, чтобы отправить упреждающее сообщение.
 Параметр `continueConversation` является функцией, которая используется как обработчик шага бота для этого шага.
 
-[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
-
+[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-82&highlight=4-8)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 При каждом запросе страницы уведомлений бота этот сервер извлекает из словаря ссылки на беседы.
 Затем сервер использует `_send_proactive_message`, чтобы отправить упреждающее сообщение.
 
-**app.py** [!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=104-110&highlight=3-7)]
+[!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
 
 ---
 
@@ -122,19 +121,19 @@ ms.locfileid: "75798388"
 
 Кроме примера, который используется в этой статье, на [GitHub](https://github.com/Microsoft/BotBuilder-Samples/) есть и другие примеры для C# и JavaScript.
 
-### <a name="avoiding-401-unauthorized-errors"></a>Предотвращение ошибки 401 Unauthorized (не авторизовано) 
+### <a name="avoiding-401-unauthorized-errors"></a>Предотвращение ошибки 401 Unauthorized (не авторизовано)
 
 По умолчанию пакет SDK BotBuilder добавляет `serviceUrl` в список имен доверенных узлов, если входящий запрос прошел проверку BotAuthentication. Эти данные сохраняются в кэше в памяти. При перезапуске бота все пользователи, ожидающие упреждающих сообщений, не смогут их получить, если не отправляли боту новые сообщения после перезапуска.
 
-Чтобы избежать этого, следует вручную добавить `serviceUrl` в список имен доверенных узлов, выполнив следующие действия. 
+Чтобы избежать этого, следует вручную добавить `serviceUrl` в список имен доверенных узлов, выполнив следующие действия.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-```csharp 
-MicrosoftAppCredentials.TrustServiceUrl(serviceUrl); 
-``` 
+```csharp
+MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
+```
 
-Для упреждающего обмена сообщениями `serviceUrl` используется как URL-адрес канала, с которым взаимодействует получатель упреждающего сообщения. Его можно найти в `Activity.ServiceUrl`. 
+Для упреждающего обмена сообщениями `serviceUrl` используется как URL-адрес канала, с которым взаимодействует получатель упреждающего сообщения. Его можно найти в `Activity.ServiceUrl`.
 
 Добавьте приведенный выше код прямо перед кодом, который отправляет упреждающее сообщение. В [примере упреждающих сообщений](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) это нужно сделать в `NotifyController.cs` прямо перед `await turnContext.SendActivityAsync("proactive hello");`.
 
