@@ -78,6 +78,7 @@
 # Справочник
 ## [Пакет SDK версии 4 для .NET](https://aka.ms/botframework-v4-cs-sdk)
 ## [Пакет SDK версии 4 для JavaScript](https://aka.ms/bot-jssdk-v4)
+## [Пакет SDK для Python версии 4](https://aka.ms/botframework-v4-python-sdk)
 ## [REST](rest-api/TOC.md)
 ## [Пакет SDK версии 3 для .NET](https://aka.ms/botframework-v3-cs-sdk)
 ## [Пакет SDK версии 3 для Node.js](https://aka.ms/bot-jssdk-v3)
