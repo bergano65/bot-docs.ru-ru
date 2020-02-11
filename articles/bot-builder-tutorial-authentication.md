@@ -8,12 +8,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e5b04a9b0d5d4c4974b5aaf051d7a01bdb9302f6
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: aab49803939a42974a59b66f47a1f004019421b4
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75788881"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752786"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Добавление проверки подлинности к боту с помощью службы Azure Bot
 
@@ -38,7 +38,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 Чтобы добавить к существующему боту следующие функции, можно экстраполировать шаги, описанные в этой статье. Далее приведены примеры ботов, которые демонстрируют новые функции проверки подлинности.
 
-| Образец | Версия Bot Builder | Description |
+| Образец | Версия Bot Builder | Описание |
 |:---|:---:|:---|
 | [AadV1Bot](https://aka.ms/AadV1Bot) | Версия 3 | Реализована поддержка OAuthCard в пакете SDK версии 3 для C# с помощью конечной точки Azure AD версии 1 |
 | [AadV2Bot](https://aka.ms/AadV2Bot) | Версия 3 |  Реализована поддержка OAuthCard в пакете SDK версии 3 для C# с помощью конечной точки Azure AD версии 2 |
@@ -75,12 +75,12 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 
 ### <a name="register-an-application-in-azure-ad"></a>Регистрация приложение в Azure AD
 
-Вам потребуется приложение AAD, которое бот сможет использовать для подключения к API Microsoft Graph.
+Вам потребуется приложение Azure AD, которое бот сможет использовать в качестве поставщика удостоверений для подключения к API Microsoft Graph.
 
 Для данного бота можно использовать конечные точки Azure AD версии 1 или 2.
 Дополнительные сведения о разнице между конечными точками версии 1 и 2 см. в статьях [What's different about the v2.0 endpoint?](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) (Что нового в конечной точке версии 2.0 ) и [Настройка входа пользователей с помощью учетной записи Майкрософт и Azure Active Directory в одном приложении](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview).
 
-#### <a name="to-create-an-azure-ad-application"></a>Создание приложения Azure AD
+#### <a name="create-an-azure-ad-identity-provider-application"></a>Создание приложения поставщика удостоверений Azure AD 
 
 Эта процедура позволяет создать приложение AAD. Созданное приложение можно использовать с конечными точками версии 1 или 2.
 
@@ -94,7 +94,7 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
 1. Заполните обязательные поля и создайте регистрацию приложения.
 
    1. Присвойте имя приложению.
-   1. Выберите **Поддерживаемые типы учетных записей** для приложения. (Все эти параметры будут работать с этим примером.)
+   1. Выберите **Поддерживаемые типы учетных записей** для приложения.
    1. Для **URI перенаправления**:
        1. Выберите **Интернет**.
        1. Укажите для URL-адреса значение `https://token.botframework.com/.auth/web/redirect`.
@@ -103,6 +103,9 @@ These capabilities were bundled in the BotAuth and AuthBot samples that are on G
       - После создания в Azure отображается страница **Обзор** для приложения.
       - Запишите **идентификатор приложения (клиента)** . Это значение вам нужно будет ввести позднее в поле _Идентификатор клиента_ при регистрации приложения AAD в боте.
       - Также запишите **идентификатор каталога (арендатора)** . Вы будете использовать эти значения для регистрации приложения с ботом.
+ 
+    > [!NOTE]
+    > Если для поддерживаемых типов учетных записей указано значение "Один клиент" и вы используете личную подписку, а не учетную запись Майкрософт, эмулятор выдаст ошибку: *The bot's Microsoft App ID or Microsoft App Password is incorrect…* (Неверный идентификатор приложения Майкрософт для бота или пароль приложения Майкрософт…) В этом случае для поддерживаемых типов учетных записей нужно указать *Учетные записи в любом каталоге организации (любой каталог Azure AD — мультитенантный) и персональные учетные записи Майкрософт (например, Skype, Xbox)* .
 
 1. В области навигации щелкните **Сертификаты и секреты**, чтобы создать секрет для приложения.
 

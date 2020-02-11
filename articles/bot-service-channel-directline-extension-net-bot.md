@@ -7,13 +7,13 @@ manager: kamrani
 ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
-ms.date: 07/25/2019
-ms.openlocfilehash: 246e9ecace56126d625d5f9e2571e8d27ba780e8
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.date: 01/16/2020
+ms.openlocfilehash: 04868384268049befd3da7b39582614524542ce9
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76255997"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895629"
 ---
 # <a name="configure-net-bot-for-extension"></a>Настройка бота .NET для использования расширения
 
@@ -31,14 +31,15 @@ ms.locfileid: "76255997"
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Настройка бота .NET для использования расширения Службы приложений Direct Line
 
->Примечание. Пакеты `Microsoft.Bot.Builder.StreamingExtensions` находятся в режиме предварительной версии и не будут обновляться. Пакет SDK версии 4.7 уже содержит [код потоковой передачи](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming), и вам не нужно отдельно устанавливать пакеты потоковой передачи. Если вы выполнили обновление до пакета SDK версии 4.7, ознакомьтесь с разделом [дополнительных сведений](bot-service-channel-directline-extension-net-bot.md#additional-information), где описаны изменения, которые нужно внести в этот раздел для включения этой функции. 
+> [!NOTE]
+> Пакеты `Microsoft.Bot.Builder.StreamingExtensions` находятся в предварительной версии и не будут обновляться. Пакет SDK версии 4.7 уже содержит [код потоковой передачи](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming), и вам не нужно отдельно устанавливать пакеты потоковой передачи.
 
 1. Откройте проект бота в Visual Studio.
 2. Добавьте в проект пакет NuGet **расширения потоковой передачи**.
     1. В проекте щелкните правой кнопкой мыши элемент **Зависимости** и выберите **Управление пакетами NuGet**.
     2. На вкладке *Обзор* щелкните **Включить предварительные выпуски**, чтобы просмотреть пакеты предварительных версий.
     3. Выберите пакет **Microsoft.Bot.Builder.StreamingExtensions**.
-    4. Нажмите кнопку **Установить**, чтобы установить пакет, прочитайте и примите условия лицензионного соглашения. 
+    4. Нажмите кнопку **Установить**, чтобы установить пакет, прочитайте и примите условия лицензионного соглашения.
 3. Разрешите приложению использовать **NamedPipe из Bot Framework**.
     - Откройте файл `Startup.cs` .
     - В методе ``Configure`` добавьте код в ``UseBotFrameworkNamedPipe``.
@@ -82,9 +83,9 @@ ms.locfileid: "76255997"
 1. В браузере перейдите на [портал Azure](https://portal.azure.com/).
 1. На портале Azure найдите ресурс **службы Azure Bot**.
 1. Щелкните элемент **Каналы**, чтобы настроить каналы для бота.
-1. Если канал **Direct Line** еще не включен, щелкните его, чтобы включить. 
+1. Если канал **Direct Line** еще не включен, щелкните его, чтобы включить.
 1. Если он уже включен, в таблице "Подключение к каналам" щелкните ссылку **Изменить** в строке Direct Line.
-1. Прокрутите вниз до раздела "Ключи расширения Службы приложений". 
+1. Прокрутите вниз до раздела "Ключи расширения Службы приложений".
 1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, и скопируйте его значение.
 
 ![Ключи расширения Службы приложений](./media/channels/direct-line-extension-extension-keys.png)
@@ -105,46 +106,9 @@ ms.locfileid: "76255997"
 
 ## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Подтвердите, что расширение Direct Line Службы приложений и бот инициализированы.
 
-1. В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. В этих данных, которые указывают на то, что **все работает правильно**:
+В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. В этих данных, которые указывают на то, что **все работает правильно**:
 
-    - **k** определяет, может ли расширение Direct Line Службы приложений (ASE) считывать соответствующий ключ расширения из своей конфигурации. 
-    - **initialized** определяет, может ли ASE Direct Line с помощью соответствующего ключа расширения скачивать метаданные бота из службы Azure Bot.
-    - **ib** определяет, может ли ASE Direct Line устанавливать входящее соединение с ботом.
-    - **ob** определяет, может ли ASE Direct Line устанавливать исходящее соединение с ботом. 
-
-## <a name="additional-information"></a>Дополнительные сведения 
-
-Если вы выполнили обновление до пакета SDK версии 4.7, немного измените инструкции в разделе "Настройка бота .NET для использования расширения Службы приложений Direct Line", как показано ниже. 
-- Пропустите **шаг 2**, так как вам не нужны пакеты в предварительной версии. 
-- На **шаге 3** выполните следующие действия.  
-
-Разрешите приложению **использовать именованные каналы (UseNamedPipes)** :
-- Откройте файл `Startup.cs` .
-- В методе ``Configure`` добавьте код в ``UseNamedPipes``.
-
-    ```csharp
-
-    using Microsoft.Bot.Builder.StreamingExtensions;
-
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseHsts();
-        }
-
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-
-        // Allow bot to use named pipes.
-        app.UseNamedPipes();
-
-        app.UseMvc();
-    }
-
-    ```
-
+- **k** определяет, может ли расширение Direct Line Службы приложений (ASE) считывать соответствующий ключ расширения из своей конфигурации. 
+- **initialized** определяет, может ли ASE Direct Line с помощью соответствующего ключа расширения скачивать метаданные бота из службы Azure Bot.
+- **ib** определяет, может ли ASE Direct Line устанавливать входящее соединение с ботом.
+- **ob** определяет, может ли ASE Direct Line устанавливать исходящее соединение с ботом.

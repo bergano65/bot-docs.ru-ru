@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/05/2019
+ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 874d22eef5a387df9be8b1cee72935812bf9879b
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.openlocfilehash: 51068b61776d55fba0f96561463902820b1c14cd
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76256017"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895741"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
@@ -149,7 +149,7 @@ ms.locfileid: "76256017"
 
 В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
 
-[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат на следующем шаге с помощью `step_context.result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
 
@@ -197,11 +197,15 @@ ms.locfileid: "76256017"
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Обработчик `onMessage` использует вспомогательный метод, чтобы начать или продолжить диалог. В `onDialog` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. Метод `onDialog` вызывается последним, после выполнения всех остальных определенных обработчиков, таких как `onMessage`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
+Метод `onMessage` позволяет регистрировать прослушиватель, который вызывает метод `run` беседы для запуска или продолжения беседы.
+
+Помимо этого, бот переопределяет метод `ActivityHandler.run` для сохранения состояния беседы и состояния пользователя в хранилище. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
 
 **bots/dialogBot.js**
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
+[!code-javascript[message listener](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
+
+[!code-javascript[override](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=34-43&highlight=7-9)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -235,12 +239,11 @@ ms.locfileid: "76256017"
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=19-59)]
 
-
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 В `app.py` мы регистрируем службы для бота.
 
-[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-75)]
+[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
 
 ---
 
@@ -276,7 +279,7 @@ ms.locfileid: "76256017"
 
 ### <a name="definition-of-a-prompt-validator-method"></a>Определение метода для проверяющего элемента управления запроса
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp) 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **UserProfileDialog.cs**
 
@@ -296,7 +299,7 @@ ms.locfileid: "76256017"
 
 **dialogs/user_profile_dialog.py**
 
-Ниже приведен пример кода проверяющего элемента управления для определения метода `age_prompt_validator`. `prompt_context.recognized.value` содержит анализируемое значение (в нашем примере это целое число из запроса числа). `prompt_context.recognized.succeeded` указывает, удалось ли в запросе выполнить синтаксический анализ введенных пользователем данных. Проверяющий элемент управления должен возвращать значение false, если значение сочтено недопустимым, и в этом случае диалоговое окно запроса снова отображается пользователю. В противном случае должно вернуться значение true, чтобы принять введенные данные и завершить работу диалогового окна запроса. Обратите внимание, что это значение можно изменить в проверяющем элементе управления в соответствии с вашим сценарием. 
+Ниже приведен пример кода проверяющего элемента управления для определения метода `age_prompt_validator`. `prompt_context.recognized.value` содержит анализируемое значение (в нашем примере это целое число из запроса числа). `prompt_context.recognized.succeeded` указывает, удалось ли в запросе выполнить синтаксический анализ введенных пользователем данных. Проверяющий элемент управления должен возвращать значение false, если значение сочтено недопустимым, и в этом случае диалоговое окно запроса снова отображается пользователю. В противном случае должно вернуться значение true, чтобы принять введенные данные и завершить работу диалогового окна запроса. Обратите внимание, что это значение можно изменить в проверяющем элементе управления в соответствии с вашим сценарием.
 
 [!code-python[prompt validator method](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=207-212)]
 
@@ -319,4 +322,3 @@ ms.locfileid: "76256017"
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
 [python-sample]: https://aka.ms/python-multi-prompts-sample
-

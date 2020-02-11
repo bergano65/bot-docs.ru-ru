@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/22/2019
+ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0d57ff8bf62625ceef6fc2c0f75c492b32dd2014
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: bea377055010077d964f639518556e12e212f1ad
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791196"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895716"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -22,7 +22,7 @@ ms.locfileid: "75791196"
 
 Если бот использует несколько моделей LUIS и базы знаний QnA Maker, вы можете применить средство Dispatch, чтобы определить модель LUIS или базу знаний QnA Maker, которые лучше всего соответствуют вводимым пользователем данным. Для этого средство Dispatch создает одно приложение LUIS, чтобы отправить эти данные в соответствующую модель. Дополнительные сведения о средстве Dispatch (включая команды CLI) см. в [файле сведений][dispatch-readme].
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - [Базовые знания о ботах](bot-builder-basics.md), [LUIS][howto-luis] и [QnA Maker][howto-qna].
 - [Средство подготовки к отправке](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
@@ -72,7 +72,7 @@ ms.locfileid: "75791196"
 
 Перед созданием модели отправки вам нужно создать и опубликовать приложения LUIS и базы знаний QnA. В этой статье мы опубликуем следующие модели, которые присутствуют в примере _NLP with Dispatch_ в папке `\CognitiveModels`:
 
-| Имя | Description |
+| Имя | Описание |
 |------|------|
 | HomeAutomation | Приложение LUIS распознает намерение обращения к службе автоматизации и данные о сущностях.|
 | Weather | Приложение LUIS распознает намерения, связанные с погодой и данными о расположении.|
@@ -284,7 +284,7 @@ npm install --save dotenv
 
 ### <a name="manually-update-your-env-file"></a>Обновление файла .env вручную
 
-После создания всех приложений службы вам нужно добавить сведения о них в файл .env. Исходный пример кода [JavaScript][js-sample] содержит пустой ENV-файл. 
+После создания всех приложений службы вам нужно добавить сведения о них в файл .env. Исходный пример кода [JavaScript][js-sample] содержит пустой ENV-файл.
 
 Файл с расширением **.env**  
 [!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
@@ -321,13 +321,14 @@ pip install botbuilder-ai
 ```
 
 ### <a name="manually-update-your-configpy-file"></a>Обновление файла config.py вручную
-После создания всех приложений службы вам нужно добавить сведения о них в файл config.py. В начальном [примере кода Python][python-sample] содержится пустой файл config.py. 
+После создания всех приложений службы вам нужно добавить сведения о них в файл config.py. В начальном [примере кода Python][python-sample] содержится пустой файл config.py.
 
 **config.py**
 
 [!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
 
 Для каждой сущности ниже добавьте значения, которые вы записали ранее при выполнении этих инструкций:
+
 ```python
 APP_ID = os.environ.get("MicrosoftAppId", "")
 APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
@@ -341,13 +342,14 @@ LUIS_API_KEY = os.environ.get("LuisAPIKey", "<your-luis-endpoint-key>")
 # LUIS endpoint host name, ie "westus.api.cognitive.microsoft.com"
 LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-region>")
 ```
+
 Когда все изменения будут внесены, сохраните файл.
 
 ---
 
 ### <a name="connect-to-the-services-from-your-bot"></a>Подключение к службам из бота
 
-Чтобы подключиться к средству Dispatch, а также службам LUIS и QnA Maker, бот получает сведения из файла параметров (`appsettings.json` или `.env`).
+Чтобы подключиться к службам диспетчеризации, LUIS и QnA Maker, бот получает сведения из файла параметров.
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -355,7 +357,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=16-31)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-45)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -366,11 +368,12 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
+
 В файле **dispatch_bot.py** сведения из файла конфигурации _config.py_ используются для подключения бота отправки к службам _QnAMaker_ и _LuisRecognizer_. Конструкторы используют предоставленные значения для подключения к этим службам.
 
 **bots/dispatch_bot.py**
 
-[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-30)]
+[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
 
 ---
 

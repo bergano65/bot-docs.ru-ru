@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30e04ad9e2b4b896cf941cdb440279ad9865837e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: c562f9889fddbc205a341f5fda3b652dd1fb7c75
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798800"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752926"
 ---
 # <a name="user-authentication-within-a-conversation"></a>Проверка подлинности пользователей в диалоге
 
@@ -41,7 +41,11 @@ ms.locfileid: "75798800"
 
 - упрощение использования протокола OAuth с разными внешними службами;
 - безопасное хранение токенов для определенного бота, канала, диалога и пользователя;
-- управление жизненным циклом токенов, включая попытки их обновления.
+- получение токенов пользователей.
+    > [!TIP]
+    > Если в боте применяется токен пользователя с истекшим сроком действия, бот должен сделать следующее.
+    >    - Выход пользователя
+    >    - Инициировать поток входа снова.
 
 Например, боту, который может проверять последние сообщения электронной почты пользователя с помощью Microsoft Graph API, нужен токен пользователя Azure Active Directory. Во время проектирования разработчик бота регистрирует приложение Azure Active Directory с использованием службы токенов Bot Framework (через портал Azure), а затем настраивает параметр подключения OAuth (с именем `GraphConnection`) для бота. Когда пользователь взаимодействует с ботом, рабочий процесс будет следующим:
 

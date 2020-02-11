@@ -1,32 +1,32 @@
 ---
 title: Подключение бота к Webex Teams | Документация Майкрософт
-description: Узнайте, как настроить подключение бота к Webex через адаптер Slack.
+description: Узнайте, как настроить подключение бота к Webex через адаптер Webex.
 keywords: bot adapter, Webex, Webex bot
 author: garypretty
 manager: kamrani
 ms.topic: article
 ms.author: gapretty
 ms.service: bot-service
-ms.date: 12/04/2019
-ms.openlocfilehash: 590a4e3d4f2331580bb1fd823bdcd7a00f5efaab
-ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
+ms.date: 01/21/2020
+ms.openlocfilehash: 2bf7d99d221a2e48c938c66fb7bef5c1e143f47f
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75757308"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752806"
 ---
 # <a name="connect-a-bot-to-webex-teams-using-the-webex-adapter"></a>Подключение бота к Webex Teams с помощью адаптера Slack
 
 Из этой статьи вы узнаете, как подключить бота к Webex с помощью адаптера, предоставляемого в пакете SDK.  В этой статье описано, как изменить пример EchoBot для его подключения к приложению Webex.
 
 > [!NOTE]
-> Ниже приводятся инструкции для реализации адаптера Slack на C#. Инструкции по использованию адаптера для JS, который входит в состав библиотек BotKit, см. в [документации по BotKit для Slack](https://botkit.ai/docs/v4/platforms/webex.html).
+> Ниже приводятся инструкции для реализации адаптера Webex на C#. Инструкции по использованию реализации на JavaScript, которая входит в состав библиотек BotKit, см. в [документации по BotKit для Webex](https://botkit.ai/docs/v4/platforms/webex.html).
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 * [Пример кода EchoBot](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot).
 
-* Доступ к команде Webex с достаточными разрешениями для создания приложений и управления ими в [https://developer.webex.com/my-apps](https://developer.webex.com/my-apps). Если у вас нет доступа к команде Webex, вы можете бесплатно создать учетную запись на странице https://www.webex.com.
+* Доступ к команде Webex с достаточными разрешениями для создания приложений и управления ими в [https://developer.webex.com/my-apps](https://developer.webex.com/my-apps). Если у вас нет доступа к команде Webex, вы можете бесплатно создать учетную запись на сайте [www.webex.com](https://www.webex.com).
 
 ## <a name="create-a-webex-bot-app"></a>Создание приложения для бота Webex
 
@@ -36,13 +36,13 @@ ms.locfileid: "75757308"
 
 3. На следующем экране введите имя бота, имя пользователя и описание бота, а также выберите значок или передайте собственное изображение.
 
-![Настройка бота](~/media/bot-service-adapter-connect-webex/create-bot.png)
+    ![Настройка бота](~/media/bot-service-adapter-connect-webex/create-bot.png)
 
-Нажмите кнопку Add bot (Добавить бота).
+    Нажмите кнопку Add bot (Добавить бота).
 
 4. На следующей странице вы получите маркер доступа для нового приложения Webex. Запишите его значение, так как оно потребуется при настройке бота.
 
-![Настройка бота](~/media/bot-service-adapter-connect-webex/create-bot-settings.png)
+    ![Настройка бота](~/media/bot-service-adapter-connect-webex/create-bot-settings.png)
 
 ## <a name="wiring-up-the-webex-adapter-in-your-bot"></a>Подключение адаптера Webex к боту
 
@@ -111,7 +111,7 @@ public class WebexController : ControllerBase
 Добавьте следующую строку в метод ***ConfigureServices*** в файле Startup.cs, которая будет регистрировать адаптер Webex и делать его доступным для нового класса контроллера.  Описанные в следующем шаге параметры конфигурации применяются адаптером автоматически.
 
 ```csharp
-services.AddSingleton<SlackAdapter, WebexAdapterWithErrorHandler>();
+services.AddSingleton<WebexAdapter, WebexAdapterWithErrorHandler>();
 ```
 
 После добавления метод ***ConfigureServices*** должен выглядеть следующим образом.
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
     // Create the default Bot Framework Adapter (used for Azure Bot Service channels and emulator).
     services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkAdapterWithErrorHandler>();
 
-    // Create the Slack Adapter
+    // Create the Webex Adapter
     services.AddSingleton<WebexAdapter, WebexAdapterWithErrorHandler>();
 
     // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
@@ -136,12 +136,12 @@ public void ConfigureServices(IServiceCollection services)
 
 1. Добавьте четыре указанных ниже параметра в файл appSettings.json в проекте бота.
 
-```json
-  "WebexAccessToken": "",
-  "WebexPublicAddress": "",
-  "WebexSecret": "",
-  "WebexWebhookName": ""
-```
+    ```json
+      "WebexAccessToken": "",
+      "WebexPublicAddress": "",
+      "WebexSecret": "",
+      "WebexWebhookName": ""
+    ```
 
 2. В параметре **WebexAccessToken** укажите маркер доступа бота Webex, который вы получили на предыдущих шагах при создании приложения бота Webex. Остальные три параметра пока оставьте пустыми. Информацию для них мы соберем на следующих шагах.
 
@@ -153,31 +153,31 @@ public void ConfigureServices(IServiceCollection services)
 
 1. Чтобы выполнить этот шаг, [разверните бота в Azure](https://aka.ms/bot-builder-deploy-az-cli) и запишите URL-адрес этого развертывания. Конечной точкой Webex для обмена сообщениями является URL-адрес бота, который совпадает с URL-адресом развернутого приложения (или конечной точки ngrok) с добавленным префиксом /api/webex (например, `https://yourbotapp.azurewebsites.net/api/webex`).
 
-> [!NOTE]
-> Если вы еще не готовы развернуть бота в Azure или вам нужна отладка бота с адаптером Webex, можно использовать средство [ngrok](https://www.ngrok.com) (оно должно быть уже установлено, если вы ранее использовали эмулятор Bot Framework), которое создаст туннель к запущенному в локальной среде боту и предоставит для него общедоступный URL-адрес. 
-> 
-> Если вы хотите создать туннель и получить для бота URL-адрес с помощью ngrok, выполните следующую команду в окне терминала. Здесь предполагается, что локальный бот работает на порту 3978. Если это не так, измените номера портов в команде.
-> 
-> ```
-> ngrok.exe http 3978 -host-header="localhost:3978"
-> ```
+    > [!NOTE]
+    > Если вы еще не готовы развернуть бота в Azure или вам нужна отладка бота с адаптером Webex, можно использовать средство [ngrok](https://www.ngrok.com) (оно должно быть уже установлено, если вы ранее использовали эмулятор Bot Framework), которое создаст туннель к запущенному в локальной среде боту и предоставит для него общедоступный URL-адрес.
+    >
+    > Если вы хотите создать туннель и получить для бота URL-адрес с помощью ngrok, выполните следующую команду в окне терминала. Здесь предполагается, что локальный бот работает на порту 3978. Если это не так, измените номера портов в команде.
+    >
+    > ```cmd
+    > ngrok.exe http 3978 -host-header="localhost:3978"
+    > ```
 
 2. Перейдите по адресу [https://developer.webex.com/docs/api/v1/webhooks](https://developer.webex.com/docs/api/v1/webhooks).
 
-3. Щелкните ссылку для метода PUT "https://api.ciscospark.com/v1/webhooks/{webhookId}" с описанием Update a Webhook (Обновить веб-перехватчик). В результате откроется форма, где вы можете отправить запрос на конечную точку.
+3. Щелкните ссылку для метода PUT `https://api.ciscospark.com/v1/webhooks/{webhookId}` с описанием Update a Webhook (Обновить веб-перехватчик). В результате откроется форма, где вы можете отправить запрос на конечную точку.
 
-![Настройка бота](~/media/bot-service-adapter-connect-webex/webex-webhook-put-endpoint.png)
+    ![Настройка бота](~/media/bot-service-adapter-connect-webex/webex-webhook-put-endpoint.png)
 
 4. Заполните форму следующими данными.
 
-* Name (Имя): укажите имя веб-перехватчика, например Messages Webhook.
-* Target URL (Целевой URL-адрес): это полный URL-адрес конечной точки бота для Webex, например https://yourbotapp.azurewebsites.net/api/webex).
-* Secret (Секрет): здесь нужно указать секрет, который вы выбрали для защиты веб-перехватчика.
-* Status (Состояние): оставьте здесь значение по умолчанию active (активное).
+    * Name (Имя): укажите имя веб-перехватчика, например Messages Webhook.
+    * Target URL (Целевой URL-адрес): это полный URL-адрес конечной точки бота для Webex, например `https://yourbotapp.azurewebsites.net/api/webex`.
+    * Secret (Секрет): здесь нужно указать секрет, который вы выбрали для защиты веб-перехватчика.
+    * Status (Состояние): оставьте здесь значение по умолчанию active (активное).
 
-![Настройка бота](~/media/bot-service-adapter-connect-webex/webex-webhook-form.png)
+    ![Настройка бота](~/media/bot-service-adapter-connect-webex/webex-webhook-form.png)
 
-5. Нажмите кнопку Run (Выполнить), чтобы создать веб-перехватчик и получить сообщение об успешном выполнении.
+5. Нажмите кнопку **Run** (Выполнить), чтобы создать веб-перехватчик и получить сообщение об успешном выполнении.
 
 ### <a name="complete-the-remaining-settings-in-your-bot-application"></a>Заполнение оставшихся параметров приложения бота
 

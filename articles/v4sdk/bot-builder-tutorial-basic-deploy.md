@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fadc7410925d337a518129736c9374035fe2114d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f4df5e10b545d1c2cf0137400e571d8a45aa465a
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791216"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895786"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Руководство. Создание и развертывание простого бота
 
@@ -22,7 +22,7 @@ ms.locfileid: "75791216"
 
 В этом руководстве описано, как создать простой бот на основе пакета SDK Bot Framework и развернуть его в Azure. Если вы уже создали бот и запустили его локально, сразу переходите к разделу [Развертывание бота](#deploy-your-bot).
 
-В этом руководстве описано следующее.
+В этом руководстве описано следующее:
 
 > [!div class="checklist"]
 > * Создание простого бота Echo
@@ -47,10 +47,15 @@ ms.locfileid: "75791216"
 
 ## <a name="deploy-your-bot"></a>Развертывание бота
 
-### <a name="prerequisites"></a>предварительные требования
+### <a name="prerequisites"></a>Предварительные требования
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
 ### <a name="prepare-for-deployment"></a>Подготовка к развертыванию
+
+> [!TIP]
+> В этой процедуре для развертывания бота используется ZIP-файл. В C# такая процедура может завершиться сбоем, если на этапе сборки в качестве конфигурации решения указано значение **Debug**.
+> В Visual Studio для конфигурации решения укажите значение **Release**. Затем для решения выполните повторную сборку с очисткой, прежде чем продолжить.
+
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
 #### <a name="1-login-to-azure"></a>1. Вход в Azure

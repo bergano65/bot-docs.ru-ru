@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 96669a1f461975978291fe20a15b5c196f475694
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a4437910cc0de3772ed8959f54f1643bc62abf41
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791206"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752896"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство. Использование QnA Maker в боте для ответов на вопросы.
 
@@ -22,7 +22,7 @@ ms.locfileid: "75791206"
 
 С помощью службы QnA Maker и базы знаний вы можете реализовать в боте поддержку вопросов и ответов. Созданная база знаний заполняется готовыми вопросами и ответами.
 
-В этом руководстве описано следующее.
+В этом руководстве описано следующее:
 
 > [!div class="checklist"]
 > * Создание службы QnA Maker и базы знаний
@@ -32,7 +32,7 @@ ms.locfileid: "75791206"
 
 Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 * Бот, созданный при работе с [предыдущим руководством](bot-builder-tutorial-basic-deploy.md). Мы добавим в этот бот функцию вопросов и ответов.
 * Вам будет проще, если вы уже знакомы со службой [QnA Maker](https://qnamaker.ai/). На портале QnA Maker мы создадим, обучим и опубликуем базу знаний для использования с этим ботом.
@@ -75,6 +75,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 Теперь база знаний готова для использования в боте.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Добавление сведений о базе знаний в бота
+
 Начиная с бот-платформы версии 4.3, файлы с расширением .bot больше не предоставляются в Azure для скачивания вместе с исходным кодом бота. Следуйте дальнейшим инструкциям, чтобы подключить свой бот на C#, JavaScript или Python к базе знаний.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
@@ -128,8 +129,9 @@ class DefaultConfig:
 
 | Поле | Значение |
 |:----|:----|
-
-| QnAKnowledgebaseId | Идентификатор базы знаний, автоматически созданный на портале QnA Maker. | | QnAAuthKey (QnAEndpointKey в Python) | Ключ конечной точки, автоматически созданный на портале QnA Maker. | | QnAEndpointHostName | URL-адрес узла, созданный на портале QnA Maker. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полная строка URL-адреса будет выглядеть так: https://< >.azure.net/qnamaker. |
+| QnAKnowledgebaseId | Идентификатор базы знаний, автоматически созданный на портале QnA Maker. |
+| QnAAuthKey (QnAEndpointKey на Python)  | Ключ конечной точки, автоматически созданный на портале QnA Maker. |
+| QnAEndpointHostName | URL-адрес узла, созданный на портале QnA Maker. Используйте полный формат URL-адрес, начиная с `https://` и заканчивая `/qnamaker`. Полная строка URL-адреса будет выглядеть так: https://< >.azure.net/qnamaker. |
 
 Сохраните изменения.
 

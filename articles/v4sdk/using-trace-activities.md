@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0a34e0d3afacaec0fcfd7b12aaa9b1b3a78f31c0
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 5cfb4e8f2d16c868bcbc7d3d11c7cb0b2455f7cb
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791016"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895822"
 ---
 # <a name="add-trace-activities-to-your-bot"></a>Добавление действий трассировки в бот
 
@@ -68,11 +68,11 @@ _Обработчик ошибок шага_ адаптера перехваты
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-В этом примере определен вспомогательный метод **SendTraceActivityAsync**, который отправляет сведения об исключении в Emulator в формате действия трассировки.
+Обработчик адаптера **OnTurnError** создает действие трассировки, которое собирает сведения об исключении и отправляет их в эмулятор.
 
 **AdapterWithErrorHandler.cs**
 
-[!code-csharp[SendTraceActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=16-51&highlight=33-34)]
+[!code-csharp[OnTurnError](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=16-51&highlight=33-34)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -80,32 +80,16 @@ _Обработчик ошибок шага_ адаптера перехваты
 
 **index.js**
 
-[!code-javascript[onTurnError ](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57&highlight=8-14)]
+[!code-javascript[onTurnError](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57&highlight=8-14)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 Обработчик адаптера **on_error** создает действие трассировки, которое собирает сведения об исключении и отправляет их в Emulator.
-```python
-async def on_error(context: TurnContext, error: Exception):
-...
 
-if context.activity.channel_id == "emulator":
+**adapter_with_error_handler.py**
 
-# Create a trace activity that contains the error object
-trace_activity = Activity(
-    label="TurnError",
-    name="on_turn_error Trace",
-    timestamp=datetime.utcnow(),
-    type=ActivityTypes.trace,
-    value=f"{error}",
-    value_type="https://www.botframework.com/schemas/error",
-)
+[!code-python[on_error](~/../BotBuilder-Samples/samples/python/13.core-bot/adapter_with_error_handler.py?range=26-50&highlight=24-25)]
 
-# Send a trace activity, which will be displayed in Bot Framework Emulator
-await context.send_activity(trace_activity)
-
-...
-```
 ---
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
