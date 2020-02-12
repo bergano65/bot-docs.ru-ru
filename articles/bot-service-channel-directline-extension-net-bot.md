@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: 04868384268049befd3da7b39582614524542ce9
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: c49a632696ea0708f817f733aff7b2743600ccb6
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895629"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071702"
 ---
 # <a name="configure-net-bot-for-extension"></a>Настройка бота .NET для использования расширения
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
-В этой статье описывается, как включить в бота поддержку работы с **именованными каналами** и включить расширение службы Direct Line в ресурсе **Службы приложений Azure**, в котором размещен этот бот.  
+В этой статье описывается, как включить в бота поддержку работы с **именованными каналами** и включить расширение службы Direct Line в ресурсе **Службы приложений Azure**, в котором размещен этот бот.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -46,8 +46,6 @@ ms.locfileid: "76895629"
 
     ```csharp
 
-    using Microsoft.Bot.Builder.StreamingExtensions;
-
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
         if (env.IsDevelopment())
@@ -62,8 +60,8 @@ ms.locfileid: "76895629"
         app.UseDefaultFiles();
         app.UseStaticFiles();
 
-        // Allow bot to use named pipes.
-        app.UseBotFrameworkNamedPipe();
+        // Allow the bot to use named pipes.
+        app.UseNamedPipes();
 
         app.UseMvc();
     }
@@ -106,9 +104,10 @@ ms.locfileid: "76895629"
 
 ## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Подтвердите, что расширение Direct Line Службы приложений и бот инициализированы.
 
-В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot. Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. В этих данных, которые указывают на то, что **все работает правильно**:
+В браузере откройте страницу https://<ваша_служба_приложений>.azurewebsites.net/.bot.
+Если все настроено правильно, вы увидите такое содержимое JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. В этих данных, которые указывают на то, что **все работает правильно**:
 
-- **k** определяет, может ли расширение Direct Line Службы приложений (ASE) считывать соответствующий ключ расширения из своей конфигурации. 
+- **k** определяет, может ли расширение Direct Line Службы приложений (ASE) считывать соответствующий ключ расширения из своей конфигурации.
 - **initialized** определяет, может ли ASE Direct Line с помощью соответствующего ключа расширения скачивать метаданные бота из службы Azure Bot.
 - **ib** определяет, может ли ASE Direct Line устанавливать входящее соединение с ботом.
 - **ob** определяет, может ли ASE Direct Line устанавливать исходящее соединение с ботом.

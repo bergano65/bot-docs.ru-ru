@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/09/2019
-ms.openlocfilehash: d4e29d1349d441d8208800cb534e02320f326bb1
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 3147e202a615e29d51f1e3fa3a9d5d70ed54fe83
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791909"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071742"
 ---
 # <a name="connect-a-bot-to-slack"></a>Подключение бота к Slack
 
@@ -42,7 +42,7 @@ ms.locfileid: "75791909"
 
 1. Выберите вкладку **OAuth & Permissions** (OAuth и разрешения).
 2. Щелкните **Add a new Redirect URL** (Добавить новый URL-адрес перенаправления).
-3. Введите https://slack.botframework.com.
+3. Укажите [https://slack.botframework.com](https://slack.botframework.com).
 4. Нажмите кнопку **Добавить**.
 5. Нажмите кнопку **Save URLs** (Сохранить URL-адреса).
 
@@ -145,7 +145,7 @@ Slack предоставляет HTML-код, с помощью которого
 > [!NOTE]
 > Ниже приводятся инструкции для реализации адаптера Slack на C#. Инструкции по использованию адаптера для JS, который входит в состав библиотек BotKit, см. в [документации по BotKit для Slack](https://botkit.ai/docs/v4/platforms/slack.html).
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 * [Пример кода EchoBot](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot).
 
