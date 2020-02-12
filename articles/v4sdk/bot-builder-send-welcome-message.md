@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: b9e863e261aa8a5dab0eafeff1e9e39fe97659cb
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 02/07/2020
 ms.locfileid: "75791283"
 ---
 # <a name="send-welcome-message-to-users"></a>Отправка приветственного сообщения пользователям
@@ -22,7 +22,7 @@ ms.locfileid: "75791283"
 
 Основная цель создания любого бота — ведение осмысленного диалога с пользователем. Лучший способ достичь этой цели — сделать так, чтобы с момента присоединения к диалогу пользователь понимал основное назначение вашего бота, его возможности и причины создания. В этой статье представлены примеры кода, которые помогут создать приветствие, отправляемое ботом пользователю.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов](bot-builder-basics.md).
 - Копия **примера с приветствием пользователя** для [C#](https://aka.ms/welcome-user-mvc), [JavaScript](https://aka.ms/bot-welcome-sample-js) или [Python](https://aka.ms/bot-welcome-python-sample-code). На примере кода в этой статье мы опишем, как отправлять приветственные сообщения.
