@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 165079f862a11fc8d226a54bede7d497885a104a
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 227e6e27594db8c51aa8808709cabd47cade4084
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789710"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071768"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Основные понятия API 1.1 для Direct Line
 
@@ -23,7 +23,7 @@ C помощью API для Direct Line вы можете реализовать
 
 ## <a name="authentication"></a>Аутентификация
 
-Аутентификацию запросов API 1.1 для Direct Line можно выполнять с помощью **секрета**, доступного на странице конфигурации канала Direct Line на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, или с помощью **маркера**, который вы можете получить во время выполнения.  Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-1-1-authentication.md) (Аутентификация в API речи).
+Аутентификация запросов Direct Line API 1.1 может осуществляться с использованием **секрета**, который можно получить на странице конфигурации канала Direct Line на [портале Azure](https://portal.azure.com), или с использованием **токена**, который можно получить в среде выполнения.  Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-1-1-authentication.md) (Аутентификация в API речи).
 
 ## <a name="starting-a-conversation"></a>Начало общения
 

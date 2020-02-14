@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8d681d8ce30ed5f5bce0a424ffb0b1ecfe865155
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 8aeff2ec5fb816139f082d931aa1431edc5e145c
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895771"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035486"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -168,7 +168,7 @@ ms.locfileid: "76895771"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Убедитесь, что для проекта установлен пакет pypi **botbuilder-ai**.
+Убедитесь, что для проекта установлен пакет PyPI **botbuilder-ai**.
 
 Для подключения к службе LUIS бот использует сведения, которые вы ранее добавили в файл `config.py`. Класс `FlightBookingRecognizer` содержит код, который импортирует параметры из файла `config.py` и отправляет запрос к службе LUIS, вызывая метод `recognize()`.
 

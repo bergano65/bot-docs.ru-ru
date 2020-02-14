@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 51068b61776d55fba0f96561463902820b1c14cd
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: a9ba4f47cfea6cdfcbb947df887397717c012eaa
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895741"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035496"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
@@ -137,7 +137,7 @@ ms.locfileid: "76895741"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Чтобы использовать диалоги, установите пакеты pypi **botbuilder-dialogs** and **botbuilder-ai**, запустив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
+Чтобы использовать диалоги, установите пакеты PyPI **botbuilder-dialogs** и **botbuilder-ai**, выполнив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
 
 Бот взаимодействует с пользователем через `UserProfileDialog`. Когда мы создаем класс `DialogBot` в боте, мы назначаем `UserProfileDialog` главным диалогом. Затем бот применяет вспомогательный метод `run_dialog` для доступа к этому диалогу.
 

@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/05/2019
+ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e40e6a9a8da2e884be0469fb00f0da5f011f22d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 2398f4e3bc61ff51a108bd399e6a60976956e714
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798898"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071832"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -22,7 +22,7 @@ ms.locfileid: "75798898"
 
 Компонентные диалоги позволяют создавать независимые диалоги для обработки определенных сценариев, разбивая большие наборы диалогов на более управляемые фрагменты. Каждый из этих компонентов имеет отдельный набор диалогов, что позволяет избежать конфликтов имен с внешними наборами диалогов.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Опыт работы с [ботами][concept-basics], [библиотеками диалогов][concept-dialogs] и [управлением сообщениями][simple-flow].
 - Копия примера запроса с несколькими шагами для [**C#** ][cs-sample], [**JavaScript**][js-sample] или [**Python**][python-sample].
@@ -89,7 +89,7 @@ ms.locfileid: "75798898"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Чтобы использовать диалоги, установите пакеты pypi **botbuilder-dialogs** and **botbuilder-ai**, запустив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
+Чтобы использовать диалоги, установите пакеты PyPI **botbuilder-dialogs** и **botbuilder-ai**, выполнив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
 
 **dialogs/user_profile_dialog.py**
 
@@ -151,11 +151,11 @@ ms.locfileid: "75798898"
 
 В этом примере мы добавили метод `run_dialog` в диалог профиля пользователя.
 
-[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+[!code-python[DialogHelper.run_dialog](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 Метод `run_dialog` вызывается из метода `on_message_activity` бота.
 
-**bots/dialog_bot.py** [!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51)]
+**bots/dialog_bot.py** [!code-python[om_message_activity](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51&highlight=2-6)]
 
 ---
 

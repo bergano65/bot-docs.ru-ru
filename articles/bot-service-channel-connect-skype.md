@@ -8,16 +8,19 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/11/2018
-ms.openlocfilehash: 5fb665bf8f6857f42b977a5f0126ce2e0426586d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f87a9de1ee5552c435c32d06094a00817662ba71
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791899"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071682"
 ---
 # <a name="connect-a-bot-to-skype"></a>Подключение бота к Skype
 
 Skype обеспечивает связь с пользователями через обмен сообщениями, телефон и видеовызовы. Расширьте эти функциональные возможности, создав боты, которые могут обнаруживать пользователи и с которыми они могут взаимодействовать через интерфейс Skype.
+
+>[!NOTE]
+> Начиная с 31 октября 2019 г. канал Skype не принимает новые запросы на публикацию ботов. Это означает, что вы можете разрабатывать боты с использованием канала Skype, но бот будет доступен только 100 пользователям. Вы не сможете опубликовать бота для большего числа пользователей. Текущие боты в Skype будут работать без прерываний. Узнайте больше о том, [почему некоторые функции недоступны в Skype](https://support.skype.com/faq/fa12091/why-are-some-features-not-available-in-skype-anymore).  
 
 Чтобы добавить канал Skype, откройте бот на [портале Azure](https://portal.azure.com/), щелкните колонку **Каналы** и выберите **Skype**.
 

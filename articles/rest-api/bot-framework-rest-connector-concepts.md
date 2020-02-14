@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 3290c12c35cd2095c6436b6a6239d9a7e3f5628b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 15f30ff5d4db24d222a1a9df3ac98e24e576b238
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789950"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071892"
 ---
 # <a name="key-concepts"></a>Основные понятия
 
@@ -20,7 +20,7 @@ ms.locfileid: "75789950"
 
 ## <a name="bot-connector-service"></a>Служба Bot Connector
 
-Служба Bot Connector позволяет боту обмениваться сообщениями на каналах, настроенных на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>. В нем используются стандартные отраслевые форматы REST и JSON через HTTPS и обеспечивается проверка подлинности с помощью токенов носителя JWT. Подробные сведения о том, как использовать службу Bot Connector, см. в статье [Проверка подлинности](bot-framework-rest-connector-authentication.md) и в остальных статьях этого раздела.
+Служба Bot Connector позволяет боту обмениваться сообщениями с каналами, настроенными на [портале Azure](https://portal.azure.com). В нем используются стандартные отраслевые форматы REST и JSON через HTTPS и обеспечивается проверка подлинности с помощью токенов носителя JWT. Подробные сведения о том, как использовать службу Bot Connector, см. в статье [Проверка подлинности](bot-framework-rest-connector-authentication.md) и в остальных статьях этого раздела.
 
 ### <a name="activity"></a>Действие
 

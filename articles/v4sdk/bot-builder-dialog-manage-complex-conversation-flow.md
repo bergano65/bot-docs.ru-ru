@@ -7,347 +7,248 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f1d4acd6b39ce4e7b1a3b72aee2bc12f0b60ee84
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 01fb0b919169d27809360f1ccaccb863906df013
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895763"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071850"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-С помощью библиотеки диалогов можно управлять простыми и сложными процессами общения.
-В этой статье мы покажем, как управлять сложными беседами с ветвлениями и циклами.
-Мы также продемонстрируем передачу аргументов между разными частями диалога.
+С помощью библиотеки диалогов можно создавать сложные потоки беседы.
+В этой статье объясняется, как управлять сложными беседами с ответвлениями и циклами, а также как передавать аргументы между разными частями диалога.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs] и [реализации последовательного процесса общения][simple-dialog].
-- Копия примера сложного диалога для [**C#** ][cs-sample], [**JavaScript**][js-sample] и [**Python**][python-sample].
+- Копия примера сложного диалога для [**C#** ][cs-sample], [**JavaScript**][js-sample] или [**Python**][python-sample].
 
 ## <a name="about-this-sample"></a>Об этом примере
 
 Этот пример содержит бот, который может выполнять регистрацию пользователей для оценки одной или двух компаний из заданного списка.
+Для управления потоком беседы в боте используются три диалога-компонента.
+Каждый диалог-компонент содержит каскадный диалог и все запросы, необходимые для сбора данных, вводимых пользователем.
+Эти диалоги подробно описаны в следующих разделах.
+Бот использует состояние беседы для управления диалогами и состояние пользователя для сохранения сведений о нем и тех компаниях, которые пользователь хочет оценить.
 
-`DialogAndWelcomeBot` расширяет `DialogBot`, который определяет обработчики для разных действий и обработчик реплик бота. `DialogBot` запускает диалоги.
+Бот разработан на основе обработчика действий. Как и во многих примерах ботов, этот бот отправляет пользователю приветствие, использует диалоги для обработки сообщений от пользователя, а также сохраняет состояние пользователя и диалога до окончания реплики.
 
-- Метод _run_ используется в `DialogBot` для запуска диалога.
-- `MainDialog` является родительским для двух других диалогов, которые вызываются в определенные моменты. В этой статье приведены сведения об этих диалогах.
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Диалоги здесь разделены на компоненты `MainDialog`, `TopLevelDialog` и `ReviewSelectionDialog`, которые вместе выполняют следующие действия.
-
-- В них запрашивается имя и возраст пользователя, и в зависимости от возраста пользователя выполняется _ветвление_.
-  - Если пользователь слишком молод, ему не предлагают оценивать компании.
-  - Если пользователь достиг нужного возраста, начинается сбор предпочтений пользователя.
-    - В диалогах предлагается пользователю выбрать компанию для оценки.
-    - Если пользователь выбирает компанию, диалоги _в цикле_ переходят к выбору второй компании.
-- И в завершение в диалогах выражается благодарность пользователю за участие.
-
-Для управления сложной беседой в них используется два каскадных диалога и несколько запросов.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Чтобы использовать диалоги, установите пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
 
 ![Сложный процесс общения в боте](./media/complex-conversation-flow.png)
 
-Чтобы использовать диалоги, необходимо установить в проект пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
-
-**Startup.cs.**
-
-В `Startup` мы регистрируем службы для бота. Эти службы доступны в других частях кода через механизм внедрения зависимостей.
-
-- Основные службы бота: поставщик учетных данных, адаптер и реализация бота.
-- Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
-- Диалог, который будет использовать бот.
-
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-![Сложный процесс общения в боте](./media/complex-conversation-flow-js.png)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать диалоги, в проект следует установить пакет npm **botbuilder-dialogs**.
 
-**index.js**
+![Сложный процесс общения в боте](./media/complex-conversation-flow-js.png)
 
-Мы создаем следующие требуемые службы для бота.
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
-- Основные службы: адаптер и реализация бота.
-- Управление состоянием: хранилище, состояние пользователя и состояние беседы.
-- Диалоги: робот использует их для управления беседами.
-
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
+Чтобы использовать диалоги, установить в проект пакет PyPI **botbuilder-dialogs**. Для этого выполните `pip install botbuilder-dialogs`.
 
 ![Сложный процесс общения в боте](./media/complex-conversation-flow-python.png)
 
-Чтобы использовать диалоги, в проект следует установить пакет pypi **botbuilder-dialogs**, выполнив `pip install botbuilder-dialogs`.
+---
 
-**app.py**
+## <a name="define-the-user-profile"></a>Определение профиля пользователя
 
-Мы создаем службы для бота, которые нужны в других частях кода.
+Профиль пользователя будет содержать такие собранные в диалогах сведения, как имя пользователя, возраст и выбранные для оценки компании.
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**UserProfile.cs**
+
+[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**userProfile.js**
+
+[!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**data_models/user_profile.py**
+
+[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+
+---
+
+## <a name="create-the-dialogs"></a>Создание диалогов
+
+Этот бот содержит три диалога:
+
+- В основном диалоге запускается общий процесс общения и создается сводка собранных сведений.
+- В диалоге верхнего уровня происходит сбор сведений пользователя. Здесь включена логика ветвления на основе возраста пользователя.
+- В диалоге оценки и выбора пользователь может последовательно выбрать компании для оценки. Для этого используется логика цикла.
+
+### <a name="the-main-dialog"></a>Основной диалог
+
+Основной диалог состоит из двух шагов:
+
+1. Запуск диалога верхнего уровня.
+1. Получение и формирование сводки данных в профиле пользователя, собранных в диалоге верхнего уровня, сохранение данных о состоянии пользователя и информирование о завершении основного диалога.
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\MainDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/mainDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\main_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50)]
+
+---
+
+### <a name="the-top-level-dialog"></a>Диалог верхнего уровня
+
+Диалог верхнего уровня состоит из четырех шагов:
+
+1. запрос имени пользователя;
+1. запрос возраста пользователя;
+1. Запуск диалога оценки и выбора или переход к следующему шагу в зависимости от возраста пользователя.
+1. отправка пользователю благодарности за участие и возвращение собранных сведений.
+
+На первом шаге в рамках сохранения состояния диалога создается пустой профиль пользователя. В начале диалога создается пустой профиль, который заполняется в ходе ведения беседы. В конце диалога возвращаются собранные сведения.
+
+На третьем шаге (начало выбора) в потоке беседы создается ветвь на основе возраста пользователя.
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\TopLevelDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=30-42)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/topLevelDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=25-33)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\top_level_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=29-38)]
+
+---
+
+### <a name="the-review-selection-dialog"></a>Диалог выбора элементов для обзора
+
+Диалог оценки и выбора состоит из двух шагов:
+
+1. Предложение пользователю выбрать компанию для оценки или ввести `done`, чтобы завершить процесс.
+   - Если в начале диалога были известны какие-либо сведения, их можно получить с помощью свойства _options_ контекста каскадного шага. Диалог оценки и выбора поддерживает автоматический перезапуск. Благодаря этому пользователь может выбрать несколько компаний для оценки.
+   - Если пользователь уже выбрал компанию для оценки, ее название удаляется из доступных вариантов.
+   - Вариант `done` добавлен, чтобы пользователь мог завершить цикл на раннем этапе.
+1. повтор того же диалога или выход, в зависимости от некоторых условий.
+   - Если пользователь выбрал компанию для оценки, ее нужно добавить в список.
+   - Если пользователь выбрал две компании или решил выйти, нужно завершить диалог и вывести список собранных сведений.
+   - В противном случае перезапустите диалог, инициализируя его с содержимым списка.
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\ReviewSelectionDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106&highlight=55-64)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/reviewSelectionDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78&highlight=39-45)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/review_selection_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99&highlight=51-58)]
+
+---
+
+## <a name="run-the-dialogs"></a>Запуск диалогов
+
+Класс _dialog bot_ позволяет расширить возможности обработчика действия. Этот класс содержит логику выполнения диалогов.
+Класс _dialog and welcome bot_ позволяет расширить возможности чат-бота, а также добавить приветствие пользователя, когда он присоединяется к беседе.
+
+Обработчик реплик бота повторяет поток беседы, который определен в трех диалогах.
+При получении сообщения от пользователя происходит следующее:
+
+1. Запускается основной диалог.
+   - Если стек диалога пуст, начнется основной диалог.
+   - Если это не так, диалог все еще выполняется, а значит, активный диалог будет продолжен.
+1. Сохраняется состояние пользователя, беседы и диалога, чтобы не потерять новые сведения о состоянии.
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Bots\DialogBot.cs**
+
+[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7,14-15)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**bots/dialogBot.js**
+
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-32&highlight=4-5)]
+[!code-javascript[run](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=35-44&highlight=7-9)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/dialog_bot.py**
+
+[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=4-6,9-13)]
+
+---
+
+## <a name="register-services-for-the-bot"></a>Регистрация служб для бота
+
+При необходимости создайте и зарегистрируйте службы:
 
 - Основные службы бота: адаптер и реализация бота.
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
-- Диалог, который будет использовать бот.
+- Корневой диалог, который будет использоваться бот.
 
-[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-94)]
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs.**
+
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=18-37)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**index.js**
+
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-43)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**app.py**
+
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-32)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=70-77)]
 
 ---
 
 > [!NOTE]
 > Хранилище в памяти используется только для тестирования и не предназначено для рабочей среды.
 > Для ботов в рабочей среде обязательно используйте постоянное хранилище любого типа.
-
-## <a name="define-a-class-in-which-to-store-the-collected-information"></a>Определение класса для хранения собранных данных
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**UserProfile.cs**
-
-[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**userProfile.js**
-
-[!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**data_models/user_profile.py**
-
-[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
-
-
----
-
-## <a name="create-the-dialogs-to-use"></a>Создание диалогов для использования
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**Dialogs\MainDialog.cs**
-
-Мы определили компонентный диалог `MainDialog`, который содержит несколько основных шагов и управляет другими диалогами и запросами. На первом шаге здесь вызывается метод `TopLevelDialog`, который описан ниже.
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50&highlight=3)]
-
-**Dialogs\TopLevelDialog.cs**
-
-Исходный диалог верхнего уровня состоит из четырех шагов:
-
-1. запрос имени пользователя;
-1. запрос возраста пользователя;
-1. ветвление в зависимости от возраста пользователя;
-1. отправка пользователю благодарности за участие и возвращение собранных сведений.
-
-На первом шаге мы очищаем профиль пользователя, чтобы диалог каждый раз запускался с пустым профилем. Так как последний шаг при завершении будет возвращать сведения, `AcknowledgementStepAsync` следует завершить с сохранением состояния пользователя и передачей этих сведений в главный диалог для использования на последнем шаге.
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=3-4,47-49,56-57)]
-
-**Dialogs\ReviewSelectionDialog.cs**
-
-Диалог review-selection запускается из диалога верхнего уровня `StartSelectionStepAsync`, и состоит из двух шагов:
-
-1. предложение пользователю выбрать компанию для оценки или ввести `done`, чтобы завершить процесс;
-1. повтор того же диалога или выход, в зависимости от некоторых условий.
-
-В такой конфигурации диалог верхнего уровня всегда находится в стеке выше, чем диалог review-selection, то есть его можно считать дочерним элементом диалога верхнего уровня.
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/mainDialog.js**
-
-Мы определили компонентный диалог `MainDialog`, который содержит несколько основных шагов и управляет другими диалогами и запросами. На первом шаге здесь вызывается метод `TopLevelDialog`, который описан ниже.
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55&highlight=2)]
-
-**dialogs/topLevelDialog.js**
-
-Исходный диалог верхнего уровня состоит из четырех шагов:
-
-1. запрос имени пользователя;
-1. запрос возраста пользователя;
-1. ветвление в зависимости от возраста пользователя;
-1. отправка пользователю благодарности за участие и возвращение собранных сведений.
-
-На первом шаге мы очищаем профиль пользователя, чтобы диалог каждый раз запускался с пустым профилем. Так как последний шаг при завершении будет возвращать сведения, `acknowledgementStep` следует завершить с сохранением состояния пользователя и передачей этих сведений в главный диалог для использования на последнем шаге.
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=2-3,37-39,43-44)]
-
-**dialogs/reviewSelectionDialog.js**
-
-Диалог review-selection запускается из диалога верхнего уровня `startSelectionStep`, и состоит из двух шагов:
-
-1. предложение пользователю выбрать компанию для оценки или ввести `done`, чтобы завершить процесс;
-1. повтор того же диалога или выход, в зависимости от некоторых условий.
-
-В такой конфигурации диалог верхнего уровня всегда находится в стеке выше, чем диалог review-selection, то есть его можно считать дочерним элементом диалога верхнего уровня.
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs\main_dialog.py**
-
-Мы определили компонентный диалог `MainDialog`, который содержит несколько основных шагов и управляет другими диалогами и запросами. На первом шаге здесь вызывается метод `TopLevelDialog`, который описан ниже.
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50&highlight=4)]
-
-**dialogs\top_level_dialog.py**
-
-Исходный диалог верхнего уровня состоит из четырех шагов:
-
-1. запрос имени пользователя;
-1. запрос возраста пользователя;
-1. ветвление в зависимости от возраста пользователя;
-1. отправка пользователю благодарности за участие и возвращение собранных сведений.
-
-На первом шаге мы очищаем профиль пользователя, чтобы диалог каждый раз запускался с пустым профилем. Так как последний шаг при завершении будет возвращать сведения, `acknowledgementStep` следует завершить с сохранением состояния пользователя и передачей этих сведений в главный диалог для использования на последнем шаге.
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=2-3,43-44,52)]
-
-**dialogs/review_selection_dialog.py**
-
-Диалог review-selection запускается из диалога верхнего уровня `startSelectionStep`, и состоит из двух шагов:
-
-1. предложение пользователю выбрать компанию для оценки или ввести `done`, чтобы завершить процесс;
-1. повтор того же диалога или выход, в зависимости от некоторых условий.
-
-В такой конфигурации диалог верхнего уровня всегда находится в стеке выше, чем диалог review-selection, то есть его можно считать дочерним элементом диалога верхнего уровня.
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99)]
-
----
-
-## <a name="implement-the-code-to-manage-the-dialog"></a>Реализация кода для управления диалогом
-
-Обработчик шагов бота повторяет один и тот же поток общения, который определен в этих диалогах.
-При получении сообщения от пользователя применяется следующий алгоритм.
-
-1. Продолжить активный диалог, если таковой имеется.
-   - Если активного диалога нет, очистить профиль пользователя и запустить диалог верхнего уровня.
-   - Если активный диалог завершается, собрать и сохранить полученные данные и отобразить информационное сообщение.
-   - Все остальные ситуации означают, что мы находимся в середине процесса активного диалога, и дополнительные действия в данный момент не требуются.
-1. Сохранить состояние диалога, чтобы не потерять обновленные сведения о состоянии диалога.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-<!-- **DialogExtensions.cs**
-
-In this sample, we've defined a `Run` helper method that we will use to create and access the dialog context.
-Since component dialog defines an inner dialog set, we have to create an outer dialog set that's visible to the message handler code, and use that to create a dialog context.
-
-- `dialog` is the main component dialog for the bot.
-- `turnContext` is the current turn context for the bot.
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
-
--->
-
-**Bots\DialogBot.cs**
-
-Обработчик сообщений вызывает метод `RunAsync` для управления диалогом. Мы переопределили обработчик шагов так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, происходящие на определенном шаге. Базовый метод `OnTurnAsync` вызовет метод `OnMessageActivityAsync`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
-
-[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
-
-**Bots\DialogAndWelcome.cs**
-
-`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `Startup.cs`.
-
-[!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/mainDialog.js**
-
-В этом примере мы определили метод `run`, который будет использоваться для создания контекста диалога и доступа к нему.
-Так как компонентный диалог определяет набор внутренних диалогов, нам следует создать внешний набор диалогов, доступный для кода обработчика сообщений, чтобы использовать его для создания контекста диалога.
-
-- `turnContext` содержит контекст текущей реплики бота.
-- Мы создали метод доступа `accessor` для управления состоянием диалога.
-
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=32-41)]
-
-**bots/dialogBot.js**
-
-Обработчик сообщений вызывает вспомогательный метод `run` для управления диалогом, и мы реализовали обработчик реплик так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, выполненные в рамках текущей реплики. Вызов `next` позволяет базовой реализации вызвать метод `onDialog`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
-
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
-
-**bots/dialogAndWelcomeBot.js**
-
-`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `index.js`.
-
-[!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**bots/dialog_bot.py**
-
-Обработчик сообщений вызывает метод `run_dialog` для управления диалогом. Мы переопределили обработчик шагов так, чтобы он сохранял любые изменения в состоянии беседы и пользователя, происходящие на определенном шаге. Базовый метод `on_turn` вызовет метод `on_message_activity`, чтобы гарантировать вызов сохранения данных в конце этой реплики.
-
-[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=32-34)]
-
-**bots/dialog_and_welcome_bot.py**
-
-`DialogAndWelcomeBot` расширяет описанный выше `DialogBot`, предоставляя приветственное сообщение при присоединении пользователя к беседе. Именно он создается в `config.py`.
-
-[!code-python[on_members_added](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_and_welcome_bot.py?range=28-39)]
-
----
-
-## <a name="branch-and-loop"></a>Ветвление и цикл
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**Dialogs\TopLevelDialog.cs**
-
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
-
-[!code-csharp[branching logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=68-80)]
-
-**Dialogs\ReviewSelectionDialog.cs**
-
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
-
-[!code-csharp[looping logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=96-105)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/topLevelDialog.js**
-
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
-
-[!code-javascript[branching logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=56-64)]
-
-**dialogs/reviewSelectionDialog.js**
-
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
-
-[!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs/top_level_dialog.py**
-
-Ниже приведен пример логики ветвления для шага в диалоге _верхнего уровня_.
-
-[!code-python[branching logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=71-80)]
-
-**dialogs/review_selection_dialog.py**
-
-Ниже приведен пример логики ветвления для шага в диалоге _просмотра и выбора_.
-
-[!code-python[looping logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=93-98)]
-
----
 
 ## <a name="to-test-the-bot"></a>Тестирование бота
 

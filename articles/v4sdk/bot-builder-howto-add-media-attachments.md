@@ -7,36 +7,23 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 02/03/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 539959af08f04923ef817634c01a4118d213b15d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 56d9b0485cb6e9073cb577d8494c18ab42cd39af
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798476"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071825"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-<!-- To be done when samples repo location is final:
-
-1) Assure to fix the .openpublishing.publish.config.json following entry:
-    {
-             "path_to_root":"botbuilder-python",
-             "url":"https://github.com/microsoft/botbuilder-python",
-             "branch":"master",
-             "branch_mapping":{}
-    }
-2) Assure that the references to Python code snippets reflect the samples repo location is correct. 
-3) Create aka links to GitHub samples.
-
--->
-
 Обмен сообщениями между пользователем и ботом может включать вложения мультимедиа, такие как изображения, видео, аудио и файлы. Пакет SDK Bot Framework поддерживает задачу отправки пользователю форматированного сообщения. Чтобы определить, какой тип форматированных сообщений поддерживает некоторый канал (Slack, Facebook, Скайп, и т. д.), изучите сведения об ограничениях в документации по этому каналу.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
+
 - Базовые знания о [ботах](bot-builder-basics.md).
 - Код в этой статье основан на следующих примерах:
 
@@ -109,7 +96,7 @@ ms.locfileid: "75798476"
 
 ### <a name="pythontabpython"></a>[Python](#tab/python)
 
-Чтобы создать ответное сообщение, определите текст и настройте вложения. Присвоение вложений ответному сообщению выполняется одинаково для всех типов вложений, но настройка и определение разных вложений будут отличаться, как показано в следующих фрагментах. 
+Чтобы создать ответное сообщение, определите текст и настройте вложения. Присвоение вложений ответному сообщению выполняется одинаково для всех типов вложений, но настройка и определение разных вложений будут отличаться, как показано в следующих фрагментах.
 
 Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-media-attachments-python-sample-code).
 
@@ -140,7 +127,7 @@ ms.locfileid: "75798476"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. 
+Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
 
 Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-attachments-sample-code).
 
@@ -149,7 +136,7 @@ ms.locfileid: "75798476"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение. 
+Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
 
 Представленный здесь исходный код основан на примере [обработки вложений на JS](https://aka.ms/bot-attachments-sample-code-js).
 
@@ -172,7 +159,7 @@ ms.locfileid: "75798476"
 
 Во избежание ошибок следует назначить тип действия для каждого активного элемента карточки. В этой таблице перечислены и описаны доступные типы действий и требуемый формат для связанного свойства.
 
-| Тип | Description | Значение |
+| Тип | Описание | Значение |
 | :---- | :---- | :---- |
 | openUrl | Открывает URL-адрес в окне встроенного браузера. | URL-адрес, который нужно открыть. |
 | imBack | Отправляет боту сообщение и отображает полученный ответ в чате. | Текст отправляемого сообщения. |
@@ -212,64 +199,22 @@ ms.locfileid: "75798476"
 
 Примеры всех доступных типов карт представлены в [этом примере для Python](https://aka.ms/bot-cards-python-sample-code).
 
-**dialogs/main_dialog.py**
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=163-179)]
 
-<!-- replaced with this when it works: 
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=163-179)] -->
-
-```python
-def create_hero_card(self) -> Attachment:
-  card = HeroCard(
-      title="",
-      images=[
-          CardImage(
-              url="https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg"
-          )
-      ],
-      buttons=[
-          CardAction(
-              type=ActionTypes.open_url,
-              title="Get Started",
-              value="https://docs.microsoft.com/en-us/azure/bot-service/",
-          )
-      ],
-  )
-  return CardFactory.hero_card(card)
-```
-
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works: 
-  [!code-python[sign in cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=245-256)] -->
-
-```python
-def create_signin_card(self) -> Attachment:
-  card = SigninCard(
-      text="BotFramework Sign-in Card",
-      buttons=[
-          CardAction(
-              type=ActionTypes.signin,
-              title="Sign-in",
-              value="https://login.microsoftonline.com",
-          )
-      ],
-  )
-  return CardFactory.signin_card(card)
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=245-256)]
 
 ---
 
 ## <a name="send-an-adaptive-card"></a>Отправка адаптивной карточки
-Адаптивные карточки и MessageFactory используются для отправки форматированных сообщений, включая тексты, изображения, видео, аудио и файлы для взаимодействия с пользователями. Но между ними существуют некоторые отличия. 
+Адаптивные карточки и MessageFactory используются для отправки форматированных сообщений, включая тексты, изображения, видео, аудио и файлы для взаимодействия с пользователями. Но между ними существуют некоторые отличия.
 
-Во-первых, только некоторые каналы поддерживают адаптивные карточки и среди таких каналов есть те, которые могут поддерживать их частично. Например, при отправке адаптивной карточки в Facebook, кнопки не будут работать, а тексты и изображения будут отображаться. MessageFactory — это просто вспомогательный класс в пакете SDK Bot Framework. Он позволяет автоматизировать действия по созданию и поддерживается большинством каналов. 
+Во-первых, только некоторые каналы поддерживают адаптивные карточки и среди таких каналов есть те, которые могут поддерживать их частично. Например, при отправке адаптивной карточки в Facebook, кнопки не будут работать, а тексты и изображения будут отображаться. MessageFactory — это просто вспомогательный класс в пакете SDK Bot Framework. Он позволяет автоматизировать действия по созданию и поддерживается большинством каналов.
 
-Во-вторых, адаптивная карточка отправляет сообщения в формате карточки и канал определяет макет карточки. Формат сообщений, предоставляемый MessageFactory, зависит от канала, и это необязательно формат карточек, если только адаптивная карточка не является частью вложения. 
+Во-вторых, адаптивная карточка отправляет сообщения в формате карточки и канал определяет макет карточки. Формат сообщений, предоставляемый MessageFactory, зависит от канала, и это необязательно формат карточек, если только адаптивная карточка не является частью вложения.
 
 Последние сведения о поддержке каналов адаптивных карточек см. на странице <a href="http://adaptivecards.io/designer/">конструктора адаптивных карточек</a>.
 
-Чтобы использовать адаптивные карточки, не забудьте добавить пакет NuGet `AdaptiveCards`. 
-
+Чтобы использовать адаптивные карточки, не забудьте добавить пакет NuGet `AdaptiveCards`.
 
 > [!NOTE]
 > Вы должны протестировать эту функцию, выбрав каналы, которые будут использоваться ботом, чтобы определить, поддерживают ли они адаптивные карточки.
@@ -296,10 +241,7 @@ def create_signin_card(self) -> Attachment:
 
 Карта создается следующим образом:
 
-**dialogs/mainDialog.js**  
-
-[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
-
+**dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
 [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=170-172)]
 
 ### <a name="pythontabpython"></a>[Python](#tab/python)
@@ -310,15 +252,7 @@ def create_signin_card(self) -> Attachment:
 
 Карта создается следующим образом:
 
-**bots/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=127-128)] -->
-
-```python
-def create_adaptive_card(self) -> Attachment:
-  return CardFactory.adaptive_card(ADAPTIVE_CARD_CONTENT)
-```
+**bots/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=127-128)]
 
 ---
 
@@ -360,36 +294,13 @@ def create_adaptive_card(self) -> Attachment:
 
 Представленный здесь исходный код основан на [примере карт для Python](https://aka.ms/bot-cards-python-sample-code).
 
-Сначала создайте вложения.
+Чтобы отправить карусель карточек, создайте ответ с вложениями в виде массива и типом макета `Carousel`:
 
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=104-112)] -->
-
-```python
-reply.attachment_layout = AttachmentLayoutTypes.carousel
-reply.attachments.append(self.create_adaptive_card())
-reply.attachments.append(self.create_animation_card())
-reply.attachments.append(self.create_audio_card())
-reply.attachments.append(self.create_hero_card())
-reply.attachments.append(self.create_receipt_card())
-reply.attachments.append(self.create_signin_card())
-reply.attachments.append(self.create_thumbnail_card())
-reply.attachments.append(self.create_video_card())
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=104-112)]
 
 Завершив добавление вложений, вы можете отправить этот ответ.
 
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=114-115)] -->
-
-```python
-# Send the card(s) to the user as an attachment to the activity
-  await step_context.context.send_activity(reply)
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=114-115)]
 
 ---
 
@@ -438,71 +349,84 @@ reply.attachments.append(self.create_video_card())
 Обратите внимание, что поле ввода называется "text", поэтому наша адаптивная карточка присоединит данные текста комментария как Value.[text.]
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 Наш проверяющий элемент управления использует Newtonsoft.json, чтобы сначала преобразовать его в JObject, а затем создать обрезанную текстовую строку для сравнения. Поэтому добавьте:
-  ```csharp
-  using Newtonsoft.Json.Linq;
-  ```
+
+```csharp
+using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+```
+
 в MainDialog.cs и установите последнюю стабильную версию пакета nuget из Newtonsoft.Json.
-В коде проверяющего элемента управления мы добавили поток логики в комментариях в коде. Этот код ChoiceValidator() помещается в пример 06.using-cards, открытом для объявления MainDialog, сразу после закрытой фигурной скобки:
+В коде проверяющего элемента управления мы добавили поток логики в комментариях в коде.
+Этот код ChoiceValidator() помещается в пример 06.using-cards, открытом для объявления MainDialog, сразу после закрытой фигурной скобки:
 
 ```csharp
 private async Task ChoiceValidator(
-  PromptValidatorContext promptContext,
-  CancellationToken cancellationToken)
-  {
+    PromptValidatorContext promptContext,
+    CancellationToken cancellationToken)
+{
     // Retrieves Adaptive Card comment text as JObject.
     // looks for JObject field "text" and converts that input into a trimmed text string.
     var jobject = promptContext.Context.Activity.Value as JObject;
     var jtoken = jobject?["text"];
     var text = jtoken?.Value().Trim();
+
     // Logic: 1. if succeeded = true, just return promptContext
     //        2. if false, see if JObject contained Adaptive Card input.
     //               No = (bad input) return promptContext
     //               Yes = update Value field with JObject text string, return "true".
     if (!promptContext.Recognized.Succeeded && text != null)
     {
-       var choice = promptContext.Options.Choices.FirstOrDefault(
-       c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
-       if (choice != null)
-       {
-           promptContext.Recognized.Value = new FoundChoice
+        var choice = promptContext.Options.Choices.FirstOrDefault(
+        c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
+        if (choice != null)
+        {
+            promptContext.Recognized.Value = new FoundChoice
             {
-               Value = choice.Value,
-             };
+                Value = choice.Value,
+            };
             return true;
-       }
+        }
     }
     return promptContext.Recognized.Succeeded;
-  }
+}
 ```
 
 Теперь выше в объявлении MainDialog измените:
-  ```csharp
-  // Define the main dialog and its related components.
-  AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
-  ```
+
+```csharp
+// Define the main dialog and its related components.
+AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
+```
+
 на:
-  ```csharp
-  // Define the main dialog and its related components.
-  AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
-  ```
+
+```csharp
+// Define the main dialog and its related components.
+AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
+```
+
 При этом будет вызван проверяющий элемент управления для поиска входных данных адаптивной карточки каждый раз, когда создается ChoicePrompt.
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 Откройте mainDialog.js и найдите метод Run _async run(turnContext, accessor)_ . Этот метод обрабатывает входящие действия.
 Сразу после вызова _dialogSet.add(this);_ добавьте следующий код:
+
 ```JavaScript
-  // The following check looks for a non-existant text input
-  // plus Adaptive Card input in _activity.value.text
-  // If both conditions exist, the Activity Card text 
-  // is copied into the text input field.
-  if(turnContext._activity.text == null
-      && turnContext._activity.value.text != null)
-   {
-      this.logger.log('replacing null text with Activity Card text input');
-      turnContext._activity.text = turnContext._activity.value.text;
-   }
+// The following check looks for a non-existant text input
+// plus Adaptive Card input in _activity.value.text
+// If both conditions exist, the Activity Card text
+// is copied into the text input field.
+if(turnContext._activity.text == null
+    && turnContext._activity.value.text != null) {
+    this.logger.log('replacing null text with Activity Card text input');
+    turnContext._activity.text = turnContext._activity.value.text;
+  }
 ```
+
 Если в ходе этой проверки будет найден несуществующий текстовый ввод из клиента, выполняется проверка того, существуют ли входные данные адаптивной карточки.
 Если входные данные адаптивной карточки уже существуют в \_activity.value.text, они копируются в обычное текстовое поле ввода.
 

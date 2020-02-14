@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 27da3fbe5b122e23e0284c8396f75a5ac73da13b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: cc852b1298a306b5c9f6e381b48597510dcb1e72
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789764"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071872"
 ---
 # <a name="authentication"></a>Аутентификация
 
@@ -46,13 +46,13 @@ Authorization: BotConnector SECRET_OR_TOKEN
 
 ## <a name="get-a-direct-line-secret"></a>Получение секрета Direct Line
 
-Вы можете [получить секрет Direct Line](../bot-service-channel-connect-directline.md) на странице настройки канала Direct Line для вашего бота на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>:
+Вы можете [получить секрет Direct Line](../bot-service-channel-connect-directline.md) на странице настройки канала Direct Line для вашего бота на [портале Azure](https://portal.azure.com):
 
 ![Конфигурация Direct Line](../media/direct-line-configure.png)
 
 ## <a id="generate-token"></a> Создание маркера Direct Line
 
-Чтобы создать маркер Direct Line, который можно использовать для доступа к одному диалогу, необходимо сначала получить секрет Direct Line на странице настройки канала Direct Line на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>. Затем выполните следующий запрос, чтобы обменять секрет Direct Line на маркер Direct Line:
+Чтобы создать маркер Direct Line, который можно использовать для доступа к одному диалогу, необходимо сначала получить секрет Direct Line на странице настройки канала Direct Line на [портале Azure](https://portal.azure.com). Затем выполните следующий запрос, чтобы обменять секрет Direct Line на маркер Direct Line:
 
 ```http
 POST https://directline.botframework.com/api/tokens/conversation

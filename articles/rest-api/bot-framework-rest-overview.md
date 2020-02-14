@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f0ee10d86c09d374f2cfedef551a28bf9107180b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 2c42b39f838177dcc0e07b53357ab1395500e010
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789206"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071802"
 ---
 # <a name="bot-framework-rest-apis"></a>REST API для Bot Framework
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75789206"
 > - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
-Интерфейсы API REST Bot Framework позволяют создавать боты, которые обмениваются сообщениями с каналами, настроенными на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, сохраняют и получают данные о состоянии и подключают ваши собственные клиентские приложения к вашим ботам. Все службы Bot Framework используют стандартные отраслевые REST и JSON по протоколу HTTPS.
+Интерфейсы REST API для Bot Framework позволяют создавать боты, которые обмениваются сообщениями с каналами, настроенными на [портале Azure](https://portal.azure.com), сохраняют и получают данные о состоянии и подключают ваши клиентские приложения к ботам. Все службы Bot Framework используют стандартные отраслевые REST и JSON по протоколу HTTPS.
 
 ## <a name="build-a-bot"></a>Создание бота
 

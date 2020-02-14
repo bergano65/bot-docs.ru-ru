@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: 83273ade9aa79266c20287682ea3c151b1b0f8a5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: cb3d156d71d6c5e28303cdf26de8692b13f42c86
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789446"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071772"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Основные понятия Direct Line API 3.0
 
@@ -20,7 +20,7 @@ C помощью API для Direct Line вы можете реализовать
 
 ## <a name="authentication"></a>Аутентификация
 
-Аутентификация запросов Direct Line API 3.0 может осуществляться с помощью **секрета**, который можно получить на странице конфигурации канала Direct Line на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, или с помощью **токена**, который можно получить в среде выполнения. Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-3-0-authentication.md) (Аутентификация в API речи).
+Аутентификация запросов Direct Line API 3.0 может осуществляться с использованием **секрета**, который можно получить на странице конфигурации канала Direct Line на [портале Azure](https://portal.azure.com), или с помощью **токена**, который можно получить в среде выполнения. Дополнительные сведения см. в разделе [Authenticate to the Speech API](bot-framework-rest-direct-line-3-0-authentication.md) (Аутентификация в API речи).
 
 ## <a name="starting-a-conversation"></a>Начало общения
 
@@ -50,7 +50,7 @@ Bot Framework предоставляет клиентские библиотек
 
 Репозиторий GitHub <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> содержит несколько примеров, в которых показано, как с помощью C# и Node.js. использовать Direct Line API 3.0.
 
-| Образец | Язык | Description |
+| Образец | Язык | Описание |
 |----|----|----|
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Пример бота Direct Line</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line. |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Пример бота Direct Line (использующего клиент WebSockets)</a> | C# | Для взаимодействия примера бота и пользовательского клиента используется API для Direct Line и WebSockets. |

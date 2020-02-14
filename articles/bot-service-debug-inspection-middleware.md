@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 0c5c4b9062fedd0ce8235a533fcb3014cbe16725
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 142ffed02c9849511840a094cd91ee5953caf6af
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895810"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035406"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
@@ -67,7 +67,7 @@ npm install --save botbuilder@latest
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
-Прежде чем обновлять код бота, установите требуемые пакеты pypi, выполнив следующие команды в терминале:
+Прежде чем обновлять код бота, установите требуемые пакеты PyPI, выполнив следующие команды в терминале:
 ```cmd
 pip install aiohttp
 pip install botbuilder-core>=4.7.0

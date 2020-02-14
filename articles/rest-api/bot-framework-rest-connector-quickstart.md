@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f517385fd6d194772004b44b2d8407f2515dc17d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f5ac5397d2ef13eb08d92d9cf560fddf582165c4
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789906"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071882"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Создание ботов с помощью службы Bot Connector
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "75789906"
 > - [Служба Azure Bot](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
-Служба Bot Connector позволяет боту обмениваться сообщениями с каналами, настроенными на <a href="https://dev.botframework.com/" target="_blank">портале Bot Framework</a>, используя стандартные отраслевые REST и JSON по протоколу HTTPS. В этом руководстве подробно объясняется, как получить маркер доступа от Bot Framework и использовать службу Bot Connector для обмена сообщениями с пользователем.
+Служба Bot Connector позволяет боту обмениваться сообщениями с каналами, настроенными на [портале Azure](https://portal.azure.com), используя стандартные отраслевые форматы REST и JSON по протоколу HTTPS. В этом руководстве подробно объясняется, как получить маркер доступа от Bot Framework и использовать службу Bot Connector для обмена сообщениями с пользователем.
 
 ## <a id="get-token"></a> Получение маркера доступа
 
