@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2398f4e3bc61ff51a108bd399e6a60976956e714
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 0d7045f48caeb6a1bcf82993d8d7fcb7e326dde3
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071832"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441736"
 ---
 # <a name="reuse-dialogs"></a>Повторное использование диалогов
 
@@ -47,7 +47,7 @@ ms.locfileid: "77071832"
 
 Компонентный диалог включает один или несколько диалогов. Компонентный диалог содержит внутренний набор диалогов, в котором все добавляемые к диалоги и запросы имеют собственные идентификаторы, доступные только для компонентного диалога.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Чтобы использовать диалоги, установите пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
 
@@ -67,7 +67,7 @@ ms.locfileid: "77071832"
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать диалоги, в проект следует установить пакет npm **botbuilder-dialogs**.
 
@@ -87,7 +87,7 @@ ms.locfileid: "77071832"
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Чтобы использовать диалоги, установите пакеты PyPI **botbuilder-dialogs** и **botbuilder-ai**, выполнив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
 
@@ -95,15 +95,15 @@ ms.locfileid: "77071832"
 
 Класс `UserProfileDialog` является расширением `ComponentDialog`.
 
-[!code-python[Class](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25)]
+[!code-python[Class](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25)]
 
 В конструкторе метод `add_dialog` добавляет диалоги и запросы в компонентный диалог. Первый элемент, добавленный с помощью этого метода, настраивается как начальный диалог. Но это можно изменить, явно задав свойство `initial_dialog_id`. При запуске компонентного диалога будет запущен _начальный диалог_.
 
-[!code-python[Constructor](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+[!code-python[Constructor](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
 
 Это реализация первого шага каскадного диалога.
 
-[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=59-71)]
+[!code-python[First step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=59-71)]
 
 См. подробнее о [реализации последовательного потока диалога](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -123,7 +123,7 @@ ms.locfileid: "77071832"
 
 Чтобы использовать компонентный диалог, добавьте его экземпляр в набор диалогов бота, то есть во внешний набор диалогов.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\DialogBot.cs**
 
@@ -131,7 +131,7 @@ ms.locfileid: "77071832"
 
 [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48&highlight=6)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/userProfileDialog.js**
 
@@ -145,17 +145,17 @@ ms.locfileid: "77071832"
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 **helpers/dialog_helper.py**
 
 В этом примере мы добавили метод `run_dialog` в диалог профиля пользователя.
 
-[!code-python[DialogHelper.run_dialog](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+[!code-python[DialogHelper.run_dialog](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 Метод `run_dialog` вызывается из метода `on_message_activity` бота.
 
-**bots/dialog_bot.py** [!code-python[om_message_activity](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51&highlight=2-6)]
+**bots/dialog_bot.py** [!code-python[om_message_activity](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51&highlight=2-6)]
 
 ---
 

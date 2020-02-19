@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 01fb0b919169d27809360f1ccaccb863906df013
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: f8854469b131b11d53c90047d438af4e26b06f97
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071850"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441635"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Создание сложного потока беседы с использованием ветвления и циклов
 
@@ -38,19 +38,19 @@ ms.locfileid: "77071850"
 
 Бот разработан на основе обработчика действий. Как и во многих примерах ботов, этот бот отправляет пользователю приветствие, использует диалоги для обработки сообщений от пользователя, а также сохраняет состояние пользователя и диалога до окончания реплики.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Чтобы использовать диалоги, установите пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
 
 ![Сложный процесс общения в боте](./media/complex-conversation-flow.png)
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать диалоги, в проект следует установить пакет npm **botbuilder-dialogs**.
 
 ![Сложный процесс общения в боте](./media/complex-conversation-flow-js.png)
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Чтобы использовать диалоги, установить в проект пакет PyPI **botbuilder-dialogs**. Для этого выполните `pip install botbuilder-dialogs`.
 
@@ -62,23 +62,23 @@ ms.locfileid: "77071850"
 
 Профиль пользователя будет содержать такие собранные в диалогах сведения, как имя пользователя, возраст и выбранные для оценки компании.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 **UserProfile.cs**
 
 [!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **userProfile.js**
 
 [!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **data_models/user_profile.py**
 
-[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+[!code-python[UserProfile class](~/../botbuilder-samples/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
 
 ---
 
@@ -97,23 +97,23 @@ ms.locfileid: "77071850"
 1. Запуск диалога верхнего уровня.
 1. Получение и формирование сводки данных в профиле пользователя, собранных в диалоге верхнего уровня, сохранение данных о состоянии пользователя и информирование о завершении основного диалога.
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 **Dialogs\MainDialog.cs**
 
 [!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50)]
 
-#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+#### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/mainDialog.js**
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55)]
 
-#### <a name="pythontabpython"></a>[Python](#tab/python)
+#### <a name="python"></a>[Python](#tab/python)
 
 **dialogs\main_dialog.py**
 
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50)]
+[!code-python[step implementations](~/../botbuilder-samples/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50)]
 
 ---
 
@@ -130,23 +130,23 @@ ms.locfileid: "77071850"
 
 На третьем шаге (начало выбора) в потоке беседы создается ветвь на основе возраста пользователя.
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 **Dialogs\TopLevelDialog.cs**
 
 [!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=30-42)]
 
-#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+#### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/topLevelDialog.js**
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=25-33)]
 
-#### <a name="pythontabpython"></a>[Python](#tab/python)
+#### <a name="python"></a>[Python](#tab/python)
 
 **dialogs\top_level_dialog.py**
 
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=29-38)]
+[!code-python[step implementations](~/../botbuilder-samples/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=29-38)]
 
 ---
 
@@ -163,23 +163,23 @@ ms.locfileid: "77071850"
    - Если пользователь выбрал две компании или решил выйти, нужно завершить диалог и вывести список собранных сведений.
    - В противном случае перезапустите диалог, инициализируя его с содержимым списка.
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 **Dialogs\ReviewSelectionDialog.cs**
 
 [!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106&highlight=55-64)]
 
-#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+#### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/reviewSelectionDialog.js**
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78&highlight=39-45)]
 
-#### <a name="pythontabpython"></a>[Python](#tab/python)
+#### <a name="python"></a>[Python](#tab/python)
 
 **dialogs/review_selection_dialog.py**
 
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99&highlight=51-58)]
+[!code-python[step implementations](~/../botbuilder-samples/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99&highlight=51-58)]
 
 ---
 
@@ -196,24 +196,24 @@ ms.locfileid: "77071850"
    - Если это не так, диалог все еще выполняется, а значит, активный диалог будет продолжен.
 1. Сохраняется состояние пользователя, беседы и диалога, чтобы не потерять новые сведения о состоянии.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\DialogBot.cs**
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7,14-15)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/dialogBot.js**
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-32&highlight=4-5)]
 [!code-javascript[run](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=35-44&highlight=7-9)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **bots/dialog_bot.py**
 
-[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=4-6,9-13)]
+[!code-python[Overrides](~/../botbuilder-samples/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=4-6,9-13)]
 
 ---
 
@@ -225,24 +225,24 @@ ms.locfileid: "77071850"
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Корневой диалог, который будет использоваться бот.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 **Startup.cs.**
 
 [!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=18-37)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
 [!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-43)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **app.py**
 
-[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-32)]
-[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=70-77)]
+[!code-python[ConfigureServices](~/../botbuilder-samples/samples/python/43.complex-dialog/app.py?range=29-32)]
+[!code-python[ConfigureServices](~/../botbuilder-samples/samples/python/43.complex-dialog/app.py?range=70-77)]
 
 ---
 

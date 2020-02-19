@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/03/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 56d9b0485cb6e9073cb577d8494c18ab42cd39af
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 0afc97e5a4b94b42456bc4c751c3208c1510c1a5
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071825"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441716"
 ---
 # <a name="add-media-to-messages"></a>Добавление мультимедиа в сообщения
 
@@ -39,7 +39,7 @@ ms.locfileid: "77071825"
 
 Примеры доступных карточек см. в статье [Проектирование взаимодействия с пользователем](../bot-service-design-user-experience.md).
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Свойство `Attachments` объекта `Activity` содержит массив объектов `Attachment`, представляющих вложения в виде форматированных карточек и файлов мультимедиа. Чтобы добавить мультимедийное вложение в сообщение, создайте объект `Attachment` для действия `reply` (которое было создано из действия с помощью `CreateReply()`) и задайте свойства `ContentType`, `ContentUrl` и `Name`.
 
@@ -65,7 +65,7 @@ ms.locfileid: "77071825"
 **Bots/AttachmentsBot.cs**  
 [!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=217-226)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Представленный здесь исходный код основан на примере [обработки вложений на JS](https://aka.ms/bot-attachments-sample-code-js).
 
@@ -94,7 +94,7 @@ ms.locfileid: "77071825"
 **bots/attachmentsBot.js**  
 [!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Чтобы создать ответное сообщение, определите текст и настройте вложения. Присвоение вложений ответному сообщению выполняется одинаково для всех типов вложений, но настройка и определение разных вложений будут отличаться, как показано в следующих фрагментах.
 
@@ -103,19 +103,19 @@ ms.locfileid: "77071825"
 Ниже приведен код для настройки ответа со встроенным вложением:
 
 **bots/attachments_bot.py**  
-[!code-python[attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=112-113)]
+[!code-python[attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=112-113)]
 
 У вас есть несколько разных методов для отправки пользователю мультимедийного содержимого (например, изображения или видео). Во-первых, это встроенные вложения:
 
-**bots/attachments_bot.py** [!code-python[inline attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=153-170)]
+**bots/attachments_bot.py** [!code-python[inline attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=153-170)]
 
 Во-вторых, отправленные вложения:
 
-**bots/attachments_bot.py** [!code-python[upload attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=172-207)]
+**bots/attachments_bot.py** [!code-python[upload attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=172-207)]
 
 И представленные URL-адресом вложения из Интернета:
 
-**bots/attachments_bot.py** [!code-python[internet attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=209-218)]
+**bots/attachments_bot.py** [!code-python[internet attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=209-218)]
 
 ---
 
@@ -125,7 +125,7 @@ ms.locfileid: "77071825"
 
 Помимо изображений или видео, вы можете прикрепить **карточку для имиджевого баннера**, которая позволяет совмещать изображения и кнопки в один объект и отправлять их в таком виде пользователю. Markdown поддерживается для большинства текстовых полей, но особенности поддержки зависят от канала.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
 
@@ -134,7 +134,7 @@ ms.locfileid: "77071825"
 **Bots/AttachmentsBot.cs**  
 [!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-58)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
 
@@ -143,13 +143,13 @@ ms.locfileid: "77071825"
 **bots/attachmentsBot.js**  
 [!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=147-165)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Чтобы составить сообщение с карточкой имиджевого баннера и кнопкой, вложите `HeroCard` в сообщение.
 
 Представленный здесь исходный код основан на примере [обработки вложений](https://aka.ms/bot-media-attachments-python-sample-code).
 
-**bots/attachments_bot.py** [!code-python[hero card](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=125-148)]
+**bots/attachments_bot.py** [!code-python[hero card](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=125-148)]
 
 ---
 
@@ -175,7 +175,7 @@ ms.locfileid: "77071825"
 
 В следующем коде показаны примеры использования различных событий форматированных карточек.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Примеры для всех доступных типов карточек представлены [в этом примере на C#](https://aka.ms/bot-cards-sample-code).
 
@@ -185,7 +185,7 @@ ms.locfileid: "77071825"
 **Cards.cs**  
 [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Примеры для всех доступных типов карточек представлены [в этом примере на JavaScript](https://aka.ms/bot-cards-js-sample-code).
 
@@ -195,7 +195,7 @@ ms.locfileid: "77071825"
 **dialogs/mainDialog.js**  
 [!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=259-265)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Примеры всех доступных типов карт представлены в [этом примере для Python](https://aka.ms/bot-cards-python-sample-code).
 
@@ -219,7 +219,7 @@ ms.locfileid: "77071825"
 > [!NOTE]
 > Вы должны протестировать эту функцию, выбрав каналы, которые будут использоваться ботом, чтобы определить, поддерживают ли они адаптивные карточки.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Чтобы использовать адаптивные карточки, обязательно добавьте пакет NuGet `AdaptiveCards`.
 
@@ -228,7 +228,7 @@ ms.locfileid: "77071825"
 **Cards.cs**  
 [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать адаптивные карточки, обязательно добавьте пакет npm `adaptivecards`.
 
@@ -244,11 +244,11 @@ ms.locfileid: "77071825"
 **dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
 [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=170-172)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Представленный здесь исходный код основан на примере [использования карточек](https://aka.ms/bot-cards-python-sample-code).
 
-**dialogs/resources/adaptive_card_example.py** [!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/resources/adaptive_card_example.py)]
+**dialogs/resources/adaptive_card_example.py** [!code-python[adaptive cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/resources/adaptive_card_example.py)]
 
 Карта создается следующим образом:
 
@@ -260,7 +260,7 @@ ms.locfileid: "77071825"
 
 Сообщения также могут включать несколько вложений в макете карусели, где вложения помещаются одно за другим и пользователь может их прокручивать.
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Представленный здесь исходный код основан на [примере карточек](https://aka.ms/bot-cards-sample-code):
 
@@ -279,7 +279,7 @@ ms.locfileid: "77071825"
 **Dialogs/MainDialog.cs**  
 [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Представленный здесь исходный код основан на [примере карточек на JS](https://aka.ms/bot-cards-js-sample-code):
 
@@ -290,7 +290,7 @@ ms.locfileid: "77071825"
 
 [!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=113-116)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Представленный здесь исходный код основан на [примере карт для Python](https://aka.ms/bot-cards-python-sample-code).
 
@@ -348,7 +348,7 @@ ms.locfileid: "77071825"
 
 Обратите внимание, что поле ввода называется "text", поэтому наша адаптивная карточка присоединит данные текста комментария как Value.[text.]
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 Наш проверяющий элемент управления использует Newtonsoft.json, чтобы сначала преобразовать его в JObject, а затем создать обрезанную текстовую строку для сравнения. Поэтому добавьте:
 
@@ -410,7 +410,7 @@ AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
 
 При этом будет вызван проверяющий элемент управления для поиска входных данных адаптивной карточки каждый раз, когда создается ChoicePrompt.
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Откройте mainDialog.js и найдите метод Run _async run(turnContext, accessor)_ . Этот метод обрабатывает входящие действия.
 Сразу после вызова _dialogSet.add(this);_ добавьте следующий код:
@@ -430,7 +430,7 @@ if(turnContext._activity.text == null
 Если в ходе этой проверки будет найден несуществующий текстовый ввод из клиента, выполняется проверка того, существуют ли входные данные адаптивной карточки.
 Если входные данные адаптивной карточки уже существуют в \_activity.value.text, они копируются в обычное текстовое поле ввода.
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Представленный здесь исходный код основан на примере [предложенных действий](https://aka.ms/SuggestedActionsPython).
 

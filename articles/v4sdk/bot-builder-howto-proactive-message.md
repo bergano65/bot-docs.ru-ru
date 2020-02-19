@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77222da10d69e6ad9a029a3548da66bd1a1806a2
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 704a37569f5ed9017cd4a09618a4efe75469f4a4
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895675"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441622"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Отправка упреждающих уведомлений пользователям
 
@@ -46,13 +46,13 @@ ms.locfileid: "76895675"
 
 Когда эмулятор подключается к боту, этот бот получает два действия обновления беседы. В обработчике бота для действий обновления беседы извлекается ссылка на беседу, которая сохраняется в словаре, как показано ниже.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\ProactiveBot.cs**
 
 [!code-csharp[OnConversationUpdateActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Bots/ProactiveBot.cs?range=26-37&highlight=3-4,9)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/proactiveBot.js**
 
@@ -60,11 +60,11 @@ ms.locfileid: "76895675"
 
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=41-44&highlight=2-3)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
+**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-samples/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
 
-[!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
+[!code-python[on_conversation_update_activity](~/../botbuilder-samples/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
 
 ---
 
@@ -80,7 +80,7 @@ ms.locfileid: "76895675"
 1. Вызовите метод _продолжения беседы_ из адаптера, предоставив ссылку на беседу и делегат обработчика шагов, которые он сможет использовать. Метод продолжения беседы создает контекст шага для той беседы, на которую указывает ссылка, а затем вызывает указанный делегат обработчика шагов.
 1. В этом делегате контекст шага используется для отправки упреждающего сообщения.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Controllers\NotifyController.cs**
 
@@ -91,7 +91,7 @@ ms.locfileid: "76895675"
 
 Для отправки упреждающего сообщения адаптеру нужен идентификатор приложения бота. В рабочей среде для этого можно использовать реальный идентификатор приложения бота. В локальной тестовой среде подойдет любой произвольный идентификатор. Если боту еще не назначен идентификатор приложения, контроллер уведомления самостоятельно генерирует заполнитель и применяет его в вызове.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -101,12 +101,12 @@ ms.locfileid: "76895675"
 
 [!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-82&highlight=4-8)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 При каждом запросе страницы уведомлений бота этот сервер извлекает из словаря ссылки на беседы.
 Затем сервер использует `_send_proactive_message`, чтобы отправить упреждающее сообщение.
 
-[!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
+[!code-python[Notify logic](~/../botbuilder-samples/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
 
 ---
 
@@ -127,7 +127,7 @@ ms.locfileid: "76895675"
 
 Чтобы избежать этого, следует вручную добавить `serviceUrl` в список имен доверенных узлов, выполнив следующие действия.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
@@ -137,7 +137,7 @@ MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
 
 Добавьте приведенный выше код прямо перед кодом, который отправляет упреждающее сообщение. В [примере упреждающих сообщений](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages) это нужно сделать в `NotifyController.cs` прямо перед `await turnContext.SendActivityAsync("proactive hello");`.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
@@ -147,7 +147,7 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 Добавьте приведенный выше код прямо перед кодом, который отправляет упреждающее сообщение. В [примере упреждающих сообщений](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages) это нужно сделать в `index.js` прямо перед `await turnContext.sendActivity('proactive hello');`.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 MicrosoftAppCredentials.trustServiceUrl(serviceUrl)

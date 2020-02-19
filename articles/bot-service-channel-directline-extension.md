@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/09/2019
-ms.openlocfilehash: 2145709c9cc458ec5dd9f4fbf1145ddbad893a04
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.openlocfilehash: 542aee09459bd569ca2aa39fa755a219f46fc7cd
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76256007"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441578"
 ---
 # <a name="direct-line-app-service-extension"></a>Расширение Службы приложений Direct Line
 
@@ -44,7 +44,7 @@ ms.locfileid: "76256007"
 |[Использование WebChat с расширением](bot-service-channel-directline-extension-webchat-client.md)|Применение WebChat с расширением Службы приложений Direct Line|
 |[Использование расширения в виртуальной сети](bot-service-channel-directline-extension-vnet.md)|Использование расширения Службы приложений Direct Line в виртуальной сети Azure (VNET)|
 
-## <a name="addtional-resources"></a>Дополнительные ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Подключение бота к Direct Line](bot-service-channel-connect-directline.md)
 - [Подключение бота к каналу Direct Line Speech](bot-service-channel-connect-directlinespeech.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f5cf5d6628d5186404816b7f7862f2e58293f5e5
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 32394b9812340467e9ae584c55fd047b973be1bc
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035476"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441666"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Использование нескольких моделей LUIS и QnA
 
@@ -34,7 +34,7 @@ ms.locfileid: "77035476"
 
 В этом примере используется готовый набор приложений LUIS и QnA Maker.
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 ![Поток логики кода из примера](./media/tutorial-dispatch/dispatch-logic-flow.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "77035476"
 - `ProcessWeatherAsync` —для запросов о погоде.
 - `ProcessHomeAutomationAsync` — для команд домашнего освещения.
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 ![Поток логики кода из примера](./media/tutorial-dispatch/dispatch-logic-flow-js.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "77035476"
 - `processWeather` —для запросов о погоде.
 - `processHomeAutomation` — для команд домашнего освещения.
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ![Поток логики кода из примера](./media/tutorial-dispatch/dispatch-logic-flow-python.png)
 
@@ -228,7 +228,7 @@ ms.locfileid: "77035476"
 
 Эти значения используются в файле **appsettings.json** для C# и в файле **.env** для javascript.
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 ### <a name="installing-packages"></a>Установка пакетов
 
@@ -265,7 +265,7 @@ ms.locfileid: "77035476"
 
 Когда все изменения будут внесены, сохраните файл.
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 ### <a name="installing-packages"></a>Установка пакетов
 
@@ -308,7 +308,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 Когда все изменения будут внесены, сохраните файл.
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ### <a name="installing-packages"></a>Установка пакетов
 
@@ -325,7 +325,7 @@ pip install botbuilder-ai
 
 **config.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
+[!code-python[config.py](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
 
 Для каждой сущности ниже добавьте значения, которые вы записали ранее при выполнении этих инструкций:
 
@@ -351,7 +351,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 Чтобы подключиться к службам диспетчеризации, LUIS и QnA Maker, бот получает сведения из файла параметров.
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 В файле **BotServices.cs** сведения из файла конфигурации _appsettings.json_ используются для подключения бота отправки к службам `Dispatch` и `SampleQnA`. Конструкторы используют предоставленные значения для подключения к этим службам.
 
@@ -359,7 +359,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-45)]
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 В файле **dispatchBot.js** сведения из файла конфигурации _.env_ используются для подключения бота отправки к службам _LuisRecognizer(dispatch)_ и _QnAMaker_. Конструкторы используют предоставленные значения для подключения к этим службам.
 
@@ -367,13 +367,13 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 В файле **dispatch_bot.py** сведения из файла конфигурации _config.py_ используются для подключения бота отправки к службам _QnAMaker_ и _LuisRecognizer_. Конструкторы используют предоставленные значения для подключения к этим службам.
 
 **bots/dispatch_bot.py**
 
-[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
+[!code-python[ReadConfigurationInfo](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
 
 ---
 
@@ -384,7 +384,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 Логика бота проверяет каждый блок вводимых пользователем данных с использованием объединенной модели отправки, находит первые возвращаемые намерения и использует эти сведения, чтобы вызвать соответствующую службу для входных данных.
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 В файле **DispatchBot.cs** при вызове метода `OnMessageActivityAsync` мы проверяем входящее сообщение пользователя с использованием модели отправки. Затем мы передаем `topIntent` и `recognizerResult` модели отправки в соответствующий метод, чтобы вызвать службу и получить результат.
 
@@ -392,25 +392,25 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 В методе **dispatchBot.js** `onMessage` мы проверяем входящее сообщение пользователя с использованием модели отправки, а затем находим и передаем _topIntent_ путем вызова _dispatchToTopIntentAsync_.
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 В файле **DispatchBot.cs** при вызове метода `on_message_activity` мы проверяем входящее сообщение пользователя с использованием модели отправки. Затем мы передаем `top_intent` и `recognize_result` модели отправки в соответствующий метод, чтобы вызвать службу и получить результат.
 
 **bots/dispatch_bot.py**
 
-[!code-python[on_message](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
+[!code-python[on_message](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
 
 ---
 
 ### <a name="work-with-the-recognition-results"></a>Использование результатов распознавания
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код нашего бота направляет запрос в соответствующую службу и обрабатывает полученный от нее ответ. Код использует _намерение_, которое возвращает средство Dispatch, чтобы выполнить перенаправление в соответствующую модель LUIS или службу QnA.
 
@@ -422,7 +422,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 Вызываемый метод `q_sample-qna` использует введенные пользователем данные, содержащиеся в turnContext, для создания ответа из базы знаний и отображения результата пользователю.
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код в этом примере использует результат в _topIntent_, демонстрируя, как перенаправить запрос в соответствующую службу.
 
@@ -433,13 +433,13 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 Вызываемый метод `q_sample-qna` использует введенные пользователем данные, содержащиеся в turnContext, для создания ответа из базы знаний и отображения результата пользователю.
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 Когда модель возвращает результат, он позволяет понять, какие службы лучше всего подходят для обработки этого высказывания. Код в этом примере использует лучшее распознанное _намерение_, демонстрируя, как перенаправить запрос в соответствующую службу.
 
 **bots\dispatch_bot.py**
 
-[!code-python[dispatch top intent](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
+[!code-python[dispatch top intent](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
 
 Вызываемые методы `_process_home_automation` или `_process_weather` передают результаты из модели отправки с использованием _recognizer_result.properties["luisResult"]_ . Затем указанный метод предоставляет отзыв пользователя, отображая первое намерение модели отправки, а также ранжированный список всех намерений и сущностей, которые были обнаружены.
 

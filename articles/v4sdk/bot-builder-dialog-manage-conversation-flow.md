@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a9ba4f47cfea6cdfcbb947df887397717c012eaa
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 7a25f0fd283e8e09f5ca27e7a29e96e9f55888ff
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035496"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441727"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Реализация процесса общения
 
@@ -49,7 +49,7 @@ ms.locfileid: "77035496"
 
 ## <a name="create-the-main-dialog"></a>Создание главного диалога
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Чтобы использовать диалоги, установите пакет NuGet **Microsoft.Bot.Builder.Dialogs**.
 
@@ -87,7 +87,7 @@ ms.locfileid: "77035496"
 
 [!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=137-179&highlight=5-11,41-42)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать диалоги, в проект следует установить пакет npm **botbuilder-dialogs**.
 
@@ -135,7 +135,7 @@ ms.locfileid: "77035496"
 
 [!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=59-68)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Чтобы использовать диалоги, установите пакеты PyPI **botbuilder-dialogs** и **botbuilder-ai**, выполнив `pip install botbuilder-dialogs` и `pip install botbuilder-ai` в терминале.
 
@@ -149,29 +149,29 @@ ms.locfileid: "77035496"
 
 В конструкторе `UserProfileDialog` создайте каскадные шаги, запросы и каскадный диалог, затем добавьте их в набор диалогов. Запросы должны находиться в том же наборе диалогов, в котором они используются.
 
-[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
+[!code-python[Constructor snippet](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
 
 Затем мы реализуем действия, которые использует диалог. Чтобы использовать запрос, вызовите его из любого шага диалога и получите результат на следующем шаге с помощью `step_context.result`. Запросы данных, по сути, являются диалогами из двух этапов. Сначала запрос предлагает ввести данные, а затем возвращает допустимое значение или повторяет цикл запроса, пока не будут получены допустимые данные.
 
 Из каскадного шага следует всегда возвращать ненулевое значение `DialogTurnResult`. Без этого диалог может работать неправильно. Здесь мы покажем реализацию `name_step` в каскадном диалоге.
 
-[!code-python[name step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=73-79)]
+[!code-python[name step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=73-79)]
 
 В `age_step` мы укажем строку повторного запроса для тех случаев, когда входные данные не пройдут проверку из-за неправильного формата для анализа или несоответствия критерию проверки, который указан выше в конструкторе, для конкретного запроса. Если строка повторного запроса не указана, пользователю будет повторно предоставляться исходный текст запроса для получения входных данных.
 
-[!code-python[age step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=100-116)]
+[!code-python[age step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=100-116)]
 
 **data_models\user_profile.py**
 
 Режим транспортировки, имя и возраст пользователя сохраняются в экземпляре класса `UserProfile`.
 
-[!code-python[user profile](~/../botbuilder-python/samples/python/05.multi-turn-prompt/data_models/user_profile.py?range=7-16)]
+[!code-python[user profile](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/data_models/user_profile.py?range=7-16)]
 
 **dialogs\user_profile_dialog.py**
 
 На последнем шаге мы проверяем значение `step_context.result`, возвращенное диалогом, который мы вызвали на предыдущем каскадном шаге. Если возвращаемое значение равно TRUE, мы используем метод доступа для профиля пользователя, чтобы получить и обновить профиль пользователя. Чтобы получить профиль пользователя, мы вызовем метод `get`, а затем зададим новые значения свойств `user_profile.transport`, `user_profile.name` и `user_profile.age`. Наконец, мы сообщим пользователю сводку данных и вызовем метод `end_dialog` для завершения диалога. Завершенный диалог удаляется из стека диалогов, а его результат (если есть) возвращается в родительский диалог. Родительским считается диалог или метод, в котором был запущен только что завершившийся диалог.
 
-[!code-python[summary step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=166-204)]
+[!code-python[summary step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=166-204)]
 
 **Создание метода расширения для запуска каскадного диалога**
 
@@ -181,13 +181,13 @@ ms.locfileid: "77035496"
 
 Контекст диалога позволяет начать диалог по идентификатору строки или продолжить текущий диалог (например, выполнить очередной шаг каскадного диалога). Контекст диалога передается через все диалоги и каскадные действия бота.
 
-[!code-python[run method](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+[!code-python[run method](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 ---
 
 ## <a name="run-the-dialog"></a>Запуск диалога
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\DialogBot.cs**
 
@@ -195,7 +195,7 @@ ms.locfileid: "77035496"
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Метод `onMessage` позволяет регистрировать прослушиватель, который вызывает метод `run` беседы для запуска или продолжения беседы.
 
@@ -207,11 +207,11 @@ ms.locfileid: "77035496"
 
 [!code-javascript[override](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=34-43&highlight=7-9)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Обработчик `on_message_activity` использует вспомогательный метод, чтобы начать или продолжить диалог. В `on_turn` мы используем объекты управления состоянием бота, чтобы передать в хранилище любые изменения состояния. Метод `on_message_activity` вызывается последним, после выполнения всех остальных определенных обработчиков, таких как `on_turn`. Это позволяет сохранить состояние после того, как обработчик сообщений завершит работу, но до завершения самого шага.
 
-**bots\dialog_bot.py** [!code-python[overrides](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=39-51&highlight=4-6)]
+**bots\dialog_bot.py** [!code-python[overrides](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=39-51&highlight=4-6)]
 
 ---
 
@@ -223,7 +223,7 @@ ms.locfileid: "77035496"
 - Службы для управления состоянием: хранилище, состояние пользователя и состояние беседы.
 - Диалог, который будет использовать бот.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Startup.cs.**
 
@@ -231,7 +231,7 @@ ms.locfileid: "77035496"
 
 [!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -239,11 +239,11 @@ ms.locfileid: "77035496"
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=19-59)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 В `app.py` мы регистрируем службы для бота.
 
-[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
+[!code-python[configure services](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
 
 ---
 
@@ -279,7 +279,7 @@ ms.locfileid: "77035496"
 
 ### <a name="definition-of-a-prompt-validator-method"></a>Определение метода для проверяющего элемента управления запроса
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **UserProfileDialog.cs**
 
@@ -287,7 +287,7 @@ ms.locfileid: "77035496"
 
 [!code-csharp[prompt validator method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=181-185)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs\userProfileDialog.js**
 
@@ -295,7 +295,7 @@ ms.locfileid: "77035496"
 
 [!code-javascript[prompt validator method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=169-172)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 **dialogs/user_profile_dialog.py**
 

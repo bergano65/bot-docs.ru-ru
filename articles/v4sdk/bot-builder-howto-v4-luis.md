@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8aeff2ec5fb816139f082d931aa1431edc5e145c
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 8ef33478f71afa18568a18cfad67b7f65c50d955
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035486"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441686"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Добавление возможности распознавания естественного языка в функционал бота
 
@@ -31,7 +31,7 @@ ms.locfileid: "77035486"
 
 Этот пример кода для простейшего бота реализует логику приложения для бронирования авиабилетов. С помощью службы LUIS он распознает пользовательский ввод и возвращает наиболее вероятное из обнаруженных LUIS намерений.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `UserState` и `ConversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
@@ -46,7 +46,7 @@ ms.locfileid: "77035486"
 - `TravelDate` — дата для бронирования авиабилетов;
 - `Destination` — город прилета;
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 После каждой обработки введенных пользователем данных `dialogBot` сохраняет текущее состояние `userState` и `conversationState`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
@@ -63,7 +63,7 @@ ms.locfileid: "77035486"
 - `origin` — город вылета;
 - `travelDate` — дата для бронирования авиабилетов;
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 После каждой обработки введенных пользователем данных `DialogBot` сохраняет текущее состояние `user_state` и `conversation_state`. После сбора всех необходимых сведений в этом примере кода создается демонстрационное резервирование авиабилетов. В этой статье мы будем рассматривать те элементы примера, которые имеют отношение к LUIS. Но в целом поток логических действий в примере выглядит примерно так.
 
@@ -114,31 +114,31 @@ ms.locfileid: "77035486"
 
 ### <a name="update-the-settings-file"></a>Обновление файла параметров
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Добавьте в файл `appsettings.json` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
 **appsetting.json**  
 [!code-json[appsettings](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте в файл `.env` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
 Файл с расширением **.env**  
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Добавьте в файл `config.py` необходимые сведения для доступа к приложению LUIS, включая идентификатор приложения, ключ разработки и регион. Все эти данные вы ранее сохранили из опубликованного приложения LUIS. Обратите внимание, что имя узла API должно иметь формат `<your region>.api.cognitive.microsoft.com`.
 
-**config.py** [!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/config.py?range=14-19)]
+**config.py** [!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/config.py?range=14-19)]
 
 ---
 
 ## <a name="configure-your-bot-to-use-your-luis-app"></a>Настройка бота для работы с приложением LUIS
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Убедитесь, что для вашего проекта установлен пакет NuGet **Microsoft.Bot.Builder.AI.Luis**.
 
@@ -154,7 +154,7 @@ ms.locfileid: "77035486"
 
 [!code-csharp[luis helper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/CognitiveModels/FlightBookingEx.cs?range=8-35)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Чтобы использовать LUIS, в проект следует установить пакет npm **botbuilder-ai**.
 
@@ -166,7 +166,7 @@ ms.locfileid: "77035486"
 
 Логика извлечения From, To и TravelDate реализуется в виде вспомогательных методов в `flightBookingRecognizer.js`. Эти методы используются после вызова `flightBookingRecognizer.executeLuisQuery()` из `mainDialog.js`
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Убедитесь, что для проекта установлен пакет PyPI **botbuilder-ai**.
 
@@ -174,11 +174,11 @@ ms.locfileid: "77035486"
 
 **flight_booking_recognizer.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
+[!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
 
 Логика извлечения *From*, *To* и *travel_date* реализуется в виде вспомогательных методов из класс `LuisHelper` в `luis_helper.py`. Эти методы используются после вызова `LuisHelper.execute_luis_query()` из `main_dialog.py`
 
-**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-python/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-samples/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
 
 ---
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: kamrani
-ms.openlocfilehash: 1caf469a7ec37e932ae2b7ffde85d0dbf24938a3
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: b5a6296e65ab05cd8a5af24872d31e5ef356dcf7
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933481"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441509"
 ---
 # <a name="about-direct-line"></a>Сведения о Direct Line
 
@@ -29,14 +29,14 @@ Direct Line доступен в трех видах:
 |                            | Direct Line | Расширение Службы приложений Direct Line | Канал Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
 | Доступность и лицензирование    | Общедоступная версия | Общедоступная предварительная версия без соглашения об уровне обслуживания  | GA |
-| Производительность распознавания речи и преобразования текста в речь | Стандартная | Стандартная | Высокопроизводительные |
-| Поддержка устаревших веб-браузеров | Yes | В общедоступной версии | Yes |
+| Производительность распознавания речи и преобразования текста в речь | Standard | Standard | Высокопроизводительные |
+| Поддержка устаревших веб-браузеров | Да | В общедоступной версии | Да |
 | Поддержка пакета SDK Bot Framework | Все версии 3 и 4 | Требуется более поздняя версия, чем 4.63 | Требуется более поздняя версия, чем 4.63 |
 | Поддержка клиентских пакетов SDK    | JS, C# | JS, C# | C++, C#, Unity, JS|
-| Работа с Web Chat  | Yes | Да | Нет|
-| Виртуальная сеть | Нет | Предварительный просмотр | Нет |
+| Работа с Web Chat  | Да | Да | нет|
+| Виртуальная сеть | нет | Preview (Предварительный просмотр) | нет |
 
 
-## <a name="addtional-resources"></a>Дополнительные ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 - [Подключение бота к Direct Line](bot-service-channel-connect-directline.md)
 - [Подключение бота к каналу Direct Line Speech](bot-service-channel-connect-directlinespeech.md)
