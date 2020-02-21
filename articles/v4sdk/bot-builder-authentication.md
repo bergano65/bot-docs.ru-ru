@@ -5,14 +5,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/04/2019
+ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75dc417f5ac3738b2b96a026860d8377f8ff9c25
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: e1cdfbb96e14175f764b481f9634c2d7c93f0c29
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791323"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441640"
 ---
 <!-- 
 
@@ -87,7 +87,7 @@ Related TODO:
 > [!IMPORTANT]
 > Учитывайте эти важные [вопросы, связанные с безопасностью](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations).
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Понимание [основных принципов работы ботов][concept-basics], [управления состоянием][concept-state], [библиотек диалогов][concept-dialogs], [реализации последовательного процесса общения][simple-dialog], а также [повторного использования диалогов][component-dialogs].
 - Понимание процессов разработки для Azure и OAuth 2.0.
@@ -240,7 +240,7 @@ Related TODO:
 
 Вам потребуются идентификатор приложения бота и пароль, чтобы выполнить этот процесс.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
@@ -254,7 +254,7 @@ Related TODO:
 
     [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/appsettings.json)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 1. Клонируйте нужный пример из репозитория GitHub: [**Аутентификация бота**][js-auth-sample] или [**Аутентификация бота (MSGraph)** ][js-msgraph-sample].
 1. Обновите файл с расширением **.env**:
@@ -266,7 +266,7 @@ Related TODO:
 
     [!code-txt[.env](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/.env)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Клонируйте пример [**с аутентификацией бота**][python-auth-sample] из репозитория GitHub.
 1. Обновите **config.py**:
@@ -276,7 +276,7 @@ Related TODO:
 
       В зависимости от символов, из которых состоит секрет бота, может потребоваться XML-экранирование пароля. Например, символ амперсанда (&) потребуется кодировать как `&amp;`.
 
-    [!code-python[config](~/../botbuilder-python/samples/python/18.bot-authentication/config.py)]
+    [!code-python[config](~/../botbuilder-samples/samples/python/18.bot-authentication/config.py)]
 
 ---
 
@@ -335,7 +335,7 @@ Related TODO:
 
 ### <a name="use-an-oauth-prompt-to-sign-the-user-in-and-get-a-token"></a>Использование запроса OAuth для входа пользователя и получения маркера
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ![Архитектура бота](media/how-to-auth/architecture.png)
 
@@ -358,7 +358,7 @@ Related TODO:
 
 [!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-56)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ![Архитектура бота](media/how-to-auth/architecture-js.png)
 
@@ -379,8 +379,7 @@ Related TODO:
 
 [!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ![Архитектура бота](media/how-to-auth/architecture-python.png)
 
@@ -388,18 +387,18 @@ Related TODO:
 
 Добавьте запрос OAuth в **MainDialog** с помощью конструктора. В этом примере значение имени подключения получено из файла **config.py**.
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=34-44)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=34-44)]
 
 В шаге диалога укажите `begin_dialog` для запуска командной строки OAuth, в которой пользователю будет предложено войти в систему.
 
 - Если пользователь уже выполнил вход, будет создано событие ответа маркера без подтверждения пользователя.
 - В противном случае пользователю будет предложено войти в систему. Служба Azure Bot отправляет событие ответа маркера после попытки входа пользователя.
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=49)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=49)]
 
 В следующем шаге диалога проверьте наличие маркера в результате, полученном от предыдущего шага. Если он не равен NULL, значит пользователь успешно выполнил вход.
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=54-65)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=54-65)]
 
 ---
 
@@ -407,7 +406,7 @@ Related TODO:
 
 Когда вы запускаете командную строку OAuth, она ожидает события получения маркера, из которого затем извлекает маркер пользователя.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\AuthBot.cs**
 
@@ -415,7 +414,7 @@ Related TODO:
 
 [!code-csharp[OnTokenResponseEventAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Bots/AuthBot.cs?range=32-38)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/authBot.js**
 
@@ -423,13 +422,13 @@ Related TODO:
 
 [!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 **bots/auth_bot.py**
 
 **AuthBot** явным образом обрабатывает действия ответа маркера. Здесь мы продолжаем активный диалог, что позволяет командной строке OAuth обработать событие и получить маркер.
 
-[!code-python[on_token_response_event](~/../botbuilder-python/samples/python/18.bot-authentication/bots/auth_bot.py?range=38-44)]
+[!code-python[on_token_response_event](~/../botbuilder-samples/samples/python/18.bot-authentication/bots/auth_bot.py?range=38-44)]
 
 ---
 
@@ -437,58 +436,55 @@ Related TODO:
 
 Мы рекомендуем предоставить пользователям возможность явно выходить из системы, не полагаясь на автоматический разрыв подключения при превышении времени ожидания.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-**Dialogs\LogoutDialog.cs**
+**Dialogs\LogoutDialog.cs** [!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
-[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**dialogs/logoutDialog.js** [!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
-**dialogs/logoutDialog.js**
+# <a name="python"></a>[Python](#tab/python)
 
-[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs/logout_dialog.py**
-
-[!code-python[allow logout](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
+**dialogs/logout_dialog.py** [!code-python[allow logout](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
 
 ---
 
 ### <a name="adding-teams-authentication"></a>Добавление аутентификации Teams
 
 В контексте OAuth Teams работает несколько иначе, чем другие каналы. Чтобы правильно реализовать аутентификацию, нужно внести несколько изменений. Мы добавим код из примера бота аутентификации Teams ([C#][cs-teams-auth-sample]/[JavaScript][js-teams-auth-sample]).
- 
-Одно из различий между другими каналами и Teams заключается в том, что Teams отправляет в бот действие *invoke*, а не действие *event*. 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+Одно из различий между другими каналами и Teams заключается в том, что Teams отправляет в бот действие *invoke*, а не действие *event*.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
 **Bots/TeamsBot.cs**  
 [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)   
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/teamsBot.js**  
 [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=16-25&highlight=1)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Сейчас способ интеграции аутентификации с ботом в Microsoft Teams немного отличается. См. соответствующую документацию по [Teams](https://aka.ms/teams-docs).
 
 ---
 
-При использовании *запроса OAuth* это действие invoke должно быть переадресовано в диалог. Это будет сделано в `TeamsActivityHandler`. Добавьте в файл основного диалога следующий код. 
+При использовании *запроса OAuth* это действие invoke должно быть переадресовано в диалог. Это будет сделано в `TeamsActivityHandler`. Добавьте в файл основного диалога следующий код.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+# <a name="c"></a>[C#](#tab/csharp)
+
 **Bots/DialogBot.cs**  
 [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 **Bots/dialogBot.js**  
 [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=6)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Сейчас способ интеграции аутентификации с ботом в Microsoft Teams немного отличается. См. соответствующую документацию по [Teams](https://aka.ms/teams-docs).
 

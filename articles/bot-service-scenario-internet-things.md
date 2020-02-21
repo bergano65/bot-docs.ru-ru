@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1089296005b060185617e4bf0280cb81198b32a2
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a6714a7eabb2af22e9a06b2a151cab1c9fa8a2f2
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75795054"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441589"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>Сценарий бота для Интернета вещей
 
@@ -31,7 +31,7 @@ ms.locfileid: "75795054"
 2. Голосовой командой пользователь просит бот включить свет на устройстве Интернета вещей.
 3. Запрос передается в стороннюю службу, у которой есть доступ к сети устройств Интернета вещей.
 4. Сведения о результатах выполнения команды возвращаются пользователю.
-5. Служба Application Insights собирает телеметрические данные среды выполнения, чтобы помочь разработчикам сведениями о производительности бота и его использовании.
+5. Служба Application Insights собирает телеметрию среды выполнения, чтобы предоставить разработчикам сведения о производительности бота и его использовании.
 
 ## <a name="sample-bot"></a>Пример бота
 Бот для Интернета вещей позволит вам быстро приступить к использованию команд чата из таких каналов, как Skype или Slack, для управления Hue. Для упрощения удаленного доступа вызовите приложения IFTTT, предопределенные для работы с Hue.

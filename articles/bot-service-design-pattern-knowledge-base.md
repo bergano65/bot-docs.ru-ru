@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 988bf816d66bfb6d4140b6be4a708ae6082e1077
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 8d911538b2ee06d255efdba6329c9fd9519056bf
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792105"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441288"
 ---
 # <a name="design-knowledge-bots"></a>Проектирование ботов базы знаний
 
@@ -72,7 +72,7 @@ ms.locfileid: "75792105"
 > Полный пример бота базы знаний, который создается с использованием Azure Document DB, Поиска Azure и Microsoft Bot Framework, см. в <a href="https://github.com/ryanvolum/AzureSearchBot" target="_blank">примере бота</a> в репозитории GitHub.
 > 
 > Для простоты в приведенном выше примере показан индекс поиска, который создается с помощью портала Azure. 
-> Индексы также могут создаваться программным путем.
+> Индексы также можно создавать программными средствами.
 
 ## <a name="qna-maker"></a>QnA Maker
 

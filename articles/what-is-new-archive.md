@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 91a0ba8d2e13d8f17213ac9669eca374e27e3863
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 95ce084b68da41d9d9f434348c4539c9f67a2c78
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791056"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441528"
 ---
 # <a name="whats-new-november-2019"></a>Отчет о новых возможностях за ноябрь 2019 г.
 
@@ -124,7 +124,7 @@ Botkit является компонентом Microsoft Bot Framework, кото
 
 [Репозиторий решений Bot Framework](https://github.com/Microsoft/AI#readme) — это хранилище наборов шаблонов, акселераторов решений и навыков для создания сложных решений для общения, работающих по принципу помощника.
 
-| Имя | Description |  
+| Имя | Описание |  
 |:------------|:------------| 
 |[**Виртуальный помощник**](https://github.com/Microsoft/AI/tree/master/docs#virtual-assistant) | Многие клиенты хотели бы иметь помощника для ведения диалога, который бы представлял конкретную торговую марку, учитывал особенности целевой аудитории и был доступным для широкого ряда устройств и холстов. <br/><br/> Корпоративный шаблон значительно упрощает создание проекта ботов, включая такие компоненты и функции, как основные намерения для реализации общения, интеграция со средством Dispatch, QnA Maker, Application Insights и автоматизированное развертывание.|
 |[**Навыки**](https://github.com/Microsoft/AI/blob/master/docs/overview/skills.md)| Разработчики могут создавать решения для общения, комбинируя доступные для повторного использования возможности ведения беседы, называемые навыками. Навыки представляют собой удаленно вызываемые боты. Для упрощения создания навыков предоставляется шаблон разработчика навыков (.NET, TS). 

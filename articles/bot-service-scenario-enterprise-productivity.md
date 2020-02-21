@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3d3f40e5a24b349aff64791d35929017c5c0adfb
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: b4c61d703c3d0a6b5b9191bf8b39a99da3d9be9a
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794854"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441515"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Сценарий бота для повышения производительности на предприятии
 
@@ -32,7 +32,7 @@ ms.locfileid: "75794854"
 3. Бот для повышения производительности на предприятии может создавать запросы к календарю сотрудника в службе Office 365, используя Azure Graph.
 4. Получив данные из календаря, бот запрашивает сведения из Dynamics CRM.
 5. Сведения возвращаются пользователю, который может их фильтровать прямо в окне общения с ботом.
-6. Служба Application Insights собирает телеметрические данные среды выполнения, чтобы помочь разработчикам сведениями о производительности бота и его использовании.
+6. Служба Application Insights собирает телеметрию среды выполнения, чтобы предоставить разработчикам сведения о производительности бота и его использовании.
 
 Можно скачать или клонировать исходный код для этого примера бота из репозитория [Примеры для распространенных сценариев Bot Framework](https://aka.ms/abs-scenarios).
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f8835ba339edf233f41ee64a68d523065aab5bd5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: e0064980a7b4cb1f5c37485550aa56a338209676
+ms.sourcegitcommit: 9f8fe22e0ed192d4b929bfb7afa90b8e885672f1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791226"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77173042"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Добавление телеметрии в бот
 
@@ -36,7 +36,7 @@ ms.locfileid: "75791226"
 
 * Отображение данных телеметрии в Application Insights
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 * [Пример кода CoreBot](https://aka.ms/cs-core-sample).
 
@@ -192,19 +192,19 @@ public void ConfigureServices(IServiceCollection services)
         this.TelemetryClient = telemetryClient;
         ...
     }
-        ```
+    ```
 
 > [!TIP] 
-> If you are following along and updating the CoreBot sample code, you can refer to the [Application Insights sample code](https://aka.ms/csharp-corebot-app-insights-sample) if you run into any problems.
+> Если у вас возникли проблемы при изменении примера кода CoreBot, см. [пример кода Application Insights](https://aka.ms/csharp-corebot-app-insights-sample).
 
-That's all there is to adding telemetry to your bots dialogs, at this point if you ran your bot you should see things being logged in Application Insights, however if you have any integrated technology such as LUIS and QnA Maker you will need to add the `TelemetryClient` to that code as well.
+Мы добавили телеметрию в диалоги бота. При его запуске вы увидите сведения, регистрируемые в журнале Application Insights. Но если вы используете такие интегрированные технологии, как LUIS и QnA Maker, вам также нужно добавить `TelemetryClient` в этот код.
 
 
-## Enabling telemetry to capture usage data from other services like LUIS and QnA Maker
+## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>Настройка телеметрии для сбора данных об использовании из других служб, например LUIS и QnA Maker
 
-We will next implement telemetry functionality in your LUIS service. The LUIS service has built-in telemetry logging available so there is very little you need to do to start getting telemetry data from LUIS.  If you are interested in enabling telemetry in a QnA Maker enabled bot, see [Add telemetry to your QnAMaker bot](bot-builder-telemetry-QnAMaker.md)
+Теперь вы реализуете функции телеметрии в службе LUIS. Служба LUIS имеет встроенную функцию ведения журнала телеметрии, поэтому настроить получение данных телеметрии из LUIS очень просто.  Если вы хотите включить телеметрию в боте с поддержкой QnA Maker, выполните инструкции из [этой статьи](bot-builder-telemetry-QnAMaker.md).
 
-1. The _`IBotTelemetryClient telemetryClient`_ parameter is required in the `FlightBookingRecognizer` constructor in `FlightBookingRecognizer.cs`:
+1. Параметр _`IBotTelemetryClient telemetryClient`_ является обязательным в конструкторе `FlightBookingRecognizer` в `FlightBookingRecognizer.cs`:
 
     ```cs
     public FlightBookingRecognizer(IConfiguration configuration, IBotTelemetryClient telemetryClient)

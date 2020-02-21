@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 35772bd4e31cad4787f6ef8b50a56503bfbef55c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 1b1de46c2b97ca369a6fcc19fd27bafc22838989
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491221"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441496"
 ---
 # <a name="use-webchat-with-the-direct-line-app-service-extension"></a>Применение WebChat с расширением Службы приложений Direct Line
 
@@ -30,7 +30,7 @@ ms.locfileid: "75491221"
 
 В целом сохраняется тот же подход, что описан выше. Единственное отличие заключается в том, что была создана новая версия **WebChat**, которая поддерживает двусторонний трафик **WebSocket** и подключается не к https://directline.botframework.com/, а напрямую к размещенному боту.
 URL-адрес Direct Line для бота будет иметь вид `https://<your_app_service>.azurewebsites.net/.bot/`, где расширение `/.bot/` является **конечной точкой** Direct Line в Службе приложений.
-Даже если вы настроите собственное доменное имя, к нему необходимо добавить путь `/.bot/` для обращения к интерфейсам REST API Direct Line.
+Даже если вы настроите собственное доменное имя, к нему необходимо добавить путь `/.bot/`, чтобы получить доступ к интерфейсам REST API Direct Line.
 
 1. Обменяйте секрет на маркер, выполнив инструкции из [статьи об аутентификации](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0). Но вместо расположения `https://directline.botframework.com/v3/directline/tokens/generate` вы будете использовать для получения маркера непосредственно расширение Службы приложений Direct Line из расположения `https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate`.  
 

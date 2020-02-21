@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 596d11bacd55c73011176abf76e07e9b05ecc229
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 33bf7224b31902c9a53f572efb2379323994db00
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792342"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441293"
 ---
 # <a name="design-bot-navigation"></a>Разработка навигации для бота
 
@@ -29,7 +29,7 @@ ms.locfileid: "75792342"
 Особенности проектирования навигации для вашего бота будут во многом зависеть от возможностей и функций, которые поддерживает ваш бот. Независимо от типа разрабатываемого бота вы захотите избежать распространенных ошибок плохо разработанных диалоговых интерфейсов. В этой статье описываются эти ошибки с точки зрения пяти персонажей: "упрямого бота", "невежественного бота", "таинственного бота", "бота Капитан Очевидность" и "бота, который не может забыть". 
 
 > [!TIP]
-> Ограничение каждого персонажа для вашего бота часто можно выполнить с помощью корректной [обработки пользовательских прерываний](v4sdk/bot-builder-howto-handle-user-interrupt.md).
+> Минимизировать возможность превращения бота в одного из этих персонажей часто можно с помощью правильной [обработки пользовательских прерываний](v4sdk/bot-builder-howto-handle-user-interrupt.md).
 
 ## <a name="the-stubborn-bot"></a>"Упрямый бот"
 
