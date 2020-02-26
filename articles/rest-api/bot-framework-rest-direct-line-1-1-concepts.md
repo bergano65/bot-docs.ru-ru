@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 227e6e27594db8c51aa8808709cabd47cade4084
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: d519bd6fa363cf47afa1609aa1930f4635e9e745
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071768"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520023"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Основные понятия API 1.1 для Direct Line
 
@@ -44,7 +44,3 @@ C помощью API для Direct Line вы можете реализовать
 Bot Framework предоставляет клиентскую библиотеку, которая позволяет легко получить доступ к API для 1.1 Direct Line с помощью C#. Чтобы использовать клиентскую библиотеку в проекте Visual Studio, установите `Microsoft.Bot.Connector.DirectLine` <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">пакет NuGet версии 1.х</a>. 
 
 Вместо клиентской библиотеки C# вы можете создать собственную клиентскую библиотеку на любом языке, используя <a href="https://docs.botframework.com/restapi/directline/swagger.json" target="_blank">файл Swagger для API 1.1 для Direct Line</a>.
-
-### <a name="web-chat-control"></a>Элемент управления веб-чата 
-
-Bot Framework предоставляет элемент управления, который позволяет внедрить бот, использующий Direct Line, в клиентское приложение. Дополнительные сведения см. в статье о <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat control</a> (Элемент управления WebChat в Microsoft Bot Framework).

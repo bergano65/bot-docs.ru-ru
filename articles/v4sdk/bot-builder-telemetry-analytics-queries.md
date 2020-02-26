@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/10/2020
-ms.openlocfilehash: a1762e79ab1524f05818d546d04c2e8a1df5fcdd
-ms.sourcegitcommit: caaf394017dbdb1cfaba32e2d0a1e32c5ab71792
+ms.openlocfilehash: b6688c99226653bb95290d583028e0e5275c973f
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75869834"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479332"
 ---
 # <a name="analyze-your-bots-telemetry-data"></a>Анализ данных телеметрии бота 
 
@@ -21,7 +21,7 @@ ms.locfileid: "75869834"
 
 Анализировать поведение бота можно с помощью указанной ниже коллекции запросов. Эта коллекция позволяет создавать пользовательские запросы в [Azure Monitor Log Analytics](https://aka.ms/log-analytics-azure-monitor) и (или) панели мониторинга и визуализации [Power BI](https://aka.ms/power-bi-overview).
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 Будет полезным иметь хотя бы общее представление о следующих понятиях:
 
 * [запросы Kusto](https://aka.ms/Kusto-query-overview);
@@ -564,6 +564,6 @@ _Интерпретация полученных данных. Например,
 
 * Инструкции по написанию запросов к журналам Azure Monitor см. в [этой статье](https://aka.ms/azure-monitor-log-queries-get-started).
 * Прочтите статью о [визуализации данных из Azure Monitor](https://aka.ms/azure-monitor-visualize-data).
-* Узнайте, как [добавить телеметрию в бота](https://aka.ms/AddBotTelemetry).
+* Узнайте, как [добавить телеметрию в бота](https://aka.ms/add-bot-telemetry).
 * Ознакомьтесь с дополнительными сведениями о [запросах по журналам в Azure Monitor](https://aka.ms/azure-monitor-log-queries).
 * Узнайте, как [создавать панели мониторинга данных Log Analytics и предоставлять к ним общий доступ](https://aka.ms/log-analytics-create-share-dashboards).
