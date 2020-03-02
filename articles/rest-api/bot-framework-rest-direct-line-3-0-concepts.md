@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: cb3d156d71d6c5e28303cdf26de8692b13f42c86
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 5d86cd325c296aceba6f52e81841028d6da79c4a
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071772"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520013"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Основные понятия Direct Line API 3.0
 
-C помощью API для Direct Line вы можете реализовать обмен данными между ботом и своим клиентским приложением. В этой статье представлены основные понятия Direct Line API 3.0 и сведения о соответствующих ресурсах для разработчиков.
+C помощью API для Direct Line вы можете реализовать обмен данными между ботом и своим клиентским приложением. В этой статье представлены основные понятия Direct Line API 3.0 и сведения о соответствующих ресурсах для разработчиков. Вы можете создать клиент, используя пакет SDK, REST API или Web Chat. 
 
 ## <a name="authentication"></a>Аутентификация
 

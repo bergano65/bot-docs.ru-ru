@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 2/09/2019
-ms.openlocfilehash: c3bca14fe3c909417d016c01a9c48f9ec41c8ba4
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 2/20/2020
+ms.openlocfilehash: fda80c8e0dc4aaf5169730615b5cfc3acda16160
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789331"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519913"
 ---
 # <a name="reconnect-to-a-conversation"></a>Повторное подключение к диалогу
 
@@ -27,7 +27,7 @@ GET https://directline.botframework.com/v3/directline/conversations/{conversatio
 Authorization: Bearer SECRET_OR_TOKEN
 ```
 
-В этом URI запроса замените **{conversationId}** идентификатором диалога, а **{watermark_value}** — значением водяного знака (если указан параметр `watermark`). Параметр `watermark` не обязателен. Если в URI запроса указан параметр `watermark`, диалог воспроизводится начиная с водяного знака, за счет чего ни одно сообщение не будет потеряно. Если в URI запроса параметр `watermark` пропущен, будут воспроизведены только те сообщения, которые были получены после выполнения запроса о повторном подключении.
+В этом URI запроса замените **{conversationId}** идентификатором диалога, а **{watermark_value}**  — значением водяного знака (если доступен параметр `watermark`). Параметр `watermark` не обязателен. Если в URI запроса указан параметр `watermark`, диалог воспроизводится начиная с водяного знака, за счет чего ни одно сообщение не будет потеряно. Если в URI запроса параметр `watermark` пропущен, будут воспроизведены только те сообщения, которые были получены после выполнения запроса о повторном подключении.
 
 Ниже приведены примеры фрагментов кода для запроса о повторном подключении и ответа на него.
 
@@ -59,7 +59,7 @@ HTTP/1.1 200 OK
 
 Клиент должен использовать новый URL-адрес потока по протоколу WebSocket, чтобы [повторно подключиться к диалогу](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) в течение 60 секунд. Если в течение этого времени не удается установить подключение, клиент должен выполнить новый запрос на повторное подключение, чтобы создать новый URL-адрес потока.
 
-Если параметр Enhanced authentication option (Расширенная проверка подлинности) включен в Direct Line, вы можете получить ошибку с кодом 400 — MissingProperty (свойство не найдено), информирующую о том, что идентификатор пользователя не указан.
+Если параметр Enhanced authentication option (Расширенная проверка подлинности) включен в Direct Line, вы можете получить ошибку с кодом 400 — MissingProperty (свойство не найдено), информирующую о том, что маркер, присоединенный к запросу, не настроен правильно. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

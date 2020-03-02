@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: e6b0df6384b6ecc1ffa8922e574c6b161db8369e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 4eea881d7dee4816c2c8a5d28ffc37662063d340
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794132"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519943"
 ---
 # <a name="bot-framework-user-agent-requests"></a>Запросы Агента пользователя Bot Framework
 
-Данное сообщение было отправлено службой Microsoft Bot Framework вместе с запросом. Это руководство поможет понять природу запросов и предпринять шаги по их прекращению (если это необходимо).
+Это сообщение было отправлено службой Microsoft Bot Framework вместе с запросом. Это руководство поможет понять природу запросов и предпринять шаги по их прекращению (если это необходимо).
 
 При получении запроса, скорее всего, у него был заголовок User-Agent и выглядел он следующим образом.
 

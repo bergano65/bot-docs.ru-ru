@@ -1,36 +1,48 @@
 ---
-ms.openlocfilehash: 029275eae6f7b0b4448613ede898575eb491a56f
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 2559f424e9f50a760837494f87e4f33731ffb358
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386046"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479312"
 ---
-Если вы используете существующую группу ресурсов, можно выбрать существующий план Службы приложений или создать новый. Ниже описаны процедуры для обоих вариантов. 
+На этом шаге вы создадите службу приложения для бота, то есть определите этап развертывания для бота. Если вы используете существующую группу ресурсов, можно выбрать существующий план службы приложений или создать новый. Ниже описаны процедуры для обоих вариантов.
 
-**Вариант 1. Существующий план Службы приложений** 
+Из выходных данных в формате JSON скопируйте значение поля **id**, которое на следующем шаге будет использоваться в качестве значения для **идентификатора подписки регистрации**.
 
-В этом варианте мы используем существующий план Службы приложений, но при этом создаем новое веб-приложение и новую регистрацию каналов бота. 
+> [!NOTE]
+> Этот шаг может занять несколько минут.
+
+**Вариант 1. Существующий план Службы приложений**
+
+В этом варианте мы используем существующий план Службы приложений, но при этом создаем новое веб-приложение и новую регистрацию каналов бота.
 
 > [!NOTE]
 > Эта команда определяет идентификатор и отображаемое имя бота. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Отображаемое имя бота является изменяемым.
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --resource-group "<name-of-resource-group>" --template-file "<path-to-template-with-preexisting-rg.json>" --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" newWebAppName="<bot-app-service-name>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"
 ```
 
-**Вариант 2. Новый план Службы приложений**
+**Вариант 2. Новый план Службы приложений**
 
-В этом варианте мы создаем план Службы приложений, веб-приложение и регистрацию каналов бота. 
+В этом варианте мы создаем план Службы приложений, веб-приложение и регистрацию каналов бота.
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --resource-group "<name-of-resource-group>" --template-file "<path-to-template-with-preexisting-rg.json>" --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" newWebAppName="<bot-app-service-name>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"
 ```
 
-| Параметр   | ОПИСАНИЕ |
+| Параметр   | Описание |
 |:---------|:------------|
-| name | Понятное имя развертывания. |
+| name | Отображаемое имя, которое используется для регистрации каналов бота. По умолчанию здесь используется значение параметра `botId`.|
 | resource-group | Имя группы ресурсов Azure. |
-| template-file | Путь к шаблону ARM. Вы можете использовать файл `template-with-preexisting-rg.json` из папки проекта `deploymentTemplates`. |
+| template-file | Путь к шаблону ARM. Обычно файл `template-with-preexisting-rg.json` размещается в папке `deploymentTemplates` проекта. Это путь к существующему файлу шаблона. Можно указать абсолютный или относительный путь к текущему каталогу. Все шаблоны бота создают файлы шаблонов ARM.|
 | location |Расположение. Значения из `az account list-locations`. Расположение по умолчанию можно настроить с помощью `az configure --defaults location=<location>`. |
-| parameters | Укажите значения параметров развертывания. Значение `appId`, полученное при выполнении команды `az ad app create`. `appSecret` — это пароль, который вы ввели на предыдущем шаге. Параметр `botId` должен быть глобально уникальным. Он используется как неизменяемый идентификатор бота. Он также используется для настройки отображаемого имени бота, которое допускает изменения. `newWebAppName` — имя веб-приложения, которое вы создаете. `newAppServicePlanName` — имя плана Службы приложений. `newAppServicePlanLocation` — расположение плана Службы приложений. |
+| параметры | Параметры развертывания в формате списка пар "ключ — значение". Введите следующие значения параметров:
+
+- `appId` — значение *идентификатора приложения*, созданное на предыдущем шаге.
+- `appSecret` — пароль, который вы ввели на предыдущем шаге.
+- `botId` — имя создаваемого ресурса регистрации канала бота. Оно должно быть глобально уникальным. Оно используется как неизменяемый идентификатор бота и сохраняется в качестве отображаемого имени бота, но это значение вы можете изменить.
+- `newWebAppName` — имя службы приложений для бота.
+- `newAppServicePlanName` — имя создаваемого ресурса плана службы приложений.
+- `newAppServicePlanLocation` — расположение плана службы приложений.

@@ -6,14 +6,18 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: 1453ad74725e0084f0b5f45fa7d20475dbee2fa6
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 02/20/2020
+ms.openlocfilehash: 1dc6fa1a9223e61daaa52cf475095fc08e0356d7
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789216"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519963"
 ---
 # <a name="manage-state-data"></a>Управление данными состояния
 
-Служба состояний Microsoft Bot Framework устарела с 30 марта 2018 г. Ранее боты, созданные на основе службы Azure Bot или пакета SDK для Bot Builder, по умолчанию использовали подключение к этой службе, размещенной корпорацией Майкрософт, для хранения данных о состоянии бота. Теперь эти боты нужно обновить, чтобы они использовали собственное хранилище состояний.
+Боты обычно используют хранилище для отслеживания того, в каком месте диалога находится пользователь, а также для сбора сведений о взаимоотношениях пользователя с ботом. Пакет SDK для Bot Framework управляет состоянием пользователя и диалога автоматически для разработчиков ботов. 
+
+Изначально в Bot Framework включалась служба состояний для хранения этих данных. Но большинство современных ботов (и все последние выпуски пакета SDK для Bot Framework) используют хранилище, управляемое непосредственно разработчиком бота, а не централизованно управляемую службу. 
+
+Поддержка центральной службы состояний Bot Framework прекращена 30 марта 2018 г. См. сведения о том, что [вам нужно знать в связи с прекращением поддержки службы состояний Bot Framework](https://blog.botframework.com/2018/04/02/reminder-the-bot-framework-state-service-has-been-retired-what-you-need-to-know/).

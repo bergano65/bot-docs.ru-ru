@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: bc3679c48f67ffc5fadfbc387ee41c69ad96884f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: db6fc2049cbf5fe44ac4f8713c17b2081019fd82
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789294"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519923"
 ---
 # <a name="start-a-conversation"></a>Начало общения
 
@@ -20,7 +20,7 @@ ms.locfileid: "75789294"
 
 ## <a name="open-a-new-conversation"></a>Открытие нового общения
 
-Чтобы с помощью бота открыть новое общение, необходимо выполнить следующий запрос.
+Чтобы открыть новый диалог со стороны клиента, передайте запрос POST в конечную точку /v3/directline/conversations.
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations
@@ -63,7 +63,7 @@ HTTP/1.1 201 Created
 
 Операция начала диалога (`POST /v3/directline/conversations`) аналогична операции [создания маркера](bot-framework-rest-direct-line-3-0-authentication.md#generate-token) (`POST /v3/directline/tokens/generate`) в том смысле, что обе операции возвращают маркер `token`, который можно использовать для доступа к одному диалогу. Тем не менее операция "Начало общения" также начинает общение, контактирует с ботом и создает URL-адрес потока протокола WebSocket, тогда как операция "создание маркера" не поддерживает ни одно из вышеупомянутых действий. 
 
-Если требуется немедленно начать общение, используйте операцию "Начало общения". Если требуется распространить маркер среди клиентов, а также заставить их начать общение, используйте операцию [создание маркера Direct Line](bot-framework-rest-direct-line-3-0-authentication.md#generate-token). 
+Если предполагается, что общение с клиентом начнется сразу же, используйте операцию Start Conversation (Начало беседы). Если требуется распространить маркер среди клиентов, а также заставить их начать общение, используйте операцию [создание маркера Direct Line](bot-framework-rest-direct-line-3-0-authentication.md#generate-token). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/22/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5dc2dc7327f739c8aee5fecd799aa562a6a98035
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 9211f3f1df98ef5972571c1c36ecdeefc27639bf
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76753738"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519993"
 ---
 # <a name="implement-a-skill-consumer"></a>Реализация потребителя навыка
 
@@ -49,15 +49,15 @@ _Корневым ботом_ называется бот, который вза
 - Обработчик навыков, который используется для получения действий от навыка.
 - Фабрика идентификаторов бесед с навыками, которую клиент и обработчик навыков используют для взаимного преобразования ссылок между беседами пользователя с корневым ботом и корневого бота с навыком.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 ![Диаграмма классов потребителя навыка](./media/skills-simple-root-cs.png)
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 ![Диаграмма классов потребителя навыка](./media/skills-simple-root-js.png)
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ![Диаграмма классов потребителя навыка](./media/skills-simple-root-python-2.png)
 
@@ -80,7 +80,7 @@ _Корневым ботом_ называется бот, который вза
    - идентификатор приложения навыка;
    - конечная точка обмена сообщениями для навыка.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\appsettings.json**
 
@@ -88,7 +88,7 @@ _Корневым ботом_ называется бот, который вза
 
 [!code-csharp[configuration file](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/appsettings.json)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **echo-skill-bot/.env**
 
@@ -96,7 +96,7 @@ _Корневым ботом_ называется бот, который вза
 
 [!code-javascript[configuration file](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/.env)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple_root_bot/config.py**
 
@@ -110,20 +110,20 @@ _Корневым ботом_ называется бот, который вза
 
 Наш пример бота считывает сведения о каждом навыке из файла конфигурации в коллекцию объектов _skill_.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\SkillsConfiguration.cs**
 
 [!code-csharp[skills configuration](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/SkillsConfiguration.cs?range=14-38)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/skillsConfiguration.js**
 
 [!code-javascript[skills configuration](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/skillsConfiguration.js?range=7-33)]
 
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/config.py**
 
@@ -140,19 +140,19 @@ _Корневым ботом_ называется бот, который вза
 - корневой бот предназначен для использования одного конкретного навыка;
 - корневой бот поддерживает только одну активную беседу с навыком в конкретный момент времени.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\SkillConversationIdFactory.cs**
 
 [!code-csharp[Conversation ID factory](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/SkillConversationIdFactory.cs?range=17-40)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/skillConversationIdFactory.js**
 
 [!code-javascript[Conversation ID factory](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/skillConversationIdFactory.js?range=10-29)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/skill_conversation_id_factory.py**
 
@@ -173,13 +173,13 @@ _Корневым ботом_ называется бот, который вза
 Потребитель навыка использует обработчик навыка для получения действий от навыка.
 Обработчик использует для этого фабрику идентификаторов бесед, конфигурацию проверки подлинности и поставщик учетных данных, а также имеет зависимости от адаптера корневого бота и обработчика действий.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Startup.cs**
 
 [!code-csharp[skill client and handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=42-43)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
@@ -187,7 +187,7 @@ _Корневым ботом_ называется бот, который вза
 
 [!code-javascript[skill handler](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=132)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 
@@ -215,7 +215,7 @@ _Корневым ботом_ называется бот, который вза
 - если это уместно, по запросу пользователя или потребителя навыка останавливать навык, который еще не завершил работу;
 - сохранять состояние перед вызовом навыка, так как любой ответ может поступить к другому экземпляру потребителя навыка (в том числе балансировку нагрузки и т. п.)
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Bots\RootBot.cs**
 
@@ -226,13 +226,13 @@ _Корневым ботом_ называется бот, который вза
 
 В нашем примере есть вспомогательный метод для перенаправления действий в навык. Он сохраняет состояние беседы перед вызовом навыка и проверяет, успешно ли выполнен HTTP-запрос.
 
-[!code-csharp[Send to skill](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=125-139)]
+[!code-csharp[Send to skill](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=134-148)]
 
-Обратите внимание, что в корневой бот включена логика обработки сообщений от пользователя и действий `endOfConversation` от навыка.
+Обратите внимание, что в корневом элементе бота предусмотрена логика для перенаправления действий в навык, запуска навыка по запросу пользователя и остановки навыка по завершении выполнения навыка.
 
-[!code-csharp[message/end-of-conversation handlers](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=57-112)]
+[!code-csharp[message/end-of-conversation handlers](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=57-121)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/rootBot.js**
 
@@ -243,13 +243,13 @@ _Корневым ботом_ называется бот, который вза
 
 В нашем примере есть вспомогательный метод для перенаправления действий в навык. Он сохраняет состояние беседы перед вызовом навыка и проверяет, успешно ли выполнен HTTP-запрос.
 
-[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=108-120)]
+[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=119-131)]
 
-Обратите внимание, что в корневой бот включена логика обработки сообщений от пользователя и действий `endOfConversation` от навыка.
+Обратите внимание, что в корневом элементе бота предусмотрена логика для перенаправления действий в навык, запуска навыка по запросу пользователя и остановки навыка по завершении выполнения навыка.
 
-[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=33-85)]
+[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=32-94)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/bots/root_bot.py**
 
@@ -260,14 +260,13 @@ _Корневым ботом_ называется бот, который вза
 
 В нашем примере есть вспомогательный метод для перенаправления действий в навык. Он сохраняет состояние беседы перед вызовом навыка и проверяет, успешно ли выполнен HTTP-запрос.
 
-[!code-python[Send to skill](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=104-117)]
+[!code-python[Send to skill](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=111-124)]
 
-Обратите внимание, что в корневой бот включена логика обработки сообщений от пользователя и действий `endOfConversation` от навыка.
+Обратите внимание, что в корневом элементе бота предусмотрена логика для перенаправления действий в навык, запуска навыка по запросу пользователя и остановки навыка по завершении выполнения навыка.
 
-[!code-python[Handled activities](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=39-93)]
+[!code-python[Handled activities](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=39-100)]
 
 ---
-
 
 ## <a name="on-turn-error-handler"></a>Глобальный обработчик ошибок с репликами
 
@@ -275,7 +274,7 @@ _Корневым ботом_ называется бот, который вза
 
 Мы рекомендуем всегда отправлять сообщение _о завершении беседы_ всем активным навыкам, прежде чем очищать состояние беседы в потребителе навыка. Это позволит навыку освободить все ресурсы, связанные с беседой между потребителем и навыком прежде, чем потребитель очистит эту беседу.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\AdapterWithErrorHandler.cs**
 
@@ -283,14 +282,14 @@ _Корневым ботом_ называется бот, который вза
 
 [!code-csharp[On turn error](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/AdapterWithErrorHandler.cs?range=40-120)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
 
 [!code-javascript[On turn error](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=34-87)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **app.py**
 
@@ -303,20 +302,20 @@ _Корневым ботом_ называется бот, который вза
 Бот определяет конечную точку, которая перенаправляет входящие действия навыка в обработчик навыка корневого бота.
 
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Controllers\SkillController.cs**
 
 [!code-csharp[skill endpoint](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Controllers/SkillController.cs?range=15-23)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
 
 [!code-javascript[skill endpoint](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=133-134)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 
@@ -328,13 +327,13 @@ _Корневым ботом_ называется бот, который вза
 
 Добавьте объект конфигурации проверки подлинности со всеми необходимыми проверками утверждений, а также любые дополнительные объекты.
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Startup.cs**
 
 [!code-csharp[services](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=22-53)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
@@ -342,7 +341,7 @@ _Корневым ботом_ называется бот, который вза
 
 [!code-javascript[services](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=95-134)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 

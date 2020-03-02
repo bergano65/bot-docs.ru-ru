@@ -7,25 +7,23 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4b8a3046ee53d90fe2abdc97a3c931a4f67c051f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 67c74bc3f51328370e4d6ba207855b20e4d79497
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789436"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520003"
 ---
 # <a name="end-a-conversation"></a>Завершение диалога
 
 **EndOfConversation** — это [действие](https://aka.ms/botSpecs-activitySchema), означающее что канал или бот завершил диалог. 
 
 > [!NOTE] 
-> Хотя событие **endOfConversation** отправляется несколькими каналами, канал Cortana — это единственный канал, который его принимает. Другие каналы, включая Direct Line, не реализуют эту функцию, отклоняя или пересылая вместо этого действие — каждый канал определяет, как реагировать на действие endOfConversation. Если вы разрабатываете клиент DirectLine, нужно реализовать правильное поведение клиента, например выдачу сообщения об ошибке, если бот отправил действие в диалог, который уже завершен.
+> Хотя событие **endOfConversation** отправляется несколькими каналами, канал Cortana — это единственный канал, который его принимает. Другие каналы, включая Direct Line, не реализуют эту функцию, отклоняя или пересылая вместо этого действие — каждый канал определяет, как реагировать на действие endOfConversation.
 
 ## <a name="send-an-endofconversation-activity"></a>Отправка действия endOfConversation
 
-Действие **endOfConversation** прекращает взаимодействие между ботом и клиентом. После отправки действия **endOfConversation** клиент по-прежнему может [получать сообщения](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) с помощью `HTTP GET`, но ни клиент, ни бот не могут отправлять в диалог дополнительные сообщения. 
-
-Чтобы завершить диалог, просто отправьте запрос POST, чтобы отправить действие **endOfConversation**.
+Чтобы запросить окончание диалога с помощью канала Кортаны, отправьте запрос POST действия End of Conversation (Завершение беседы) в конечную точку обмена сообщениями канала.
 
 ### <a name="request"></a>Запрос
 

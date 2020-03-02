@@ -1,19 +1,23 @@
 ---
-ms.openlocfilehash: 0c28cf506f2701acfc705fdcc67ec6a1e7224ad1
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 4678bd83d9f95e44531127a1bdbdd1ff94a9f742
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386067"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479313"
 ---
 Теперь мы готовы развернуть код в виде веб-приложения Azure. Запустите следующую команду из командной строки, чтобы выполнить развертывание с помощью принудительного развертывания в Kudu из ZIP-файла веб-приложения.
 
 ```cmd
-az webapp deployment source config-zip --resource-group "<resource-group-name>" --name "<name-of-web-app>" --src "code.zip" 
+az webapp deployment source config-zip --resource-group "<resource-group-name>" --name "<name-of-web-app>" --src <project-zip-path>
 ```
 
-| Параметр   | ОПИСАНИЕ |
+| Параметр   | Описание |
 |:---------|:------------|
 | resource-group | Имя группы ресурсов Azure, которая содержит бота. (Это будет группа ресурсов, которую вы использовали или создали при регистрации приложения для бота.) |
 | name | Имя веб-приложения, которое вы использовали ранее. |
-| src  | Путь к созданному ранее ZIP-файлу. |
+| src  | Путь к созданному ранее ZIP-файлу проекта. |
+
+> [!NOTE]
+> Этот шаг может занять несколько минут.
+> Кроме того, после завершения развертывания бот станет доступным для тестирования через несколько минут.

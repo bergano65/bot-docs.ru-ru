@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 4db6a47644ca1808949021016197d2d2fda1ed6b
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: d90bc0c0ecbef356ec4f917199dcc1e6471d2aed
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386080"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479311"
 ---
 1. В браузере перейдите на [портал Azure](https://ms.portal.azure.com).
 2. На панели слева щелкните **Группы ресурсов**.
 3. На панели справа найдите свою группу.
 4. Щелкните имя группы.
 5. Щелкните ссылку регистрации канала бота.
-6. В области **Регистрация канала бота** щелкните **Тестирование в веб-чате**.
+6. В области **Bot Channels Registration** (Регистрация канала бота) щелкните **Test in Web Chat** (Протестировать в Web Chat).
 Или на панели справа щелкните поле **Тест**.
 
-См. также о регистрации канала в руководстве по [регистрации бота с помощью службы Azure Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+См. сведения о регистрации каналов бота в руководстве по [регистрации бота с помощью службы Azure Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).

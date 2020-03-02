@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a4437910cc0de3772ed8959f54f1643bc62abf41
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: bb79739e2199556fe6ce3fdd58f2fc34165f36e2
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752896"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519983"
 ---
-# <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство. Использование QnA Maker в боте для ответов на вопросы.
+# <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство по Использование QnA Maker в боте для ответов на вопросы.
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
@@ -78,7 +78,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 
 Начиная с бот-платформы версии 4.3, файлы с расширением .bot больше не предоставляются в Azure для скачивания вместе с исходным кодом бота. Следуйте дальнейшим инструкциям, чтобы подключить свой бот на C#, JavaScript или Python к базе знаний.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Добавьте следующие значения в файл appsetting.json:
 
@@ -94,7 +94,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Добавьте следующие значения в файл с расширением .env:
 
@@ -108,7 +108,7 @@ QnAAuthKey="qna-maker-resource-key"
 QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Добавьте следующие значения в файл `config.py`:
 
@@ -139,7 +139,7 @@ class DefaultConfig:
 
 Обновите код инициализации, чтобы загрузить данные службы для вашей базы знаний.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 1. Добавьте в проект пакет NuGet **Microsoft.Bot.Builder.AI.QnA**.
 
@@ -231,7 +231,7 @@ class DefaultConfig:
    }
    ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 1. Откройте окно терминала или командную строку и перейдите к корневому каталогу проекта.
 1. Добавьте в проект пакет npm **botbuilder-ai**.
@@ -302,7 +302,7 @@ class DefaultConfig:
     });
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Убедитесь, что вы установили пакеты, как описано в файле сведений репозитория примеров.
 1. Добавьте ссылку на `botbuilder-ai` в файл `requirements.txt`, как показано ниже.
