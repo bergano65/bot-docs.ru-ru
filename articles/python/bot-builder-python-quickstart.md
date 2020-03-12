@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c8208fb387584e38c5ec0a0851cc7a49236c37f7
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: c56d5607ca3c7841ad8a480ce23c7c2d21805968
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441658"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280165"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Создание бота с помощью пакета SDK Bot Framework для Python
 
@@ -50,7 +50,7 @@ cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Te
 
 Скопируйте последние четыре цифры в адресе в последней строке (обычно это 3978) для использования на следующем шаге. Теперь вы готовы запустить бот.
 
-## <a name="start-you-bot"></a>Запуск бота
+## <a name="start-your-bot"></a>Запуск бота
 1. В окне терминала перейдите в папку `echo-bot`, в которой вы сохранили бот. Выполните команду `pip install -r requirements.txt`, чтобы установить пакеты, требуемые для запуска бота.
 
 2. После установки пакетов выполните `python app.py` для запуска бота. Вы поймете, что бот готов к тестированию, когда появится последняя строка, показанная на снимке экрана ниже:

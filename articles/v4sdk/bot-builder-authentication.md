@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e1cdfbb96e14175f764b481f9634c2d7c93f0c29
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: 1971867f7d1c21de00e13a0b1affb0b8fb6ccaed
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441640"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280143"
 ---
 <!-- 
 
@@ -438,15 +438,17 @@ Related TODO:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-**Dialogs\LogoutDialog.cs** [!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
+**Dialogs\LogoutDialog.cs**  
+[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)  
 
 **dialogs/logoutDialog.js** [!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
 # <a name="python"></a>[Python](#tab/python)
 
-**dialogs/logout_dialog.py** [!code-python[allow logout](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
+**dialogs/logout_dialog.py**  
+[!code-python[allow logout](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
 
 ---
 
