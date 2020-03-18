@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6265c75abeaf9faf1b21f2702bdc4db9842733c9
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: 91835d17437ba8323bfb381bccc0b27396484dcf
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441611"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280159"
 ---
 # <a name="save-user-and-conversation-data"></a>Сохранение данных пользователя и диалога
 
@@ -75,9 +75,11 @@ ms.locfileid: "77441611"
 
 В приведенных ниже примерах кода показаны определения классов `UserProfile` и `ConversationData`.
 
-**user_profile.py** [!code-python[user_profile](~/../botbuilder-samples/samples/python/45.state-management/data_models/user_profile.py?range=5-7)]
+**user_profile.py**  
+[!code-python[user_profile](~/../botbuilder-samples/samples/python/45.state-management/data_models/user_profile.py?range=5-7)]
 
-**conversation_data.py** [!code-python[conversation_data](~/../botbuilder-samples/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
+**conversation_data.py**  
+[!code-python[conversation_data](~/../botbuilder-samples/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
 
 ---
 
@@ -108,9 +110,11 @@ ms.locfileid: "77441611"
 
 Теперь мы зарегистрируем метод `MemoryStorage`, который используется для создания объектов `UserState` и `ConversationState`. Они создаются в **app.py** и используются при создании бота.
 
-**app.py** [!code-python[app.py](~/../botbuilder-samples/samples/python/45.state-management/app.py?range=67-70)]
+**app.py**  
+[!code-python[app.py](~/../botbuilder-samples/samples/python/45.state-management/app.py?range=67-70)]
 
-**bots/state_management_bot.py** [!code-python[bot constructor](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=13-25)]
+**bots/state_management_bot.py**  
+[!code-python[bot constructor](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=13-25)]
 
 ---
 
@@ -126,13 +130,15 @@ ms.locfileid: "77441611"
 
 Теперь мы создадим методы доступа к свойствам `UserState` и `ConversationState`. Каждый метод доступа к свойству состояния позволяет получить или задать значение для соответствующего свойства состояния. Мы выполняем каждый из методов доступа, чтобы загрузить связанное свойство из хранилища и извлечь из кэша его текущее состояние.
 
-**bots/stateManagementBot.js** [!code-javascript[Create accessors](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=13-15)]
+**bots/stateManagementBot.js**  
+[!code-javascript[Create accessors](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=13-15)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
 Теперь мы создадим методы доступа к свойствам `UserProfile` и `ConversationData`. Каждый метод доступа к свойству состояния позволяет получить или задать значение для соответствующего свойства состояния. Мы выполняем каждый из методов доступа, чтобы загрузить связанное свойство из хранилища и извлечь из кэша его текущее состояние.
 
-**bots/state_management_bot.py** [!code-python[Create accessors](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=27-30)]
+**bots/state_management_bot.py**  
+[!code-python[Create accessors](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=27-30)]
 
 ---
 
@@ -158,11 +164,13 @@ ms.locfileid: "77441611"
 - Если свойство userProfile.Name пусто, а conversationData.PromptedUserForName имеет значение _false_, мы запрашиваем имя пользователя.
 - Если значение userProfile.Name уже было сохранено ранее, мы извлекаем из пользовательского ввода время сообщения и идентификатор канала, затем передаем все эти данные пользователю и сохраняем полученные данные в состоянии беседы.
 
-**bots/stateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
+**bots/stateManagementBot.js**  
+[!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
 
 Перед выходом из каждого шага диалога мы применяем метод _saveChanges()_ для объектов управления состоянием, чтобы сохранить в хранилище все изменения, внесенные в состояние.
 
-**bots/stateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=72-81)]
+**bots/stateManagementBot.js**  
+[!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=72-81)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -170,11 +178,13 @@ ms.locfileid: "77441611"
 - Если файл `user_profile.name` пуст, а `conversation_data.prompted_for_user_name` имеет значение *false*, бот запрашивает имя пользователя.
 - Если файл `user_profile.name` сохранен ранее, бот извлекает данные о **времени сообщения** и **идентификатор канала** из вводимых пользователем данных, выводит данные обратно пользователю и сохраняет полученные данные в состоянии беседы.
 
-**bots/state_management_bot.py** [!code-python[state_message_activity](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
+**bots/state_management_bot.py**  
+[!code-python[state_message_activity](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
 
 Перед закрытием каждого диалогового окна бот использует метод `save_changes` объектов управления состоянием для сохранения всех изменений путем записи сведений о состоянии в хранилище.
 
-**bots/state_management_bot.py** [!code-python[state_storage](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
+**bots/state_management_bot.py**  
+[!code-python[state_storage](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
 
 ---
 

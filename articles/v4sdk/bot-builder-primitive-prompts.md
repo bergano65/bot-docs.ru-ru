@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4d6d60d343b7bfb5d0639aa8464b68f60162d14c
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: a3742837f15038c0e81d1b1405eeff96ba9efdf1
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441590"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280175"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -90,9 +90,11 @@ ms.locfileid: "77441590"
 
 Создание объектов состояния пользователя и сеанса **app.py** и их использование в конструкторе бота.
 
-**app.py** [!code-python[app.py](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/app.py?range=67-73)]
+**app.py**  
+[!code-python[app.py](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/app.py?range=67-73)]
 
-**bots/custom_prompt_bot.py** [!code-python[constructor](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=29-41)]
+**bots/custom_prompt_bot.py**  
+[!code-python[constructor](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=29-41)]
 
 ---
 
@@ -122,7 +124,8 @@ ms.locfileid: "77441590"
 
 В конструкторе мы создадим методы доступа к свойствам состояния и настроим объекты управления состоянием (созданные выше) для нашей беседы.
 
-**bots/custom_prompt_bot.py** [!code-python[on_message_activity](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-49)]
+**bots/custom_prompt_bot.py**  
+[!code-python[on_message_activity](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-49)]
 
 Перед завершением шага вызовите `SaveChangesAsync`, чтобы записать изменения состояния в хранилище.
 
@@ -146,7 +149,8 @@ ms.locfileid: "77441590"
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py** [!code-python[message handler](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-55)]
+**bots/custom_prompt_bot.py**  
+[!code-python[message handler](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-55)]
 
 ---
 
@@ -174,7 +178,8 @@ ms.locfileid: "77441590"
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py** [!code-python[_fill_out_user_profile](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=57-125)]
+**bots/custom_prompt_bot.py**  
+[!code-python[_fill_out_user_profile](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=57-125)]
 
 ---
 
@@ -204,7 +209,8 @@ ms.locfileid: "77441590"
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py** [!code-python[validation methods](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=127-189)]
+**bots/custom_prompt_bot.py**  
+[!code-python[validation methods](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=127-189)]
 
 ---
 
