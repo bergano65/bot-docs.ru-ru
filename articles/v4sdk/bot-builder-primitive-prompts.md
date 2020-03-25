@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a3742837f15038c0e81d1b1405eeff96ba9efdf1
-ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
+ms.openlocfilehash: 65aafe3eac9b9b6f023d77c8442bb3a37823789d
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78280175"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117557"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Создание собственных запросов на сбор данных, вводимых пользователем
 
@@ -81,9 +81,11 @@ ms.locfileid: "78280175"
 
 Создание объектов состояния пользователя и сеанса **index.js** и их использование в конструкторе бота.
 
-**index.js** [!code-javascript[index.js](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=33-39)]
+**index.js**  
+[!code-javascript[index.js](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=33-39)]
 
-**bots/customPromptBot.js** [!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=20-22)]
+**bots/customPromptBot.js**  
+[!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=20-22)]
 [!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=27-29)]
 
 ## <a name="python"></a>[Python](#tab/python)
@@ -104,7 +106,8 @@ ms.locfileid: "78280175"
 
 Создание методов доступа к свойствам профиля пользователя и потока диалога и вызов `GetAsync` для получения значения свойства из состояния.
 
-**Bots/CustomPromptBot.cs** [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
 
 Перед завершением шага вызовите `SaveChangesAsync`, чтобы записать изменения состояния в хранилище.
 
@@ -114,7 +117,8 @@ ms.locfileid: "78280175"
 
 Создание методов доступа к свойствам профиля пользователя и потока диалога и вызов `get` для получения значения свойства из состояния.
 
-**bots/customPromptBot.js** [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-33)]
+**bots/customPromptBot.js**  
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-33)]
 
 Перед завершением шага вызовите `saveChanges`, чтобы записать изменения состояния в хранилище.
 

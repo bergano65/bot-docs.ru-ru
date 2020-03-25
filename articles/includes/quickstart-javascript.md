@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: f6d12b0031ec14e8c7c6e8bee876e7abb96c01f6
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 77635aab0e1535a2d44ef24c3e33094b13f4a15a
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174652"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117829"
 ---
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -58,10 +58,13 @@ ms.locfileid: "70174652"
 
 Yeoman запросит некоторые сведения для создания бота. Для задач в этом руководстве используйте значение по умолчанию.
 
-- Введите имя бота. (my-chat-bot)
-- Введите описание. (Демонстрация базовых возможностей Microsoft Bot Framework.)
-- Выберите язык для бота. JavaScript
-- Выберите шаблон для использования. (Бот Echo — https://aka.ms/generator-botbuilder-templates)
+```text
+? What's the name of your bot? my-chat-bot
+? What will your bot do? Demonstrate the core capabilities of the Microsoft Bot Framework
+? What programming language do you want to use? JavaScript
+? Which template would you like to start with? Echo Bot - https://aka.ms/bot-template-echo
+? Looking good.  Shall I go ahead and create your new bot? (Y/n)
+```
 
 Благодаря шаблону проект содержит весь код, необходимый для создания бота в рамках этого краткого руководства. Теперь нет необходимости писать дополнительный код.
 

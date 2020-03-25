@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/19/2020
-ms.openlocfilehash: d7e667724250d3307a53cf41dc671db788c347bc
-ms.sourcegitcommit: 54d3febefaf0072172b17bd8e4ec456264dfbd42
+ms.openlocfilehash: aac5f7ff6868d79ef398cbe51fc9e5a6d0f424a1
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521408"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117537"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Часто задаваемые вопросы о Bot Framework
 
@@ -248,7 +248,7 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 
 ## <a name="what-are-the-possible-machine-readable-resolutions-of-the-luis-built-in-date-time-duration-and-set-entities"></a>Какие возможные обрабатываемые компьютером решения существуют для встроенных сущностей даты, времени, длительности и установки в службе LUIS?
 
-См. список примеров в описании [предварительно созданных сущностей][LUISPreBuiltEntities] в документации по LUIS.
+Список примеров см. в [разделе о предварительно созданных сущностях](/azure/cognitive-services/LUIS/luis-reference-prebuilt-entities) документации по LUIS.
 
 ## <a name="how-can-i-use-more-than-the-maximum-number-of-luis-intents"></a>Что можно сделать, если требуемое количество намерений LUIS превышает максимально допустимое значение?
 
@@ -266,7 +266,7 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 
 * [Общие сведения о службе "Распознавание речи" (LUIS) — Microsoft Cognitive Services](https://www.youtube.com/watch?v=jWeLajon9M8) (видео)
 * [Расширенный сеанс обучения по службе "Распознавание речи" (LUIS)](https://www.youtube.com/watch?v=39L0Gv2EcSk) (видео)
-* [Документация по LUIS](/azure/cognitive-services/LUIS/Home)
+* [Документация по LUIS](/azure/cognitive-services/luis/)
 * [Форум по службе "Распознавание речи"](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 
