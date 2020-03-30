@@ -8,18 +8,19 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: c49a632696ea0708f817f733aff7b2743600ccb6
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 7f46d5f2b5012db914568e5ae613c18405dfa113
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071702"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117637"
 ---
 # <a name="configure-net-bot-for-extension"></a>Настройка бота .NET для использования расширения
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
-В этой статье описывается, как включить в бота поддержку работы с **именованными каналами** и включить расширение службы Direct Line в ресурсе **Службы приложений Azure**, в котором размещен этот бот.
+В этой статье описывается, как включить в бота поддержку работы с **именованными каналами** и включить расширение службы Direct Line в ресурсе **Службы приложений Azure**, в котором размещен этот бот. См. также о [создании клиента .NET для подключения к расширению Службы приложений Direct Line](bot-service-channel-directline-extension-net-client.md).
+
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -84,7 +85,7 @@ ms.locfileid: "77071702"
 1. Если канал **Direct Line** еще не включен, щелкните его, чтобы включить.
 1. Если он уже включен, в таблице "Подключение к каналам" щелкните ссылку **Изменить** в строке Direct Line.
 1. Прокрутите вниз до раздела "Ключи расширения Службы приложений".
-1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, и скопируйте его значение.
+1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, а затем скопируйте и сохраните его значение. Это значение потребуется в следующем разделе.
 
 ![Ключи расширения Службы приложений](./media/channels/direct-line-extension-extension-keys.png)
 
@@ -96,8 +97,10 @@ ms.locfileid: "77071702"
 
     |Имя|Значение|
     |---|---|
-    |DirectLineExtensionKey|<Ключ_расширения_Службы_приложений_из_раздела_1>|
+    |DirectLineExtensionKey|<App_Service_Extension_Key>|
     |DIRECTLINE_EXTENSION_VERSION|последняя|
+
+    Где *App_Service_Extension_Key* — это сохраненное ранее значение.
 
 1. В разделе *Конфигурация* щелкните раздел **Общие параметры** и включите **Websocket**.
 1. Нажмите кнопку **Сохранить**, чтобы сохранить параметры. Эта команда перезапускает Службу приложений Azure.
@@ -111,3 +114,8 @@ ms.locfileid: "77071702"
 - **initialized** определяет, может ли ASE Direct Line с помощью соответствующего ключа расширения скачивать метаданные бота из службы Azure Bot.
 - **ib** определяет, может ли ASE Direct Line устанавливать входящее соединение с ботом.
 - **ob** определяет, может ли ASE Direct Line устанавливать исходящее соединение с ботом.
+
+## <a name="next-steps"></a>Дальнейшие действия
+
+> [!div class="nextstepaction"]
+> [Создание клиента .NET](./bot-service-channel-directline-extension-net-client.md)

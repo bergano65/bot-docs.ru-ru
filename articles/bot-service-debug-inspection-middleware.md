@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 142ffed02c9849511840a094cd91ee5953caf6af
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 0d48d40efc9f28482c01b42132ab335e433e326f
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035406"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117573"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Отладка бота с помощью проверяющего ПО промежуточного слоя
 В этой статье описывается, как отлаживать бота с помощью проверяющего ПО промежуточного слоя. Эта функция позволяет Bot Framework Emulator отлаживать входящий и исходящий трафик для бота, а также просматривать текущее состояние бота. Вы можете использовать сообщение трассировки для отправки данных в эмулятор и проверки состояния бота на любом шаге беседы. 
@@ -35,8 +35,8 @@ ms.locfileid: "77035406"
 
 ## <a name="update-your-bots-code"></a>Обновление кода бота
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-Настройте состояние проверки в **загрузочном файле**. Добавьте проверяющее ПО промежуточного слоя в адаптер. Состояние проверки предоставляется путем внедрения зависимостей. См. обновление кода ниже или пример проверки: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
+# <a name="c"></a>[C#](#tab/csharp)
+Настройте состояние проверки и добавьте проверяющее ПО промежуточного слоя в адаптер в файле **Startup.cs**. Состояние проверки предоставляется путем внедрения зависимостей. См. обновление кода ниже или пример проверки: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
 
 **Startup.cs.**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
@@ -44,10 +44,12 @@ ms.locfileid: "77035406"
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-37)]
 
+Обновите класс бота в файле **EchoBot.cs**.
+
 **EchoBot.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 Прежде чем обновлять код бота, нужно обновить его пакеты до последних версий, выполнив в терминале следующую команду: 
 ```cmd
 npm install --save botbuilder@latest 
@@ -64,9 +66,9 @@ npm install --save botbuilder@latest
 
 Обновите класс бота в файле **bot.js**. 
 
-[!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
+[!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-52)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 Прежде чем обновлять код бота, установите требуемые пакеты PyPI, выполнив следующие команды в терминале:
 ```cmd
 pip install aiohttp
@@ -91,19 +93,19 @@ pip install botbuilder-core>=4.7.0
 
 1. Перейдите к каталогу бота в терминале и выполните следующую команду, чтобы запустить бота локально: 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cmd
 dotnet run
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```cmd
 npm start 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 ```cmd
 python app.py
 ```

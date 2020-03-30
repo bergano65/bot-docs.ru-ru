@@ -8,26 +8,27 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 0ed4bbeb9a882bcf8e4dd75364211f1a3538479b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: d990700ab06a4bfae34cffcbc1a6846f66ec1d77
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75793224"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117619"
 ---
 # <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Создание клиента .NET для подключения к расширению Службы приложений Direct Line
 
 В этой статье описано, как создать клиент .NET на языке C#, который подключается к расширению Службы приложений Direct Line.
+См. также о [настройке бота .NET для расширения](bot-service-channel-directline-extension-net-bot.md).
 
 ## <a name="gather-your-direct-line-extension-keys"></a>Сбор ключей расширения Direct Line
 
 1. В браузере перейдите на [портал Azure](https://portal.azure.com/).
 1. На портале Azure найдите ресурс **службы Azure Bot**.
 1. Щелкните элемент **Каналы**, чтобы настроить каналы для бота.
-1. Если канал **Direct Line** еще не включен, щелкните его, чтобы включить. 
+1. Если канал **Direct Line** еще не включен, щелкните его, чтобы включить.
 1. Если он уже включен, в таблице "Подключение к каналам" щелкните ссылку **Изменить** в строке Direct Line.
 1. Прокрутите вниз до раздела "Сайты". Обычно здесь отображается сайт по умолчанию, если вы его не удалили и не переименовали.
-1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, и скопируйте его значение.
+1. Щелкните **Показать ссылку**, чтобы отобразить один из ключей, а затем скопируйте и сохраните его значение. Это значение потребуется в следующем разделе.
 
     ![Ключи расширения Службы приложений](./media/channels/direct-line-extension-extension-keys-net-client.png)
 
@@ -48,7 +49,7 @@ ms.locfileid: "75793224"
 
 ## <a name="create-a-c-direct-line-client"></a>Создание клиента Direct Line на C#
 
-Взаимодействие с расширением службы приложений Direct существенно отличается от обычной работы с Direct Line, так как значительная часть взаимодействия выполняется через *WebSocket*. Обновленный клиент Direct Line содержит вспомогательные классы для открытия и закрытия *WebSocket*, отправки команд через WebSocket и получения действий от бота. В этом разделе описывается, как создать простой клиент C# для взаимодействия с ботом.
+Взаимодействие с расширением службы приложений Direct Line существенно отличается от обычной работы с Direct Line, так как значительная часть взаимодействия выполняется через *WebSocket*. Обновленный клиент Direct Line содержит вспомогательные классы для открытия и закрытия *WebSocket*, отправки команд через WebSocket и получения действий от бота. В этом разделе описывается, как создать простой клиент C# для взаимодействия с ботом.
 
 1. Создайте проект консольного приложения .NET Core 2.2 в Visual Studio.
 1. Добавьте в этот проект **клиент NuGet Direct Line** .
@@ -68,6 +69,10 @@ ms.locfileid: "75793224"
         new DirectLineClientCredentials(secret));
     var conversation = await tokenClient.Tokens.GenerateTokenForNewConversationAsync();
     ```
+
+    Обратите внимание на следующее.
+    - Значение конечной точки — это URL-адрес бота, полученный при развертывании бота в Azure.  См. сведения о [настройке бота .NET для расширения](bot-service-channel-directline-extension-net-bot.md).
+    - Значение секрета, отображаемое как *YOUR_BOT_SECRET* — это значение, сохраненное ранее в разделе *Сайты*.
 
 1. Получив ссылку на беседу после создания маркера, вы сможете с помощью идентификатора этой беседы открыть WebSocket с новым свойством `StreamingConversations` для `DirectLineClient`. Для этого следует создать обратный вызов, который будет использоваться в боте для отправки клиенту `ActivitySets`:
 

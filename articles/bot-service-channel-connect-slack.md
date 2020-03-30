@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/09/2019
-ms.openlocfilehash: 3147e202a615e29d51f1e3fa3a9d5d70ed54fe83
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 74d7e666ff7a47fa9635a0b8e28f5d99edcaaa45
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071742"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117659"
 ---
 # <a name="connect-a-bot-to-slack"></a>Подключение бота к Slack
 
@@ -21,45 +21,56 @@ ms.locfileid: "77071742"
 - подключение бота с помощью портала службы Azure Bot;
 - использование адаптера Slack.
 
-## <a name="azure-bot-service-portaltababs"></a>[Портал службы Azure Bot](#tab/abs)
+## <a name="azure-bot-service-portal"></a>[Портал службы Azure Bot](#tab/abs)
 ## <a name="create-a-slack-application-for-your-bot"></a>Создание приложения Slack для бота
 
-Войдите в [Slack](https://slack.com/signin) и перейдите на канал для [создания приложения Slack](https://api.slack.com/apps).
+1. В браузере выполните вход в [Slack](https://slack.com/signin).
+1. Перейдите на канал для [создания приложения Slack](https://api.slack.com/apps).
 
 ![Настройка бота](~/media/channels/slack-NewApp.png)
 
 ## <a name="create-an-app-and-assign-a-development-slack-team"></a>Создание приложения и назначение группы разработки Slack
 
-Введите имя приложения и выберите группу разработчиков Slack. Если вы еще не является членом команды разработчиков Slack, [создайте ее или присоединитесь к ней](https://slack.com/).
+1. Нажмите кнопку **Create new app** (Создать приложение).
+1. Введите имя приложения и выберите группу разработчиков Slack.
+Если вы еще не является членом команды разработчиков Slack, [создайте ее или присоединитесь к ней](https://slack.com/).
 
 ![Создание приложения](~/media/channels/slack-CreateApp.png)
 
-Нажмите кнопку **Create App** (Создать приложение). Slack создаст приложение, а также идентификатор и секрет клиента.
+1. Нажмите кнопку **Create app** (Создать приложение). Slack создаст приложение, а также значения **Client ID** (Идентификатор клиента) и **Client Secret** (Секрет клиента).
 
 ## <a name="add-a-new-redirect-url"></a>Добавление нового URL-адреса перенаправления
 
-Далее добавьте новый URL-адрес перенаправления.
-
-1. Выберите вкладку **OAuth & Permissions** (OAuth и разрешения).
-2. Щелкните **Add a new Redirect URL** (Добавить новый URL-адрес перенаправления).
-3. Укажите [https://slack.botframework.com](https://slack.botframework.com).
+1. На панели слева щелкните ссылку **OAuth & Permissions** (OAuth и разрешения).
+2. На панели справа нажмите кнопку **Add a new Redirect URL** (Добавить новый URL-адрес перенаправления).
+3. Введите значение `https://slack.botframework.com`.
 4. Нажмите кнопку **Добавить**.
 5. Нажмите кнопку **Save URLs** (Сохранить URL-адреса).
 
 ![Добавление URL-адреса перенаправления](~/media/channels/slack-RedirectURL.png)
 
-## <a name="create-a-slack-bot-user"></a>Создание пользователя бота Slack
+## <a name="add-bot-token-scopes"></a>Добавление областей токена для бота
+<!-- Replaces add user -->
+1. На панели слева щелкните ссылку **OAuth & Permissions** (OAuth и разрешения).
+1. На панели справа прокрутите содержимое вниз до раздела **Области**.
+1. В разделе **Bot Token Scopes** (Области токенов бота) нажмите кнопку **Add an OAuth Scope** (Добавить область OAuth).
+1. Обязательно выберите области, как показано на рисунке ниже:
 
-Добавив пользователя бота, можно назначить боту имя и выбрать, будет ли он всегда находиться в сети.
+    - `app_mentions:read`
+    - `channels:history`
+    - `channels:read`
+    - `chat:write`
+    - `groups:history`
+    - `groups:read`
+    - `im:history`
+    - `mpim:history`
 
-1. Выберите вкладку **Bot Users** (Пользователи бота).
-2. Щелкните **Add a Bot User** (Добавить пользователя бота).
+    ![области бота Slack](media/channels/slack-bot-scopes.PNG)
 
-![Создание бота](~/media/channels/slack-CreateBot.png)
+1. На панели слева щелкните ссылку **App Home** (Домашняя страница приложения).
+1. На панели справа прокрутите вниз и установите флажок **Always Show My Bot as Online** (Бот постоянно в сети).
 
-Щелкните **Add a Bot User** (Добавить пользователя бота) для проверки параметров, выберите для параметра **Always Show My Bot as Online** (Бот постоянно в сети) значение **Вкл.** и нажмите кнопку **Сохранить изменения**.
-
-![Создание бота](~/media/channels/slack-CreateApp-AddBotUser.png)
+    ![отображение бота Slack](media/channels/slack-bot-display.PNG)
 
 ## <a name="subscribe-to-bot-events"></a>Подписка на события бота
 
@@ -76,12 +87,13 @@ ms.locfileid: "77071742"
 
 4. В разделе **Subscribe to Bot Events** (Подписаться на события ботов) щелкните **Add Bot User Event** (Добавить пользовательское событие бота).
 5. В списке событий выберите следующие шесть типов событий:
-    * `member_joined_channel`
-    * `member_left_channel`
-    * `message.channels`
-    * `message.groups`
-    * `message.im`
-    * `message.mpim`
+
+    - `member_joined_channel`
+    - `member_left_channel`
+    - `message.channels`
+    - `message.groups`
+    - `message.im`
+    - `message.mpim`
 
    ![Подписка на события (середина)](~/media/channels/slack-SubscribeEvents-b.png)
 
@@ -137,7 +149,7 @@ Slack предоставляет HTML-код, с помощью которого
 
 Авторизованные пользователи могут нажать кнопку **Add to Slack** (Добавить в Slack), предоставленную этим измененным HTML, для доступа к боту в Slack.
 
-## <a name="slack-adaptertabadapter"></a>[Адаптер Slack](#tab/adapter)
+## <a name="slack-adapter"></a>[Адаптер Slack](#tab/adapter)
 ## <a name="connect-a-bot-to-slack-using-the-slack-adapter"></a>Подключение бота к Slack с помощью адаптера Slack
 
 Для подключения бота к Slack можно использовать не только канал, доступный в службе Azure Bot, но и адаптер Slack. Из этой статьи вы узнаете, как подключить бота к Slack с помощью адаптера.  В этой статье описано, как изменить пример EchoBot для его подключения к приложению Slack.
@@ -283,10 +295,10 @@ public void ConfigureServices(IServiceCollection services)
 Чтобы выполнить этот шаг, [разверните бота в Azure](https://aka.ms/bot-builder-deploy-az-cli) и запишите URL-адрес этого развертывания.
 
 > [!NOTE]
-> Если вы еще не готовы развернуть бота в Azure или вам нужна отладка бота с адаптером Slack, можно использовать средство [ngrok](https://www.ngrok.com) (оно должно быть уже установлено, если вы ранее использовали эмулятор Bot Framework), которое создаст туннель к запущенному в локальной среде боту и предоставит для него общедоступный URL-адрес. 
-> 
+> Если вы еще не готовы развернуть бота в Azure или вам нужна отладка бота с адаптером Slack, можно использовать средство [ngrok](https://www.ngrok.com) (оно должно быть уже установлено, если вы ранее использовали эмулятор Bot Framework), которое создаст туннель к запущенному в локальной среде боту и предоставит для него общедоступный URL-адрес.
+>
 > Если вы хотите создать туннель и получить для бота URL-адрес с помощью ngrok, выполните следующую команду в окне терминала. Здесь предполагается, что локальный бот работает на порту 3978. Если это не так, измените номера портов в команде.
-> 
+>
 > ```
 > ngrok.exe http 3978 -host-header="localhost:3978"
 > ```

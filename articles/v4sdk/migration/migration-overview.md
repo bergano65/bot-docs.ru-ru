@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cffbcbce7581692e7f993e22f353cb435379b9
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 0746a277f465979639db5c8a26aaddfee9386ac2
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798060"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117696"
 ---
 # <a name="migration-overview"></a>Общие сведения о переносе
 
@@ -30,6 +30,8 @@ ms.locfileid: "75798060"
 Пакет SDK Bot Framework версии 3 станет недоступным для работы, но существующие рабочие нагрузки ботов версии 3 продолжат работу. Дополнительные сведения см. в разделе: [Поддержка пакета SDK Bot Framework версии 3 на все время существования](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support).
 
 Настоятельно рекомендуем начать перенос ботов с версии 3 в версию 4. Чтобы упростить перенос, мы подготовили соответствующую документацию и окажем расширенную поддержку инициативам по переносу по стандартным каналам.
+
+Если вы не можете выполнить миграцию бота из версии 3 в версию 4, вы все равно можете использовать дополнительные функции пакета SDK версии 4. Вы можете преобразовать бот версии 3 в навык и создать бот на основе пакета SDK версии 4, который будет выполнять роль потребителя навыков и передавать сообщения в бот версии 3. См. сведения о [преобразовании бота версии 3 в навык](convert-to-skill-overview.md).
 
 ## <a name="advantages"></a>Преимущества
 
@@ -95,7 +97,7 @@ ms.locfileid: "75798060"
 
 Следующие списки задач помогут оценить объем рабочей нагрузки для миграции. В столбце **Количество** замените *значение* своими фактическими числовыми значениями. В столбце **Размер** укажите такие значения, как *Небольшой*, *Средний*, *Большой*, руководствуясь своей оценкой.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 | Шаг | V3 | Версия 4 | Вхождения | Сложность | Размер |
 | -- | -- | -- | -- | -- | -- |
@@ -112,7 +114,7 @@ ms.locfileid: "75798060"
 Информирование о завершении текущего диалога | IDialogContext.Done | Возврат await метода EndDialogAsync контекста шага. | count | Средний |  
 Выход из диалога | IDialogContext.Fail | Создание исключения, которое будет зарегистрировано на другом уровне бота, и завершение шага с состоянием Cancelled, либо вызов шага или CancelAllDialogsAsync контекста диалога. | count | Малый |  
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 | Шаг | V3 | Версия 4 | Вхождения | Сложность | Размер |
 | -- | -- | -- | -- | -- | -- |
@@ -131,7 +133,7 @@ ms.locfileid: "75798060"
 
 ---
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Пакет SDK Bot Framework версии 4 использует тот же базовый REST API, что и пакет SDK версии 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами.
 
@@ -158,7 +160,7 @@ ms.locfileid: "75798060"
 
 Дополнительные сведения см. статье [Перенос бота .NET версии 3 в бот .NET Framework версии 4](conversion-core.md).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 В пакете **SDK Bot Framework для Javascript версии 4** реализовано несколько важных изменений, связанных с процессом создания ботов. Эти изменения влияют на синтаксис для разработки ботов на Javascript. В особенности это касается создания объектов бота, определения диалогов и создания логики обработки событий. Пакет SDK Bot Framework версии 4 использует тот же базовый REST API, что и пакет SDK версии 3. Но в версии 4 выполнен рефакторинг кода предыдущей версии пакета SDK для повышения гибкости и улучшения контроля над ботами, в частности:
 
@@ -182,24 +184,24 @@ ms.locfileid: "75798060"
 
 Перечисленные ниже ресурсы содержат дополнительные сведения, которые помогут с миграцией.  
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 <!-- _Mini-TOC with explainer for .NET topics_ -->
 В следующих разделах описаны различия между пакетами SDK Bot Framework для .NET версий 3 и 4, критические изменения в обеих версиях, а также приведены пошаговые инструкции по переходу с версии 3 на версию 4.
 
-| Раздел | Description |
+| Раздел | Описание |
 | :--- | :--- |
 | [Различия между версиями 3 и 4 пакета SDK для .NET](migration-about.md) |Различия между версиями 3 и 4 пакета SDK |
 | [Краткий справочник по миграции для .NET](net-migration-quickreference.md) |Критические изменения в версиях 3 и 4 пакета SDK |
 | [Перенос бота .NET версии 3 в .NET Framework версии 4](conversion-framework.md) |Перенос бота из версии 3 в версию 4 с использованием одного и того же типа проекта |
 | [Перенос бота .NET версии 3 в бот .NET Core версии 4](conversion-core.md) | Перенос бота из версии 3 в версию 4 с помощью нового проекта .NET Core|
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!-- _Mini-TOC with explainer for JavaScript topics_ -->
 В следующих разделах описаны различия в пакетах SDK Bot Framework для JavaScript версий 3 и 4, критические изменения в обеих версиях, а также приведены пошаговые инструкции по переходу с версии 3 на версию 4.
 
-| Раздел | Description |
+| Раздел | Описание |
 | :--- | :--- |
 | [Различия между версиями 3 и 4 пакета SDK для JavaScript](migration-about-javascript.md) | Различия между версиями 3 и 4 пакета SDK |
 | [Краткий справочник по миграции для JavaScript](javascript-migration-quickreference.md)| Критические изменения в версиях 3 и 4 пакета SDK|
@@ -211,7 +213,7 @@ ms.locfileid: "75798060"
 
 Ниже приведены примеры кода, которые позволяют ознакомиться с пакетом SDK Bot Framework версии 4 или приступить к новому проекту.
 
-| Примеры | Description |
+| Примеры | Описание |
 | :--- | :--- |
 | [Примеры переноса бота из пакета SDK Bot Framework версии 3 в версию 4](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4) <img width="200">| Примеры миграции из пакета SDK Bot Framework версии 3 в версию 4 |
 | [Примеры Bot Builder для .NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore) | Примеры Bot Builder для C# и .NET Core |
@@ -228,7 +230,7 @@ ms.locfileid: "75798060"
 
 Указанные ниже ресурсы содержат дополнительные и справочные сведения.
 
-| Раздел | Description |
+| Раздел | Описание |
 | :--- | :--- |
 | [Новые возможности Bot Framework](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Основные возможности и усовершенствования Bot Framework и Azure Bot|
 |[Принципы работы бота](../bot-builder-basics.md)|Внутренний механизм бота|

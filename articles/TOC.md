@@ -18,7 +18,10 @@
 ## [Управление состоянием](v4sdk/bot-builder-concept-state.md)
 ## [Библиотека диалогов](v4sdk/bot-builder-concept-dialog.md)
 ## [ПО промежуточного слоя](v4sdk/bot-builder-concept-middleware.md)
-## [Проверка подлинности пользователей](v4sdk/bot-builder-concept-authentication.md)
+## Аутентификация
+### [Аутентификация бота](v4sdk/bot-builder-concept-authentication.md)
+### [Поставщики удостоверений](v4sdk/bot-builder-concept-identity-providers.md)
+### [Единый вход](v4sdk/bot-builder-concept-sso.md)
 ## [Управление ресурсами бота](v4sdk/bot-file-basics.md)
 ## [Принцип работы ботов для Microsoft Teams](v4sdk/bot-builder-basics-teams.md)
 ## [Сведения о навыках](v4sdk/skills-conceptual.md)
@@ -31,15 +34,15 @@
 ### [Бот для повышения производительности на предприятии](bot-service-scenario-enterprise-productivity.md)
 ### [Информационный бот](bot-service-scenario-informational.md)
 ### [Бот для Интернета вещей](bot-service-scenario-internet-things.md)
-# Инструкции 
+# Инструкции
 ## [Конструктор](design/TOC.md)
 ## Разработка
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [Отправка и получение текстовых сообщений](v4sdk/bot-builder-howto-send-messages.md)
 ### [Добавление мультимедиа в сообщения](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [Добавление кнопок для управления действиями пользователя](v4sdk/bot-builder-howto-add-suggested-actions.md)
-### [Сохранение данных пользователя и диалога](v4sdk/bot-builder-howto-v4-state.md) 
-### [Запрос на ввод данных пользователем](v4sdk/bot-builder-primitive-prompts.md) 
+### [Сохранение данных пользователя и диалога](v4sdk/bot-builder-howto-v4-state.md)
+### [Запрос на ввод данных пользователем](v4sdk/bot-builder-primitive-prompts.md)
 ### [Отправка приветственного сообщения пользователям](v4sdk/bot-builder-send-welcome-message.md)
 ### [Отправка упреждающих уведомлений пользователям](v4sdk/bot-builder-howto-proactive-message.md)
 ### [Реализация процесса общения](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
@@ -51,7 +54,7 @@
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [Обработка прерываний диалога пользователем](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [Непосредственная запись в хранилище](v4sdk/bot-builder-howto-v4-storage.md)
-### [Добавление аутентификации в бот](v4sdk/bot-builder-authentication.md)
+### [Добавление аутентификации в веб-приложение](v4sdk/bot-builder-authentication.md)
 ### [Реализация пользовательского хранилища для бота](v4sdk/bot-builder-custom-storage.md)
 ### Навыки
 #### [Реализация навыка](v4sdk/skill-implement-skill.md)

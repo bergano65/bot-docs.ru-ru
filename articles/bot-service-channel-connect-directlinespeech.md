@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: travisw
-ms.openlocfilehash: 55bb6b63f35b2cb064229ed0a827af422ca83882
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: d8831930934bef15c06679236efb7f4e7962b1aa
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592234"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117501"
 ---
 # <a name="connect-a-bot-to-direct-line-speech"></a>Подключение бота к каналу Direct Line Speech
 
@@ -22,7 +22,7 @@ ms.locfileid: "73592234"
 
 Вы можете настроить бот так, чтобы клиентские приложения могли взаимодействовать с ним через канал Direct Line Speech.
 
-Подключение созданного бота к каналу Direct Line Speech предоставит клиентским приложениям подключение с низкой задержкой и высокой надежностью через [пакет SDK службы "Речь"](https://aka.ms/speech/sdk). Эти подключения оптимизированы для двустороннего естественного голосового взаимодействия. Дополнительные сведения о Direct Line Speech и создании клиентских приложений см. в [описании пользовательского виртуального голосового помощника](https://aka.ms/bots/speech/va). 
+Подключение созданного бота к каналу Direct Line Speech предоставит клиентским приложениям подключение с низкой задержкой и высокой надежностью через [пакет SDK службы "Речь"](https://aka.ms/speech/sdk). Эти подключения оптимизированы для двустороннего естественного голосового взаимодействия. Дополнительные сведения о Direct Line Speech и создании клиентских приложений см. в [описании пользовательского виртуального голосового помощника](https://aka.ms/bots/speech/va).
 
 ## <a name="add-the-direct-line-speech-channel"></a>Добавление канала Direct Line Speech
 
@@ -34,9 +34,20 @@ ms.locfileid: "73592234"
 
     ![Выбор канала Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-connectspeechchannel.png "Подключение к Direct Line Speech")
 
-1. Для канала Direct Line Speech требуется ресурс Cognitive Services. Вы можете использовать существующий ресурс Cognitive Services или создать новый, выполнив [эти инструкции](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). 
+1. Настройте Direct Line Speech, как показано на рисунке ниже.
 
     ![Выбор канала Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-cognitivesericesaccount-selection.png "Выбор ресурса Cognitive Services")
+
+    Для канала Direct Line Speech требуется ресурс Cognitive Services, в частности ресурс **Речь**. Вы можете выбрать существующий ресурс ресурсов или создать новый. Чтобы создать новый ресурс, сделайте следующее:
+
+    - Перейдите на [портал Azure в раздел создания ресурсов](https://ms.portal.azure.com/#create/hub).
+    - Найдите ресурс *Речь* в раскрывающемся списке и выберите его. Отобразится следующее:
+
+        ![Создание ресурса "Речь" Cognitive Services](media/voice-first-virtual-assistants/create-speech-cognitive-resource.PNG "Создание ресурса "Речь" Cognitive Services")
+
+    - Следуйте указаниям мастера.
+
+    См. сведения о [создании ресурса Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
 1. Ознакомьтесь с условиями использования и щелкните `Save`, чтобы подтвердить выбор канала.
 
@@ -46,7 +57,7 @@ ms.locfileid: "73592234"
 
 Подключив канал Direct Line Speech к боту, следует включить поддержку протокола потоковой передачи Bot Framework, чтобы организовать оптимальное взаимодействие с низкой задержкой.
 
-1. Если вы этого еще не сделали, откройте колонку бота на [портале Azure](https://portal.azure.com). 
+1. Если вы этого еще не сделали, откройте колонку бота на [портале Azure](https://portal.azure.com).
 
 1. Щелкните **Параметры** в категории **Bot Management** (Управление ботом) (расположена под элементом **Каналы**). Установите флажок **Enable Streaming Endpoint** (Включить конечную точку потоковой передачи).
 
