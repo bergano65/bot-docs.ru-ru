@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ad3f9a1cc9ce3f06bad71615e244a791025904d9
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a7ed19a6e5f7614a0fb24db9d5de08e5ed945ef9
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791066"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250093"
 ---
 <!-- This article is on hold -->
 
@@ -26,7 +26,7 @@ ms.locfileid: "75791066"
 > [!NOTE]
 > Бот поддерживает **состояние беседы** для ее отслеживания, управления ее ходом и отправки вопросов пользователю. Он поддерживает **состояние пользователя** для отслеживания ответов пользователя.
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 - Средство npm версии 6.9.0 или выше (поддерживает присвоение псевдонимов пакетам).
 
@@ -141,7 +141,7 @@ ms.locfileid: "75791066"
 - [Restify][30]
 - [dotenv][31]
 
-[3]: https://aka.ms/botframework-emulator
+[3]: https://aka.ms/botframework-emulator-github
 [5]: https://github.com/microsoft/botframework-emulator
 [6]: https://github.com/Microsoft/BotFramework-Emulator/releases
 [7]: https://docs.microsoft.com/azure/bot-service/bot-builder-storage-concept

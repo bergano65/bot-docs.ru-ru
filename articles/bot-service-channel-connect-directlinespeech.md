@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: travisw
-ms.openlocfilehash: d8831930934bef15c06679236efb7f4e7962b1aa
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: 3202c8271ffbdb09be10087861449c36f61cfac5
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117501"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250133"
 ---
 # <a name="connect-a-bot-to-direct-line-speech"></a>Подключение бота к каналу Direct Line Speech
 
@@ -22,7 +22,7 @@ ms.locfileid: "80117501"
 
 Вы можете настроить бот так, чтобы клиентские приложения могли взаимодействовать с ним через канал Direct Line Speech.
 
-Подключение созданного бота к каналу Direct Line Speech предоставит клиентским приложениям подключение с низкой задержкой и высокой надежностью через [пакет SDK службы "Речь"](https://aka.ms/speech/sdk). Эти подключения оптимизированы для двустороннего естественного голосового взаимодействия. Дополнительные сведения о Direct Line Speech и создании клиентских приложений см. в [описании пользовательского виртуального голосового помощника](https://aka.ms/bots/speech/va).
+Подключение созданного бота к каналу Direct Line Speech предоставит клиентским приложениям подключение с низкой задержкой и высокой надежностью через [пакет SDK службы "Речь"](https://aka.ms/speech-service-docs). Эти подключения оптимизированы для двустороннего естественного голосового взаимодействия. Дополнительные сведения о Direct Line Speech и создании клиентских приложений см. в [описании пользовательского виртуального голосового помощника](https://aka.ms/cognitive-services-voice-assistants).
 
 ## <a name="add-the-direct-line-speech-channel"></a>Добавление канала Direct Line Speech
 

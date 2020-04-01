@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 01/16/2020
-ms.openlocfilehash: 1361c135d9cb359ad9296e5658e0fc7db4ed3b27
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 84544f5c4082f88991718c5d84dc2aead05f5eb2
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752846"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250143"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Подключение бота к Facebook
 
@@ -136,7 +136,7 @@ ms.locfileid: "76752846"
 >
 > Далее Facebook будет считать допустимыми для продолжения использования (до 31 декабря 2020 г.) только интеграции с ограниченным доступом к данным Workplace (разрешения с низким уровнем конфиденциальности), которые успешно прошли проверки безопасности RFI и по которым разработчик не позднее 15 января 2020 г. связался со службой поддержки [Direct Support](https://my.workplace.com/work/admin/direct_support) с запросом на продолжение работы приложения.
 >
-> Адаптеры Bot Framework доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/botframework-workplace-adapter), а также [C# и .NET](https://aka.ms/bf-workplace-csharp).
+> Адаптеры Bot Framework доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/npm-botbuilder-adapter-facebook), а также [C# и .NET](https://aka.ms/botbuilder-dotnet-facebook-adapter).
 
 Facebook Workplace — это ориентированная на бизнес версия Facebook, которая позволяет сотрудникам легко подключаться и совместно работать. Она содержит видео в реальном времени, веб-каналы новостей, группы, приложение для обмена сообщениями, реакции, функции поиска и популярные записи. Она также поддерживает следующие возможности:
 
@@ -181,11 +181,11 @@ Facebook Workplace — это ориентированная на бизнес 
 
 ### <a name="update-your-bot-code-with-facebook-adapter"></a>Включение адаптера Facebook в код бота
 
-Исходный код бота следует обновить, включив в него адаптер для взаимодействия с Workplace by Facebook. Эти адаптеры доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/botframework-workplace-adapter), а также [C# и .NET](https://aka.ms/bf-workplace-csharp).
+Исходный код бота следует обновить, включив в него адаптер для взаимодействия с Workplace by Facebook. Эти адаптеры доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/npm-botbuilder-adapter-facebook), а также [C# и .NET](https://aka.ms/botbuilder-dotnet-facebook-adapter).
 
 ### <a name="provide-facebook-credentials"></a>Указание учетных данных Facebook
 
-Необходимо обновить файл бота appsettings.json, добавив значения **Facebook App ID** (Идентификатор приложения Facebook), **Facebook App Secret** (Секрет приложения Facebook) и **Page Access Token** (Маркер доступа к странице), скопированные ранее из Facebook Workplace. Вместо традиционного идентификатора страницы используйте числа, указанные после имени интегрируемого приложения на соответствующей **странице** со сведениями. Выполните эти инструкции, чтобы обновить исходный код бота для [JavaScript и Node.js](https://aka.ms/botframework-workplace-adapter) или [C# и .NET](https://aka.ms/bf-workplace-csharp).
+Необходимо обновить файл бота appsettings.json, добавив значения **Facebook App ID** (Идентификатор приложения Facebook), **Facebook App Secret** (Секрет приложения Facebook) и **Page Access Token** (Маркер доступа к странице), скопированные ранее из Facebook Workplace. Вместо традиционного идентификатора страницы используйте числа, указанные после имени интегрируемого приложения на соответствующей **странице** со сведениями. Выполните эти инструкции, чтобы обновить исходный код бота для [JavaScript и Node.js](https://aka.ms/npm-botbuilder-adapter-facebook) или [C# и .NET](https://aka.ms/botbuilder-dotnet-facebook-adapter).
 
 ### <a name="submit-for-review"></a>Отправка на проверку
 
@@ -204,7 +204,7 @@ Facebook Workplace — это ориентированная на бизнес 
 ## <a name="connect-a-bot-to-facebook-using-the-facebook-adapter"></a>Подключение бота к Facebook с помощью адаптера Facebook
 
 Чтобы подключить бот к Facebook Workplace, используйте адаптер Facebook для Bot Framework. Для подключения к Facebook Messenger, можно использовать канал или адаптер Facebook.
-Адаптеры Facebook доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/botframework-workplace-adapter), а также [C# и .NET](https://aka.ms/bf-workplace-csharp).
+Адаптеры Facebook доступны для ботов, созданных с помощью [JavaScript и Node.js](https://aka.ms/npm-botbuilder-adapter-facebook), а также [C# и .NET](https://aka.ms/botbuilder-dotnet-facebook-adapter).
 
 Из этой статьи вы узнаете, как подключить бота к Facebook с помощью адаптера.  Здесь представлена пошаговая инструкция, которая позволит изменить пример EchoBot для подключения его к Facebook.
 

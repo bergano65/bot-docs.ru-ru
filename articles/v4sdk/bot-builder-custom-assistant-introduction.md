@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1b3cb313a06f8f834aa7d212db43eafb2a621af5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 6bde9f24f42a7558d93c333d12e03e9c87d7c4b2
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798624"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250023"
 ---
 # <a name="custom-assistant-overview"></a>Общие сведения о личном помощнике
 
@@ -86,5 +86,5 @@ ms.locfileid: "75798624"
 
 ## <a name="getting-started"></a>Приступая к работе
 
-Сейчас в репозитории с открытым исходным кодом предоставляется начальная предварительная версия решения. Мы совместно работаем с клиентами и партнерами над внедрением первых функций и их последующим расширением в ближайшие месяцы. Чтобы зарегистрироваться и начать работу, заполните [эту форму](https://aka.ms/customassistantpreviewform),чтобы мы могли связаться с вами.
+Сейчас в репозитории с открытым исходным кодом предоставляется начальная предварительная версия решения. Мы совместно работаем с клиентами и партнерами над внедрением первых функций и их последующим расширением в ближайшие месяцы. Чтобы зарегистрироваться и начать работу, заполните [эту форму](https://aka.ms/va-scenario-submission-form),чтобы мы могли связаться с вами.
 

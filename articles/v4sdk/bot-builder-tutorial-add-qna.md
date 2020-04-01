@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb79739e2199556fe6ce3fdd58f2fc34165f36e2
-ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
+ms.openlocfilehash: 17d88db4e291458bc87d959c90759e0c44bcc283
+ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77519983"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80499897"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Руководство по Использование QnA Maker в боте для ответов на вопросы.
 
@@ -30,7 +30,7 @@ ms.locfileid: "77519983"
 > * Обновление бота для запросов по базе знаний
 > * Повторная публикация бота
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -98,7 +98,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 
 Добавьте следующие значения в файл с расширением .env:
 
-```
+```text
 MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
@@ -235,6 +235,7 @@ class DefaultConfig:
 
 1. Откройте окно терминала или командную строку и перейдите к корневому каталогу проекта.
 1. Добавьте в проект пакет npm **botbuilder-ai**.
+
    ```shell
    npm i botbuilder-ai
    ```
@@ -242,6 +243,7 @@ class DefaultConfig:
 1. В файле **index.js**, после раздела // Create Adapter добавьте следующий код для считывания данных файла конфигурации с расширением .env, необходимых для создания служб QnA Maker.
 
    **index.js**
+
    ```javascript
    // Map knowledge base endpoint values from .env file into the required format for `QnAMaker`.
    const configuration = {
@@ -255,6 +257,7 @@ class DefaultConfig:
 1. Обновите код создания бота, чтобы передать сведения о конфигурации служб QnA.
 
    **index.js**
+
    ```javascript
    // Create the main dialog.
    const myBot = new MyBot(configuration, {});
@@ -263,6 +266,7 @@ class DefaultConfig:
 1. В файл **bot.js** добавьте следующие сведения, необходимые для QnA Maker.
 
    **bot.js**
+
    ```javascript
    const { QnAMaker } = require('botbuilder-ai');
    ```
@@ -270,6 +274,7 @@ class DefaultConfig:
 1. Измените конструктор, чтобы получить переданные параметры конфигурации, необходимые для создания соединителя QnA Maker и выдачи ошибки, если эти параметры не указаны.
 
    **bot.js**
+
    ```javascript
       class MyBot extends ActivityHandler {
          constructor(configuration, qnaOptions) {
@@ -386,9 +391,13 @@ class DefaultConfig:
 ![Тестирование примера QnA](./media/qna-test-bot.png)
 
 ## <a name="republish-your-bot"></a>Повторная публикация бота
-Теперь можно повторно опубликовать бота в Azure. Для этого необходимо заархивировать папку проекта и выполнить команду развертывания. Дополнительные сведения см. в статье [о развертывании бота](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp). 
 
-### <a name="zip-your-project-folder"></a>Архивация папки проекта 
+Теперь можно повторно опубликовать бота в Azure. Для этого необходимо заархивировать папку проекта и выполнить команду развертывания. Дополнительные сведения см. в статье [о развертывании бота](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp).
+
+[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
+
+### <a name="zip-your-project-folder"></a>Архивация папки проекта
+
 [!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
 <!-- > [!IMPORTANT]
@@ -402,6 +411,7 @@ class DefaultConfig:
 > If your root folder location is incorrect, the **bot will fail to run in the Azure portal**. -->
 
 ### <a name="deploy-your-code-to-azure"></a>Развертывание кода в Azure
+
 [!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
 
 <!-- # [C#](#tab/csharp)
